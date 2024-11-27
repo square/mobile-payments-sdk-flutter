@@ -4,6 +4,7 @@ build/
 
 # Local configuration file (sdk path, etc)
 local.properties
+.DS_Store
 
 # Log/OS Files
 *.log
@@ -31,3 +32,15 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+.dart_tool/
+.packages
+.pub/
+pubspec.lock
+android/.project
+.vscode/settings.json
+android/.classpath
+android/.settings/org.eclipse.buildship.core.prefs
+.clang-format
+android/bin
+.vscode/launch.json
