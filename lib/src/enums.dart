@@ -20,7 +20,7 @@ enum CardBrand {
   alipay,
   americanExpress,
   cashApp,
-  chinaUnionPay,
+  unionPayInternational,
   discover,
   discoverDiners,
   ebt,

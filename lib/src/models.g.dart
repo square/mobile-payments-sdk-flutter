@@ -65,7 +65,7 @@ const _$CardBrandEnumMap = {
   CardBrand.alipay: 'alipay',
   CardBrand.americanExpress: 'americanExpress',
   CardBrand.cashApp: 'cashApp',
-  CardBrand.chinaUnionPay: 'chinaUnionPay',
+  CardBrand.unionPayInternational: 'unionPayInternational',
   CardBrand.discover: 'discover',
   CardBrand.discoverDiners: 'discoverDiners',
   CardBrand.ebt: 'ebt',
