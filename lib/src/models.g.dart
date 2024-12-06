@@ -21,12 +21,12 @@ Map<String, dynamic> _$$LocationImplToJson(_$LocationImpl instance) =>
     };
 
 const _$CurrencyCodeEnumMap = {
-  CurrencyCode.Aud: 'Aud',
-  CurrencyCode.Cad: 'Cad',
-  CurrencyCode.Eur: 'Eur',
-  CurrencyCode.Gbp: 'Gbp',
-  CurrencyCode.Jpy: 'Jpy',
-  CurrencyCode.Usd: 'Usd',
+  CurrencyCode.aud: 'aud',
+  CurrencyCode.cad: 'cad',
+  CurrencyCode.eur: 'eur',
+  CurrencyCode.gbp: 'gbp',
+  CurrencyCode.jpy: 'jpy',
+  CurrencyCode.usd: 'usd',
 };
 
 _$MoneyImpl _$$MoneyImplFromJson(Map<String, dynamic> json) => _$MoneyImpl(
@@ -62,32 +62,32 @@ Map<String, dynamic> _$$CardImplToJson(_$CardImpl instance) =>
     };
 
 const _$CardBrandEnumMap = {
-  CardBrand.Alipay: 'Alipay',
-  CardBrand.AmericanExpress: 'AmericanExpress',
-  CardBrand.CashApp: 'CashApp',
-  CardBrand.ChinaUnionPay: 'ChinaUnionPay',
-  CardBrand.Discover: 'Discover',
-  CardBrand.DiscoverDiners: 'DiscoverDiners',
-  CardBrand.Ebt: 'Ebt',
-  CardBrand.Eftpos: 'Eftpos',
-  CardBrand.Felica: 'Felica',
-  CardBrand.Id: 'Id',
-  CardBrand.Interac: 'Interac',
-  CardBrand.Jcb: 'Jcb',
-  CardBrand.Mastercard: 'Mastercard',
-  CardBrand.OtherBrand: 'OtherBrand',
-  CardBrand.SquareCapitalCard: 'SquareCapitalCard',
-  CardBrand.SquareGiftCard: 'SquareGiftCard',
-  CardBrand.Suica: 'Suica',
-  CardBrand.Unknown: 'Unknown',
-  CardBrand.Visa: 'Visa',
+  CardBrand.alipay: 'alipay',
+  CardBrand.americanExpress: 'americanExpress',
+  CardBrand.cashApp: 'cashApp',
+  CardBrand.chinaUnionPay: 'chinaUnionPay',
+  CardBrand.discover: 'discover',
+  CardBrand.discoverDiners: 'discoverDiners',
+  CardBrand.ebt: 'ebt',
+  CardBrand.eftpos: 'eftpos',
+  CardBrand.felica: 'felica',
+  CardBrand.id: 'id',
+  CardBrand.interac: 'interac',
+  CardBrand.jcb: 'jcb',
+  CardBrand.mastercard: 'mastercard',
+  CardBrand.otherBrand: 'otherBrand',
+  CardBrand.squareCapitalCard: 'squareCapitalCard',
+  CardBrand.squareGiftCard: 'squareGiftCard',
+  CardBrand.suica: 'suica',
+  CardBrand.unknown: 'unknown',
+  CardBrand.visa: 'visa',
 };
 
 const _$CardCoBrandEnumMap = {
-  CardCoBrand.Afterpay: 'Afterpay',
-  CardCoBrand.Clearpay: 'Clearpay',
-  CardCoBrand.None: 'None',
-  CardCoBrand.Unknown: 'Unknown',
+  CardCoBrand.afterpay: 'afterpay',
+  CardCoBrand.clearpay: 'clearpay',
+  CardCoBrand.none: 'none',
+  CardCoBrand.unknown: 'unknown',
 };
 
 _$CardPaymentDetailsImpl _$$CardPaymentDetailsImplFromJson(
@@ -113,20 +113,20 @@ Map<String, dynamic> _$$CardPaymentDetailsImplToJson(
     };
 
 const _$EntryMethodEnumMap = {
-  EntryMethod.Keyed: 'Keyed',
-  EntryMethod.Swiped: 'Swiped',
-  EntryMethod.Emv: 'Emv',
-  EntryMethod.Contactless: 'Contactless',
-  EntryMethod.OnFile: 'OnFile',
-  EntryMethod.Unknown: 'Unknown',
+  EntryMethod.keyed: 'keyed',
+  EntryMethod.swiped: 'swiped',
+  EntryMethod.emv: 'emv',
+  EntryMethod.contactless: 'contactless',
+  EntryMethod.onFile: 'onFile',
+  EntryMethod.unknown: 'unknown',
 };
 
 const _$CardPaymentStatusEnumMap = {
-  CardPaymentStatus.Authorized: 'Authorized',
-  CardPaymentStatus.Captured: 'Captured',
-  CardPaymentStatus.Voided: 'Voided',
-  CardPaymentStatus.Failed: 'Failed',
-  CardPaymentStatus.Unknown: 'Unknown',
+  CardPaymentStatus.authorized: 'authorized',
+  CardPaymentStatus.captured: 'captured',
+  CardPaymentStatus.voided: 'voided',
+  CardPaymentStatus.failed: 'failed',
+  CardPaymentStatus.unknown: 'unknown',
 };
 
 _$CardInputMethodsImpl _$$CardInputMethodsImplFromJson(
@@ -162,11 +162,11 @@ Map<String, dynamic> _$$ReaderBatteryStatusImplToJson(
     };
 
 const _$ReaderBatteryLevelEnumMap = {
-  ReaderBatteryLevel.CriticallyLow: 'CriticallyLow',
-  ReaderBatteryLevel.Full: 'Full',
-  ReaderBatteryLevel.High: 'High',
-  ReaderBatteryLevel.Low: 'Low',
-  ReaderBatteryLevel.Mid: 'Mid',
+  ReaderBatteryLevel.criticallyLow: 'criticallyLow',
+  ReaderBatteryLevel.full: 'full',
+  ReaderBatteryLevel.high: 'high',
+  ReaderBatteryLevel.low: 'low',
+  ReaderBatteryLevel.mid: 'mid',
 };
 
 _$ReaderConnectionFailureInfoImpl _$$ReaderConnectionFailureInfoImplFromJson(
@@ -193,24 +193,24 @@ Map<String, dynamic> _$$ReaderConnectionFailureInfoImplToJson(
     };
 
 const _$ReaderConnectionFailureReasonEnumMap = {
-  ReaderConnectionFailureReason.DeniedByServer: 'DeniedByServer',
-  ReaderConnectionFailureReason.GenericError: 'GenericError',
-  ReaderConnectionFailureReason.MaxReadersConnected: 'MaxReadersConnected',
-  ReaderConnectionFailureReason.NetworkTimeout: 'NetworkTimeout',
-  ReaderConnectionFailureReason.NetworkTransportError: 'NetworkTransportError',
-  ReaderConnectionFailureReason.NotConnectedToInternet:
-      'NotConnectedToInternet',
-  ReaderConnectionFailureReason.ReaderTimeout: 'ReaderTimeout',
-  ReaderConnectionFailureReason.RevokedByDevice: 'RevokedByDevice',
-  ReaderConnectionFailureReason.ServerError: 'ServerError',
-  ReaderConnectionFailureReason.Unknown: 'Unknown',
+  ReaderConnectionFailureReason.deniedByServer: 'deniedByServer',
+  ReaderConnectionFailureReason.genericError: 'genericError',
+  ReaderConnectionFailureReason.maxReadersConnected: 'maxReadersConnected',
+  ReaderConnectionFailureReason.networkTimeout: 'networkTimeout',
+  ReaderConnectionFailureReason.networkTransportError: 'networkTransportError',
+  ReaderConnectionFailureReason.notConnectedToInternet:
+      'notConnectedToInternet',
+  ReaderConnectionFailureReason.readerTimeout: 'readerTimeout',
+  ReaderConnectionFailureReason.revokedByDevice: 'revokedByDevice',
+  ReaderConnectionFailureReason.serverError: 'serverError',
+  ReaderConnectionFailureReason.unknown: 'unknown',
 };
 
 const _$ReaderConnectionFailureRecoverySuggestionEnumMap = {
-  ReaderConnectionFailureRecoverySuggestion.ActivateAccount: 'ActivateAccount',
-  ReaderConnectionFailureRecoverySuggestion.ContactSupport: 'ContactSupport',
-  ReaderConnectionFailureRecoverySuggestion.NoSuggestion: 'NoSuggestion',
-  ReaderConnectionFailureRecoverySuggestion.Retry: 'Retry',
+  ReaderConnectionFailureRecoverySuggestion.activateAccount: 'activateAccount',
+  ReaderConnectionFailureRecoverySuggestion.contactSupport: 'contactSupport',
+  ReaderConnectionFailureRecoverySuggestion.noSuggestion: 'noSuggestion',
+  ReaderConnectionFailureRecoverySuggestion.retry: 'retry',
 };
 
 _$ReaderConnectionInfoImpl _$$ReaderConnectionInfoImplFromJson(
@@ -229,10 +229,10 @@ Map<String, dynamic> _$$ReaderConnectionInfoImplToJson(
     };
 
 const _$ReaderConnectionStateEnumMap = {
-  ReaderConnectionState.Connected: 'Connected',
-  ReaderConnectionState.Connecting: 'Connecting',
-  ReaderConnectionState.FailedToConnect: 'FailedToConnect',
-  ReaderConnectionState.NotConnected: 'NotConnected',
+  ReaderConnectionState.connected: 'connected',
+  ReaderConnectionState.connecting: 'connecting',
+  ReaderConnectionState.failedToConnect: 'failedToConnect',
+  ReaderConnectionState.notConnected: 'notConnected',
 };
 
 _$ReaderFirmwareInfoImpl _$$ReaderFirmwareInfoImplFromJson(
@@ -293,26 +293,26 @@ Map<String, dynamic> _$$ReaderInfoImplToJson(_$ReaderInfoImpl instance) =>
     };
 
 const _$CardInsertionStatusEnumMap = {
-  CardInsertionStatus.Inserted: 'Inserted',
-  CardInsertionStatus.NotInserted: 'NotInserted',
-  CardInsertionStatus.Unknown: 'Unknown',
+  CardInsertionStatus.inserted: 'inserted',
+  CardInsertionStatus.notInserted: 'notInserted',
+  CardInsertionStatus.unknown: 'unknown',
 };
 
 const _$ReaderModelEnumMap = {
-  ReaderModel.ContactlessAndChip: 'ContactlessAndChip',
-  ReaderModel.Embedded: 'Embedded',
-  ReaderModel.Magstripe: 'Magstripe',
-  ReaderModel.Stand: 'Stand',
-  ReaderModel.Unknown: 'Unknown',
+  ReaderModel.contactlessAndChip: 'contactlessAndChip',
+  ReaderModel.embedded: 'embedded',
+  ReaderModel.magstripe: 'magstripe',
+  ReaderModel.stand: 'stand',
+  ReaderModel.unknown: 'unknown',
 };
 
 const _$ReaderStateEnumMap = {
-  ReaderState.Connecting: 'Connecting',
-  ReaderState.Disabled: 'Disabled',
-  ReaderState.Disconnected: 'Disconnected',
-  ReaderState.FailedToConnect: 'FailedToConnect',
-  ReaderState.Ready: 'Ready',
-  ReaderState.UpdatingFirmware: 'UpdatingFirmware',
+  ReaderState.connecting: 'connecting',
+  ReaderState.disabled: 'disabled',
+  ReaderState.disconnected: 'disconnected',
+  ReaderState.failedToConnect: 'failedToConnect',
+  ReaderState.ready: 'ready',
+  ReaderState.updatingFirmware: 'updatingFirmware',
 };
 
 _$PromptParametersImpl _$$PromptParametersImplFromJson(
@@ -335,12 +335,12 @@ Map<String, dynamic> _$$PromptParametersImplToJson(
     };
 
 const _$AdditionalPaymentMethodTypeEnumMap = {
-  AdditionalPaymentMethodType.Keyed: 'Keyed',
+  AdditionalPaymentMethodType.keyed: 'keyed',
 };
 
 const _$PromptModeEnumMap = {
-  PromptMode.Custom: 'Custom',
-  PromptMode.Default: 'Default',
+  PromptMode.customMode: 'customMode',
+  PromptMode.defaultMode: 'defaultMode',
 };
 
 _$PaymentImpl _$$PaymentImplFromJson(Map<String, dynamic> json) =>
@@ -374,13 +374,13 @@ Map<String, dynamic> _$$PaymentImplToJson(_$PaymentImpl instance) =>
     };
 
 const _$SourceTypeEnumMap = {
-  SourceType.BankAccount: 'BankAccount',
-  SourceType.Card: 'Card',
-  SourceType.Cash: 'Cash',
-  SourceType.External: 'External',
-  SourceType.SquareAccount: 'SquareAccount',
-  SourceType.Unknown: 'Unknown',
-  SourceType.Wallet: 'Wallet',
+  SourceType.bankAccount: 'bankAccount',
+  SourceType.card: 'card',
+  SourceType.cash: 'cash',
+  SourceType.externalSource: 'externalSource',
+  SourceType.squareAccount: 'squareAccount',
+  SourceType.unknown: 'unknown',
+  SourceType.wallet: 'wallet',
 };
 
 _$PaymentParametersImpl _$$PaymentParametersImplFromJson(
@@ -423,8 +423,8 @@ Map<String, dynamic> _$$PaymentParametersImplToJson(
     };
 
 const _$DelayActionEnumMap = {
-  DelayAction.Cancel: 'Cancel',
-  DelayAction.Complete: 'Complete',
+  DelayAction.cancel: 'cancel',
+  DelayAction.complete: 'complete',
 };
 
 _$OnlinePaymentImpl _$$OnlinePaymentImplFromJson(Map<String, dynamic> json) =>
@@ -465,9 +465,9 @@ Map<String, dynamic> _$$OnlinePaymentImplToJson(_$OnlinePaymentImpl instance) =>
     };
 
 const _$PaymentStatusEnumMap = {
-  PaymentStatus.Approved: 'Approved',
-  PaymentStatus.Complete: 'Complete',
-  PaymentStatus.Canceled: 'Canceled',
-  PaymentStatus.Failed: 'Failed',
-  PaymentStatus.Unknown: 'Unknown',
+  PaymentStatus.approved: 'approved',
+  PaymentStatus.complete: 'complete',
+  PaymentStatus.canceled: 'canceled',
+  PaymentStatus.failed: 'failed',
+  PaymentStatus.unknown: 'unknown',
 };

@@ -1,206 +1,207 @@
 part of 'models.dart';
 
 enum AccountType {
-  Savings,
-  Checking,
-  Credit,
+  savings,
+  checking,
+  credit,
 }
 
 enum AdditionalPaymentMethodType {
-  Keyed,
+  keyed,
 }
 
 enum AuthorizationState {
-  Authorized,
-  Authorizing,
-  NotAuthorized,
+  authorized,
+  authorizing,
+  notAuthorized,
 }
 
 enum CardBrand {
-  Alipay,
-  AmericanExpress,
-  CashApp,
-  ChinaUnionPay,
-  Discover,
-  DiscoverDiners,
-  Ebt,
-  Eftpos,
-  Felica,
-  Id,
-  Interac,
-  Jcb,
-  Mastercard,
-  OtherBrand,
-  SquareCapitalCard,
-  SquareGiftCard,
-  Suica,
-  Unknown,
-  Visa,
+  alipay,
+  americanExpress,
+  cashApp,
+  chinaUnionPay,
+  discover,
+  discoverDiners,
+  ebt,
+  eftpos,
+  felica,
+  id,
+  interac,
+  jcb,
+  mastercard,
+  otherBrand,
+  squareCapitalCard,
+  squareGiftCard,
+  suica,
+  unknown,
+  visa,
 }
 
 enum CardCoBrand {
-  Afterpay,
-  Clearpay,
-  None,
-  Unknown,
+  afterpay,
+  clearpay,
+  none,
+  unknown,
 }
 
 enum CardPaymentStatus {
-  Authorized,
-  Captured,
-  Voided,
-  Failed,
-  Unknown,
+  authorized,
+  captured,
+  voided,
+  failed,
+  unknown,
 }
 
 enum CardInsertionStatus {
-  Inserted,
-  NotInserted,
-  Unknown,
+  inserted,
+  notInserted,
+  unknown,
 }
 
 enum CurrencyCode {
-  Aud,
-  Cad,
-  Eur,
-  Gbp,
-  Jpy,
-  Usd,
+  aud,
+  cad,
+  eur,
+  gbp,
+  jpy,
+  usd,
 }
 
 enum DelayAction {
-  Cancel,
-  Complete,
+  cancel,
+  complete,
 }
 
 enum EntryMethod {
-  Keyed,
-  Swiped,
-  Emv,
-  Contactless,
-  OnFile,
-  Unknown,
+  keyed,
+  swiped,
+  emv,
+  contactless,
+  onFile,
+  unknown,
 }
 
 enum Environment {
-  Production,
-  Sandbox,
+  production,
+  sandbox,
 }
 
 enum PaymentStatus {
-  Approved,
-  Complete,
-  Canceled,
-  Failed,
-  Unknown,
+  approved,
+  complete,
+  canceled,
+  failed,
+  unknown,
 }
 
+// Note: in native SDKs the enums don't have the Mode suffix. In Dart, default is a reserved keyword
 enum PromptMode {
-  Custom,
-  Default,
+  customMode,
+  defaultMode,
 }
 
 enum SourceType {
-  BankAccount,
-  Card,
-  Cash,
-  External,
-  SquareAccount,
-  Unknown,
-  Wallet,
+  bankAccount,
+  card,
+  cash,
+  externalSource, // Note external is a reserved keyword
+  squareAccount,
+  unknown,
+  wallet,
 }
 
 // Reader Enums
 enum ReaderBatteryLevel {
-  CriticallyLow,
-  Full,
-  High,
-  Low,
-  Mid,
+  criticallyLow,
+  full,
+  high,
+  low,
+  mid,
 }
 
 enum ReaderChange {
-  BatteryDidBeginCharging,
-  BatteryDidEndCharging,
-  BatteryLevelDidChange,
-  CardInserted,
-  CardRemoved,
-  ConnectionDidFail,
-  ConnectionStateDidChange,
-  FirmwareUpdateDidFail,
-  FirmwareUpdatePercentDidChange,
-  StateDidChange,
+  batteryDidBeginCharging,
+  batteryDidEndCharging,
+  batteryLevelDidChange,
+  cardInserted,
+  cardRemoved,
+  connectionDidFail,
+  connectionStateDidChange,
+  firmwareUpdateDidFail,
+  firmwareUpdatePercentDidChange,
+  stateDidChange,
 }
 
 enum ReaderConnectionFailureRecoverySuggestion {
-  ActivateAccount,
-  ContactSupport,
-  NoSuggestion,
-  Retry,
+  activateAccount,
+  contactSupport,
+  noSuggestion,
+  retry,
 }
 
 enum ReaderConnectionState {
-  Connected,
-  Connecting,
-  FailedToConnect,
-  NotConnected,
+  connected,
+  connecting,
+  failedToConnect,
+  notConnected,
 }
 
 enum ReaderFirmwareUpdateError {
-  ConnectionTimeout,
-  FirmwareFailure,
-  ServerCallFailure,
-  UnknownError,
+  connectionTimeout,
+  firmwareFailure,
+  serverCallFailure,
+  unknownError,
 }
 
 enum ReaderModel {
-  ContactlessAndChip,
-  Embedded,
-  Magstripe,
-  Stand,
-  Unknown,
+  contactlessAndChip,
+  embedded,
+  magstripe,
+  stand,
+  unknown,
 }
 
 enum ReaderConnectionFailureReason {
-  DeniedByServer,
-  GenericError,
-  MaxReadersConnected,
-  NetworkTimeout,
-  NetworkTransportError,
-  NotConnectedToInternet,
-  ReaderTimeout,
-  RevokedByDevice,
-  ServerError,
-  Unknown,
+  deniedByServer,
+  genericError,
+  maxReadersConnected,
+  networkTimeout,
+  networkTransportError,
+  notConnectedToInternet,
+  readerTimeout,
+  revokedByDevice,
+  serverError,
+  unknown,
 }
 
 enum ReaderState {
-  Connecting,
-  Disabled,
-  Disconnected,
-  FailedToConnect,
-  Ready,
-  UpdatingFirmware,
+  connecting,
+  disabled,
+  disconnected,
+  failedToConnect,
+  ready,
+  updatingFirmware,
 }
 
 // Offline Mode Enums
 enum OfflinePaymentQueueError {
-  NotAuthorized,
-  Unexpected,
-  UnsupportedSandboxEnvironment,
+  notAuthorized,
+  unexpected,
+  unsupportedSandboxEnvironment,
 }
 
 enum OfflineStatus {
-  FailedToProcess,
-  FailedToUpload,
-  Processed,
-  Queued,
-  Unknown,
-  Uploaded,
+  failedToProcess,
+  failedToUpload,
+  processed,
+  queued,
+  unknown,
+  uploaded,
 }
 
 enum ProcessingMode {
-  AutoDetect,
-  OfflineOnly,
-  OnlineOnly,
+  autoDetect,
+  offlineOnly,
+  onlineOnly,
 }
