@@ -46,11 +46,8 @@ android {
 }
 
 repositories {
-    google()
-    mavenCentral()
     maven { url 'https://sdk.squareup.com/public/android/' }  // Add Square's SDK repository
 }
-
 
 flutter {
     source = "../.."
