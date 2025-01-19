@@ -8,7 +8,8 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static SquareMobilePaymentsSdkPlatform _instance = MethodChannelSquareMobilePaymentsSdk();
+  static SquareMobilePaymentsSdkPlatform _instance =
+      MethodChannelSquareMobilePaymentsSdk();
 
   /// The default instance of [SquareMobilePaymentsSdkPlatform] to use.
   ///
@@ -28,6 +29,10 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
   }
 
   Future<String?> authorize(String accessToken, String locationId) {
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  Future<String?> deauthorize() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 }

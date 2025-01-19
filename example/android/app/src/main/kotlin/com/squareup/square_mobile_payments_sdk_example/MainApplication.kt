@@ -6,6 +6,6 @@ import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
 class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        MobilePaymentsSdk.initialize("your-square-application-id", this)
+        MobilePaymentsSdk.initialize("sandbox-sq0idb-Jgsb9i5Wa0d-60MBkHdEyw", this)
     }
 }

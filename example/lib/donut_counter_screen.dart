@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:square_mobile_payments_sdk_example/auth_state.dart';
 
 class DonutCounterScreen extends StatelessWidget {
   const DonutCounterScreen({super.key});
 
+  _OnBuy() {
+    print("On Buy");
+  }
+
   @override
   Widget build(BuildContext context) {
+    final isAuthorized = Provider.of<AuthState>(context).isAuthorized;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -45,33 +53,10 @@ class DonutCounterScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
-            child: Container(
-              width: 150,
-              height: 150,
-              decoration: BoxDecoration(
-                color: Colors.purple.shade100,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: Colors.brown.shade100,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Center(
-                    child: Container(
-                      width: 60,
-                      height: 60,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+            child: SvgPicture.asset(
+              'assets/donut.svg',
+              width: 200.0, // Adjust size as needed
+              height: 200.0,
             ),
           ),
           const SizedBox(height: 20),
@@ -86,9 +71,7 @@ class DonutCounterScreen extends StatelessWidget {
           SizedBox(
             width: 200,
             child: ElevatedButton(
-              onPressed: () {
-                // Handle "Buy for $1" button click
-              },
+              onPressed: isAuthorized ? _OnBuy : null,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple.shade200,
                 padding: const EdgeInsets.symmetric(vertical: 15),
@@ -102,6 +85,10 @@ class DonutCounterScreen extends StatelessWidget {
               ),
             ),
           ),
+          if (isAuthorized)
+            const Text("This device is authorized.")
+          else
+            const Text("This device is not authorized.")
         ],
       ),
     );

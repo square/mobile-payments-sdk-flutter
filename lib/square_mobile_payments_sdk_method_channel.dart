@@ -27,4 +27,10 @@ class MethodChannelSquareMobilePaymentsSdk
         await methodChannel.invokeMethod<String>('authorize', params);
     return response;
   }
+
+  @override
+  Future<String?> deauthorize() async {
+    final response = await methodChannel.invokeMethod<String>('deauthorize');
+    return response;
+  }
 }

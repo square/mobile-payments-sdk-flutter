@@ -27,37 +27,37 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
+
+    val authManager =  MobilePaymentsSdk.authorizationManager()
+
     if (call.method == "getPlatformVersion") {
       result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
     } else if (call.method == "authorize") {
-
-
       val accessToken = call.argument<String>("accessToken") ?: "";
       val locationId = call.argument<String>("locationId") ?: "";
 
-      val authManager =  MobilePaymentsSdk.authorizationManager()
-
       if(authManager.authorizationState.isAuthorized){
         result.success("Authorized")
-      } else {
-        authManager.authorize(accessToken, locationId) { sdkResult ->
-          when (sdkResult) {
-              is SdkResult.Success -> {
-                result.success("Authorized")
-              }
-              is SdkResult.Failure -> {
-                result.success("Failure")
-             }
-             else -> {
-                result.success("Unknow")
-              }
-          }
+      }
+
+      authManager.authorize(accessToken, locationId) { sdkResult ->
+        when (sdkResult) {
+            is SdkResult.Success -> {
+              result.success(sdkResult.value.toString())
+            }
+            is SdkResult.Failure -> {
+              result.error(sdkResult.errorCode.toString(), sdkResult.errorMessage, sdkResult.debugCode)
+            }
+            else -> {
+              result.error("Unknown", "Unknown", "Unknown")
+            }
         }
       }
 
-
-
-    } else {
+    } else if (call.method == "deauthorize") {
+      authManager.deauthorize()
+      result.success("deauthorized")
+    }else {
       result.notImplemented()
     }
   }

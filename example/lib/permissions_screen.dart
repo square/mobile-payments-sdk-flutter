@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
-import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
+import 'package:square_mobile_payments_sdk_example/auth_state.dart';
 
 class PermissionsScreen extends StatefulWidget {
   const PermissionsScreen({super.key});
@@ -16,8 +17,21 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
   bool isLocationGranted = false;
   bool isMicrophoneGranted = false;
   bool isReadStateGranted = false;
-  String _token = "";
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
+
+  Future<void> _checkInitialPermissions() async {
+    final bluetoothStatus = await Permission.bluetoothScan.status;
+    final locationStatus = await Permission.location.status;
+    final microphoneStatus = await Permission.microphone.status;
+    final readStateStatus = await Permission.phone.status;
+
+    setState(() {
+      isBluetoothGranted = bluetoothStatus.isGranted;
+      isLocationGranted = locationStatus.isGranted;
+      isMicrophoneGranted = microphoneStatus.isGranted;
+      isReadStateGranted = readStateStatus.isGranted;
+    });
+  }
 
   // Method to request Bluetooth permission
   Future<void> _requestBluetoothPermission() async {
@@ -60,32 +74,60 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
       response = await _squareMobilePaymentsSdkPlugin.authorize(
               accessToken, locationId) ??
           'Unknown response';
-    } on PlatformException {
-      response = 'Failed to authorize';
+      print("RESPONSE: ");
+      print(response);
+    } on Exception {
+      response = 'Failed';
     }
 
     if (!mounted) return;
 
-    setState(() {
-      _token = response;
-    });
+    if (response == 'Authorized' || response.startsWith("AuthorizedLocation")) {
+      Provider.of<AuthState>(context, listen: false).authorize();
+    }
+  }
+
+  Future<void> deauthorizeSDK() async {
+    String response;
+    try {
+      response = await _squareMobilePaymentsSdkPlugin.deauthorize() ??
+          'Unknown response';
+      print("RESPONSE: ");
+      print(response);
+    } on Exception {
+      response = 'Failed';
+    }
+
+    if (!mounted) return;
+
+    if (response == 'deauthorized') {
+      Provider.of<AuthState>(context, listen: false).signOut();
+    }
   }
 
   _onSignIn() {
     authorizeSDK();
-    print("On SIgnin");
+  }
+
+  _signOut() {
+    deauthorizeSDK();
   }
 
   @override
   void initState() {
     super.initState();
-    setState(() {
-      _token = "";
-    });
+    _checkInitialPermissions();
   }
 
   @override
   Widget build(BuildContext context) {
+    bool areAllPermissionsGranted = isBluetoothGranted &&
+        isLocationGranted &&
+        isMicrophoneGranted &&
+        isReadStateGranted;
+
+    final isAuthorized = Provider.of<AuthState>(context).isAuthorized;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -140,23 +182,45 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
             ),
             const Spacer(),
             Center(
-              child: ElevatedButton(
-                onPressed: _onSignIn,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple.shade200,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 100),
-                ),
-                child: const Text(
-                  'Sign in',
-                  style: TextStyle(color: Colors.black, fontSize: 18),
-                ),
-              ),
+              child: isAuthorized
+                  ? Column(
+                      children: [
+                        ElevatedButton(
+                          onPressed: _signOut,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.redAccent,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 15, horizontal: 100),
+                          ),
+                          child: const Text(
+                            'Sign Out',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Device is authorized',
+                          style: TextStyle(
+                              color: Colors.green,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    )
+                  : ElevatedButton(
+                      onPressed: areAllPermissionsGranted ? _onSignIn : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.purple.shade200,
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 15, horizontal: 100),
+                      ),
+                      child: const Text(
+                        'Sign In',
+                        style: TextStyle(color: Colors.black, fontSize: 18),
+                      ),
+                    ),
             ),
             const SizedBox(height: 10),
-            Center(
-              child: Text(_token),
-            ),
           ],
         ),
       ),
