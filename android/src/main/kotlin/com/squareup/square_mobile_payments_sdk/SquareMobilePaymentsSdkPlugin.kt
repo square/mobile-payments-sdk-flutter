@@ -38,21 +38,22 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
 
       if(authManager.authorizationState.isAuthorized){
         result.success("Authorized")
-      }
-
-      authManager.authorize(accessToken, locationId) { sdkResult ->
-        when (sdkResult) {
-            is SdkResult.Success -> {
-              result.success(sdkResult.value.toString())
-            }
-            is SdkResult.Failure -> {
-              result.error(sdkResult.errorCode.toString(), sdkResult.errorMessage, sdkResult.debugCode)
-            }
-            else -> {
-              result.error("Unknown", "Unknown", "Unknown")
-            }
+      } else {
+        authManager.authorize(accessToken, locationId) { sdkResult ->
+          when (sdkResult) {
+              is SdkResult.Success -> {
+                result.success(sdkResult.value.toString())
+              }
+              is SdkResult.Failure -> {
+                result.error(sdkResult.errorCode.toString(), sdkResult.errorMessage, sdkResult.debugCode)
+              }
+              else -> {
+                result.error("Unknown", "Unknown", "Unknown")
+              }
+          }
         }
       }
+
 
     } else if (call.method == "deauthorize") {
       authManager.deauthorize()
