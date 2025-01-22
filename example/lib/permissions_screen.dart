@@ -66,15 +66,13 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
   }
 
   Future<void> authorizeSDK() async {
-    String accessToken =
-        "EAAAl1WZHJ-0s5QvmhdRX5KNWGBD0ns7r0rOw5PBfsj3rYv9c5CDQLETDO_zO3vW";
-    String locationId = "LP8X8765QSFRQ";
+    String accessToken = "";
+    String locationId = "";
     String response;
     try {
       response = await _squareMobilePaymentsSdkPlugin.authorize(
               accessToken, locationId) ??
           'Unknown response';
-      print("RESPONSE: ");
       print(response);
     } on Exception {
       response = 'Failed';
@@ -92,7 +90,6 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
     try {
       response = await _squareMobilePaymentsSdkPlugin.deauthorize() ??
           'Unknown response';
-      print("RESPONSE: ");
       print(response);
     } on Exception {
       response = 'Failed';
