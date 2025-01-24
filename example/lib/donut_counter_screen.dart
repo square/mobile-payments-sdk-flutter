@@ -2,17 +2,49 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:square_mobile_payments_sdk_example/auth_state.dart';
+import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
 
-class DonutCounterScreen extends StatelessWidget {
+class DonutCounterScreen extends StatefulWidget {
   const DonutCounterScreen({super.key});
+
+  @override
+  State<DonutCounterScreen> createState() => _DonutCounterScreenState();
+}
+
+class _DonutCounterScreenState extends State<DonutCounterScreen> {
+  final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
+
 
   _OnBuy() {
     print("On Buy");
   }
 
+  Future<void> showReader() async {
+    try {
+     await _squareMobilePaymentsSdkPlugin.showMockReaderUI();
+      print("Show Reader");
+    } on Exception {
+      print("Exeption reader");
+    }
+  }
+
+  Future<void> showSettings() async {
+    try {
+     await _squareMobilePaymentsSdkPlugin.showSettings();
+      print("Show Reader");
+    } on Exception {
+      print("Exeption reader");
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
+
     final isAuthorized = Provider.of<AuthState>(context).isAuthorized;
+    if (isAuthorized) {
+      showReader();
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -23,7 +55,7 @@ class DonutCounterScreen extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                // Handle Settings action
+                showSettings();
               },
               child: const Text(
                 'Settings',

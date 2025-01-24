@@ -29,6 +29,7 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
   override fun onMethodCall(call: MethodCall, result: Result) {
 
     val authManager =  MobilePaymentsSdk.authorizationManager()
+    val settingsManager = MobilePaymentsSdk.settingsManager()
 
     if (call.method == "getPlatformVersion") {
       result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
@@ -58,7 +59,13 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
     } else if (call.method == "deauthorize") {
       authManager.deauthorize()
       result.success("deauthorized")
-    }else {
+    } else if (call.method == "showMockReaderUI") {
+      MockReaderUI.show()
+    } else if (call.method == "hideMockReaderUI") {
+      MockReaderUI.hide()
+    } else if (call.method == "showSettings") {
+      settingsManager.showSettings()
+    } else {
       result.notImplemented()
     }
   }

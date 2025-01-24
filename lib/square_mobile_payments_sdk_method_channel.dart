@@ -33,4 +33,19 @@ class MethodChannelSquareMobilePaymentsSdk
     final response = await methodChannel.invokeMethod<String>('deauthorize');
     return response;
   }
+
+  @override
+  Future<void> showMockReaderUI() async {
+    await methodChannel.invokeMethod<void>('showMockReaderUI');
+  }
+
+  @override
+  Future<void> hideMockReaderUI() async {
+    await methodChannel.invokeMethod<void>('hideMockReaderUI');
+  }
+
+  @override
+  Future<void> showSettings() async {
+    await methodChannel.invokeMethod<void>('showSettings');
+  }
 }

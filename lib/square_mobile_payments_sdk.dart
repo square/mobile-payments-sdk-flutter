@@ -13,4 +13,16 @@ class SquareMobilePaymentsSdk {
   Future<String?> deauthorize() async {
     return SquareMobilePaymentsSdkPlatform.instance.deauthorize();
   }
+
+  Future<void> showMockReaderUI() async {
+    SquareMobilePaymentsSdkPlatform.instance.showMockReaderUI();
+  }
+
+  Future<void> hideMockReaderUI() async {
+    SquareMobilePaymentsSdkPlatform.instance.hideMockReaderUI();
+  }
+
+  Future<void> showSettings() async {
+    SquareMobilePaymentsSdkPlatform.instance.showSettings();
+  }
 }
