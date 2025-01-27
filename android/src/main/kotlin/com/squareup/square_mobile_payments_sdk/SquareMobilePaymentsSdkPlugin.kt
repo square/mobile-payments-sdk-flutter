@@ -12,6 +12,10 @@ import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
 import com.squareup.sdk.mobilepayments.authorization.AuthorizeErrorCode
 import com.squareup.sdk.mobilepayments.core.Result as SdkResult
 import com.squareup.sdk.mobilepayments.mockreader.ui.MockReaderUI
+import com.squareup.sdk.mobilepayments.settings.SettingsErrorCode
+import com.squareup.sdk.mobilepayments.settings.SettingsClosed
+import com.squareup.sdk.mobilepayments.core.Result.Failure
+import com.squareup.sdk.mobilepayments.core.Result.Success
 
 /** SquareMobilePaymentsSdkPlugin */
 class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
@@ -64,7 +68,17 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
     } else if (call.method == "hideMockReaderUI") {
       MockReaderUI.hide()
     } else if (call.method == "showSettings") {
-      settingsManager.showSettings()
+      //val onResult = call.argument<(SdkResult<SettingsClosed, SettingsErrorCode>) -> Unit>("onResult")
+      settingsManager.showSettings { 
+        result -> when (result) {
+          is Success -> {
+            channel.invokeMethod("onResult", "success")
+          }
+          is Failure -> {
+            channel.invokeMethod("onResult", "fail")
+          }
+        } 
+      }
     } else {
       result.notImplemented()
     }
