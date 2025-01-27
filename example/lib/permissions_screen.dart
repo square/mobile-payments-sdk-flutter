@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
 import 'package:provider/provider.dart';
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
 import 'package:square_mobile_payments_sdk_example/auth_state.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 class PermissionsScreen extends StatefulWidget {
   const PermissionsScreen({super.key});
@@ -17,7 +20,18 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
   bool isLocationGranted = false;
   bool isMicrophoneGranted = false;
   bool isReadStateGranted = false;
+  bool isIOSSimulator = false;
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
+
+  Future<void> _checkIfIOSSimulator() async {
+    if (Platform.isIOS) {
+      final deviceInfo = DeviceInfoPlugin();
+      final iosInfo = await deviceInfo.iosInfo;
+      setState(() {
+        isIOSSimulator = iosInfo.isPhysicalDevice == false;
+      });
+    }
+  }
 
   Future<void> _checkInitialPermissions() async {
     final bluetoothStatus = await Permission.bluetoothScan.status;
@@ -66,19 +80,22 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
   }
 
   Future<void> authorizeSDK() async {
-    String accessToken = "";
-    String locationId = "";
+    String accessToken =
+        "EAAAl1WZHJ-0s5QvmhdRX5KNWGBD0ns7r0rOw5PBfsj3rYv9c5CDQLETDO_zO3vW";
+    String locationId = "LP8X8765QSFRQ";
     String response;
+
     try {
       response = await _squareMobilePaymentsSdkPlugin.authorize(
               accessToken, locationId) ??
           'Unknown response';
-      print("RESPONSE: ");
+
       print(response);
     } on Exception {
       response = 'Failed';
     }
 
+    print(response);
     if (!mounted) return;
 
     if (response == 'Authorized' || response.startsWith("AuthorizedLocation")) {
@@ -126,6 +143,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
   void initState() {
     super.initState();
     _checkInitialPermissions();
+    _checkIfIOSSimulator();
   }
 
   @override
@@ -217,7 +235,9 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
                       ],
                     )
                   : ElevatedButton(
-                      onPressed: areAllPermissionsGranted ? _onSignIn : null,
+                      onPressed: areAllPermissionsGranted || isIOSSimulator
+                          ? _onSignIn
+                          : null,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.purple.shade200,
                         padding: const EdgeInsets.symmetric(
