@@ -30,10 +30,11 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
 
   Future<void> showSettings() async {
     try {
-     await _squareMobilePaymentsSdkPlugin.showSettings();
-      print("Show Reader");
+     await _squareMobilePaymentsSdkPlugin.showSettings((result) => {
+        print("settings result callback")
+     });
     } on Exception {
-      print("Exeption reader");
+      print("Exeption in show settings");
     }
   }
 

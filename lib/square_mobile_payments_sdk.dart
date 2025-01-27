@@ -22,7 +22,7 @@ class SquareMobilePaymentsSdk {
     SquareMobilePaymentsSdkPlatform.instance.hideMockReaderUI();
   }
 
-  Future<void> showSettings() async {
-    SquareMobilePaymentsSdkPlatform.instance.showSettings();
+  Future<void> showSettings(onResult) async {
+    SquareMobilePaymentsSdkPlatform.instance.showSettings(onResult);
   }
 }

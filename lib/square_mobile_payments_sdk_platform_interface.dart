@@ -44,7 +44,7 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     throw UnimplementedError('hideMockReader() has not been implemented.');
   }
 
-  Future<void> showSettings(void Function(String) onResult) async {
+  Future<void> showSettings(void Function(dynamic) onResult) async {
     throw UnimplementedError('showSettings() has not been implemented.');
   }
 }

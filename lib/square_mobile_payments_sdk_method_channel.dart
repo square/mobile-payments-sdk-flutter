@@ -45,7 +45,17 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<void> showSettings() async {
+  Future<void> showSettings(onResult) async {
+    methodChannel.setMethodCallHandler((MethodCall call) async {
+      if (call.method == 'onResult') {
+        final dynamic result = call.arguments;
+        return onResult(result);
+      }
+      throw PlatformException(
+        code: 'METHOD_NOT_IMPLEMENTED',
+        message: 'El método ${call.method} no está implementado en Flutter.',
+      );
+    });
     await methodChannel.invokeMethod<void>('showSettings');
   }
 }
