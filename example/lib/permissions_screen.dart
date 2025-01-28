@@ -105,7 +105,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
 
   Future<void> hideReader() async {
     try {
-     await _squareMobilePaymentsSdkPlugin.hideMockReaderUI();
+      await _squareMobilePaymentsSdkPlugin.hideMockReaderUI();
       print("Hide Reader");
     } on Exception {
       print("Exeption in hide reader");
@@ -161,18 +161,26 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.close, color: Colors.black),
+          style: TextButton.styleFrom(
+            backgroundColor: Colors.grey.shade200,
+            padding: const EdgeInsets.all(8.0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+            ),
+          ),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         title: const Text(
           'Permissions',
-          style: TextStyle(color: Colors.black, fontSize: 18),
+          style: TextStyle(
+              color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -207,49 +215,55 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
               isGranted: isReadStateGranted,
               onRequestPermission: _requestReadStatePermission,
             ),
-            const Spacer(),
-            Center(
-              child: isAuthorized
-                  ? Column(
-                      children: [
-                        ElevatedButton(
-                          onPressed: _signOut,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.redAccent,
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 15, horizontal: 100),
-                          ),
-                          child: const Text(
-                            'Sign Out',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+            const SizedBox(height:40),
+            SizedBox(
+                width: double.infinity,
+                child: isAuthorized
+                    ? ElevatedButton(
+                        onPressed: _signOut,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.grey.shade200,
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          'Device is authorized',
-                          style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                        child: const Text(
+                          'Sign Out',
+                          style: TextStyle(color: Colors.black, fontSize: 18),
                         ),
-                      ],
-                    )
-                  : ElevatedButton(
-                      onPressed: areAllPermissionsGranted || isIOSSimulator
-                          ? _onSignIn
-                          : null,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple.shade200,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 100),
-                      ),
-                      child: const Text(
-                        'Sign In',
-                        style: TextStyle(color: Colors.black, fontSize: 18),
-                      ),
-                    ),
-            ),
+                      )
+                    : ElevatedButton(
+                        onPressed: areAllPermissionsGranted || isIOSSimulator
+                            ? _onSignIn
+                            : null,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.purple.shade200,
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        child: const Text(
+                          'Sign In',
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        ),
+                      )),
             const SizedBox(height: 10),
+            isAuthorized? 
+            const Text(
+              'This device is authorized.',
+              style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
+            ): const Text(
+              'Device not authorized.',
+              style: TextStyle(
+                  color: Color.fromARGB(255, 187, 122, 24),
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
+            ),
           ],
         ),
       ),
@@ -262,32 +276,27 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
     required bool isGranted,
     required VoidCallback onRequestPermission,
   }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
       children: [
-        Row(
+        Expanded(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-                child: Column(
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  description,
-                  style: const TextStyle(fontSize: 14, color: Colors.black87),
-                ),
-              ],
-            )),
-            Checkbox(
-              value: isGranted,
-              onChanged: (_) => onRequestPermission(),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 5),
+            Text(
+              description,
+              style: const TextStyle(fontSize: 14, color: Colors.grey),
             ),
           ],
-        )
+        )),
+        Checkbox(
+          value: isGranted,
+          onChanged: (_) => onRequestPermission(),
+        ),
       ],
     );
   }
