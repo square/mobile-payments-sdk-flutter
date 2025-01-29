@@ -40,10 +40,10 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
     final readStateStatus = await Permission.phone.status;
 
     setState(() {
-      isBluetoothGranted = bluetoothStatus.isGranted;
-      isLocationGranted = locationStatus.isGranted;
-      isMicrophoneGranted = microphoneStatus.isGranted;
-      isReadStateGranted = readStateStatus.isGranted;
+      isBluetoothGranted = Platform.isIOS ? true : bluetoothStatus.isGranted;
+      isLocationGranted = Platform.isIOS ? true : locationStatus.isGranted;
+      isMicrophoneGranted = Platform.isIOS ? true : microphoneStatus.isGranted;
+      isReadStateGranted = Platform.isIOS ? true : readStateStatus.isGranted;
     });
   }
 
@@ -151,7 +151,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
     bool areAllPermissionsGranted = isBluetoothGranted &&
         isLocationGranted &&
         isMicrophoneGranted &&
-        isReadStateGranted;
+        (isReadStateGranted || Platform.isIOS);
 
     final isAuthorized = Provider.of<AuthState>(context).isAuthorized;
 
@@ -207,15 +207,19 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
               isGranted: isMicrophoneGranted,
               onRequestPermission: _requestMicrophonePermission,
             ),
-            const SizedBox(height: 20),
-            _buildPermissionItem(
-              title: 'Read Phone State',
-              description:
-                  'Square needs phone access in order to uniquely identify the devices associated with your account and ensure that unauthorized devices are not able to act on your behalf.',
-              isGranted: isReadStateGranted,
-              onRequestPermission: _requestReadStatePermission,
-            ),
-            const SizedBox(height:40),
+            !Platform.isIOS
+                ? const SizedBox(height: 20)
+                : const SizedBox(height: 0),
+            !Platform.isIOS
+                ? _buildPermissionItem(
+                    title: 'Read Phone State',
+                    description:
+                        'Square needs phone access in order to uniquely identify the devices associated with your account and ensure that unauthorized devices are not able to act on your behalf.',
+                    isGranted: isReadStateGranted,
+                    onRequestPermission: _requestReadStatePermission,
+                  )
+                : const SizedBox(height: 0),
+            const SizedBox(height: 40),
             SizedBox(
                 width: double.infinity,
                 child: isAuthorized
