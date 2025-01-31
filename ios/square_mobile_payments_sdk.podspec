@@ -18,6 +18,7 @@ Allows developers to take in-person payments using Square hardware.
   s.platform = :ios, '15.0'
 
   s.dependency "SquareMobilePaymentsSDK", "~> 2.0.1"
+  s.dependency "MockReaderUI", "~> 2.0.1", configurations: ['Debug']
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

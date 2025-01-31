@@ -17,6 +17,7 @@
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		D83CB0EED6D688878C6BDBB5 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73E1241F2416BF81BE255FB8 /* Pods_Runner.framework */; };
 		DB0ECE9A2D43DD4000C8E8BD /* SquareMobilePaymentsSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0ECE992D43DD4000C8E8BD /* SquareMobilePaymentsSDK.xcframework */; };
+		DBC07E702D4D043200614FC8 /* MockReaderUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC07E6F2D4D043200614FC8 /* MockReaderUI.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		985CF06A544CB78473652E67 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		DB0ECE992D43DD4000C8E8BD /* SquareMobilePaymentsSDK.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EYF346PHUG:Block, Inc."; lastKnownFileType = wrapper.xcframework; name = SquareMobilePaymentsSDK.xcframework; path = Pods/SquareMobilePaymentsSDK/SquareMobilePaymentsSDK.xcframework; sourceTree = "<group>"; };
+		DBC07E6F2D4D043200614FC8 /* MockReaderUI.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EYF346PHUG:Block, Inc."; lastKnownFileType = wrapper.xcframework; name = MockReaderUI.xcframework; path = Pods/MockReaderUI/MockReaderUI.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBC07E702D4D043200614FC8 /* MockReaderUI.xcframework in Frameworks */,
 				DB0ECE9A2D43DD4000C8E8BD /* SquareMobilePaymentsSDK.xcframework in Frameworks */,
 				D83CB0EED6D688878C6BDBB5 /* Pods_Runner.framework in Frameworks */,
 			);
@@ -80,6 +83,7 @@
 		0419B7FCEC1B48F395DCB851 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBC07E6F2D4D043200614FC8 /* MockReaderUI.xcframework */,
 				DB0ECE992D43DD4000C8E8BD /* SquareMobilePaymentsSDK.xcframework */,
 				73E1241F2416BF81BE255FB8 /* Pods_Runner.framework */,
 				4A066EE3328B40D1F0149654 /* Pods_RunnerTests.framework */,

@@ -1,7 +1,7 @@
 import Flutter
 import UIKit
 import SquareMobilePaymentsSDK
-//import MockReaderUI 
+import MockReaderUI
 
 public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -37,8 +37,14 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
       MobilePaymentsSDK.shared.authorizationManager.deauthorize {
         result("deauthorized")
       }
-    //case "showMockReaderUI":
-      //MockReaderUI(for: MobilePaymentsSDK.shared)?.present()
+    case "showMockReaderUI":
+        do {
+            try MockReaderUI(for: MobilePaymentsSDK.shared).present()
+            
+        }catch{
+            print("Error")
+        }
+        
     //case "hideMockReaderUI":
       //MockReaderUI(for: MobilePaymentsSDK.shared).dismiss()
     //case "showSettings":
