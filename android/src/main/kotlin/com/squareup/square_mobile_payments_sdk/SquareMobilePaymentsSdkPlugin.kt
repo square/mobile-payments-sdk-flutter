@@ -8,14 +8,11 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
-import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
-import com.squareup.sdk.mobilepayments.authorization.AuthorizeErrorCode
-import com.squareup.sdk.mobilepayments.core.Result as SdkResult
-import com.squareup.sdk.mobilepayments.mockreader.ui.MockReaderUI
-import com.squareup.sdk.mobilepayments.settings.SettingsErrorCode
-import com.squareup.sdk.mobilepayments.settings.SettingsClosed
-import com.squareup.sdk.mobilepayments.core.Result.Failure
-import com.squareup.sdk.mobilepayments.core.Result.Success
+import com.squareup.square_mobile_payments_sdk.modules.PaymentModule
+import com.squareup.square_mobile_payments_sdk.modules.AuthModule
+import com.squareup.square_mobile_payments_sdk.modules.ReaderModule
+import com.squareup.square_mobile_payments_sdk.modules.SettingsModule
+
 
 /** SquareMobilePaymentsSdkPlugin */
 class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
@@ -31,53 +28,31 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
-
-    val authManager =  MobilePaymentsSdk.authorizationManager()
-    val settingsManager = MobilePaymentsSdk.settingsManager()
-
     if (call.method == "getPlatformVersion") {
       result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
+    } else if (call.method == "getAuthorizationState") {
+      AuthModule.getAuthorizationState(result)
+    } else if (call.method == "getAuthorizedLocation") {
+      AuthModule.getAuthorizedLocation(result)
     } else if (call.method == "authorize") {
       val accessToken = call.argument<String>("accessToken") ?: "";
       val locationId = call.argument<String>("locationId") ?: "";
-
-      if(authManager.authorizationState.isAuthorized){
-        result.success("Authorized")
-      } else {
-        authManager.authorize(accessToken, locationId) { sdkResult ->
-          when (sdkResult) {
-              is SdkResult.Success -> {
-                result.success(sdkResult.value.toString())
-              }
-              is SdkResult.Failure -> {
-                result.error(sdkResult.errorCode.toString(), sdkResult.errorMessage, sdkResult.debugCode)
-              }
-              else -> {
-                result.error("Unknown", "Unknown", "Unknown")
-              }
-          }
-        }
-      }
-
-
+      AuthModule.authorize(result, accessToken, locationId)
     } else if (call.method == "deauthorize") {
-      authManager.deauthorize()
-      result.success("deauthorized")
+      AuthModule.deAuthorize(result)
     } else if (call.method == "showMockReaderUI") {
-      MockReaderUI.show()
+      ReaderModule.showMockReaderUI(result)
     } else if (call.method == "hideMockReaderUI") {
-      MockReaderUI.hide()
+      ReaderModule.hideMockReaderUI(result)
     } else if (call.method == "showSettings") {
-      //val onResult = call.argument<(SdkResult<SettingsClosed, SettingsErrorCode>) -> Unit>("onResult")
-      settingsManager.showSettings { 
-        result -> when (result) {
-          is Success -> {
-            channel.invokeMethod("onResult", "success")
-          }
-          is Failure -> {
-            channel.invokeMethod("onResult", "fail")
-          }
-        } 
+      SettingsModule.showSettings(result)
+    } else if (call.method == "startPayment") {
+      val paymentParameters = call.argument<HashMap<String, Any>>("paymentParameters");
+      val promptParameters = call.argument<HashMap<String, Any>>("promptParameters");
+      if (paymentParameters == null || promptParameters == null) {
+        result.error("INVALID_PARAMETERS", "Null params", null)
+      } else {
+        PaymentModule.startPayment(result, paymentParameters, promptParameters)
       }
     } else {
       result.notImplemented()

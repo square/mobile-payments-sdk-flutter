@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:square_mobile_payments_sdk/src/models.dart';
 
 import 'square_mobile_payments_sdk_platform_interface.dart';
 
@@ -15,6 +16,16 @@ class MethodChannelSquareMobilePaymentsSdk
     final version =
         await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
+  }
+
+  @override
+  Future<AuthorizationState> getAuthorizationState() async {
+    final authorizeStateName =
+        await methodChannel.invokeMethod<String>('getAuthorizationState');
+    return AuthorizationState.values.firstWhere(
+      (e) => e.name == authorizeStateName,
+      orElse: () => AuthorizationState.notAuthorized,
+    );
   }
 
   @override
@@ -45,17 +56,35 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<void> showSettings(onResult) async {
-    methodChannel.setMethodCallHandler((MethodCall call) async {
-      if (call.method == 'onResult') {
-        final dynamic result = call.arguments;
-        return onResult(result);
-      }
-      throw PlatformException(
-        code: 'METHOD_NOT_IMPLEMENTED',
-        message: 'El método ${call.method} no está implementado en Flutter.',
-      );
-    });
+  Future<void> showSettings() async {
     await methodChannel.invokeMethod<void>('showSettings');
+  }
+
+  @override
+  Future<Payment?> startPayment(paymentParameters, promptParameters) async {
+    var amountMoney = {
+      "amount": paymentParameters.amountMoney.amount,
+      "currencyCode": paymentParameters.amountMoney.currencyCode.name
+    };
+    var appFeeMoney = {
+      "amount": paymentParameters.appFeeMoney.amount,
+      "currencyCode": paymentParameters.appFeeMoney.currencyCode.name
+    };
+    var tipMoney = {
+      "amount": paymentParameters.tipMoney.amount,
+      "currencyCode": paymentParameters.tipMoney.currencyCode.name
+    };
+
+    var params = <String, dynamic>{
+      'paymentParameters': {
+        ...paymentParameters.toJson(),
+        "amountMoney": amountMoney,
+        "appFeeMoney": appFeeMoney,
+        "tipMoney": tipMoney
+      },
+      'promptParameters': promptParameters.toJson(),
+    };
+
+    return await methodChannel.invokeMethod<Payment>('startPayment', params);
   }
 }

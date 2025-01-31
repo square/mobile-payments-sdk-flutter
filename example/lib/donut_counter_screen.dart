@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:square_mobile_payments_sdk_example/auth_state.dart';
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
+import 'package:square_mobile_payments_sdk/src/models.dart';
 
 class DonutCounterScreen extends StatefulWidget {
   const DonutCounterScreen({super.key});
@@ -13,9 +14,51 @@ class DonutCounterScreen extends StatefulWidget {
 
 class _DonutCounterScreenState extends State<DonutCounterScreen> {
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
+  var amount = 250;
 
-  _OnBuy() {
-    print("On Buy");
+  _onBuy(BuildContext context, int amount) async {
+    try {
+      await _squareMobilePaymentsSdkPlugin.startPayment(
+          PaymentParameters(
+              acceptPartialAuthorization: 0,
+              amountMoney: Money(amount: amount, currencyCode: CurrencyCode.eur),
+              appFeeMoney: const Money(amount: 0, currencyCode: CurrencyCode.eur),
+              autocomplete: 1,
+              customerId: "123",
+              delayAction: DelayAction.complete,
+              idempotencyKey: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+              locationId: "111",
+              note: "Donut",
+              orderId: "123",
+              referenceId: "1234",
+              teamMemberId: "123",
+              tipMoney: const Money(amount: 0, currencyCode: CurrencyCode.eur))
+          , PromptParameters(additionalPaymentMethods: List.empty(), mode: PromptMode.defaultMode));
+    } on Exception {
+      if (context.mounted) {
+        showCanceledDialog(context);
+      }
+    }
+  }
+
+  void showCanceledDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Canceled"),
+          content: const Text("The payment was canceled."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Future<void> showReader() async {
@@ -29,8 +72,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
 
   Future<void> showSettings() async {
     try {
-      await _squareMobilePaymentsSdkPlugin
-          .showSettings((result) => {print("settings result callback")});
+      await _squareMobilePaymentsSdkPlugin.showSettings();
     } on Exception {
       print("Exeption in show settings");
     }
@@ -118,7 +160,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: isAuthorized ? _OnBuy : null,
+                  onPressed: isAuthorized ? () => _onBuy(context, amount) : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple.shade200,
                     padding: const EdgeInsets.symmetric(vertical: 15),
@@ -127,7 +169,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
                     ),
                   ),
                   child: Text(
-                    'Buy for \$1',
+                    "Buy for \$${(amount / 100).toStringAsFixed(2)}",
                     style: TextStyle(
                       color: isAuthorized ? Colors.black : Colors.grey,
                       fontSize: 18,

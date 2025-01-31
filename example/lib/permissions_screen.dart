@@ -15,6 +15,12 @@ class PermissionsScreen extends StatefulWidget {
   State<PermissionsScreen> createState() => _PermissionsScreenState();
 }
 
+enum SignInState {
+  idle,
+  loading,
+  error,
+}
+
 class _PermissionsScreenState extends State<PermissionsScreen> {
   bool isBluetoothGranted = false;
   bool isLocationGranted = false;
@@ -22,6 +28,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
   bool isReadStateGranted = false;
   bool isIOSSimulator = false;
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
+  SignInState _signInState = SignInState.idle;
 
   Future<void> _checkIfIOSSimulator() async {
     if (Platform.isIOS) {
@@ -85,6 +92,12 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
     String locationId = "LP8X8765QSFRQ";
     String response;
 
+    setState(() {
+      _signInState = SignInState.loading;
+    });
+
+    await Future.delayed(const Duration(seconds: 1));
+
     try {
       response = await _squareMobilePaymentsSdkPlugin.authorize(
               accessToken, locationId) ??
@@ -93,6 +106,9 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
       print(response);
     } on Exception {
       response = 'Failed';
+      setState(() {
+        _signInState = SignInState.error;
+      });
     }
 
     print(response);
@@ -128,6 +144,9 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
     if (response == 'deauthorized') {
       Provider.of<AuthState>(context, listen: false).signOut();
       hideReader();
+      setState(() {
+        _signInState = SignInState.idle;
+      });
     }
   }
 
@@ -222,6 +241,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
             const SizedBox(height: 40),
             SizedBox(
                 width: double.infinity,
+                height: 60,
                 child: isAuthorized
                     ? ElevatedButton(
                         onPressed: _signOut,
@@ -234,7 +254,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
                         ),
                         child: const Text(
                           'Sign Out',
-                          style: TextStyle(color: Colors.black, fontSize: 18),
+                          style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       )
                     : ElevatedButton(
@@ -248,26 +268,51 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
-                        child: const Text(
-                          'Sign In',
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                        ),
+                        child: _signInState == SignInState.loading
+                            ? const SizedBox.square(
+                              dimension: 20,
+                              child:  CircularProgressIndicator(
+                                  color: Colors.black87,
+                                  strokeWidth: 2,
+                                ))
+                            : const Text(
+                                'Sign In',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
                       )),
             const SizedBox(height: 10),
-            isAuthorized? 
-            const Text(
-              'This device is authorized.',
-              style: TextStyle(
-                  color: Colors.green,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-            ): const Text(
-              'Device not authorized.',
-              style: TextStyle(
-                  color: Color.fromARGB(255, 187, 122, 24),
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-            ),
+            isAuthorized
+                ? const Text(
+                    'This device is authorized.',
+                    style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  )
+                : _signInState == SignInState.loading
+                    ? const Text(
+                        'Authorizing',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                        ),
+                      )
+                    : _signInState == SignInState.error
+                        ? const Text(
+                            'Authorization failed.',
+                            style: TextStyle(
+                                color: Colors.red,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          )
+                        : const Text(
+                            'Device not authorized.',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 187, 122, 24),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
           ],
         ),
       ),

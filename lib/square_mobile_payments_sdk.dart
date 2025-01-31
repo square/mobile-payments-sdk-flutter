@@ -1,8 +1,14 @@
+import 'package:square_mobile_payments_sdk/src/models.dart';
+
 import 'square_mobile_payments_sdk_platform_interface.dart';
 
 class SquareMobilePaymentsSdk {
   Future<String?> getPlatformVersion() {
     return SquareMobilePaymentsSdkPlatform.instance.getPlatformVersion();
+  }
+
+  Future<AuthorizationState> getAuthorizationState() async {
+    return SquareMobilePaymentsSdkPlatform.instance.getAuthorizationState();
   }
 
   Future<String?> authorize(String accessToken, String locationId) async {
@@ -22,7 +28,12 @@ class SquareMobilePaymentsSdk {
     SquareMobilePaymentsSdkPlatform.instance.hideMockReaderUI();
   }
 
-  Future<void> showSettings(onResult) async {
-    SquareMobilePaymentsSdkPlatform.instance.showSettings(onResult);
+  Future<void> showSettings() async {
+    SquareMobilePaymentsSdkPlatform.instance.showSettings();
+  }
+
+  Future<Payment?> startPayment(paymentParameters, promptParameters) async {
+    return SquareMobilePaymentsSdkPlatform.instance
+        .startPayment(paymentParameters, promptParameters);
   }
 }
