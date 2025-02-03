@@ -52,7 +52,7 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
 
     } else if (call.method == "deauthorize") {
       authManager.deauthorize()
-      result.success("deauthorized")
+      result.success("Deauthorized")
     }else {
       result.notImplemented()
     }
