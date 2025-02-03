@@ -19,6 +19,21 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
+  Future<String> getSDKVersion() async {
+    final version = await methodChannel.invokeMethod<String>('getSDKVersion');
+    return version ?? ""; //TEST
+  }
+
+  @override
+  Future<Environment> getEnvironment() async {
+    final environmentName = await methodChannel.invokeMethod<String>('getEnvironment');
+    return Environment.values.firstWhere(
+      (e) => e.name == environmentName,
+      orElse: () => Environment.production, //Not defined should trow exception
+    ); //Test
+  }
+
+  @override
   Future<AuthorizationState> getAuthorizationState() async {
     final authorizeStateName =
         await methodChannel.invokeMethod<String>('getAuthorizationState');
@@ -26,6 +41,16 @@ class MethodChannelSquareMobilePaymentsSdk
       (e) => e.name == authorizeStateName,
       orElse: () => AuthorizationState.notAuthorized,
     );
+  }
+
+  @override
+  Future<Location?> getAuthorizedLocation() async {
+    final location = await methodChannel
+        .invokeMethod<Map<String, Object?>>('getAuthorizedLocation');
+    if (location != null) {
+      return Location.fromJson(location); //TEST
+    }
+    return null;
   }
 
   @override
@@ -85,6 +110,7 @@ class MethodChannelSquareMobilePaymentsSdk
       'promptParameters': promptParameters.toJson(),
     };
 
+    //TODO: cast Map to Payment
     return await methodChannel.invokeMethod<Payment>('startPayment', params);
   }
 }

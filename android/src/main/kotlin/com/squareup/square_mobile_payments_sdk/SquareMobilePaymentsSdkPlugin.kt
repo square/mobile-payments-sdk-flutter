@@ -8,9 +8,10 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
+import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
 import com.squareup.square_mobile_payments_sdk.modules.PaymentModule
 import com.squareup.square_mobile_payments_sdk.modules.AuthModule
-import com.squareup.square_mobile_payments_sdk.modules.ReaderModule
+import com.squareup.square_mobile_payments_sdk.modules.MockReaderModule
 import com.squareup.square_mobile_payments_sdk.modules.SettingsModule
 
 
@@ -30,6 +31,10 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
   override fun onMethodCall(call: MethodCall, result: Result) {
     if (call.method == "getPlatformVersion") {
       result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
+    } else if (call.method == "getSDKVersion") {
+      result.success("square-mobile-payments-sdk-flutter-v0.0.1-android-${android.os.Build.VERSION.RELEASE}")
+    } else if (call.method == "getEnvironment") {
+      result.success(if (MobilePaymentsSdk.isSandboxEnvironment()) "sandbox" else "production")
     } else if (call.method == "getAuthorizationState") {
       AuthModule.getAuthorizationState(result)
     } else if (call.method == "getAuthorizedLocation") {
@@ -41,9 +46,9 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
     } else if (call.method == "deauthorize") {
       AuthModule.deAuthorize(result)
     } else if (call.method == "showMockReaderUI") {
-      ReaderModule.showMockReaderUI(result)
+      MockReaderModule.showMockReaderUI(result)
     } else if (call.method == "hideMockReaderUI") {
-      ReaderModule.hideMockReaderUI(result)
+      MockReaderModule.hideMockReaderUI(result)
     } else if (call.method == "showSettings") {
       SettingsModule.showSettings(result)
     } else if (call.method == "startPayment") {

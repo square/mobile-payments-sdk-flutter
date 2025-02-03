@@ -19,8 +19,18 @@ class AuthModule {
         }
 
         @JvmStatic
-        fun getAuthorizationState(result: MethodChannel.Result) {
-          
+        fun getAuthorizedLocation(result: MethodChannel.Result) {
+          val location = authManager.location //Version 2.0.0-beta differs 2.0.1
+          if (location == null) {
+              result.success(null)
+              return
+          }
+          val mappedLocation = mapOf(
+              "id" to location.locationId,
+              "currencyCode" to location.currencyCode.name.lowercase(),
+              "name" to location.name
+          )
+          result.success(mappedLocation)
         }
 
         @JvmStatic

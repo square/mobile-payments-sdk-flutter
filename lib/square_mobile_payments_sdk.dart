@@ -7,8 +7,20 @@ class SquareMobilePaymentsSdk {
     return SquareMobilePaymentsSdkPlatform.instance.getPlatformVersion();
   }
 
+  Future<String> getSDKVersion() {
+    return SquareMobilePaymentsSdkPlatform.instance.getSDKVersion();
+  }
+
+  Future<Environment> getEnvironment() {
+    return SquareMobilePaymentsSdkPlatform.instance.getEnvironment();
+  }
+
   Future<AuthorizationState> getAuthorizationState() async {
     return SquareMobilePaymentsSdkPlatform.instance.getAuthorizationState();
+  }
+
+  Future<Location?> getAuthorizedLocation() async {
+    return SquareMobilePaymentsSdkPlatform.instance.getAuthorizedLocation();
   }
 
   Future<String?> authorize(String accessToken, String locationId) async {
