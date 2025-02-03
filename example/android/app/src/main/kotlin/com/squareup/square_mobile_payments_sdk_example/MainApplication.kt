@@ -6,6 +6,9 @@ import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
 class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        MobilePaymentsSdk.initialize("your-square-application-id", this)
+        MobilePaymentsSdk.initialize(MOBILE_PAYMENT_SDK_APPLICATION_ID, this)
     }
+companion object {
+      private const val MOBILE_PAYMENT_SDK_APPLICATION_ID = "REPLACE ME!"
+  }
 }
