@@ -1,7 +1,5 @@
 import Flutter
 import UIKit
-import SquareMobilePaymentsSDK
-import MockReaderUI
 
 public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -14,41 +12,29 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
     switch call.method {
     case "getPlatformVersion":
       result("iOS " + UIDevice.current.systemVersion)
-
     case "authorize":
-
-      if   let arguments = call.arguments as? [String: Any],
-           let accessToken = arguments["accessToken"] as? String,
-           let locationId = arguments["locationId"] as? String {
-
-            MobilePaymentsSDK.shared.authorizationManager.authorize(
-                        withAccessToken: accessToken,
-                        locationID: locationId
-                    ) { error in
-                        if let error {
-                            result("Failed to authorize: \(error)")
-                        } else {
-                          result("Authorized")
-                        }
-                    }
-           }
-
-    case "deauthorize":
-      MobilePaymentsSDK.shared.authorizationManager.deauthorize {
-        result("deauthorized")
+      if  let arguments = call.arguments as? [String: Any],
+          let accessToken = arguments["accessToken"] as? String,
+          let locationId = arguments["locationId"] as? String {
+        AuthModule.authorize(result: result, accessToken: accessToken, locationId: locationId)
+      } else {
+        result(FlutterError(
+          code: "INVALID_ARGUMENTS", 
+          message: "Missing accessToken or locationId", 
+          details: nil))
       }
+    case "deauthorize":
+      AuthModule.deauthorize(result: result)
+    case "getAuthorizationState":
+      AuthModule.getAuthorizationState(result: result)
     case "showMockReaderUI":
-        do {
-            try MockReaderUI(for: MobilePaymentsSDK.shared).present()
-            
-        }catch{
-            print("Error")
-        }
-        
-    //case "hideMockReaderUI":
-      //MockReaderUI(for: MobilePaymentsSDK.shared).dismiss()
-    //case "showSettings":
-      //MobilePaymentsSDK.shared.settingsManager.presentSettings()
+      MockReaderModule.showMockReaderUI(result: result)
+    case "hideMockReaderUI":
+      MockReaderModule.hideMockReaderUI(result: result)
+    case "startPayment":
+      PaymentModule.startPayment(result: result)
+    case "showSettings":
+      SettingsModule.showSettings(result: result)
     default:
       result(FlutterMethodNotImplemented)
     }
