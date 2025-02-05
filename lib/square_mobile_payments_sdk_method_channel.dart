@@ -111,6 +111,12 @@ class MethodChannelSquareMobilePaymentsSdk
     };
 
     //TODO: cast Map to Payment
-    return await methodChannel.invokeMethod<Payment>('startPayment', params);
+    final response = await methodChannel.invokeMethod('startPayment', params);
+    print("----------------------Fluter response ---------------------------------");
+
+    print(response);
+    print(response["createdAt"]);
+    print(response.runtimeType);
+    return null;
   }
 }
