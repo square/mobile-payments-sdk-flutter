@@ -11,24 +11,52 @@ import com.squareup.sdk.mobilepayments.core.ErrorDetails
 import com.squareup.sdk.mobilepayments.payment.DigitalWalletDetails
 import com.squareup.sdk.mobilepayments.payment.CashPaymentDetails
 
+fun Payment.SourceType.toName(): String {
+  return when (this) {
+    Payment.SourceType.CARD -> "card"
+    Payment.SourceType.CASH -> "cash"
+    Payment.SourceType.EXTERNAL -> "externalSource"
+    Payment.SourceType.WALLET -> "wallet"
+    Payment.SourceType.BANK_ACCOUNT -> "bankAccount"
+    Payment.SourceType.CARD_ON_FILE -> "unknown" // Not defined in dart models
+    Payment.SourceType.SQUARE_ACCOUNT -> "squareAccount"
+    else -> "unknown"
+  }
+}
+
+fun voidMoneyMap(money: Money?, currencyCodeName: String) : Map<String,Any?> {
+  if (money == null) {
+    return mapOf(
+      "amount" to 0,
+      "currencyCode" to currencyCodeName.toLowerCase()
+    )
+  } 
+  return mapOf(
+    "amount" to money.amount,
+    "currencyCode" to money.currencyCode.name.toLowerCase()
+  )
+}
+
 fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
     return mapOf(
       "createdAt" to createdAt.time.toString(),
       "updatedAt" to updatedAt.time.toString(),
       "amountMoney" to amountMoney.toMoneyMap(),
-      "tipMoney" to tipMoney?.toMoneyMap(),
-      "appFeeMoney" to appFeeMoney?.toMoneyMap(),
+      "tipMoney" to voidMoneyMap(tipMoney, amountMoney.currencyCode.name),
+      "appFeeMoney" to voidMoneyMap(appFeeMoney, amountMoney.currencyCode.name),
       "locationId" to locationId,
       "orderId" to orderId,
       "referenceId" to referenceId,
-      "sourceType" to sourceType.name,
+      "sourceType" to sourceType.toName(),
       "cashDetails" to cashDetails?.toCashDetailsMap(),
       "externalDetails" to externalDetails?.toExternalDetailsMap(),
       "uploadedAt" to uploadedAt?.time.toString(),
       "localId" to localId,
       "id" to id,
       "status" to status.name,
-      "cardDetails" to cardDetails?.toOfflineDetailsMap()
+      "cardDetails" to cardDetails?.toOfflineDetailsMap(),
+
+      "totalMoney" to totalMoney.toMoneyMap()
     )
   }
   
@@ -38,11 +66,11 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "updatedAt" to updatedAt.time.toString(),
       "locationId" to locationId,
       "amountMoney" to amountMoney.toMoneyMap(),
-      "tipMoney" to tipMoney?.toMoneyMap(),
-      "appFeeMoney" to appFeeMoney?.toMoneyMap(),
+      "tipMoney" to voidMoneyMap(tipMoney, amountMoney.currencyCode.name),
+      "appFeeMoney" to voidMoneyMap(appFeeMoney, amountMoney.currencyCode.name),
       "orderId" to orderId,
       "referenceId" to referenceId,
-      "sourceType" to sourceType.name,
+      "sourceType" to sourceType.toName(),
       "cashDetails" to cashDetails?.toCashDetailsMap(),
       "externalDetails" to externalDetails?.toExternalDetailsMap(),
       "id" to id,
@@ -57,14 +85,16 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "receiptNumber" to receiptNumber,
       "remainingBalance" to remainingBalance?.toMoneyMap(),
       "squareAccountDetails" to squareAccountDetails?.toAccountMap(),
-      "digitalWalletDetails" to digitalWalletDetails?.toWalletMap()
+      "digitalWalletDetails" to digitalWalletDetails?.toWalletMap(),
+
+      "totalMoney" to totalMoney.toMoneyMap()
     )
   }
   
   fun Money.toMoneyMap(): Map<String, Any?> {
     return mapOf(
       "amount" to amount,
-      "currencyCode" to currencyCode.name
+      "currencyCode" to currencyCode.name.toLowerCase() // to build Money Dart obj
     )
   }
   

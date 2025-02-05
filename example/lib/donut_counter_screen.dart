@@ -18,7 +18,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
 
   _onBuy(BuildContext context, int amount) async {
     try {
-      await _squareMobilePaymentsSdkPlugin.startPayment(
+      Payment? payment = await _squareMobilePaymentsSdkPlugin.startPayment(
           PaymentParameters(
               acceptPartialAuthorization: 0,
               amountMoney: Money(amount: amount, currencyCode: CurrencyCode.eur),
@@ -34,11 +34,34 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
               teamMemberId: "123",
               tipMoney: const Money(amount: 0, currencyCode: CurrencyCode.eur))
           , PromptParameters(additionalPaymentMethods: List.empty(), mode: PromptMode.defaultMode));
+      if (context.mounted && payment != null) {
+        showPaymentDialog(context, payment);
+      }
     } on Exception {
       if (context.mounted) {
         showCanceledDialog(context);
       }
     }
+  }
+
+  void showPaymentDialog(BuildContext context,Payment payment) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Completed"),
+          content:  Text(payment.createdAt),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void showCanceledDialog(BuildContext context) {

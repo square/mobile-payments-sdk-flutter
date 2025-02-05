@@ -45,8 +45,7 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<Location?> getAuthorizedLocation() async {
-    final location = await methodChannel
-        .invokeMethod<Map<String, Object?>>('getAuthorizedLocation');
+    final location = await methodChannel.invokeMethod('getAuthorizedLocation');
     if (location != null) {
       return Location.fromJson(location); //TEST
     }
@@ -111,12 +110,33 @@ class MethodChannelSquareMobilePaymentsSdk
     };
 
     //TODO: cast Map to Payment
-    final response = await methodChannel.invokeMethod('startPayment', params);
+    final response = await methodChannel.invokeMethod<Map>('startPayment', params);
     print("----------------------Fluter response ---------------------------------");
-
     print(response);
-    print(response["createdAt"]);
+    print(response?["createdAt"]);
     print(response.runtimeType);
+    
+    if (response != null) {
+      final paymentJson = castPaymentMap(response);
+      return Payment.fromJson(paymentJson);
+    }
+
     return null;
   }
+}
+
+Map<String, Object?> castPaymentMap(Map response) {
+  Map<String, Object?> result = {};
+
+  for (var entry in response.entries) {
+    if (entry.key is String) {
+      if (entry.value is Map) {
+        result[entry.key as String] = castPaymentMap(entry.value);
+      } else {
+        result[entry.key as String] = entry.value;
+      }
+    }
+  }
+
+  return result;
 }
