@@ -4,6 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:square_mobile_payments_sdk_example/auth_state.dart';
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
 import 'package:square_mobile_payments_sdk/src/models.dart';
+import 'package:uuid/uuid.dart';
+
+final uuid = Uuid(); 
 
 class DonutCounterScreen extends StatefulWidget {
   const DonutCounterScreen({super.key});
@@ -18,21 +21,13 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
 
   _onBuy(BuildContext context, int amount) async {
     try {
+      String idempotencyKey = uuid.v4();
+
       Payment? payment = await _squareMobilePaymentsSdkPlugin.startPayment(
           PaymentParameters(
-              acceptPartialAuthorization: 0,
               amountMoney: Money(amount: amount, currencyCode: CurrencyCode.eur),
-              appFeeMoney: const Money(amount: 0, currencyCode: CurrencyCode.eur),
-              autocomplete: 1,
-              customerId: "123",
-              delayAction: DelayAction.complete,
-              idempotencyKey: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-              locationId: "111",
-              note: "Donut",
-              orderId: "123",
-              referenceId: "1234",
-              teamMemberId: "123",
-              tipMoney: const Money(amount: 0, currencyCode: CurrencyCode.eur))
+              idempotencyKey: idempotencyKey
+          )
           , PromptParameters(additionalPaymentMethods: List.empty(), mode: PromptMode.defaultMode));
       if (context.mounted && payment != null) {
         showPaymentDialog(context, payment);
@@ -50,7 +45,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text("Completed"),
-          content:  Text(payment.createdAt),
+          content:  Text(payment.id),
           actions: [
             TextButton(
               onPressed: () {

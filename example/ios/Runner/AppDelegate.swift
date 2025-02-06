@@ -9,7 +9,7 @@ import SquareMobilePaymentsSDK
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
-    let applicationId = "sandbox-sq0idb-Jgsb9i5Wa0d-60MBkHdEyw"
+    let applicationId = "REPLACE ME!"
       MobilePaymentsSDK.initialize(squareApplicationID: applicationId)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }

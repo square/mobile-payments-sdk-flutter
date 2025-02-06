@@ -91,12 +91,12 @@ class MethodChannelSquareMobilePaymentsSdk
       "currencyCode": paymentParameters.amountMoney.currencyCode.name
     };
     var appFeeMoney = {
-      "amount": paymentParameters.appFeeMoney.amount,
-      "currencyCode": paymentParameters.appFeeMoney.currencyCode.name
+      "amount": paymentParameters.appFeeMoney?.amount,
+      "currencyCode": paymentParameters.appFeeMoney?.currencyCode.name
     };
     var tipMoney = {
-      "amount": paymentParameters.tipMoney.amount,
-      "currencyCode": paymentParameters.tipMoney.currencyCode.name
+      "amount": paymentParameters.tipMoney?.amount,
+      "currencyCode": paymentParameters.tipMoney?.currencyCode.name
     };
 
     var params = <String, dynamic>{
@@ -111,11 +111,7 @@ class MethodChannelSquareMobilePaymentsSdk
 
     //TODO: cast Map to Payment
     final response = await methodChannel.invokeMethod<Map>('startPayment', params);
-    print("----------------------Fluter response ---------------------------------");
-    print(response);
-    print(response?["createdAt"]);
-    print(response.runtimeType);
-    
+
     if (response != null) {
       final paymentJson = castPaymentMap(response);
       return Payment.fromJson(paymentJson);

@@ -15,33 +15,35 @@ class PaymentMapper {
         fun getPaymentParameters(paymentParameters: HashMap<String, Any>): PaymentParameters {
             val amountMoney = paymentParameters.get("amountMoney") as HashMap<String, Any>
             val amount = (amountMoney.get("amount") as? Number)?.toLong() ?: 0
-            val currency = (amountMoney.get("currency") as? String)?.uppercase() ?: "EUR"
-            
+            val currency = (amountMoney.get("currencyCode") as? String)?.uppercase() ?: ""
+
             val currencyCode = 
                 CurrencyCode.valueOf(currency);
             
-            return PaymentParameters.Builder(
+            val builder = PaymentParameters.Builder(
                 amount = Money(amount, currencyCode),
-                idempotencyKey = UUID.randomUUID().toString()
+                idempotencyKey = paymentParameters.get("idempotencyKey") as String
                 )
-                .referenceId(paymentParameters.get("referenceId") as? String)
-                .note(paymentParameters.get("note") as? String)
-                .autocomplete(paymentParameters.get("autocomplete") as? Boolean ?: true)
-                .build()
+
+                if(paymentParameters.get("referenceId") != null){
+                    builder.referenceId(paymentParameters.get("referenceId") as? String)
+                }
+                if(paymentParameters.get("note") != null) {
+                    builder.note(paymentParameters.get("note") as? String)
+                }
+
+                if(paymentParameters.get("autocomplete") != null) {
+                    builder.autocomplete(paymentParameters.get("autocomplete") as? Boolean ?: false)
+                }
+
+                return builder.build()
         }
 
         @JvmStatic
         fun getPromptParameters(promptParameters: HashMap<String, Any>): PromptParameters {
-            val modeRaw = promptParameters["mode"] as? String ?: "DEFAULT"
             
-            // Normalizar el valor a un formato compatible con PromptMode
-            val mode = when (modeRaw.lowercase()) {
-                "defaultmode" -> "DEFAULT"
-                "custommode" -> "CUSTOM"
-                else -> "DEFAULT" // Valor por defecto en caso de error
-            }
             return PromptParameters(
-                mode = PromptMode.valueOf(mode)
+                mode = PromptMode.DEFAULT
             )
         }
     }
