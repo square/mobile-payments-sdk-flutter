@@ -57,7 +57,7 @@ class AuthModule {
         @JvmStatic
         fun deAuthorize(result: MethodChannel.Result) {
             authManager.deauthorize()
-            result.success("deauthorized")
+            result.success("Deauthorized")
         }
     }
 }

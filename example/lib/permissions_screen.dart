@@ -88,8 +88,8 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
 
   Future<void> authorizeSDK() async {
     String accessToken =
-        "EAAAl1WZHJ-0s5QvmhdRX5KNWGBD0ns7r0rOw5PBfsj3rYv9c5CDQLETDO_zO3vW";
-    String locationId = "LP8X8765QSFRQ";
+        "";
+    String locationId = "";
     String response;
 
     setState(() {
@@ -141,7 +141,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
 
     if (!mounted) return;
 
-    if (response == 'deauthorized') {
+    if (response == 'Deauthorized') {
       Provider.of<AuthState>(context, listen: false).signOut();
       hideReader();
       setState(() {
