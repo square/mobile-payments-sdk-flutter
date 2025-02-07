@@ -349,19 +349,17 @@ _$PaymentImpl _$$PaymentImplFromJson(Map<String, dynamic> json) =>
       appFeeMoney: json['appFeeMoney'] == null
           ? null
           : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
-      createdAt: json['createdAt'] as String?,
-      id: json['id'] as String,
+      createdAt: json['createdAt'] as String,
+      id: json['id'] as String?,
       locationId: json['locationId'] as String?,
       orderId: json['orderId'] as String?,
       referenceId: json['referenceId'] as String?,
-      sourceType: $enumDecodeNullable(_$SourceTypeEnumMap, json['sourceType']),
+      sourceType: $enumDecode(_$SourceTypeEnumMap, json['sourceType']),
       tipMoney: json['tipMoney'] == null
           ? null
           : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
-      totalMoney: json['totalMoney'] == null
-          ? null
-          : Money.fromJson(json['totalMoney'] as Map<String, dynamic>),
-      updatedAt: json['updatedAt'] as String?,
+      totalMoney: Money.fromJson(json['totalMoney'] as Map<String, dynamic>),
+      updatedAt: json['updatedAt'] as String,
     );
 
 Map<String, dynamic> _$$PaymentImplToJson(_$PaymentImpl instance) =>
@@ -373,7 +371,7 @@ Map<String, dynamic> _$$PaymentImplToJson(_$PaymentImpl instance) =>
       'locationId': instance.locationId,
       'orderId': instance.orderId,
       'referenceId': instance.referenceId,
-      'sourceType': _$SourceTypeEnumMap[instance.sourceType],
+      'sourceType': _$SourceTypeEnumMap[instance.sourceType]!,
       'tipMoney': instance.tipMoney,
       'totalMoney': instance.totalMoney,
       'updatedAt': instance.updatedAt,

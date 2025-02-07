@@ -25,8 +25,8 @@ public class AuthModule {
             ) { error in
                 if let error {
                     result(FlutterError(code: "UNAUTHORIZED",
-                            message: "Unable to authenticate, check the required permissions",
-                            details: nil))
+                                        message: "Unable to authenticate: \(error.localizedDescription)",
+                                        details: nil))
                 } else {
                     result("Authorized")
                 }

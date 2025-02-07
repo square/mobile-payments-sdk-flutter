@@ -6,31 +6,26 @@ public class PaymentModule: PaymentManagerDelegate {
     private static let paymentManager = MobilePaymentsSDK.shared.paymentManager
     private static let paymentDelegate = PaymentModule()
 
-    public static func startPayment(result: @escaping FlutterResult) {
-        let paymentParameters = PaymentParameters(
-            idempotencyKey: UUID().uuidString,
-            amountMoney: Money(
-                amount: 100,
-                currency: .EUR
-            )
-        )
+    private var delegateResult: FlutterResult?
+
+    public static func startPayment(
+        result: @escaping FlutterResult,
+        paymentParameters: [String: Any],
+        promptParameters: [String: Any]
+        ) {
+        let nativePaymentParameters = PaymentMapper.getPaymentParameters(paymentParameters:paymentParameters)
         
-        let promptParameters = PromptParameters(
-            mode: .default,
-            additionalMethods: .all
-        )
+        let nativePromptParameters = PaymentMapper.getPromptParameters(promptParameters:promptParameters)
 
         guard let topController = UIApplication.shared.keyWindow?.rootViewController else {
             result(FlutterError(code: "ERROR", message: "No root view controller", details: nil))
             return
         }
 
-        /*
-            result(FlutterError(code: "ERROR", message: "No root view controller", details: nil))
-        */
+        paymentDelegate.delegateResult = result
         paymentManager.startPayment(
-            paymentParameters,
-            promptParameters: promptParameters,
+            nativePaymentParameters,
+            promptParameters: nativePromptParameters,
             from: topController,
             delegate: paymentDelegate
         )
@@ -40,15 +35,37 @@ public class PaymentModule: PaymentManagerDelegate {
     
     public func paymentManager(_ paymentManager: PaymentManager, didFinish payment: Payment) {
         print("Payment successful: \(payment)")
+        if let onlinePayment = payment as? OnlinePayment {
+            print("Finished payment with ID: \(onlinePayment.id!) status: \(onlinePayment.status.description)")
+            delegateResult?(onlinePayment.toMap())
+            return
+        } else if let offlinePayment = payment as? OfflinePayment {
+            print("Finished payment with ID: \(offlinePayment.localID) status: \(offlinePayment.status.description)")
+            delegateResult?(nil)
+            return
+        }
+        delegateResult?(nil)
+        delegateResult = nil 
     }
 
     public func paymentManager(_ paymentManager: PaymentManager, didFail payment: Payment, withError error: Error) {
         print("Payment failed: \(error.localizedDescription)")
-
+        delegateResult?(FlutterError(
+            code: "PAYMENT_FAILED",
+            message: error.localizedDescription,
+            details: nil
+        ))
+        delegateResult = nil
     }
 
     public func paymentManager(_ paymentManager: PaymentManager, didCancel payment: Payment) {
         print("Payment cancelled.")
+        delegateResult?(FlutterError(
+            code: "PAYMENT_CANCELED",
+            message: nil,
+            details: nil
+        ))
+        delegateResult = nil 
     }
     
     // Optional

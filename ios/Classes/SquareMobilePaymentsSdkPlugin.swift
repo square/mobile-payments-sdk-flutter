@@ -32,7 +32,19 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
     case "hideMockReaderUI":
       MockReaderModule.hideMockReaderUI(result: result)
     case "startPayment":
-      PaymentModule.startPayment(result: result)
+      if  let arguments = call.arguments as? [String: Any],
+          let paymentParameters = arguments["paymentParameters"] as? [String: Any],
+          let promptParameters = arguments["promptParameters"] as? [String: Any] {
+          PaymentModule.startPayment(
+            result: result,
+            paymentParameters: paymentParameters, 
+            promptParameters: promptParameters)
+      } else {
+        result(FlutterError(
+          code: "INVALID_ARGUMENTS", 
+          message: "Missing paymentParameters or promptParameters", 
+          details: nil))
+      }
     case "showSettings":
       SettingsModule.showSettings(result: result)
     default:

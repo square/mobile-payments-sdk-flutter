@@ -165,15 +165,15 @@ class Payment with _$Payment {
   const factory Payment({
     required Money amountMoney,
     Money? appFeeMoney,
-    String? createdAt,
-    required String id,
+    required String createdAt,
+    String? id,
     String? locationId,
     String? orderId,
     String? referenceId,
-    SourceType? sourceType,
+    required SourceType sourceType,
     Money? tipMoney,
-    Money? totalMoney,
-    String? updatedAt,
+    required Money totalMoney,
+    required String updatedAt,
   }) = _Payment;
 
   factory Payment.fromJson(Map<String, Object?> json)
@@ -202,6 +202,7 @@ class PaymentParameters with _$PaymentParameters {
   factory PaymentParameters.fromJson(Map<String, Object?> json)
       => _$PaymentParametersFromJson(json);
 }
+
 @freezed
 class OnlinePayment with _$OnlinePayment {
   const factory OnlinePayment({

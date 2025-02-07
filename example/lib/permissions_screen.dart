@@ -6,7 +6,6 @@ import 'dart:async';
 import 'package:provider/provider.dart';
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
 import 'package:square_mobile_payments_sdk_example/auth_state.dart';
-import 'package:device_info_plus/device_info_plus.dart';
 
 class PermissionsScreen extends StatefulWidget {
   const PermissionsScreen({super.key});
@@ -26,31 +25,23 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
   bool isLocationGranted = false;
   bool isMicrophoneGranted = false;
   bool isReadStateGranted = false;
-  bool isIOSSimulator = false;
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
   SignInState _signInState = SignInState.idle;
-
-  Future<void> _checkIfIOSSimulator() async {
-    if (Platform.isIOS) {
-      final deviceInfo = DeviceInfoPlugin();
-      final iosInfo = await deviceInfo.iosInfo;
-      setState(() {
-        isIOSSimulator = iosInfo.isPhysicalDevice == false;
-      });
-    }
-  }
 
   Future<void> _checkInitialPermissions() async {
     final bluetoothStatus = await Permission.bluetoothScan.status;
     final locationStatus = await Permission.location.status;
     final microphoneStatus = await Permission.microphone.status;
-    final readStateStatus = await Permission.phone.status;
-
+    if (Platform.isAndroid) {
+      final readStateStatus = await Permission.phone.status;
+      setState(() {
+        isReadStateGranted = readStateStatus.isGranted;
+      });
+    }
     setState(() {
-      isBluetoothGranted = Platform.isIOS ? true : bluetoothStatus.isGranted;
-      isLocationGranted = Platform.isIOS ? true : locationStatus.isGranted;
-      isMicrophoneGranted = Platform.isIOS ? true : microphoneStatus.isGranted;
-      isReadStateGranted = Platform.isIOS ? true : readStateStatus.isGranted;
+      isBluetoothGranted = bluetoothStatus.isGranted;
+      isLocationGranted = locationStatus.isGranted;
+      isMicrophoneGranted = microphoneStatus.isGranted;
     });
   }
 
@@ -103,7 +94,8 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
           'Unknown response';
 
       print(response);
-    } on Exception {
+    } on Exception catch (e){
+      print(e);
       response = 'Failed';
       setState(() {
         _signInState = SignInState.error;
@@ -161,12 +153,12 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
   void initState() {
     super.initState();
     _checkInitialPermissions();
-    _checkIfIOSSimulator();
   }
 
   @override
   Widget build(BuildContext context) {
-    bool areAllPermissionsGranted = isBluetoothGranted &&
+    bool areAllPermissionsGranted = 
+        (isBluetoothGranted || Platform.isIOS) &&
         isLocationGranted &&
         isMicrophoneGranted &&
         (isReadStateGranted || Platform.isIOS);
@@ -257,7 +249,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
                         ),
                       )
                     : ElevatedButton(
-                        onPressed: areAllPermissionsGranted || isIOSSimulator
+                        onPressed: areAllPermissionsGranted
                             ? _onSignIn
                             : null,
                         style: ElevatedButton.styleFrom(

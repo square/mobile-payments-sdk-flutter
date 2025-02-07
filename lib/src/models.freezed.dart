@@ -2706,15 +2706,15 @@ Payment _$PaymentFromJson(Map<String, dynamic> json) {
 mixin _$Payment {
   Money get amountMoney => throw _privateConstructorUsedError;
   Money? get appFeeMoney => throw _privateConstructorUsedError;
-  String? get createdAt => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  String get createdAt => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String? get locationId => throw _privateConstructorUsedError;
   String? get orderId => throw _privateConstructorUsedError;
   String? get referenceId => throw _privateConstructorUsedError;
-  SourceType? get sourceType => throw _privateConstructorUsedError;
+  SourceType get sourceType => throw _privateConstructorUsedError;
   Money? get tipMoney => throw _privateConstructorUsedError;
-  Money? get totalMoney => throw _privateConstructorUsedError;
-  String? get updatedAt => throw _privateConstructorUsedError;
+  Money get totalMoney => throw _privateConstructorUsedError;
+  String get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Payment to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -2733,20 +2733,20 @@ abstract class $PaymentCopyWith<$Res> {
   $Res call(
       {Money amountMoney,
       Money? appFeeMoney,
-      String? createdAt,
-      String id,
+      String createdAt,
+      String? id,
       String? locationId,
       String? orderId,
       String? referenceId,
-      SourceType? sourceType,
+      SourceType sourceType,
       Money? tipMoney,
-      Money? totalMoney,
-      String? updatedAt});
+      Money totalMoney,
+      String updatedAt});
 
   $MoneyCopyWith<$Res> get amountMoney;
   $MoneyCopyWith<$Res>? get appFeeMoney;
   $MoneyCopyWith<$Res>? get tipMoney;
-  $MoneyCopyWith<$Res>? get totalMoney;
+  $MoneyCopyWith<$Res> get totalMoney;
 }
 
 /// @nodoc
@@ -2766,15 +2766,15 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
   $Res call({
     Object? amountMoney = null,
     Object? appFeeMoney = freezed,
-    Object? createdAt = freezed,
-    Object? id = null,
+    Object? createdAt = null,
+    Object? id = freezed,
     Object? locationId = freezed,
     Object? orderId = freezed,
     Object? referenceId = freezed,
-    Object? sourceType = freezed,
+    Object? sourceType = null,
     Object? tipMoney = freezed,
-    Object? totalMoney = freezed,
-    Object? updatedAt = freezed,
+    Object? totalMoney = null,
+    Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
       amountMoney: null == amountMoney
@@ -2785,14 +2785,14 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
           ? _value.appFeeMoney
           : appFeeMoney // ignore: cast_nullable_to_non_nullable
               as Money?,
-      createdAt: freezed == createdAt
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: null == id
+              as String,
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       locationId: freezed == locationId
           ? _value.locationId
           : locationId // ignore: cast_nullable_to_non_nullable
@@ -2805,22 +2805,22 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
           ? _value.referenceId
           : referenceId // ignore: cast_nullable_to_non_nullable
               as String?,
-      sourceType: freezed == sourceType
+      sourceType: null == sourceType
           ? _value.sourceType
           : sourceType // ignore: cast_nullable_to_non_nullable
-              as SourceType?,
+              as SourceType,
       tipMoney: freezed == tipMoney
           ? _value.tipMoney
           : tipMoney // ignore: cast_nullable_to_non_nullable
               as Money?,
-      totalMoney: freezed == totalMoney
+      totalMoney: null == totalMoney
           ? _value.totalMoney
           : totalMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      updatedAt: freezed == updatedAt
+              as Money,
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 
@@ -2866,12 +2866,8 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res>? get totalMoney {
-    if (_value.totalMoney == null) {
-      return null;
-    }
-
-    return $MoneyCopyWith<$Res>(_value.totalMoney!, (value) {
+  $MoneyCopyWith<$Res> get totalMoney {
+    return $MoneyCopyWith<$Res>(_value.totalMoney, (value) {
       return _then(_value.copyWith(totalMoney: value) as $Val);
     });
   }
@@ -2887,15 +2883,15 @@ abstract class _$$PaymentImplCopyWith<$Res> implements $PaymentCopyWith<$Res> {
   $Res call(
       {Money amountMoney,
       Money? appFeeMoney,
-      String? createdAt,
-      String id,
+      String createdAt,
+      String? id,
       String? locationId,
       String? orderId,
       String? referenceId,
-      SourceType? sourceType,
+      SourceType sourceType,
       Money? tipMoney,
-      Money? totalMoney,
-      String? updatedAt});
+      Money totalMoney,
+      String updatedAt});
 
   @override
   $MoneyCopyWith<$Res> get amountMoney;
@@ -2904,7 +2900,7 @@ abstract class _$$PaymentImplCopyWith<$Res> implements $PaymentCopyWith<$Res> {
   @override
   $MoneyCopyWith<$Res>? get tipMoney;
   @override
-  $MoneyCopyWith<$Res>? get totalMoney;
+  $MoneyCopyWith<$Res> get totalMoney;
 }
 
 /// @nodoc
@@ -2922,15 +2918,15 @@ class __$$PaymentImplCopyWithImpl<$Res>
   $Res call({
     Object? amountMoney = null,
     Object? appFeeMoney = freezed,
-    Object? createdAt = freezed,
-    Object? id = null,
+    Object? createdAt = null,
+    Object? id = freezed,
     Object? locationId = freezed,
     Object? orderId = freezed,
     Object? referenceId = freezed,
-    Object? sourceType = freezed,
+    Object? sourceType = null,
     Object? tipMoney = freezed,
-    Object? totalMoney = freezed,
-    Object? updatedAt = freezed,
+    Object? totalMoney = null,
+    Object? updatedAt = null,
   }) {
     return _then(_$PaymentImpl(
       amountMoney: null == amountMoney
@@ -2941,14 +2937,14 @@ class __$$PaymentImplCopyWithImpl<$Res>
           ? _value.appFeeMoney
           : appFeeMoney // ignore: cast_nullable_to_non_nullable
               as Money?,
-      createdAt: freezed == createdAt
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: null == id
+              as String,
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       locationId: freezed == locationId
           ? _value.locationId
           : locationId // ignore: cast_nullable_to_non_nullable
@@ -2961,22 +2957,22 @@ class __$$PaymentImplCopyWithImpl<$Res>
           ? _value.referenceId
           : referenceId // ignore: cast_nullable_to_non_nullable
               as String?,
-      sourceType: freezed == sourceType
+      sourceType: null == sourceType
           ? _value.sourceType
           : sourceType // ignore: cast_nullable_to_non_nullable
-              as SourceType?,
+              as SourceType,
       tipMoney: freezed == tipMoney
           ? _value.tipMoney
           : tipMoney // ignore: cast_nullable_to_non_nullable
               as Money?,
-      totalMoney: freezed == totalMoney
+      totalMoney: null == totalMoney
           ? _value.totalMoney
           : totalMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      updatedAt: freezed == updatedAt
+              as Money,
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -2987,15 +2983,15 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
   const _$PaymentImpl(
       {required this.amountMoney,
       this.appFeeMoney,
-      this.createdAt,
-      required this.id,
+      required this.createdAt,
+      this.id,
       this.locationId,
       this.orderId,
       this.referenceId,
-      this.sourceType,
+      required this.sourceType,
       this.tipMoney,
-      this.totalMoney,
-      this.updatedAt});
+      required this.totalMoney,
+      required this.updatedAt});
 
   factory _$PaymentImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentImplFromJson(json);
@@ -3005,9 +3001,9 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
   @override
   final Money? appFeeMoney;
   @override
-  final String? createdAt;
+  final String createdAt;
   @override
-  final String id;
+  final String? id;
   @override
   final String? locationId;
   @override
@@ -3015,13 +3011,13 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
   @override
   final String? referenceId;
   @override
-  final SourceType? sourceType;
+  final SourceType sourceType;
   @override
   final Money? tipMoney;
   @override
-  final Money? totalMoney;
+  final Money totalMoney;
   @override
-  final String? updatedAt;
+  final String updatedAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -3109,15 +3105,15 @@ abstract class _Payment implements Payment {
   const factory _Payment(
       {required final Money amountMoney,
       final Money? appFeeMoney,
-      final String? createdAt,
-      required final String id,
+      required final String createdAt,
+      final String? id,
       final String? locationId,
       final String? orderId,
       final String? referenceId,
-      final SourceType? sourceType,
+      required final SourceType sourceType,
       final Money? tipMoney,
-      final Money? totalMoney,
-      final String? updatedAt}) = _$PaymentImpl;
+      required final Money totalMoney,
+      required final String updatedAt}) = _$PaymentImpl;
 
   factory _Payment.fromJson(Map<String, dynamic> json) = _$PaymentImpl.fromJson;
 
@@ -3126,9 +3122,9 @@ abstract class _Payment implements Payment {
   @override
   Money? get appFeeMoney;
   @override
-  String? get createdAt;
+  String get createdAt;
   @override
-  String get id;
+  String? get id;
   @override
   String? get locationId;
   @override
@@ -3136,13 +3132,13 @@ abstract class _Payment implements Payment {
   @override
   String? get referenceId;
   @override
-  SourceType? get sourceType;
+  SourceType get sourceType;
   @override
   Money? get tipMoney;
   @override
-  Money? get totalMoney;
+  Money get totalMoney;
   @override
-  String? get updatedAt;
+  String get updatedAt;
 
   /// Create a copy of Payment
   /// with the given fields replaced by the non-null parameter values.

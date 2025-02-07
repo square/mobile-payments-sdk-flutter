@@ -17,7 +17,7 @@ class DonutCounterScreen extends StatefulWidget {
 
 class _DonutCounterScreenState extends State<DonutCounterScreen> {
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
-  var amount = 250;
+  var amount = 350;
 
   _onBuy(BuildContext context, int amount) async {
     try {
@@ -32,7 +32,8 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
       if (context.mounted && payment != null) {
         showPaymentDialog(context, payment);
       }
-    } on Exception {
+    } on Exception catch (e) {
+      print(e);
       if (context.mounted) {
         showCanceledDialog(context);
       }
@@ -45,7 +46,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text("Completed"),
-          content:  Text(payment.id),
+          content:  Text(payment.toString()),
           actions: [
             TextButton(
               onPressed: () {

@@ -109,7 +109,6 @@ class MethodChannelSquareMobilePaymentsSdk
       'promptParameters': promptParameters.toJson(),
     };
 
-    //TODO: cast Map to Payment
     final response = await methodChannel.invokeMethod<Map>('startPayment', params);
 
     if (response != null) {
