@@ -25,8 +25,6 @@ class PaymentModule {
                         when (val payment = sdkResult.value) {
                             is Payment.OnlinePayment -> {
                                 val mappedPayment = payment.toOnlineMap()
-                                println("++++++++++++++++++++++++============mappedType")
-                                println(mappedPayment::class)
                                 result.success(mappedPayment)
                             }
                             is Payment.OfflinePayment -> {
