@@ -93,16 +93,13 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
               accessToken, locationId) ??
           'Unknown response';
 
-      print(response);
     } on Exception catch (e){
-      print(e);
       response = 'Failed';
       setState(() {
         _signInState = SignInState.error;
       });
     }
 
-    print(response);
     if (!mounted) return;
 
     if (response == 'Authorized' || response.startsWith("AuthorizedLocation")) {
@@ -113,9 +110,8 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
   Future<void> hideReader() async {
     try {
       await _squareMobilePaymentsSdkPlugin.hideMockReaderUI();
-      print("Hide Reader");
     } on Exception {
-      print("Exeption in hide reader");
+      print("Exception in hide reader");
     }
   }
 
@@ -124,8 +120,6 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
     try {
       response = await _squareMobilePaymentsSdkPlugin.deauthorize() ??
           'Unknown response';
-      print("RESPONSE: ");
-      print(response);
     } on Exception {
       response = 'Failed';
     }

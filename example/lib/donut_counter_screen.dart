@@ -85,7 +85,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
       await _squareMobilePaymentsSdkPlugin.showMockReaderUI();
       print("Show Reader");
     } on Exception {
-      print("Exeption reader");
+      print("Exception reader");
     }
   }
 
@@ -93,7 +93,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
     try {
       await _squareMobilePaymentsSdkPlugin.showSettings();
     } on Exception {
-      print("Exeption in show settings");
+      print("Exception in show settings");
     }
   }
 

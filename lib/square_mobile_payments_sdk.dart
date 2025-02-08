@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:square_mobile_payments_sdk/src/models.dart';
 
 import 'square_mobile_payments_sdk_platform_interface.dart';
@@ -11,8 +13,8 @@ class SquareMobilePaymentsSdk {
     return SquareMobilePaymentsSdkPlatform.instance.getSDKVersion();
   }
 
-  Future<Environment> getEnvironment() {
-    return SquareMobilePaymentsSdkPlatform.instance.getEnvironment();
+  Future<bool> isSandboxEnvironment() {
+    return SquareMobilePaymentsSdkPlatform.instance.isSandboxEnvironment();
   }
 
   Future<AuthorizationState> getAuthorizationState() async {

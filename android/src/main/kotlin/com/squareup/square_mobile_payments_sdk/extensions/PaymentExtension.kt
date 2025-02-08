@@ -24,26 +24,13 @@ fun Payment.SourceType.toName(): String {
   }
 }
 
-fun voidMoneyMap(money: Money?, currencyCodeName: String) : Map<String,Any?> {
-  if (money == null) {
-    return mapOf(
-      "amount" to 0,
-      "currencyCode" to currencyCodeName.toLowerCase()
-    )
-  } 
-  return mapOf(
-    "amount" to money.amount,
-    "currencyCode" to money.currencyCode.name.toLowerCase()
-  )
-}
-
 fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
     return mapOf(
       "createdAt" to createdAt.time.toString(),
       "updatedAt" to updatedAt.time.toString(),
       "amountMoney" to amountMoney.toMoneyMap(),
-      "tipMoney" to voidMoneyMap(tipMoney, amountMoney.currencyCode.name),
-      "appFeeMoney" to voidMoneyMap(appFeeMoney, amountMoney.currencyCode.name),
+      "tipMoney" to amountMoney?.toMoneyMap(),
+      "appFeeMoney" to appFeeMoney?.toMoneyMap(),
       "locationId" to locationId,
       "orderId" to orderId,
       "referenceId" to referenceId,
@@ -55,8 +42,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "id" to id,
       "status" to status.name,
       "cardDetails" to cardDetails?.toOfflineDetailsMap(),
-
-      "totalMoney" to totalMoney.toMoneyMap()
+      "totalMoney" to totalMoney?.toMoneyMap()
     )
   }
   
@@ -66,8 +52,8 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "updatedAt" to updatedAt.time.toString(),
       "locationId" to locationId,
       "amountMoney" to amountMoney.toMoneyMap(),
-      "tipMoney" to voidMoneyMap(tipMoney, amountMoney.currencyCode.name),
-      "appFeeMoney" to voidMoneyMap(appFeeMoney, amountMoney.currencyCode.name),
+      "tipMoney" to tipMoney?.toMoneyMap(),
+      "appFeeMoney" to appFeeMoney?.toMoneyMap(),
       "orderId" to orderId,
       "referenceId" to referenceId,
       "sourceType" to sourceType.toName(),
@@ -87,7 +73,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "squareAccountDetails" to squareAccountDetails?.toAccountMap(),
       "digitalWalletDetails" to digitalWalletDetails?.toWalletMap(),
 
-      "totalMoney" to totalMoney.toMoneyMap()
+      "totalMoney" to totalMoney?.toMoneyMap()
     )
   }
   

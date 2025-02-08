@@ -25,6 +25,28 @@ class PaymentMapper {
                 idempotencyKey = paymentParameters.get("idempotencyKey") as String
                 )
 
+                if(paymentParameters.get("appFeeMoney") != null){
+
+                    val appFeeAmountMoney = paymentParameters.get("appFeeMoney") as HashMap<String, Any>
+                    val appFeeAmount = (appFeeAmountMoney.get("amount") as? Number)?.toLong() ?: 0
+                    val appFeeCurrency = (appFeeAmountMoney.get("currencyCode") as? String)?.uppercase() ?: ""                    
+
+                    val appFeeCurrencyCode = CurrencyCode.valueOf(appFeeCurrency);
+
+                    builder.appFeeMoney(Money(appFeeAmount, appFeeCurrencyCode))
+                }
+
+                if(paymentParameters.get("tipMoney") != null){
+
+                    val tipAmountMoney = paymentParameters.get("tipMoney") as HashMap<String, Any>
+                    val tipAmount = (tipAmountMoney.get("amount") as? Number)?.toLong() ?: 0
+                    val tipCurrency = (tipAmountMoney.get("currencyCode") as? String)?.uppercase() ?: ""                    
+
+                    val tipCurrencyCode = CurrencyCode.valueOf(tipCurrency);
+
+                    builder.tipMoney(Money(tipAmount, tipCurrencyCode))
+                }
+
                 if(paymentParameters.get("referenceId") != null){
                     builder.referenceId(paymentParameters.get("referenceId") as? String)
                 }

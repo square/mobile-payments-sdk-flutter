@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:square_mobile_payments_sdk/src/models.dart';
@@ -25,12 +27,9 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<Environment> getEnvironment() async {
-    final environmentName = await methodChannel.invokeMethod<String>('getEnvironment');
-    return Environment.values.firstWhere(
-      (e) => e.name == environmentName,
-      orElse: () => Environment.production, //Not defined should trow exception
-    ); //Test
+  Future<bool> isSandboxEnvironment() async {
+    final bool? isSandbox = await methodChannel.invokeMethod<bool>('isSandboxEnvironment');
+    return isSandbox ?? false; // Provide a default value (false)
   }
 
   @override
@@ -90,14 +89,21 @@ class MethodChannelSquareMobilePaymentsSdk
       "amount": paymentParameters.amountMoney.amount,
       "currencyCode": paymentParameters.amountMoney.currencyCode.name
     };
-    var appFeeMoney = {
-      "amount": paymentParameters.appFeeMoney?.amount,
-      "currencyCode": paymentParameters.appFeeMoney?.currencyCode.name
-    };
-    var tipMoney = {
-      "amount": paymentParameters.tipMoney?.amount,
-      "currencyCode": paymentParameters.tipMoney?.currencyCode.name
-    };
+
+    var appFeeMoney = paymentParameters.appFeeMoney != null
+    ? {
+        "amount": paymentParameters.appFeeMoney!.amount,
+        "currencyCode": paymentParameters.appFeeMoney!.currencyCode.name
+      }
+    : null;
+
+    var tipMoney = paymentParameters.tipMoney != null
+    ? {
+        "amount": paymentParameters.tipMoney!.amount,
+        "currencyCode": paymentParameters.tipMoney!.currencyCode.name
+      }
+    : null;
+
 
     var params = <String, dynamic>{
       'paymentParameters': {

@@ -13,10 +13,10 @@ class SettingsModule {
             settingsManager.showSettings { 
                 sdkResult -> when (sdkResult) {
                   is SdkResult.Success -> {
-                    //TODO return void
+                    print("Show Settings success")
                   }
                   is SdkResult.Failure -> {
-
+                    print("Show Settings failed")
                   }
                 } 
               }

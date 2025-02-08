@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:square_mobile_payments_sdk/src/models.dart';
 
@@ -34,8 +36,8 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     throw UnimplementedError('getSDKVersion() has not been implemented.');
   }
 
-  Future<Environment> getEnvironment() {
-    throw UnimplementedError('getEnvironment() has not been implemented.');
+  Future<bool> isSandboxEnvironment() {
+    throw UnimplementedError('isSandboxEnvironment() has not been implemented.');
   }
 
   Future<AuthorizationState> getAuthorizationState() {

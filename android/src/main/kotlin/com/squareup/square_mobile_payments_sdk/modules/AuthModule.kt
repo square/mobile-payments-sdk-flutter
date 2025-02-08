@@ -35,21 +35,18 @@ class AuthModule {
 
         @JvmStatic
         fun authorize(result: MethodChannel.Result, accessToken: String, locationId: String) {
-            if(authManager.authorizationState.isAuthorized){
-                result.success("Authorized")
-              } else {
-                authManager.authorize(accessToken, locationId) { sdkResult ->
-                  when (sdkResult) {
-                      is SdkResult.Success -> {
-                        result.success(sdkResult.value.toString())
-                      }
-                      is SdkResult.Failure -> {
-                        result.error(sdkResult.errorCode.toString(), sdkResult.errorMessage, sdkResult.debugCode)
-                      }
-                      else -> {
-                        result.error("Unknown", "Unknown", "Unknown")
-                      }
-                  }
+            
+              authManager.authorize(accessToken, locationId) { sdkResult ->
+                when (sdkResult) {
+                    is SdkResult.Success -> {
+                      result.success(sdkResult.value.toString())
+                    }
+                    is SdkResult.Failure -> {
+                      result.error(sdkResult.errorCode.toString(), sdkResult.errorMessage, sdkResult.debugCode)
+                    }
+                    else -> {
+                      result.error("Unknown", "Unknown", "Unknown")
+                    }
                 }
               }
         }
