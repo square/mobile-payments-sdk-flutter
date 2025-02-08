@@ -32,7 +32,7 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
     if (call.method == "getPlatformVersion") {
       result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
     } else if (call.method == "getSDKVersion") {
-      result.success(SDK_VERSION)
+      result.success(MobilePaymentsSdk.settingsManager().getSdkSettings().sdkVersion)
     } else if (call.method == "getEnvironment") {
       result.success(if (MobilePaymentsSdk.isSandboxEnvironment()) SANDBOX else PRODUCTION)
     } else if (call.method == "getAuthorizationState") {
@@ -69,7 +69,6 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   companion object {
-    const val SDK_VERSION = "2.0.1"
     const val SANDBOX = "sandbox"
     const val PRODUCTION = "production"
   }

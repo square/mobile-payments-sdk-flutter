@@ -87,9 +87,8 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
   }
 
   Future<void> authorizeSDK() async {
-    String accessToken =
-        "";
-    String locationId = "";
+    String accessToken = "YOUR_ACCESS_TOKEN";
+    String locationId = "YOUR_LOCATION_ID";
     String response;
 
     setState(() {
