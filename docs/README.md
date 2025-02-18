@@ -15,7 +15,18 @@ flutter pub add mobile-payment-sdk-flutter
 ```
 For iOS:
 1. Make sure you run `pod install` in the `ios` folder of the sample application to install the SDK and all the dependencies.
-2. //TODO install dep in ios
+2. Open your iOS project `Runner.xcodeproj` with **Xcode**.
+3. Set the `iOS Deployment Target` to 12.0 or above.
+4. Add an Mobile Payments SDK build phase:
+    1. Open `Runner.xcworkspace` in Xcode.
+    2. In the **Build Phases** tab for your application target, click the **+**
+        button at the top of the pane.
+    3. Select **New Run Script Phase**.
+    4. Paste the following into the editor panel of the new run script:
+        ```
+        FRAMEWORKS="${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+        "${FRAMEWORKS}/SquareMobilePaymentsSDK.framework/setup"
+        ```
 
 For Android, you need to configure the SDK version:
 1. Modify your `/android/build.gradle`

@@ -34,7 +34,7 @@ The example app makes the following assumptions:
 
 * Confirm your environment meets the Square Mobile Payments SDK build requirements listed in the [root README](../README.md) for this repo.
 * Clone this repo (if you have not already):
-    * //TODO link to repository
+    *  `https://github.com/square/mobile-payments-sdk-flutter`
 * Make sure you've set up your environment for developing in Flutter
 
 ## 2. Get application credentials

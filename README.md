@@ -1,7 +1,6 @@
 # Flutter plug-in for Mobile Payments SDK
 
-//TODO: Add version and link to pub
-[![pub]()]()
+[![Pub](https://img.shields.io/pub/v/square_mobile_payments)](https://pub.dev/packages/square_mobile_payments)
 
 Mobile Payments SDK for Flutter supports the following SDK versions:
 
