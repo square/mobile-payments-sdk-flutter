@@ -2705,16 +2705,16 @@ Payment _$PaymentFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Payment {
   Money get amountMoney => throw _privateConstructorUsedError;
-  Money get appFeeMoney => throw _privateConstructorUsedError;
-  String get createdAt => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
-  String get locationId => throw _privateConstructorUsedError;
-  String get orderId => throw _privateConstructorUsedError;
-  String get referenceId => throw _privateConstructorUsedError;
+  Money? get appFeeMoney => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String? get locationId => throw _privateConstructorUsedError;
+  String? get orderId => throw _privateConstructorUsedError;
+  String? get referenceId => throw _privateConstructorUsedError;
   SourceType get sourceType => throw _privateConstructorUsedError;
-  Money get tipMoney => throw _privateConstructorUsedError;
+  Money? get tipMoney => throw _privateConstructorUsedError;
   Money get totalMoney => throw _privateConstructorUsedError;
-  String get updatedAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Payment to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -2732,20 +2732,20 @@ abstract class $PaymentCopyWith<$Res> {
   @useResult
   $Res call(
       {Money amountMoney,
-      Money appFeeMoney,
-      String createdAt,
-      String id,
-      String locationId,
-      String orderId,
-      String referenceId,
+      Money? appFeeMoney,
+      DateTime createdAt,
+      String? id,
+      String? locationId,
+      String? orderId,
+      String? referenceId,
       SourceType sourceType,
-      Money tipMoney,
+      Money? tipMoney,
       Money totalMoney,
-      String updatedAt});
+      DateTime updatedAt});
 
   $MoneyCopyWith<$Res> get amountMoney;
-  $MoneyCopyWith<$Res> get appFeeMoney;
-  $MoneyCopyWith<$Res> get tipMoney;
+  $MoneyCopyWith<$Res>? get appFeeMoney;
+  $MoneyCopyWith<$Res>? get tipMoney;
   $MoneyCopyWith<$Res> get totalMoney;
 }
 
@@ -2765,14 +2765,14 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
   @override
   $Res call({
     Object? amountMoney = null,
-    Object? appFeeMoney = null,
+    Object? appFeeMoney = freezed,
     Object? createdAt = null,
-    Object? id = null,
-    Object? locationId = null,
-    Object? orderId = null,
-    Object? referenceId = null,
+    Object? id = freezed,
+    Object? locationId = freezed,
+    Object? orderId = freezed,
+    Object? referenceId = freezed,
     Object? sourceType = null,
-    Object? tipMoney = null,
+    Object? tipMoney = freezed,
     Object? totalMoney = null,
     Object? updatedAt = null,
   }) {
@@ -2781,38 +2781,38 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
           ? _value.amountMoney
           : amountMoney // ignore: cast_nullable_to_non_nullable
               as Money,
-      appFeeMoney: null == appFeeMoney
+      appFeeMoney: freezed == appFeeMoney
           ? _value.appFeeMoney
           : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
+              as Money?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
+              as DateTime,
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      locationId: null == locationId
+              as String?,
+      locationId: freezed == locationId
           ? _value.locationId
           : locationId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderId: null == orderId
+              as String?,
+      orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      referenceId: null == referenceId
+              as String?,
+      referenceId: freezed == referenceId
           ? _value.referenceId
           : referenceId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       sourceType: null == sourceType
           ? _value.sourceType
           : sourceType // ignore: cast_nullable_to_non_nullable
               as SourceType,
-      tipMoney: null == tipMoney
+      tipMoney: freezed == tipMoney
           ? _value.tipMoney
           : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
+              as Money?,
       totalMoney: null == totalMoney
           ? _value.totalMoney
           : totalMoney // ignore: cast_nullable_to_non_nullable
@@ -2820,7 +2820,7 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
     ) as $Val);
   }
 
@@ -2838,8 +2838,12 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get appFeeMoney {
-    return $MoneyCopyWith<$Res>(_value.appFeeMoney, (value) {
+  $MoneyCopyWith<$Res>? get appFeeMoney {
+    if (_value.appFeeMoney == null) {
+      return null;
+    }
+
+    return $MoneyCopyWith<$Res>(_value.appFeeMoney!, (value) {
       return _then(_value.copyWith(appFeeMoney: value) as $Val);
     });
   }
@@ -2848,8 +2852,12 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get tipMoney {
-    return $MoneyCopyWith<$Res>(_value.tipMoney, (value) {
+  $MoneyCopyWith<$Res>? get tipMoney {
+    if (_value.tipMoney == null) {
+      return null;
+    }
+
+    return $MoneyCopyWith<$Res>(_value.tipMoney!, (value) {
       return _then(_value.copyWith(tipMoney: value) as $Val);
     });
   }
@@ -2874,23 +2882,23 @@ abstract class _$$PaymentImplCopyWith<$Res> implements $PaymentCopyWith<$Res> {
   @useResult
   $Res call(
       {Money amountMoney,
-      Money appFeeMoney,
-      String createdAt,
-      String id,
-      String locationId,
-      String orderId,
-      String referenceId,
+      Money? appFeeMoney,
+      DateTime createdAt,
+      String? id,
+      String? locationId,
+      String? orderId,
+      String? referenceId,
       SourceType sourceType,
-      Money tipMoney,
+      Money? tipMoney,
       Money totalMoney,
-      String updatedAt});
+      DateTime updatedAt});
 
   @override
   $MoneyCopyWith<$Res> get amountMoney;
   @override
-  $MoneyCopyWith<$Res> get appFeeMoney;
+  $MoneyCopyWith<$Res>? get appFeeMoney;
   @override
-  $MoneyCopyWith<$Res> get tipMoney;
+  $MoneyCopyWith<$Res>? get tipMoney;
   @override
   $MoneyCopyWith<$Res> get totalMoney;
 }
@@ -2909,14 +2917,14 @@ class __$$PaymentImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? amountMoney = null,
-    Object? appFeeMoney = null,
+    Object? appFeeMoney = freezed,
     Object? createdAt = null,
-    Object? id = null,
-    Object? locationId = null,
-    Object? orderId = null,
-    Object? referenceId = null,
+    Object? id = freezed,
+    Object? locationId = freezed,
+    Object? orderId = freezed,
+    Object? referenceId = freezed,
     Object? sourceType = null,
-    Object? tipMoney = null,
+    Object? tipMoney = freezed,
     Object? totalMoney = null,
     Object? updatedAt = null,
   }) {
@@ -2925,38 +2933,38 @@ class __$$PaymentImplCopyWithImpl<$Res>
           ? _value.amountMoney
           : amountMoney // ignore: cast_nullable_to_non_nullable
               as Money,
-      appFeeMoney: null == appFeeMoney
+      appFeeMoney: freezed == appFeeMoney
           ? _value.appFeeMoney
           : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
+              as Money?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
+              as DateTime,
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      locationId: null == locationId
+              as String?,
+      locationId: freezed == locationId
           ? _value.locationId
           : locationId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderId: null == orderId
+              as String?,
+      orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      referenceId: null == referenceId
+              as String?,
+      referenceId: freezed == referenceId
           ? _value.referenceId
           : referenceId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       sourceType: null == sourceType
           ? _value.sourceType
           : sourceType // ignore: cast_nullable_to_non_nullable
               as SourceType,
-      tipMoney: null == tipMoney
+      tipMoney: freezed == tipMoney
           ? _value.tipMoney
           : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
+              as Money?,
       totalMoney: null == totalMoney
           ? _value.totalMoney
           : totalMoney // ignore: cast_nullable_to_non_nullable
@@ -2964,7 +2972,7 @@ class __$$PaymentImplCopyWithImpl<$Res>
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
     ));
   }
 }
@@ -2974,14 +2982,14 @@ class __$$PaymentImplCopyWithImpl<$Res>
 class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
   const _$PaymentImpl(
       {required this.amountMoney,
-      required this.appFeeMoney,
+      this.appFeeMoney,
       required this.createdAt,
-      required this.id,
-      required this.locationId,
-      required this.orderId,
-      required this.referenceId,
+      this.id,
+      this.locationId,
+      this.orderId,
+      this.referenceId,
       required this.sourceType,
-      required this.tipMoney,
+      this.tipMoney,
       required this.totalMoney,
       required this.updatedAt});
 
@@ -2991,25 +2999,25 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
   @override
   final Money amountMoney;
   @override
-  final Money appFeeMoney;
+  final Money? appFeeMoney;
   @override
-  final String createdAt;
+  final DateTime createdAt;
   @override
-  final String id;
+  final String? id;
   @override
-  final String locationId;
+  final String? locationId;
   @override
-  final String orderId;
+  final String? orderId;
   @override
-  final String referenceId;
+  final String? referenceId;
   @override
   final SourceType sourceType;
   @override
-  final Money tipMoney;
+  final Money? tipMoney;
   @override
   final Money totalMoney;
   @override
-  final String updatedAt;
+  final DateTime updatedAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -3096,41 +3104,41 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
 abstract class _Payment implements Payment {
   const factory _Payment(
       {required final Money amountMoney,
-      required final Money appFeeMoney,
-      required final String createdAt,
-      required final String id,
-      required final String locationId,
-      required final String orderId,
-      required final String referenceId,
+      final Money? appFeeMoney,
+      required final DateTime createdAt,
+      final String? id,
+      final String? locationId,
+      final String? orderId,
+      final String? referenceId,
       required final SourceType sourceType,
-      required final Money tipMoney,
+      final Money? tipMoney,
       required final Money totalMoney,
-      required final String updatedAt}) = _$PaymentImpl;
+      required final DateTime updatedAt}) = _$PaymentImpl;
 
   factory _Payment.fromJson(Map<String, dynamic> json) = _$PaymentImpl.fromJson;
 
   @override
   Money get amountMoney;
   @override
-  Money get appFeeMoney;
+  Money? get appFeeMoney;
   @override
-  String get createdAt;
+  DateTime get createdAt;
   @override
-  String get id;
+  String? get id;
   @override
-  String get locationId;
+  String? get locationId;
   @override
-  String get orderId;
+  String? get orderId;
   @override
-  String get referenceId;
+  String? get referenceId;
   @override
   SourceType get sourceType;
   @override
-  Money get tipMoney;
+  Money? get tipMoney;
   @override
   Money get totalMoney;
   @override
-  String get updatedAt;
+  DateTime get updatedAt;
 
   /// Create a copy of Payment
   /// with the given fields replaced by the non-null parameter values.
@@ -3146,20 +3154,21 @@ PaymentParameters _$PaymentParametersFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PaymentParameters {
-  int get acceptPartialAuthorization => throw _privateConstructorUsedError;
+  int? get acceptPartialAuthorization => throw _privateConstructorUsedError;
   Money get amountMoney => throw _privateConstructorUsedError;
-  Money get appFeeMoney => throw _privateConstructorUsedError;
-  int get autocomplete => throw _privateConstructorUsedError;
-  String get customerId => throw _privateConstructorUsedError;
-  DelayAction get delayAction => throw _privateConstructorUsedError;
-  num get delayDuration => throw _privateConstructorUsedError;
-  String get idempotencyKey => throw _privateConstructorUsedError;
-  String get locationId => throw _privateConstructorUsedError;
-  String get note => throw _privateConstructorUsedError;
-  String get orderId => throw _privateConstructorUsedError;
-  String get referenceId => throw _privateConstructorUsedError;
-  String get teamMemberId => throw _privateConstructorUsedError;
-  Money get tipMoney => throw _privateConstructorUsedError;
+  Money? get appFeeMoney => throw _privateConstructorUsedError; // Nullable
+  bool? get autocomplete => throw _privateConstructorUsedError; // Nullable
+  String? get customerId => throw _privateConstructorUsedError; // Nullable
+  DelayAction? get delayAction =>
+      throw _privateConstructorUsedError; // Nullable
+  num? get delayDuration => throw _privateConstructorUsedError; // Nullable
+  String get idempotencyKey => throw _privateConstructorUsedError; // Required
+  String? get locationId => throw _privateConstructorUsedError; // Nullable
+  String? get note => throw _privateConstructorUsedError; // Nullable
+  String? get orderId => throw _privateConstructorUsedError; // Nullable
+  String? get referenceId => throw _privateConstructorUsedError; // Nullable
+  String? get teamMemberId => throw _privateConstructorUsedError; // Nullable
+  Money? get tipMoney => throw _privateConstructorUsedError;
 
   /// Serializes this PaymentParameters to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -3178,24 +3187,24 @@ abstract class $PaymentParametersCopyWith<$Res> {
       _$PaymentParametersCopyWithImpl<$Res, PaymentParameters>;
   @useResult
   $Res call(
-      {int acceptPartialAuthorization,
+      {int? acceptPartialAuthorization,
       Money amountMoney,
-      Money appFeeMoney,
-      int autocomplete,
-      String customerId,
-      DelayAction delayAction,
-      num delayDuration,
+      Money? appFeeMoney,
+      bool? autocomplete,
+      String? customerId,
+      DelayAction? delayAction,
+      num? delayDuration,
       String idempotencyKey,
-      String locationId,
-      String note,
-      String orderId,
-      String referenceId,
-      String teamMemberId,
-      Money tipMoney});
+      String? locationId,
+      String? note,
+      String? orderId,
+      String? referenceId,
+      String? teamMemberId,
+      Money? tipMoney});
 
   $MoneyCopyWith<$Res> get amountMoney;
-  $MoneyCopyWith<$Res> get appFeeMoney;
-  $MoneyCopyWith<$Res> get tipMoney;
+  $MoneyCopyWith<$Res>? get appFeeMoney;
+  $MoneyCopyWith<$Res>? get tipMoney;
 }
 
 /// @nodoc
@@ -3213,78 +3222,78 @@ class _$PaymentParametersCopyWithImpl<$Res, $Val extends PaymentParameters>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? acceptPartialAuthorization = null,
+    Object? acceptPartialAuthorization = freezed,
     Object? amountMoney = null,
-    Object? appFeeMoney = null,
-    Object? autocomplete = null,
-    Object? customerId = null,
-    Object? delayAction = null,
-    Object? delayDuration = null,
+    Object? appFeeMoney = freezed,
+    Object? autocomplete = freezed,
+    Object? customerId = freezed,
+    Object? delayAction = freezed,
+    Object? delayDuration = freezed,
     Object? idempotencyKey = null,
-    Object? locationId = null,
-    Object? note = null,
-    Object? orderId = null,
-    Object? referenceId = null,
-    Object? teamMemberId = null,
-    Object? tipMoney = null,
+    Object? locationId = freezed,
+    Object? note = freezed,
+    Object? orderId = freezed,
+    Object? referenceId = freezed,
+    Object? teamMemberId = freezed,
+    Object? tipMoney = freezed,
   }) {
     return _then(_value.copyWith(
-      acceptPartialAuthorization: null == acceptPartialAuthorization
+      acceptPartialAuthorization: freezed == acceptPartialAuthorization
           ? _value.acceptPartialAuthorization
           : acceptPartialAuthorization // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       amountMoney: null == amountMoney
           ? _value.amountMoney
           : amountMoney // ignore: cast_nullable_to_non_nullable
               as Money,
-      appFeeMoney: null == appFeeMoney
+      appFeeMoney: freezed == appFeeMoney
           ? _value.appFeeMoney
           : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      autocomplete: null == autocomplete
+              as Money?,
+      autocomplete: freezed == autocomplete
           ? _value.autocomplete
           : autocomplete // ignore: cast_nullable_to_non_nullable
-              as int,
-      customerId: null == customerId
+              as bool?,
+      customerId: freezed == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      delayAction: null == delayAction
+              as String?,
+      delayAction: freezed == delayAction
           ? _value.delayAction
           : delayAction // ignore: cast_nullable_to_non_nullable
-              as DelayAction,
-      delayDuration: null == delayDuration
+              as DelayAction?,
+      delayDuration: freezed == delayDuration
           ? _value.delayDuration
           : delayDuration // ignore: cast_nullable_to_non_nullable
-              as num,
+              as num?,
       idempotencyKey: null == idempotencyKey
           ? _value.idempotencyKey
           : idempotencyKey // ignore: cast_nullable_to_non_nullable
               as String,
-      locationId: null == locationId
+      locationId: freezed == locationId
           ? _value.locationId
           : locationId // ignore: cast_nullable_to_non_nullable
-              as String,
-      note: null == note
+              as String?,
+      note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderId: null == orderId
+              as String?,
+      orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      referenceId: null == referenceId
+              as String?,
+      referenceId: freezed == referenceId
           ? _value.referenceId
           : referenceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      teamMemberId: null == teamMemberId
+              as String?,
+      teamMemberId: freezed == teamMemberId
           ? _value.teamMemberId
           : teamMemberId // ignore: cast_nullable_to_non_nullable
-              as String,
-      tipMoney: null == tipMoney
+              as String?,
+      tipMoney: freezed == tipMoney
           ? _value.tipMoney
           : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
+              as Money?,
     ) as $Val);
   }
 
@@ -3302,8 +3311,12 @@ class _$PaymentParametersCopyWithImpl<$Res, $Val extends PaymentParameters>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get appFeeMoney {
-    return $MoneyCopyWith<$Res>(_value.appFeeMoney, (value) {
+  $MoneyCopyWith<$Res>? get appFeeMoney {
+    if (_value.appFeeMoney == null) {
+      return null;
+    }
+
+    return $MoneyCopyWith<$Res>(_value.appFeeMoney!, (value) {
       return _then(_value.copyWith(appFeeMoney: value) as $Val);
     });
   }
@@ -3312,8 +3325,12 @@ class _$PaymentParametersCopyWithImpl<$Res, $Val extends PaymentParameters>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get tipMoney {
-    return $MoneyCopyWith<$Res>(_value.tipMoney, (value) {
+  $MoneyCopyWith<$Res>? get tipMoney {
+    if (_value.tipMoney == null) {
+      return null;
+    }
+
+    return $MoneyCopyWith<$Res>(_value.tipMoney!, (value) {
       return _then(_value.copyWith(tipMoney: value) as $Val);
     });
   }
@@ -3328,27 +3345,27 @@ abstract class _$$PaymentParametersImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int acceptPartialAuthorization,
+      {int? acceptPartialAuthorization,
       Money amountMoney,
-      Money appFeeMoney,
-      int autocomplete,
-      String customerId,
-      DelayAction delayAction,
-      num delayDuration,
+      Money? appFeeMoney,
+      bool? autocomplete,
+      String? customerId,
+      DelayAction? delayAction,
+      num? delayDuration,
       String idempotencyKey,
-      String locationId,
-      String note,
-      String orderId,
-      String referenceId,
-      String teamMemberId,
-      Money tipMoney});
+      String? locationId,
+      String? note,
+      String? orderId,
+      String? referenceId,
+      String? teamMemberId,
+      Money? tipMoney});
 
   @override
   $MoneyCopyWith<$Res> get amountMoney;
   @override
-  $MoneyCopyWith<$Res> get appFeeMoney;
+  $MoneyCopyWith<$Res>? get appFeeMoney;
   @override
-  $MoneyCopyWith<$Res> get tipMoney;
+  $MoneyCopyWith<$Res>? get tipMoney;
 }
 
 /// @nodoc
@@ -3364,78 +3381,78 @@ class __$$PaymentParametersImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? acceptPartialAuthorization = null,
+    Object? acceptPartialAuthorization = freezed,
     Object? amountMoney = null,
-    Object? appFeeMoney = null,
-    Object? autocomplete = null,
-    Object? customerId = null,
-    Object? delayAction = null,
-    Object? delayDuration = null,
+    Object? appFeeMoney = freezed,
+    Object? autocomplete = freezed,
+    Object? customerId = freezed,
+    Object? delayAction = freezed,
+    Object? delayDuration = freezed,
     Object? idempotencyKey = null,
-    Object? locationId = null,
-    Object? note = null,
-    Object? orderId = null,
-    Object? referenceId = null,
-    Object? teamMemberId = null,
-    Object? tipMoney = null,
+    Object? locationId = freezed,
+    Object? note = freezed,
+    Object? orderId = freezed,
+    Object? referenceId = freezed,
+    Object? teamMemberId = freezed,
+    Object? tipMoney = freezed,
   }) {
     return _then(_$PaymentParametersImpl(
-      acceptPartialAuthorization: null == acceptPartialAuthorization
+      acceptPartialAuthorization: freezed == acceptPartialAuthorization
           ? _value.acceptPartialAuthorization
           : acceptPartialAuthorization // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       amountMoney: null == amountMoney
           ? _value.amountMoney
           : amountMoney // ignore: cast_nullable_to_non_nullable
               as Money,
-      appFeeMoney: null == appFeeMoney
+      appFeeMoney: freezed == appFeeMoney
           ? _value.appFeeMoney
           : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      autocomplete: null == autocomplete
+              as Money?,
+      autocomplete: freezed == autocomplete
           ? _value.autocomplete
           : autocomplete // ignore: cast_nullable_to_non_nullable
-              as int,
-      customerId: null == customerId
+              as bool?,
+      customerId: freezed == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      delayAction: null == delayAction
+              as String?,
+      delayAction: freezed == delayAction
           ? _value.delayAction
           : delayAction // ignore: cast_nullable_to_non_nullable
-              as DelayAction,
-      delayDuration: null == delayDuration
+              as DelayAction?,
+      delayDuration: freezed == delayDuration
           ? _value.delayDuration
           : delayDuration // ignore: cast_nullable_to_non_nullable
-              as num,
+              as num?,
       idempotencyKey: null == idempotencyKey
           ? _value.idempotencyKey
           : idempotencyKey // ignore: cast_nullable_to_non_nullable
               as String,
-      locationId: null == locationId
+      locationId: freezed == locationId
           ? _value.locationId
           : locationId // ignore: cast_nullable_to_non_nullable
-              as String,
-      note: null == note
+              as String?,
+      note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderId: null == orderId
+              as String?,
+      orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      referenceId: null == referenceId
+              as String?,
+      referenceId: freezed == referenceId
           ? _value.referenceId
           : referenceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      teamMemberId: null == teamMemberId
+              as String?,
+      teamMemberId: freezed == teamMemberId
           ? _value.teamMemberId
           : teamMemberId // ignore: cast_nullable_to_non_nullable
-              as String,
-      tipMoney: null == tipMoney
+              as String?,
+      tipMoney: freezed == tipMoney
           ? _value.tipMoney
           : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
+              as Money?,
     ));
   }
 }
@@ -3446,53 +3463,63 @@ class _$PaymentParametersImpl
     with DiagnosticableTreeMixin
     implements _PaymentParameters {
   const _$PaymentParametersImpl(
-      {required this.acceptPartialAuthorization,
+      {this.acceptPartialAuthorization,
       required this.amountMoney,
-      required this.appFeeMoney,
-      required this.autocomplete,
-      required this.customerId,
-      required this.delayAction,
-      this.delayDuration = 0,
+      this.appFeeMoney,
+      this.autocomplete,
+      this.customerId,
+      this.delayAction,
+      this.delayDuration,
       required this.idempotencyKey,
-      required this.locationId,
-      required this.note,
-      required this.orderId,
-      required this.referenceId,
-      required this.teamMemberId,
-      required this.tipMoney});
+      this.locationId,
+      this.note,
+      this.orderId,
+      this.referenceId,
+      this.teamMemberId,
+      this.tipMoney});
 
   factory _$PaymentParametersImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentParametersImplFromJson(json);
 
   @override
-  final int acceptPartialAuthorization;
+  final int? acceptPartialAuthorization;
   @override
   final Money amountMoney;
   @override
-  final Money appFeeMoney;
+  final Money? appFeeMoney;
+// Nullable
   @override
-  final int autocomplete;
+  final bool? autocomplete;
+// Nullable
   @override
-  final String customerId;
+  final String? customerId;
+// Nullable
   @override
-  final DelayAction delayAction;
+  final DelayAction? delayAction;
+// Nullable
   @override
-  @JsonKey()
-  final num delayDuration;
+  final num? delayDuration;
+// Nullable
   @override
   final String idempotencyKey;
+// Required
   @override
-  final String locationId;
+  final String? locationId;
+// Nullable
   @override
-  final String note;
+  final String? note;
+// Nullable
   @override
-  final String orderId;
+  final String? orderId;
+// Nullable
   @override
-  final String referenceId;
+  final String? referenceId;
+// Nullable
   @override
-  final String teamMemberId;
+  final String? teamMemberId;
+// Nullable
   @override
-  final Money tipMoney;
+  final Money? tipMoney;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -3594,52 +3621,52 @@ class _$PaymentParametersImpl
 
 abstract class _PaymentParameters implements PaymentParameters {
   const factory _PaymentParameters(
-      {required final int acceptPartialAuthorization,
+      {final int? acceptPartialAuthorization,
       required final Money amountMoney,
-      required final Money appFeeMoney,
-      required final int autocomplete,
-      required final String customerId,
-      required final DelayAction delayAction,
-      final num delayDuration,
+      final Money? appFeeMoney,
+      final bool? autocomplete,
+      final String? customerId,
+      final DelayAction? delayAction,
+      final num? delayDuration,
       required final String idempotencyKey,
-      required final String locationId,
-      required final String note,
-      required final String orderId,
-      required final String referenceId,
-      required final String teamMemberId,
-      required final Money tipMoney}) = _$PaymentParametersImpl;
+      final String? locationId,
+      final String? note,
+      final String? orderId,
+      final String? referenceId,
+      final String? teamMemberId,
+      final Money? tipMoney}) = _$PaymentParametersImpl;
 
   factory _PaymentParameters.fromJson(Map<String, dynamic> json) =
       _$PaymentParametersImpl.fromJson;
 
   @override
-  int get acceptPartialAuthorization;
+  int? get acceptPartialAuthorization;
   @override
   Money get amountMoney;
   @override
-  Money get appFeeMoney;
+  Money? get appFeeMoney; // Nullable
   @override
-  int get autocomplete;
+  bool? get autocomplete; // Nullable
   @override
-  String get customerId;
+  String? get customerId; // Nullable
   @override
-  DelayAction get delayAction;
+  DelayAction? get delayAction; // Nullable
   @override
-  num get delayDuration;
+  num? get delayDuration; // Nullable
   @override
-  String get idempotencyKey;
+  String get idempotencyKey; // Required
   @override
-  String get locationId;
+  String? get locationId; // Nullable
   @override
-  String get note;
+  String? get note; // Nullable
   @override
-  String get orderId;
+  String? get orderId; // Nullable
   @override
-  String get referenceId;
+  String? get referenceId; // Nullable
   @override
-  String get teamMemberId;
+  String? get teamMemberId; // Nullable
   @override
-  Money get tipMoney;
+  Money? get tipMoney;
 
   /// Create a copy of PaymentParameters
   /// with the given fields replaced by the non-null parameter values.

@@ -346,23 +346,27 @@ const _$PromptModeEnumMap = {
 _$PaymentImpl _$$PaymentImplFromJson(Map<String, dynamic> json) =>
     _$PaymentImpl(
       amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
-      appFeeMoney: Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
-      createdAt: json['createdAt'] as String,
-      id: json['id'] as String,
-      locationId: json['locationId'] as String,
-      orderId: json['orderId'] as String,
-      referenceId: json['referenceId'] as String,
+      appFeeMoney: json['appFeeMoney'] == null
+          ? null
+          : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      id: json['id'] as String?,
+      locationId: json['locationId'] as String?,
+      orderId: json['orderId'] as String?,
+      referenceId: json['referenceId'] as String?,
       sourceType: $enumDecode(_$SourceTypeEnumMap, json['sourceType']),
-      tipMoney: Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
+      tipMoney: json['tipMoney'] == null
+          ? null
+          : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
       totalMoney: Money.fromJson(json['totalMoney'] as Map<String, dynamic>),
-      updatedAt: json['updatedAt'] as String,
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
 Map<String, dynamic> _$$PaymentImplToJson(_$PaymentImpl instance) =>
     <String, dynamic>{
       'amountMoney': instance.amountMoney,
       'appFeeMoney': instance.appFeeMoney,
-      'createdAt': instance.createdAt,
+      'createdAt': instance.createdAt.toIso8601String(),
       'id': instance.id,
       'locationId': instance.locationId,
       'orderId': instance.orderId,
@@ -370,7 +374,7 @@ Map<String, dynamic> _$$PaymentImplToJson(_$PaymentImpl instance) =>
       'sourceType': _$SourceTypeEnumMap[instance.sourceType]!,
       'tipMoney': instance.tipMoney,
       'totalMoney': instance.totalMoney,
-      'updatedAt': instance.updatedAt,
+      'updatedAt': instance.updatedAt.toIso8601String(),
     };
 
 const _$SourceTypeEnumMap = {
@@ -387,20 +391,25 @@ _$PaymentParametersImpl _$$PaymentParametersImplFromJson(
         Map<String, dynamic> json) =>
     _$PaymentParametersImpl(
       acceptPartialAuthorization:
-          (json['acceptPartialAuthorization'] as num).toInt(),
+          (json['acceptPartialAuthorization'] as num?)?.toInt(),
       amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
-      appFeeMoney: Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
-      autocomplete: (json['autocomplete'] as num).toInt(),
-      customerId: json['customerId'] as String,
-      delayAction: $enumDecode(_$DelayActionEnumMap, json['delayAction']),
-      delayDuration: json['delayDuration'] as num? ?? 0,
+      appFeeMoney: json['appFeeMoney'] == null
+          ? null
+          : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
+      autocomplete: json['autocomplete'] as bool?,
+      customerId: json['customerId'] as String?,
+      delayAction:
+          $enumDecodeNullable(_$DelayActionEnumMap, json['delayAction']),
+      delayDuration: json['delayDuration'] as num?,
       idempotencyKey: json['idempotencyKey'] as String,
-      locationId: json['locationId'] as String,
-      note: json['note'] as String,
-      orderId: json['orderId'] as String,
-      referenceId: json['referenceId'] as String,
-      teamMemberId: json['teamMemberId'] as String,
-      tipMoney: Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
+      locationId: json['locationId'] as String?,
+      note: json['note'] as String?,
+      orderId: json['orderId'] as String?,
+      referenceId: json['referenceId'] as String?,
+      teamMemberId: json['teamMemberId'] as String?,
+      tipMoney: json['tipMoney'] == null
+          ? null
+          : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$PaymentParametersImplToJson(
@@ -411,7 +420,7 @@ Map<String, dynamic> _$$PaymentParametersImplToJson(
       'appFeeMoney': instance.appFeeMoney,
       'autocomplete': instance.autocomplete,
       'customerId': instance.customerId,
-      'delayAction': _$DelayActionEnumMap[instance.delayAction]!,
+      'delayAction': _$DelayActionEnumMap[instance.delayAction],
       'delayDuration': instance.delayDuration,
       'idempotencyKey': instance.idempotencyKey,
       'locationId': instance.locationId,

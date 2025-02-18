@@ -9,9 +9,11 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
-import com.squareup.sdk.mobilepayments.authorization.AuthorizeErrorCode
-import com.squareup.sdk.mobilepayments.core.Result as SdkResult
-import com.squareup.sdk.mobilepayments.mockreader.ui.MockReaderUI
+import com.squareup.square_mobile_payments_sdk.modules.PaymentModule
+import com.squareup.square_mobile_payments_sdk.modules.AuthModule
+import com.squareup.square_mobile_payments_sdk.modules.MockReaderModule
+import com.squareup.square_mobile_payments_sdk.modules.SettingsModule
+
 
 /** SquareMobilePaymentsSdkPlugin */
 class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
@@ -27,38 +29,61 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
-
-    val authManager =  MobilePaymentsSdk.authorizationManager()
-
-    if (call.method == "getPlatformVersion") {
-      result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
-    } else if (call.method == "authorize") {
-      val accessToken = call.argument<String>("accessToken") ?: "";
-      val locationId = call.argument<String>("locationId") ?: "";
-
-
-        authManager.authorize(accessToken, locationId) { sdkResult ->
-          when (sdkResult) {
-              is SdkResult.Success -> {
-                result.success(sdkResult.value.toString())
-              }
-              is SdkResult.Failure -> {
-                result.error(sdkResult.errorCode.toString(), sdkResult.errorMessage, sdkResult.debugCode)
-              }
-          }
+    when (call.method) {
+      "getPlatformVersion" -> 
+        result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
+      
+      "getSDKVersion" -> 
+        result.success(MobilePaymentsSdk.settingsManager().getSdkSettings().sdkVersion)
+      
+      "isSandboxEnvironment" -> 
+        result.success(MobilePaymentsSdk.isSandboxEnvironment())
+      
+      "getAuthorizationState" -> 
+        AuthModule.getAuthorizationState(result)
+      
+      "getAuthorizedLocation" -> 
+        AuthModule.getAuthorizedLocation(result)
+      
+      "authorize" -> {
+        val accessToken = call.argument<String>("accessToken") ?: ""
+        val locationId = call.argument<String>("locationId") ?: ""
+        AuthModule.authorize(result, accessToken, locationId)
+      }
+      
+      "deauthorize" -> 
+        AuthModule.deAuthorize(result)
+      
+      "showMockReaderUI" -> 
+        MockReaderModule.showMockReaderUI(result)
+      
+      "hideMockReaderUI" -> 
+        MockReaderModule.hideMockReaderUI(result)
+      
+      "showSettings" -> 
+        SettingsModule.showSettings(result)
+      
+      "startPayment" -> {
+        val paymentParameters = call.argument<HashMap<String, Any>>("paymentParameters")
+        val promptParameters = call.argument<HashMap<String, Any>>("promptParameters")
+        
+        if (paymentParameters == null || promptParameters == null) {
+          result.error("INVALID_PARAMETERS", "Null params", null)
+        } else {
+          PaymentModule.startPayment(result, paymentParameters, promptParameters)
         }
-
-
-
-    } else if (call.method == "deauthorize") {
-      authManager.deauthorize()
-      result.success("Deauthorized")
-    }else {
-      result.notImplemented()
+      }
+      else -> 
+        result.notImplemented()
     }
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
+  }
+
+  companion object {
+    const val SANDBOX = "sandbox"
+    const val PRODUCTION = "production"
   }
 }

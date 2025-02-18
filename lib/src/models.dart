@@ -164,16 +164,16 @@ class PromptParameters with _$PromptParameters {
 class Payment with _$Payment {
   const factory Payment({
     required Money amountMoney,
-    required Money appFeeMoney,
-    required String createdAt,
-    required String id,
-    required String locationId,
-    required String orderId,
-    required String referenceId,
+    Money? appFeeMoney,
+    required DateTime createdAt,
+    String? id,
+    String? locationId,
+    String? orderId,
+    String? referenceId,
     required SourceType sourceType,
-    required Money tipMoney,
+    Money? tipMoney,
     required Money totalMoney,
-    required String updatedAt,
+    required DateTime updatedAt,
   }) = _Payment;
 
   factory Payment.fromJson(Map<String, Object?> json)
@@ -183,20 +183,20 @@ class Payment with _$Payment {
 @freezed
 class PaymentParameters with _$PaymentParameters {
   const factory PaymentParameters({
-    required int acceptPartialAuthorization,
-    required Money amountMoney,
-    required Money appFeeMoney,
-    required int autocomplete,
-    required String customerId,
-    required DelayAction delayAction,
-    @Default(0) num delayDuration,
-    required String idempotencyKey,
-    required String locationId,
-    required String note,
-    required String orderId,
-    required String referenceId,
-    required String teamMemberId,
-    required Money tipMoney,
+    int? acceptPartialAuthorization,
+    required Money amountMoney, 
+    Money? appFeeMoney, // Nullable
+    bool? autocomplete, // Nullable
+    String? customerId, // Nullable
+    DelayAction? delayAction, // Nullable
+    num? delayDuration, // Nullable
+    required String idempotencyKey, // Required
+    String? locationId, // Nullable
+    String? note, // Nullable
+    String? orderId, // Nullable
+    String? referenceId, // Nullable
+    String? teamMemberId, // Nullable
+    Money? tipMoney, // Nullable
   }) = _PaymentParameters;
 
   factory PaymentParameters.fromJson(Map<String, Object?> json)

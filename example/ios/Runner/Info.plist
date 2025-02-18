@@ -45,5 +45,26 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to provide better services.</string>
+
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need access to your location even when the app is in the background.</string>
+
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>PreciseLocation</key>
+		<string>We need precise location for accurate positioning.</string>
+	</dict>
+
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app needs microphone access to record audio.</string>
+
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>This application requires access to Bluetooth to connect to devices.</string>
+
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Bluetooth access is required to communicate with nearby devices.</string>
+
 </dict>
 </plist>
