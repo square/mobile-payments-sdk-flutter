@@ -51,27 +51,17 @@ You can also refer to [MPSDK Android Quickstart](https://developer.squareup.com/
 import SquareMobilePaymentsSDK
 // ...
 override func application(
-    _ application: UIApplication, 
+    _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-) -> Bool {
+  ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
-    MobilePaymentsSDK.initialize(squareApplicationID: "Your Square Application ID")
-    return super.application(application, didFinishLaunchingWithOptions: launchOptions) 
-}
-```
-or
-```ObjC
-#import "SquareMobilePaymentsSDK/SquareMobilePaymentsSDK-Swift.h"
-// ...
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-	[SQMPMobilePaymentsSDK initializeWithApplicationLaunchOptions:launchOptions squareApplicationID:@"Your Square Application ID"];
- 	...
-	return [super application:application didFinishLaunchingWithOptions:launchOptions];
-}
+    let applicationId = "REPLACE ME!"
+      MobilePaymentsSDK.initialize(squareApplicationID: applicationId)
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
 ```
 
-2. For Android: update your `MainApplication.kt` file as follows:
+1. For Android: update your `MainApplication.kt` file as follows:
 ```Kotlin
 import android.app.Application
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
@@ -122,8 +112,8 @@ try {
         PaymentParameters(
             amountMoney: Money(amount: 100, currencyCode: CurrencyCode.eur),
             idempotencyKey: idempotencyKey
-        ), 
-        PromptParameters(additionalPaymentMethods: List.empty(), mode: PromptMode.defaultMode));    
+        ),
+        PromptParameters(additionalPaymentMethods: List.empty(), mode: PromptMode.defaultMode));
     print('Payment successful:: $payment');
 } catch (e) {
     print('Payment error: $e');
