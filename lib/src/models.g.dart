@@ -349,7 +349,7 @@ _$PaymentImpl _$$PaymentImplFromJson(Map<String, dynamic> json) =>
       appFeeMoney: json['appFeeMoney'] == null
           ? null
           : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
-      createdAt: json['createdAt'] as String,
+      createdAt: DateTime.parse(json['createdAt'] as String),
       id: json['id'] as String?,
       locationId: json['locationId'] as String?,
       orderId: json['orderId'] as String?,
@@ -359,14 +359,14 @@ _$PaymentImpl _$$PaymentImplFromJson(Map<String, dynamic> json) =>
           ? null
           : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
       totalMoney: Money.fromJson(json['totalMoney'] as Map<String, dynamic>),
-      updatedAt: json['updatedAt'] as String,
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
 Map<String, dynamic> _$$PaymentImplToJson(_$PaymentImpl instance) =>
     <String, dynamic>{
       'amountMoney': instance.amountMoney,
       'appFeeMoney': instance.appFeeMoney,
-      'createdAt': instance.createdAt,
+      'createdAt': instance.createdAt.toIso8601String(),
       'id': instance.id,
       'locationId': instance.locationId,
       'orderId': instance.orderId,
@@ -374,7 +374,7 @@ Map<String, dynamic> _$$PaymentImplToJson(_$PaymentImpl instance) =>
       'sourceType': _$SourceTypeEnumMap[instance.sourceType]!,
       'tipMoney': instance.tipMoney,
       'totalMoney': instance.totalMoney,
-      'updatedAt': instance.updatedAt,
+      'updatedAt': instance.updatedAt.toIso8601String(),
     };
 
 const _$SourceTypeEnumMap = {
@@ -396,7 +396,7 @@ _$PaymentParametersImpl _$$PaymentParametersImplFromJson(
       appFeeMoney: json['appFeeMoney'] == null
           ? null
           : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
-      autocomplete: (json['autocomplete'] as num?)?.toInt(),
+      autocomplete: json['autocomplete'] as bool?,
       customerId: json['customerId'] as String?,
       delayAction:
           $enumDecodeNullable(_$DelayActionEnumMap, json['delayAction']),

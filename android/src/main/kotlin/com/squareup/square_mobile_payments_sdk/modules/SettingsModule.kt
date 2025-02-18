@@ -12,11 +12,9 @@ class SettingsModule {
         fun showSettings(result: MethodChannel.Result) {
             settingsManager.showSettings { 
                 sdkResult -> when (sdkResult) {
-                  is SdkResult.Success -> {
-                    print("Show Settings success")
-                  }
+                  is SdkResult.Success -> {}
                   is SdkResult.Failure -> {
-                    print("Show Settings failed")
+                    result.error(sdkResult.errorCode.toString(), sdkResult.errorMessage, sdkResult.debugCode)
                   }
                 } 
               }

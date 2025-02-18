@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:square_mobile_payments_sdk/src/models.dart';
 

@@ -11,6 +11,10 @@ import com.squareup.sdk.mobilepayments.core.ErrorDetails
 import com.squareup.sdk.mobilepayments.payment.DigitalWalletDetails
 import com.squareup.sdk.mobilepayments.payment.CashPaymentDetails
 
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.TimeZone
+
 fun Payment.SourceType.toName(): String {
   return when (this) {
     Payment.SourceType.CARD -> "card"
@@ -26,8 +30,8 @@ fun Payment.SourceType.toName(): String {
 
 fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
     return mapOf(
-      "createdAt" to createdAt.time.toString(),
-      "updatedAt" to updatedAt.time.toString(),
+      "createdAt" to createdAt.toISO8601String(),
+      "updatedAt" to updatedAt.toISO8601String(),
       "amountMoney" to amountMoney.toMoneyMap(),
       "tipMoney" to amountMoney?.toMoneyMap(),
       "appFeeMoney" to appFeeMoney?.toMoneyMap(),
@@ -37,7 +41,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "sourceType" to sourceType.toName(),
       "cashDetails" to cashDetails?.toCashDetailsMap(),
       "externalDetails" to externalDetails?.toExternalDetailsMap(),
-      "uploadedAt" to uploadedAt?.time.toString(),
+      "uploadedAt" to uploadedAt?.toISO8601String(),
       "localId" to localId,
       "id" to id,
       "status" to status.name,
@@ -48,8 +52,8 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
   
   fun Payment.OnlinePayment.toOnlineMap(): Map<String, Any?> {
     return mapOf(
-      "createdAt" to createdAt.time.toString(),
-      "updatedAt" to updatedAt.time.toString(),
+      "createdAt" to createdAt.toISO8601String(),
+      "updatedAt" to updatedAt.toISO8601String(),
       "locationId" to locationId,
       "amountMoney" to amountMoney.toMoneyMap(),
       "tipMoney" to tipMoney?.toMoneyMap(),
@@ -170,4 +174,10 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "remainingBalanceAmountMoney" to remainingBalanceAmountMoney?.toMoneyMap(),
       "felicaSprwdId" to felicaSprwdId
     )
+  }
+
+  fun Date.toISO8601String(): String {
+    val isoFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    isoFormat.timeZone = TimeZone.getTimeZone("UTC")
+    return isoFormat.format(this)
   }

@@ -41,8 +41,8 @@ extension OnlinePayment {
     public func toMap() -> [String: Any?] {
         return [
             "id" : id,
-            "createdAt" : String(createdAt.timeIntervalSince1970 * 1000),
-            "updatedAt": String(updatedAt.timeIntervalSince1970 * 1000),
+            "createdAt" : createdAt.ISO8601Format(),
+            "updatedAt": updatedAt.ISO8601Format(),
             "amountMoney": amountMoney.toMap(),
             "tipMoney": tipMoney?.toMap(),
             "appFeeMoney" : appFeeMoney?.toMap(),

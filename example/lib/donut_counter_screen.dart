@@ -17,7 +17,7 @@ class DonutCounterScreen extends StatefulWidget {
 
 class _DonutCounterScreenState extends State<DonutCounterScreen> {
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
-  var amount = 350;
+  var amount = 100;
 
   _onBuy(BuildContext context, int amount) async {
     try {

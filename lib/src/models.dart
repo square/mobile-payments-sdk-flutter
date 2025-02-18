@@ -165,7 +165,7 @@ class Payment with _$Payment {
   const factory Payment({
     required Money amountMoney,
     Money? appFeeMoney,
-    required String createdAt,
+    required DateTime createdAt,
     String? id,
     String? locationId,
     String? orderId,
@@ -173,7 +173,7 @@ class Payment with _$Payment {
     required SourceType sourceType,
     Money? tipMoney,
     required Money totalMoney,
-    required String updatedAt,
+    required DateTime updatedAt,
   }) = _Payment;
 
   factory Payment.fromJson(Map<String, Object?> json)
@@ -186,7 +186,7 @@ class PaymentParameters with _$PaymentParameters {
     int? acceptPartialAuthorization,
     required Money amountMoney, 
     Money? appFeeMoney, // Nullable
-    int? autocomplete, // Nullable
+    bool? autocomplete, // Nullable
     String? customerId, // Nullable
     DelayAction? delayAction, // Nullable
     num? delayDuration, // Nullable

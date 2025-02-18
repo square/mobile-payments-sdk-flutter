@@ -29,38 +29,52 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
-    } else if (call.method == "getSDKVersion") {
-      result.success(MobilePaymentsSdk.settingsManager().getSdkSettings().sdkVersion)
-    } else if (call.method == "isSandboxEnvironment") {
-      result.success(MobilePaymentsSdk.isSandboxEnvironment())
-    } else if (call.method == "getAuthorizationState") {
-      AuthModule.getAuthorizationState(result)
-    } else if (call.method == "getAuthorizedLocation") {
-      AuthModule.getAuthorizedLocation(result)
-    } else if (call.method == "authorize") {
-      val accessToken = call.argument<String>("accessToken") ?: "";
-      val locationId = call.argument<String>("locationId") ?: "";
-      AuthModule.authorize(result, accessToken, locationId)
-    } else if (call.method == "deauthorize") {
-      AuthModule.deAuthorize(result)
-    } else if (call.method == "showMockReaderUI") {
-      MockReaderModule.showMockReaderUI(result)
-    } else if (call.method == "hideMockReaderUI") {
-      MockReaderModule.hideMockReaderUI(result)
-    } else if (call.method == "showSettings") {
-      SettingsModule.showSettings(result)
-    } else if (call.method == "startPayment") {
-      val paymentParameters = call.argument<HashMap<String, Any>>("paymentParameters");
-      val promptParameters = call.argument<HashMap<String, Any>>("promptParameters");
-      if (paymentParameters == null || promptParameters == null) {
-        result.error("INVALID_PARAMETERS", "Null params", null)
-      } else {
-        PaymentModule.startPayment(result, paymentParameters, promptParameters)
+    when (call.method) {
+      "getPlatformVersion" -> 
+        result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
+      
+      "getSDKVersion" -> 
+        result.success(MobilePaymentsSdk.settingsManager().getSdkSettings().sdkVersion)
+      
+      "isSandboxEnvironment" -> 
+        result.success(MobilePaymentsSdk.isSandboxEnvironment())
+      
+      "getAuthorizationState" -> 
+        AuthModule.getAuthorizationState(result)
+      
+      "getAuthorizedLocation" -> 
+        AuthModule.getAuthorizedLocation(result)
+      
+      "authorize" -> {
+        val accessToken = call.argument<String>("accessToken") ?: ""
+        val locationId = call.argument<String>("locationId") ?: ""
+        AuthModule.authorize(result, accessToken, locationId)
       }
-    } else {
-      result.notImplemented()
+      
+      "deauthorize" -> 
+        AuthModule.deAuthorize(result)
+      
+      "showMockReaderUI" -> 
+        MockReaderModule.showMockReaderUI(result)
+      
+      "hideMockReaderUI" -> 
+        MockReaderModule.hideMockReaderUI(result)
+      
+      "showSettings" -> 
+        SettingsModule.showSettings(result)
+      
+      "startPayment" -> {
+        val paymentParameters = call.argument<HashMap<String, Any>>("paymentParameters")
+        val promptParameters = call.argument<HashMap<String, Any>>("promptParameters")
+        
+        if (paymentParameters == null || promptParameters == null) {
+          result.error("INVALID_PARAMETERS", "Null params", null)
+        } else {
+          PaymentModule.startPayment(result, paymentParameters, promptParameters)
+        }
+      }
+      else -> 
+        result.notImplemented()
     }
   }
 

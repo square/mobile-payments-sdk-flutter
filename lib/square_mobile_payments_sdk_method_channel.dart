@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:square_mobile_payments_sdk/src/models.dart';
@@ -22,8 +20,12 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<String> getSDKVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getSDKVersion');
-    return version ?? ""; //TEST
+    // invokeMethod<String> does NOT enforce type conversion; the result may be null or another type.
+    final version = await methodChannel.invokeMethod<String>('getSDKVersion'); 
+    if (version == null) {
+      throw StateError("getSDKVersion() returned null, which should not happen.");
+    }
+    return version;
   }
 
   @override

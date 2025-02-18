@@ -2706,7 +2706,7 @@ Payment _$PaymentFromJson(Map<String, dynamic> json) {
 mixin _$Payment {
   Money get amountMoney => throw _privateConstructorUsedError;
   Money? get appFeeMoney => throw _privateConstructorUsedError;
-  String get createdAt => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
   String? get locationId => throw _privateConstructorUsedError;
   String? get orderId => throw _privateConstructorUsedError;
@@ -2714,7 +2714,7 @@ mixin _$Payment {
   SourceType get sourceType => throw _privateConstructorUsedError;
   Money? get tipMoney => throw _privateConstructorUsedError;
   Money get totalMoney => throw _privateConstructorUsedError;
-  String get updatedAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Payment to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -2733,7 +2733,7 @@ abstract class $PaymentCopyWith<$Res> {
   $Res call(
       {Money amountMoney,
       Money? appFeeMoney,
-      String createdAt,
+      DateTime createdAt,
       String? id,
       String? locationId,
       String? orderId,
@@ -2741,7 +2741,7 @@ abstract class $PaymentCopyWith<$Res> {
       SourceType sourceType,
       Money? tipMoney,
       Money totalMoney,
-      String updatedAt});
+      DateTime updatedAt});
 
   $MoneyCopyWith<$Res> get amountMoney;
   $MoneyCopyWith<$Res>? get appFeeMoney;
@@ -2788,7 +2788,7 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -2820,7 +2820,7 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
     ) as $Val);
   }
 
@@ -2883,7 +2883,7 @@ abstract class _$$PaymentImplCopyWith<$Res> implements $PaymentCopyWith<$Res> {
   $Res call(
       {Money amountMoney,
       Money? appFeeMoney,
-      String createdAt,
+      DateTime createdAt,
       String? id,
       String? locationId,
       String? orderId,
@@ -2891,7 +2891,7 @@ abstract class _$$PaymentImplCopyWith<$Res> implements $PaymentCopyWith<$Res> {
       SourceType sourceType,
       Money? tipMoney,
       Money totalMoney,
-      String updatedAt});
+      DateTime updatedAt});
 
   @override
   $MoneyCopyWith<$Res> get amountMoney;
@@ -2940,7 +2940,7 @@ class __$$PaymentImplCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -2972,7 +2972,7 @@ class __$$PaymentImplCopyWithImpl<$Res>
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
     ));
   }
 }
@@ -3001,7 +3001,7 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
   @override
   final Money? appFeeMoney;
   @override
-  final String createdAt;
+  final DateTime createdAt;
   @override
   final String? id;
   @override
@@ -3017,7 +3017,7 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
   @override
   final Money totalMoney;
   @override
-  final String updatedAt;
+  final DateTime updatedAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -3105,7 +3105,7 @@ abstract class _Payment implements Payment {
   const factory _Payment(
       {required final Money amountMoney,
       final Money? appFeeMoney,
-      required final String createdAt,
+      required final DateTime createdAt,
       final String? id,
       final String? locationId,
       final String? orderId,
@@ -3113,7 +3113,7 @@ abstract class _Payment implements Payment {
       required final SourceType sourceType,
       final Money? tipMoney,
       required final Money totalMoney,
-      required final String updatedAt}) = _$PaymentImpl;
+      required final DateTime updatedAt}) = _$PaymentImpl;
 
   factory _Payment.fromJson(Map<String, dynamic> json) = _$PaymentImpl.fromJson;
 
@@ -3122,7 +3122,7 @@ abstract class _Payment implements Payment {
   @override
   Money? get appFeeMoney;
   @override
-  String get createdAt;
+  DateTime get createdAt;
   @override
   String? get id;
   @override
@@ -3138,7 +3138,7 @@ abstract class _Payment implements Payment {
   @override
   Money get totalMoney;
   @override
-  String get updatedAt;
+  DateTime get updatedAt;
 
   /// Create a copy of Payment
   /// with the given fields replaced by the non-null parameter values.
@@ -3157,7 +3157,7 @@ mixin _$PaymentParameters {
   int? get acceptPartialAuthorization => throw _privateConstructorUsedError;
   Money get amountMoney => throw _privateConstructorUsedError;
   Money? get appFeeMoney => throw _privateConstructorUsedError; // Nullable
-  int? get autocomplete => throw _privateConstructorUsedError; // Nullable
+  bool? get autocomplete => throw _privateConstructorUsedError; // Nullable
   String? get customerId => throw _privateConstructorUsedError; // Nullable
   DelayAction? get delayAction =>
       throw _privateConstructorUsedError; // Nullable
@@ -3190,7 +3190,7 @@ abstract class $PaymentParametersCopyWith<$Res> {
       {int? acceptPartialAuthorization,
       Money amountMoney,
       Money? appFeeMoney,
-      int? autocomplete,
+      bool? autocomplete,
       String? customerId,
       DelayAction? delayAction,
       num? delayDuration,
@@ -3253,7 +3253,7 @@ class _$PaymentParametersCopyWithImpl<$Res, $Val extends PaymentParameters>
       autocomplete: freezed == autocomplete
           ? _value.autocomplete
           : autocomplete // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as bool?,
       customerId: freezed == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
@@ -3348,7 +3348,7 @@ abstract class _$$PaymentParametersImplCopyWith<$Res>
       {int? acceptPartialAuthorization,
       Money amountMoney,
       Money? appFeeMoney,
-      int? autocomplete,
+      bool? autocomplete,
       String? customerId,
       DelayAction? delayAction,
       num? delayDuration,
@@ -3412,7 +3412,7 @@ class __$$PaymentParametersImplCopyWithImpl<$Res>
       autocomplete: freezed == autocomplete
           ? _value.autocomplete
           : autocomplete // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as bool?,
       customerId: freezed == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
@@ -3489,7 +3489,7 @@ class _$PaymentParametersImpl
   final Money? appFeeMoney;
 // Nullable
   @override
-  final int? autocomplete;
+  final bool? autocomplete;
 // Nullable
   @override
   final String? customerId;
@@ -3624,7 +3624,7 @@ abstract class _PaymentParameters implements PaymentParameters {
       {final int? acceptPartialAuthorization,
       required final Money amountMoney,
       final Money? appFeeMoney,
-      final int? autocomplete,
+      final bool? autocomplete,
       final String? customerId,
       final DelayAction? delayAction,
       final num? delayDuration,
@@ -3646,7 +3646,7 @@ abstract class _PaymentParameters implements PaymentParameters {
   @override
   Money? get appFeeMoney; // Nullable
   @override
-  int? get autocomplete; // Nullable
+  bool? get autocomplete; // Nullable
   @override
   String? get customerId; // Nullable
   @override

@@ -7,7 +7,6 @@ public class MockReaderModule {
         do {
             return try MockReaderUI(for: MobilePaymentsSDK.shared)
         } catch {
-            print("Error initializing MockReaderUI: \(error)")
             return nil
         }
     }()
