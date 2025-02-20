@@ -17,7 +17,7 @@ Before getting started, please review the Requirements and Limitations and Devic
   flutter pub add mobile-payment-sdk-flutter
 ```
 
-For usage and in-detail documentation, visit our [documentation](docs/) section.
+For usage and in-detail documentation, visit our [documentation](doc/) section.
 
 ## Documentation
 * [Mobile Payments SDK Overview](https://developer.squareup.com/docs/mobile-payments-sdk)
