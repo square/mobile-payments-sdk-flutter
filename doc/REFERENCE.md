@@ -6,28 +6,49 @@ In this reference, you'll find detailed information about the data types and met
 
 ## Contents
 
-* [Methods](#methods)
-    * [Authorization](#authorization)
-    * [Payment](#payment)
-    * [MockReader](#mockreader)
-    * [Settings](#settings)
-* [Objects](#objects)
-    * [Location](#location)
-    * [Money](#money)
-    * [Payment](#payment-1)
-    * [PaymentParameters](#paymentparameters)
-    * [PromptParameters](#promptparameters)
-* [Enums](#enums)
-    * [AuthorizationState](#authorizationstate)
-    * [CurrencyCode](#currencycode)
-    * [Environment](#environment)
-    * [SourceType](#sourcetype)
-    * [DelayAction](#delayaction)
-    * [AdditionalPaymentMethodType](#additionalpaymentmethodtype)
-    * [PromptMode](#promptmode)
-* [Errors](#errors)
+- [Flutter Mobile Payments SDK Technical Reference](#flutter-mobile-payments-sdk-technical-reference)
+  - [Contents](#contents)
+  - [Methods](#methods)
+    - [Authorization](#authorization)
+      - [Method details](#method-details)
+        - [authorize](#authorize)
+        - [deauthorize](#deauthorize)
+        - [getAuthorizedLocation](#getauthorizedlocation)
+        - [getAuthorizationState](#getauthorizationstate)
+    - [Payment](#payment)
+      - [Method details](#method-details-1)
+        - [startPayment](#startpayment)
+    - [Reader](#reader)
+      - [Method details](#method-details-2)
+        - [showMockReaderUI](#showmockreaderui)
+        - [hideMockReaderUI](#hidemockreaderui)
+    - [TapToPaySettings Methods](#taptopaysettings-methods)
+      - [linkAppleAccount](#linkappleaccount)
+      - [relinkAppleAccount](#relinkappleaccount)
+      - [isAppleAccountLinked](#isappleaccountlinked)
+      - [isDeviceCapable](#isdevicecapable)
+    - [Settings](#settings)
+      - [Method details](#method-details-3)
+        - [showSettings](#showsettings)
+        - [getEnvironment](#getenvironment)
+        - [getSDKVersion](#getsdkversion)
+  - [Objects](#objects)
+    - [Location](#location)
+    - [Money](#money)
+    - [Payment](#payment-1)
+    - [PaymentParameters](#paymentparameters)
+    - [PromptParameters](#promptparameters)
+  - [Enums](#enums)
+    - [AuthorizationState](#authorizationstate)
+    - [CurrencyCode](#currencycode)
+    - [Environment](#environment)
+    - [SourceType](#sourcetype)
+    - [DelayAction](#delayaction)
+    - [AdditionalPaymentMethodType](#additionalpaymentmethodtype)
+    - [PromptMode](#promptmode)
+  - [Errors](#errors)
 
-## Methods 
+## Methods
 ### Authorization
 
 The Authorization methods handles authorizing and deauthorizing your application to process payments on behalf of a Square seller using an [OAuth access token](https://developer.squareup.com/docs/oauth-api/what-it-does) and a [location ID](https://developer.squareup.com/docs/locations-api)
@@ -76,7 +97,7 @@ Returns the authorized location, if present.
 
 ##### getAuthorizationState
 
-Returns the current authorization state. This can be used, for instance, to decide whether the app needs to authenticate on start or if it's already been authorized. 
+Returns the current authorization state. This can be used, for instance, to decide whether the app needs to authenticate on start or if it's already been authorized.
 
 * **On success**: returns a [AuthorizationState](#authorizationstate) object which represents the current authorization state.
 * **On failure**: throws an error.
@@ -104,9 +125,9 @@ promptParameters | [PromptParameters](#promptparameters) | Parameters to configu
 * **On success**: returns a [Payment](#payment-1) object, which will include all the information Square captured about the payment.
 * **On failure**: throws an error which includes the resulting PaymentError.
 
-### MockReader
+### Reader
 
-The MockReader methods allows you to toggle mock readers, which simulate taking payments while in Sandbox mode.
+The Reader methods allows you to toggle mock readers, which simulate taking payments while in Sandbox mode.
 
 Method                                                    | Returns                       | Description
 --------------------------------------------------------- | --------------------------------- | ---
@@ -131,6 +152,43 @@ Dismisses the mock reader.
 * **On success**: dismisses the mock reader UI.
 * **On failure**: throws an error if the reader can't be dismissed, for instance, if it's not presented.
 
+---
+### TapToPaySettings Methods
+
+#### linkAppleAccount
+
+Links the Apple account for Tap to Pay functionality. This method is only available on iOS.
+
+* **On success**: completes successfully.
+* **On failure**: throws an error if the operation fails or is attempted on Android.
+
+---
+#### relinkAppleAccount
+
+Relinks the Apple account if required for Tap to Pay functionality. This method is only available on iOS.
+
+* **On success**: completes successfully.
+* **On failure**: throws an error if the operation fails or is attempted on Android.
+
+---
+#### isAppleAccountLinked
+
+Checks if an Apple account is linked for Tap to Pay.
+
+* **On success**: returns `true` if an Apple account is linked, `false` otherwise.
+* **On failure**: throws an error if the operation fails or is attempted on Android.
+
+---
+#### isDeviceCapable
+
+Checks if the current device supports Tap to Pay functionality.
+
+* **On success**: returns `true` if the device is capable, `false` otherwise.
+* **On failure**: throws an error if the operation fails or is attempted on Android.
+
+---
+
+
 ### Settings
 
 The Settings methods provides an optional device management UI that you can use in your application and provides details about the current SDK version and environment.
@@ -146,7 +204,7 @@ Method                                                    | Returns             
 
 ##### showSettings
 
-The Mobile Payments SDK offers a preconfigured reader settings screen, built from the SDK's public API, which can be displayed by calling this method. This screen includes two tabs. The Devices tab displays the model and connection status for readers paired to the merchant's phone or tablet and includes a button for pairing a new reader. The About tab displays information about the Mobile Payments SDK, authorized location, and environment used to take payments. 
+The Mobile Payments SDK offers a preconfigured reader settings screen, built from the SDK's public API, which can be displayed by calling this method. This screen includes two tabs. The Devices tab displays the model and connection status for readers paired to the merchant's phone or tablet and includes a button for pairing a new reader. The About tab displays information about the Mobile Payments SDK, authorized location, and environment used to take payments.
 
 * **On success**: shows the settings screen.
 * **On failure**: throws an error detailing reasons why showing the settings screen wasn't possible, for instance, if it was already being shown.
