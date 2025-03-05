@@ -19,6 +19,7 @@ In this reference, you'll find detailed information about the data types and met
       - [Method details](#method-details-1)
         - [startPayment](#startpayment)
     - [Reader](#reader)
+    - [TapToPaySettings](#taptopaysettings)
       - [Method details](#method-details-2)
         - [showMockReaderUI](#showmockreaderui)
         - [hideMockReaderUI](#hidemockreaderui)
@@ -133,6 +134,20 @@ Method                                                    | Returns             
 --------------------------------------------------------- | --------------------------------- | ---
 [showMockReaderUI](#showmockreaderui) | void | Shows the mock reader UI, which allows to connect mock readers and simulate card interactions.
 [hideMockReaderUI](#hidemockreaderui) | void | Hides the mock reader UI.
+
+
+### TapToPaySettings
+
+The `TapToPaySettings` provides methods specifically for managing Tap to Pay functionality on iOS devices.
+
+Method                                                    | Returns                       | Description
+--------------------------------------------------------- | --------------------------------- | ---
+[linkAppleAccount](#linkAppleAccount) | Promise<void> | Links the Apple account for Tap to Pay functionality (iOS only).
+[relinkAppleAccount](#relinkAppleAccount) | Promise<void> | Relinks the Apple account if required (iOS only).
+[isAppleAccountLinked](#isAppleAccountLinked) | Promise<Boolean> | Checks if an Apple account is linked for Tap to Pay (iOS only).
+[isDeviceCapable](#isDeviceCapable) | Promise<Boolean> | Checks if the current device is capable of using Tap to Pay (iOS only).
+
+
 
 #### Method details
 
