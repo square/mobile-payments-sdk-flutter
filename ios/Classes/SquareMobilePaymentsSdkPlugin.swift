@@ -28,9 +28,17 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
     case "getAuthorizationState":
       AuthModule.getAuthorizationState(result: result)
     case "showMockReaderUI":
-      MockReaderModule.showMockReaderUI(result: result)
+      ReaderModule.showMockReaderUI(result: result)
     case "hideMockReaderUI":
-      MockReaderModule.hideMockReaderUI(result: result)
+      ReaderModule.hideMockReaderUI(result: result)
+    case "linkAppleAccount":
+      ReaderModule.linkAppleAccount(result: result)
+    case "relinkAppleAccount":
+      ReaderModule.relinkAppleAccount(result: result)
+    case "isDeviceCapable":
+      ReaderModule.isDeviceCapable(result: result)
+    case "isAppleAccountLinked":
+      ReaderModule.isAppleAccountLinked(result: result)
     case "startPayment":
       if  let arguments = call.arguments as? [String: Any],
           let paymentParameters = arguments["paymentParameters"] as? [String: Any],

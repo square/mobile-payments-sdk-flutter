@@ -1,8 +1,11 @@
 import 'package:square_mobile_payments_sdk/src/models.dart';
+import 'package:square_mobile_payments_sdk/tap_to_pay_settings.dart';
 
 import 'square_mobile_payments_sdk_platform_interface.dart';
 
 class SquareMobilePaymentsSdk {
+  final TapToPaySettings tapToPaySettings = TapToPaySettings();
+
   Future<String?> getPlatformVersion() {
     return SquareMobilePaymentsSdkPlatform.instance.getPlatformVersion();
   }
