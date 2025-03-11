@@ -28,12 +28,23 @@ For iOS:
         "${FRAMEWORKS}/SquareMobilePaymentsSDK.framework/setup"
         ```
 
-For Android, you need to configure the SDK version:
+For Android:
 1. Modify your `/android/build.gradle`
    - Add `squareSdkVersion = "2.0.1"` inside the `ext {...}` block
    - Add `maven { url 'https://sdk.squareup.com/public/android/' }` inside the `allprojects`'s `repositories {...}` block
 2. Modify your `/android/app/build.gradle`
    - Add `implementation("com.squareup.sdk:mobile-payments-sdk:$squareSdkVersion")` inside the `dependencies{...}` block
+3. Disable Proguard by adding the following to your `/android/app/build.gradle`:
+```gradle
+android {
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+}
+```
 
 You can also refer to [MPSDK Android Quickstart](https://developer.squareup.com/docs/mobile-payments-sdk/android#1-install-the-sdk-and-dependencies)'s SDK installation section.
 
