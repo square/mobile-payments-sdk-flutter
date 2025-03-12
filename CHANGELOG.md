@@ -1,3 +1,8 @@
+## 2025.3.0
+
+Add Tap to Pay support for iOS.
+
+
 ## 2025.1.0
 
 Mobile Payments SDK for Flutter:
