@@ -126,6 +126,32 @@ class MethodChannelSquareMobilePaymentsSdk
 
     return null;
   }
+
+  /// **New Methods for Tap to Pay Support**
+
+  @override
+  Future<bool> isAppleAccountLinked() async {
+    final bool? linked =
+        await methodChannel.invokeMethod<bool>('isAppleAccountLinked');
+    return linked ?? false;
+  }
+
+  @override
+  Future<void> linkAppleAccount() async {
+    await methodChannel.invokeMethod<void>('linkAppleAccount');
+  }
+
+  @override
+  Future<void> relinkAppleAccount() async {
+    await methodChannel.invokeMethod<void>('relinkAppleAccount');
+  }
+
+  @override
+  Future<bool> isDeviceCapable() async {
+    final bool? capable =
+        await methodChannel.invokeMethod<bool>('isDeviceCapable');
+    return capable ?? false;
+  }
 }
 
 Map<String, Object?> castPaymentMap(Map response) {

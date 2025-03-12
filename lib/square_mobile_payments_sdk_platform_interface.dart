@@ -70,4 +70,26 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
       PromptParameters promptParameters) async {
     throw UnimplementedError('startPayment() has not been implemented.');
   }
+
+  /// **New Methods for Tap to Pay Support**
+  Future<bool> isTapToPaySupported() {
+    throw UnimplementedError('isTapToPaySupported() has not been implemented.');
+  }
+
+  Future<bool> isAppleAccountLinked() async {
+    throw UnimplementedError(
+        'isAppleAccountLinked() has not been implemented.');
+  }
+
+  Future<void> linkAppleAccount() async {
+    throw UnimplementedError('linkAppleAccount() has not been implemented.');
+  }
+
+  Future<void> relinkAppleAccount() async {
+    throw UnimplementedError('relinkAppleAccount() has not been implemented.');
+  }
+
+  Future<bool> isDeviceCapable() {
+    throw UnimplementedError('isDeviceCapable() has not been implemented.');
+  }
 }

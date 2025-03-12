@@ -11,7 +11,7 @@ import io.flutter.plugin.common.MethodChannel.Result
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
 import com.squareup.square_mobile_payments_sdk.modules.PaymentModule
 import com.squareup.square_mobile_payments_sdk.modules.AuthModule
-import com.squareup.square_mobile_payments_sdk.modules.MockReaderModule
+import com.squareup.square_mobile_payments_sdk.modules.ReaderModule
 import com.squareup.square_mobile_payments_sdk.modules.SettingsModule
 
 
@@ -53,14 +53,14 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
       
       "deauthorize" -> 
         AuthModule.deAuthorize(result)
-      
-      "showMockReaderUI" -> 
-        MockReaderModule.showMockReaderUI(result)
-      
-      "hideMockReaderUI" -> 
-        MockReaderModule.hideMockReaderUI(result)
-      
-      "showSettings" -> 
+
+      "showMockReaderUI" ->
+        ReaderModule.showMockReaderUI(result)
+
+      "hideMockReaderUI" ->
+        ReaderModule.hideMockReaderUI(result)
+
+      "showSettings" ->
         SettingsModule.showSettings(result)
       
       "startPayment" -> {

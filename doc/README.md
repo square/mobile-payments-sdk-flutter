@@ -152,3 +152,63 @@ await _squareMobilePaymentsSdkPlugin.hideMockReaderUI();
 ```
 
 Note that you might get an error if you try to call these methods outside of Sandbox, so you can handle the errors by using a `try/catch` block.
+
+
+## Tap to Pay Settings on iPhone
+
+For iOS devices, you can manage Tap to Pay settings using the `tapToPaySettings` property. The following methods are available:
+
+### Link Apple Account
+
+Before using Tap to Pay on iPhone, you need to link an Apple account:
+
+```Dart
+import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
+//...
+final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
+//...
+try {
+      await _squareMobilePaymentsSdkPlugin.tapToPaySettings
+          .linkAppleAccount();
+    } catch (e, stackTrace) {
+      print("Exception reader: $e");
+    }
+```
+
+### Relink Apple Account
+
+If the Apple account needs to be relinked, use:
+
+```Dart
+
+try {
+      await _squareMobilePaymentsSdkPlugin.tapToPaySettings
+          .relinkAppleAccount();
+    } catch (e, stackTrace) {
+      print("Exception reader: $e");
+    }
+```
+
+### Check if Apple Account is Linked
+
+You can check if an Apple account is already linked:
+
+```Dart
+try {
+      bool isAppleAccountLinked =  await _squareMobilePaymentsSdkPlugin.tapToPaySettings.isAppleAccountLinked();
+
+    } catch (e, stackTrace) {
+      print("Exception reader: $e");
+    }
+```
+
+### Check Device Capability
+
+To verify if the device supports Tap to Pay on iPhone:
+
+```Dart
+    const isCapable = await _squareMobilePaymentsSdkPlugin.tapToPaySettings.isDeviceCapable();
+
+```
+
+> **Note:** These methods are only available on iOS. Calling them on Android will result in an error.
