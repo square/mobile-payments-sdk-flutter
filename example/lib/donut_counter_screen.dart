@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:square_mobile_payments_sdk_example/auth_state.dart';
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
-import 'package:square_mobile_payments_sdk/src/models.dart';
 import 'package:uuid/uuid.dart';
+import 'package:square_mobile_payments_sdk/src/models/models.dart';
 
 final uuid = Uuid(); 
 
@@ -23,7 +23,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
     try {
       String idempotencyKey = uuid.v4();
 
-      Payment? payment = await _squareMobilePaymentsSdkPlugin.startPayment(
+      Payment? payment = await _squareMobilePaymentsSdkPlugin.payment.startPayment(
           PaymentParameters(
               amountMoney: Money(amount: amount, currencyCode: CurrencyCode.eur),
               idempotencyKey: idempotencyKey
@@ -82,7 +82,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
 
   Future<void> showReader() async {
     try {
-      await _squareMobilePaymentsSdkPlugin.showMockReaderUI();
+      await _squareMobilePaymentsSdkPlugin.reader.showMockReaderUI();
       print("Show Reader");
     } on Exception {
       print("Exception reader");
@@ -91,7 +91,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
 
   Future<void> showSettings() async {
     try {
-      await _squareMobilePaymentsSdkPlugin.showSettings();
+      await _squareMobilePaymentsSdkPlugin.settings.showSettings();
     } on Exception {
       print("Exception in show settings");
     }

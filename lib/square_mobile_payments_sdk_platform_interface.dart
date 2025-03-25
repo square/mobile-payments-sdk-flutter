@@ -1,5 +1,5 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import 'package:square_mobile_payments_sdk/src/models.dart';
+import 'package:square_mobile_payments_sdk/src/models/models.dart';
 
 import 'square_mobile_payments_sdk_method_channel.dart';
 

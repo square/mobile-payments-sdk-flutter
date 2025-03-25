@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:square_mobile_payments_sdk/src/models.dart';
+import 'package:square_mobile_payments_sdk/src/models/models.dart';
 
 import 'square_mobile_payments_sdk_platform_interface.dart';
 
