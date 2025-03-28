@@ -1,7 +1,8 @@
 import 'dart:io';
-import 'square_mobile_payments_sdk_platform_interface.dart';
+import '../../square_mobile_payments_sdk_platform_interface.dart';
 
 class TapToPaySettings {
+  
   TapToPaySettings._privateConstructor();
   static final TapToPaySettings _instance =
       TapToPaySettings._privateConstructor();
