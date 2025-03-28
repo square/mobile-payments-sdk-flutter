@@ -42,11 +42,11 @@ Map<String, dynamic> _$$MoneyImplToJson(_$MoneyImpl instance) =>
 
 _$CardImpl _$$CardImplFromJson(Map<String, dynamic> json) => _$CardImpl(
       brand: $enumDecode(_$CardBrandEnumMap, json['brand']),
-      cardholderName: json['cardholderName'] as String,
+      cardholderName: json['cardholderName'] as String?,
       coBrand: $enumDecode(_$CardCoBrandEnumMap, json['coBrand']),
       expirationMonth: json['expirationMonth'] as num? ?? 0,
       expirationYear: json['expirationYear'] as num? ?? 0,
-      id: json['id'] as String,
+      id: json['id'] as String?,
       lastFourDigits: json['lastFourDigits'] as String,
     );
 
@@ -62,25 +62,27 @@ Map<String, dynamic> _$$CardImplToJson(_$CardImpl instance) =>
     };
 
 const _$CardBrandEnumMap = {
-  CardBrand.alipay: 'alipay',
+  CardBrand.otherBrand: 'otherBrand',
+  CardBrand.visa: 'visa',
+  CardBrand.mastercard: 'mastercard',
   CardBrand.americanExpress: 'americanExpress',
-  CardBrand.cashApp: 'cashApp',
-  CardBrand.unionPayInternational: 'unionPayInternational',
   CardBrand.discover: 'discover',
   CardBrand.discoverDiners: 'discoverDiners',
   CardBrand.ebt: 'ebt',
+  CardBrand.jcb: 'jcb',
+  CardBrand.chinaUnionPay: 'chinaUnionPay',
+  CardBrand.unionPayInternational: 'unionPayInternational',
+  CardBrand.squareGiftCard: 'squareGiftCard',
+  CardBrand.alipay: 'alipay',
+  CardBrand.cashApp: 'cashApp',
   CardBrand.eftpos: 'eftpos',
   CardBrand.felica: 'felica',
-  CardBrand.id: 'id',
   CardBrand.interac: 'interac',
-  CardBrand.jcb: 'jcb',
-  CardBrand.mastercard: 'mastercard',
-  CardBrand.otherBrand: 'otherBrand',
   CardBrand.squareCapitalCard: 'squareCapitalCard',
-  CardBrand.squareGiftCard: 'squareGiftCard',
   CardBrand.suica: 'suica',
+  CardBrand.id: 'id',
+  CardBrand.quicpay: 'quicpay',
   CardBrand.unknown: 'unknown',
-  CardBrand.visa: 'visa',
 };
 
 const _$CardCoBrandEnumMap = {
@@ -383,6 +385,7 @@ const _$SourceTypeEnumMap = {
   SourceType.cash: 'cash',
   SourceType.externalSource: 'externalSource',
   SourceType.squareAccount: 'squareAccount',
+  SourceType.cardOnFile: 'cardOnFile',
   SourceType.unknown: 'unknown',
   SourceType.wallet: 'wallet',
 };
@@ -480,3 +483,76 @@ const _$PaymentStatusEnumMap = {
   PaymentStatus.failed: 'failed',
   PaymentStatus.unknown: 'unknown',
 };
+
+_$OfflinePaymentImpl _$$OfflinePaymentImplFromJson(Map<String, dynamic> json) =>
+    _$OfflinePaymentImpl(
+      amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
+      appFeeMoney: json['appFeeMoney'] == null
+          ? null
+          : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
+      cardDetails: json['cardDetails'] == null
+          ? null
+          : OfflineCardPaymentDetails.fromJson(
+              json['cardDetails'] as Map<String, dynamic>),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      id: json['id'] as String?,
+      localId: json['localId'] as String,
+      locationId: json['locationId'] as String,
+      orderId: json['orderId'] as String?,
+      referenceId: json['referenceId'] as String?,
+      status: $enumDecode(_$OfflineStatusEnumMap, json['status']),
+      tipMoney: json['tipMoney'] == null
+          ? null
+          : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
+      totalMoney: Money.fromJson(json['totalMoney'] as Map<String, dynamic>),
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      uploadedAt: json['uploadedAt'] == null
+          ? null
+          : DateTime.parse(json['uploadedAt'] as String),
+    );
+
+Map<String, dynamic> _$$OfflinePaymentImplToJson(
+        _$OfflinePaymentImpl instance) =>
+    <String, dynamic>{
+      'amountMoney': instance.amountMoney,
+      'appFeeMoney': instance.appFeeMoney,
+      'cardDetails': instance.cardDetails,
+      'createdAt': instance.createdAt.toIso8601String(),
+      'id': instance.id,
+      'localId': instance.localId,
+      'locationId': instance.locationId,
+      'orderId': instance.orderId,
+      'referenceId': instance.referenceId,
+      'status': _$OfflineStatusEnumMap[instance.status]!,
+      'tipMoney': instance.tipMoney,
+      'totalMoney': instance.totalMoney,
+      'updatedAt': instance.updatedAt.toIso8601String(),
+      'uploadedAt': instance.uploadedAt?.toIso8601String(),
+    };
+
+const _$OfflineStatusEnumMap = {
+  OfflineStatus.failedToProcess: 'failedToProcess',
+  OfflineStatus.failedToUpload: 'failedToUpload',
+  OfflineStatus.processed: 'processed',
+  OfflineStatus.queued: 'queued',
+  OfflineStatus.unknown: 'unknown',
+  OfflineStatus.uploaded: 'uploaded',
+};
+
+_$OfflineCardPaymentDetailsImpl _$$OfflineCardPaymentDetailsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OfflineCardPaymentDetailsImpl(
+      applicationIdentifier: json['applicationIdentifier'] as String?,
+      applicationName: json['applicationName'] as String?,
+      card: Card.fromJson(json['card'] as Map<String, dynamic>),
+      entryMethod: $enumDecode(_$EntryMethodEnumMap, json['entryMethod']),
+    );
+
+Map<String, dynamic> _$$OfflineCardPaymentDetailsImplToJson(
+        _$OfflineCardPaymentDetailsImpl instance) =>
+    <String, dynamic>{
+      'applicationIdentifier': instance.applicationIdentifier,
+      'applicationName': instance.applicationName,
+      'card': instance.card,
+      'entryMethod': _$EntryMethodEnumMap[instance.entryMethod]!,
+    };

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:square_mobile_payments_sdk/src/models.dart';
+import 'package:square_mobile_payments_sdk/src/models/models.dart';
 
 import 'square_mobile_payments_sdk_platform_interface.dart';
 
@@ -21,16 +21,18 @@ class MethodChannelSquareMobilePaymentsSdk
   @override
   Future<String> getSDKVersion() async {
     // invokeMethod<String> does NOT enforce type conversion; the result may be null or another type.
-    final version = await methodChannel.invokeMethod<String>('getSDKVersion'); 
+    final version = await methodChannel.invokeMethod<String>('getSDKVersion');
     if (version == null) {
-      throw StateError("getSDKVersion() returned null, which should not happen.");
+      throw StateError(
+          "getSDKVersion() returned null, which should not happen.");
     }
     return version;
   }
 
   @override
   Future<bool> isSandboxEnvironment() async {
-    final bool? isSandbox = await methodChannel.invokeMethod<bool>('isSandboxEnvironment');
+    final bool? isSandbox =
+        await methodChannel.invokeMethod<bool>('isSandboxEnvironment');
     return isSandbox ?? false; // Provide a default value (false)
   }
 
@@ -93,19 +95,18 @@ class MethodChannelSquareMobilePaymentsSdk
     };
 
     var appFeeMoney = paymentParameters.appFeeMoney != null
-    ? {
-        "amount": paymentParameters.appFeeMoney!.amount,
-        "currencyCode": paymentParameters.appFeeMoney!.currencyCode.name
-      }
-    : null;
+        ? {
+            "amount": paymentParameters.appFeeMoney!.amount,
+            "currencyCode": paymentParameters.appFeeMoney!.currencyCode.name
+          }
+        : null;
 
     var tipMoney = paymentParameters.tipMoney != null
-    ? {
-        "amount": paymentParameters.tipMoney!.amount,
-        "currencyCode": paymentParameters.tipMoney!.currencyCode.name
-      }
-    : null;
-
+        ? {
+            "amount": paymentParameters.tipMoney!.amount,
+            "currencyCode": paymentParameters.tipMoney!.currencyCode.name
+          }
+        : null;
 
     var params = <String, dynamic>{
       'paymentParameters': {
@@ -117,7 +118,8 @@ class MethodChannelSquareMobilePaymentsSdk
       'promptParameters': promptParameters.toJson(),
     };
 
-    final response = await methodChannel.invokeMethod<Map>('startPayment', params);
+    final response =
+        await methodChannel.invokeMethod<Map>('startPayment', params);
 
     if (response != null) {
       final paymentJson = castPaymentMap(response);
@@ -151,6 +153,50 @@ class MethodChannelSquareMobilePaymentsSdk
     final bool? capable =
         await methodChannel.invokeMethod<bool>('isDeviceCapable');
     return capable ?? false;
+  }
+
+  // **New Methods for Offline Payment Support**
+
+  @override
+  Future<bool> isOfflineProcessingAllowed() async {
+    final result =
+        await methodChannel.invokeMethod<bool>('isOfflineProcessingAllowed');
+    return result ?? false;
+  }
+
+  @override
+  Future<Money?> getOfflineTotalStoredAmountLimit() async {
+    final result = await methodChannel
+        .invokeMethod<Map>('getOfflineTotalStoredAmountLimit');
+    if (result == null) return null;
+    return Money.fromJson(result.cast<String, Object?>());
+  }
+
+  @override
+  Future<Money?> getOfflineTransactionAmountLimit() async {
+    final result = await methodChannel
+        .invokeMethod<Map>('getOfflineTransactionAmountLimit');
+    if (result == null) return null;
+    return Money.fromJson(result.cast<String, Object?>());
+  }
+
+  @override
+  Future<List<OfflinePayment>> getPayments() async {
+    final result = await methodChannel.invokeMethod<List>('getPayments');
+    if (result == null) {
+      throw StateError("getPayments() returned null, which should not happen.");
+    }
+    return result
+        .map((e) => OfflinePayment.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  @override
+  Future<Money?> getTotalStoredPaymentAmount() async {
+    final result =
+        await methodChannel.invokeMethod<Map>('getTotalStoredPaymentAmount');
+    if (result == null) return null;
+    return Money.fromJson(result.cast<String, Object?>());
   }
 }
 

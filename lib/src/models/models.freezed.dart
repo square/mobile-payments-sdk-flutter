@@ -389,11 +389,11 @@ Card _$CardFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Card {
   CardBrand get brand => throw _privateConstructorUsedError;
-  String get cardholderName => throw _privateConstructorUsedError;
+  String? get cardholderName => throw _privateConstructorUsedError;
   CardCoBrand get coBrand => throw _privateConstructorUsedError;
   num get expirationMonth => throw _privateConstructorUsedError;
   num get expirationYear => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String get lastFourDigits => throw _privateConstructorUsedError;
 
   /// Serializes this Card to a JSON map.
@@ -412,11 +412,11 @@ abstract class $CardCopyWith<$Res> {
   @useResult
   $Res call(
       {CardBrand brand,
-      String cardholderName,
+      String? cardholderName,
       CardCoBrand coBrand,
       num expirationMonth,
       num expirationYear,
-      String id,
+      String? id,
       String lastFourDigits});
 }
 
@@ -436,11 +436,11 @@ class _$CardCopyWithImpl<$Res, $Val extends Card>
   @override
   $Res call({
     Object? brand = null,
-    Object? cardholderName = null,
+    Object? cardholderName = freezed,
     Object? coBrand = null,
     Object? expirationMonth = null,
     Object? expirationYear = null,
-    Object? id = null,
+    Object? id = freezed,
     Object? lastFourDigits = null,
   }) {
     return _then(_value.copyWith(
@@ -448,10 +448,10 @@ class _$CardCopyWithImpl<$Res, $Val extends Card>
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as CardBrand,
-      cardholderName: null == cardholderName
+      cardholderName: freezed == cardholderName
           ? _value.cardholderName
           : cardholderName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       coBrand: null == coBrand
           ? _value.coBrand
           : coBrand // ignore: cast_nullable_to_non_nullable
@@ -464,10 +464,10 @@ class _$CardCopyWithImpl<$Res, $Val extends Card>
           ? _value.expirationYear
           : expirationYear // ignore: cast_nullable_to_non_nullable
               as num,
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       lastFourDigits: null == lastFourDigits
           ? _value.lastFourDigits
           : lastFourDigits // ignore: cast_nullable_to_non_nullable
@@ -485,11 +485,11 @@ abstract class _$$CardImplCopyWith<$Res> implements $CardCopyWith<$Res> {
   @useResult
   $Res call(
       {CardBrand brand,
-      String cardholderName,
+      String? cardholderName,
       CardCoBrand coBrand,
       num expirationMonth,
       num expirationYear,
-      String id,
+      String? id,
       String lastFourDigits});
 }
 
@@ -506,11 +506,11 @@ class __$$CardImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? brand = null,
-    Object? cardholderName = null,
+    Object? cardholderName = freezed,
     Object? coBrand = null,
     Object? expirationMonth = null,
     Object? expirationYear = null,
-    Object? id = null,
+    Object? id = freezed,
     Object? lastFourDigits = null,
   }) {
     return _then(_$CardImpl(
@@ -518,10 +518,10 @@ class __$$CardImplCopyWithImpl<$Res>
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as CardBrand,
-      cardholderName: null == cardholderName
+      cardholderName: freezed == cardholderName
           ? _value.cardholderName
           : cardholderName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       coBrand: null == coBrand
           ? _value.coBrand
           : coBrand // ignore: cast_nullable_to_non_nullable
@@ -534,10 +534,10 @@ class __$$CardImplCopyWithImpl<$Res>
           ? _value.expirationYear
           : expirationYear // ignore: cast_nullable_to_non_nullable
               as num,
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       lastFourDigits: null == lastFourDigits
           ? _value.lastFourDigits
           : lastFourDigits // ignore: cast_nullable_to_non_nullable
@@ -551,11 +551,11 @@ class __$$CardImplCopyWithImpl<$Res>
 class _$CardImpl with DiagnosticableTreeMixin implements _Card {
   const _$CardImpl(
       {required this.brand,
-      required this.cardholderName,
+      this.cardholderName,
       required this.coBrand,
       this.expirationMonth = 0,
       this.expirationYear = 0,
-      required this.id,
+      this.id,
       required this.lastFourDigits});
 
   factory _$CardImpl.fromJson(Map<String, dynamic> json) =>
@@ -564,7 +564,7 @@ class _$CardImpl with DiagnosticableTreeMixin implements _Card {
   @override
   final CardBrand brand;
   @override
-  final String cardholderName;
+  final String? cardholderName;
   @override
   final CardCoBrand coBrand;
   @override
@@ -574,7 +574,7 @@ class _$CardImpl with DiagnosticableTreeMixin implements _Card {
   @JsonKey()
   final num expirationYear;
   @override
-  final String id;
+  final String? id;
   @override
   final String lastFourDigits;
 
@@ -639,11 +639,11 @@ class _$CardImpl with DiagnosticableTreeMixin implements _Card {
 abstract class _Card implements Card {
   const factory _Card(
       {required final CardBrand brand,
-      required final String cardholderName,
+      final String? cardholderName,
       required final CardCoBrand coBrand,
       final num expirationMonth,
       final num expirationYear,
-      required final String id,
+      final String? id,
       required final String lastFourDigits}) = _$CardImpl;
 
   factory _Card.fromJson(Map<String, dynamic> json) = _$CardImpl.fromJson;
@@ -651,7 +651,7 @@ abstract class _Card implements Card {
   @override
   CardBrand get brand;
   @override
-  String get cardholderName;
+  String? get cardholderName;
   @override
   CardCoBrand get coBrand;
   @override
@@ -659,7 +659,7 @@ abstract class _Card implements Card {
   @override
   num get expirationYear;
   @override
-  String get id;
+  String? get id;
   @override
   String get lastFourDigits;
 
@@ -4202,4 +4202,799 @@ abstract class _OnlinePayment implements OnlinePayment {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnlinePaymentImplCopyWith<_$OnlinePaymentImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+OfflinePayment _$OfflinePaymentFromJson(Map<String, dynamic> json) {
+  return _OfflinePayment.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OfflinePayment {
+  Money get amountMoney => throw _privateConstructorUsedError;
+  Money? get appFeeMoney => throw _privateConstructorUsedError;
+  OfflineCardPaymentDetails? get cardDetails =>
+      throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String get localId => throw _privateConstructorUsedError;
+  String get locationId => throw _privateConstructorUsedError;
+  String? get orderId => throw _privateConstructorUsedError;
+  String? get referenceId => throw _privateConstructorUsedError;
+  OfflineStatus get status => throw _privateConstructorUsedError;
+  Money? get tipMoney => throw _privateConstructorUsedError;
+  Money get totalMoney => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get uploadedAt => throw _privateConstructorUsedError;
+
+  /// Serializes this OfflinePayment to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OfflinePayment
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OfflinePaymentCopyWith<OfflinePayment> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OfflinePaymentCopyWith<$Res> {
+  factory $OfflinePaymentCopyWith(
+          OfflinePayment value, $Res Function(OfflinePayment) then) =
+      _$OfflinePaymentCopyWithImpl<$Res, OfflinePayment>;
+  @useResult
+  $Res call(
+      {Money amountMoney,
+      Money? appFeeMoney,
+      OfflineCardPaymentDetails? cardDetails,
+      DateTime createdAt,
+      String? id,
+      String localId,
+      String locationId,
+      String? orderId,
+      String? referenceId,
+      OfflineStatus status,
+      Money? tipMoney,
+      Money totalMoney,
+      DateTime updatedAt,
+      DateTime? uploadedAt});
+
+  $MoneyCopyWith<$Res> get amountMoney;
+  $MoneyCopyWith<$Res>? get appFeeMoney;
+  $OfflineCardPaymentDetailsCopyWith<$Res>? get cardDetails;
+  $MoneyCopyWith<$Res>? get tipMoney;
+  $MoneyCopyWith<$Res> get totalMoney;
+}
+
+/// @nodoc
+class _$OfflinePaymentCopyWithImpl<$Res, $Val extends OfflinePayment>
+    implements $OfflinePaymentCopyWith<$Res> {
+  _$OfflinePaymentCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of OfflinePayment
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? amountMoney = null,
+    Object? appFeeMoney = freezed,
+    Object? cardDetails = freezed,
+    Object? createdAt = null,
+    Object? id = freezed,
+    Object? localId = null,
+    Object? locationId = null,
+    Object? orderId = freezed,
+    Object? referenceId = freezed,
+    Object? status = null,
+    Object? tipMoney = freezed,
+    Object? totalMoney = null,
+    Object? updatedAt = null,
+    Object? uploadedAt = freezed,
+  }) {
+    return _then(_value.copyWith(
+      amountMoney: null == amountMoney
+          ? _value.amountMoney
+          : amountMoney // ignore: cast_nullable_to_non_nullable
+              as Money,
+      appFeeMoney: freezed == appFeeMoney
+          ? _value.appFeeMoney
+          : appFeeMoney // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      cardDetails: freezed == cardDetails
+          ? _value.cardDetails
+          : cardDetails // ignore: cast_nullable_to_non_nullable
+              as OfflineCardPaymentDetails?,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      localId: null == localId
+          ? _value.localId
+          : localId // ignore: cast_nullable_to_non_nullable
+              as String,
+      locationId: null == locationId
+          ? _value.locationId
+          : locationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderId: freezed == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      referenceId: freezed == referenceId
+          ? _value.referenceId
+          : referenceId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as OfflineStatus,
+      tipMoney: freezed == tipMoney
+          ? _value.tipMoney
+          : tipMoney // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      totalMoney: null == totalMoney
+          ? _value.totalMoney
+          : totalMoney // ignore: cast_nullable_to_non_nullable
+              as Money,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      uploadedAt: freezed == uploadedAt
+          ? _value.uploadedAt
+          : uploadedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
+
+  /// Create a copy of OfflinePayment
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MoneyCopyWith<$Res> get amountMoney {
+    return $MoneyCopyWith<$Res>(_value.amountMoney, (value) {
+      return _then(_value.copyWith(amountMoney: value) as $Val);
+    });
+  }
+
+  /// Create a copy of OfflinePayment
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MoneyCopyWith<$Res>? get appFeeMoney {
+    if (_value.appFeeMoney == null) {
+      return null;
+    }
+
+    return $MoneyCopyWith<$Res>(_value.appFeeMoney!, (value) {
+      return _then(_value.copyWith(appFeeMoney: value) as $Val);
+    });
+  }
+
+  /// Create a copy of OfflinePayment
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OfflineCardPaymentDetailsCopyWith<$Res>? get cardDetails {
+    if (_value.cardDetails == null) {
+      return null;
+    }
+
+    return $OfflineCardPaymentDetailsCopyWith<$Res>(_value.cardDetails!,
+        (value) {
+      return _then(_value.copyWith(cardDetails: value) as $Val);
+    });
+  }
+
+  /// Create a copy of OfflinePayment
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MoneyCopyWith<$Res>? get tipMoney {
+    if (_value.tipMoney == null) {
+      return null;
+    }
+
+    return $MoneyCopyWith<$Res>(_value.tipMoney!, (value) {
+      return _then(_value.copyWith(tipMoney: value) as $Val);
+    });
+  }
+
+  /// Create a copy of OfflinePayment
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MoneyCopyWith<$Res> get totalMoney {
+    return $MoneyCopyWith<$Res>(_value.totalMoney, (value) {
+      return _then(_value.copyWith(totalMoney: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$OfflinePaymentImplCopyWith<$Res>
+    implements $OfflinePaymentCopyWith<$Res> {
+  factory _$$OfflinePaymentImplCopyWith(_$OfflinePaymentImpl value,
+          $Res Function(_$OfflinePaymentImpl) then) =
+      __$$OfflinePaymentImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Money amountMoney,
+      Money? appFeeMoney,
+      OfflineCardPaymentDetails? cardDetails,
+      DateTime createdAt,
+      String? id,
+      String localId,
+      String locationId,
+      String? orderId,
+      String? referenceId,
+      OfflineStatus status,
+      Money? tipMoney,
+      Money totalMoney,
+      DateTime updatedAt,
+      DateTime? uploadedAt});
+
+  @override
+  $MoneyCopyWith<$Res> get amountMoney;
+  @override
+  $MoneyCopyWith<$Res>? get appFeeMoney;
+  @override
+  $OfflineCardPaymentDetailsCopyWith<$Res>? get cardDetails;
+  @override
+  $MoneyCopyWith<$Res>? get tipMoney;
+  @override
+  $MoneyCopyWith<$Res> get totalMoney;
+}
+
+/// @nodoc
+class __$$OfflinePaymentImplCopyWithImpl<$Res>
+    extends _$OfflinePaymentCopyWithImpl<$Res, _$OfflinePaymentImpl>
+    implements _$$OfflinePaymentImplCopyWith<$Res> {
+  __$$OfflinePaymentImplCopyWithImpl(
+      _$OfflinePaymentImpl _value, $Res Function(_$OfflinePaymentImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OfflinePayment
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? amountMoney = null,
+    Object? appFeeMoney = freezed,
+    Object? cardDetails = freezed,
+    Object? createdAt = null,
+    Object? id = freezed,
+    Object? localId = null,
+    Object? locationId = null,
+    Object? orderId = freezed,
+    Object? referenceId = freezed,
+    Object? status = null,
+    Object? tipMoney = freezed,
+    Object? totalMoney = null,
+    Object? updatedAt = null,
+    Object? uploadedAt = freezed,
+  }) {
+    return _then(_$OfflinePaymentImpl(
+      amountMoney: null == amountMoney
+          ? _value.amountMoney
+          : amountMoney // ignore: cast_nullable_to_non_nullable
+              as Money,
+      appFeeMoney: freezed == appFeeMoney
+          ? _value.appFeeMoney
+          : appFeeMoney // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      cardDetails: freezed == cardDetails
+          ? _value.cardDetails
+          : cardDetails // ignore: cast_nullable_to_non_nullable
+              as OfflineCardPaymentDetails?,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      localId: null == localId
+          ? _value.localId
+          : localId // ignore: cast_nullable_to_non_nullable
+              as String,
+      locationId: null == locationId
+          ? _value.locationId
+          : locationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderId: freezed == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      referenceId: freezed == referenceId
+          ? _value.referenceId
+          : referenceId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as OfflineStatus,
+      tipMoney: freezed == tipMoney
+          ? _value.tipMoney
+          : tipMoney // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      totalMoney: null == totalMoney
+          ? _value.totalMoney
+          : totalMoney // ignore: cast_nullable_to_non_nullable
+              as Money,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      uploadedAt: freezed == uploadedAt
+          ? _value.uploadedAt
+          : uploadedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OfflinePaymentImpl
+    with DiagnosticableTreeMixin
+    implements _OfflinePayment {
+  const _$OfflinePaymentImpl(
+      {required this.amountMoney,
+      this.appFeeMoney,
+      this.cardDetails,
+      required this.createdAt,
+      this.id,
+      required this.localId,
+      required this.locationId,
+      this.orderId,
+      this.referenceId,
+      required this.status,
+      this.tipMoney,
+      required this.totalMoney,
+      required this.updatedAt,
+      this.uploadedAt});
+
+  factory _$OfflinePaymentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OfflinePaymentImplFromJson(json);
+
+  @override
+  final Money amountMoney;
+  @override
+  final Money? appFeeMoney;
+  @override
+  final OfflineCardPaymentDetails? cardDetails;
+  @override
+  final DateTime createdAt;
+  @override
+  final String? id;
+  @override
+  final String localId;
+  @override
+  final String locationId;
+  @override
+  final String? orderId;
+  @override
+  final String? referenceId;
+  @override
+  final OfflineStatus status;
+  @override
+  final Money? tipMoney;
+  @override
+  final Money totalMoney;
+  @override
+  final DateTime updatedAt;
+  @override
+  final DateTime? uploadedAt;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'OfflinePayment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cardDetails: $cardDetails, createdAt: $createdAt, id: $id, localId: $localId, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, status: $status, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt, uploadedAt: $uploadedAt)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'OfflinePayment'))
+      ..add(DiagnosticsProperty('amountMoney', amountMoney))
+      ..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))
+      ..add(DiagnosticsProperty('cardDetails', cardDetails))
+      ..add(DiagnosticsProperty('createdAt', createdAt))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('localId', localId))
+      ..add(DiagnosticsProperty('locationId', locationId))
+      ..add(DiagnosticsProperty('orderId', orderId))
+      ..add(DiagnosticsProperty('referenceId', referenceId))
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('tipMoney', tipMoney))
+      ..add(DiagnosticsProperty('totalMoney', totalMoney))
+      ..add(DiagnosticsProperty('updatedAt', updatedAt))
+      ..add(DiagnosticsProperty('uploadedAt', uploadedAt));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OfflinePaymentImpl &&
+            (identical(other.amountMoney, amountMoney) ||
+                other.amountMoney == amountMoney) &&
+            (identical(other.appFeeMoney, appFeeMoney) ||
+                other.appFeeMoney == appFeeMoney) &&
+            (identical(other.cardDetails, cardDetails) ||
+                other.cardDetails == cardDetails) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.localId, localId) || other.localId == localId) &&
+            (identical(other.locationId, locationId) ||
+                other.locationId == locationId) &&
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.referenceId, referenceId) ||
+                other.referenceId == referenceId) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.tipMoney, tipMoney) ||
+                other.tipMoney == tipMoney) &&
+            (identical(other.totalMoney, totalMoney) ||
+                other.totalMoney == totalMoney) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.uploadedAt, uploadedAt) ||
+                other.uploadedAt == uploadedAt));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      amountMoney,
+      appFeeMoney,
+      cardDetails,
+      createdAt,
+      id,
+      localId,
+      locationId,
+      orderId,
+      referenceId,
+      status,
+      tipMoney,
+      totalMoney,
+      updatedAt,
+      uploadedAt);
+
+  /// Create a copy of OfflinePayment
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OfflinePaymentImplCopyWith<_$OfflinePaymentImpl> get copyWith =>
+      __$$OfflinePaymentImplCopyWithImpl<_$OfflinePaymentImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OfflinePaymentImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OfflinePayment implements OfflinePayment {
+  const factory _OfflinePayment(
+      {required final Money amountMoney,
+      final Money? appFeeMoney,
+      final OfflineCardPaymentDetails? cardDetails,
+      required final DateTime createdAt,
+      final String? id,
+      required final String localId,
+      required final String locationId,
+      final String? orderId,
+      final String? referenceId,
+      required final OfflineStatus status,
+      final Money? tipMoney,
+      required final Money totalMoney,
+      required final DateTime updatedAt,
+      final DateTime? uploadedAt}) = _$OfflinePaymentImpl;
+
+  factory _OfflinePayment.fromJson(Map<String, dynamic> json) =
+      _$OfflinePaymentImpl.fromJson;
+
+  @override
+  Money get amountMoney;
+  @override
+  Money? get appFeeMoney;
+  @override
+  OfflineCardPaymentDetails? get cardDetails;
+  @override
+  DateTime get createdAt;
+  @override
+  String? get id;
+  @override
+  String get localId;
+  @override
+  String get locationId;
+  @override
+  String? get orderId;
+  @override
+  String? get referenceId;
+  @override
+  OfflineStatus get status;
+  @override
+  Money? get tipMoney;
+  @override
+  Money get totalMoney;
+  @override
+  DateTime get updatedAt;
+  @override
+  DateTime? get uploadedAt;
+
+  /// Create a copy of OfflinePayment
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OfflinePaymentImplCopyWith<_$OfflinePaymentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+OfflineCardPaymentDetails _$OfflineCardPaymentDetailsFromJson(
+    Map<String, dynamic> json) {
+  return _OfflineCardPaymentDetails.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OfflineCardPaymentDetails {
+  String? get applicationIdentifier => throw _privateConstructorUsedError;
+  String? get applicationName => throw _privateConstructorUsedError;
+  Card get card => throw _privateConstructorUsedError;
+  EntryMethod get entryMethod => throw _privateConstructorUsedError;
+
+  /// Serializes this OfflineCardPaymentDetails to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OfflineCardPaymentDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OfflineCardPaymentDetailsCopyWith<OfflineCardPaymentDetails> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OfflineCardPaymentDetailsCopyWith<$Res> {
+  factory $OfflineCardPaymentDetailsCopyWith(OfflineCardPaymentDetails value,
+          $Res Function(OfflineCardPaymentDetails) then) =
+      _$OfflineCardPaymentDetailsCopyWithImpl<$Res, OfflineCardPaymentDetails>;
+  @useResult
+  $Res call(
+      {String? applicationIdentifier,
+      String? applicationName,
+      Card card,
+      EntryMethod entryMethod});
+
+  $CardCopyWith<$Res> get card;
+}
+
+/// @nodoc
+class _$OfflineCardPaymentDetailsCopyWithImpl<$Res,
+        $Val extends OfflineCardPaymentDetails>
+    implements $OfflineCardPaymentDetailsCopyWith<$Res> {
+  _$OfflineCardPaymentDetailsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of OfflineCardPaymentDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? applicationIdentifier = freezed,
+    Object? applicationName = freezed,
+    Object? card = null,
+    Object? entryMethod = null,
+  }) {
+    return _then(_value.copyWith(
+      applicationIdentifier: freezed == applicationIdentifier
+          ? _value.applicationIdentifier
+          : applicationIdentifier // ignore: cast_nullable_to_non_nullable
+              as String?,
+      applicationName: freezed == applicationName
+          ? _value.applicationName
+          : applicationName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      card: null == card
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as Card,
+      entryMethod: null == entryMethod
+          ? _value.entryMethod
+          : entryMethod // ignore: cast_nullable_to_non_nullable
+              as EntryMethod,
+    ) as $Val);
+  }
+
+  /// Create a copy of OfflineCardPaymentDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CardCopyWith<$Res> get card {
+    return $CardCopyWith<$Res>(_value.card, (value) {
+      return _then(_value.copyWith(card: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$OfflineCardPaymentDetailsImplCopyWith<$Res>
+    implements $OfflineCardPaymentDetailsCopyWith<$Res> {
+  factory _$$OfflineCardPaymentDetailsImplCopyWith(
+          _$OfflineCardPaymentDetailsImpl value,
+          $Res Function(_$OfflineCardPaymentDetailsImpl) then) =
+      __$$OfflineCardPaymentDetailsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? applicationIdentifier,
+      String? applicationName,
+      Card card,
+      EntryMethod entryMethod});
+
+  @override
+  $CardCopyWith<$Res> get card;
+}
+
+/// @nodoc
+class __$$OfflineCardPaymentDetailsImplCopyWithImpl<$Res>
+    extends _$OfflineCardPaymentDetailsCopyWithImpl<$Res,
+        _$OfflineCardPaymentDetailsImpl>
+    implements _$$OfflineCardPaymentDetailsImplCopyWith<$Res> {
+  __$$OfflineCardPaymentDetailsImplCopyWithImpl(
+      _$OfflineCardPaymentDetailsImpl _value,
+      $Res Function(_$OfflineCardPaymentDetailsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OfflineCardPaymentDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? applicationIdentifier = freezed,
+    Object? applicationName = freezed,
+    Object? card = null,
+    Object? entryMethod = null,
+  }) {
+    return _then(_$OfflineCardPaymentDetailsImpl(
+      applicationIdentifier: freezed == applicationIdentifier
+          ? _value.applicationIdentifier
+          : applicationIdentifier // ignore: cast_nullable_to_non_nullable
+              as String?,
+      applicationName: freezed == applicationName
+          ? _value.applicationName
+          : applicationName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      card: null == card
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as Card,
+      entryMethod: null == entryMethod
+          ? _value.entryMethod
+          : entryMethod // ignore: cast_nullable_to_non_nullable
+              as EntryMethod,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OfflineCardPaymentDetailsImpl
+    with DiagnosticableTreeMixin
+    implements _OfflineCardPaymentDetails {
+  const _$OfflineCardPaymentDetailsImpl(
+      {this.applicationIdentifier,
+      this.applicationName,
+      required this.card,
+      required this.entryMethod});
+
+  factory _$OfflineCardPaymentDetailsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OfflineCardPaymentDetailsImplFromJson(json);
+
+  @override
+  final String? applicationIdentifier;
+  @override
+  final String? applicationName;
+  @override
+  final Card card;
+  @override
+  final EntryMethod entryMethod;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'OfflineCardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, card: $card, entryMethod: $entryMethod)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'OfflineCardPaymentDetails'))
+      ..add(DiagnosticsProperty('applicationIdentifier', applicationIdentifier))
+      ..add(DiagnosticsProperty('applicationName', applicationName))
+      ..add(DiagnosticsProperty('card', card))
+      ..add(DiagnosticsProperty('entryMethod', entryMethod));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OfflineCardPaymentDetailsImpl &&
+            (identical(other.applicationIdentifier, applicationIdentifier) ||
+                other.applicationIdentifier == applicationIdentifier) &&
+            (identical(other.applicationName, applicationName) ||
+                other.applicationName == applicationName) &&
+            (identical(other.card, card) || other.card == card) &&
+            (identical(other.entryMethod, entryMethod) ||
+                other.entryMethod == entryMethod));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, applicationIdentifier, applicationName, card, entryMethod);
+
+  /// Create a copy of OfflineCardPaymentDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OfflineCardPaymentDetailsImplCopyWith<_$OfflineCardPaymentDetailsImpl>
+      get copyWith => __$$OfflineCardPaymentDetailsImplCopyWithImpl<
+          _$OfflineCardPaymentDetailsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OfflineCardPaymentDetailsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OfflineCardPaymentDetails implements OfflineCardPaymentDetails {
+  const factory _OfflineCardPaymentDetails(
+          {final String? applicationIdentifier,
+          final String? applicationName,
+          required final Card card,
+          required final EntryMethod entryMethod}) =
+      _$OfflineCardPaymentDetailsImpl;
+
+  factory _OfflineCardPaymentDetails.fromJson(Map<String, dynamic> json) =
+      _$OfflineCardPaymentDetailsImpl.fromJson;
+
+  @override
+  String? get applicationIdentifier;
+  @override
+  String? get applicationName;
+  @override
+  Card get card;
+  @override
+  EntryMethod get entryMethod;
+
+  /// Create a copy of OfflineCardPaymentDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OfflineCardPaymentDetailsImplCopyWith<_$OfflineCardPaymentDetailsImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
