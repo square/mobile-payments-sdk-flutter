@@ -19,19 +19,22 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<String> getSDKVersion() async {
+  Future<String> getSdkVersion() async {
     // invokeMethod<String> does NOT enforce type conversion; the result may be null or another type.
-    final version = await methodChannel.invokeMethod<String>('getSDKVersion'); 
+    final version = await methodChannel.invokeMethod<String>('getSdkVersion'); 
     if (version == null) {
-      throw StateError("getSDKVersion() returned null, which should not happen.");
+      throw StateError("getSdkVersion() returned null, which should not happen.");
     }
     return version;
   }
 
   @override
-  Future<bool> isSandboxEnvironment() async {
-    final bool? isSandbox = await methodChannel.invokeMethod<bool>('isSandboxEnvironment');
-    return isSandbox ?? false; // Provide a default value (false)
+  Future<String> getEnvironment() async {
+    final environment = await methodChannel.invokeMethod<String>('getEnvironment');
+    if (environment == null) {
+      throw StateError("getEnvironment() returned null, which should not happen.");
+    }
+    return environment;
   }
 
   @override

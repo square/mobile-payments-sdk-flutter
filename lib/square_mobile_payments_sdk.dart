@@ -10,12 +10,12 @@ class SquareMobilePaymentsSdk {
     return SquareMobilePaymentsSdkPlatform.instance.getPlatformVersion();
   }
 
-  Future<String> getSDKVersion() {
-    return SquareMobilePaymentsSdkPlatform.instance.getSDKVersion();
+  Future<String> getSdkVersion() {
+    return SquareMobilePaymentsSdkPlatform.instance.getSdkVersion();
   }
 
-  Future<bool> isSandboxEnvironment() {
-    return SquareMobilePaymentsSdkPlatform.instance.isSandboxEnvironment();
+  Future<String> getEnvironment() {
+    return SquareMobilePaymentsSdkPlatform.instance.getEnvironment();
   }
 
   Future<AuthorizationState> getAuthorizationState() async {
