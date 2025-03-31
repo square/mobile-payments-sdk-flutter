@@ -48,6 +48,19 @@ class Card with _$Card {
 }
 
 @freezed
+class OfflineCard with _$OfflineCard {
+  const factory OfflineCard({
+    required CardBrand brand,
+    String? cardholderName,
+    String? id,
+    String? lastFourDigits,
+  }) = _OfflineCard;
+
+  factory OfflineCard.fromJson(Map<String, Object?> json) =>
+      _$OfflineCardFromJson(json);
+}
+
+@freezed
 class CardPaymentDetails with _$CardPaymentDetails {
   const factory CardPaymentDetails({
     required String applicationIdentifier,
@@ -229,17 +242,17 @@ class OfflinePayment with _$OfflinePayment {
   const factory OfflinePayment({
     required Money amountMoney,
     Money? appFeeMoney,
-    OfflineCardPaymentDetails? cardDetails,
     required DateTime createdAt,
     String? id,
-    required String localId,
-    required String locationId,
+    String? locationId,
     String? orderId,
     String? referenceId,
-    required OfflineStatus status,
     Money? tipMoney,
     required Money totalMoney,
     required DateTime updatedAt,
+    OfflineCardPaymentDetails? cardDetails,
+    required String localId,
+    required OfflineStatus status,
     DateTime? uploadedAt,
   }) = _OfflinePayment;
 
@@ -252,7 +265,7 @@ class OfflineCardPaymentDetails with _$OfflineCardPaymentDetails {
   const factory OfflineCardPaymentDetails({
     String? applicationIdentifier,
     String? applicationName,
-    required Card card,
+    OfflineCard? card,
     required EntryMethod entryMethod,
   }) = _OfflineCardPaymentDetails;
 

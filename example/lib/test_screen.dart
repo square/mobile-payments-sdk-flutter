@@ -81,31 +81,35 @@ class _TestScreenState extends State<TestScreen> {
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(20),
               child: Column(
-                children: content.map((item) {
-                  return Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 10,
-                        height: 10,
-                        decoration: BoxDecoration(
-                          color: item['isError'] ? Colors.red : Colors.green,
-                          shape: BoxShape.circle,
-                        ),
-                        margin: const EdgeInsets.only(right: 10),
-                      ),
-                      Expanded(
-                        child: Text(
-                          item['message'],
-                          style: const TextStyle(
-                              fontSize: 18, color: Colors.black),
-                          softWrap: true,
-                          overflow: TextOverflow.visible,
-                        ),
-                      ),
-                    ],
-                  );
-                }).toList(),
+                spacing: 20,
+                children: content.isNotEmpty
+                    ? content.map((item) {
+                        return Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 10,
+                              height: 10,
+                              decoration: BoxDecoration(
+                                color:
+                                    item['isError'] ? Colors.red : Colors.green,
+                                shape: BoxShape.circle,
+                              ),
+                              margin: const EdgeInsets.only(right: 10, top: 8),
+                            ),
+                            Expanded(
+                              child: Text(
+                                item['message'],
+                                style: const TextStyle(
+                                    fontSize: 18, color: Colors.black),
+                                softWrap: true,
+                                overflow: TextOverflow.visible,
+                              ),
+                            ),
+                          ],
+                        );
+                      }).toList()
+                    : [const SizedBox(width: double.infinity)],
               ),
             ),
           ),
@@ -157,6 +161,7 @@ class _TestScreenState extends State<TestScreen> {
               child: const Text('Test Methods'),
             ),
           ),
+          const SizedBox(height: 20)
         ],
       ),
     );

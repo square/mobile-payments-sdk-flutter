@@ -92,6 +92,22 @@ const _$CardCoBrandEnumMap = {
   CardCoBrand.unknown: 'unknown',
 };
 
+_$OfflineCardImpl _$$OfflineCardImplFromJson(Map<String, dynamic> json) =>
+    _$OfflineCardImpl(
+      brand: $enumDecode(_$CardBrandEnumMap, json['brand']),
+      cardholderName: json['cardholderName'] as String?,
+      id: json['id'] as String?,
+      lastFourDigits: json['lastFourDigits'] as String?,
+    );
+
+Map<String, dynamic> _$$OfflineCardImplToJson(_$OfflineCardImpl instance) =>
+    <String, dynamic>{
+      'brand': _$CardBrandEnumMap[instance.brand]!,
+      'cardholderName': instance.cardholderName,
+      'id': instance.id,
+      'lastFourDigits': instance.lastFourDigits,
+    };
+
 _$CardPaymentDetailsImpl _$$CardPaymentDetailsImplFromJson(
         Map<String, dynamic> json) =>
     _$CardPaymentDetailsImpl(
@@ -490,22 +506,22 @@ _$OfflinePaymentImpl _$$OfflinePaymentImplFromJson(Map<String, dynamic> json) =>
       appFeeMoney: json['appFeeMoney'] == null
           ? null
           : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
-      cardDetails: json['cardDetails'] == null
-          ? null
-          : OfflineCardPaymentDetails.fromJson(
-              json['cardDetails'] as Map<String, dynamic>),
       createdAt: DateTime.parse(json['createdAt'] as String),
       id: json['id'] as String?,
-      localId: json['localId'] as String,
-      locationId: json['locationId'] as String,
+      locationId: json['locationId'] as String?,
       orderId: json['orderId'] as String?,
       referenceId: json['referenceId'] as String?,
-      status: $enumDecode(_$OfflineStatusEnumMap, json['status']),
       tipMoney: json['tipMoney'] == null
           ? null
           : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
       totalMoney: Money.fromJson(json['totalMoney'] as Map<String, dynamic>),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
+      cardDetails: json['cardDetails'] == null
+          ? null
+          : OfflineCardPaymentDetails.fromJson(
+              json['cardDetails'] as Map<String, dynamic>),
+      localId: json['localId'] as String,
+      status: $enumDecode(_$OfflineStatusEnumMap, json['status']),
       uploadedAt: json['uploadedAt'] == null
           ? null
           : DateTime.parse(json['uploadedAt'] as String),
@@ -516,17 +532,17 @@ Map<String, dynamic> _$$OfflinePaymentImplToJson(
     <String, dynamic>{
       'amountMoney': instance.amountMoney,
       'appFeeMoney': instance.appFeeMoney,
-      'cardDetails': instance.cardDetails,
       'createdAt': instance.createdAt.toIso8601String(),
       'id': instance.id,
-      'localId': instance.localId,
       'locationId': instance.locationId,
       'orderId': instance.orderId,
       'referenceId': instance.referenceId,
-      'status': _$OfflineStatusEnumMap[instance.status]!,
       'tipMoney': instance.tipMoney,
       'totalMoney': instance.totalMoney,
       'updatedAt': instance.updatedAt.toIso8601String(),
+      'cardDetails': instance.cardDetails,
+      'localId': instance.localId,
+      'status': _$OfflineStatusEnumMap[instance.status]!,
       'uploadedAt': instance.uploadedAt?.toIso8601String(),
     };
 
@@ -544,7 +560,9 @@ _$OfflineCardPaymentDetailsImpl _$$OfflineCardPaymentDetailsImplFromJson(
     _$OfflineCardPaymentDetailsImpl(
       applicationIdentifier: json['applicationIdentifier'] as String?,
       applicationName: json['applicationName'] as String?,
-      card: Card.fromJson(json['card'] as Map<String, dynamic>),
+      card: json['card'] == null
+          ? null
+          : OfflineCard.fromJson(json['card'] as Map<String, dynamic>),
       entryMethod: $enumDecode(_$EntryMethodEnumMap, json['entryMethod']),
     );
 
