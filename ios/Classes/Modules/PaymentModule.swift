@@ -14,7 +14,7 @@ public class PaymentModule: PaymentManagerDelegate {
         promptParameters: [String: Any]
         ) {
         let nativePaymentParameters = PaymentMapper.getPaymentParameters(paymentParameters:paymentParameters)
-        
+
         let nativePromptParameters = PaymentMapper.getPromptParameters(promptParameters:promptParameters)
 
         guard let topController = UIApplication.shared.keyWindow?.rootViewController else {
@@ -31,21 +31,49 @@ public class PaymentModule: PaymentManagerDelegate {
         )
     }
 
+    public static func getPayments(result: @escaping FlutterResult) {
+        let offlinePaymentQueue = paymentManager.offlinePaymentQueue
+        offlinePaymentQueue.getPayments { payments, error in
+            if let error = error {
+                result(FlutterError(code: "GET_OFFLINE_PAYMENTS_FAILED", message: error.localizedDescription, details: nil))
+            } else {
+                let paymentsArray = payments.map { $0.toMap() }
+                result(paymentsArray)
+            }
+        }
+    }
+
+    public static func getTotalStoredPaymentAmount(result: @escaping FlutterResult) {
+        let offlinePaymentQueue = paymentManager.offlinePaymentQueue
+        offlinePaymentQueue.getTotalStoredPaymentsAmount { moneyAmount, error in
+            if let error = error {
+                result(FlutterError(code: "GET_TOTAL_STORED_PAYMENTS_FAILED", message: error.localizedDescription, details: nil))
+            } else if let moneyAmount = moneyAmount {
+                result(moneyAmount.toMap())
+            } else {
+                //NEVER: if money is nil there was an error, so the error if will occur
+                result(NSNull())
+            }
+        }
+    }
+
+    // Payment delegate listeners
     // MARK: - PaymentManagerDelegate Methods
-    
+
     public func paymentManager(_ paymentManager: PaymentManager, didFinish payment: Payment) {
         print("Payment successful: \(payment)")
         if let onlinePayment = payment as? OnlinePayment {
             print("Finished payment with ID: \(onlinePayment.id!) status: \(onlinePayment.status.description)")
             delegateResult?(onlinePayment.toMap())
-            return
         } else if let offlinePayment = payment as? OfflinePayment {
             print("Finished payment with ID: \(offlinePayment.localID) status: \(offlinePayment.status.description)")
+            //delegateResult?(offlinePayment.toMap())
+            //TODO: add receiving payment interface not only OnlinePayment
             delegateResult?(nil)
-            return
+        } else {
+            delegateResult?(nil)
         }
-        delegateResult?(nil)
-        delegateResult = nil 
+        delegateResult = nil
     }
 
     public func paymentManager(_ paymentManager: PaymentManager, didFail payment: Payment, withError error: Error) {
@@ -65,9 +93,9 @@ public class PaymentModule: PaymentManagerDelegate {
             message: nil,
             details: nil
         ))
-        delegateResult = nil 
+        delegateResult = nil
     }
-    
+
     // Optional
     public func paymentManager(_ paymentManager: PaymentManager, didStart payment: Payment) {
         print("Payment started.")

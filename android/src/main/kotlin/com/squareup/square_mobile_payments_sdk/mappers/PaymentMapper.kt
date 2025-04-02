@@ -5,7 +5,7 @@ import com.squareup.sdk.mobilepayments.payment.Money
 import com.squareup.sdk.mobilepayments.payment.PaymentParameters
 import com.squareup.sdk.mobilepayments.payment.PromptMode
 import com.squareup.sdk.mobilepayments.payment.PromptParameters
-
+import com.squareup.sdk.mobilepayments.payment.ProcessingMode
 import java.util.UUID
 
 class PaymentMapper {
@@ -57,8 +57,18 @@ class PaymentMapper {
                 if(paymentParameters.get("autocomplete") != null) {
                     builder.autocomplete(paymentParameters.get("autocomplete") as? Boolean ?: false)
                 }
+                
+                if(paymentParameters.get("processingMode") != null) {
+                    builder.processingMode(convertToProcessingMode(paymentParameters.get("processingMode") as? Int ?: 0))
+                }
 
                 return builder.build()
+        }
+
+        fun convertToProcessingMode(value: Int?) = when (value) {
+            1 -> ProcessingMode.OFFLINE_ONLY
+            2 -> ProcessingMode.ONLINE_ONLY
+            else -> ProcessingMode.AUTO_DETECT
         }
 
         @JvmStatic

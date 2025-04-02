@@ -4,16 +4,16 @@ public class PaymentMapper {
 
     static func getCurrency(from currency: String) -> Currency {
         switch currency.uppercased() {
-        case "AUD": return .AUD
-        case "CAD": return .CAD
-        case "EUR": return .EUR
-        case "GBP": return .GBP
-        case "JPY": return .JPY
-        case "USD": return .USD
-        default: return .unknown
+            case "AUD": return .AUD
+            case "CAD": return .CAD
+            case "EUR": return .EUR
+            case "GBP": return .GBP
+            case "JPY": return .JPY
+            case "USD": return .USD
+            default: return .unknown
         }
     }
-    
+
     static func getPaymentParameters(paymentParameters: [String: Any]) -> PaymentParameters {
         // Required fields
         guard
