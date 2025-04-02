@@ -68,7 +68,7 @@ class PaymentModule {
                     is SdkResult.Success -> {
                         val paymentList = ArrayList<Map<String, Any?>>()
                         sdkResult.value.forEach { payment ->
-                            paymentList.add(payment.toOfflineMap())
+                            paymentList.add(payment.toOfflineMap().mapKeys { it.key.toString() })
                         }
                         result.success(paymentList)
                     }

@@ -79,8 +79,8 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
     return mapOf(
       "createdAt" to createdAt.toISO8601String(),
       "updatedAt" to updatedAt.toISO8601String(),
-      "amountMoney" to amountMoney.toMoneyMap(),
-      "tipMoney" to amountMoney?.toMoneyMap(),
+      "amountMoney" to amountMoney?.toMoneyMap(),
+      "tipMoney" to tipMoney?.toMoneyMap(),
       "appFeeMoney" to appFeeMoney?.toMoneyMap(),
       "locationId" to locationId,
       "orderId" to orderId,
@@ -92,7 +92,6 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "localId" to localId,
       "id" to id,
       "status" to status.toOfflineStatusName(),
-      "cardDetails" to cardDetails?.toOfflineDetailsMap(),
       "totalMoney" to totalMoney?.toMoneyMap()
     )
   }

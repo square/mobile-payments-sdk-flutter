@@ -201,6 +201,7 @@ class PaymentParameters with _$PaymentParameters {
     String? customerId, // Nullable
     DelayAction? delayAction, // Nullable
     num? delayDuration, // Nullable
+    num? processingMode, // Nullable
     required String idempotencyKey, // Required
     String? locationId, // Nullable
     String? note, // Nullable
@@ -256,7 +257,7 @@ class OfflinePayment with _$OfflinePayment {
     DateTime? uploadedAt,
   }) = _OfflinePayment;
 
-  factory OfflinePayment.fromJson(Map<String, Object?> json) =>
+  factory OfflinePayment.fromJson(Map<String, dynamic> json) =>
       _$OfflinePaymentFromJson(json);
 }
 

@@ -3386,6 +3386,7 @@ mixin _$PaymentParameters {
   DelayAction? get delayAction =>
       throw _privateConstructorUsedError; // Nullable
   num? get delayDuration => throw _privateConstructorUsedError; // Nullable
+  num? get processingMode => throw _privateConstructorUsedError; // Nullable
   String get idempotencyKey => throw _privateConstructorUsedError; // Required
   String? get locationId => throw _privateConstructorUsedError; // Nullable
   String? get note => throw _privateConstructorUsedError; // Nullable
@@ -3694,6 +3695,7 @@ class _$PaymentParametersImpl
       this.customerId,
       this.delayAction,
       this.delayDuration,
+      this.processingMode,
       required this.idempotencyKey,
       this.locationId,
       this.note,
@@ -3723,6 +3725,9 @@ class _$PaymentParametersImpl
 // Nullable
   @override
   final num? delayDuration;
+// Nullable
+  @override
+  final num? processingMode;
 // Nullable
   @override
   final String idempotencyKey;
@@ -3852,6 +3857,7 @@ abstract class _PaymentParameters implements PaymentParameters {
       final String? customerId,
       final DelayAction? delayAction,
       final num? delayDuration,
+      final num? processingMode,
       required final String idempotencyKey,
       final String? locationId,
       final String? note,
@@ -3877,6 +3883,8 @@ abstract class _PaymentParameters implements PaymentParameters {
   DelayAction? get delayAction; // Nullable
   @override
   num? get delayDuration; // Nullable
+  @override
+  num? get processingMode; // Nullable
   @override
   String get idempotencyKey; // Required
   @override

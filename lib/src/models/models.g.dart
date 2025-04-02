@@ -420,6 +420,7 @@ _$PaymentParametersImpl _$$PaymentParametersImplFromJson(
       delayAction:
           $enumDecodeNullable(_$DelayActionEnumMap, json['delayAction']),
       delayDuration: json['delayDuration'] as num?,
+      processingMode: json['processingMode'] as num?,
       idempotencyKey: json['idempotencyKey'] as String,
       locationId: json['locationId'] as String?,
       note: json['note'] as String?,
@@ -441,6 +442,7 @@ Map<String, dynamic> _$$PaymentParametersImplToJson(
       'customerId': instance.customerId,
       'delayAction': _$DelayActionEnumMap[instance.delayAction],
       'delayDuration': instance.delayDuration,
+      'processingMode': instance.processingMode,
       'idempotencyKey': instance.idempotencyKey,
       'locationId': instance.locationId,
       'note': instance.note,
