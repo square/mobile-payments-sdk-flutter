@@ -180,77 +180,15 @@ class MethodChannelSquareMobilePaymentsSdk
     return Money.fromJson(result.cast<String, Object?>());
   }
 
-
-  Map<String, Object?> _sanitizeMap(Map original) {
-    return original.map<String, Object?>((key, value) {
-      if (value is Map) {
-        return MapEntry(key.toString(), _sanitizeMap(value));
-      } else if (value is List) {
-        return MapEntry(key.toString(), value.map((item) {
-          if (item is Map) return _sanitizeMap(item);
-          return item;
-        }).toList());
-      } else {
-        return MapEntry(key.toString(), value);
-      }
-    });
-  }
-
-  static CurrencyCode GetCurrencyCodefromString(String code) {
-  return CurrencyCode.values.firstWhere(
-    (e) => e.name.toLowerCase() == code.toLowerCase(),
-    orElse: () => CurrencyCode.usd, // default fallback
-  );
-}
-
-
   @override
   Future<List<OfflinePayment>> getPayments() async {
     final result = await methodChannel.invokeMethod<List>('getPayments');
     if (result == null) {
       throw StateError("getPayments() returned null, which should not happen.");
     }
-
-    return result.map((e) {
-      final map = Map<String, dynamic>.from(e as Map);
-      return OfflinePayment(
-        createdAt: DateTime.parse(map['createdAt']),
-        updatedAt: DateTime.parse(map['updatedAt']),
-        amountMoney: Money(
-          amount: map['amountMoney']['amount'],
-          currencyCode: GetCurrencyCodefromString(map['amountMoney']['currencyCode']),
-        ),
-        tipMoney: map['tipMoney'] == null
-            ? null
-            : Money(
-                amount: map['tipMoney']['amount'],
-                currencyCode: map['tipMoney']['currencyCode'],
-              ),
-        appFeeMoney: map['appFeeMoney'] == null
-            ? null
-            : Money(
-                amount: map['appFeeMoney']['amount'],
-                currencyCode: map['appFeeMoney']['currencyCode'],
-              ),
-        locationId: map['locationId'],
-        orderId: map['orderId'],
-        referenceId: map['referenceId'],
-        totalMoney: Money(
-          amount: map['totalMoney']['amount'],
-          currencyCode: GetCurrencyCodefromString(map['totalMoney']['currencyCode']),
-        ),
-        uploadedAt: map['uploadedAt'] == null
-            ? null
-            : DateTime.parse(map['uploadedAt']),
-        localId: map['localId'],
-        id: map['id'],
-        status: OfflineStatus.values.firstWhere(
-          (s) => s.name == map['status'],
-          orElse: () => OfflineStatus.unknown,
-        ),
-        cardDetails: null, // Or parse if needed
-      );
-    }).toList();
+    return result
+        .map((e) => OfflinePayment.fromJson(castPaymentMap(e)))
+        .toList();
   }
 
   @override
