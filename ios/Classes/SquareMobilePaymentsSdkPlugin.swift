@@ -56,6 +56,11 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
     case "showSettings":
       SettingsModule.showSettings(result: result)
 
+    case "getSdkVersion":
+      SettingsModule.getSdkVersion(result: result)
+
+    case "getEnvironment":
+      SettingsModule.getEnvironment(result: result)
     case "isOfflineProcessingAllowed":
       SettingsModule.isOfflineProcessingAllowed(result: result)
     case "getOfflineTotalStoredAmountLimit":
