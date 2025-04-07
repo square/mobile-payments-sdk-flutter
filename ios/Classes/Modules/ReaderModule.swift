@@ -1,10 +1,12 @@
 import Flutter
 import SquareMobilePaymentsSDK
+#if DEBUG
 import MockReaderUI
+#endif
 
 public class ReaderModule {
 
-
+    #if DEBUG
     static var mockReader: MockReaderUI? = {
         do {
             return try MockReaderUI(for: MobilePaymentsSDK.shared)
@@ -12,6 +14,7 @@ public class ReaderModule {
             return nil
         }
     }()
+    #endif
 
 
     static func parseTapToPayError(error: NSError, defaultError: String) -> String {
@@ -53,17 +56,22 @@ public class ReaderModule {
     }
 
     public static func showMockReaderUI(result: @escaping FlutterResult) {
+        #if DEBUG
         do {
             try mockReader?.present()
             result("Mock Reader has been successfully presented.")
         } catch let error {
             result(FlutterError(code: "SHOW_MOCK_READER_UI", message: error.localizedDescription, details: nil))
         }
+        #else
+        result(FlutterError(code: "SHOW_MOCK_READER_UI", message: "Mock Reader UI is only available in debug builds", details: nil))
+        #endif
     }
 
     public static func hideMockReaderUI(result: @escaping FlutterResult) {
-        
+        #if DEBUG
         mockReader?.dismiss()
+        #endif
         result("Mock Reader has been successfully hidden.")
     }
 
