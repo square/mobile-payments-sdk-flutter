@@ -14,7 +14,7 @@ class AuthManager {
     return SquareMobilePaymentsSdkPlatform.instance.getAuthorizedLocation();
   }
 
-  Future<String?> authorize(String accessToken, String locationId) async {
+  Future<void> authorize(String accessToken, String locationId) async {
     return SquareMobilePaymentsSdkPlatform.instance
         .authorize(accessToken, locationId);
   }

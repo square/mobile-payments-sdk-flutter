@@ -15,7 +15,7 @@ class SettingsManager {
     return SquareMobilePaymentsSdkPlatform.instance.getSdkVersion();
   }
 
-  Future<String> getEnvironment() {
+  Future<Environment> getEnvironment() {
     return SquareMobilePaymentsSdkPlatform.instance.getEnvironment();
   }
 

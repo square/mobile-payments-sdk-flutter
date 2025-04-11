@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:square_mobile_payments_sdk/src/models/models.dart';
+import 'package:square_mobile_payments_sdk/src/errors/errors.dart';
 
 import 'square_mobile_payments_sdk_platform_interface.dart';
 
@@ -12,9 +13,12 @@ class MethodChannelSquareMobilePaymentsSdk
   final methodChannel = const MethodChannel('square_mobile_payments_sdk');
 
   @override
-  Future<String?> getPlatformVersion() async {
+  Future<String> getPlatformVersion() async {
     final version =
         await methodChannel.invokeMethod<String>('getPlatformVersion');
+    if (version == null) {
+      throw getChannelStateError("getPlatformVersion()", "returned null");
+    }
     return version;
   }
 
@@ -34,6 +38,7 @@ class MethodChannelSquareMobilePaymentsSdk
     if (environment == null) {
       throw StateError("getEnvironment() returned null, which should not happen.");
     }
+    final environment = assertEnumValue(Environment.values, envName);
     return environment;
   }
 
@@ -41,14 +46,17 @@ class MethodChannelSquareMobilePaymentsSdk
   Future<AuthorizationState> getAuthorizationState() async {
     final authorizeStateName =
         await methodChannel.invokeMethod<String>('getAuthorizationState');
-    return AuthorizationState.values.firstWhere(
-      (e) => e.name == authorizeStateName,
-      orElse: () => AuthorizationState.notAuthorized,
-    );
+    if (authorizeStateName == null) {
+      throw getChannelStateError("getAuthorizationState()", "returned null");
+    }
+    final authorizationState =
+        assertEnumValue(AuthorizationState.values, authorizeStateName);
+    return authorizationState;
   }
 
   @override
   Future<Location?> getAuthorizedLocation() async {
+    //null if not authorized
     final location = await methodChannel.invokeMethod('getAuthorizedLocation');
     if (location != null) {
       return Location.fromJson(location); //TEST
@@ -57,14 +65,16 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<String?> authorize(String accessToken, String locationId) async {
+  Future<void> authorize(String accessToken, String locationId) async {
     var params = <String, dynamic>{
       'accessToken': accessToken,
       'locationId': locationId,
     };
-    final response =
-        await methodChannel.invokeMethod<String>('authorize', params);
-    return response;
+    try {
+      await methodChannel.invokeMethod<void>('authorize', params);
+    } on PlatformException catch (e) {
+      throw AuthorizeError(e.code, e.message, e.details);
+    }
   }
 
   @override
