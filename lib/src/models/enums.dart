@@ -115,6 +115,8 @@ enum SourceType {
 }
 
 // Reader Enums
+enum CardInputMethod { swiped, emv, contactless }
+
 enum ReaderBatteryLevel {
   criticallyLow,
   full,
@@ -162,6 +164,7 @@ enum ReaderModel {
   embedded,
   magstripe,
   stand,
+  tapToPay,
   unknown,
 }
 

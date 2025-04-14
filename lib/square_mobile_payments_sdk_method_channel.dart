@@ -21,18 +21,21 @@ class MethodChannelSquareMobilePaymentsSdk
   @override
   Future<String> getSdkVersion() async {
     // invokeMethod<String> does NOT enforce type conversion; the result may be null or another type.
-    final version = await methodChannel.invokeMethod<String>('getSdkVersion'); 
+    final version = await methodChannel.invokeMethod<String>('getSdkVersion');
     if (version == null) {
-      throw StateError("getSdkVersion() returned null, which should not happen.");
+      throw StateError(
+          "getSdkVersion() returned null, which should not happen.");
     }
     return version;
   }
 
   @override
   Future<String> getEnvironment() async {
-    final environment = await methodChannel.invokeMethod<String>('getEnvironment');
+    final environment =
+        await methodChannel.invokeMethod<String>('getEnvironment');
     if (environment == null) {
-      throw StateError("getEnvironment() returned null, which should not happen.");
+      throw StateError(
+          "getEnvironment() returned null, which should not happen.");
     }
     return environment;
   }
@@ -198,6 +201,34 @@ class MethodChannelSquareMobilePaymentsSdk
         await methodChannel.invokeMethod<Map>('getTotalStoredPaymentAmount');
     if (result == null) return null;
     return Money.fromJson(result.cast<String, Object?>());
+  }
+
+  // **New Methods for Reader management Support**
+  @override
+  Future<List<ReaderInfo>> getReaders() async {
+    final result = await methodChannel.invokeMethod<List>('getReaders');
+    if (result == null) {
+      throw StateError("getPayments() returned null, which should not happen.");
+    }
+    print(result);
+    final readers =
+        result.map((r) => ReaderInfo.fromJson(castPaymentMap(r))).toList();
+    return readers;
+  }
+
+  @override
+  Future<ReaderInfo?> getReader(String id) async {
+    final result =
+        await methodChannel.invokeMethod<Map>('getReader', {"id": id});
+    if (result == null) {
+      return null;
+    }
+    return ReaderInfo.fromJson(castPaymentMap(result));
+  }
+
+  @override
+  Future<void> forget(String id) async {
+    await methodChannel.invokeMethod('forget', {"id": id});
   }
 }
 

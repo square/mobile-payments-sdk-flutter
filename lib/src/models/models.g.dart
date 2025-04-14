@@ -147,35 +147,19 @@ const _$CardPaymentStatusEnumMap = {
   CardPaymentStatus.unknown: 'unknown',
 };
 
-_$CardInputMethodsImpl _$$CardInputMethodsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CardInputMethodsImpl(
-      chip: (json['chip'] as num).toInt(),
-      contactless: (json['contactless'] as num).toInt(),
-      swipe: (json['swipe'] as num).toInt(),
-    );
-
-Map<String, dynamic> _$$CardInputMethodsImplToJson(
-        _$CardInputMethodsImpl instance) =>
-    <String, dynamic>{
-      'chip': instance.chip,
-      'contactless': instance.contactless,
-      'swipe': instance.swipe,
-    };
-
 _$ReaderBatteryStatusImpl _$$ReaderBatteryStatusImplFromJson(
         Map<String, dynamic> json) =>
     _$ReaderBatteryStatusImpl(
-      isCharging: (json['isCharging'] as num).toInt(),
-      level: $enumDecode(_$ReaderBatteryLevelEnumMap, json['level']),
-      percentage: json['percentage'] as num? ?? 0,
+      isCharging: json['isCharging'] as bool,
+      level: $enumDecodeNullable(_$ReaderBatteryLevelEnumMap, json['level']),
+      percentage: (json['percentage'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ReaderBatteryStatusImplToJson(
         _$ReaderBatteryStatusImpl instance) =>
     <String, dynamic>{
       'isCharging': instance.isCharging,
-      'level': _$ReaderBatteryLevelEnumMap[instance.level]!,
+      'level': _$ReaderBatteryLevelEnumMap[instance.level],
       'percentage': instance.percentage,
     };
 
@@ -234,8 +218,10 @@ const _$ReaderConnectionFailureRecoverySuggestionEnumMap = {
 _$ReaderConnectionInfoImpl _$$ReaderConnectionInfoImplFromJson(
         Map<String, dynamic> json) =>
     _$ReaderConnectionInfoImpl(
-      failureInfo: ReaderConnectionFailureInfo.fromJson(
-          json['failureInfo'] as Map<String, dynamic>),
+      failureInfo: json['failureInfo'] == null
+          ? null
+          : ReaderConnectionFailureInfo.fromJson(
+              json['failureInfo'] as Map<String, dynamic>),
       state: $enumDecode(_$ReaderConnectionStateEnumMap, json['state']),
     );
 
@@ -256,9 +242,9 @@ const _$ReaderConnectionStateEnumMap = {
 _$ReaderFirmwareInfoImpl _$$ReaderFirmwareInfoImplFromJson(
         Map<String, dynamic> json) =>
     _$ReaderFirmwareInfoImpl(
-      failureReason: json['failureReason'] as String,
-      updatePercentage: (json['updatePercentage'] as num).toDouble(),
-      version: json['version'] as String,
+      failureReason: json['failureReason'] as String?,
+      updatePercentage: (json['updatePercentage'] as num?)?.toInt(),
+      version: json['version'] as String?,
     );
 
 Map<String, dynamic> _$$ReaderFirmwareInfoImplToJson(
@@ -271,24 +257,30 @@ Map<String, dynamic> _$$ReaderFirmwareInfoImplToJson(
 
 _$ReaderInfoImpl _$$ReaderInfoImplFromJson(Map<String, dynamic> json) =>
     _$ReaderInfoImpl(
-      batteryStatus: ReaderBatteryStatus.fromJson(
-          json['batteryStatus'] as Map<String, dynamic>),
-      cardInsertionStatus: $enumDecode(
+      batteryStatus: json['batteryStatus'] == null
+          ? null
+          : ReaderBatteryStatus.fromJson(
+              json['batteryStatus'] as Map<String, dynamic>),
+      cardInsertionStatus: $enumDecodeNullable(
           _$CardInsertionStatusEnumMap, json['cardInsertionStatus']),
-      connectionInfo: ReaderConnectionInfo.fromJson(
-          json['connectionInfo'] as Map<String, dynamic>),
-      firmwareInfo: ReaderFirmwareInfo.fromJson(
-          json['firmwareInfo'] as Map<String, dynamic>),
-      id: json['id'] as num? ?? 0,
-      isBlinkable: (json['isBlinkable'] as num).toInt(),
-      isConnectionRetryable: (json['isConnectionRetryable'] as num).toInt(),
-      isForgettable: (json['isForgettable'] as num).toInt(),
+      connectionInfo: json['connectionInfo'] == null
+          ? null
+          : ReaderConnectionInfo.fromJson(
+              json['connectionInfo'] as Map<String, dynamic>),
+      firmwareInfo: json['firmwareInfo'] == null
+          ? null
+          : ReaderFirmwareInfo.fromJson(
+              json['firmwareInfo'] as Map<String, dynamic>),
+      id: json['id'] as String,
+      isBlinkable: json['isBlinkable'] as bool,
+      isConnectionRetryable: json['isConnectionRetryable'] as bool?,
+      isForgettable: json['isForgettable'] as bool,
       model: $enumDecode(_$ReaderModelEnumMap, json['model']),
       name: json['name'] as String,
-      serialNumber: json['serialNumber'] as String? ?? "",
+      serialNumber: json['serialNumber'] as String?,
       state: $enumDecode(_$ReaderStateEnumMap, json['state']),
       supportedInputMethods: (json['supportedInputMethods'] as List<dynamic>)
-          .map((e) => CardInputMethods.fromJson(e as Map<String, dynamic>))
+          .map((e) => $enumDecode(_$CardInputMethodEnumMap, e))
           .toList(),
     );
 
@@ -296,7 +288,7 @@ Map<String, dynamic> _$$ReaderInfoImplToJson(_$ReaderInfoImpl instance) =>
     <String, dynamic>{
       'batteryStatus': instance.batteryStatus,
       'cardInsertionStatus':
-          _$CardInsertionStatusEnumMap[instance.cardInsertionStatus]!,
+          _$CardInsertionStatusEnumMap[instance.cardInsertionStatus],
       'connectionInfo': instance.connectionInfo,
       'firmwareInfo': instance.firmwareInfo,
       'id': instance.id,
@@ -307,7 +299,9 @@ Map<String, dynamic> _$$ReaderInfoImplToJson(_$ReaderInfoImpl instance) =>
       'name': instance.name,
       'serialNumber': instance.serialNumber,
       'state': _$ReaderStateEnumMap[instance.state]!,
-      'supportedInputMethods': instance.supportedInputMethods,
+      'supportedInputMethods': instance.supportedInputMethods
+          .map((e) => _$CardInputMethodEnumMap[e]!)
+          .toList(),
     };
 
 const _$CardInsertionStatusEnumMap = {
@@ -321,6 +315,7 @@ const _$ReaderModelEnumMap = {
   ReaderModel.embedded: 'embedded',
   ReaderModel.magstripe: 'magstripe',
   ReaderModel.stand: 'stand',
+  ReaderModel.tapToPay: 'tapToPay',
   ReaderModel.unknown: 'unknown',
 };
 
@@ -331,6 +326,12 @@ const _$ReaderStateEnumMap = {
   ReaderState.failedToConnect: 'failedToConnect',
   ReaderState.ready: 'ready',
   ReaderState.updatingFirmware: 'updatingFirmware',
+};
+
+const _$CardInputMethodEnumMap = {
+  CardInputMethod.swiped: 'swiped',
+  CardInputMethod.emv: 'emv',
+  CardInputMethod.contactless: 'contactless',
 };
 
 _$PromptParametersImpl _$$PromptParametersImplFromJson(

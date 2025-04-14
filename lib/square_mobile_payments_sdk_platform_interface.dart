@@ -118,4 +118,17 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     throw UnimplementedError(
         'getTotalStoredPaymentAmount() has not been implemented.');
   }
+
+  // **New Methods for Reader management Support**
+  Future<List<ReaderInfo>> getReaders() async {
+    throw UnimplementedError('getReaders() has not been implemented.');
+  }
+
+  Future<ReaderInfo?> getReader(String id) async {
+    throw UnimplementedError('getReader() has not been implemented.');
+  }
+
+  Future<void> forget(String id) async {
+    throw UnimplementedError('forget() has not been implemented.');
+  }
 }

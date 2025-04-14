@@ -2,9 +2,13 @@ package com.squareup.square_mobile_payments_sdk.modules
 
 import io.flutter.plugin.common.MethodChannel
 import com.squareup.sdk.mobilepayments.mockreader.ui.MockReaderUI
+import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
+import com.squareup.square_mobile_payments_sdk.extensions.toReaderInfoMap
 
 class ReaderModule {
     companion object {
+        private val readerManager = MobilePaymentsSdk.readerManager()
+
         @JvmStatic
         fun showMockReaderUI(result: MethodChannel.Result) {
             MockReaderUI.show()
@@ -14,6 +18,33 @@ class ReaderModule {
         @JvmStatic
         fun hideMockReaderUI(result: MethodChannel.Result) {
             MockReaderUI.hide()
+            result.success(null)
+        }
+
+        @JvmStatic
+        fun getReaders(result: MethodChannel.Result) {
+            val readers = readerManager.getReaders()
+            val readerList = mutableListOf<Map<String, Any?>>()
+            readers.forEach { readerList.add(it.toReaderInfoMap()) }
+            result.success(readerList)
+        }
+
+        @JvmStatic
+        fun getReader(result: MethodChannel.Result, id: String) {
+            val reader = readerManager.getReader(id)
+            if(reader == null) {
+                result.success(null)
+                return
+            }
+            result.success(reader.toReaderInfoMap())
+        }
+
+        @JvmStatic
+        fun forget(result: MethodChannel.Result, id: String) {
+            val reader = readerManager.getReader(id)
+            if(reader != null) {
+                readerManager.forget(reader)
+            }
             result.success(null)
         }
     }

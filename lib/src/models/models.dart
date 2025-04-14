@@ -75,25 +75,13 @@ class CardPaymentDetails with _$CardPaymentDetails {
       _$CardPaymentDetailsFromJson(json);
 }
 
-@freezed
-class CardInputMethods with _$CardInputMethods {
-  const factory CardInputMethods({
-    required int chip,
-    required int contactless,
-    required int swipe,
-  }) = _CardInputMethods;
-
-  factory CardInputMethods.fromJson(Map<String, Object?> json) =>
-      _$CardInputMethodsFromJson(json);
-}
-
 /// Reader objects
 @freezed
 class ReaderBatteryStatus with _$ReaderBatteryStatus {
   const factory ReaderBatteryStatus({
-    required int isCharging,
-    required ReaderBatteryLevel level,
-    @Default(0) num percentage,
+    required bool isCharging,
+    ReaderBatteryLevel? level,
+    required int percentage,
   }) = _ReaderBatteryStatus;
 
   factory ReaderBatteryStatus.fromJson(Map<String, Object?> json) =>
@@ -116,7 +104,7 @@ class ReaderConnectionFailureInfo with _$ReaderConnectionFailureInfo {
 @freezed
 class ReaderConnectionInfo with _$ReaderConnectionInfo {
   const factory ReaderConnectionInfo({
-    required ReaderConnectionFailureInfo failureInfo,
+    ReaderConnectionFailureInfo? failureInfo,
     required ReaderConnectionState state,
   }) = _ReaderConnectionInfo;
 
@@ -127,9 +115,9 @@ class ReaderConnectionInfo with _$ReaderConnectionInfo {
 @freezed
 class ReaderFirmwareInfo with _$ReaderFirmwareInfo {
   const factory ReaderFirmwareInfo({
-    required String failureReason,
-    required double updatePercentage,
-    required String version,
+    String? failureReason,
+    int? updatePercentage,
+    String? version,
   }) = _ReaderFirmwareInfo;
 
   factory ReaderFirmwareInfo.fromJson(Map<String, Object?> json) =>
@@ -139,19 +127,19 @@ class ReaderFirmwareInfo with _$ReaderFirmwareInfo {
 @freezed
 class ReaderInfo with _$ReaderInfo {
   const factory ReaderInfo({
-    required ReaderBatteryStatus batteryStatus,
-    required CardInsertionStatus cardInsertionStatus,
-    required ReaderConnectionInfo connectionInfo,
-    required ReaderFirmwareInfo firmwareInfo,
-    @Default(0) num id,
-    required int isBlinkable,
-    required int isConnectionRetryable,
-    required int isForgettable,
+    ReaderBatteryStatus? batteryStatus,
+    CardInsertionStatus? cardInsertionStatus,
+    ReaderConnectionInfo? connectionInfo,
+    ReaderFirmwareInfo? firmwareInfo,
+    required String id,
+    required bool isBlinkable,
+    bool? isConnectionRetryable,
+    required bool isForgettable,
     required ReaderModel model,
     required String name,
-    @Default("") String serialNumber,
+    String? serialNumber,
     required ReaderState state,
-    required List<CardInputMethods> supportedInputMethods,
+    required List<CardInputMethod> supportedInputMethods,
   }) = _ReaderInfo;
 
   factory ReaderInfo.fromJson(Map<String, Object?> json) =>

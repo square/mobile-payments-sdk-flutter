@@ -26,7 +26,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
       Payment? payment = await _squareMobilePaymentsSdkPlugin.paymentManager
           .startPayment(
               PaymentParameters(
-                processingMode: 1,
+                  processingMode: 1,
                   amountMoney:
                       Money(amount: amount, currencyCode: CurrencyCode.eur),
                   idempotencyKey: idempotencyKey),
@@ -233,6 +233,16 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
                   onPressed: () => {Navigator.pushNamed(context, '/test')},
                   child: const Text(
                     "Open Test Screen",
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () =>
+                      {Navigator.pushNamed(context, '/readerSettings')},
+                  child: const Text(
+                    "Reader Settings",
                   ),
                 ),
               ),
