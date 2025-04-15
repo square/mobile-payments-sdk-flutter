@@ -25,18 +25,20 @@ class MethodChannelSquareMobilePaymentsSdk
   @override
   Future<String> getSdkVersion() async {
     // invokeMethod<String> does NOT enforce type conversion; the result may be null or another type.
-    final version = await methodChannel.invokeMethod<String>('getSdkVersion'); 
+    final version = await methodChannel.invokeMethod<String>('getSdkVersion');
     if (version == null) {
-      throw StateError("getSdkVersion() returned null, which should not happen.");
+      throw StateError(
+          "getSdkVersion() returned null, which should not happen.");
     }
     return version;
   }
 
   @override
-  Future<String> getEnvironment() async {
-    final environment = await methodChannel.invokeMethod<String>('getEnvironment');
-    if (environment == null) {
-      throw StateError("getEnvironment() returned null, which should not happen.");
+  Future<Environment> getEnvironment() async {
+    final envName = await methodChannel.invokeMethod<String>('getEnvironment');
+    if (envName == null) {
+      throw StateError(
+          "getEnvironment() returned null, which should not happen.");
     }
     final environment = assertEnumValue(Environment.values, envName);
     return environment;
