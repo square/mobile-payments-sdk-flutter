@@ -27,7 +27,6 @@ public class SettingsModule {
         result(MobilePaymentsSDK.shared.settingsManager.sdkSettings.version)
     }
     
-}
 
     public static func isOfflineProcessingAllowed(result: @escaping FlutterResult) {
         let paymentSettings = settingsManager.paymentSettings

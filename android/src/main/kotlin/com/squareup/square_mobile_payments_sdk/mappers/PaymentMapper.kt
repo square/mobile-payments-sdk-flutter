@@ -22,7 +22,8 @@ class PaymentMapper {
             
             val builder = PaymentParameters.Builder(
                 amount = Money(amount, currencyCode),
-                idempotencyKey = paymentParameters.get("idempotencyKey") as String
+                idempotencyKey = paymentParameters.get("idempotencyKey") as String,
+                processingMode = convertToProcessingMode(paymentParameters.get("processingMode") as? Int ?: 0)
                 )
 
                 if(paymentParameters.get("appFeeMoney") != null){
@@ -58,9 +59,7 @@ class PaymentMapper {
                     builder.autocomplete(paymentParameters.get("autocomplete") as? Boolean ?: false)
                 }
                 
-                if(paymentParameters.get("processingMode") != null) {
-                    builder.processingMode(convertToProcessingMode(paymentParameters.get("processingMode") as? Int ?: 0))
-                }
+                
 
                 return builder.build()
         }
