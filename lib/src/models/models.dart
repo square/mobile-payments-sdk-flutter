@@ -261,3 +261,14 @@ class OfflineCardPaymentDetails with _$OfflineCardPaymentDetails {
   factory OfflineCardPaymentDetails.fromJson(Map<String, Object?> json) =>
       _$OfflineCardPaymentDetailsFromJson(json);
 }
+
+class ReaderCallbackReference {
+  final String redId;
+  final void Function() clear;
+
+  ReaderCallbackReference._(this.redId, this.clear);
+
+  factory ReaderCallbackReference(String redId, void Function() clear) {
+    return ReaderCallbackReference._(redId, clear);
+  }
+}

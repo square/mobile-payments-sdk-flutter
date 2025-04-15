@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk_platform_interface.dart';
 import 'package:square_mobile_payments_sdk/src/models/models.dart';
 
@@ -24,5 +26,19 @@ class ReaderManager {
 
   Future<void> forget(String id) async {
     SquareMobilePaymentsSdkPlatform.instance.forget(id);
+  }
+
+  Future<void> blink(String id) async {
+    SquareMobilePaymentsSdkPlatform.instance.blink(id);
+  }
+
+  Future<bool> isPairingInProgress() async {
+    return SquareMobilePaymentsSdkPlatform.instance.isPairingInProgress();
+  }
+
+  ReaderCallbackReference setReaderChangedCallback(
+      FutureOr<void> Function(dynamic event) callback) {
+    return SquareMobilePaymentsSdkPlatform.instance
+        .setReaderChangedCallback(callback);
   }
 }

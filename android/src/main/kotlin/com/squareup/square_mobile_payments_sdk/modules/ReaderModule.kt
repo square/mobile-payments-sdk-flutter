@@ -1,13 +1,18 @@
 package com.squareup.square_mobile_payments_sdk.modules
 
+import io.flutter.plugin.common.EventChannel.EventSink
 import io.flutter.plugin.common.MethodChannel
+import com.squareup.sdk.mobilepayments.core.CallbackReference
 import com.squareup.sdk.mobilepayments.mockreader.ui.MockReaderUI
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
 import com.squareup.square_mobile_payments_sdk.extensions.toReaderInfoMap
 
+import android.util.Log
+
 class ReaderModule {
     companion object {
         private val readerManager = MobilePaymentsSdk.readerManager()
+        private var globalReaderCallbackReference: CallbackReference? = null;
 
         @JvmStatic
         fun showMockReaderUI(result: MethodChannel.Result) {
@@ -45,6 +50,43 @@ class ReaderModule {
             if(reader != null) {
                 readerManager.forget(reader)
             }
+            result.success(null)
+        }
+
+        @JvmStatic
+        fun blink(result: MethodChannel.Result, id: String) {
+            val reader = readerManager.getReader(id)
+            if(reader != null) {
+                readerManager.blink(reader)
+            }
+            result.success(null)
+        }
+
+        @JvmStatic
+        fun isPairingInProgress(result: MethodChannel.Result) {
+            result.success(readerManager.isPairingInProgress)
+        }
+
+        @JvmStatic
+        fun setReaderChangedCallback(result: MethodChannel.Result, sink: EventSink?) {
+            if (globalReaderCallbackReference == null) {
+                globalReaderCallbackReference = readerManager.setReaderChangedCallback {
+                    changeEvent ->
+                        sink?.success(mapOf(
+                            "type" to "readerChange",
+                            "data" to "Native callback"
+                        ))
+                }
+                Log.d("flutter", "reader observer added")
+            }
+            result.success(null)
+        }
+
+        @JvmStatic
+        fun removeReaderChangedCallback(result: MethodChannel.Result) {
+            globalReaderCallbackReference?.clear()
+            Log.d("flutter", "reader observer removed")
+            globalReaderCallbackReference = null
             result.success(null)
         }
     }

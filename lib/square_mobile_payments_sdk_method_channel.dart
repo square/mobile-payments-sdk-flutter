@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:square_mobile_payments_sdk/src/models/models.dart';
@@ -10,6 +12,26 @@ class MethodChannelSquareMobilePaymentsSdk
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel = const MethodChannel('square_mobile_payments_sdk');
+  final _eventChannel = const EventChannel('square_mobile_payments_sdk/events');
+  static StreamSubscription? _eventChannelSubscription;
+  final Map<String, FutureOr<void> Function(dynamic event)> _readerCallbacks =
+      {};
+
+  MethodChannelSquareMobilePaymentsSdk() {
+    if (_eventChannelSubscription != null) return;
+    _eventChannelSubscription =
+        _eventChannel.receiveBroadcastStream().listen((e) {
+      final Map<String, dynamic> event = Map<String, dynamic>.from(e);
+      switch (event["type"]) {
+        case "readerChange":
+          for (var callback in _readerCallbacks.values) {
+            callback(event);
+          }
+        default:
+          return;
+      }
+    });
+  }
 
   @override
   Future<String?> getPlatformVersion() async {
@@ -230,6 +252,53 @@ class MethodChannelSquareMobilePaymentsSdk
   Future<void> forget(String id) async {
     await methodChannel.invokeMethod('forget', {"id": id});
   }
+
+  @override
+  Future<void> blink(String id) async {
+    await methodChannel.invokeMethod('blink', {"id": id});
+  }
+
+  @override
+  Future<bool> isPairingInProgress() async {
+    final result =
+        await methodChannel.invokeMethod<bool>('isPairingInProgress');
+    if (result == null) {
+      throw StateError(
+          "isPairingInProgress() returned null, which should not happen.");
+    }
+    return result;
+  }
+
+  @override
+  ReaderCallbackReference setReaderChangedCallback(
+      FutureOr<void> Function(dynamic event) callback) {
+    String refId = _generateUniqueId();
+    _startReaderCallbackIntent();
+    _readerCallbacks.putIfAbsent(refId, () => callback);
+    return ReaderCallbackReference(
+        refId, () => removeReaderChangedCallback(refId));
+  }
+
+  void _startReaderCallbackIntent() {
+    if (_readerCallbacks.isEmpty) {
+      methodChannel.invokeMethod('setReaderChangedCallback');
+    }
+  }
+
+  void _cancelReaderCallbackIntent() {
+    if (_readerCallbacks.isEmpty) {
+      methodChannel.invokeMethod('removeReaderChangedCallback');
+    }
+  }
+
+  void removeReaderChangedCallback(String refId) {
+    _readerCallbacks.remove(refId);
+    _cancelReaderCallbackIntent();
+  }
+}
+
+String _generateUniqueId() {
+  return DateTime.now().millisecondsSinceEpoch.toString();
 }
 
 Map<String, Object?> castPaymentMap(Map response) {

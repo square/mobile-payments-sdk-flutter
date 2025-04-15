@@ -10,18 +10,26 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import io.flutter.plugin.common.EventChannel
+import io.flutter.plugin.common.EventChannel.StreamHandler
+import io.flutter.plugin.common.EventChannel.EventSink
 
 /** SquareMobilePaymentsSdkPlugin */
-class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler {
+class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHandler {
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
   private lateinit var channel: MethodChannel
+  private lateinit var eventChannel: EventChannel
+  private var eventSink: EventSink? = null
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "square_mobile_payments_sdk")
     channel.setMethodCallHandler(this)
+
+    eventChannel = EventChannel(flutterPluginBinding.binaryMessenger, "square_mobile_payments_sdk/events")
+    eventChannel.setStreamHandler(this)
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
@@ -68,12 +76,29 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler {
         val id = call.argument<String>("id") as? String ?: ""
         ReaderModule.forget(result, id)
       }
+      "blink" -> {
+        val id = call.argument<String>("id") as? String ?: ""
+        ReaderModule.blink(result, id)
+      }
+      "isPairingInProgress" -> ReaderModule.isPairingInProgress(result)
+      "setReaderChangedCallback" -> ReaderModule.setReaderChangedCallback(result, eventSink)
+      "removeReaderChangedCallback" -> ReaderModule.removeReaderChangedCallback(result)
       else -> result.notImplemented()
     }
   }
 
+  // EventChannel handlers
+  override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
+    eventSink = events
+  }
+
+  override fun onCancel(arguments: Any?) {
+    eventSink = null
+  }
+
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
+    eventChannel.setStreamHandler(null)
   }
 
   companion object {

@@ -24,8 +24,24 @@ class _ReaderDetailsScreenState extends State<ReaderDetailsScreen> {
     return result;
   }
 
-  _onBlinkReader() {}
-  _onForgetReader() {}
+  _onBlinkReader(String readerId) async {
+    try {
+      await _squareMobilePaymentsSdkPlugin.readerManager.blink(readerId);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  _onForgetReader(String readerId) async {
+    try {
+      await _squareMobilePaymentsSdkPlugin.readerManager.forget(readerId);
+      if (context.mounted) {
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   Widget _Detail(String key, dynamic value) {
     if (value == null) {
@@ -94,7 +110,7 @@ class _ReaderDetailsScreenState extends State<ReaderDetailsScreen> {
                   const SizedBox(height: 25),
                   if (reader.isBlinkable == true)
                     ElevatedButton(
-                      onPressed: _onBlinkReader,
+                      onPressed: () => _onBlinkReader(readerId),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey.shade300,
                       ),
@@ -105,7 +121,7 @@ class _ReaderDetailsScreenState extends State<ReaderDetailsScreen> {
                     ),
                   if (reader.isForgettable == true)
                     ElevatedButton(
-                      onPressed: _onForgetReader,
+                      onPressed: () => _onForgetReader(readerId),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey.shade300,
                       ),

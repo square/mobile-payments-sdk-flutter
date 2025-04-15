@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:square_mobile_payments_sdk/src/models/models.dart';
 
@@ -130,5 +132,19 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
 
   Future<void> forget(String id) async {
     throw UnimplementedError('forget() has not been implemented.');
+  }
+
+  Future<void> blink(String id) async {
+    throw UnimplementedError('blink() has not been implemented.');
+  }
+
+  Future<bool> isPairingInProgress() async {
+    throw UnimplementedError('isPairingInProgress() has not been implemented.');
+  }
+
+  ReaderCallbackReference setReaderChangedCallback(
+      FutureOr<void> Function(dynamic event) callback) {
+    throw UnimplementedError(
+        'setReaderChangedCallback() has not been implemented.');
   }
 }

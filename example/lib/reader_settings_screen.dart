@@ -12,16 +12,27 @@ class ReaderSettingsScreen extends StatefulWidget {
 
 class _ReaderSettingsScreenState extends State<ReaderSettingsScreen> {
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
+  late final ReaderCallbackReference _subscription;
   List<ReaderInfo> readers = [];
   bool inProgress = false;
 
   @override
   void initState() {
     super.initState();
-    _fetchReaders();
+    _updateReaders();
+    _setReaderObserver();
   }
 
-  Future<void> _fetchReaders() async {
+  _setReaderObserver() {
+    _subscription = _squareMobilePaymentsSdkPlugin.readerManager
+        .setReaderChangedCallback((event) {
+      print("===================");
+      print(event);
+      _updateReaders();
+    });
+  }
+
+  Future<void> _updateReaders() async {
     try {
       final result =
           await _squareMobilePaymentsSdkPlugin.readerManager.getReaders();
@@ -31,6 +42,12 @@ class _ReaderSettingsScreenState extends State<ReaderSettingsScreen> {
     } catch (e) {
       print('Error fetching readers: $e');
     }
+  }
+
+  @override
+  void dispose() {
+    _subscription.clear();
+    super.dispose();
   }
 
   void _navigateToDetails(String readerId) {
