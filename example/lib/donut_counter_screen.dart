@@ -230,7 +230,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => {Navigator.pushNamed(context, '/test')},
+                  onPressed: () => {Navigator.pushNamed(context, '/offline-status')},
                   child: const Text(
                     "Open Test Screen",
                   ),

@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
 import 'package:square_mobile_payments_sdk/src/models/models.dart';
 
-class TestScreen extends StatefulWidget {
-  const TestScreen({super.key});
+class OfflineStatusScreen extends StatefulWidget {
+  const OfflineStatusScreen({super.key});
 
   @override
-  State<TestScreen> createState() => _TestScreenState();
+  State<OfflineStatusScreen> createState() => _OfflineStatusScreenState();
 }
 
-class _TestScreenState extends State<TestScreen> {
+class _OfflineStatusScreenState extends State<OfflineStatusScreen> {
   bool testModal = false;
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
   List<Map<String, dynamic>> content = [];

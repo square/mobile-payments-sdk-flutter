@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => DonutCounterScreen(),
         '/permissions': (context) => PermissionsScreen(),
-        '/test': (context) => TestScreen(),
+        '/offline-status': (context) => OfflineStatusScreen(),
       },
     );
   }
