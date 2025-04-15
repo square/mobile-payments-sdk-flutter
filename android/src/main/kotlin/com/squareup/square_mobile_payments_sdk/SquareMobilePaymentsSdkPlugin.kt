@@ -32,14 +32,14 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
     when (call.method) {
       "getPlatformVersion" ->
         result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
-      
-      "getSdkVersion" -> 
-        result.success(MobilePaymentsSdk.settingsManager().getSdkSettings().sdkVersion)
-      
-      "getEnvironment" -> 
-        result.success(MobilePaymentsSdk.settingsManager().getSdkSettings().sdkEnvironment.name)
-      
-      "getAuthorizationState" -> 
+
+      "getSdkVersion" ->
+        SettingsModule.getSdkVersion(result)
+
+      "getEnvironment" ->
+        SettingsModule.getEnvironment(result)
+
+      "getAuthorizationState" ->
         AuthModule.getAuthorizationState(result)
 
       "getAuthorizedLocation" ->
@@ -96,10 +96,5 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
-  }
-
-  companion object {
-    const val SANDBOX = "sandbox"
-    const val PRODUCTION = "production"
   }
 }

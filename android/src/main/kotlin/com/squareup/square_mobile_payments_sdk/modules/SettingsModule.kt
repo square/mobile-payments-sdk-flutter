@@ -10,6 +10,17 @@ class SettingsModule {
     companion object {
         val settingsManager = MobilePaymentsSdk.settingsManager()
 
+
+        @JvmStatic
+        fun getSdkVersion(result: MethodChannel.Result) {
+          result.success(settingsManager.getSdkSettings().sdkVersion)
+        }
+
+        @JvmStatic
+        fun getEnvironment(result: MethodChannel.Result) {
+          result.success(settingsManager.getSdkSettings().sdkEnvironment.name)
+        }
+
         @JvmStatic
         fun showSettings(result: MethodChannel.Result) {
             settingsManager.showSettings {

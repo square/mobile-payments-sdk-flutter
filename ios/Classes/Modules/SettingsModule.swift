@@ -18,13 +18,13 @@ public class SettingsModule {
             }
         }
     }
-    
+
     public static func getEnvironment(result: @escaping FlutterResult) {
-        result(MobilePaymentsSDK.shared.settingsManager.sdkSettings.environment.description.uppercased())
+        result(settingsManager.sdkSettings.environment.description.uppercased())
     }
-    
+
     public static func getSdkVersion(result: @escaping FlutterResult) {
-        result(MobilePaymentsSDK.shared.settingsManager.sdkSettings.version)
+        result(settingsManager.sdkSettings.version)
     }
     
 

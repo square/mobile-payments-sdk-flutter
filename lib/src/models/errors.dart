@@ -4,7 +4,7 @@
 
 part of 'models.dart';
 
-enum AuthorizationError {
+enum AuthorizationErrorCode {
   alreadyAuthorized,
   alreadyInProgress,
   authorizationCodeAlreadyRedeemed,
@@ -17,9 +17,11 @@ enum AuthorizationError {
   invalidAuthorizationCode,
   invalidLocationId,
   locationNotActivatedForCardProcessing,
-  noNetwork,
   unexpected,
+  //android
+  noNetwork,
   unsupportedCountry,
+  usageError
 }
 
 enum PaymentError {
