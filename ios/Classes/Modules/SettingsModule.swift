@@ -27,4 +27,27 @@ public class SettingsModule {
         result(MobilePaymentsSDK.shared.settingsManager.sdkSettings.version)
     }
     
+
+    public static func isOfflineProcessingAllowed(result: @escaping FlutterResult) {
+        let paymentSettings = settingsManager.paymentSettings
+        result(paymentSettings.isOfflineProcessingAllowed)
+    }
+
+    public static func getOfflineTotalStoredAmountLimit(result: @escaping FlutterResult) {
+        let paymentSettings = settingsManager.paymentSettings
+        if let limit = paymentSettings.offlineTotalStoredAmountLimit {
+            result(limit.toMap())
+        } else {
+            result(NSNull())
+        }
+    }
+
+    public static func getOfflineTransactionAmountLimit(result: @escaping FlutterResult) {
+        let paymentSettings = settingsManager.paymentSettings
+        if let limit = paymentSettings.offlineTransactionAmountLimit {
+            result(limit.toMap())
+        } else {
+            result(NSNull())
+        }
+    }
 }

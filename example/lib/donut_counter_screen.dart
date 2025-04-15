@@ -3,10 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:square_mobile_payments_sdk_example/auth_state.dart';
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
-import 'package:square_mobile_payments_sdk/src/models.dart';
+import 'package:square_mobile_payments_sdk/src/models/models.dart';
 import 'package:uuid/uuid.dart';
 
-final uuid = Uuid(); 
+final uuid = Uuid();
 
 class DonutCounterScreen extends StatefulWidget {
   const DonutCounterScreen({super.key});
@@ -17,19 +17,22 @@ class DonutCounterScreen extends StatefulWidget {
 
 class _DonutCounterScreenState extends State<DonutCounterScreen> {
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
-  var amount = 100;
+  var amount = 1;
 
   _onBuy(BuildContext context, int amount) async {
     try {
       String idempotencyKey = uuid.v4();
 
-      Payment? payment = await _squareMobilePaymentsSdkPlugin.startPayment(
-          PaymentParameters(
-              amountMoney: Money(amount: amount, currencyCode: CurrencyCode.eur),
-              idempotencyKey: idempotencyKey,
-              note: "test note"
-          )
-          , PromptParameters(additionalPaymentMethods: List.empty(), mode: PromptMode.defaultMode));
+      Payment? payment = await _squareMobilePaymentsSdkPlugin.paymentManager
+          .startPayment(
+              PaymentParameters(
+                processingMode: 1,
+                  amountMoney:
+                      Money(amount: amount, currencyCode: CurrencyCode.eur),
+                  idempotencyKey: idempotencyKey),
+              PromptParameters(
+                  additionalPaymentMethods: List.empty(),
+                  mode: PromptMode.defaultMode));
       if (context.mounted && payment != null) {
         showPaymentDialog(context, payment);
       }
@@ -41,13 +44,25 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
     }
   }
 
-  void showPaymentDialog(BuildContext context,Payment payment) {
+  _onTapToPay() async {
+    print("testing TTP");
+    try {
+      bool isAppleAccountLinked = await _squareMobilePaymentsSdkPlugin
+          .tapToPaySettings
+          .isDeviceCapable();
+      print("isAppleAccountLinked ");
+    } catch (e, stackTrace) {
+      print("Exception reader: $e");
+    }
+  }
+
+  void showPaymentDialog(BuildContext context, Payment payment) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text("Completed"),
-          content:  Text(payment.toString()),
+          content: Text(payment.toString()),
           actions: [
             TextButton(
               onPressed: () {
@@ -83,7 +98,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
 
   Future<void> showReader() async {
     try {
-      await _squareMobilePaymentsSdkPlugin.showMockReaderUI();
+      await _squareMobilePaymentsSdkPlugin.readerManager.showMockReaderUI();
       print("Show Reader");
     } on Exception {
       print("Exception reader");
@@ -92,7 +107,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
 
   Future<void> showSettings() async {
     try {
-      await _squareMobilePaymentsSdkPlugin.showSettings();
+      await _squareMobilePaymentsSdkPlugin.settingsManager.showSettings();
     } on Exception {
       print("Exception in show settings");
     }
@@ -180,7 +195,8 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: isAuthorized ? () => _onBuy(context, amount) : null,
+                  onPressed:
+                      isAuthorized ? () => _onBuy(context, amount) : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple.shade200,
                     padding: const EdgeInsets.symmetric(vertical: 15),
@@ -194,6 +210,29 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
                       color: isAuthorized ? Colors.black : Colors.grey,
                       fontSize: 18,
                     ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => _onTapToPay(),
+                  child: Text(
+                    "Tap to pay",
+                    style: TextStyle(
+                      color: isAuthorized ? Colors.black : Colors.grey,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => {Navigator.pushNamed(context, '/offline-status')},
+                  child: const Text(
+                    "Open Test Screen",
                   ),
                 ),
               ),

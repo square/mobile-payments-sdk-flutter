@@ -19,8 +19,8 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
         AuthModule.authorize(result: result, accessToken: accessToken, locationId: locationId)
       } else {
         result(FlutterError(
-          code: "INVALID_ARGUMENTS", 
-          message: "Missing accessToken or locationId", 
+          code: "INVALID_ARGUMENTS",
+          message: "Missing accessToken or locationId",
           details: nil))
       }
     case "deauthorize":
@@ -45,12 +45,12 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
           let promptParameters = arguments["promptParameters"] as? [String: Any] {
           PaymentModule.startPayment(
             result: result,
-            paymentParameters: paymentParameters, 
+            paymentParameters: paymentParameters,
             promptParameters: promptParameters)
       } else {
         result(FlutterError(
-          code: "INVALID_ARGUMENTS", 
-          message: "Missing paymentParameters or promptParameters", 
+          code: "INVALID_ARGUMENTS",
+          message: "Missing paymentParameters or promptParameters",
           details: nil))
       }
     case "showSettings":
@@ -61,6 +61,17 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
 
     case "getEnvironment":
       SettingsModule.getEnvironment(result: result)
+    case "isOfflineProcessingAllowed":
+      SettingsModule.isOfflineProcessingAllowed(result: result)
+    case "getOfflineTotalStoredAmountLimit":
+      SettingsModule.getOfflineTotalStoredAmountLimit(result: result)
+    case "getOfflineTransactionAmountLimit":
+      SettingsModule.getOfflineTransactionAmountLimit(result: result)
+    case "getPayments":
+      PaymentModule.getPayments(result: result)
+    case "getTotalStoredPaymentAmount":
+      PaymentModule.getTotalStoredPaymentAmount(result: result)
+
     default:
       result(FlutterMethodNotImplemented)
     }
