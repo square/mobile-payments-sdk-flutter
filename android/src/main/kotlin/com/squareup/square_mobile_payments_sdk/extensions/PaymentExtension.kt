@@ -49,30 +49,29 @@ fun CardPaymentDetails.EntryMethod.toEntryMethodName(): String {
     else -> "unknown"
   }
 }
-
 fun Card.Brand.toBrandName(): String {
-  return when (this) {
-    Card.Brand.OTHER_BRAND -> "otherBrand"
-    Card.Brand.VISA -> "visa"
-    Card.Brand.MASTERCARD -> "mastercard"
-    Card.Brand.AMERICAN_EXPRESS -> "americanExpress"
-    Card.Brand.DISCOVER -> "discover"
-    Card.Brand.DISCOVER_DINERS -> "discoverDiners"
-    Card.Brand.EBT -> "ebt"
-    Card.Brand.JCB -> "jcb"
-    Card.Brand.CHINA_UNIONPAY -> "chinaUnionPay"
-    Card.Brand.SQUARE_GIFT_CARD -> "squareGiftCard"
-    Card.Brand.ALIPAY -> "alipay"
-    Card.Brand.CASH_APP -> "cashApp"
-    Card.Brand.EFTPOS -> "eftpos"
-    Card.Brand.FELICA -> "felica"
-    Card.Brand.INTERAC -> "interac"
-    Card.Brand.SQUARE_CAPITAL_CARD -> "squareCapitalCard"
-    Card.Brand.SUICA -> "suica"
-    Card.Brand.ID -> "id"
-    Card.Brand.QUICPAY -> "quicpay"
-    else -> "unknown"
-  }
+    return when (this) {
+        Card.Brand.OTHER_BRAND -> "OtherBrand"
+        Card.Brand.VISA -> "Visa"
+        Card.Brand.MASTERCARD -> "Mastercard"
+        Card.Brand.AMERICAN_EXPRESS -> "American Express"
+        Card.Brand.DISCOVER -> "Discover"
+        Card.Brand.DISCOVER_DINERS -> "Discover Diners"
+        Card.Brand.EBT -> "EBT"
+        Card.Brand.JCB -> "JCB"
+        Card.Brand.CHINA_UNIONPAY -> "China UnionPay"
+        Card.Brand.SQUARE_GIFT_CARD -> "Square Gift Card"
+        Card.Brand.ALIPAY -> "Alipay"
+        Card.Brand.CASH_APP -> "Cash App"
+        Card.Brand.EFTPOS -> "EFTPOS"
+        Card.Brand.FELICA -> "FeliCa"
+        Card.Brand.INTERAC -> "Interac"
+        Card.Brand.SQUARE_CAPITAL_CARD -> "Square Capital Card"
+        Card.Brand.SUICA -> "Suica"
+        Card.Brand.ID -> "iD"
+        Card.Brand.QUICPAY -> "QUICPay"
+        else -> "Unknown"
+    }
 }
 
 fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
@@ -85,9 +84,9 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "locationId" to locationId,
       "orderId" to orderId,
       "referenceId" to referenceId,
-      "sourceType" to sourceType.toName(), //* ignore in dat models
-      "cashDetails" to cashDetails?.toCashDetailsMap(), //*
-      "externalDetails" to externalDetails?.toExternalDetailsMap(),//*
+      "sourceType" to sourceType.toName(), 
+      "cashDetails" to cashDetails?.toCashDetailsMap(), 
+      "externalDetails" to externalDetails?.toExternalDetailsMap(),
       "uploadedAt" to uploadedAt?.toISO8601String(),
       "localId" to localId,
       "id" to id,
