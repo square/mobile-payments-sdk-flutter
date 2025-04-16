@@ -21,18 +21,21 @@ class MethodChannelSquareMobilePaymentsSdk
   @override
   Future<String> getSdkVersion() async {
     // invokeMethod<String> does NOT enforce type conversion; the result may be null or another type.
-    final version = await methodChannel.invokeMethod<String>('getSdkVersion'); 
+    final version = await methodChannel.invokeMethod<String>('getSdkVersion');
     if (version == null) {
-      throw StateError("getSdkVersion() returned null, which should not happen.");
+      throw StateError(
+          "getSdkVersion() returned null, which should not happen.");
     }
     return version;
   }
 
   @override
   Future<String> getEnvironment() async {
-    final environment = await methodChannel.invokeMethod<String>('getEnvironment');
+    final environment =
+        await methodChannel.invokeMethod<String>('getEnvironment');
     if (environment == null) {
-      throw StateError("getEnvironment() returned null, which should not happen.");
+      throw StateError(
+          "getEnvironment() returned null, which should not happen.");
     }
     return environment;
   }
@@ -89,7 +92,8 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<Payment?> startPayment(paymentParameters, promptParameters) async {
+  Future<Payment?> startPayment(PaymentParameters paymentParameters,
+      PromptParameters promptParameters) async {
     var amountMoney = {
       "amount": paymentParameters.amountMoney.amount,
       "currencyCode": paymentParameters.amountMoney.currencyCode.name
