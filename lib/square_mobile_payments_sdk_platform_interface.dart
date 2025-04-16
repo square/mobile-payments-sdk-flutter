@@ -147,4 +147,8 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     throw UnimplementedError(
         'setReaderChangedCallback() has not been implemented.');
   }
+
+  PairingHandle pairReader(void Function(bool, String?) callback) {
+    throw UnimplementedError('pairReader() has not been implemented.');
+  }
 }

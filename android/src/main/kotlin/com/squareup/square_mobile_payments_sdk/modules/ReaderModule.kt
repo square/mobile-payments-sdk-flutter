@@ -2,18 +2,23 @@ package com.squareup.square_mobile_payments_sdk.modules
 
 import io.flutter.plugin.common.EventChannel.EventSink
 import io.flutter.plugin.common.MethodChannel
+import com.squareup.sdk.mobilepayments.core.Result as SdkResult
 import com.squareup.sdk.mobilepayments.core.CallbackReference
+import com.squareup.sdk.mobilepayments.cardreader.PairingHandle
+import com.squareup.sdk.mobilepayments.cardreader.PairingHandle.StopResult
 import com.squareup.sdk.mobilepayments.mockreader.ui.MockReaderUI
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
 import com.squareup.square_mobile_payments_sdk.extensions.toReaderInfoMap
 import com.squareup.square_mobile_payments_sdk.extensions.toChangedEventMap
+import com.squareup.square_mobile_payments_sdk.extensions.toStopResultName
 
 import android.util.Log
 
 class ReaderModule {
     companion object {
         private val readerManager = MobilePaymentsSdk.readerManager()
-        private var globalReaderCallbackReference: CallbackReference? = null;
+        private var globalReaderCallbackReference: CallbackReference? = null
+        private var globalPairingHandle: PairingHandle? = null
 
         @JvmStatic
         fun showMockReaderUI(result: MethodChannel.Result) {
@@ -89,6 +94,33 @@ class ReaderModule {
             Log.d("flutter", "reader observer removed")
             globalReaderCallbackReference = null
             result.success(null)
+        }
+
+        @JvmStatic
+        fun pairReader(result: MethodChannel.Result) {
+            globalPairingHandle = readerManager.pairReader {
+                pairingResult ->
+                    when(pairingResult) {
+                        is SdkResult.Success -> {
+                            globalPairingHandle = null
+                            result.success(pairingResult.value)
+                        }
+                        is SdkResult.Failure -> {
+                            globalPairingHandle = null
+                            result.error("PAIRING_ERROR", "pairing error", null)
+                        }
+                        else -> {result.error("PAIRING_ERROR", "pairing error", null)}
+                    }
+            }
+        }
+
+        @JvmStatic
+        fun stopPairing(result: MethodChannel.Result) {
+            if (globalPairingHandle != null) {
+                val stopResult = globalPairingHandle?.stop()
+                globalPairingHandle = null
+                result.success(stopResult?.toStopResultName())
+            }
         }
     }
 }

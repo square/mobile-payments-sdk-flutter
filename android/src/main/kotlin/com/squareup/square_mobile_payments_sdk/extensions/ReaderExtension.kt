@@ -3,6 +3,7 @@ package com.squareup.square_mobile_payments_sdk.extensions
 import com.squareup.sdk.mobilepayments.cardreader.CardEntryMethod
 import com.squareup.sdk.mobilepayments.cardreader.ReaderInfo
 import com.squareup.sdk.mobilepayments.cardreader.ReaderChangedEvent
+import com.squareup.sdk.mobilepayments.cardreader.PairingHandle.StopResult
 
 fun ReaderInfo.toReaderInfoMap(): Map<String, Any?> {
     return mapOf(
@@ -58,12 +59,12 @@ fun CardEntryMethod.toEntryMethodName(): String {
 
 fun ReaderChangedEvent.toChangedEventMap(): Map<String, Any> {
   return mapOf(
-    "change" to change.toChangeString(),
+    "change" to change.toChangeName(),
     "reader" to reader.toReaderInfoMap()
   )
 }
 
-fun ReaderChangedEvent.Change.toChangeString(): String {
+fun ReaderChangedEvent.Change.toChangeName(): String {
   return when(this) {
     ReaderChangedEvent.Change.ADDED -> "added"
     ReaderChangedEvent.Change.CHANGED_STATE -> "changedState"
@@ -71,5 +72,12 @@ fun ReaderChangedEvent.Change.toChangeString(): String {
     ReaderChangedEvent.Change.BATTERY_CHARGING -> "batteryCharging"
     ReaderChangedEvent.Change.FIRMWARE_PROGRESS -> "firmwareProgress"
     ReaderChangedEvent.Change.REMOVED -> "removed"
+  }
+}
+
+fun StopResult.toStopResultName(): String {
+  return when(this) {
+    StopResult.ALREADY_COMPLETE -> "alreadyComplete"
+    StopResult.STOPPED -> "stopped"
   }
 }

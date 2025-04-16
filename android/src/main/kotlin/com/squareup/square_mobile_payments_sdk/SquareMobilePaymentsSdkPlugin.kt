@@ -83,6 +83,8 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
       "isPairingInProgress" -> ReaderModule.isPairingInProgress(result)
       "setReaderChangedCallback" -> ReaderModule.setReaderChangedCallback(result, eventSink)
       "removeReaderChangedCallback" -> ReaderModule.removeReaderChangedCallback(result)
+      "pairReader" -> ReaderModule.pairReader(result)
+      "stopPairing" -> ReaderModule.stopPairing(result)
       else -> result.notImplemented()
     }
   }

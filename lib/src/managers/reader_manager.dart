@@ -41,4 +41,9 @@ class ReaderManager {
     return SquareMobilePaymentsSdkPlatform.instance
         .setReaderChangedCallback(callback);
   }
+
+  PairingHandle pairReader(
+      void Function(bool success, String? error) callback) {
+    return SquareMobilePaymentsSdkPlatform.instance.pairReader(callback);
+  }
 }

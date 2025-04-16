@@ -218,3 +218,5 @@ enum ProcessingMode {
   offlineOnly,
   onlineOnly,
 }
+
+enum StopResult { alreadyComplete, stopped }

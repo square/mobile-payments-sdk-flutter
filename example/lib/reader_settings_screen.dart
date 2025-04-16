@@ -14,7 +14,7 @@ class _ReaderSettingsScreenState extends State<ReaderSettingsScreen> {
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
   late final ReaderCallbackReference _subscription;
   List<ReaderInfo> readers = [];
-  bool inProgress = false;
+  PairingHandle? _handle;
 
   @override
   void initState() {
@@ -26,8 +26,6 @@ class _ReaderSettingsScreenState extends State<ReaderSettingsScreen> {
   _setReaderObserver() {
     _subscription = _squareMobilePaymentsSdkPlugin.readerManager
         .setReaderChangedCallback((event) {
-      print("===================");
-      print(event);
       _updateReaders();
     });
   }
@@ -47,11 +45,76 @@ class _ReaderSettingsScreenState extends State<ReaderSettingsScreen> {
   @override
   void dispose() {
     _subscription.clear();
+    _stopPairing(context);
     super.dispose();
   }
 
   void _navigateToDetails(String readerId) {
     Navigator.pushNamed(context, '/readerDetails', arguments: readerId);
+  }
+
+  void _pairReader(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        isDismissible: false,
+        enableDrag: false,
+        builder: (_) => Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text('Pairing Reader...',
+                      style: TextStyle(fontSize: 18)),
+                  const SizedBox(height: 20),
+                  const CircularProgressIndicator(),
+                  const SizedBox(height: 20),
+                  TextButton(
+                    onPressed: () => _stopPairing(context),
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    child: const Text("StopPairing"),
+                  ),
+                ],
+              ),
+            )));
+
+    _handle = _squareMobilePaymentsSdkPlugin.readerManager
+        .pairReader((bool success, String? error) {
+      Navigator.pop(context);
+      if (error != null) {
+        showAlert(context, 'Error', error.toString());
+      } else if (success) {
+        showAlert(context, 'Success', 'Reader successfully paired.');
+      }
+    });
+  }
+
+  void _stopPairing(BuildContext context) async {
+    if (_handle != null) {
+      final stopResult = await _handle!.stop();
+      if (context.mounted) {
+        Navigator.pop(context);
+        showAlert(context, 'Pairing Stopped', 'Result: $stopResult');
+      }
+    }
+  }
+
+  void showAlert(BuildContext context, String title, String message) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text(title),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -92,6 +155,10 @@ class _ReaderSettingsScreenState extends State<ReaderSettingsScreen> {
                   ),
                 ),
               )),
+          TextButton(
+            onPressed: () => _pairReader(context),
+            child: const Text("Pair reader"),
+          ),
         ],
       ),
     );

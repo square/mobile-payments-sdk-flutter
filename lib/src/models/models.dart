@@ -282,3 +282,13 @@ class ReaderChangedEvent with _$ReaderChangedEvent {
   factory ReaderChangedEvent.fromJson(Map<String, Object?> json) =>
       _$ReaderChangedEventFromJson(json);
 }
+
+class PairingHandle {
+  final Future<StopResult> Function() stop;
+
+  PairingHandle._(this.stop);
+
+  factory PairingHandle(Future<StopResult> Function() stop) {
+    return PairingHandle._(stop);
+  }
+}

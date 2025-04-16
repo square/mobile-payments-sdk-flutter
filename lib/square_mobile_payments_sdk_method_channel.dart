@@ -299,6 +299,41 @@ class MethodChannelSquareMobilePaymentsSdk
     _readerCallbacks.remove(refId);
     _cancelReaderCallbackIntent();
   }
+
+  @override
+  PairingHandle pairReader(void Function(bool, String?) callback) {
+    _startParing(callback);
+    return PairingHandle(
+      () {
+        return _stopPairing();
+      },
+    );
+  }
+
+  void _startParing(void Function(bool, String? error) event) async {
+    try {
+      var result = await methodChannel.invokeMethod<bool>('pairReader');
+      if (result == null) {
+        event(false, null);
+        return;
+      }
+      event(result, null);
+    } catch (e) {
+      event(false, "Pair failed");
+    }
+  }
+
+  Future<StopResult> _stopPairing() async {
+    var resultName = await methodChannel.invokeMethod<String>('stopPairing');
+    if (resultName == null) {
+      throw StateError(
+          "stopRPairing() returned null, which should not happen.");
+    }
+    return StopResult.values.firstWhere((value) => value.name == resultName,
+        orElse: () {
+      throw ArgumentError("$resultName is not in ${StopResult.values}");
+    });
+  }
 }
 
 String _generateUniqueId() {
