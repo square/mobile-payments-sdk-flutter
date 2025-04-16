@@ -6,6 +6,7 @@ import com.squareup.sdk.mobilepayments.core.CallbackReference
 import com.squareup.sdk.mobilepayments.mockreader.ui.MockReaderUI
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
 import com.squareup.square_mobile_payments_sdk.extensions.toReaderInfoMap
+import com.squareup.square_mobile_payments_sdk.extensions.toChangedEventMap
 
 import android.util.Log
 
@@ -71,10 +72,10 @@ class ReaderModule {
         fun setReaderChangedCallback(result: MethodChannel.Result, sink: EventSink?) {
             if (globalReaderCallbackReference == null) {
                 globalReaderCallbackReference = readerManager.setReaderChangedCallback {
-                    changeEvent ->
+                    changedEvent ->
                         sink?.success(mapOf(
                             "type" to "readerChange",
-                            "data" to "Native callback"
+                            "payload" to changedEvent.toChangedEventMap()
                         ))
                 }
                 Log.d("flutter", "reader observer added")

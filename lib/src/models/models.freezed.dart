@@ -5062,3 +5062,197 @@ abstract class _OfflineCardPaymentDetails implements OfflineCardPaymentDetails {
   _$$OfflineCardPaymentDetailsImplCopyWith<_$OfflineCardPaymentDetailsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+ReaderChangedEvent _$ReaderChangedEventFromJson(Map<String, dynamic> json) {
+  return _ReaderChangedEvent.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ReaderChangedEvent {
+  ReaderInfo get reader => throw _privateConstructorUsedError;
+  ReaderChange get change => throw _privateConstructorUsedError;
+
+  /// Serializes this ReaderChangedEvent to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ReaderChangedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ReaderChangedEventCopyWith<ReaderChangedEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ReaderChangedEventCopyWith<$Res> {
+  factory $ReaderChangedEventCopyWith(
+          ReaderChangedEvent value, $Res Function(ReaderChangedEvent) then) =
+      _$ReaderChangedEventCopyWithImpl<$Res, ReaderChangedEvent>;
+  @useResult
+  $Res call({ReaderInfo reader, ReaderChange change});
+
+  $ReaderInfoCopyWith<$Res> get reader;
+}
+
+/// @nodoc
+class _$ReaderChangedEventCopyWithImpl<$Res, $Val extends ReaderChangedEvent>
+    implements $ReaderChangedEventCopyWith<$Res> {
+  _$ReaderChangedEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ReaderChangedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reader = null,
+    Object? change = null,
+  }) {
+    return _then(_value.copyWith(
+      reader: null == reader
+          ? _value.reader
+          : reader // ignore: cast_nullable_to_non_nullable
+              as ReaderInfo,
+      change: null == change
+          ? _value.change
+          : change // ignore: cast_nullable_to_non_nullable
+              as ReaderChange,
+    ) as $Val);
+  }
+
+  /// Create a copy of ReaderChangedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReaderInfoCopyWith<$Res> get reader {
+    return $ReaderInfoCopyWith<$Res>(_value.reader, (value) {
+      return _then(_value.copyWith(reader: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$ReaderChangedEventImplCopyWith<$Res>
+    implements $ReaderChangedEventCopyWith<$Res> {
+  factory _$$ReaderChangedEventImplCopyWith(_$ReaderChangedEventImpl value,
+          $Res Function(_$ReaderChangedEventImpl) then) =
+      __$$ReaderChangedEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({ReaderInfo reader, ReaderChange change});
+
+  @override
+  $ReaderInfoCopyWith<$Res> get reader;
+}
+
+/// @nodoc
+class __$$ReaderChangedEventImplCopyWithImpl<$Res>
+    extends _$ReaderChangedEventCopyWithImpl<$Res, _$ReaderChangedEventImpl>
+    implements _$$ReaderChangedEventImplCopyWith<$Res> {
+  __$$ReaderChangedEventImplCopyWithImpl(_$ReaderChangedEventImpl _value,
+      $Res Function(_$ReaderChangedEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ReaderChangedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reader = null,
+    Object? change = null,
+  }) {
+    return _then(_$ReaderChangedEventImpl(
+      reader: null == reader
+          ? _value.reader
+          : reader // ignore: cast_nullable_to_non_nullable
+              as ReaderInfo,
+      change: null == change
+          ? _value.change
+          : change // ignore: cast_nullable_to_non_nullable
+              as ReaderChange,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ReaderChangedEventImpl
+    with DiagnosticableTreeMixin
+    implements _ReaderChangedEvent {
+  const _$ReaderChangedEventImpl({required this.reader, required this.change});
+
+  factory _$ReaderChangedEventImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReaderChangedEventImplFromJson(json);
+
+  @override
+  final ReaderInfo reader;
+  @override
+  final ReaderChange change;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ReaderChangedEvent(reader: $reader, change: $change)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ReaderChangedEvent'))
+      ..add(DiagnosticsProperty('reader', reader))
+      ..add(DiagnosticsProperty('change', change));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReaderChangedEventImpl &&
+            (identical(other.reader, reader) || other.reader == reader) &&
+            (identical(other.change, change) || other.change == change));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, reader, change);
+
+  /// Create a copy of ReaderChangedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReaderChangedEventImplCopyWith<_$ReaderChangedEventImpl> get copyWith =>
+      __$$ReaderChangedEventImplCopyWithImpl<_$ReaderChangedEventImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ReaderChangedEventImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ReaderChangedEvent implements ReaderChangedEvent {
+  const factory _ReaderChangedEvent(
+      {required final ReaderInfo reader,
+      required final ReaderChange change}) = _$ReaderChangedEventImpl;
+
+  factory _ReaderChangedEvent.fromJson(Map<String, dynamic> json) =
+      _$ReaderChangedEventImpl.fromJson;
+
+  @override
+  ReaderInfo get reader;
+  @override
+  ReaderChange get change;
+
+  /// Create a copy of ReaderChangedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ReaderChangedEventImplCopyWith<_$ReaderChangedEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

@@ -577,3 +577,36 @@ Map<String, dynamic> _$$OfflineCardPaymentDetailsImplToJson(
       'card': instance.card,
       'entryMethod': _$EntryMethodEnumMap[instance.entryMethod]!,
     };
+
+_$ReaderChangedEventImpl _$$ReaderChangedEventImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ReaderChangedEventImpl(
+      reader: ReaderInfo.fromJson(json['reader'] as Map<String, dynamic>),
+      change: $enumDecode(_$ReaderChangeEnumMap, json['change']),
+    );
+
+Map<String, dynamic> _$$ReaderChangedEventImplToJson(
+        _$ReaderChangedEventImpl instance) =>
+    <String, dynamic>{
+      'reader': instance.reader,
+      'change': _$ReaderChangeEnumMap[instance.change]!,
+    };
+
+const _$ReaderChangeEnumMap = {
+  ReaderChange.batteryDidBeginCharging: 'batteryDidBeginCharging',
+  ReaderChange.batteryDidEndCharging: 'batteryDidEndCharging',
+  ReaderChange.batteryLevelDidChange: 'batteryLevelDidChange',
+  ReaderChange.cardInserted: 'cardInserted',
+  ReaderChange.cardRemoved: 'cardRemoved',
+  ReaderChange.connectionDidFail: 'connectionDidFail',
+  ReaderChange.connectionStateDidChange: 'connectionStateDidChange',
+  ReaderChange.firmwareUpdateDidFail: 'firmwareUpdateDidFail',
+  ReaderChange.firmwareUpdatePercentDidChange: 'firmwareUpdatePercentDidChange',
+  ReaderChange.stateDidChange: 'stateDidChange',
+  ReaderChange.changedState: 'changedState',
+  ReaderChange.added: 'added',
+  ReaderChange.removed: 'removed',
+  ReaderChange.batteryThreshold: 'batteryThreshold',
+  ReaderChange.batteryCharging: 'batteryCharging',
+  ReaderChange.firmwareProgress: 'firmwareProgress',
+};

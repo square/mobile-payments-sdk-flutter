@@ -272,3 +272,13 @@ class ReaderCallbackReference {
     return ReaderCallbackReference._(redId, clear);
   }
 }
+
+@freezed
+class ReaderChangedEvent with _$ReaderChangedEvent {
+  const factory ReaderChangedEvent(
+      {required ReaderInfo reader,
+      required ReaderChange change}) = _ReaderChangedEvent;
+
+  factory ReaderChangedEvent.fromJson(Map<String, Object?> json) =>
+      _$ReaderChangedEventFromJson(json);
+}

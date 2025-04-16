@@ -2,6 +2,7 @@ package com.squareup.square_mobile_payments_sdk.extensions
 
 import com.squareup.sdk.mobilepayments.cardreader.CardEntryMethod
 import com.squareup.sdk.mobilepayments.cardreader.ReaderInfo
+import com.squareup.sdk.mobilepayments.cardreader.ReaderChangedEvent
 
 fun ReaderInfo.toReaderInfoMap(): Map<String, Any?> {
     return mapOf(
@@ -52,5 +53,23 @@ fun CardEntryMethod.toEntryMethodName(): String {
     CardEntryMethod.EMV -> "emv"
     CardEntryMethod.SWIPED -> "swiped"
     CardEntryMethod.CONTACTLESS -> "contactless"
+  }
+}
+
+fun ReaderChangedEvent.toChangedEventMap(): Map<String, Any> {
+  return mapOf(
+    "change" to change.toChangeString(),
+    "reader" to reader.toReaderInfoMap()
+  )
+}
+
+fun ReaderChangedEvent.Change.toChangeString(): String {
+  return when(this) {
+    ReaderChangedEvent.Change.ADDED -> "added"
+    ReaderChangedEvent.Change.CHANGED_STATE -> "changedState"
+    ReaderChangedEvent.Change.BATTERY_THRESHOLD -> "batteryThreshold"
+    ReaderChangedEvent.Change.BATTERY_CHARGING -> "batteryCharging"
+    ReaderChangedEvent.Change.FIRMWARE_PROGRESS -> "firmwareProgress"
+    ReaderChangedEvent.Change.REMOVED -> "removed"
   }
 }

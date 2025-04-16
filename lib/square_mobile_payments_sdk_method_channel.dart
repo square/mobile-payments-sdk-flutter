@@ -14,8 +14,8 @@ class MethodChannelSquareMobilePaymentsSdk
   final methodChannel = const MethodChannel('square_mobile_payments_sdk');
   final _eventChannel = const EventChannel('square_mobile_payments_sdk/events');
   static StreamSubscription? _eventChannelSubscription;
-  final Map<String, FutureOr<void> Function(dynamic event)> _readerCallbacks =
-      {};
+  final Map<String, FutureOr<void> Function(ReaderChangedEvent event)>
+      _readerCallbacks = {};
 
   MethodChannelSquareMobilePaymentsSdk() {
     if (_eventChannelSubscription != null) return;
@@ -25,7 +25,11 @@ class MethodChannelSquareMobilePaymentsSdk
       switch (event["type"]) {
         case "readerChange":
           for (var callback in _readerCallbacks.values) {
-            callback(event);
+            final payload = event["payload"];
+            if (payload == null) continue;
+            final changeEvent =
+                ReaderChangedEvent.fromJson(castPaymentMap(payload));
+            callback(changeEvent);
           }
         default:
           return;
@@ -271,7 +275,7 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   ReaderCallbackReference setReaderChangedCallback(
-      FutureOr<void> Function(dynamic event) callback) {
+      FutureOr<void> Function(ReaderChangedEvent event) callback) {
     String refId = _generateUniqueId();
     _startReaderCallbackIntent();
     _readerCallbacks.putIfAbsent(refId, () => callback);

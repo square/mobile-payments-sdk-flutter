@@ -136,6 +136,13 @@ enum ReaderChange {
   firmwareUpdateDidFail,
   firmwareUpdatePercentDidChange,
   stateDidChange,
+  //android
+  changedState,
+  added,
+  removed,
+  batteryThreshold,
+  batteryCharging,
+  firmwareProgress,
 }
 
 enum ReaderConnectionFailureRecoverySuggestion {

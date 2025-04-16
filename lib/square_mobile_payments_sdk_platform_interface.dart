@@ -143,7 +143,7 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
   }
 
   ReaderCallbackReference setReaderChangedCallback(
-      FutureOr<void> Function(dynamic event) callback) {
+      FutureOr<void> Function(ReaderChangedEvent event) callback) {
     throw UnimplementedError(
         'setReaderChangedCallback() has not been implemented.');
   }

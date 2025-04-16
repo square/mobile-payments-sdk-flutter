@@ -94,8 +94,6 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
       _signInState = SignInState.loading;
     });
 
-    String response;
-
     await Future.delayed(const Duration(seconds: 1));
 
     try {

@@ -37,7 +37,7 @@ class ReaderManager {
   }
 
   ReaderCallbackReference setReaderChangedCallback(
-      FutureOr<void> Function(dynamic event) callback) {
+      FutureOr<void> Function(ReaderChangedEvent event) callback) {
     return SquareMobilePaymentsSdkPlatform.instance
         .setReaderChangedCallback(callback);
   }
