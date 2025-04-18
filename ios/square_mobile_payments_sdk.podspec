@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'square_mobile_payments_sdk'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'Square Mobile Payments SDK.'
   s.description      = <<-DESC
 Allows developers to take in-person payments using Square hardware.
