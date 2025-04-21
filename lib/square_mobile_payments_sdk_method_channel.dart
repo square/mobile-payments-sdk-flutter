@@ -236,7 +236,6 @@ class MethodChannelSquareMobilePaymentsSdk
     if (result == null) {
       throw StateError("getPayments() returned null, which should not happen.");
     }
-    print(result);
     final readers =
         result.map((r) => ReaderInfo.fromJson(castPaymentMap(r))).toList();
     return readers;

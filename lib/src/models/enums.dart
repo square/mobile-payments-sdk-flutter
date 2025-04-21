@@ -115,7 +115,7 @@ enum SourceType {
 }
 
 // Reader Enums
-enum CardInputMethod { swiped, emv, contactless }
+enum CardInputMethod { swiped, emv, contactless, chip }
 
 enum ReaderBatteryLevel {
   criticallyLow,
@@ -148,7 +148,9 @@ enum ReaderChange {
 enum ReaderConnectionFailureRecoverySuggestion {
   activateAccount,
   contactSupport,
+  enablePasscodeToUseTapToPay,
   noSuggestion,
+  reviewTapToPayGuidelines,
   retry,
 }
 
@@ -185,6 +187,7 @@ enum ReaderConnectionFailureReason {
   readerTimeout,
   revokedByDevice,
   serverError,
+  tapToPayError,
   unknown,
 }
 

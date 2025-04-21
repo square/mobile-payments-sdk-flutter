@@ -205,13 +205,18 @@ const _$ReaderConnectionFailureReasonEnumMap = {
   ReaderConnectionFailureReason.readerTimeout: 'readerTimeout',
   ReaderConnectionFailureReason.revokedByDevice: 'revokedByDevice',
   ReaderConnectionFailureReason.serverError: 'serverError',
+  ReaderConnectionFailureReason.tapToPayError: 'tapToPayError',
   ReaderConnectionFailureReason.unknown: 'unknown',
 };
 
 const _$ReaderConnectionFailureRecoverySuggestionEnumMap = {
   ReaderConnectionFailureRecoverySuggestion.activateAccount: 'activateAccount',
   ReaderConnectionFailureRecoverySuggestion.contactSupport: 'contactSupport',
+  ReaderConnectionFailureRecoverySuggestion.enablePasscodeToUseTapToPay:
+      'enablePasscodeToUseTapToPay',
   ReaderConnectionFailureRecoverySuggestion.noSuggestion: 'noSuggestion',
+  ReaderConnectionFailureRecoverySuggestion.reviewTapToPayGuidelines:
+      'reviewTapToPayGuidelines',
   ReaderConnectionFailureRecoverySuggestion.retry: 'retry',
 };
 
@@ -332,6 +337,7 @@ const _$CardInputMethodEnumMap = {
   CardInputMethod.swiped: 'swiped',
   CardInputMethod.emv: 'emv',
   CardInputMethod.contactless: 'contactless',
+  CardInputMethod.chip: 'chip',
 };
 
 _$PromptParametersImpl _$$PromptParametersImplFromJson(
