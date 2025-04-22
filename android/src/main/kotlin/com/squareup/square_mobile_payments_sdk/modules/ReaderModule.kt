@@ -102,11 +102,9 @@ class ReaderModule {
                 pairingResult ->
                     when(pairingResult) {
                         is SdkResult.Success -> {
-                            globalPairingHandle = null
                             result.success(pairingResult.value)
                         }
                         is SdkResult.Failure -> {
-                            globalPairingHandle = null
                             result.error("PAIRING_ERROR", "pairing error", null)
                         }
                         else -> {result.error("PAIRING_ERROR", "pairing error", null)}
