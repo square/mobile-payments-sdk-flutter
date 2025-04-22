@@ -53,38 +53,40 @@ class _ReaderSettingsScreenState extends State<ReaderSettingsScreen> {
     Navigator.pushNamed(context, '/readerDetails', arguments: readerId);
   }
 
+  Widget _bottomSheet(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text('Pairing Reader...', style: TextStyle(fontSize: 18)),
+              const SizedBox(height: 20),
+              const CircularProgressIndicator(),
+              const SizedBox(height: 20),
+              TextButton(
+                onPressed: () => _stopPairing(context),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                child: const Text("Stop pairing"),
+              ),
+            ],
+          ),
+        ));
+  }
+
   void _pairReader(BuildContext context) {
     showModalBottomSheet(
         context: context,
         isDismissible: false,
         enableDrag: false,
-        builder: (_) => Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text('Pairing Reader...',
-                      style: TextStyle(fontSize: 18)),
-                  const SizedBox(height: 20),
-                  const CircularProgressIndicator(),
-                  const SizedBox(height: 20),
-                  TextButton(
-                    onPressed: () => _stopPairing(context),
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                    child: const Text("StopPairing"),
-                  ),
-                ],
-              ),
-            )));
+        builder: (_) => _bottomSheet(context));
 
     _handle = _squareMobilePaymentsSdkPlugin.readerManager
         .pairReader((bool success, String? error) {
       Navigator.pop(context);
       if (error != null) {
-        showAlert(context, 'Error', error.toString());
+        showAlert(context, 'Error', error);
       } else if (success) {
         showAlert(context, 'Success', 'Reader successfully paired.');
       }
