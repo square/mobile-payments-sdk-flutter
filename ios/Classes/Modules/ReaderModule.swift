@@ -166,7 +166,7 @@ public class ReaderModule {
 
     public static func setReaderChangedCallback(result: @escaping FlutterResult, sink: FlutterEventSink?) {
         if let sinhEvent = sink {
-            if globalReaderObserver != nil {
+            if globalReaderObserver == nil {
                 let observer = ReaderObserverCallback(eventSink: sinhEvent)
                 MobilePaymentsSDK.shared.readerManager.add(observer)
                 globalReaderObserver = observer

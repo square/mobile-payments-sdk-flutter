@@ -127,6 +127,7 @@ class _ReaderSettingsScreenState extends State<ReaderSettingsScreen> {
         padding: const EdgeInsets.all(20),
         children: [
           ...readers.map((reader) => GestureDetector(
+                key: Key(reader.id),
                 onTap: () => _navigateToDetails(reader.id),
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 10),
@@ -139,17 +140,20 @@ class _ReaderSettingsScreenState extends State<ReaderSettingsScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
+                      Expanded(
+                          child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(reader.name,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
                               style: const TextStyle(fontSize: 18)),
                           Text(
                             reader.state.toString().toLowerCase(),
                             style: const TextStyle(fontSize: 14),
                           ),
                         ],
-                      ),
+                      )),
                       const Text('>', style: TextStyle(fontSize: 18)),
                     ],
                   ),
