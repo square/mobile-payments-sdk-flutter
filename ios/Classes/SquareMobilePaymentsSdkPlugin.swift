@@ -106,11 +106,15 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin, FlutterStre
         ReaderModule.blink(result: result, id: id)
       }
     case "isPairingInProgress":
-        ReaderModule.isPairingInProgress(result: result)
+      ReaderModule.isPairingInProgress(result: result)
     case  "setReaderChangedCallback":
-        ReaderModule.setReaderChangedCallback(result: result, sink: eventSink)
+      ReaderModule.setReaderChangedCallback(result: result, sink: eventSink)
     case "removeReaderChangedCallback":
-        ReaderModule.removeReaderChangedCallback(result: result)
+      ReaderModule.removeReaderChangedCallback(result: result)
+    case "pairReader":
+      ReaderModule.pairReader(result: result)
+    case "stopPairing":
+      ReaderModule.stopPairing(result: result)
 
     default:
       result(FlutterMethodNotImplemented)

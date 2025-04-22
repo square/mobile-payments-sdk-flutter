@@ -4,6 +4,7 @@ import MockReaderUI
 
 public class ReaderModule {
     private static var globalReaderObserver: ReaderObserverCallback?
+    private static var globalPairingHandle: PairingHandle?
 
     static var mockReader: MockReaderUI? = {
         do {
@@ -183,6 +184,40 @@ public class ReaderModule {
         result(NSNull())
     }
 
+    public static func pairReader(result: @escaping FlutterResult) {
+        let delegate = ReaderPairingDelegateImpl(result: result)
+        globalPairingHandle = MobilePaymentsSDK.shared.readerManager.startPairing(with: delegate)
+    }
+
+    public static func stopPairing(result: @escaping FlutterResult) {
+        if let handle = globalPairingHandle {
+            let stopResult = handle.stop()
+            globalPairingHandle = nil
+            if stopResult {
+                result("stopped")
+            } else {
+                result("alreadyComplete")
+            }
+        }
+    }
+}
+
+class ReaderPairingDelegateImpl: ReaderPairingDelegate {
+    private let result: FlutterResult
+
+    init(result: @escaping FlutterResult) {
+        self.result = result
+    }
+
+    func readerPairingDidBegin() {}
+
+    func readerPairingDidFail(with error: Error) {
+        result(FlutterError(code: "PAIRING_ERROR", message: "pairing error", details: nil))
+    }
+
+    func readerPairingDidSucceed() {
+        result(true)
+    }
 }
 
 class ReaderObserverCallback: ReaderObserver {
