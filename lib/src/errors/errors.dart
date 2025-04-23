@@ -34,3 +34,19 @@ class AuthorizeError implements Exception {
     return 'AuthorizeError(code: $code, message: $message, details: $details)';
   }
 }
+
+class MockReaderUIError implements Exception {
+  late final MockReaderUIErrorCode code;
+  late final String message;
+  final dynamic details;
+
+  MockReaderUIError(String code, String? message, [this.details]) {
+    this.code = assertEnumValue(MockReaderUIErrorCode.values, code);
+    this.message = message ?? "Unknown MockReaderUI Error";
+  }
+
+  @override
+  String toString() {
+    return 'MockReaderUIError(code: $code, message: $message, details: $details)';
+  }
+}

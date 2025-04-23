@@ -24,6 +24,15 @@ enum AuthorizationErrorCode {
   usageError
 }
 
+enum MockReaderUIErrorCode {
+  versionMismatch,
+  invalidApplicationId,
+  unexpected,
+  notAuthorized,
+  noScene,
+  unknown,
+}
+
 enum PaymentError {
   deviceTimeDoesNotMatchServerTime,
   idempotencyKeyReused,

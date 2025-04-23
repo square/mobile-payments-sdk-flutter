@@ -26,7 +26,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
       Payment? payment = await _squareMobilePaymentsSdkPlugin.paymentManager
           .startPayment(
               PaymentParameters(
-                processingMode: 1,
+                  processingMode: 1,
                   amountMoney:
                       Money(amount: amount, currencyCode: CurrencyCode.eur),
                   idempotencyKey: idempotencyKey),
@@ -99,9 +99,24 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
   Future<void> showReader() async {
     try {
       await _squareMobilePaymentsSdkPlugin.readerManager.showMockReaderUI();
-      print("Show Reader");
-    } on Exception {
-      print("Exception reader");
+    } on MockReaderUIError catch (e) {
+      if (!mounted) return;
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Text("${e.code}, ->>> ${e.message}"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text("OK"),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
 
@@ -230,7 +245,8 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => {Navigator.pushNamed(context, '/offline-status')},
+                  onPressed: () =>
+                      {Navigator.pushNamed(context, '/offline-status')},
                   child: const Text(
                     "Open Test Screen",
                   ),
