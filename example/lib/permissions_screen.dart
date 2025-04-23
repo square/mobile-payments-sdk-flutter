@@ -134,24 +134,13 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
   }
 
   Future<void> deauthorizeSDK() async {
-    String response;
-    try {
-      response =
-          await _squareMobilePaymentsSdkPlugin.authManager.deauthorize() ??
-              'Unknown response';
-    } on Exception {
-      response = 'Failed';
-    }
-
+    await _squareMobilePaymentsSdkPlugin.authManager.deauthorize();
     if (!mounted) return;
-
-    if (response == 'Deauthorized') {
-      Provider.of<AuthState>(context, listen: false).signOut();
-      hideReader();
-      setState(() {
-        _signInState = SignInState.idle;
-      });
-    }
+    Provider.of<AuthState>(context, listen: false).signOut();
+    hideReader();
+    setState(() {
+      _signInState = SignInState.idle;
+    });
   }
 
   _onSignIn() {

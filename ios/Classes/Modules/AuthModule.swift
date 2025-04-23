@@ -31,7 +31,7 @@ public class AuthModule {
 
     public static func deauthorize(result: @escaping FlutterResult) {
         authManager.deauthorize {
-            result("Deauthorized")
+            result(NSNull())
         }
     }
 }

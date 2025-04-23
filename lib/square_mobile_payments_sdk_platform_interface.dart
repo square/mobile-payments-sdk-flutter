@@ -51,7 +51,7 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<String?> deauthorize() {
+  Future<void> deauthorize() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 

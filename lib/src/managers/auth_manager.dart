@@ -19,7 +19,7 @@ class AuthManager {
         .authorize(accessToken, locationId);
   }
 
-  Future<String?> deauthorize() async {
-    return SquareMobilePaymentsSdkPlatform.instance.deauthorize();
+  Future<void> deauthorize() async {
+    SquareMobilePaymentsSdkPlatform.instance.deauthorize();
   }
 }

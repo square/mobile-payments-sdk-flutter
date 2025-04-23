@@ -1,6 +1,5 @@
 package com.squareup.square_mobile_payments_sdk.modules
 
-import android.util.Log
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
 import com.squareup.sdk.mobilepayments.core.Result as SdkResult
 import com.squareup.square_mobile_payments_sdk.extensions.toAuthorizationStateName
@@ -30,16 +29,12 @@ class AuthModule {
 
     @JvmStatic
     fun authorize(result: MethodChannel.Result, accessToken: String, locationId: String) {
-      Log.d("Auth", accessToken)
-      Log.d("Auth", locationId)
       authManager.authorize(accessToken, locationId) { sdkResult ->
         when (sdkResult) {
           is SdkResult.Success -> {
-            Log.d("Auth", "success")
             result.success(null)
           }
           is SdkResult.Failure -> {
-            Log.d("Auth", "fail")
             result.error(
                     sdkResult.errorCode.toAuthorizeErrorCodeName(),
                     sdkResult.errorMessage,
@@ -56,7 +51,7 @@ class AuthModule {
     @JvmStatic
     fun deAuthorize(result: MethodChannel.Result) {
       authManager.deauthorize()
-      result.success("Deauthorized")
+      result.success(null)
     }
   }
 }

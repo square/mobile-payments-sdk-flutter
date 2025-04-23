@@ -27,8 +27,7 @@ class MethodChannelSquareMobilePaymentsSdk
     // invokeMethod<String> does NOT enforce type conversion; the result may be null or another type.
     final version = await methodChannel.invokeMethod<String>('getSdkVersion');
     if (version == null) {
-      throw StateError(
-          "getSdkVersion() returned null, which should not happen.");
+      throw getChannelStateError("getSdkVersion()", "returned null");
     }
     return version;
   }
@@ -37,8 +36,7 @@ class MethodChannelSquareMobilePaymentsSdk
   Future<Environment> getEnvironment() async {
     final envName = await methodChannel.invokeMethod<String>('getEnvironment');
     if (envName == null) {
-      throw StateError(
-          "getEnvironment() returned null, which should not happen.");
+      throw getChannelStateError("getEnvironment()", "returned null");
     }
     final environment = assertEnumValue(Environment.values, envName);
     return environment;
@@ -80,9 +78,8 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<String?> deauthorize() async {
-    final response = await methodChannel.invokeMethod<String>('deauthorize');
-    return response;
+  Future<void> deauthorize() async {
+    await methodChannel.invokeMethod('deauthorize');
   }
 
   @override
