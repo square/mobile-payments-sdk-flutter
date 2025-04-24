@@ -98,7 +98,11 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<void> showSettings() async {
-    await methodChannel.invokeMethod<void>('showSettings');
+    try {
+      await methodChannel.invokeMethod<void>('showSettings');
+    } on PlatformException catch (e) {
+      throw SettingsError(e.code, e.message, e.details);
+    }
   }
 
   @override

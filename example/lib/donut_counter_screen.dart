@@ -96,35 +96,39 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
     );
   }
 
+  void showErrorDialog(String msg) {
+    if (!mounted) return;
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text(msg),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Future<void> showReader() async {
     try {
       await _squareMobilePaymentsSdkPlugin.readerManager.showMockReaderUI();
     } on MockReaderUIError catch (e) {
-      if (!mounted) return;
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: Text("${e.code}, ->>> ${e.message}"),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text("OK"),
-              ),
-            ],
-          );
-        },
-      );
+      showErrorDialog("${e.code}, ->>> ${e.message}");
     }
   }
 
   Future<void> showSettings() async {
     try {
       await _squareMobilePaymentsSdkPlugin.settingsManager.showSettings();
-    } on Exception {
-      print("Exception in show settings");
+    } on SettingsError catch (e) {
+      showErrorDialog("${e.code}, ->>> ${e.message}");
     }
   }
 

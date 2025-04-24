@@ -50,3 +50,19 @@ class MockReaderUIError implements Exception {
     return 'MockReaderUIError(code: $code, message: $message, details: $details)';
   }
 }
+
+class SettingsError implements Exception {
+  late final SettingsErrorCode code;
+  late final String message;
+  final dynamic details;
+
+  SettingsError(String code, String? message, [this.details]) {
+    this.code = assertEnumValue(SettingsErrorCode.values, code);
+    this.message = message ?? "Unknown Settings Error";
+  }
+
+  @override
+  String toString() {
+    return 'SettingsError(code: $code, message: $message, details: $details)';
+  }
+}

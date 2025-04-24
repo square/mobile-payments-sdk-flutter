@@ -33,6 +33,11 @@ enum MockReaderUIErrorCode {
   unknown,
 }
 
+enum SettingsErrorCode {
+  notRootViewController,
+  usageError,
+}
+
 enum PaymentError {
   deviceTimeDoesNotMatchServerTime,
   idempotencyKeyReused,

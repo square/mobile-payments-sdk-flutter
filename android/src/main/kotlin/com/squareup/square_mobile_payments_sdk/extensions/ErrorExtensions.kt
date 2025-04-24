@@ -1,6 +1,7 @@
 package com.squareup.square_mobile_payments_sdk.extensions
 
 import com.squareup.sdk.mobilepayments.authorization.AuthorizeErrorCode
+import com.squareup.sdk.mobilepayments.settings.SettingsErrorCode
 import com.squareup.sdk.mobilepayments.core.ErrorDetails
 
 fun ErrorDetails.toErrorDetailsMap(): Map<String, Any?> {
@@ -14,6 +15,15 @@ fun AuthorizeErrorCode.toAuthorizeErrorCodeName(): String {
         AuthorizeErrorCode.NO_NETWORK -> "noNetwork"
         AuthorizeErrorCode.UNSUPPORTED_COUNTRY -> "unsupportedCountry"
         AuthorizeErrorCode.USAGE_ERROR -> "usageError"
+        else -> "unknown"
+    }
+}
+
+// settings
+
+fun SettingsErrorCode.toSettingsErrorCodeName(): String {
+    return when (this) {
+        SettingsErrorCode.USAGE_ERROR -> "usageError"
         else -> "unknown"
     }
 }
