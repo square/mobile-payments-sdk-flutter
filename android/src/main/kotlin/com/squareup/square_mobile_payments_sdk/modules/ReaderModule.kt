@@ -15,7 +15,7 @@ class ReaderModule {
             try {
                 MockReaderUI.show() //has 2 checks func, with no code
                 result.success(null)
-            } catch (e) {
+            } catch (e: IllegalStateException) {
                 // first invalid Id
                 val errorMessage = e.message ?: "Unknown error"
                 val errorCode = when {
