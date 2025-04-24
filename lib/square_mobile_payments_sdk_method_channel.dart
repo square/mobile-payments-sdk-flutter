@@ -106,7 +106,7 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<Payment?> startPayment(paymentParameters, promptParameters) async {
+  Future<Payment> startPayment(paymentParameters, promptParameters) async {
     var amountMoney = {
       "amount": paymentParameters.amountMoney.amount,
       "currencyCode": paymentParameters.amountMoney.currencyCode.name
@@ -136,15 +136,17 @@ class MethodChannelSquareMobilePaymentsSdk
       'promptParameters': promptParameters.toJson(),
     };
 
-    final response =
-        await methodChannel.invokeMethod<Map>('startPayment', params);
-
-    if (response != null) {
+    try {
+      final response =
+          await methodChannel.invokeMethod<Map>('startPayment', params);
+      if (response == null) {
+        throw getChannelStateError("startPayment()", "returned null");
+      }
       final paymentJson = castPaymentMap(response);
       return Payment.fromJson(paymentJson);
+    } on PlatformException catch (e) {
+      throw PaymentError(e.code, e.message, e.details);
     }
-
-    return null;
   }
 
   /// **New Methods for Tap to Pay Support**

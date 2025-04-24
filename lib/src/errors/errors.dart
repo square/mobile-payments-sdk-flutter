@@ -66,3 +66,19 @@ class SettingsError implements Exception {
     return 'SettingsError(code: $code, message: $message, details: $details)';
   }
 }
+
+class PaymentError implements Exception {
+  late final PaymentErrorCode code;
+  late final String message;
+  final dynamic details;
+
+  PaymentError(String code, String? message, [this.details]) {
+    this.code = assertEnumValue(PaymentErrorCode.values, code);
+    this.message = message ?? "Unknown Payment Error";
+  }
+
+  @override
+  String toString() {
+    return 'PaymentError(code: $code, message: $message, details: $details)';
+  }
+}

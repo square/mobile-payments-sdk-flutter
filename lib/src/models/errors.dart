@@ -38,7 +38,8 @@ enum SettingsErrorCode {
   usageError,
 }
 
-enum PaymentError {
+enum PaymentErrorCode {
+  missingParameters,
   deviceTimeDoesNotMatchServerTime,
   idempotencyKeyReused,
   invalidPaymentParameters,
@@ -54,6 +55,13 @@ enum PaymentError {
   timedOut,
   unexpected,
   unsupportedMode,
+  //android
+  canceled,
+  timeout,
+  locationServicesDisabled,
+  deviceClockSkewed,
+  usageError,
+  unknown
 }
 
 enum ReaderCardInfoError {

@@ -67,7 +67,7 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     throw UnimplementedError('showSettings() has not been implemented.');
   }
 
-  Future<Payment?> startPayment(PaymentParameters paymentParameters,
+  Future<Payment> startPayment(PaymentParameters paymentParameters,
       PromptParameters promptParameters) async {
     throw UnimplementedError('startPayment() has not been implemented.');
   }

@@ -66,12 +66,7 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
       "startPayment" -> {
         val paymentParameters = call.argument<HashMap<String, Any>>("paymentParameters")
         val promptParameters = call.argument<HashMap<String, Any>>("promptParameters")
-
-        if (paymentParameters == null || promptParameters == null) {
-          result.error("INVALID_PARAMETERS", "Null params", null)
-        } else {
-          PaymentModule.startPayment(result, paymentParameters, promptParameters)
-        }
+        PaymentModule.startPayment(result, paymentParameters, promptParameters)
       }
 
       "isOfflineProcessingAllowed" ->
