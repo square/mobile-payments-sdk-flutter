@@ -7,37 +7,31 @@ import com.squareup.sdk.mobilepayments.settings.Environment
 
 class ReaderModule {
     companion object {
-        val settingsManager = MobilePaymentsSdk.settingsManager()
+        private val authManager = MobilePaymentsSdk.authorizationManager()
+        private val settingsManager = MobilePaymentsSdk.settingsManager()
 
         @JvmStatic
         fun showMockReaderUI(result: MethodChannel.Result) {
-            when (settingsManager.getSdkSettings().sdkEnvironment) {
-                Environment.SANDBOX -> {
-                    try {
-                        MockReaderUI.show()
-                        result.success(null)
-                    } catch (e) {
-                        //FIXME
-                        result.error('unknown', null, null)
-                    }
+            try {
+                MockReaderUI.show() //has 2 checks func, with no code
+                result.success(null)
+            } catch (e) {
+                // first invalid Id
+                val errorMessage = e.message ?: "Unknown error"
+                val errorCode = when {
+                    settingsManager.getSdkSettings().sdkEnvironment == Environment.SANDBOX -> "invalidApplicationId"
+                    !authManager.authorizationState.isAuthorized -> "notAuthorized"
+                    else -> "unknown"
                 }
-                else -> {
-                    result.success(null)
-                }
+
+                result.error(errorCode, errorMessage, null)
             }
         }
 
         @JvmStatic
         fun hideMockReaderUI(result: MethodChannel.Result) {
-            when (settingsManager.getSdkSettings().sdkEnvironment) {
-                Environment.SANDBOX -> {
-                    MockReaderUI.hide()
-                    result.success(null)
-                }
-                else -> {
-                    result.success(null)
-                }
-            }
+            MockReaderUI.hide()
+            result.success(null)
         }
     }
 }

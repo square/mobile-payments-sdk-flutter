@@ -53,21 +53,21 @@ public class ReaderModule {
     }
 
     public static func showMockReaderUI(result: @escaping FlutterResult) {
-        switch settingsManager.sdkSettings.environment {
-        case .sandbox:
-            do {
-                try mockReader?.present()
-                result(NSNull())
-            } catch (let error) {
-                var e = error as NSError
-                if let readerError = MockReaderUIError(rawValue: e.code) {
-                    result(FlutterError(code: readerError.getName(),
-                            message: e.localizedDescription,
-                            details: e.localizedFailureReason))
-                }
-            }
-        default:
+        do {
+            try mockReader?.present()
             result(NSNull())
+        } catch (let error) {
+            var e = error as NSError
+            if let readerError = MockReaderUIError(rawValue: e.code) {
+                result(FlutterError(code: readerError.getName(),
+                        message: e.localizedDescription,
+                        details: e.localizedFailureReason))
+            }
+            else {
+                result(FlutterError(code: "unknown",
+                        message: "Unknown error",
+                        details: nil))
+            }
         }
     }
 
