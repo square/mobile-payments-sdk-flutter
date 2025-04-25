@@ -40,6 +40,8 @@ enum SettingsErrorCode {
 
 enum PaymentErrorCode {
   missingParameters,
+  notRootViewController,
+  //ios
   deviceTimeDoesNotMatchServerTime,
   idempotencyKeyReused,
   invalidPaymentParameters,
@@ -47,6 +49,7 @@ enum PaymentErrorCode {
   locationPermissionNeeded,
   merchantNotOptedIntoOfflineProcessing,
   noNetwork,
+  noNetworkAndMerchantNotOptedIntoOfflineProcessing,
   notAuthorized,
   offlineStoredAmountExceeded,
   offlineTransactionAmountExceeded,

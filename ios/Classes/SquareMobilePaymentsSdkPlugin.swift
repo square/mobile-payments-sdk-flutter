@@ -49,9 +49,9 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
             promptParameters: promptParameters)
       } else {
         result(FlutterError(
-          code: "INVALID_ARGUMENTS",
-          message: "Missing paymentParameters or promptParameters",
-          details: nil))
+            code: "missingParameters",
+            message: "paymentParameters or promptParameters must not be null",
+            details: nil))
       }
     case "showSettings":
       SettingsModule.showSettings(result: result)
