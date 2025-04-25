@@ -46,8 +46,8 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
         AuthModule.getAuthorizedLocation(result)
 
       "authorize" -> {
-        val accessToken = call.argument<String>("accessToken") ?: ""
-        val locationId = call.argument<String>("locationId") ?: ""
+        val accessToken = call.argument<String>("accessToken")
+        val locationId = call.argument<String>("locationId")
         AuthModule.authorize(result, accessToken, locationId)
       }
 

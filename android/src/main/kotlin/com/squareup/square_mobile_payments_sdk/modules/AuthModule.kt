@@ -28,7 +28,15 @@ class AuthModule {
     }
 
     @JvmStatic
-    fun authorize(result: MethodChannel.Result, accessToken: String, locationId: String) {
+    fun authorize(result: MethodChannel.Result, accessToken: String?, locationId: String?) {
+      if (accessToken == null || locationId == null) {
+        result.error(
+          "missingParameters",
+          "Missing accessToken or locationId",
+          null
+        )
+        return
+      }
       authManager.authorize(accessToken, locationId) { sdkResult ->
         when (sdkResult) {
           is SdkResult.Success -> {
@@ -42,7 +50,7 @@ class AuthModule {
             )
           }
           else -> {
-            result.error("unknown", "Unknown", "Unknown")
+            result.error("unknown", null, null)
           }
         }
       }

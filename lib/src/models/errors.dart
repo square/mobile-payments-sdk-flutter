@@ -5,6 +5,7 @@
 part of 'models.dart';
 
 enum AuthorizationErrorCode {
+  missingParameters,
   alreadyAuthorized,
   alreadyInProgress,
   authorizationCodeAlreadyRedeemed,

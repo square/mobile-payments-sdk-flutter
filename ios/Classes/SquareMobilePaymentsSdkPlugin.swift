@@ -19,7 +19,7 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
         AuthModule.authorize(result: result, accessToken: accessToken, locationId: locationId)
       } else {
         result(FlutterError(
-          code: "INVALID_ARGUMENTS",
+          code: "missingParameters",
           message: "Missing accessToken or locationId",
           details: nil))
       }
