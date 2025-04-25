@@ -2,8 +2,10 @@ import UIKit
 import Flutter
 import SquareMobilePaymentsSDK
 
-public class PaymentModule {
+public class PaymentModule: PaymentManagerDelegate {
     private static let paymentManager = MobilePaymentsSDK.shared.paymentManager
+    private static let paymentDelegate = PaymentModule()
+    private var delegateResult: FlutterResult?
 
     public static func startPayment(
         result: @escaping FlutterResult,
@@ -21,11 +23,20 @@ public class PaymentModule {
             return
         }
 
+        if (paymentDelegate.delegateResult != nil) {
+            result(FlutterError(
+                code: PaymentError.paymentAlreadyInProgress.getName(),
+                message: "A payment is already in progress",
+                details: nil))
+            return
+        }
+
+        paymentDelegate.delegateResult = result
         paymentManager.startPayment(
             nativePaymentParameters,
             promptParameters: nativePromptParameters,
             from: topController,
-            delegate: PaymentDelegate(result)
+            delegate: paymentDelegate
         )
     }
 
@@ -54,48 +65,43 @@ public class PaymentModule {
             }
         }
     }
-}
-
-class PaymentDelegate: PaymentManagerDelegate {
-    private let result: FlutterResult
-
-    init(_ result: @escaping FlutterResult) {
-        self.result = result
-    }
 
     public func paymentManager(_ paymentManager: PaymentManager, didFinish payment: Payment) {
         if let onlinePayment = payment as? OnlinePayment {
-            result(onlinePayment.toMap())
+            delegateResult?(onlinePayment.toMap())
         } else if let offlinePayment = payment as? OfflinePayment {
-            //delegateResult?(offlinePayment.toMap())
-            //TODO: add receiving payment interface not only OnlinePayment
-            result(nil)
+            delegateResult?(nil)
+        } else {
+            delegateResult?(nil)
         }
+        delegateResult = nil
     }
 
     public func paymentManager(_ paymentManager: PaymentManager, didFail payment: Payment, withError error: Error) {
         let e = error as NSError
         if let paymentError = PaymentError(rawValue: e.code) {
-            result(FlutterError(
+            delegateResult?(FlutterError(
                 code: paymentError.getName(),
                 message: e.localizedDescription,
                 details: e.localizedFailureReason
             ))
         } else {
-            result(FlutterError(
+            delegateResult?(FlutterError(
                 code: "unknown",
                 message: nil,
                 details: nil
             ))
         }
+        delegateResult = nil
     }
 
     public func paymentManager(_ paymentManager: PaymentManager, didCancel payment: Payment) {
-        result(FlutterError(
+        delegateResult?(FlutterError(
             code: "canceled",
             message: "the payment was cancelled",
             details: nil
         ))
+        delegateResult = nil
     }
 
     // Optional
