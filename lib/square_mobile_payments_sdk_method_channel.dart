@@ -181,7 +181,11 @@ class MethodChannelSquareMobilePaymentsSdk
   Future<bool> isOfflineProcessingAllowed() async {
     final result =
         await methodChannel.invokeMethod<bool>('isOfflineProcessingAllowed');
-    return result ?? false;
+    if (result == null) {
+      throw getChannelStateError(
+          "isOfflineProcessingAllowed()", "returned null");
+    }
+    return result;
   }
 
   @override
@@ -202,21 +206,29 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<List<OfflinePayment>> getPayments() async {
-    final result = await methodChannel.invokeMethod<List>('getPayments');
-    if (result == null) {
-      throw StateError("getPayments() returned null, which should not happen.");
+    try {
+      final result = await methodChannel.invokeMethod<List>('getPayments');
+      if (result == null) {
+        throw getChannelStateError("getPayments()", "returned null");
+      }
+      return result
+          .map((e) => OfflinePayment.fromJson(castPaymentMap(e)))
+          .toList();
+    } on PlatformException catch (e) {
+      throw OfflinePaymentQueueError(e.code, e.message, e.details);
     }
-    return result
-        .map((e) => OfflinePayment.fromJson(castPaymentMap(e)))
-        .toList();
   }
 
   @override
   Future<Money?> getTotalStoredPaymentAmount() async {
-    final result =
-        await methodChannel.invokeMethod<Map>('getTotalStoredPaymentAmount');
-    if (result == null) return null;
-    return Money.fromJson(result.cast<String, Object?>());
+    try {
+      final result =
+          await methodChannel.invokeMethod<Map>('getTotalStoredPaymentAmount');
+      if (result == null) return null;
+      return Money.fromJson(result.cast<String, Object?>());
+    } on PlatformException catch (e) {
+      throw OfflinePaymentQueueError(e.code, e.message, e.details);
+    }
   }
 }
 

@@ -68,6 +68,20 @@ enum PaymentErrorCode {
   unknown
 }
 
+enum OfflinePaymentQueueErrorCode {
+  //ios
+  notAuthorized,
+  unexpected,
+  unsupportedSandboxEnvironment,
+  //android
+  canceled,
+  timeout,
+  locationServicesDisabled,
+  deviceClockSkewed,
+  usageError,
+  unknown
+}
+
 enum ReaderCardInfoError {
   cardError,
   notAuthorized,

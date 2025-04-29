@@ -44,7 +44,20 @@ public class PaymentModule: PaymentManagerDelegate {
         let offlinePaymentQueue = paymentManager.offlinePaymentQueue
         offlinePaymentQueue.getPayments { payments, error in
             if let error = error {
-                result(FlutterError(code: "GET_OFFLINE_PAYMENTS_FAILED", message: error.localizedDescription, details: nil))
+                let e = error as NSError
+                if let paymentError = OfflinePaymentQueueError(rawValue: e.code) {
+                    result(FlutterError(
+                        code: paymentError.getName(),
+                        message: e.localizedDescription,
+                        details: e.localizedFailureReason
+                    ))
+                } else {
+                    result(FlutterError(
+                        code: "unknown",
+                        message: nil,
+                        details: nil
+                    ))
+                }
             } else {
                 let paymentsArray = payments.map { $0.toMap() }
                 result(paymentsArray)
@@ -56,11 +69,23 @@ public class PaymentModule: PaymentManagerDelegate {
         let offlinePaymentQueue = paymentManager.offlinePaymentQueue
         offlinePaymentQueue.getTotalStoredPaymentsAmount { moneyAmount, error in
             if let error = error {
-                result(FlutterError(code: "GET_TOTAL_STORED_PAYMENTS_FAILED", message: error.localizedDescription, details: nil))
+                let e = error as NSError
+                if let paymentError = OfflinePaymentQueueError(rawValue: e.code) {
+                    result(FlutterError(
+                        code: paymentError.getName(),
+                        message: e.localizedDescription,
+                        details: e.localizedFailureReason
+                    ))
+                } else {
+                    result(FlutterError(
+                        code: "unknown",
+                        message: nil,
+                        details: nil
+                    ))
+                }
             } else if let moneyAmount = moneyAmount {
                 result(moneyAmount.toMap())
             } else {
-                //NEVER: if money is nil there was an error, so the error if will occur
                 result(NSNull())
             }
         }

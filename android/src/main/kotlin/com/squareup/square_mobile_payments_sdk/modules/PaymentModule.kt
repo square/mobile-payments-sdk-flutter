@@ -72,7 +72,11 @@ class PaymentModule {
                     result.success(sdkResult.value.toMoneyMap())
                 }
                 is SdkResult.Failure -> {
-                    result.error(sdkResult.errorCode.toString(), sdkResult.errorMessage, sdkResult.debugCode)
+                    result.error(
+                        sdkResult.errorCode.toPaymentErrorCodeName(),
+                        sdkResult.errorMessage,
+                        sdkResult.details.map { d -> d.toErrorDetailsMap() }
+                    )
                 }
             }
         }
@@ -90,7 +94,11 @@ class PaymentModule {
                         result.success(paymentList)
                     }
                     is SdkResult.Failure -> {
-                        result.error(sdkResult.errorCode.toString(), sdkResult.errorMessage, sdkResult.debugCode)
+                        result.error(
+                            sdkResult.errorCode.toPaymentErrorCodeName(),
+                            sdkResult.errorMessage,
+                            sdkResult.details.map { d -> d.toErrorDetailsMap() }
+                        )
                     }
                 }
             }

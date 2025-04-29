@@ -82,3 +82,19 @@ class PaymentError implements Exception {
     return 'PaymentError(code: $code, message: $message, details: $details)';
   }
 }
+
+class OfflinePaymentQueueError implements Exception {
+  late final OfflinePaymentQueueErrorCode code;
+  late final String message;
+  final dynamic details;
+
+  OfflinePaymentQueueError(String code, String? message, [this.details]) {
+    this.code = assertEnumValue(OfflinePaymentQueueErrorCode.values, code);
+    this.message = message ?? "Unknown Offline Payment Queue Error";
+  }
+
+  @override
+  String toString() {
+    return 'OfflinePaymentQueueError(code: $code, message: $message, details: $details)';
+  }
+}

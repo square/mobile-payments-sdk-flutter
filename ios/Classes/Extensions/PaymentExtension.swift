@@ -188,3 +188,17 @@ extension PaymentError {
         }
     }
 }
+
+extension OfflinePaymentQueueError {
+    public func getName() -> String {
+        switch self {
+            case .notAuthorized:
+                return "notAuthorized"
+            case .unexpected:
+                return "unexpected"
+            case .unsupportedSandboxEnvironment:
+                return "unsupportedSandboxEnvironment"
+            default: return "unknown"
+        }
+    }
+}
