@@ -26,7 +26,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
       Payment? payment = await _squareMobilePaymentsSdkPlugin.paymentManager
           .startPayment(
               PaymentParameters(
-                processingMode: 1,
+                  processingMode: 1,
                   amountMoney:
                       Money(amount: amount, currencyCode: CurrencyCode.eur),
                   idempotencyKey: idempotencyKey),
@@ -41,18 +41,6 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
       if (context.mounted) {
         showCanceledDialog(context);
       }
-    }
-  }
-
-  _onTapToPay() async {
-    print("testing TTP");
-    try {
-      bool isAppleAccountLinked = await _squareMobilePaymentsSdkPlugin
-          .tapToPaySettings
-          .isDeviceCapable();
-      print("isAppleAccountLinked ");
-    } catch (e, stackTrace) {
-      print("Exception reader: $e");
     }
   }
 
@@ -210,29 +198,6 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
                       color: isAuthorized ? Colors.black : Colors.grey,
                       fontSize: 18,
                     ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => _onTapToPay(),
-                  child: Text(
-                    "Tap to pay",
-                    style: TextStyle(
-                      color: isAuthorized ? Colors.black : Colors.grey,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => {Navigator.pushNamed(context, '/offline-status')},
-                  child: const Text(
-                    "Open Test Screen",
                   ),
                 ),
               ),
