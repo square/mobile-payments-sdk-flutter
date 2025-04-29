@@ -80,7 +80,14 @@ class _ReaderSettingsScreenState extends State<ReaderSettingsScreen> {
         context: context,
         isDismissible: false,
         enableDrag: false,
-        builder: (_) => _bottomSheet(context));
+        builder: (_) => _bottomSheet(context)).then((_) async {
+      if (_handle != null) {
+        final stopResult = await _handle!.stop();
+        if (context.mounted) {
+          showAlert(context, 'Pairing Stopped', 'Result: $stopResult');
+        }
+      }
+    });
 
     _handle = _squareMobilePaymentsSdkPlugin.readerManager
         .pairReader((bool success, String? error) {
