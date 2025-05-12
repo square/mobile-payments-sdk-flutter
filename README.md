@@ -5,7 +5,7 @@
 Mobile Payments SDK for Flutter supports the following SDK versions:
 
   * [iOS](https://developer.squareup.com/docs/mobile-payments-sdk/ios#1-install-the-sdk-and-dependencies): 2.1.0 and above
-  * [Android](https://developer.squareup.com/docs/mobile-payments-sdk/android#1-install-the-sdk-and-dependencies): 2.1.0 and above
+  * [Android](https://developer.squareup.com/docs/mobile-payments-sdk/android#1-install-the-sdk-and-dependencies): 2.2.0 and above
 
 ## Review requirements
 Before getting started, please review the Requirements and Limitations and Device Compatibility sections to ensure that the SDK can be used in your project:
