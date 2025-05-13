@@ -19,7 +19,6 @@ enum AuthorizationErrorCode {
   invalidLocationId,
   locationNotActivatedForCardProcessing,
   unexpected,
-  //android
   noNetwork,
   unsupportedCountry,
   usageError
@@ -42,7 +41,6 @@ enum SettingsErrorCode {
 enum PaymentErrorCode {
   missingParameters,
   notRootViewController,
-  //ios
   deviceTimeDoesNotMatchServerTime,
   idempotencyKeyReused,
   invalidPaymentParameters,
@@ -59,7 +57,6 @@ enum PaymentErrorCode {
   timedOut,
   unexpected,
   unsupportedMode,
-  //android
   canceled,
   timeout,
   locationServicesDisabled,
@@ -69,11 +66,9 @@ enum PaymentErrorCode {
 }
 
 enum OfflinePaymentQueueErrorCode {
-  //ios
   notAuthorized,
   unexpected,
   unsupportedSandboxEnvironment,
-  //android
   canceled,
   timeout,
   locationServicesDisabled,
