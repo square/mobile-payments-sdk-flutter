@@ -217,7 +217,7 @@ To verify if the device supports Tap to Pay on iPhone:
 
 ## 📡 Offline Payments (Beta)
 
-The Mobile Payments SDK for Flutter supports taking payments offline. This feature is currently in **Beta** and requires Square sellers to opt in.
+This is currently a Beta feature in the SDK. Additionally, use of offline payments requires Square sellers to opt in and agree to the terms of the feature.
 
 ### 🔧 Accessing Offline Features
 
@@ -253,7 +253,7 @@ final storedTotal = await sdk.paymentManager.offlinePaymentQueue.getTotalStoredP
 
 To onboard a seller:
 
-1. Send an email to: **developerbetas@squareup.com**  
+1. Send an email to: **developerbetas@squareup.com**
 2. Include the following:
    - The seller's **business name**
    - The seller's **email address** (owner/admin of their Square account)
@@ -265,5 +265,5 @@ Square will contact the seller and provide an onboarding form. Once completed, S
 
 If you try to process an offline payment for a seller who hasn’t been onboarded, the SDK will return a **USAGE_ERROR**.
 
-For more details, refer to:  
+For more details, refer to:
 [Square Android Offline Payments Docs](https://developer.squareup.com/docs/mobile-payments-sdk/android/offline-payments#seller-onboarding)
