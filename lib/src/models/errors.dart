@@ -4,7 +4,8 @@
 
 part of 'models.dart';
 
-enum AuthorizationError {
+enum AuthorizationErrorCode {
+  missingParameters,
   alreadyAuthorized,
   alreadyInProgress,
   authorizationCodeAlreadyRedeemed,
@@ -17,12 +18,29 @@ enum AuthorizationError {
   invalidAuthorizationCode,
   invalidLocationId,
   locationNotActivatedForCardProcessing,
-  noNetwork,
   unexpected,
+  noNetwork,
   unsupportedCountry,
+  usageError
 }
 
-enum PaymentError {
+enum MockReaderUIErrorCode {
+  versionMismatch,
+  invalidApplicationId,
+  unexpected,
+  notAuthorized,
+  noScene,
+  unknown,
+}
+
+enum SettingsErrorCode {
+  notRootViewController,
+  usageError,
+}
+
+enum PaymentErrorCode {
+  missingParameters,
+  notRootViewController,
   deviceTimeDoesNotMatchServerTime,
   idempotencyKeyReused,
   invalidPaymentParameters,
@@ -30,6 +48,7 @@ enum PaymentError {
   locationPermissionNeeded,
   merchantNotOptedIntoOfflineProcessing,
   noNetwork,
+  noNetworkAndMerchantNotOptedIntoOfflineProcessing,
   notAuthorized,
   offlineStoredAmountExceeded,
   offlineTransactionAmountExceeded,
@@ -38,6 +57,24 @@ enum PaymentError {
   timedOut,
   unexpected,
   unsupportedMode,
+  canceled,
+  timeout,
+  locationServicesDisabled,
+  deviceClockSkewed,
+  usageError,
+  unknown
+}
+
+enum OfflinePaymentQueueErrorCode {
+  notAuthorized,
+  unexpected,
+  unsupportedSandboxEnvironment,
+  canceled,
+  timeout,
+  locationServicesDisabled,
+  deviceClockSkewed,
+  usageError,
+  unknown
 }
 
 enum ReaderCardInfoError {

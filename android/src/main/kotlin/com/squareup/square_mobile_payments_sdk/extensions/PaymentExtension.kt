@@ -7,7 +7,6 @@ import com.squareup.sdk.mobilepayments.payment.CardPaymentDetails
 import com.squareup.sdk.mobilepayments.payment.ExternalPaymentDetails
 import com.squareup.sdk.mobilepayments.payment.PaymentProcessingFee
 import com.squareup.sdk.mobilepayments.payment.SquareAccountDetails
-import com.squareup.sdk.mobilepayments.core.ErrorDetails
 import com.squareup.sdk.mobilepayments.payment.DigitalWalletDetails
 import com.squareup.sdk.mobilepayments.payment.CashPaymentDetails
 
@@ -182,16 +181,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
   fun SquareAccountDetails.toAccountMap(): Map<String, Any?> {
     return mapOf(
       "paymentSourceToken" to paymentSourceToken,
-      "errors" to errors?.map { it.toErrorMap() }
-    )
-  }
-
-  fun ErrorDetails.toErrorMap(): Map<String, Any?> {
-    return mapOf(
-      "category" to category,
-      "code" to code,
-      "detail" to detail,
-      "field" to field
+      "errors" to errors?.map { it.toErrorDetailsMap() }
     )
   }
 

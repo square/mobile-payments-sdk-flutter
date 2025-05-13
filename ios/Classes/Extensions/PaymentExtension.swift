@@ -148,3 +148,57 @@ extension OfflinePayment {
         ]
     }
 }
+
+extension PaymentError {
+    public func getName() -> String {
+        switch self {
+            case .deviceTimeDoesNotMatchServerTime:
+                return "deviceTimeDoesNotMatchServerTime"
+            case .idempotencyKeyReused:
+                return "idempotencyKeyReused"
+            case .invalidPaymentParameters:
+                return "invalidPaymentParameters"
+            case .invalidPaymentSource:
+                return "invalidPaymentSource"
+            case .locationPermissionNeeded:
+                return "locationPermissionNeeded"
+            case .merchantNotOptedIntoOfflineProcessing:
+                return "merchantNotOptedIntoOfflineProcessing"
+            case .noNetwork:
+                return "noNetwork"
+            //case .noNetworkAndMerchantNotOptedIntoOfflineProcessing:
+                //return "noNetworkAndMerchantNotOptedIntoOfflineProcessing"
+            case .notAuthorized:
+                return "notAuthorized"
+            case .offlineStoredAmountExceeded:
+                return "offlineStoredAmountExceeded"
+            case .offlineTransactionAmountExceeded:
+                return "offlineTransactionAmountExceeded"
+            case .paymentAlreadyInProgress:
+                return "paymentAlreadyInProgress"
+            case .sandboxUnsupportedForOfflineProcessing:
+                return "sandboxUnsupportedForOfflineProcessing"
+            case .timedOut:
+                return "timedOut"
+            case .unexpected:
+                return "unexpected"
+            case .unsupportedMode:
+                return "unsupportedMode"
+            default: return "unknown"
+        }
+    }
+}
+
+extension OfflinePaymentQueueError {
+    public func getName() -> String {
+        switch self {
+            case .notAuthorized:
+                return "notAuthorized"
+            case .unexpected:
+                return "unexpected"
+            case .unsupportedSandboxEnvironment:
+                return "unsupportedSandboxEnvironment"
+            default: return "unknown"
+        }
+    }
+}

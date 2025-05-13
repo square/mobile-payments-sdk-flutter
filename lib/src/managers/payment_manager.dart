@@ -6,7 +6,7 @@ class PaymentManager {
   static final PaymentManager _instance = PaymentManager._privateConstructor();
   factory PaymentManager() => _instance;
 
-  Future<Payment?> startPayment(paymentParameters, promptParameters) async {
+  Future<Payment> startPayment(paymentParameters, promptParameters) async {
     return SquareMobilePaymentsSdkPlatform.instance
         .startPayment(paymentParameters, promptParameters);
   }
