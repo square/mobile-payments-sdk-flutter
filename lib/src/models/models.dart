@@ -75,6 +75,18 @@ class CardPaymentDetails with _$CardPaymentDetails {
       _$CardPaymentDetailsFromJson(json);
 }
 
+@freezed
+class CardInputMethods with _$CardInputMethods {
+  const factory CardInputMethods({
+    required int chip,
+    required int contactless,
+    required int swipe,
+  }) = _CardInputMethods;
+
+  factory CardInputMethods.fromJson(Map<String, Object?> json) =>
+      _$CardInputMethodsFromJson(json);
+}
+
 /// Reader objects
 @freezed
 class ReaderBatteryStatus with _$ReaderBatteryStatus {

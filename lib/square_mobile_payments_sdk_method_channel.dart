@@ -80,7 +80,7 @@ class MethodChannelSquareMobilePaymentsSdk
   Future<Location?> getAuthorizedLocation() async {
     final location = await methodChannel.invokeMethod('getAuthorizedLocation');
     if (location != null) {
-      return Location.fromJson(location); //TEST
+      return Location.fromJson(castToMap(location));
     }
     return null;
   }
@@ -152,7 +152,7 @@ class MethodChannelSquareMobilePaymentsSdk
         await methodChannel.invokeMethod<Map>('startPayment', params);
 
     if (response != null) {
-      final paymentJson = castPaymentMap(response);
+      final paymentJson = castToMap(response);
       return Payment.fromJson(paymentJson);
     }
 
@@ -339,13 +339,13 @@ String _generateUniqueId() {
   return DateTime.now().millisecondsSinceEpoch.toString();
 }
 
-Map<String, Object?> castPaymentMap(Map response) {
+Map<String, Object?> castToMap(Map response) {
   Map<String, Object?> result = {};
 
   for (var entry in response.entries) {
     if (entry.key is String) {
       if (entry.value is Map) {
-        result[entry.key as String] = castPaymentMap(entry.value);
+        result[entry.key as String] = castToMap(entry.value);
       } else {
         result[entry.key as String] = entry.value;
       }
