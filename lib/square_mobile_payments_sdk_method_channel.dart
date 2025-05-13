@@ -59,7 +59,7 @@ class MethodChannelSquareMobilePaymentsSdk
     //null if not authorized
     final location = await methodChannel.invokeMethod('getAuthorizedLocation');
     if (location != null) {
-      return Location.fromJson(location); //TEST
+      return Location.fromJson(castToMap(location));
     }
     return null;
   }
@@ -232,13 +232,13 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 }
 
-Map<String, Object?> castPaymentMap(Map response) {
+Map<String, Object?> castToMap(Map response) {
   Map<String, Object?> result = {};
 
   for (var entry in response.entries) {
     if (entry.key is String) {
       if (entry.value is Map) {
-        result[entry.key as String] = castPaymentMap(entry.value);
+        result[entry.key as String] = castToMap(entry.value);
       } else {
         result[entry.key as String] = entry.value;
       }

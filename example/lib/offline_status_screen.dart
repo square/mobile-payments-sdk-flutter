@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
-import 'package:square_mobile_payments_sdk/src/models/models.dart';
 
 class OfflineStatusScreen extends StatefulWidget {
   const OfflineStatusScreen({super.key});
