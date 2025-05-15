@@ -9,6 +9,6 @@ class MainApplication : Application() {
         MobilePaymentsSdk.initialize(MOBILE_PAYMENT_SDK_APPLICATION_ID, this)
     }
 companion object {
-      private const val MOBILE_PAYMENT_SDK_APPLICATION_ID = "REPLACE ME!"
+      private const val MOBILE_PAYMENT_SDK_APPLICATION_ID = "sandbox-sq0idb-Jgsb9i5Wa0d-60MBkHdEyw"
   }
 }
