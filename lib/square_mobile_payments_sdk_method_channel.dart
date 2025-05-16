@@ -92,7 +92,8 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<Payment?> startPayment(paymentParameters, promptParameters) async {
+  Future<Payment?> startPayment(PaymentParameters paymentParameters,
+      PromptParameters promptParameters) async {
     var amountMoney = {
       "amount": paymentParameters.amountMoney.amount,
       "currencyCode": paymentParameters.amountMoney.currencyCode.name
