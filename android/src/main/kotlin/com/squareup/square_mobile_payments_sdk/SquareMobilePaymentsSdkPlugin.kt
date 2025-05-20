@@ -32,22 +32,22 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
     when (call.method) {
       "getPlatformVersion" ->
         result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
-      
-      "getSdkVersion" -> 
-        result.success(MobilePaymentsSdk.settingsManager().getSdkSettings().sdkVersion)
-      
-      "getEnvironment" -> 
-        result.success(MobilePaymentsSdk.settingsManager().getSdkSettings().sdkEnvironment.name)
-      
-      "getAuthorizationState" -> 
+
+      "getSdkVersion" ->
+        SettingsModule.getSdkVersion(result)
+
+      "getEnvironment" ->
+        SettingsModule.getEnvironment(result)
+
+      "getAuthorizationState" ->
         AuthModule.getAuthorizationState(result)
 
       "getAuthorizedLocation" ->
         AuthModule.getAuthorizedLocation(result)
 
       "authorize" -> {
-        val accessToken = call.argument<String>("accessToken") ?: ""
-        val locationId = call.argument<String>("locationId") ?: ""
+        val accessToken = call.argument<String>("accessToken")
+        val locationId = call.argument<String>("locationId")
         AuthModule.authorize(result, accessToken, locationId)
       }
 
@@ -66,12 +66,7 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
       "startPayment" -> {
         val paymentParameters = call.argument<HashMap<String, Any>>("paymentParameters")
         val promptParameters = call.argument<HashMap<String, Any>>("promptParameters")
-
-        if (paymentParameters == null || promptParameters == null) {
-          result.error("INVALID_PARAMETERS", "Null params", null)
-        } else {
-          PaymentModule.startPayment(result, paymentParameters, promptParameters)
-        }
+        PaymentModule.startPayment(result, paymentParameters, promptParameters)
       }
 
       "isOfflineProcessingAllowed" ->
@@ -96,10 +91,5 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
-  }
-
-  companion object {
-    const val SANDBOX = "sandbox"
-    const val PRODUCTION = "production"
   }
 }

@@ -3,7 +3,7 @@ import SquareMobilePaymentsSDK
 import MockReaderUI
 
 public class ReaderModule {
-
+    private static let settingsManager = MobilePaymentsSDK.shared.settingsManager
 
     static var mockReader: MockReaderUI? = {
         do {
@@ -55,16 +55,25 @@ public class ReaderModule {
     public static func showMockReaderUI(result: @escaping FlutterResult) {
         do {
             try mockReader?.present()
-            result("Mock Reader has been successfully presented.")
-        } catch let error {
-            result(FlutterError(code: "SHOW_MOCK_READER_UI", message: error.localizedDescription, details: nil))
+            result(NSNull())
+        } catch (let error) {
+            var e = error as NSError
+            if let readerError = MockReaderUIError(rawValue: e.code) {
+                result(FlutterError(code: readerError.getName(),
+                        message: e.localizedDescription,
+                        details: e.localizedFailureReason))
+            }
+            else {
+                result(FlutterError(code: "unknown",
+                        message: "Unknown error",
+                        details: nil))
+            }
         }
     }
 
     public static func hideMockReaderUI(result: @escaping FlutterResult) {
-        
         mockReader?.dismiss()
-        result("Mock Reader has been successfully hidden.")
+        result(NSNull())
     }
 
     public static func linkAppleAccount(result: @escaping FlutterResult) {

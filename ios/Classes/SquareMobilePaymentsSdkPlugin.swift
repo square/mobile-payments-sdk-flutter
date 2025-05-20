@@ -19,7 +19,7 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
         AuthModule.authorize(result: result, accessToken: accessToken, locationId: locationId)
       } else {
         result(FlutterError(
-          code: "INVALID_ARGUMENTS",
+          code: "missingParameters",
           message: "Missing accessToken or locationId",
           details: nil))
       }
@@ -49,9 +49,9 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin {
             promptParameters: promptParameters)
       } else {
         result(FlutterError(
-          code: "INVALID_ARGUMENTS",
-          message: "Missing paymentParameters or promptParameters",
-          details: nil))
+            code: "missingParameters",
+            message: "paymentParameters or promptParameters must not be null",
+            details: nil))
       }
     case "showSettings":
       SettingsModule.showSettings(result: result)

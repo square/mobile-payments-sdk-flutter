@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:square_mobile_payments_sdk/src/models/models.dart';
+import 'package:square_mobile_payments_sdk/src/errors/errors.dart';
 
 import 'square_mobile_payments_sdk_platform_interface.dart';
 
@@ -12,9 +13,12 @@ class MethodChannelSquareMobilePaymentsSdk
   final methodChannel = const MethodChannel('square_mobile_payments_sdk');
 
   @override
-  Future<String?> getPlatformVersion() async {
+  Future<String> getPlatformVersion() async {
     final version =
         await methodChannel.invokeMethod<String>('getPlatformVersion');
+    if (version == null) {
+      throw getChannelStateError("getPlatformVersion()", "returned null");
+    }
     return version;
   }
 
@@ -23,20 +27,18 @@ class MethodChannelSquareMobilePaymentsSdk
     // invokeMethod<String> does NOT enforce type conversion; the result may be null or another type.
     final version = await methodChannel.invokeMethod<String>('getSdkVersion');
     if (version == null) {
-      throw StateError(
-          "getSdkVersion() returned null, which should not happen.");
+      throw getChannelStateError("getSdkVersion()", "returned null");
     }
     return version;
   }
 
   @override
-  Future<String> getEnvironment() async {
-    final environment =
-        await methodChannel.invokeMethod<String>('getEnvironment');
-    if (environment == null) {
-      throw StateError(
-          "getEnvironment() returned null, which should not happen.");
+  Future<Environment> getEnvironment() async {
+    final envName = await methodChannel.invokeMethod<String>('getEnvironment');
+    if (envName == null) {
+      throw getChannelStateError("getEnvironment()", "returned null");
     }
+    final environment = assertEnumValue(Environment.values, envName);
     return environment;
   }
 
@@ -44,14 +46,17 @@ class MethodChannelSquareMobilePaymentsSdk
   Future<AuthorizationState> getAuthorizationState() async {
     final authorizeStateName =
         await methodChannel.invokeMethod<String>('getAuthorizationState');
-    return AuthorizationState.values.firstWhere(
-      (e) => e.name == authorizeStateName,
-      orElse: () => AuthorizationState.notAuthorized,
-    );
+    if (authorizeStateName == null) {
+      throw getChannelStateError("getAuthorizationState()", "returned null");
+    }
+    final authorizationState =
+        assertEnumValue(AuthorizationState.values, authorizeStateName);
+    return authorizationState;
   }
 
   @override
   Future<Location?> getAuthorizedLocation() async {
+    //null if not authorized
     final location = await methodChannel.invokeMethod('getAuthorizedLocation');
     if (location != null) {
       return Location.fromJson(castToMap(location));
@@ -60,25 +65,30 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<String?> authorize(String accessToken, String locationId) async {
+  Future<void> authorize(String accessToken, String locationId) async {
     var params = <String, dynamic>{
       'accessToken': accessToken,
       'locationId': locationId,
     };
-    final response =
-        await methodChannel.invokeMethod<String>('authorize', params);
-    return response;
+    try {
+      await methodChannel.invokeMethod<void>('authorize', params);
+    } on PlatformException catch (e) {
+      throw AuthorizeError(e.code, e.message, e.details);
+    }
   }
 
   @override
-  Future<String?> deauthorize() async {
-    final response = await methodChannel.invokeMethod<String>('deauthorize');
-    return response;
+  Future<void> deauthorize() async {
+    await methodChannel.invokeMethod('deauthorize');
   }
 
   @override
   Future<void> showMockReaderUI() async {
-    await methodChannel.invokeMethod<void>('showMockReaderUI');
+    try {
+      await methodChannel.invokeMethod<void>('showMockReaderUI');
+    } on PlatformException catch (e) {
+      throw MockReaderUIError(e.code, e.message, e.details);
+    }
   }
 
   @override
@@ -88,11 +98,15 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<void> showSettings() async {
-    await methodChannel.invokeMethod<void>('showSettings');
+    try {
+      await methodChannel.invokeMethod<void>('showSettings');
+    } on PlatformException catch (e) {
+      throw SettingsError(e.code, e.message, e.details);
+    }
   }
 
   @override
-  Future<Payment?> startPayment(PaymentParameters paymentParameters,
+  Future<Payment> startPayment(PaymentParameters paymentParameters,
       PromptParameters promptParameters) async {
     var amountMoney = {
       "amount": paymentParameters.amountMoney.amount,
@@ -123,15 +137,17 @@ class MethodChannelSquareMobilePaymentsSdk
       'promptParameters': promptParameters.toJson(),
     };
 
-    final response =
-        await methodChannel.invokeMethod<Map>('startPayment', params);
-
-    if (response != null) {
+    try {
+      final response =
+          await methodChannel.invokeMethod<Map>('startPayment', params);
+      if (response == null) {
+        throw getChannelStateError("startPayment()", "returned null");
+      }
       final paymentJson = castToMap(response);
       return Payment.fromJson(paymentJson);
+    } on PlatformException catch (e) {
+      throw PaymentError(e.code, e.message, e.details);
     }
-
-    return null;
   }
 
   /// **New Methods for Tap to Pay Support**
@@ -166,7 +182,11 @@ class MethodChannelSquareMobilePaymentsSdk
   Future<bool> isOfflineProcessingAllowed() async {
     final result =
         await methodChannel.invokeMethod<bool>('isOfflineProcessingAllowed');
-    return result ?? false;
+    if (result == null) {
+      throw getChannelStateError(
+          "isOfflineProcessingAllowed()", "returned null");
+    }
+    return result;
   }
 
   @override
@@ -187,19 +207,29 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<List<OfflinePayment>> getPayments() async {
-    final result = await methodChannel.invokeMethod<List>('getPayments');
-    if (result == null) {
-      throw StateError("getPayments() returned null, which should not happen.");
+    try {
+      final result = await methodChannel.invokeMethod<List>('getPayments');
+      if (result == null) {
+        throw getChannelStateError("getPayments()", "returned null");
+      }
+      return result
+          .map((e) => OfflinePayment.fromJson(castToMap(e)))
+          .toList();
+    } on PlatformException catch (e) {
+      throw OfflinePaymentQueueError(e.code, e.message, e.details);
     }
-    return result.map((e) => OfflinePayment.fromJson(castToMap(e))).toList();
   }
 
   @override
   Future<Money?> getTotalStoredPaymentAmount() async {
-    final result =
-        await methodChannel.invokeMethod<Map>('getTotalStoredPaymentAmount');
-    if (result == null) return null;
-    return Money.fromJson(result.cast<String, Object?>());
+    try {
+      final result =
+          await methodChannel.invokeMethod<Map>('getTotalStoredPaymentAmount');
+      if (result == null) return null;
+      return Money.fromJson(result.cast<String, Object?>());
+    } on PlatformException catch (e) {
+      throw OfflinePaymentQueueError(e.code, e.message, e.details);
+    }
   }
 }
 
