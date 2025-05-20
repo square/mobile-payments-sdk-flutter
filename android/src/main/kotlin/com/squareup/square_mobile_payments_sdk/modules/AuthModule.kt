@@ -38,21 +38,18 @@ class AuthModule {
         return
       }
       authManager.authorize(accessToken, locationId) { sdkResult ->
-        when (sdkResult) {
-          is SdkResult.Success -> {
+
+          if(sdkResult is SdkResult.Success ) {
             result.success(null)
           }
-          is SdkResult.Failure -> {
+          if(sdkResult is SdkResult.Failure) {
             result.error(
                     sdkResult.errorCode.toAuthorizeErrorCodeName(),
                     sdkResult.errorMessage,
                     sdkResult.details.map { d -> d.toErrorDetailsMap() }
             )
           }
-          else -> {
-            result.error("unknown", null, null)
-          }
-        }
+        
       }
     }
 

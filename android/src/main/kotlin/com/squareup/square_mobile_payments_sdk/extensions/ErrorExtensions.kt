@@ -11,34 +11,25 @@ fun ErrorDetails.toErrorDetailsMap(): Map<String, Any?> {
 
 // Auth
 
-fun AuthorizeErrorCode.toAuthorizeErrorCodeName(): String {
-    return when (this) {
-        AuthorizeErrorCode.NO_NETWORK -> "noNetwork"
-        AuthorizeErrorCode.UNSUPPORTED_COUNTRY -> "unsupportedCountry"
-        AuthorizeErrorCode.USAGE_ERROR -> "usageError"
-        else -> "unknown"
-    }
+fun AuthorizeErrorCode.toAuthorizeErrorCodeName(): String = when (this) {
+    AuthorizeErrorCode.NO_NETWORK -> "noNetwork"
+    AuthorizeErrorCode.UNSUPPORTED_COUNTRY -> "unsupportedCountry"
+    AuthorizeErrorCode.USAGE_ERROR -> "usageError"
 }
 
 // settings
 
-fun SettingsErrorCode.toSettingsErrorCodeName(): String {
-    return when (this) {
+fun SettingsErrorCode.toSettingsErrorCodeName(): String = when (this) {
         SettingsErrorCode.USAGE_ERROR -> "usageError"
-        else -> "unknown"
-    }
 }
 
 // Payment
 
-fun PaymentErrorCode.toPaymentErrorCodeName(): String {
-    return when (this) {
+fun PaymentErrorCode.toPaymentErrorCodeName(): String = when (this) {
         PaymentErrorCode.CANCELED -> "canceled"
         PaymentErrorCode.NOT_AUTHORIZED -> "notAuthorized"
         PaymentErrorCode.TIMEOUT -> "timeout"
         PaymentErrorCode.LOCATION_SERVICES_DISABLED -> "locationServicesDisabled"
         PaymentErrorCode.DEVICE_CLOCK_SKEWED -> "deviceClockSkewed"
         PaymentErrorCode.USAGE_ERROR -> "usageError"
-        else -> "unknown"
-    }
 }

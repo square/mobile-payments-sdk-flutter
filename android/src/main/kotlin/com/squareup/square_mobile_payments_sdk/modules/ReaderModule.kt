@@ -13,7 +13,7 @@ class ReaderModule {
         @JvmStatic
         fun showMockReaderUI(result: MethodChannel.Result) {
             try {
-                MockReaderUI.show() //has 2 checks func, with no code
+                MockReaderUI.show() 
                 result.success(null)
             } catch (e: IllegalStateException) {
                 // first invalid Id

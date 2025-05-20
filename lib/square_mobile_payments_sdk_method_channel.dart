@@ -106,7 +106,7 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<Payment?> startPayment(PaymentParameters paymentParameters,
+  Future<Payment> startPayment(PaymentParameters paymentParameters,
       PromptParameters promptParameters) async {
     var amountMoney = {
       "amount": paymentParameters.amountMoney.amount,
@@ -143,7 +143,7 @@ class MethodChannelSquareMobilePaymentsSdk
       if (response == null) {
         throw getChannelStateError("startPayment()", "returned null");
       }
-      final paymentJson = castPaymentMap(response);
+      final paymentJson = castToMap(response);
       return Payment.fromJson(paymentJson);
     } on PlatformException catch (e) {
       throw PaymentError(e.code, e.message, e.details);
@@ -213,7 +213,7 @@ class MethodChannelSquareMobilePaymentsSdk
         throw getChannelStateError("getPayments()", "returned null");
       }
       return result
-          .map((e) => OfflinePayment.fromJson(castPaymentMap(e)))
+          .map((e) => OfflinePayment.fromJson(castToMap(e)))
           .toList();
     } on PlatformException catch (e) {
       throw OfflinePaymentQueueError(e.code, e.message, e.details);
