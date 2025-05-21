@@ -16,8 +16,8 @@ class Location with _$Location {
     required String name,
   }) = _Location;
 
-factory Location.fromJson(Map<String, Object?> json)
-      => _$LocationFromJson(json);
+  factory Location.fromJson(Map<String, Object?> json) =>
+      _$LocationFromJson(json);
 }
 
 @freezed
@@ -27,26 +27,37 @@ class Money with _$Money {
     required CurrencyCode currencyCode,
   }) = _Money;
 
-  factory Money.fromJson(Map<String, Object?> json)
-      => _$MoneyFromJson(json);
+  factory Money.fromJson(Map<String, Object?> json) => _$MoneyFromJson(json);
 }
 
-/// Card objects 
+/// Card objects
 
 @freezed
 class Card with _$Card {
   const factory Card({
     required CardBrand brand,
-    required String cardholderName,
+    String? cardholderName,
     required CardCoBrand coBrand,
     @Default(0) num expirationMonth,
     @Default(0) num expirationYear,
-    required String id,
+    String? id,
     required String lastFourDigits,
   }) = _Card;
 
-  factory Card.fromJson(Map<String, Object?> json)
-      => _$CardFromJson(json);
+  factory Card.fromJson(Map<String, Object?> json) => _$CardFromJson(json);
+}
+
+@freezed
+class OfflineCard with _$OfflineCard {
+  const factory OfflineCard({
+    required CardBrand brand,
+    String? cardholderName,
+    String? id,
+    String? lastFourDigits,
+  }) = _OfflineCard;
+
+  factory OfflineCard.fromJson(Map<String, Object?> json) =>
+      _$OfflineCardFromJson(json);
 }
 
 @freezed
@@ -60,8 +71,8 @@ class CardPaymentDetails with _$CardPaymentDetails {
     required CardPaymentStatus status,
   }) = _CardPaymentDetails;
 
-  factory CardPaymentDetails.fromJson(Map<String, Object?> json)
-      => _$CardPaymentDetailsFromJson(json);
+  factory CardPaymentDetails.fromJson(Map<String, Object?> json) =>
+      _$CardPaymentDetailsFromJson(json);
 }
 
 @freezed
@@ -72,8 +83,8 @@ class CardInputMethods with _$CardInputMethods {
     required int swipe,
   }) = _CardInputMethods;
 
-  factory CardInputMethods.fromJson(Map<String, Object?> json)
-      => _$CardInputMethodsFromJson(json);
+  factory CardInputMethods.fromJson(Map<String, Object?> json) =>
+      _$CardInputMethodsFromJson(json);
 }
 
 /// Reader objects
@@ -85,8 +96,8 @@ class ReaderBatteryStatus with _$ReaderBatteryStatus {
     @Default(0) num percentage,
   }) = _ReaderBatteryStatus;
 
-  factory ReaderBatteryStatus.fromJson(Map<String, Object?> json)
-      => _$ReaderBatteryStatusFromJson(json);
+  factory ReaderBatteryStatus.fromJson(Map<String, Object?> json) =>
+      _$ReaderBatteryStatusFromJson(json);
 }
 
 @freezed
@@ -98,8 +109,8 @@ class ReaderConnectionFailureInfo with _$ReaderConnectionFailureInfo {
     required ReaderConnectionFailureRecoverySuggestion recoverySuggestion,
   }) = _ReaderConnectionFailureInfo;
 
-  factory ReaderConnectionFailureInfo.fromJson(Map<String, Object?> json)
-      => _$ReaderConnectionFailureInfoFromJson(json);
+  factory ReaderConnectionFailureInfo.fromJson(Map<String, Object?> json) =>
+      _$ReaderConnectionFailureInfoFromJson(json);
 }
 
 @freezed
@@ -109,8 +120,8 @@ class ReaderConnectionInfo with _$ReaderConnectionInfo {
     required ReaderConnectionState state,
   }) = _ReaderConnectionInfo;
 
-  factory ReaderConnectionInfo.fromJson(Map<String, Object?> json)
-      => _$ReaderConnectionInfoFromJson(json);
+  factory ReaderConnectionInfo.fromJson(Map<String, Object?> json) =>
+      _$ReaderConnectionInfoFromJson(json);
 }
 
 @freezed
@@ -121,8 +132,8 @@ class ReaderFirmwareInfo with _$ReaderFirmwareInfo {
     required String version,
   }) = _ReaderFirmwareInfo;
 
-  factory ReaderFirmwareInfo.fromJson(Map<String, Object?> json)
-      => _$ReaderFirmwareInfoFromJson(json);
+  factory ReaderFirmwareInfo.fromJson(Map<String, Object?> json) =>
+      _$ReaderFirmwareInfoFromJson(json);
 }
 
 @freezed
@@ -143,8 +154,8 @@ class ReaderInfo with _$ReaderInfo {
     required List<CardInputMethods> supportedInputMethods,
   }) = _ReaderInfo;
 
-  factory ReaderInfo.fromJson(Map<String, Object?> json)
-      => _$ReaderInfoFromJson(json);
+  factory ReaderInfo.fromJson(Map<String, Object?> json) =>
+      _$ReaderInfoFromJson(json);
 }
 
 @freezed
@@ -154,8 +165,8 @@ class PromptParameters with _$PromptParameters {
     required PromptMode mode,
   }) = _PromptParameters;
 
-  factory PromptParameters.fromJson(Map<String, Object?> json)
-      => _$PromptParametersFromJson(json);
+  factory PromptParameters.fromJson(Map<String, Object?> json) =>
+      _$PromptParametersFromJson(json);
 }
 
 /// Payments
@@ -176,20 +187,21 @@ class Payment with _$Payment {
     required DateTime updatedAt,
   }) = _Payment;
 
-  factory Payment.fromJson(Map<String, Object?> json)
-      => _$PaymentFromJson(json);
+  factory Payment.fromJson(Map<String, Object?> json) =>
+      _$PaymentFromJson(json);
 }
 
 @freezed
 class PaymentParameters with _$PaymentParameters {
   const factory PaymentParameters({
     int? acceptPartialAuthorization,
-    required Money amountMoney, 
+    required Money amountMoney,
     Money? appFeeMoney, // Nullable
     bool? autocomplete, // Nullable
     String? customerId, // Nullable
     DelayAction? delayAction, // Nullable
     num? delayDuration, // Nullable
+    num? processingMode, // Nullable
     required String idempotencyKey, // Required
     String? locationId, // Nullable
     String? note, // Nullable
@@ -199,8 +211,8 @@ class PaymentParameters with _$PaymentParameters {
     Money? tipMoney, // Nullable
   }) = _PaymentParameters;
 
-  factory PaymentParameters.fromJson(Map<String, Object?> json)
-      => _$PaymentParametersFromJson(json);
+  factory PaymentParameters.fromJson(Map<String, Object?> json) =>
+      _$PaymentParametersFromJson(json);
 }
 
 @freezed
@@ -222,6 +234,42 @@ class OnlinePayment with _$OnlinePayment {
     required String updatedAt,
   }) = _OnlinePayment;
 
-  factory OnlinePayment.fromJson(Map<String, Object?> json)
-      => _$OnlinePaymentFromJson(json);
+  factory OnlinePayment.fromJson(Map<String, Object?> json) =>
+      _$OnlinePaymentFromJson(json);
+}
+
+@freezed
+class OfflinePayment with _$OfflinePayment {
+  const factory OfflinePayment({
+    required Money amountMoney,
+    Money? appFeeMoney,
+    required DateTime createdAt,
+    String? id,
+    String? locationId,
+    String? orderId,
+    String? referenceId,
+    Money? tipMoney,
+    required Money totalMoney,
+    required DateTime updatedAt,
+    OfflineCardPaymentDetails? cardDetails,
+    required String localId,
+    required OfflineStatus status,
+    DateTime? uploadedAt,
+  }) = _OfflinePayment;
+
+  factory OfflinePayment.fromJson(Map<String, dynamic> json) =>
+      _$OfflinePaymentFromJson(json);
+}
+
+@freezed
+class OfflineCardPaymentDetails with _$OfflineCardPaymentDetails {
+  const factory OfflineCardPaymentDetails({
+    String? applicationIdentifier,
+    String? applicationName,
+    OfflineCard? card,
+    required EntryMethod entryMethod,
+  }) = _OfflineCardPaymentDetails;
+
+  factory OfflineCardPaymentDetails.fromJson(Map<String, Object?> json) =>
+      _$OfflineCardPaymentDetailsFromJson(json);
 }

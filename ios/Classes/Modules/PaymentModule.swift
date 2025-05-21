@@ -5,7 +5,6 @@ import SquareMobilePaymentsSDK
 public class PaymentModule: PaymentManagerDelegate {
     private static let paymentManager = MobilePaymentsSDK.shared.paymentManager
     private static let paymentDelegate = PaymentModule()
-
     private var delegateResult: FlutterResult?
 
     public static func startPayment(
@@ -14,11 +13,21 @@ public class PaymentModule: PaymentManagerDelegate {
         promptParameters: [String: Any]
         ) {
         let nativePaymentParameters = PaymentMapper.getPaymentParameters(paymentParameters:paymentParameters)
-        
         let nativePromptParameters = PaymentMapper.getPromptParameters(promptParameters:promptParameters)
 
         guard let topController = UIApplication.shared.keyWindow?.rootViewController else {
-            result(FlutterError(code: "ERROR", message: "No root view controller", details: nil))
+            result(FlutterError(
+                code: "notRootViewController",
+                message: "No root view controller in window iOS app",
+                details: nil))
+            return
+        }
+
+        if (paymentDelegate.delegateResult != nil) {
+            result(FlutterError(
+                code: PaymentError.paymentAlreadyInProgress.getName(),
+                message: "A payment is already in progress",
+                details: nil))
             return
         }
 
@@ -31,43 +40,95 @@ public class PaymentModule: PaymentManagerDelegate {
         )
     }
 
-    // MARK: - PaymentManagerDelegate Methods
-    
-    public func paymentManager(_ paymentManager: PaymentManager, didFinish payment: Payment) {
-        print("Payment successful: \(payment)")
-        if let onlinePayment = payment as? OnlinePayment {
-            print("Finished payment with ID: \(onlinePayment.id!) status: \(onlinePayment.status.description)")
-            delegateResult?(onlinePayment.toMap())
-            return
-        } else if let offlinePayment = payment as? OfflinePayment {
-            print("Finished payment with ID: \(offlinePayment.localID) status: \(offlinePayment.status.description)")
-            delegateResult?(nil)
-            return
+    public static func getPayments(result: @escaping FlutterResult) {
+        let offlinePaymentQueue = paymentManager.offlinePaymentQueue
+        offlinePaymentQueue.getPayments { payments, error in
+            if let error = error {
+                let e = error as NSError
+                if let paymentError = OfflinePaymentQueueError(rawValue: e.code) {
+                    result(FlutterError(
+                        code: paymentError.getName(),
+                        message: e.localizedDescription,
+                        details: e.localizedFailureReason
+                    ))
+                } else {
+                    result(FlutterError(
+                        code: "unknown",
+                        message: nil,
+                        details: nil
+                    ))
+                }
+            } else {
+                let paymentsArray = payments.map { $0.toMap() }
+                result(paymentsArray)
+            }
         }
-        delegateResult?(nil)
-        delegateResult = nil 
+    }
+
+    public static func getTotalStoredPaymentAmount(result: @escaping FlutterResult) {
+        let offlinePaymentQueue = paymentManager.offlinePaymentQueue
+        offlinePaymentQueue.getTotalStoredPaymentsAmount { moneyAmount, error in
+            if let error = error {
+                let e = error as NSError
+                if let paymentError = OfflinePaymentQueueError(rawValue: e.code) {
+                    result(FlutterError(
+                        code: paymentError.getName(),
+                        message: e.localizedDescription,
+                        details: e.localizedFailureReason
+                    ))
+                } else {
+                    result(FlutterError(
+                        code: "unknown",
+                        message: nil,
+                        details: nil
+                    ))
+                }
+            } else if let moneyAmount = moneyAmount {
+                result(moneyAmount.toMap())
+            } else {
+                result(NSNull())
+            }
+        }
+    }
+
+    public func paymentManager(_ paymentManager: PaymentManager, didFinish payment: Payment) {
+        if let onlinePayment = payment as? OnlinePayment {
+            delegateResult?(onlinePayment.toMap())
+        } else if let offlinePayment = payment as? OfflinePayment {
+            delegateResult?(nil)
+        } else {
+            delegateResult?(nil)
+        }
+        delegateResult = nil
     }
 
     public func paymentManager(_ paymentManager: PaymentManager, didFail payment: Payment, withError error: Error) {
-        print("Payment failed: \(error.localizedDescription)")
+        let e = error as NSError
+        if let paymentError = PaymentError(rawValue: e.code) {
+            delegateResult?(FlutterError(
+                code: paymentError.getName(),
+                message: e.localizedDescription,
+                details: e.localizedFailureReason
+            ))
+        } else {
+            delegateResult?(FlutterError(
+                code: "unknown",
+                message: nil,
+                details: nil
+            ))
+        }
+        delegateResult = nil
+    }
+
+    public func paymentManager(_ paymentManager: PaymentManager, didCancel payment: Payment) {
         delegateResult?(FlutterError(
-            code: "PAYMENT_FAILED",
-            message: error.localizedDescription,
+            code: "canceled",
+            message: "the payment was cancelled",
             details: nil
         ))
         delegateResult = nil
     }
 
-    public func paymentManager(_ paymentManager: PaymentManager, didCancel payment: Payment) {
-        print("Payment cancelled.")
-        delegateResult?(FlutterError(
-            code: "PAYMENT_CANCELED",
-            message: nil,
-            details: nil
-        ))
-        delegateResult = nil 
-    }
-    
     // Optional
     public func paymentManager(_ paymentManager: PaymentManager, didStart payment: Payment) {
         print("Payment started.")

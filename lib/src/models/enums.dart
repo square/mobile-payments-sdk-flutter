@@ -17,25 +17,27 @@ enum AuthorizationState {
 }
 
 enum CardBrand {
-  alipay,
+  otherBrand,
+  visa,
+  mastercard,
   americanExpress,
-  cashApp,
-  unionPayInternational,
   discover,
   discoverDiners,
   ebt,
+  jcb,
+  chinaUnionPay,
+  unionPayInternational, //unionPayInternational != chinaUnionPay ?
+  squareGiftCard,
+  alipay,
+  cashApp,
   eftpos,
   felica,
-  id,
   interac,
-  jcb,
-  mastercard,
-  otherBrand,
   squareCapitalCard,
-  squareGiftCard,
   suica,
+  id,
+  quicpay,
   unknown,
-  visa,
 }
 
 enum CardCoBrand {
@@ -107,6 +109,7 @@ enum SourceType {
   cash,
   externalSource, // Note external is a reserved keyword
   squareAccount,
+  cardOnFile,
   unknown,
   wallet,
 }
@@ -182,13 +185,6 @@ enum ReaderState {
   failedToConnect,
   ready,
   updatingFirmware,
-}
-
-// Offline Mode Enums
-enum OfflinePaymentQueueError {
-  notAuthorized,
-  unexpected,
-  unsupportedSandboxEnvironment,
 }
 
 enum OfflineStatus {

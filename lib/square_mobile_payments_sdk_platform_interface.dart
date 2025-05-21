@@ -1,5 +1,5 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import 'package:square_mobile_payments_sdk/src/models.dart';
+import 'package:square_mobile_payments_sdk/src/models/models.dart';
 
 import 'square_mobile_payments_sdk_method_channel.dart';
 
@@ -25,32 +25,33 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
+  Future<String> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
-  
   }
 
   Future<String> getSdkVersion() {
     throw UnimplementedError('getSdkVersion() has not been implemented.');
   }
 
-  Future<String> getEnvironment() {
+  Future<Environment> getEnvironment() {
     throw UnimplementedError('getEnvironment() has not been implemented.');
   }
 
   Future<AuthorizationState> getAuthorizationState() {
-    throw UnimplementedError('getAuthorizationState() has not been implemented.');
+    throw UnimplementedError(
+        'getAuthorizationState() has not been implemented.');
   }
 
   Future<Location?> getAuthorizedLocation() {
-    throw UnimplementedError('getAuthorizedLocation() has not been implemented.');
+    throw UnimplementedError(
+        'getAuthorizedLocation() has not been implemented.');
   }
 
-  Future<String?> authorize(String accessToken, String locationId) {
+  Future<void> authorize(String accessToken, String locationId) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<String?> deauthorize() {
+  Future<void> deauthorize() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
@@ -66,7 +67,7 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     throw UnimplementedError('showSettings() has not been implemented.');
   }
 
-  Future<Payment?> startPayment(PaymentParameters paymentParameters,
+  Future<Payment> startPayment(PaymentParameters paymentParameters,
       PromptParameters promptParameters) async {
     throw UnimplementedError('startPayment() has not been implemented.');
   }
@@ -91,5 +92,30 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
 
   Future<bool> isDeviceCapable() {
     throw UnimplementedError('isDeviceCapable() has not been implemented.');
+  }
+
+  // **New Methods for Offline Payment Support**
+  Future<bool> isOfflineProcessingAllowed() async {
+    throw UnimplementedError(
+        'isOfflineProcessingAllowed() has not been implemented.');
+  }
+
+  Future<Money?> getOfflineTotalStoredAmountLimit() async {
+    throw UnimplementedError(
+        'getOfflineTotalStoredAmountLimit() has not been implemented.');
+  }
+
+  Future<Money?> getOfflineTransactionAmountLimit() async {
+    throw UnimplementedError(
+        'getOfflineTransactionAmountLimit() has not been implemented.');
+  }
+
+  Future<List<OfflinePayment>> getPayments() async {
+    throw UnimplementedError('getPayments() has not been implemented.');
+  }
+
+  Future<Money?> getTotalStoredPaymentAmount() async {
+    throw UnimplementedError(
+        'getTotalStoredPaymentAmount() has not been implemented.');
   }
 }

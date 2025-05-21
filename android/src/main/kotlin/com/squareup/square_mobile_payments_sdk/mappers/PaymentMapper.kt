@@ -5,7 +5,7 @@ import com.squareup.sdk.mobilepayments.payment.Money
 import com.squareup.sdk.mobilepayments.payment.PaymentParameters
 import com.squareup.sdk.mobilepayments.payment.PromptMode
 import com.squareup.sdk.mobilepayments.payment.PromptParameters
-
+import com.squareup.sdk.mobilepayments.payment.ProcessingMode
 import java.util.UUID
 
 class PaymentMapper {
@@ -22,7 +22,8 @@ class PaymentMapper {
             
             val builder = PaymentParameters.Builder(
                 amount = Money(amount, currencyCode),
-                idempotencyKey = paymentParameters.get("idempotencyKey") as String
+                idempotencyKey = paymentParameters.get("idempotencyKey") as String,
+                processingMode = convertToProcessingMode(paymentParameters.get("processingMode") as? Int ?: 0)
                 )
 
                 if(paymentParameters.get("appFeeMoney") != null){
@@ -53,12 +54,24 @@ class PaymentMapper {
                 if(paymentParameters.get("note") != null) {
                     builder.note(paymentParameters.get("note") as? String)
                 }
+                
+                if(paymentParameters.get("orderId") != null) {
+                    builder.orderId(paymentParameters.get("orderId") as? String)
+                }
 
                 if(paymentParameters.get("autocomplete") != null) {
                     builder.autocomplete(paymentParameters.get("autocomplete") as? Boolean ?: false)
                 }
+                
+                
 
                 return builder.build()
+        }
+
+        fun convertToProcessingMode(value: Int?) = when (value) {
+            1 -> ProcessingMode.OFFLINE_ONLY
+            2 -> ProcessingMode.ONLINE_ONLY
+            else -> ProcessingMode.AUTO_DETECT
         }
 
         @JvmStatic

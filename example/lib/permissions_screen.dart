@@ -97,49 +97,50 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
     await Future.delayed(const Duration(seconds: 1));
 
     try {
-      response = await _squareMobilePaymentsSdkPlugin.authorize(
-              accessToken, locationId) ??
-          'Unknown response';
-    } on Exception catch (e) {
-      response = 'Failed';
+      await _squareMobilePaymentsSdkPlugin.authManager
+          .authorize(accessToken, locationId);
+      if (!mounted) return;
+      Provider.of<AuthState>(context, listen: false).authorize();
+    } on AuthorizeError catch (e) {
       setState(() {
         _signInState = SignInState.error;
       });
-    }
-
-    if (!mounted) return;
-
-    if (response == 'Authorized' || response.startsWith("AuthorizedLocation")) {
-      Provider.of<AuthState>(context, listen: false).authorize();
+      if (!mounted) return;
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Text("${e.code}, ->>> ${e.message}"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text("OK"),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
 
   Future<void> hideReader() async {
     try {
-      await _squareMobilePaymentsSdkPlugin.hideMockReaderUI();
+      await _squareMobilePaymentsSdkPlugin.readerManager.hideMockReaderUI();
     } on Exception {
       print("Exception in hide reader");
     }
   }
 
   Future<void> deauthorizeSDK() async {
-    String response;
-    try {
-      response = await _squareMobilePaymentsSdkPlugin.deauthorize() ??
-          'Unknown response';
-    } on Exception {
-      response = 'Failed';
-    }
-
+    await _squareMobilePaymentsSdkPlugin.authManager.deauthorize();
     if (!mounted) return;
-
-    if (response == 'Deauthorized') {
-      Provider.of<AuthState>(context, listen: false).signOut();
-      hideReader();
-      setState(() {
-        _signInState = SignInState.idle;
-      });
-    }
+    Provider.of<AuthState>(context, listen: false).signOut();
+    hideReader();
+    setState(() {
+      _signInState = SignInState.idle;
+    });
   }
 
   _onSignIn() {

@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
-import 'package:square_mobile_payments_sdk/src/models.dart';
 
 class AuthState with ChangeNotifier {
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
@@ -13,7 +12,9 @@ class AuthState with ChangeNotifier {
   }
 
   Future<void> _loadAuthStatus() async {
-    _isAuthorized = await _squareMobilePaymentsSdkPlugin.getAuthorizationState() == AuthorizationState.authorized;
+    _isAuthorized = await _squareMobilePaymentsSdkPlugin.authManager
+            .getAuthorizationState() ==
+        AuthorizationState.authorized;
     notifyListeners();
   }
 

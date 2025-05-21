@@ -30,28 +30,28 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
 
   override fun onMethodCall(call: MethodCall, result: Result) {
     when (call.method) {
-      "getPlatformVersion" -> 
+      "getPlatformVersion" ->
         result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
-      
-      "getSdkVersion" -> 
-        result.success(MobilePaymentsSdk.settingsManager().getSdkSettings().sdkVersion)
-      
-      "getEnvironment" -> 
-        result.success(MobilePaymentsSdk.settingsManager().getSdkSettings().sdkEnvironment.name)
-      
-      "getAuthorizationState" -> 
+
+      "getSdkVersion" ->
+        SettingsModule.getSdkVersion(result)
+
+      "getEnvironment" ->
+        SettingsModule.getEnvironment(result)
+
+      "getAuthorizationState" ->
         AuthModule.getAuthorizationState(result)
-      
-      "getAuthorizedLocation" -> 
+
+      "getAuthorizedLocation" ->
         AuthModule.getAuthorizedLocation(result)
-      
+
       "authorize" -> {
-        val accessToken = call.argument<String>("accessToken") ?: ""
-        val locationId = call.argument<String>("locationId") ?: ""
+        val accessToken = call.argument<String>("accessToken")
+        val locationId = call.argument<String>("locationId")
         AuthModule.authorize(result, accessToken, locationId)
       }
-      
-      "deauthorize" -> 
+
+      "deauthorize" ->
         AuthModule.deAuthorize(result)
 
       "showMockReaderUI" ->
@@ -62,28 +62,34 @@ class SquareMobilePaymentsSdkPlugin: FlutterPlugin, MethodCallHandler {
 
       "showSettings" ->
         SettingsModule.showSettings(result)
-      
+
       "startPayment" -> {
         val paymentParameters = call.argument<HashMap<String, Any>>("paymentParameters")
         val promptParameters = call.argument<HashMap<String, Any>>("promptParameters")
-        
-        if (paymentParameters == null || promptParameters == null) {
-          result.error("INVALID_PARAMETERS", "Null params", null)
-        } else {
-          PaymentModule.startPayment(result, paymentParameters, promptParameters)
-        }
+        PaymentModule.startPayment(result, paymentParameters, promptParameters)
       }
-      else -> 
+
+      "isOfflineProcessingAllowed" ->
+        SettingsModule.isOfflineProcessingAllowed(result)
+
+      "getOfflineTotalStoredAmountLimit" ->
+        SettingsModule.getOfflineTotalStoredAmountLimit(result)
+
+      "getOfflineTransactionAmountLimit" ->
+        SettingsModule.getOfflineTransactionAmountLimit(result)
+
+      "getPayments" ->
+        PaymentModule.getPayments(result)
+
+      "getTotalStoredPaymentAmount" ->
+        PaymentModule.getTotalStoredPaymentAmount(result)
+
+      else ->
         result.notImplemented()
     }
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
-  }
-
-  companion object {
-    const val SANDBOX = "sandbox"
-    const val PRODUCTION = "production"
   }
 }
