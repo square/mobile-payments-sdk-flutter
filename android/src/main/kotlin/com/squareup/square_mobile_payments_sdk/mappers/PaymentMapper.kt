@@ -62,10 +62,7 @@ class PaymentMapper {
                 if(paymentParameters.get("autocomplete") != null) {
                     builder.autocomplete(paymentParameters.get("autocomplete") as? Boolean ?: false)
                 }
-                
-                if(paymentParameters.get("processingMode") != null) {
-                    builder.processingMode(convertToProcessingMode(paymentParameters.get("processingMode") as? Int ?: 0))
-                }
+            
 
                 return builder.build()
         }

@@ -97,7 +97,7 @@ class ReaderModule {
                             "payload" to changedEvent.toChangedEventMap()
                         ))
                 }
-                Log.d("flutter", "reader observer added")
+                
             }
             result.success(null)
         }
@@ -105,7 +105,6 @@ class ReaderModule {
         @JvmStatic
         fun removeReaderChangedCallback(result: MethodChannel.Result) {
             globalReaderCallbackReference?.clear()
-            Log.d("flutter", "reader observer removed")
             globalReaderCallbackReference = null
             result.success(null)
         }
