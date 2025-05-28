@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:square_mobile_payments_sdk_example/auth_state.dart';
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
+import 'package:square_mobile_payments_sdk/src/models/models.dart';
 import 'package:uuid/uuid.dart';
 
 final uuid = Uuid();
@@ -251,10 +252,19 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () =>
-                      {Navigator.pushNamed(context, '/offline-status')},
+                  onPressed: () => {Navigator.pushNamed(context, '/test')},
                   child: const Text(
                     "Open Test Screen",
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () =>
+                      {Navigator.pushNamed(context, '/readerSettings')},
+                  child: const Text(
+                    "Reader Settings",
                   ),
                 ),
               ),
