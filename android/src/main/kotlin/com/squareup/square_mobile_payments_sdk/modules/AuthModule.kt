@@ -1,60 +1,62 @@
 package com.squareup.square_mobile_payments_sdk.modules
 
-import io.flutter.plugin.common.MethodChannel
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
 import com.squareup.sdk.mobilepayments.core.Result as SdkResult
+import com.squareup.square_mobile_payments_sdk.extensions.toAuthorizationStateName
+import com.squareup.square_mobile_payments_sdk.extensions.toAuthorizeErrorCodeName
+import com.squareup.square_mobile_payments_sdk.extensions.toAuthorizedLocationMap
+import com.squareup.square_mobile_payments_sdk.extensions.toErrorDetailsMap
+import io.flutter.plugin.common.MethodChannel
 
 class AuthModule {
-    companion object {
-        private val authManager =  MobilePaymentsSdk.authorizationManager()
+  companion object {
+    private val authManager = MobilePaymentsSdk.authorizationManager()
 
-        @JvmStatic
-        fun getAuthorizationState(result: MethodChannel.Result) {
-          val authState = when {
-              authManager.authorizationState.isAuthorized -> "authorized"
-              authManager.authorizationState.isAuthorizationInProgress -> "authorizing"
-              else -> "notAuthorized"
-          }
-          result.success(authState) 
-        }
-
-        @JvmStatic
-        fun getAuthorizedLocation(result: MethodChannel.Result) {
-          val location = authManager.location //Version 2.0.0-beta differs 2.0.1
-          if (location == null) {
-              result.success(null)
-              return
-          }
-          val mappedLocation = mapOf(
-              "id" to location.locationId,
-              "currencyCode" to location.currencyCode.name.lowercase(),
-              "name" to location.name
-          )
-          result.success(mappedLocation)
-        }
-
-        @JvmStatic
-        fun authorize(result: MethodChannel.Result, accessToken: String, locationId: String) {
-            
-              authManager.authorize(accessToken, locationId) { sdkResult ->
-                when (sdkResult) {
-                    is SdkResult.Success -> {
-                      result.success(sdkResult.value.toString())
-                    }
-                    is SdkResult.Failure -> {
-                      result.error(sdkResult.errorCode.toString(), sdkResult.errorMessage, sdkResult.debugCode)
-                    }
-                    else -> {
-                      result.error("Unknown", "Unknown", "Unknown")
-                    }
-                }
-              }
-        }
-
-        @JvmStatic
-        fun deAuthorize(result: MethodChannel.Result) {
-            authManager.deauthorize()
-            result.success("Deauthorized")
-        }
+    @JvmStatic
+    fun getAuthorizationState(result: MethodChannel.Result) {
+      result.success(authManager.authorizationState.toAuthorizationStateName())
     }
+
+    @JvmStatic
+    fun getAuthorizedLocation(result: MethodChannel.Result) {
+      val location = authManager.location
+      if (location == null) {
+        result.success(null)
+        return
+      }
+      result.success(location.toAuthorizedLocationMap())
+    }
+
+    @JvmStatic
+    fun authorize(result: MethodChannel.Result, accessToken: String?, locationId: String?) {
+      if (accessToken == null || locationId == null) {
+        result.error(
+          "missingParameters",
+          "Missing accessToken or locationId",
+          null
+        )
+        return
+      }
+      authManager.authorize(accessToken, locationId) { sdkResult ->
+
+          if(sdkResult is SdkResult.Success ) {
+            result.success(null)
+          }
+          if(sdkResult is SdkResult.Failure) {
+            result.error(
+                    sdkResult.errorCode.toAuthorizeErrorCodeName(),
+                    sdkResult.errorMessage,
+                    sdkResult.details.map { d -> d.toErrorDetailsMap() }
+            )
+          }
+        
+      }
+    }
+
+    @JvmStatic
+    fun deAuthorize(result: MethodChannel.Result) {
+      authManager.deauthorize()
+      result.success(null)
+    }
+  }
 }

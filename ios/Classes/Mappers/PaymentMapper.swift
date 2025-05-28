@@ -67,6 +67,11 @@ public class PaymentMapper {
             paymentParams.note = note
         }
         
+        // Optional: orderId
+        if let orderId = paymentParameters["orderId"] as? String {
+            paymentParams.orderId = orderId
+        }
+        
         // Optional: autocomplete
         if let autocomplete = paymentParameters["autocomplete"] as? Bool {
             paymentParams.autocomplete = autocomplete

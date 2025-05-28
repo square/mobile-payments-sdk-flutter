@@ -27,7 +27,7 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
+  Future<String> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
@@ -35,7 +35,7 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     throw UnimplementedError('getSdkVersion() has not been implemented.');
   }
 
-  Future<String> getEnvironment() {
+  Future<Environment> getEnvironment() {
     throw UnimplementedError('getEnvironment() has not been implemented.');
   }
 
@@ -49,11 +49,11 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
         'getAuthorizedLocation() has not been implemented.');
   }
 
-  Future<String?> authorize(String accessToken, String locationId) {
+  Future<void> authorize(String accessToken, String locationId) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<String?> deauthorize() {
+  Future<void> deauthorize() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
@@ -69,7 +69,7 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     throw UnimplementedError('showSettings() has not been implemented.');
   }
 
-  Future<Payment?> startPayment(PaymentParameters paymentParameters,
+  Future<Payment> startPayment(PaymentParameters paymentParameters,
       PromptParameters promptParameters) async {
     throw UnimplementedError('startPayment() has not been implemented.');
   }

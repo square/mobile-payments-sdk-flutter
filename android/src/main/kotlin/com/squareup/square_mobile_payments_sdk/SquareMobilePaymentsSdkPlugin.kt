@@ -34,18 +34,24 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
 
   override fun onMethodCall(call: MethodCall, result: Result) {
     when (call.method) {
-      "getPlatformVersion" -> result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
+      "getPlatformVersion" ->
+        result.success("Android Testing ${android.os.Build.VERSION.RELEASE}")
+
       "getSdkVersion" ->
-              result.success(MobilePaymentsSdk.settingsManager().getSdkSettings().sdkVersion)
+        SettingsModule.getSdkVersion(result)
+
       "getEnvironment" ->
-              result.success(
-                      MobilePaymentsSdk.settingsManager().getSdkSettings().sdkEnvironment.name
-              )
-      "getAuthorizationState" -> AuthModule.getAuthorizationState(result)
-      "getAuthorizedLocation" -> AuthModule.getAuthorizedLocation(result)
+        SettingsModule.getEnvironment(result)
+
+      "getAuthorizationState" ->
+        AuthModule.getAuthorizationState(result)
+
+      "getAuthorizedLocation" ->
+        AuthModule.getAuthorizedLocation(result)
+
       "authorize" -> {
-        val accessToken = call.argument<String>("accessToken") ?: ""
-        val locationId = call.argument<String>("locationId") ?: ""
+        val accessToken = call.argument<String>("accessToken")
+        val locationId = call.argument<String>("locationId")
         AuthModule.authorize(result, accessToken, locationId)
       }
       "deauthorize" -> AuthModule.deAuthorize(result)
@@ -55,12 +61,7 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
       "startPayment" -> {
         val paymentParameters = call.argument<HashMap<String, Any>>("paymentParameters")
         val promptParameters = call.argument<HashMap<String, Any>>("promptParameters")
-
-        if (paymentParameters == null || promptParameters == null) {
-          result.error("INVALID_PARAMETERS", "Null params", null)
-        } else {
-          PaymentModule.startPayment(result, paymentParameters, promptParameters)
-        }
+        PaymentModule.startPayment(result, paymentParameters, promptParameters)
       }
       "isOfflineProcessingAllowed" -> SettingsModule.isOfflineProcessingAllowed(result)
       "getOfflineTotalStoredAmountLimit" -> SettingsModule.getOfflineTotalStoredAmountLimit(result)
@@ -101,10 +102,5 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
     eventChannel.setStreamHandler(null)
-  }
-
-  companion object {
-    const val SANDBOX = "sandbox"
-    const val PRODUCTION = "production"
   }
 }

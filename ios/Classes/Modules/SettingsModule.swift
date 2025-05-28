@@ -7,24 +7,28 @@ public class SettingsModule {
 
     public static func showSettings(result: @escaping FlutterResult) {
         guard let topController = UIApplication.shared.keyWindow?.rootViewController else {
-            result(FlutterError(code: "ERROR", message: "No root view controller", details: nil))
+            result(FlutterError(code: "notRootViewController", message: "No root view controller in window iOS app", details: nil))
             return
         }
         settingsManager.presentSettings(with: topController) { error in
             if let error = error {
-                result(FlutterError(code: "ERROR", message: error.localizedDescription, details: nil))
+                var e = error as NSError
+                result(FlutterError(
+                    code: "usageError",
+                    message: e.localizedDescription,
+                    details: e.localizedFailureReason))
             } else {
-                result(nil)
+                result(NSNull())
             }
         }
     }
 
     public static func getEnvironment(result: @escaping FlutterResult) {
-        result(MobilePaymentsSDK.shared.settingsManager.sdkSettings.environment.description.uppercased())
+        result(settingsManager.sdkSettings.environment.description.uppercased())
     }
 
     public static func getSdkVersion(result: @escaping FlutterResult) {
-        result(MobilePaymentsSDK.shared.settingsManager.sdkSettings.version)
+        result(settingsManager.sdkSettings.version)
     }
 
     public static func isOfflineProcessingAllowed(result: @escaping FlutterResult) {

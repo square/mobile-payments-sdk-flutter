@@ -200,13 +200,6 @@ enum ReaderState {
   updatingFirmware,
 }
 
-// Offline Mode Enums
-enum OfflinePaymentQueueError {
-  notAuthorized,
-  unexpected,
-  unsupportedSandboxEnvironment,
-}
-
 enum OfflineStatus {
   failedToProcess,
   failedToUpload,

@@ -23,24 +23,27 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
     try {
       String idempotencyKey = uuid.v4();
 
-      Payment? payment = await _squareMobilePaymentsSdkPlugin.paymentManager
+      Payment payment = await _squareMobilePaymentsSdkPlugin.paymentManager
           .startPayment(
               PaymentParameters(
-                  processingMode: 1,
+                processingMode: 2,
                   amountMoney:
                       Money(amount: amount, currencyCode: CurrencyCode.eur),
                   idempotencyKey: idempotencyKey),
               PromptParameters(
                   additionalPaymentMethods: List.empty(),
                   mode: PromptMode.defaultMode));
-      if (context.mounted && payment != null) {
+      if (context.mounted) {
         showPaymentDialog(context, payment);
       }
-    } on Exception catch (e) {
-      print(e);
+    } on PaymentError catch (e) {
       if (context.mounted) {
-        showCanceledDialog(context);
+        showCanceledDialog(context, "${e.code} ====> ${e.message}");
       }
+    } catch (e) {
+      print("---------------------------------------");
+      print("Unexpected error $e");
+      print("---------------------------------------");
     }
   }
 
@@ -76,13 +79,33 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
     );
   }
 
-  void showCanceledDialog(BuildContext context) {
+  void showCanceledDialog(BuildContext context, String msg) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text("Canceled"),
-          content: const Text("The payment was canceled."),
+          content: Text("The payment was canceled. $msg"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showErrorDialog(String msg) {
+    if (!mounted) return;
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text(msg),
           actions: [
             TextButton(
               onPressed: () {
@@ -99,17 +122,16 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
   Future<void> showReader() async {
     try {
       await _squareMobilePaymentsSdkPlugin.readerManager.showMockReaderUI();
-      print("Show Reader");
-    } on Exception {
-      print("Exception reader");
+    } on MockReaderUIError catch (e) {
+      showErrorDialog("${e.code}, ->>> ${e.message}");
     }
   }
 
   Future<void> showSettings() async {
     try {
       await _squareMobilePaymentsSdkPlugin.settingsManager.showSettings();
-    } on Exception {
-      print("Exception in show settings");
+    } on SettingsError catch (e) {
+      showErrorDialog("${e.code}, ->>> ${e.message}");
     }
   }
 

@@ -54,6 +54,10 @@ class PaymentMapper {
                 if(paymentParameters.get("note") != null) {
                     builder.note(paymentParameters.get("note") as? String)
                 }
+                
+                if(paymentParameters.get("orderId") != null) {
+                    builder.orderId(paymentParameters.get("orderId") as? String)
+                }
 
                 if(paymentParameters.get("autocomplete") != null) {
                     builder.autocomplete(paymentParameters.get("autocomplete") as? Boolean ?: false)
