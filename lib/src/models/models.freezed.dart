@@ -1184,6 +1184,205 @@ abstract class _CardPaymentDetails implements CardPaymentDetails {
       throw _privateConstructorUsedError;
 }
 
+CardInputMethods _$CardInputMethodsFromJson(Map<String, dynamic> json) {
+  return _CardInputMethods.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CardInputMethods {
+  int get chip => throw _privateConstructorUsedError;
+  int get contactless => throw _privateConstructorUsedError;
+  int get swipe => throw _privateConstructorUsedError;
+
+  /// Serializes this CardInputMethods to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of CardInputMethods
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CardInputMethodsCopyWith<CardInputMethods> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CardInputMethodsCopyWith<$Res> {
+  factory $CardInputMethodsCopyWith(
+          CardInputMethods value, $Res Function(CardInputMethods) then) =
+      _$CardInputMethodsCopyWithImpl<$Res, CardInputMethods>;
+  @useResult
+  $Res call({int chip, int contactless, int swipe});
+}
+
+/// @nodoc
+class _$CardInputMethodsCopyWithImpl<$Res, $Val extends CardInputMethods>
+    implements $CardInputMethodsCopyWith<$Res> {
+  _$CardInputMethodsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CardInputMethods
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chip = null,
+    Object? contactless = null,
+    Object? swipe = null,
+  }) {
+    return _then(_value.copyWith(
+      chip: null == chip
+          ? _value.chip
+          : chip // ignore: cast_nullable_to_non_nullable
+              as int,
+      contactless: null == contactless
+          ? _value.contactless
+          : contactless // ignore: cast_nullable_to_non_nullable
+              as int,
+      swipe: null == swipe
+          ? _value.swipe
+          : swipe // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CardInputMethodsImplCopyWith<$Res>
+    implements $CardInputMethodsCopyWith<$Res> {
+  factory _$$CardInputMethodsImplCopyWith(_$CardInputMethodsImpl value,
+          $Res Function(_$CardInputMethodsImpl) then) =
+      __$$CardInputMethodsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int chip, int contactless, int swipe});
+}
+
+/// @nodoc
+class __$$CardInputMethodsImplCopyWithImpl<$Res>
+    extends _$CardInputMethodsCopyWithImpl<$Res, _$CardInputMethodsImpl>
+    implements _$$CardInputMethodsImplCopyWith<$Res> {
+  __$$CardInputMethodsImplCopyWithImpl(_$CardInputMethodsImpl _value,
+      $Res Function(_$CardInputMethodsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CardInputMethods
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chip = null,
+    Object? contactless = null,
+    Object? swipe = null,
+  }) {
+    return _then(_$CardInputMethodsImpl(
+      chip: null == chip
+          ? _value.chip
+          : chip // ignore: cast_nullable_to_non_nullable
+              as int,
+      contactless: null == contactless
+          ? _value.contactless
+          : contactless // ignore: cast_nullable_to_non_nullable
+              as int,
+      swipe: null == swipe
+          ? _value.swipe
+          : swipe // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CardInputMethodsImpl
+    with DiagnosticableTreeMixin
+    implements _CardInputMethods {
+  const _$CardInputMethodsImpl(
+      {required this.chip, required this.contactless, required this.swipe});
+
+  factory _$CardInputMethodsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CardInputMethodsImplFromJson(json);
+
+  @override
+  final int chip;
+  @override
+  final int contactless;
+  @override
+  final int swipe;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'CardInputMethods(chip: $chip, contactless: $contactless, swipe: $swipe)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CardInputMethods'))
+      ..add(DiagnosticsProperty('chip', chip))
+      ..add(DiagnosticsProperty('contactless', contactless))
+      ..add(DiagnosticsProperty('swipe', swipe));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CardInputMethodsImpl &&
+            (identical(other.chip, chip) || other.chip == chip) &&
+            (identical(other.contactless, contactless) ||
+                other.contactless == contactless) &&
+            (identical(other.swipe, swipe) || other.swipe == swipe));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, chip, contactless, swipe);
+
+  /// Create a copy of CardInputMethods
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CardInputMethodsImplCopyWith<_$CardInputMethodsImpl> get copyWith =>
+      __$$CardInputMethodsImplCopyWithImpl<_$CardInputMethodsImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CardInputMethodsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CardInputMethods implements CardInputMethods {
+  const factory _CardInputMethods(
+      {required final int chip,
+      required final int contactless,
+      required final int swipe}) = _$CardInputMethodsImpl;
+
+  factory _CardInputMethods.fromJson(Map<String, dynamic> json) =
+      _$CardInputMethodsImpl.fromJson;
+
+  @override
+  int get chip;
+  @override
+  int get contactless;
+  @override
+  int get swipe;
+
+  /// Create a copy of CardInputMethods
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CardInputMethodsImplCopyWith<_$CardInputMethodsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 ReaderBatteryStatus _$ReaderBatteryStatusFromJson(Map<String, dynamic> json) {
   return _ReaderBatteryStatus.fromJson(json);
 }

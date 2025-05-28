@@ -29,7 +29,7 @@ class MethodChannelSquareMobilePaymentsSdk
             final payload = event["payload"];
             if (payload == null) continue;
             final changeEvent =
-                ReaderChangedEvent.fromJson(castPaymentMap(payload));
+                ReaderChangedEvent.fromJson(castToMap(payload));
             callback(changeEvent);
           }
         default:
@@ -244,9 +244,6 @@ class MethodChannelSquareMobilePaymentsSdk
     } on PlatformException catch (e) {
       throw OfflinePaymentQueueError(e.code, e.message, e.details);
     }
-    return result
-        .map((e) => OfflinePayment.fromJson(castPaymentMap(e)))
-        .toList();
   }
 
   @override
@@ -269,7 +266,7 @@ class MethodChannelSquareMobilePaymentsSdk
       throw StateError("getPayments() returned null, which should not happen.");
     }
     final readers =
-        result.map((r) => ReaderInfo.fromJson(castPaymentMap(r))).toList();
+        result.map((r) => ReaderInfo.fromJson(castToMap(r))).toList();
     return readers;
   }
 
@@ -280,7 +277,7 @@ class MethodChannelSquareMobilePaymentsSdk
     if (result == null) {
       return null;
     }
-    return ReaderInfo.fromJson(castPaymentMap(result));
+    return ReaderInfo.fromJson(castToMap(result));
   }
 
   @override

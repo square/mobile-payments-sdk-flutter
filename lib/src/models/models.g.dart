@@ -147,6 +147,22 @@ const _$CardPaymentStatusEnumMap = {
   CardPaymentStatus.unknown: 'unknown',
 };
 
+_$CardInputMethodsImpl _$$CardInputMethodsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CardInputMethodsImpl(
+      chip: (json['chip'] as num).toInt(),
+      contactless: (json['contactless'] as num).toInt(),
+      swipe: (json['swipe'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$CardInputMethodsImplToJson(
+        _$CardInputMethodsImpl instance) =>
+    <String, dynamic>{
+      'chip': instance.chip,
+      'contactless': instance.contactless,
+      'swipe': instance.swipe,
+    };
+
 _$ReaderBatteryStatusImpl _$$ReaderBatteryStatusImplFromJson(
         Map<String, dynamic> json) =>
     _$ReaderBatteryStatusImpl(
