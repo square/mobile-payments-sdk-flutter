@@ -62,8 +62,7 @@ class PaymentMapper {
                 if(paymentParameters.get("autocomplete") != null) {
                     builder.autocomplete(paymentParameters.get("autocomplete") as? Boolean ?: false)
                 }
-                
-                
+            
 
                 return builder.build()
         }

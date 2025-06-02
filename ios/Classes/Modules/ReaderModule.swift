@@ -3,7 +3,8 @@ import SquareMobilePaymentsSDK
 import MockReaderUI
 
 public class ReaderModule {
-    private static let settingsManager = MobilePaymentsSDK.shared.settingsManager
+    private static var globalReaderObserver: ReaderObserverCallback?
+    private static var globalPairingHandle: PairingHandle?
 
     static var mockReader: MockReaderUI? = {
         do {
@@ -12,7 +13,6 @@ public class ReaderModule {
             return nil
         }
     }()
-
 
     static func parseTapToPayError(error: NSError, defaultError: String) -> String {
         let tapToPayReaderError = TapToPayReaderError(rawValue: error.code)
@@ -55,25 +55,15 @@ public class ReaderModule {
     public static func showMockReaderUI(result: @escaping FlutterResult) {
         do {
             try mockReader?.present()
-            result(NSNull())
-        } catch (let error) {
-            var e = error as NSError
-            if let readerError = MockReaderUIError(rawValue: e.code) {
-                result(FlutterError(code: readerError.getName(),
-                        message: e.localizedDescription,
-                        details: e.localizedFailureReason))
-            }
-            else {
-                result(FlutterError(code: "unknown",
-                        message: "Unknown error",
-                        details: nil))
-            }
+            result("Mock Reader has been successfully presented.")
+        } catch let error {
+            result(FlutterError(code: "SHOW_MOCK_READER_UI", message: error.localizedDescription, details: nil))
         }
     }
 
     public static func hideMockReaderUI(result: @escaping FlutterResult) {
         mockReader?.dismiss()
-        result(NSNull())
+        result("Mock Reader has been successfully hidden.")
     }
 
     public static func linkAppleAccount(result: @escaping FlutterResult) {
@@ -112,5 +102,162 @@ public class ReaderModule {
 
     public static func isDeviceCapable(result: @escaping FlutterResult) {
         result(MobilePaymentsSDK.shared.readerManager.tapToPaySettings.isDeviceCapable)
+    }
+
+    public static func getReaders(result: @escaping FlutterResult) {
+        let readers = MobilePaymentsSDK.shared.readerManager.readers
+        let mappedReaders = readers.map {
+          reader in reader.toMap()
+        }
+        result(mappedReaders)
+    }
+
+    private static func findReader(readerId: UInt) -> ReaderInfo? {
+        let readers = MobilePaymentsSDK.shared.readerManager.readers
+        let reader = readers.first(where: { $0.id == readerId })
+        return reader
+    }
+
+    private static func parseId(readerId: String, result: @escaping FlutterResult) -> UInt? {
+        guard let id = UInt(readerId) else {
+            result(FlutterError(code: "INVALID_ID", message: "ID '\(readerId)' is not valid", details: nil))
+            return nil
+        }
+        return id
+    }
+
+    public static func getReader(result: @escaping FlutterResult, id: String) {
+        guard let readerId = parseId(readerId: id, result: result) else {
+            return
+        }
+        guard let reader = findReader(readerId: readerId) else {
+            result(NSNull())
+            return
+        }
+        result(reader.toMap())
+    }
+
+    public static func forget(result: @escaping FlutterResult, id: String) {
+        guard let readerId = parseId(readerId: id, result: result) else {
+            return
+        }
+        guard let reader = findReader(readerId: readerId) else {
+            result(NSNull())
+            return
+        }
+        MobilePaymentsSDK.shared.readerManager.forget(reader)
+        result(NSNull())
+    }
+
+    public static func blink(result: @escaping FlutterResult, id: String) {
+        guard let readerId = parseId(readerId: id, result: result) else {
+            return
+        }
+        guard let reader = findReader(readerId: readerId) else {
+            result(NSNull())
+            return
+        }
+        MobilePaymentsSDK.shared.readerManager.blink(reader)
+        result(NSNull())
+    }
+
+    public static func isPairingInProgress(result: @escaping FlutterResult) {
+        result(MobilePaymentsSDK.shared.readerManager.isPairingInProgress)
+    }
+
+    public static func setReaderChangedCallback(result: @escaping FlutterResult, sink: FlutterEventSink?) {
+        if let sinhEvent = sink {
+            if globalReaderObserver == nil {
+                let observer = ReaderObserverCallback(eventSink: sinhEvent)
+                MobilePaymentsSDK.shared.readerManager.add(observer)
+                globalReaderObserver = observer
+            }
+        }
+        result(NSNull())
+    }
+
+    public static func removeReaderChangedCallback(result: @escaping FlutterResult) {
+        if let observer = globalReaderObserver {
+            MobilePaymentsSDK.shared.readerManager.remove(observer)
+            globalReaderObserver = nil
+        }
+        result(NSNull())
+    }
+
+    public static func pairReader(result: @escaping FlutterResult) {
+        let delegate = ReaderPairingDelegateImpl(result: result)
+        globalPairingHandle = MobilePaymentsSDK.shared.readerManager.startPairing(with: delegate)
+    }
+
+    public static func stopPairing(result: @escaping FlutterResult) {
+        if let handle = globalPairingHandle {
+            let stopResult = handle.stop()
+            globalPairingHandle = nil
+            if stopResult {
+                result("stopped")
+            } else {
+                result("alreadyComplete")
+            }
+        }
+    }
+}
+
+class ReaderPairingDelegateImpl: ReaderPairingDelegate {
+    private let result: FlutterResult
+
+    init(result: @escaping FlutterResult) {
+        self.result = result
+    }
+
+    func readerPairingDidBegin() {}
+
+    func readerPairingDidFail(with error: Error) {
+        result(FlutterError(code: "PAIRING_ERROR", message: "pairing error", details: nil))
+    }
+
+    func readerPairingDidSucceed() {
+        result(true)
+    }
+}
+
+class ReaderObserverCallback: ReaderObserver {
+
+    private let eventSink: FlutterEventSink
+
+    init(eventSink: @escaping FlutterEventSink) {
+        self.eventSink = eventSink
+    }
+
+    func readerWasAdded(_ reader: ReaderInfo) {
+        let data: [String: Any] = [
+            "type": "readerChange",
+            "payload": [
+                "change" : "added",
+                "reader": reader.toMap()
+            ]
+        ]
+        eventSink(data)
+    }
+
+    func readerWasRemoved(_ reader: ReaderInfo) {
+        let data: [String: Any] = [
+            "type": "readerChange",
+            "payload": [
+                "change" : "removed",
+                "reader": reader.toMap()
+            ]
+        ]
+        eventSink(data)
+    }
+
+    func readerDidChange(_ reader: ReaderInfo, change: ReaderChange) {
+        let data: [String: Any] = [
+            "type": "readerChange",
+            "payload": [
+                "change" : change.toName(),
+                "reader": reader.toMap()
+            ]
+        ]
+        eventSink(data)
     }
 }
