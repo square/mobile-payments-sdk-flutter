@@ -443,7 +443,7 @@ _$PaymentParametersImpl _$$PaymentParametersImplFromJson(
       delayAction:
           $enumDecodeNullable(_$DelayActionEnumMap, json['delayAction']),
       delayDuration: json['delayDuration'] as num?,
-      processingMode: json['processingMode'] as num?,
+      processingMode: json['processingMode'] as num,
       idempotencyKey: json['idempotencyKey'] as String?,
       paymentAttemptId: json['paymentAttemptId'] as String?,
       locationId: json['locationId'] as String?,

@@ -3391,21 +3391,19 @@ PaymentParameters _$PaymentParametersFromJson(Map<String, dynamic> json) {
 mixin _$PaymentParameters {
   int? get acceptPartialAuthorization => throw _privateConstructorUsedError;
   Money get amountMoney => throw _privateConstructorUsedError;
-  Money? get appFeeMoney => throw _privateConstructorUsedError; // Nullable
-  bool? get autocomplete => throw _privateConstructorUsedError; // Nullable
-  String? get customerId => throw _privateConstructorUsedError; // Nullable
-  DelayAction? get delayAction =>
-      throw _privateConstructorUsedError; // Nullable
-  num? get delayDuration => throw _privateConstructorUsedError; // Nullable
-  num? get processingMode => throw _privateConstructorUsedError; // Required
-  String? get idempotencyKey => throw _privateConstructorUsedError; // Nullable
-  String? get paymentAttemptId =>
-      throw _privateConstructorUsedError; // Nullable
-  String? get locationId => throw _privateConstructorUsedError; // Nullable
-  String? get note => throw _privateConstructorUsedError; // Nullable
-  String? get orderId => throw _privateConstructorUsedError; // Nullable
-  String? get referenceId => throw _privateConstructorUsedError; // Nullable
-  String? get teamMemberId => throw _privateConstructorUsedError; // Nullable
+  Money? get appFeeMoney => throw _privateConstructorUsedError;
+  bool? get autocomplete => throw _privateConstructorUsedError;
+  String? get customerId => throw _privateConstructorUsedError;
+  DelayAction? get delayAction => throw _privateConstructorUsedError;
+  num? get delayDuration => throw _privateConstructorUsedError;
+  num get processingMode => throw _privateConstructorUsedError;
+  String? get idempotencyKey => throw _privateConstructorUsedError;
+  String? get paymentAttemptId => throw _privateConstructorUsedError;
+  String? get locationId => throw _privateConstructorUsedError;
+  String? get note => throw _privateConstructorUsedError;
+  String? get orderId => throw _privateConstructorUsedError;
+  String? get referenceId => throw _privateConstructorUsedError;
+  String? get teamMemberId => throw _privateConstructorUsedError;
   Money? get tipMoney => throw _privateConstructorUsedError;
 
   /// Serializes this PaymentParameters to a JSON map.
@@ -3432,7 +3430,7 @@ abstract class $PaymentParametersCopyWith<$Res> {
       String? customerId,
       DelayAction? delayAction,
       num? delayDuration,
-      num? processingMode,
+      num processingMode,
       String? idempotencyKey,
       String? paymentAttemptId,
       String? locationId,
@@ -3469,7 +3467,7 @@ class _$PaymentParametersCopyWithImpl<$Res, $Val extends PaymentParameters>
     Object? customerId = freezed,
     Object? delayAction = freezed,
     Object? delayDuration = freezed,
-    Object? processingMode = freezed,
+    Object? processingMode = null,
     Object? idempotencyKey = freezed,
     Object? paymentAttemptId = freezed,
     Object? locationId = freezed,
@@ -3508,10 +3506,10 @@ class _$PaymentParametersCopyWithImpl<$Res, $Val extends PaymentParameters>
           ? _value.delayDuration
           : delayDuration // ignore: cast_nullable_to_non_nullable
               as num?,
-      processingMode: freezed == processingMode
+      processingMode: null == processingMode
           ? _value.processingMode
           : processingMode // ignore: cast_nullable_to_non_nullable
-              as num?,
+              as num,
       idempotencyKey: freezed == idempotencyKey
           ? _value.idempotencyKey
           : idempotencyKey // ignore: cast_nullable_to_non_nullable
@@ -3602,7 +3600,7 @@ abstract class _$$PaymentParametersImplCopyWith<$Res>
       String? customerId,
       DelayAction? delayAction,
       num? delayDuration,
-      num? processingMode,
+      num processingMode,
       String? idempotencyKey,
       String? paymentAttemptId,
       String? locationId,
@@ -3640,7 +3638,7 @@ class __$$PaymentParametersImplCopyWithImpl<$Res>
     Object? customerId = freezed,
     Object? delayAction = freezed,
     Object? delayDuration = freezed,
-    Object? processingMode = freezed,
+    Object? processingMode = null,
     Object? idempotencyKey = freezed,
     Object? paymentAttemptId = freezed,
     Object? locationId = freezed,
@@ -3679,10 +3677,10 @@ class __$$PaymentParametersImplCopyWithImpl<$Res>
           ? _value.delayDuration
           : delayDuration // ignore: cast_nullable_to_non_nullable
               as num?,
-      processingMode: freezed == processingMode
+      processingMode: null == processingMode
           ? _value.processingMode
           : processingMode // ignore: cast_nullable_to_non_nullable
-              as num?,
+              as num,
       idempotencyKey: freezed == idempotencyKey
           ? _value.idempotencyKey
           : idempotencyKey // ignore: cast_nullable_to_non_nullable
@@ -3751,43 +3749,30 @@ class _$PaymentParametersImpl
   final Money amountMoney;
   @override
   final Money? appFeeMoney;
-// Nullable
   @override
   final bool? autocomplete;
-// Nullable
   @override
   final String? customerId;
-// Nullable
   @override
   final DelayAction? delayAction;
-// Nullable
   @override
   final num? delayDuration;
-// Nullable
   @override
-  final num? processingMode;
-// Required
+  final num processingMode;
   @override
   final String? idempotencyKey;
-// Nullable
   @override
   final String? paymentAttemptId;
-// Nullable
   @override
   final String? locationId;
-// Nullable
   @override
   final String? note;
-// Nullable
   @override
   final String? orderId;
-// Nullable
   @override
   final String? referenceId;
-// Nullable
   @override
   final String? teamMemberId;
-// Nullable
   @override
   final Money? tipMoney;
 
@@ -3906,7 +3891,7 @@ abstract class _PaymentParameters implements PaymentParameters {
       final String? customerId,
       final DelayAction? delayAction,
       final num? delayDuration,
-      required final num? processingMode,
+      required final num processingMode,
       final String? idempotencyKey,
       final String? paymentAttemptId,
       final String? locationId,
@@ -3924,31 +3909,31 @@ abstract class _PaymentParameters implements PaymentParameters {
   @override
   Money get amountMoney;
   @override
-  Money? get appFeeMoney; // Nullable
+  Money? get appFeeMoney;
   @override
-  bool? get autocomplete; // Nullable
+  bool? get autocomplete;
   @override
-  String? get customerId; // Nullable
+  String? get customerId;
   @override
-  DelayAction? get delayAction; // Nullable
+  DelayAction? get delayAction;
   @override
-  num? get delayDuration; // Nullable
+  num? get delayDuration;
   @override
-  num? get processingMode; // Required
+  num get processingMode;
   @override
-  String? get idempotencyKey; // Nullable
+  String? get idempotencyKey;
   @override
-  String? get paymentAttemptId; // Nullable
+  String? get paymentAttemptId;
   @override
-  String? get locationId; // Nullable
+  String? get locationId;
   @override
-  String? get note; // Nullable
+  String? get note;
   @override
-  String? get orderId; // Nullable
+  String? get orderId;
   @override
-  String? get referenceId; // Nullable
+  String? get referenceId;
   @override
-  String? get teamMemberId; // Nullable
+  String? get teamMemberId;
   @override
   Money? get tipMoney;
 
