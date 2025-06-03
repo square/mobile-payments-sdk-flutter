@@ -236,38 +236,6 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => _onTapToPay(),
-                  child: Text(
-                    "Tap to pay",
-                    style: TextStyle(
-                      color: isAuthorized ? Colors.black : Colors.grey,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => {Navigator.pushNamed(context, '/test')},
-                  child: const Text(
-                    "Open Test Screen",
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () =>
-                      {Navigator.pushNamed(context, '/readerSettings')},
-                  child: const Text(
-                    "Reader Settings",
-                  ),
-                ),
-              ),
               const SizedBox(height: 20),
               if (!isAuthorized)
                 const Text(
