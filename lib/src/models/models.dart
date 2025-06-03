@@ -201,8 +201,9 @@ class PaymentParameters with _$PaymentParameters {
     String? customerId, // Nullable
     DelayAction? delayAction, // Nullable
     num? delayDuration, // Nullable
-    num? processingMode, // Nullable
-    required String idempotencyKey, // Required
+    required num? processingMode, // Required
+    String? idempotencyKey, // Nullable
+    String? paymentAttemptId, // Nullable
     String? locationId, // Nullable
     String? note, // Nullable
     String? orderId, // Nullable
