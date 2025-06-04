@@ -84,9 +84,9 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "locationId" to locationId,
       "orderId" to orderId,
       "referenceId" to referenceId,
-      "sourceType" to sourceType.toName(), //* ignore in dat models
-      "cashDetails" to cashDetails?.toCashDetailsMap(), //*
-      "externalDetails" to externalDetails?.toExternalDetailsMap(),//*
+      "sourceType" to sourceType.toName(), 
+      "cashDetails" to cashDetails?.toCashDetailsMap(), 
+      "externalDetails" to externalDetails?.toExternalDetailsMap(),
       "uploadedAt" to uploadedAt?.toISO8601String(),
       "localId" to localId,
       "id" to id,

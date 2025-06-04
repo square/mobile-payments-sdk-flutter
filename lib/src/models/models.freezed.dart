@@ -3391,19 +3391,19 @@ PaymentParameters _$PaymentParametersFromJson(Map<String, dynamic> json) {
 mixin _$PaymentParameters {
   int? get acceptPartialAuthorization => throw _privateConstructorUsedError;
   Money get amountMoney => throw _privateConstructorUsedError;
-  Money? get appFeeMoney => throw _privateConstructorUsedError; // Nullable
-  bool? get autocomplete => throw _privateConstructorUsedError; // Nullable
-  String? get customerId => throw _privateConstructorUsedError; // Nullable
-  DelayAction? get delayAction =>
-      throw _privateConstructorUsedError; // Nullable
-  num? get delayDuration => throw _privateConstructorUsedError; // Nullable
-  num? get processingMode => throw _privateConstructorUsedError; // Nullable
-  String get idempotencyKey => throw _privateConstructorUsedError; // Required
-  String? get locationId => throw _privateConstructorUsedError; // Nullable
-  String? get note => throw _privateConstructorUsedError; // Nullable
-  String? get orderId => throw _privateConstructorUsedError; // Nullable
-  String? get referenceId => throw _privateConstructorUsedError; // Nullable
-  String? get teamMemberId => throw _privateConstructorUsedError; // Nullable
+  Money? get appFeeMoney => throw _privateConstructorUsedError;
+  bool? get autocomplete => throw _privateConstructorUsedError;
+  String? get customerId => throw _privateConstructorUsedError;
+  DelayAction? get delayAction => throw _privateConstructorUsedError;
+  num? get delayDuration => throw _privateConstructorUsedError;
+  num get processingMode => throw _privateConstructorUsedError;
+  String? get idempotencyKey => throw _privateConstructorUsedError;
+  String? get paymentAttemptId => throw _privateConstructorUsedError;
+  String? get locationId => throw _privateConstructorUsedError;
+  String? get note => throw _privateConstructorUsedError;
+  String? get orderId => throw _privateConstructorUsedError;
+  String? get referenceId => throw _privateConstructorUsedError;
+  String? get teamMemberId => throw _privateConstructorUsedError;
   Money? get tipMoney => throw _privateConstructorUsedError;
 
   /// Serializes this PaymentParameters to a JSON map.
@@ -3430,8 +3430,9 @@ abstract class $PaymentParametersCopyWith<$Res> {
       String? customerId,
       DelayAction? delayAction,
       num? delayDuration,
-      num? processingMode,
-      String idempotencyKey,
+      num processingMode,
+      String? idempotencyKey,
+      String? paymentAttemptId,
       String? locationId,
       String? note,
       String? orderId,
@@ -3466,8 +3467,9 @@ class _$PaymentParametersCopyWithImpl<$Res, $Val extends PaymentParameters>
     Object? customerId = freezed,
     Object? delayAction = freezed,
     Object? delayDuration = freezed,
-    Object? processingMode = freezed,
-    Object? idempotencyKey = null,
+    Object? processingMode = null,
+    Object? idempotencyKey = freezed,
+    Object? paymentAttemptId = freezed,
     Object? locationId = freezed,
     Object? note = freezed,
     Object? orderId = freezed,
@@ -3504,14 +3506,18 @@ class _$PaymentParametersCopyWithImpl<$Res, $Val extends PaymentParameters>
           ? _value.delayDuration
           : delayDuration // ignore: cast_nullable_to_non_nullable
               as num?,
-      processingMode: freezed == processingMode
+      processingMode: null == processingMode
           ? _value.processingMode
           : processingMode // ignore: cast_nullable_to_non_nullable
-              as num?,
-      idempotencyKey: null == idempotencyKey
+              as num,
+      idempotencyKey: freezed == idempotencyKey
           ? _value.idempotencyKey
           : idempotencyKey // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      paymentAttemptId: freezed == paymentAttemptId
+          ? _value.paymentAttemptId
+          : paymentAttemptId // ignore: cast_nullable_to_non_nullable
+              as String?,
       locationId: freezed == locationId
           ? _value.locationId
           : locationId // ignore: cast_nullable_to_non_nullable
@@ -3594,8 +3600,9 @@ abstract class _$$PaymentParametersImplCopyWith<$Res>
       String? customerId,
       DelayAction? delayAction,
       num? delayDuration,
-      num? processingMode,
-      String idempotencyKey,
+      num processingMode,
+      String? idempotencyKey,
+      String? paymentAttemptId,
       String? locationId,
       String? note,
       String? orderId,
@@ -3631,8 +3638,9 @@ class __$$PaymentParametersImplCopyWithImpl<$Res>
     Object? customerId = freezed,
     Object? delayAction = freezed,
     Object? delayDuration = freezed,
-    Object? processingMode = freezed,
-    Object? idempotencyKey = null,
+    Object? processingMode = null,
+    Object? idempotencyKey = freezed,
+    Object? paymentAttemptId = freezed,
     Object? locationId = freezed,
     Object? note = freezed,
     Object? orderId = freezed,
@@ -3669,14 +3677,18 @@ class __$$PaymentParametersImplCopyWithImpl<$Res>
           ? _value.delayDuration
           : delayDuration // ignore: cast_nullable_to_non_nullable
               as num?,
-      processingMode: freezed == processingMode
+      processingMode: null == processingMode
           ? _value.processingMode
           : processingMode // ignore: cast_nullable_to_non_nullable
-              as num?,
-      idempotencyKey: null == idempotencyKey
+              as num,
+      idempotencyKey: freezed == idempotencyKey
           ? _value.idempotencyKey
           : idempotencyKey // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      paymentAttemptId: freezed == paymentAttemptId
+          ? _value.paymentAttemptId
+          : paymentAttemptId // ignore: cast_nullable_to_non_nullable
+              as String?,
       locationId: freezed == locationId
           ? _value.locationId
           : locationId // ignore: cast_nullable_to_non_nullable
@@ -3718,8 +3730,9 @@ class _$PaymentParametersImpl
       this.customerId,
       this.delayAction,
       this.delayDuration,
-      this.processingMode,
-      required this.idempotencyKey,
+      required this.processingMode,
+      this.idempotencyKey,
+      this.paymentAttemptId,
       this.locationId,
       this.note,
       this.orderId,
@@ -3736,46 +3749,36 @@ class _$PaymentParametersImpl
   final Money amountMoney;
   @override
   final Money? appFeeMoney;
-// Nullable
   @override
   final bool? autocomplete;
-// Nullable
   @override
   final String? customerId;
-// Nullable
   @override
   final DelayAction? delayAction;
-// Nullable
   @override
   final num? delayDuration;
-// Nullable
   @override
-  final num? processingMode;
-// Nullable
+  final num processingMode;
   @override
-  final String idempotencyKey;
-// Required
+  final String? idempotencyKey;
+  @override
+  final String? paymentAttemptId;
   @override
   final String? locationId;
-// Nullable
   @override
   final String? note;
-// Nullable
   @override
   final String? orderId;
-// Nullable
   @override
   final String? referenceId;
-// Nullable
   @override
   final String? teamMemberId;
-// Nullable
   @override
   final Money? tipMoney;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PaymentParameters(acceptPartialAuthorization: $acceptPartialAuthorization, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, idempotencyKey: $idempotencyKey, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
+    return 'PaymentParameters(acceptPartialAuthorization: $acceptPartialAuthorization, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, idempotencyKey: $idempotencyKey, paymentAttemptId: $paymentAttemptId, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
   }
 
   @override
@@ -3793,6 +3796,7 @@ class _$PaymentParametersImpl
       ..add(DiagnosticsProperty('delayDuration', delayDuration))
       ..add(DiagnosticsProperty('processingMode', processingMode))
       ..add(DiagnosticsProperty('idempotencyKey', idempotencyKey))
+      ..add(DiagnosticsProperty('paymentAttemptId', paymentAttemptId))
       ..add(DiagnosticsProperty('locationId', locationId))
       ..add(DiagnosticsProperty('note', note))
       ..add(DiagnosticsProperty('orderId', orderId))
@@ -3826,6 +3830,8 @@ class _$PaymentParametersImpl
                 other.processingMode == processingMode) &&
             (identical(other.idempotencyKey, idempotencyKey) ||
                 other.idempotencyKey == idempotencyKey) &&
+            (identical(other.paymentAttemptId, paymentAttemptId) ||
+                other.paymentAttemptId == paymentAttemptId) &&
             (identical(other.locationId, locationId) ||
                 other.locationId == locationId) &&
             (identical(other.note, note) || other.note == note) &&
@@ -3851,6 +3857,7 @@ class _$PaymentParametersImpl
       delayDuration,
       processingMode,
       idempotencyKey,
+      paymentAttemptId,
       locationId,
       note,
       orderId,
@@ -3884,8 +3891,9 @@ abstract class _PaymentParameters implements PaymentParameters {
       final String? customerId,
       final DelayAction? delayAction,
       final num? delayDuration,
-      final num? processingMode,
-      required final String idempotencyKey,
+      required final num processingMode,
+      final String? idempotencyKey,
+      final String? paymentAttemptId,
       final String? locationId,
       final String? note,
       final String? orderId,
@@ -3901,29 +3909,31 @@ abstract class _PaymentParameters implements PaymentParameters {
   @override
   Money get amountMoney;
   @override
-  Money? get appFeeMoney; // Nullable
+  Money? get appFeeMoney;
   @override
-  bool? get autocomplete; // Nullable
+  bool? get autocomplete;
   @override
-  String? get customerId; // Nullable
+  String? get customerId;
   @override
-  DelayAction? get delayAction; // Nullable
+  DelayAction? get delayAction;
   @override
-  num? get delayDuration; // Nullable
+  num? get delayDuration;
   @override
-  num? get processingMode; // Nullable
+  num get processingMode;
   @override
-  String get idempotencyKey; // Required
+  String? get idempotencyKey;
   @override
-  String? get locationId; // Nullable
+  String? get paymentAttemptId;
   @override
-  String? get note; // Nullable
+  String? get locationId;
   @override
-  String? get orderId; // Nullable
+  String? get note;
   @override
-  String? get referenceId; // Nullable
+  String? get orderId;
   @override
-  String? get teamMemberId; // Nullable
+  String? get referenceId;
+  @override
+  String? get teamMemberId;
   @override
   Money? get tipMoney;
 

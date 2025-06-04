@@ -196,19 +196,20 @@ class PaymentParameters with _$PaymentParameters {
   const factory PaymentParameters({
     int? acceptPartialAuthorization,
     required Money amountMoney,
-    Money? appFeeMoney, // Nullable
-    bool? autocomplete, // Nullable
-    String? customerId, // Nullable
-    DelayAction? delayAction, // Nullable
-    num? delayDuration, // Nullable
-    num? processingMode, // Nullable
-    required String idempotencyKey, // Required
-    String? locationId, // Nullable
-    String? note, // Nullable
-    String? orderId, // Nullable
-    String? referenceId, // Nullable
-    String? teamMemberId, // Nullable
-    Money? tipMoney, // Nullable
+    Money? appFeeMoney, 
+    bool? autocomplete, 
+    String? customerId, 
+    DelayAction? delayAction, 
+    num? delayDuration, 
+    required num processingMode, 
+    String? idempotencyKey, 
+    String? paymentAttemptId, 
+    String? locationId, 
+    String? note,
+    String? orderId, 
+    String? referenceId, 
+    String? teamMemberId, 
+    Money? tipMoney, 
   }) = _PaymentParameters;
 
   factory PaymentParameters.fromJson(Map<String, Object?> json) =>
