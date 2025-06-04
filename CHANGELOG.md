@@ -1,4 +1,4 @@
-## 2025.6.0
+## 2025.6.1
 
 Add Offline payments support.
 Add Reader management support.
