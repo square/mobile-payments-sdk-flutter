@@ -115,6 +115,8 @@ enum SourceType {
 }
 
 // Reader Enums
+enum CardInputMethod { swiped, emv, contactless, chip }
+
 enum ReaderBatteryLevel {
   criticallyLow,
   full,
@@ -134,12 +136,21 @@ enum ReaderChange {
   firmwareUpdateDidFail,
   firmwareUpdatePercentDidChange,
   stateDidChange,
+  //android
+  changedState,
+  added,
+  removed,
+  batteryThreshold,
+  batteryCharging,
+  firmwareProgress,
 }
 
 enum ReaderConnectionFailureRecoverySuggestion {
   activateAccount,
   contactSupport,
+  enablePasscodeToUseTapToPay,
   noSuggestion,
+  reviewTapToPayGuidelines,
   retry,
 }
 
@@ -162,6 +173,7 @@ enum ReaderModel {
   embedded,
   magstripe,
   stand,
+  tapToPay,
   unknown,
 }
 
@@ -175,6 +187,7 @@ enum ReaderConnectionFailureReason {
   readerTimeout,
   revokedByDevice,
   serverError,
+  tapToPayError,
   unknown,
 }
 
@@ -201,3 +214,5 @@ enum ProcessingMode {
   offlineOnly,
   onlineOnly,
 }
+
+enum StopResult { alreadyComplete, stopped }

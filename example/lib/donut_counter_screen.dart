@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:square_mobile_payments_sdk_example/auth_state.dart';
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
+import 'package:square_mobile_payments_sdk/src/models/models.dart';
 import 'package:uuid/uuid.dart';
 
 final uuid = Uuid();
@@ -235,29 +236,6 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => _onTapToPay(),
-                  child: Text(
-                    "Tap to pay",
-                    style: TextStyle(
-                      color: isAuthorized ? Colors.black : Colors.grey,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () =>
-                      {Navigator.pushNamed(context, '/offline-status')},
-                  child: const Text(
-                    "Open Test Screen",
-                  ),
-                ),
-              ),
               const SizedBox(height: 20),
               if (!isAuthorized)
                 const Text(

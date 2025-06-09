@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:square_mobile_payments_sdk/src/models/models.dart';
@@ -11,6 +13,30 @@ class MethodChannelSquareMobilePaymentsSdk
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel = const MethodChannel('square_mobile_payments_sdk');
+  final _eventChannel = const EventChannel('square_mobile_payments_sdk/events');
+  static StreamSubscription? _eventChannelSubscription;
+  final Map<String, FutureOr<void> Function(ReaderChangedEvent event)>
+      _readerCallbacks = {};
+
+  MethodChannelSquareMobilePaymentsSdk() {
+    if (_eventChannelSubscription != null) return;
+    _eventChannelSubscription =
+        _eventChannel.receiveBroadcastStream().listen((e) {
+      final Map<String, dynamic> event = Map<String, dynamic>.from(e);
+      switch (event["type"]) {
+        case "readerChange":
+          for (var callback in _readerCallbacks.values) {
+            final payload = event["payload"];
+            if (payload == null) continue;
+            final changeEvent =
+                ReaderChangedEvent.fromJson(castToMap(payload));
+            callback(changeEvent);
+          }
+        default:
+          return;
+      }
+    });
+  }
 
   @override
   Future<String> getPlatformVersion() async {
@@ -231,6 +257,115 @@ class MethodChannelSquareMobilePaymentsSdk
       throw OfflinePaymentQueueError(e.code, e.message, e.details);
     }
   }
+
+  // **New Methods for Reader management Support**
+  @override
+  Future<List<ReaderInfo>> getReaders() async {
+    final result = await methodChannel.invokeMethod<List>('getReaders');
+    if (result == null) {
+      throw StateError("getPayments() returned null, which should not happen.");
+    }
+    final readers =
+        result.map((r) => ReaderInfo.fromJson(castToMap(r))).toList();
+    return readers;
+  }
+
+  @override
+  Future<ReaderInfo?> getReader(String id) async {
+    final result =
+        await methodChannel.invokeMethod<Map>('getReader', {"id": id});
+    if (result == null) {
+      return null;
+    }
+    return ReaderInfo.fromJson(castToMap(result));
+  }
+
+  @override
+  Future<void> forget(String id) async {
+    await methodChannel.invokeMethod('forget', {"id": id});
+  }
+
+  @override
+  Future<void> blink(String id) async {
+    await methodChannel.invokeMethod('blink', {"id": id});
+  }
+
+  @override
+  Future<bool> isPairingInProgress() async {
+    final result =
+        await methodChannel.invokeMethod<bool>('isPairingInProgress');
+    if (result == null) {
+      throw StateError(
+          "isPairingInProgress() returned null, which should not happen.");
+    }
+    return result;
+  }
+
+  @override
+  ReaderCallbackReference setReaderChangedCallback(
+      FutureOr<void> Function(ReaderChangedEvent event) callback) {
+    String refId = _generateUniqueId();
+    _startReaderCallbackIntent();
+    _readerCallbacks.putIfAbsent(refId, () => callback);
+    return ReaderCallbackReference(
+        refId, () => removeReaderChangedCallback(refId));
+  }
+
+  void _startReaderCallbackIntent() {
+    if (_readerCallbacks.isEmpty) {
+      methodChannel.invokeMethod('setReaderChangedCallback');
+    }
+  }
+
+  void _cancelReaderCallbackIntent() {
+    if (_readerCallbacks.isEmpty) {
+      methodChannel.invokeMethod('removeReaderChangedCallback');
+    }
+  }
+
+  void removeReaderChangedCallback(String refId) {
+    _readerCallbacks.remove(refId);
+    _cancelReaderCallbackIntent();
+  }
+
+  @override
+  PairingHandle pairReader(void Function(bool, String?) callback) {
+    _startParing(callback);
+    return PairingHandle(
+      () {
+        return _stopPairing();
+      },
+    );
+  }
+
+  void _startParing(void Function(bool, String? error) event) async {
+    try {
+      var result = await methodChannel.invokeMethod<bool>('pairReader');
+      if (result == null) {
+        event(false, null);
+        return;
+      }
+      event(result, null);
+    } catch (e) {
+      event(false, "Pair failed");
+    }
+  }
+
+  Future<StopResult> _stopPairing() async {
+    var resultName = await methodChannel.invokeMethod<String>('stopPairing');
+    if (resultName == null) {
+      throw StateError(
+          "stopRPairing() returned null, which should not happen.");
+    }
+    return StopResult.values.firstWhere((value) => value.name == resultName,
+        orElse: () {
+      throw ArgumentError("$resultName is not in ${StopResult.values}");
+    });
+  }
+}
+
+String _generateUniqueId() {
+  return DateTime.now().millisecondsSinceEpoch.toString();
 }
 
 Map<String, Object?> castToMap(Map response) {

@@ -166,16 +166,16 @@ Map<String, dynamic> _$$CardInputMethodsImplToJson(
 _$ReaderBatteryStatusImpl _$$ReaderBatteryStatusImplFromJson(
         Map<String, dynamic> json) =>
     _$ReaderBatteryStatusImpl(
-      isCharging: (json['isCharging'] as num).toInt(),
-      level: $enumDecode(_$ReaderBatteryLevelEnumMap, json['level']),
-      percentage: json['percentage'] as num? ?? 0,
+      isCharging: json['isCharging'] as bool,
+      level: $enumDecodeNullable(_$ReaderBatteryLevelEnumMap, json['level']),
+      percentage: (json['percentage'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ReaderBatteryStatusImplToJson(
         _$ReaderBatteryStatusImpl instance) =>
     <String, dynamic>{
       'isCharging': instance.isCharging,
-      'level': _$ReaderBatteryLevelEnumMap[instance.level]!,
+      'level': _$ReaderBatteryLevelEnumMap[instance.level],
       'percentage': instance.percentage,
     };
 
@@ -221,21 +221,28 @@ const _$ReaderConnectionFailureReasonEnumMap = {
   ReaderConnectionFailureReason.readerTimeout: 'readerTimeout',
   ReaderConnectionFailureReason.revokedByDevice: 'revokedByDevice',
   ReaderConnectionFailureReason.serverError: 'serverError',
+  ReaderConnectionFailureReason.tapToPayError: 'tapToPayError',
   ReaderConnectionFailureReason.unknown: 'unknown',
 };
 
 const _$ReaderConnectionFailureRecoverySuggestionEnumMap = {
   ReaderConnectionFailureRecoverySuggestion.activateAccount: 'activateAccount',
   ReaderConnectionFailureRecoverySuggestion.contactSupport: 'contactSupport',
+  ReaderConnectionFailureRecoverySuggestion.enablePasscodeToUseTapToPay:
+      'enablePasscodeToUseTapToPay',
   ReaderConnectionFailureRecoverySuggestion.noSuggestion: 'noSuggestion',
+  ReaderConnectionFailureRecoverySuggestion.reviewTapToPayGuidelines:
+      'reviewTapToPayGuidelines',
   ReaderConnectionFailureRecoverySuggestion.retry: 'retry',
 };
 
 _$ReaderConnectionInfoImpl _$$ReaderConnectionInfoImplFromJson(
         Map<String, dynamic> json) =>
     _$ReaderConnectionInfoImpl(
-      failureInfo: ReaderConnectionFailureInfo.fromJson(
-          json['failureInfo'] as Map<String, dynamic>),
+      failureInfo: json['failureInfo'] == null
+          ? null
+          : ReaderConnectionFailureInfo.fromJson(
+              json['failureInfo'] as Map<String, dynamic>),
       state: $enumDecode(_$ReaderConnectionStateEnumMap, json['state']),
     );
 
@@ -256,9 +263,9 @@ const _$ReaderConnectionStateEnumMap = {
 _$ReaderFirmwareInfoImpl _$$ReaderFirmwareInfoImplFromJson(
         Map<String, dynamic> json) =>
     _$ReaderFirmwareInfoImpl(
-      failureReason: json['failureReason'] as String,
-      updatePercentage: (json['updatePercentage'] as num).toDouble(),
-      version: json['version'] as String,
+      failureReason: json['failureReason'] as String?,
+      updatePercentage: (json['updatePercentage'] as num?)?.toInt(),
+      version: json['version'] as String?,
     );
 
 Map<String, dynamic> _$$ReaderFirmwareInfoImplToJson(
@@ -271,24 +278,30 @@ Map<String, dynamic> _$$ReaderFirmwareInfoImplToJson(
 
 _$ReaderInfoImpl _$$ReaderInfoImplFromJson(Map<String, dynamic> json) =>
     _$ReaderInfoImpl(
-      batteryStatus: ReaderBatteryStatus.fromJson(
-          json['batteryStatus'] as Map<String, dynamic>),
-      cardInsertionStatus: $enumDecode(
+      batteryStatus: json['batteryStatus'] == null
+          ? null
+          : ReaderBatteryStatus.fromJson(
+              json['batteryStatus'] as Map<String, dynamic>),
+      cardInsertionStatus: $enumDecodeNullable(
           _$CardInsertionStatusEnumMap, json['cardInsertionStatus']),
-      connectionInfo: ReaderConnectionInfo.fromJson(
-          json['connectionInfo'] as Map<String, dynamic>),
-      firmwareInfo: ReaderFirmwareInfo.fromJson(
-          json['firmwareInfo'] as Map<String, dynamic>),
-      id: json['id'] as num? ?? 0,
-      isBlinkable: (json['isBlinkable'] as num).toInt(),
-      isConnectionRetryable: (json['isConnectionRetryable'] as num).toInt(),
-      isForgettable: (json['isForgettable'] as num).toInt(),
+      connectionInfo: json['connectionInfo'] == null
+          ? null
+          : ReaderConnectionInfo.fromJson(
+              json['connectionInfo'] as Map<String, dynamic>),
+      firmwareInfo: json['firmwareInfo'] == null
+          ? null
+          : ReaderFirmwareInfo.fromJson(
+              json['firmwareInfo'] as Map<String, dynamic>),
+      id: json['id'] as String,
+      isBlinkable: json['isBlinkable'] as bool,
+      isConnectionRetryable: json['isConnectionRetryable'] as bool?,
+      isForgettable: json['isForgettable'] as bool,
       model: $enumDecode(_$ReaderModelEnumMap, json['model']),
       name: json['name'] as String,
-      serialNumber: json['serialNumber'] as String? ?? "",
+      serialNumber: json['serialNumber'] as String?,
       state: $enumDecode(_$ReaderStateEnumMap, json['state']),
       supportedInputMethods: (json['supportedInputMethods'] as List<dynamic>)
-          .map((e) => CardInputMethods.fromJson(e as Map<String, dynamic>))
+          .map((e) => $enumDecode(_$CardInputMethodEnumMap, e))
           .toList(),
     );
 
@@ -296,7 +309,7 @@ Map<String, dynamic> _$$ReaderInfoImplToJson(_$ReaderInfoImpl instance) =>
     <String, dynamic>{
       'batteryStatus': instance.batteryStatus,
       'cardInsertionStatus':
-          _$CardInsertionStatusEnumMap[instance.cardInsertionStatus]!,
+          _$CardInsertionStatusEnumMap[instance.cardInsertionStatus],
       'connectionInfo': instance.connectionInfo,
       'firmwareInfo': instance.firmwareInfo,
       'id': instance.id,
@@ -307,7 +320,9 @@ Map<String, dynamic> _$$ReaderInfoImplToJson(_$ReaderInfoImpl instance) =>
       'name': instance.name,
       'serialNumber': instance.serialNumber,
       'state': _$ReaderStateEnumMap[instance.state]!,
-      'supportedInputMethods': instance.supportedInputMethods,
+      'supportedInputMethods': instance.supportedInputMethods
+          .map((e) => _$CardInputMethodEnumMap[e]!)
+          .toList(),
     };
 
 const _$CardInsertionStatusEnumMap = {
@@ -321,6 +336,7 @@ const _$ReaderModelEnumMap = {
   ReaderModel.embedded: 'embedded',
   ReaderModel.magstripe: 'magstripe',
   ReaderModel.stand: 'stand',
+  ReaderModel.tapToPay: 'tapToPay',
   ReaderModel.unknown: 'unknown',
 };
 
@@ -331,6 +347,13 @@ const _$ReaderStateEnumMap = {
   ReaderState.failedToConnect: 'failedToConnect',
   ReaderState.ready: 'ready',
   ReaderState.updatingFirmware: 'updatingFirmware',
+};
+
+const _$CardInputMethodEnumMap = {
+  CardInputMethod.swiped: 'swiped',
+  CardInputMethod.emv: 'emv',
+  CardInputMethod.contactless: 'contactless',
+  CardInputMethod.chip: 'chip',
 };
 
 _$PromptParametersImpl _$$PromptParametersImplFromJson(
@@ -420,8 +443,9 @@ _$PaymentParametersImpl _$$PaymentParametersImplFromJson(
       delayAction:
           $enumDecodeNullable(_$DelayActionEnumMap, json['delayAction']),
       delayDuration: json['delayDuration'] as num?,
-      processingMode: json['processingMode'] as num?,
-      idempotencyKey: json['idempotencyKey'] as String,
+      processingMode: json['processingMode'] as num,
+      idempotencyKey: json['idempotencyKey'] as String?,
+      paymentAttemptId: json['paymentAttemptId'] as String?,
       locationId: json['locationId'] as String?,
       note: json['note'] as String?,
       orderId: json['orderId'] as String?,
@@ -444,6 +468,7 @@ Map<String, dynamic> _$$PaymentParametersImplToJson(
       'delayDuration': instance.delayDuration,
       'processingMode': instance.processingMode,
       'idempotencyKey': instance.idempotencyKey,
+      'paymentAttemptId': instance.paymentAttemptId,
       'locationId': instance.locationId,
       'note': instance.note,
       'orderId': instance.orderId,
@@ -576,3 +601,36 @@ Map<String, dynamic> _$$OfflineCardPaymentDetailsImplToJson(
       'card': instance.card,
       'entryMethod': _$EntryMethodEnumMap[instance.entryMethod]!,
     };
+
+_$ReaderChangedEventImpl _$$ReaderChangedEventImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ReaderChangedEventImpl(
+      reader: ReaderInfo.fromJson(json['reader'] as Map<String, dynamic>),
+      change: $enumDecode(_$ReaderChangeEnumMap, json['change']),
+    );
+
+Map<String, dynamic> _$$ReaderChangedEventImplToJson(
+        _$ReaderChangedEventImpl instance) =>
+    <String, dynamic>{
+      'reader': instance.reader,
+      'change': _$ReaderChangeEnumMap[instance.change]!,
+    };
+
+const _$ReaderChangeEnumMap = {
+  ReaderChange.batteryDidBeginCharging: 'batteryDidBeginCharging',
+  ReaderChange.batteryDidEndCharging: 'batteryDidEndCharging',
+  ReaderChange.batteryLevelDidChange: 'batteryLevelDidChange',
+  ReaderChange.cardInserted: 'cardInserted',
+  ReaderChange.cardRemoved: 'cardRemoved',
+  ReaderChange.connectionDidFail: 'connectionDidFail',
+  ReaderChange.connectionStateDidChange: 'connectionStateDidChange',
+  ReaderChange.firmwareUpdateDidFail: 'firmwareUpdateDidFail',
+  ReaderChange.firmwareUpdatePercentDidChange: 'firmwareUpdatePercentDidChange',
+  ReaderChange.stateDidChange: 'stateDidChange',
+  ReaderChange.changedState: 'changedState',
+  ReaderChange.added: 'added',
+  ReaderChange.removed: 'removed',
+  ReaderChange.batteryThreshold: 'batteryThreshold',
+  ReaderChange.batteryCharging: 'batteryCharging',
+  ReaderChange.firmwareProgress: 'firmwareProgress',
+};
