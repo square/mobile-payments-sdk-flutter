@@ -1,3 +1,8 @@
+## 2025.6.1
+
+Add Offline payments support.
+Add Reader management support.
+
 ## 2025.3.0
 
 Add Tap to Pay support for iOS.
