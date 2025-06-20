@@ -1,18 +1,25 @@
 import Flutter
 import SquareMobilePaymentsSDK
+
+#if DEBUG
 import MockReaderUI
+#endif
 
 public class ReaderModule {
     private static var globalReaderObserver: ReaderObserverCallback?
     private static var globalPairingHandle: PairingHandle?
 
-    static var mockReader: MockReaderUI? = {
-        do {
-            return try MockReaderUI(for: MobilePaymentsSDK.shared)
-        } catch {
-            return nil
-        }
-    }()
+#if DEBUG
+        static var mockReader: MockReaderUI? = {
+            do {
+                return try MockReaderUI(for: MobilePaymentsSDK.shared)
+            } catch {
+                return nil
+            }
+        }()
+#else
+        static var mockReader: Any? = nil
+#endif
 
     static func parseTapToPayError(error: NSError, defaultError: String) -> String {
         let tapToPayReaderError = TapToPayReaderError(rawValue: error.code)
@@ -52,6 +59,7 @@ public class ReaderModule {
         return errorMessage
     }
 
+#if DEBUG
     public static func showMockReaderUI(result: @escaping FlutterResult) {
         do {
             try mockReader?.present()
@@ -65,6 +73,16 @@ public class ReaderModule {
         mockReader?.dismiss()
         result("Mock Reader has been successfully hidden.")
     }
+#else
+    public static func showMockReaderUI(result: @escaping FlutterResult) {
+        result("Mock Reader is not available in non-debug builds.")
+    }
+
+    public static func hideMockReaderUI(result: @escaping FlutterResult) {
+        result("Mock Reader is not available in non-debug builds.")
+    }
+    
+#endif
 
     public static func linkAppleAccount(result: @escaping FlutterResult) {
         MobilePaymentsSDK.shared.readerManager.tapToPaySettings.linkAppleAccount { error in

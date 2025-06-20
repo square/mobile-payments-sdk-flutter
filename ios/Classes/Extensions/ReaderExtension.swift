@@ -1,4 +1,5 @@
 import SquareMobilePaymentsSDK
+#if DEBUG
 import MockReaderUI
 
 extension MockReaderUIError {
@@ -14,7 +15,9 @@ extension MockReaderUIError {
             "unexpected"
         case .versionMismatch:
             "versionMismatch"
-        default: "unknown"
+        @unknown default:
+            "unknown"
         }
     }
 }
+#endif

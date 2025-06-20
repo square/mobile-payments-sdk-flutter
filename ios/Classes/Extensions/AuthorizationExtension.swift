@@ -9,6 +9,8 @@ extension AuthorizationState {
                 return "authorizing"
             case .authorized:
                 return "authorized"
+            @unknown default:
+                return "unknown"
         }
     }
 }
