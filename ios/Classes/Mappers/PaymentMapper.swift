@@ -20,7 +20,8 @@ public class PaymentMapper {
             let amountMoney = paymentParameters["amountMoney"] as? [String: Any],
             let amount = amountMoney["amount"] as? UInt,
             let currencyCode = amountMoney["currencyCode"] as? String,
-            let idempotencyKey = paymentParameters["idempotencyKey"] as? String
+            let idempotencyKey = paymentParameters["idempotencyKey"] as? String,
+            let processingMode = paymentParameters["processingMode"] as? Int
         else {
             fatalError("Error: Missing or invalid required payment parameters")
         }
@@ -35,7 +36,7 @@ public class PaymentMapper {
         var paymentParams = PaymentParameters(
             idempotencyKey: idempotencyKey,
             amountMoney: money,
-            processingMode: .onlineOnly
+            processingMode: ProcessingMode(rawValue: processingMode)!
         )
 
         // Optional: appFeeMoney
