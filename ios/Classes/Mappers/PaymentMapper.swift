@@ -35,7 +35,7 @@ public class PaymentMapper {
         var paymentParams = PaymentParameters(
             idempotencyKey: idempotencyKey,
             amountMoney: money,
-            processingMode: .autoDetect
+            processingMode: .onlineOnly
         )
 
         // Optional: appFeeMoney
