@@ -26,7 +26,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
       Payment payment = await _squareMobilePaymentsSdkPlugin.paymentManager
           .startPayment(
               PaymentParameters(
-                processingMode: 2,
+                processingMode: 0,
                   amountMoney:
                       Money(amount: amount, currencyCode: CurrencyCode.eur),
                   idempotencyKey: idempotencyKey),
