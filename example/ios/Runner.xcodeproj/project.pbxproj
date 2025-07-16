@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03729DD0121544518E94FAF3 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A8D3B85719B8F5F1207F52 /* Pods_Runner.framework */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
@@ -15,9 +14,10 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		C50F826D2E061609002FAE15 /* SquareMobilePaymentsSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0ECE992D43DD4000C8E8BD /* SquareMobilePaymentsSDK.xcframework */; };
+		C50F82702E06160F002FAE15 /* MockReaderUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC07E6F2D4D043200614FC8 /* MockReaderUI.xcframework */; };
+		C50F82722E06161C002FAE15 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A8D3B85719B8F5F1207F52 /* Pods_Runner.framework */; };
 		CF0F8031407930AE48819C35 /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62B4196D23B9B6BFAAE7D66 /* Pods_RunnerTests.framework */; };
-		DB0ECE9A2D43DD4000C8E8BD /* SquareMobilePaymentsSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0ECE992D43DD4000C8E8BD /* SquareMobilePaymentsSDK.xcframework */; };
-		DBC07E702D4D043200614FC8 /* MockReaderUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC07E6F2D4D043200614FC8 /* MockReaderUI.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,9 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBC07E702D4D043200614FC8 /* MockReaderUI.xcframework in Frameworks */,
-				DB0ECE9A2D43DD4000C8E8BD /* SquareMobilePaymentsSDK.xcframework in Frameworks */,
-				03729DD0121544518E94FAF3 /* Pods_Runner.framework in Frameworks */,
+				C50F82702E06160F002FAE15 /* MockReaderUI.xcframework in Frameworks */,
+				C50F826D2E061609002FAE15 /* SquareMobilePaymentsSDK.xcframework in Frameworks */,
+				C50F82722E06161C002FAE15 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,13 +311,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -369,13 +365,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

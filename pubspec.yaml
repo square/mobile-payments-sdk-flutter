@@ -1,6 +1,6 @@
 name: square_mobile_payments_sdk
 description: "Square Mobile Payments SDK. Allows developers to take in-person payments using Square hardware."
-version: 2025.6.1
+version: 2025.6.2
 homepage: https://github.com/square/mobile-payments-sdk-flutter
 
 environment:
