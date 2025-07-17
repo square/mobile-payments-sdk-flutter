@@ -1,7 +1,11 @@
+## 2025.7.2
+
+Remove deprecated use of toLower
+Fixed flutter build ios issue
+
 ## 2025.7.1
 
 Upgrade native SDKs: Android 2.3.0, iOS: 2.2.3
-Remove deprecated use of toLower
 
 ## 2025.6.1
 
