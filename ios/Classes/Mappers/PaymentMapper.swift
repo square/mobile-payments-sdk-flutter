@@ -13,6 +13,13 @@ public class PaymentMapper {
             default: return .unknown
         }
     }
+    static func getDelayAction(from delayAction: String) -> DelayAction {
+        switch delayAction.uppercased() {
+        case "CANCEL": return .cancel
+        case "COMPLETE": return .complete
+        default: return .cancel
+        }
+    }
 
     static func getPaymentParameters(paymentParameters: [String: Any]) -> PaymentParameters {
         // Required fields
@@ -68,6 +75,20 @@ public class PaymentMapper {
         if let note = paymentParameters["note"] as? String {
             paymentParams.note = note
         }
+        
+        
+        
+        // Optional: note
+        if let delayDuration = paymentParameters["delayDuration"] as? Int {
+            paymentParams.delayDuration = TimeInterval(delayDuration)
+        }
+        
+        
+        // Optional: note
+        if let delayAction = paymentParameters["delayAction"] as? String {
+            paymentParams.delayAction = getDelayAction(from: delayAction)
+        }
+        
         
         // Optional: orderId
         if let orderId = paymentParameters["orderId"] as? String {

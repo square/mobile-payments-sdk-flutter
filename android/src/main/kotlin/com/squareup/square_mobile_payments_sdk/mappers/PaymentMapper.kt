@@ -1,6 +1,7 @@
 package com.squareup.square_mobile_payments_sdk.mappers
 
 import com.squareup.sdk.mobilepayments.payment.CurrencyCode
+import com.squareup.sdk.mobilepayments.payment.DelayAction
 import com.squareup.sdk.mobilepayments.payment.Money
 import com.squareup.sdk.mobilepayments.payment.PaymentParameters
 import com.squareup.sdk.mobilepayments.payment.PromptMode
@@ -53,7 +54,19 @@ class PaymentMapper {
                 if(paymentParameters.get("note") != null) {
                     builder.note(paymentParameters.get("note") as? String)
                 }
+
+                if(paymentParameters.get("delayDuration") != null) {
+                    builder.delayDuration(paymentParameters.get("delayDuration") as? Long)
+                }
                 
+                if(paymentParameters.get("delayAction") != null) {
+                    val delayActionString = (paymentParameters.get("delayAction") as? String)?.uppercase() ?: ""                    
+                    val delayAction = DelayAction.valueOf(delayActionString);
+                    builder.delayAction(delayAction)
+
+                }
+                
+
                 if(paymentParameters.get("orderId") != null) {
                     builder.orderId(paymentParameters.get("orderId") as? String)
                 }
