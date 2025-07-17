@@ -1,6 +1,7 @@
 ## 2025.7.1
 
 Upgrade native SDKs: Android 2.3.0, iOS: 2.2.3
+Remove deprecated use of toLower
 
 ## 2025.6.1
 
