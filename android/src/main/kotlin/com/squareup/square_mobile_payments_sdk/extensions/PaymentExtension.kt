@@ -129,7 +129,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
   fun Money.toMoneyMap(): Map<String, Any?> {
     return mapOf(
       "amount" to amount,
-      "currencyCode" to currencyCode.name.toLowerCase() // to build Money Dart obj
+      "currencyCode" to currencyCode.name.lowercase() // to build Money Dart obj
     )
   }
 
