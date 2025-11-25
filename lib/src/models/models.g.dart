@@ -260,6 +260,55 @@ const _$ReaderConnectionStateEnumMap = {
   ReaderConnectionState.notConnected: 'notConnected',
 };
 
+_$ReaderStatusInfoImpl _$$ReaderStatusInfoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ReaderStatusInfoImpl(
+      status: $enumDecode(_$ReaderStatusInfoStatusEnumMap, json['status']),
+      unavailableReason: $enumDecodeNullable(
+          _$ReaderStatusInfoUnavailableReasonEnumMap,
+          json['unavailableReason']),
+      unavailableReasonTitle: json['unavailableReasonTitle'] as String?,
+      unavailableReasonDescription:
+          json['unavailableReasonDescription'] as String?,
+    );
+
+Map<String, dynamic> _$$ReaderStatusInfoImplToJson(
+        _$ReaderStatusInfoImpl instance) =>
+    <String, dynamic>{
+      'status': _$ReaderStatusInfoStatusEnumMap[instance.status]!,
+      'unavailableReason': _$ReaderStatusInfoUnavailableReasonEnumMap[
+          instance.unavailableReason],
+      'unavailableReasonTitle': instance.unavailableReasonTitle,
+      'unavailableReasonDescription': instance.unavailableReasonDescription,
+    };
+
+const _$ReaderStatusInfoStatusEnumMap = {
+  ReaderStatusInfoStatus.connectingToDevice: 'connectingToDevice',
+  ReaderStatusInfoStatus.connectingToSquare: 'connectingToSquare',
+  ReaderStatusInfoStatus.readerUnavailable: 'readerUnavailable',
+  ReaderStatusInfoStatus.faulty: 'faulty',
+  ReaderStatusInfoStatus.ready: 'ready',
+};
+
+const _$ReaderStatusInfoUnavailableReasonEnumMap = {
+  ReaderStatusInfoUnavailableReason.blockingFirmwareUpdate:
+      'blockingFirmwareUpdate',
+  ReaderStatusInfoUnavailableReason.bluetoothDisabled: 'bluetoothDisabled',
+  ReaderStatusInfoUnavailableReason.bluetoothFailure: 'bluetoothFailure',
+  ReaderStatusInfoUnavailableReason.tapToPayError: 'tapToPayError',
+  ReaderStatusInfoUnavailableReason.tapToPayIsNotLinked: 'tapToPayIsNotLinked',
+  ReaderStatusInfoUnavailableReason.secureConnectionNetworkFailure:
+      'secureConnectionNetworkFailure',
+  ReaderStatusInfoUnavailableReason.readerTimeout: 'readerTimeout',
+  ReaderStatusInfoUnavailableReason.maxReadersConnected: 'maxReadersConnected',
+  ReaderStatusInfoUnavailableReason.internalError: 'internalError',
+  ReaderStatusInfoUnavailableReason.secureConnectionToSquareFailure:
+      'secureConnectionToSquareFailure',
+  ReaderStatusInfoUnavailableReason.notConnectedToInternet:
+      'notConnectedToInternet',
+  ReaderStatusInfoUnavailableReason.revokedByDevice: 'revokedByDevice',
+};
+
 _$ReaderFirmwareInfoImpl _$$ReaderFirmwareInfoImplFromJson(
         Map<String, dynamic> json) =>
     _$ReaderFirmwareInfoImpl(

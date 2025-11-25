@@ -15,8 +15,7 @@ extension ReaderInfo {
             "name" : name,
             "serialNumber" : serialNumber ?? NSNull(),
             "state" : state.toName(),
-            "status": statusInfo.status.rawValue,
-            //no longer supported in 2.3.1 and not is contemplated in flutter model // "statusReason": statusInfo.reason.rawValue,
+            "status": statusInfo.toMap(),
             "supportedInputMethods" : supportedInputMethods.toList()
         ]
     }
@@ -217,6 +216,16 @@ extension ReaderBatteryStatus {
             "isCharging" : isCharging,
             "level" : level.toName(),
             "percentage" : percentage,
+        ]
+    }
+}
+extension ReaderStatusInfo {
+    func toMap() -> NSDictionary {
+        return [
+            "status" : status.rawValue,
+            "unavailableReasonInfo" : unavailableReasonInfo?.reason.rawValue ?? NSNull(),
+            "unavailableReasonInfoTitle" : unavailableReasonInfo?.title ?? NSNull(),
+            "unavailableReasonInfoDescription" : unavailableReasonInfo?.description ?? NSNull(),
         ]
     }
 }

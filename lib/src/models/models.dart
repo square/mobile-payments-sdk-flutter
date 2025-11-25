@@ -125,6 +125,19 @@ class ReaderConnectionInfo with _$ReaderConnectionInfo {
 }
 
 @freezed
+class ReaderStatusInfo with _$ReaderStatusInfo{
+  const factory ReaderStatusInfo({
+   required ReaderStatusInfoStatus status,
+     ReaderStatusInfoUnavailableReason? unavailableReason,
+     String? unavailableReasonTitle,
+     String? unavailableReasonDescription,
+  }) = _ReaderStatusInfo;
+
+  factory ReaderStatusInfo.fromJson(Map<String, Object?> json) =>
+      _$ReaderStatusInfoFromJson(json);
+}
+
+@freezed
 class ReaderFirmwareInfo with _$ReaderFirmwareInfo {
   const factory ReaderFirmwareInfo({
     String? failureReason,

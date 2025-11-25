@@ -2032,6 +2032,243 @@ abstract class _ReaderConnectionInfo implements ReaderConnectionInfo {
       get copyWith => throw _privateConstructorUsedError;
 }
 
+ReaderStatusInfo _$ReaderStatusInfoFromJson(Map<String, dynamic> json) {
+  return _ReaderStatusInfo.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ReaderStatusInfo {
+  ReaderStatusInfoStatus get status => throw _privateConstructorUsedError;
+  ReaderStatusInfoUnavailableReason? get unavailableReason =>
+      throw _privateConstructorUsedError;
+  String? get unavailableReasonTitle => throw _privateConstructorUsedError;
+  String? get unavailableReasonDescription =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this ReaderStatusInfo to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ReaderStatusInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ReaderStatusInfoCopyWith<ReaderStatusInfo> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ReaderStatusInfoCopyWith<$Res> {
+  factory $ReaderStatusInfoCopyWith(
+          ReaderStatusInfo value, $Res Function(ReaderStatusInfo) then) =
+      _$ReaderStatusInfoCopyWithImpl<$Res, ReaderStatusInfo>;
+  @useResult
+  $Res call(
+      {ReaderStatusInfoStatus status,
+      ReaderStatusInfoUnavailableReason? unavailableReason,
+      String? unavailableReasonTitle,
+      String? unavailableReasonDescription});
+}
+
+/// @nodoc
+class _$ReaderStatusInfoCopyWithImpl<$Res, $Val extends ReaderStatusInfo>
+    implements $ReaderStatusInfoCopyWith<$Res> {
+  _$ReaderStatusInfoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ReaderStatusInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? unavailableReason = freezed,
+    Object? unavailableReasonTitle = freezed,
+    Object? unavailableReasonDescription = freezed,
+  }) {
+    return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ReaderStatusInfoStatus,
+      unavailableReason: freezed == unavailableReason
+          ? _value.unavailableReason
+          : unavailableReason // ignore: cast_nullable_to_non_nullable
+              as ReaderStatusInfoUnavailableReason?,
+      unavailableReasonTitle: freezed == unavailableReasonTitle
+          ? _value.unavailableReasonTitle
+          : unavailableReasonTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
+      unavailableReasonDescription: freezed == unavailableReasonDescription
+          ? _value.unavailableReasonDescription
+          : unavailableReasonDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ReaderStatusInfoImplCopyWith<$Res>
+    implements $ReaderStatusInfoCopyWith<$Res> {
+  factory _$$ReaderStatusInfoImplCopyWith(_$ReaderStatusInfoImpl value,
+          $Res Function(_$ReaderStatusInfoImpl) then) =
+      __$$ReaderStatusInfoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {ReaderStatusInfoStatus status,
+      ReaderStatusInfoUnavailableReason? unavailableReason,
+      String? unavailableReasonTitle,
+      String? unavailableReasonDescription});
+}
+
+/// @nodoc
+class __$$ReaderStatusInfoImplCopyWithImpl<$Res>
+    extends _$ReaderStatusInfoCopyWithImpl<$Res, _$ReaderStatusInfoImpl>
+    implements _$$ReaderStatusInfoImplCopyWith<$Res> {
+  __$$ReaderStatusInfoImplCopyWithImpl(_$ReaderStatusInfoImpl _value,
+      $Res Function(_$ReaderStatusInfoImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ReaderStatusInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? unavailableReason = freezed,
+    Object? unavailableReasonTitle = freezed,
+    Object? unavailableReasonDescription = freezed,
+  }) {
+    return _then(_$ReaderStatusInfoImpl(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ReaderStatusInfoStatus,
+      unavailableReason: freezed == unavailableReason
+          ? _value.unavailableReason
+          : unavailableReason // ignore: cast_nullable_to_non_nullable
+              as ReaderStatusInfoUnavailableReason?,
+      unavailableReasonTitle: freezed == unavailableReasonTitle
+          ? _value.unavailableReasonTitle
+          : unavailableReasonTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
+      unavailableReasonDescription: freezed == unavailableReasonDescription
+          ? _value.unavailableReasonDescription
+          : unavailableReasonDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ReaderStatusInfoImpl
+    with DiagnosticableTreeMixin
+    implements _ReaderStatusInfo {
+  const _$ReaderStatusInfoImpl(
+      {required this.status,
+      this.unavailableReason,
+      this.unavailableReasonTitle,
+      this.unavailableReasonDescription});
+
+  factory _$ReaderStatusInfoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReaderStatusInfoImplFromJson(json);
+
+  @override
+  final ReaderStatusInfoStatus status;
+  @override
+  final ReaderStatusInfoUnavailableReason? unavailableReason;
+  @override
+  final String? unavailableReasonTitle;
+  @override
+  final String? unavailableReasonDescription;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ReaderStatusInfo(status: $status, unavailableReason: $unavailableReason, unavailableReasonTitle: $unavailableReasonTitle, unavailableReasonDescription: $unavailableReasonDescription)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ReaderStatusInfo'))
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('unavailableReason', unavailableReason))
+      ..add(
+          DiagnosticsProperty('unavailableReasonTitle', unavailableReasonTitle))
+      ..add(DiagnosticsProperty(
+          'unavailableReasonDescription', unavailableReasonDescription));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReaderStatusInfoImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.unavailableReason, unavailableReason) ||
+                other.unavailableReason == unavailableReason) &&
+            (identical(other.unavailableReasonTitle, unavailableReasonTitle) ||
+                other.unavailableReasonTitle == unavailableReasonTitle) &&
+            (identical(other.unavailableReasonDescription,
+                    unavailableReasonDescription) ||
+                other.unavailableReasonDescription ==
+                    unavailableReasonDescription));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, status, unavailableReason,
+      unavailableReasonTitle, unavailableReasonDescription);
+
+  /// Create a copy of ReaderStatusInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReaderStatusInfoImplCopyWith<_$ReaderStatusInfoImpl> get copyWith =>
+      __$$ReaderStatusInfoImplCopyWithImpl<_$ReaderStatusInfoImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ReaderStatusInfoImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ReaderStatusInfo implements ReaderStatusInfo {
+  const factory _ReaderStatusInfo(
+      {required final ReaderStatusInfoStatus status,
+      final ReaderStatusInfoUnavailableReason? unavailableReason,
+      final String? unavailableReasonTitle,
+      final String? unavailableReasonDescription}) = _$ReaderStatusInfoImpl;
+
+  factory _ReaderStatusInfo.fromJson(Map<String, dynamic> json) =
+      _$ReaderStatusInfoImpl.fromJson;
+
+  @override
+  ReaderStatusInfoStatus get status;
+  @override
+  ReaderStatusInfoUnavailableReason? get unavailableReason;
+  @override
+  String? get unavailableReasonTitle;
+  @override
+  String? get unavailableReasonDescription;
+
+  /// Create a copy of ReaderStatusInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ReaderStatusInfoImplCopyWith<_$ReaderStatusInfoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 ReaderFirmwareInfo _$ReaderFirmwareInfoFromJson(Map<String, dynamic> json) {
   return _ReaderFirmwareInfo.fromJson(json);
 }
@@ -3405,7 +3642,7 @@ mixin _$PaymentParameters {
   String? get customerId => throw _privateConstructorUsedError;
   DelayAction? get delayAction => throw _privateConstructorUsedError;
   num? get delayDuration => throw _privateConstructorUsedError;
-  num get processingMode => throw _privateConstructorUsedError; // 👈 new field
+  num get processingMode => throw _privateConstructorUsedError;
   String? get locationId => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
   String? get orderId => throw _privateConstructorUsedError;
@@ -3885,7 +4122,6 @@ class _$PaymentParametersImpl
   final num processingMode;
   @override
   final String paymentAttemptId;
-// 👈 new field
   @override
   final String? locationId;
   @override
@@ -4244,7 +4480,7 @@ abstract class _PaymentParameters implements PaymentParameters {
   num? get delayDuration;
   @override
   num get processingMode;
-  String get paymentAttemptId; // 👈 new field
+  String get paymentAttemptId;
   @override
   String? get locationId;
   @override
@@ -4441,7 +4677,6 @@ class _$LegacyPaymentParametersImpl
   final num processingMode;
   @override
   final String idempotencyKey;
-// 👈 old field
   @override
   final String? locationId;
   @override
@@ -4800,7 +5035,7 @@ abstract class _LegacyPaymentParameters implements PaymentParameters {
   num? get delayDuration;
   @override
   num get processingMode;
-  String get idempotencyKey; // 👈 old field
+  String get idempotencyKey;
   @override
   String? get locationId;
   @override

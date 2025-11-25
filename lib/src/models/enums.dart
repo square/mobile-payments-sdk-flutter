@@ -168,6 +168,31 @@ enum ReaderFirmwareUpdateError {
   unknownError,
 }
 
+enum ReaderStatusInfoStatus {
+  connectingToDevice,
+  connectingToSquare,
+  readerUnavailable,
+  faulty,
+  ready,
+}
+
+
+enum ReaderStatusInfoUnavailableReason {
+    blockingFirmwareUpdate,
+    bluetoothDisabled,
+    bluetoothFailure,
+    tapToPayError,
+    tapToPayIsNotLinked,
+    secureConnectionNetworkFailure,
+    readerTimeout,
+    maxReadersConnected,
+    internalError,
+    secureConnectionToSquareFailure,
+    notConnectedToInternet,
+    revokedByDevice
+}
+
+
 enum ReaderModel {
   contactlessAndChip,
   embedded,
