@@ -110,7 +110,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "externalDetails" to externalDetails?.toExternalDetailsMap(),
       "id" to id,
       "processingFee" to processingFee.map { it.toProcessingFeeMap() },
-      "status" to status.name,
+      "status" to status.name.lowercase(),
       "cardDetails" to cardDetails?.toOnlineDetailsMap(),
       "customerId" to customerId,
       "note" to note,
@@ -160,8 +160,8 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
 
   fun Card.toCardMap(): Map<String, Any?> {
     return mapOf(
-      "brand" to brand.name,
-      "coBrand" to cardCoBrand.name,
+      "brand" to brand.toBrandName(),
+      "coBrand" to cardCoBrand.name.lowercase(),
       "lastFourDigits" to lastFourDigits,
       "expirationMonth" to expirationMonth,
       "expirationYear" to expirationYear,
@@ -196,16 +196,16 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
 
   fun CardPaymentDetails.OnlineCardPaymentDetails.toOnlineDetailsMap(): Map<String, Any?> {
     return mapOf(
-      "status" to status.name,
+      "status" to status.name.lowercase(),
       "card" to card.toCardMap(),
-      "entryMethod" to entryMethod.name,
+      "entryMethod" to entryMethod.toEntryMethodName(),
       "authorizationCode" to authorizationCode,
       "applicationId" to applicationId,
       "applicationName" to applicationName,
       "applicationCounter" to applicationCounter,
       "panSequenceNumber" to panSequenceNumber,
-      "verificationMethod" to verificationMethod?.name,
-      "verificationResults" to verificationResults?.name,
+      "verificationMethod" to verificationMethod?.name?.lowercase(),
+      "verificationResults" to verificationResults?.name?.lowercase(),
       "accountType" to accountType?.name,
       "remainingBalanceAmountMoney" to remainingBalanceAmountMoney?.toMoneyMap(),
       "felicaSprwdId" to felicaSprwdId

@@ -111,9 +111,9 @@ Map<String, dynamic> _$$OfflineCardImplToJson(_$OfflineCardImpl instance) =>
 _$CardPaymentDetailsImpl _$$CardPaymentDetailsImplFromJson(
         Map<String, dynamic> json) =>
     _$CardPaymentDetailsImpl(
-      applicationIdentifier: json['applicationIdentifier'] as String,
-      applicationName: json['applicationName'] as String,
-      authorizationCode: json['authorizationCode'] as String,
+      applicationIdentifier: json['applicationIdentifier'] as String?,
+      applicationName: json['applicationName'] as String?,
+      authorizationCode: json['authorizationCode'] as String?,
       card: Card.fromJson(json['card'] as Map<String, dynamic>),
       entryMethod: $enumDecode(_$EntryMethodEnumMap, json['entryMethod']),
       status: $enumDecode(_$CardPaymentStatusEnumMap, json['status']),
@@ -400,6 +400,10 @@ _$PaymentImpl _$$PaymentImplFromJson(Map<String, dynamic> json) =>
           ? null
           : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
       totalMoney: Money.fromJson(json['totalMoney'] as Map<String, dynamic>),
+      cardPaymentDetails: json['cardDetails'] == null
+          ? null
+          : CardPaymentDetails.fromJson(
+              json['cardDetails'] as Map<String, dynamic>),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
@@ -415,6 +419,7 @@ Map<String, dynamic> _$$PaymentImplToJson(_$PaymentImpl instance) =>
       'sourceType': _$SourceTypeEnumMap[instance.sourceType]!,
       'tipMoney': instance.tipMoney,
       'totalMoney': instance.totalMoney,
+      'cardDetails': instance.cardPaymentDetails,
       'updatedAt': instance.updatedAt.toIso8601String(),
     };
 
