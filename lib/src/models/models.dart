@@ -125,6 +125,17 @@ class ReaderConnectionInfo with _$ReaderConnectionInfo {
 }
 
 @freezed
+class ReaderStatusInfo with _$ReaderStatusInfo{
+  const factory ReaderStatusInfo({
+    required ReaderStatusInfoStatus status,
+    ReaderStatusInfoUnavailableReason? unavailableReason,
+  }) = _ReaderStatusInfo;
+
+  factory ReaderStatusInfo.fromJson(Map<String, Object?> json) =>
+      _$ReaderStatusInfoFromJson(json);
+}
+
+@freezed
 class ReaderFirmwareInfo with _$ReaderFirmwareInfo {
   const factory ReaderFirmwareInfo({
     String? failureReason,
@@ -141,7 +152,6 @@ class ReaderInfo with _$ReaderInfo {
   const factory ReaderInfo({
     ReaderBatteryStatus? batteryStatus,
     CardInsertionStatus? cardInsertionStatus,
-    ReaderConnectionInfo? connectionInfo,
     ReaderFirmwareInfo? firmwareInfo,
     required String id,
     required bool isBlinkable,
@@ -150,7 +160,7 @@ class ReaderInfo with _$ReaderInfo {
     required ReaderModel model,
     required String name,
     String? serialNumber,
-    required ReaderState state,
+    required ReaderStatusInfo statusInfo,
     required List<CardInputMethod> supportedInputMethods,
   }) = _ReaderInfo;
 

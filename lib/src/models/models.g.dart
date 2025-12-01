@@ -260,6 +260,66 @@ const _$ReaderConnectionStateEnumMap = {
   ReaderConnectionState.notConnected: 'notConnected',
 };
 
+_$ReaderStatusInfoImpl _$$ReaderStatusInfoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ReaderStatusInfoImpl(
+      status: $enumDecode(_$ReaderStatusInfoStatusEnumMap, json['status']),
+      unavailableReason: $enumDecodeNullable(
+          _$ReaderStatusInfoUnavailableReasonEnumMap,
+          json['unavailableReason']),
+    );
+
+Map<String, dynamic> _$$ReaderStatusInfoImplToJson(
+        _$ReaderStatusInfoImpl instance) =>
+    <String, dynamic>{
+      'status': _$ReaderStatusInfoStatusEnumMap[instance.status]!,
+      'unavailableReason': _$ReaderStatusInfoUnavailableReasonEnumMap[
+          instance.unavailableReason],
+    };
+
+const _$ReaderStatusInfoStatusEnumMap = {
+  ReaderStatusInfoStatus.connectingToDevice: 'connectingToDevice',
+  ReaderStatusInfoStatus.connectingToSquare: 'connectingToSquare',
+  ReaderStatusInfoStatus.readerUnavailable: 'readerUnavailable',
+  ReaderStatusInfoStatus.faulty: 'faulty',
+  ReaderStatusInfoStatus.ready: 'ready',
+};
+
+const _$ReaderStatusInfoUnavailableReasonEnumMap = {
+  ReaderStatusInfoUnavailableReason.internalError: 'internalError',
+  ReaderStatusInfoUnavailableReason.bluetoothDisabled: 'bluetoothDisabled',
+  ReaderStatusInfoUnavailableReason.bluetoothFailure: 'bluetoothFailure',
+  ReaderStatusInfoUnavailableReason.secureConnectionToSquareFailure:
+      'secureConnectionToSquareFailure',
+  ReaderStatusInfoUnavailableReason.secureConnectionNetworkFailure:
+      'secureConnectionNetworkFailure',
+  ReaderStatusInfoUnavailableReason.blockingUpdate: 'blockingUpdate',
+  ReaderStatusInfoUnavailableReason.maxReadersConnected: 'maxReadersConnected',
+  ReaderStatusInfoUnavailableReason.notConnectedToInternet:
+      'notConnectedToInternet',
+  ReaderStatusInfoUnavailableReason.readerTimeout: 'readerTimeout',
+  ReaderStatusInfoUnavailableReason.revokedByDevice: 'revokedByDevice',
+  ReaderStatusInfoUnavailableReason.tapToPayError: 'tapToPayError',
+  ReaderStatusInfoUnavailableReason.tapToPayIsNotLinked: 'tapToPayIsNotLinked',
+  ReaderStatusInfoUnavailableReason.offLineSessionExpired:
+      'offLineSessionExpired',
+  ReaderStatusInfoUnavailableReason.readerUnavailableOffLine:
+      'readerUnavailableOffLine',
+  ReaderStatusInfoUnavailableReason.offlineModeDisabled: 'offlineModeDisabled',
+  ReaderStatusInfoUnavailableReason.readerUpdateFailed: 'readerUpdateFailed',
+  ReaderStatusInfoUnavailableReason.merchantSuspended: 'merchantSuspended',
+  ReaderStatusInfoUnavailableReason.merchantIneligible: 'merchantIneligible',
+  ReaderStatusInfoUnavailableReason.merchantNotActivated:
+      'merchantNotActivated',
+  ReaderStatusInfoUnavailableReason.deviceNotSupported: 'deviceNotSupported',
+  ReaderStatusInfoUnavailableReason.readerFirmwareUpdateRequired:
+      'readerFirmwareUpdateRequired',
+  ReaderStatusInfoUnavailableReason.readerNotSupported: 'readerNotSupported',
+  ReaderStatusInfoUnavailableReason.deviceRooted: 'deviceRooted',
+  ReaderStatusInfoUnavailableReason.deviceDeveloperMode: 'deviceDeveloperMode',
+  ReaderStatusInfoUnavailableReason.disabled: 'disabled',
+};
+
 _$ReaderFirmwareInfoImpl _$$ReaderFirmwareInfoImplFromJson(
         Map<String, dynamic> json) =>
     _$ReaderFirmwareInfoImpl(
@@ -284,10 +344,6 @@ _$ReaderInfoImpl _$$ReaderInfoImplFromJson(Map<String, dynamic> json) =>
               json['batteryStatus'] as Map<String, dynamic>),
       cardInsertionStatus: $enumDecodeNullable(
           _$CardInsertionStatusEnumMap, json['cardInsertionStatus']),
-      connectionInfo: json['connectionInfo'] == null
-          ? null
-          : ReaderConnectionInfo.fromJson(
-              json['connectionInfo'] as Map<String, dynamic>),
       firmwareInfo: json['firmwareInfo'] == null
           ? null
           : ReaderFirmwareInfo.fromJson(
@@ -299,7 +355,8 @@ _$ReaderInfoImpl _$$ReaderInfoImplFromJson(Map<String, dynamic> json) =>
       model: $enumDecode(_$ReaderModelEnumMap, json['model']),
       name: json['name'] as String,
       serialNumber: json['serialNumber'] as String?,
-      state: $enumDecode(_$ReaderStateEnumMap, json['state']),
+      statusInfo:
+          ReaderStatusInfo.fromJson(json['statusInfo'] as Map<String, dynamic>),
       supportedInputMethods: (json['supportedInputMethods'] as List<dynamic>)
           .map((e) => $enumDecode(_$CardInputMethodEnumMap, e))
           .toList(),
@@ -310,7 +367,6 @@ Map<String, dynamic> _$$ReaderInfoImplToJson(_$ReaderInfoImpl instance) =>
       'batteryStatus': instance.batteryStatus,
       'cardInsertionStatus':
           _$CardInsertionStatusEnumMap[instance.cardInsertionStatus],
-      'connectionInfo': instance.connectionInfo,
       'firmwareInfo': instance.firmwareInfo,
       'id': instance.id,
       'isBlinkable': instance.isBlinkable,
@@ -319,7 +375,7 @@ Map<String, dynamic> _$$ReaderInfoImplToJson(_$ReaderInfoImpl instance) =>
       'model': _$ReaderModelEnumMap[instance.model]!,
       'name': instance.name,
       'serialNumber': instance.serialNumber,
-      'state': _$ReaderStateEnumMap[instance.state]!,
+      'statusInfo': instance.statusInfo,
       'supportedInputMethods': instance.supportedInputMethods
           .map((e) => _$CardInputMethodEnumMap[e]!)
           .toList(),
@@ -338,15 +394,6 @@ const _$ReaderModelEnumMap = {
   ReaderModel.stand: 'stand',
   ReaderModel.tapToPay: 'tapToPay',
   ReaderModel.unknown: 'unknown',
-};
-
-const _$ReaderStateEnumMap = {
-  ReaderState.connecting: 'connecting',
-  ReaderState.disabled: 'disabled',
-  ReaderState.disconnected: 'disconnected',
-  ReaderState.failedToConnect: 'failedToConnect',
-  ReaderState.ready: 'ready',
-  ReaderState.updatingFirmware: 'updatingFirmware',
 };
 
 const _$CardInputMethodEnumMap = {

@@ -2032,6 +2032,192 @@ abstract class _ReaderConnectionInfo implements ReaderConnectionInfo {
       get copyWith => throw _privateConstructorUsedError;
 }
 
+ReaderStatusInfo _$ReaderStatusInfoFromJson(Map<String, dynamic> json) {
+  return _ReaderStatusInfo.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ReaderStatusInfo {
+  ReaderStatusInfoStatus get status => throw _privateConstructorUsedError;
+  ReaderStatusInfoUnavailableReason? get unavailableReason =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this ReaderStatusInfo to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ReaderStatusInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ReaderStatusInfoCopyWith<ReaderStatusInfo> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ReaderStatusInfoCopyWith<$Res> {
+  factory $ReaderStatusInfoCopyWith(
+          ReaderStatusInfo value, $Res Function(ReaderStatusInfo) then) =
+      _$ReaderStatusInfoCopyWithImpl<$Res, ReaderStatusInfo>;
+  @useResult
+  $Res call(
+      {ReaderStatusInfoStatus status,
+      ReaderStatusInfoUnavailableReason? unavailableReason});
+}
+
+/// @nodoc
+class _$ReaderStatusInfoCopyWithImpl<$Res, $Val extends ReaderStatusInfo>
+    implements $ReaderStatusInfoCopyWith<$Res> {
+  _$ReaderStatusInfoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ReaderStatusInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? unavailableReason = freezed,
+  }) {
+    return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ReaderStatusInfoStatus,
+      unavailableReason: freezed == unavailableReason
+          ? _value.unavailableReason
+          : unavailableReason // ignore: cast_nullable_to_non_nullable
+              as ReaderStatusInfoUnavailableReason?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ReaderStatusInfoImplCopyWith<$Res>
+    implements $ReaderStatusInfoCopyWith<$Res> {
+  factory _$$ReaderStatusInfoImplCopyWith(_$ReaderStatusInfoImpl value,
+          $Res Function(_$ReaderStatusInfoImpl) then) =
+      __$$ReaderStatusInfoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {ReaderStatusInfoStatus status,
+      ReaderStatusInfoUnavailableReason? unavailableReason});
+}
+
+/// @nodoc
+class __$$ReaderStatusInfoImplCopyWithImpl<$Res>
+    extends _$ReaderStatusInfoCopyWithImpl<$Res, _$ReaderStatusInfoImpl>
+    implements _$$ReaderStatusInfoImplCopyWith<$Res> {
+  __$$ReaderStatusInfoImplCopyWithImpl(_$ReaderStatusInfoImpl _value,
+      $Res Function(_$ReaderStatusInfoImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ReaderStatusInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? unavailableReason = freezed,
+  }) {
+    return _then(_$ReaderStatusInfoImpl(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ReaderStatusInfoStatus,
+      unavailableReason: freezed == unavailableReason
+          ? _value.unavailableReason
+          : unavailableReason // ignore: cast_nullable_to_non_nullable
+              as ReaderStatusInfoUnavailableReason?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ReaderStatusInfoImpl
+    with DiagnosticableTreeMixin
+    implements _ReaderStatusInfo {
+  const _$ReaderStatusInfoImpl({required this.status, this.unavailableReason});
+
+  factory _$ReaderStatusInfoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReaderStatusInfoImplFromJson(json);
+
+  @override
+  final ReaderStatusInfoStatus status;
+  @override
+  final ReaderStatusInfoUnavailableReason? unavailableReason;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ReaderStatusInfo(status: $status, unavailableReason: $unavailableReason)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ReaderStatusInfo'))
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('unavailableReason', unavailableReason));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReaderStatusInfoImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.unavailableReason, unavailableReason) ||
+                other.unavailableReason == unavailableReason));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, status, unavailableReason);
+
+  /// Create a copy of ReaderStatusInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReaderStatusInfoImplCopyWith<_$ReaderStatusInfoImpl> get copyWith =>
+      __$$ReaderStatusInfoImplCopyWithImpl<_$ReaderStatusInfoImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ReaderStatusInfoImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ReaderStatusInfo implements ReaderStatusInfo {
+  const factory _ReaderStatusInfo(
+          {required final ReaderStatusInfoStatus status,
+          final ReaderStatusInfoUnavailableReason? unavailableReason}) =
+      _$ReaderStatusInfoImpl;
+
+  factory _ReaderStatusInfo.fromJson(Map<String, dynamic> json) =
+      _$ReaderStatusInfoImpl.fromJson;
+
+  @override
+  ReaderStatusInfoStatus get status;
+  @override
+  ReaderStatusInfoUnavailableReason? get unavailableReason;
+
+  /// Create a copy of ReaderStatusInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ReaderStatusInfoImplCopyWith<_$ReaderStatusInfoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 ReaderFirmwareInfo _$ReaderFirmwareInfoFromJson(Map<String, dynamic> json) {
   return _ReaderFirmwareInfo.fromJson(json);
 }
@@ -2242,8 +2428,6 @@ mixin _$ReaderInfo {
   ReaderBatteryStatus? get batteryStatus => throw _privateConstructorUsedError;
   CardInsertionStatus? get cardInsertionStatus =>
       throw _privateConstructorUsedError;
-  ReaderConnectionInfo? get connectionInfo =>
-      throw _privateConstructorUsedError;
   ReaderFirmwareInfo? get firmwareInfo => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   bool get isBlinkable => throw _privateConstructorUsedError;
@@ -2252,7 +2436,7 @@ mixin _$ReaderInfo {
   ReaderModel get model => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get serialNumber => throw _privateConstructorUsedError;
-  ReaderState get state => throw _privateConstructorUsedError;
+  ReaderStatusInfo get statusInfo => throw _privateConstructorUsedError;
   List<CardInputMethod> get supportedInputMethods =>
       throw _privateConstructorUsedError;
 
@@ -2275,7 +2459,6 @@ abstract class $ReaderInfoCopyWith<$Res> {
   $Res call(
       {ReaderBatteryStatus? batteryStatus,
       CardInsertionStatus? cardInsertionStatus,
-      ReaderConnectionInfo? connectionInfo,
       ReaderFirmwareInfo? firmwareInfo,
       String id,
       bool isBlinkable,
@@ -2284,12 +2467,12 @@ abstract class $ReaderInfoCopyWith<$Res> {
       ReaderModel model,
       String name,
       String? serialNumber,
-      ReaderState state,
+      ReaderStatusInfo statusInfo,
       List<CardInputMethod> supportedInputMethods});
 
   $ReaderBatteryStatusCopyWith<$Res>? get batteryStatus;
-  $ReaderConnectionInfoCopyWith<$Res>? get connectionInfo;
   $ReaderFirmwareInfoCopyWith<$Res>? get firmwareInfo;
+  $ReaderStatusInfoCopyWith<$Res> get statusInfo;
 }
 
 /// @nodoc
@@ -2309,7 +2492,6 @@ class _$ReaderInfoCopyWithImpl<$Res, $Val extends ReaderInfo>
   $Res call({
     Object? batteryStatus = freezed,
     Object? cardInsertionStatus = freezed,
-    Object? connectionInfo = freezed,
     Object? firmwareInfo = freezed,
     Object? id = null,
     Object? isBlinkable = null,
@@ -2318,7 +2500,7 @@ class _$ReaderInfoCopyWithImpl<$Res, $Val extends ReaderInfo>
     Object? model = null,
     Object? name = null,
     Object? serialNumber = freezed,
-    Object? state = null,
+    Object? statusInfo = null,
     Object? supportedInputMethods = null,
   }) {
     return _then(_value.copyWith(
@@ -2330,10 +2512,6 @@ class _$ReaderInfoCopyWithImpl<$Res, $Val extends ReaderInfo>
           ? _value.cardInsertionStatus
           : cardInsertionStatus // ignore: cast_nullable_to_non_nullable
               as CardInsertionStatus?,
-      connectionInfo: freezed == connectionInfo
-          ? _value.connectionInfo
-          : connectionInfo // ignore: cast_nullable_to_non_nullable
-              as ReaderConnectionInfo?,
       firmwareInfo: freezed == firmwareInfo
           ? _value.firmwareInfo
           : firmwareInfo // ignore: cast_nullable_to_non_nullable
@@ -2366,10 +2544,10 @@ class _$ReaderInfoCopyWithImpl<$Res, $Val extends ReaderInfo>
           ? _value.serialNumber
           : serialNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      state: null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as ReaderState,
+      statusInfo: null == statusInfo
+          ? _value.statusInfo
+          : statusInfo // ignore: cast_nullable_to_non_nullable
+              as ReaderStatusInfo,
       supportedInputMethods: null == supportedInputMethods
           ? _value.supportedInputMethods
           : supportedInputMethods // ignore: cast_nullable_to_non_nullable
@@ -2395,20 +2573,6 @@ class _$ReaderInfoCopyWithImpl<$Res, $Val extends ReaderInfo>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ReaderConnectionInfoCopyWith<$Res>? get connectionInfo {
-    if (_value.connectionInfo == null) {
-      return null;
-    }
-
-    return $ReaderConnectionInfoCopyWith<$Res>(_value.connectionInfo!, (value) {
-      return _then(_value.copyWith(connectionInfo: value) as $Val);
-    });
-  }
-
-  /// Create a copy of ReaderInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $ReaderFirmwareInfoCopyWith<$Res>? get firmwareInfo {
     if (_value.firmwareInfo == null) {
       return null;
@@ -2416,6 +2580,16 @@ class _$ReaderInfoCopyWithImpl<$Res, $Val extends ReaderInfo>
 
     return $ReaderFirmwareInfoCopyWith<$Res>(_value.firmwareInfo!, (value) {
       return _then(_value.copyWith(firmwareInfo: value) as $Val);
+    });
+  }
+
+  /// Create a copy of ReaderInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReaderStatusInfoCopyWith<$Res> get statusInfo {
+    return $ReaderStatusInfoCopyWith<$Res>(_value.statusInfo, (value) {
+      return _then(_value.copyWith(statusInfo: value) as $Val);
     });
   }
 }
@@ -2431,7 +2605,6 @@ abstract class _$$ReaderInfoImplCopyWith<$Res>
   $Res call(
       {ReaderBatteryStatus? batteryStatus,
       CardInsertionStatus? cardInsertionStatus,
-      ReaderConnectionInfo? connectionInfo,
       ReaderFirmwareInfo? firmwareInfo,
       String id,
       bool isBlinkable,
@@ -2440,15 +2613,15 @@ abstract class _$$ReaderInfoImplCopyWith<$Res>
       ReaderModel model,
       String name,
       String? serialNumber,
-      ReaderState state,
+      ReaderStatusInfo statusInfo,
       List<CardInputMethod> supportedInputMethods});
 
   @override
   $ReaderBatteryStatusCopyWith<$Res>? get batteryStatus;
   @override
-  $ReaderConnectionInfoCopyWith<$Res>? get connectionInfo;
-  @override
   $ReaderFirmwareInfoCopyWith<$Res>? get firmwareInfo;
+  @override
+  $ReaderStatusInfoCopyWith<$Res> get statusInfo;
 }
 
 /// @nodoc
@@ -2466,7 +2639,6 @@ class __$$ReaderInfoImplCopyWithImpl<$Res>
   $Res call({
     Object? batteryStatus = freezed,
     Object? cardInsertionStatus = freezed,
-    Object? connectionInfo = freezed,
     Object? firmwareInfo = freezed,
     Object? id = null,
     Object? isBlinkable = null,
@@ -2475,7 +2647,7 @@ class __$$ReaderInfoImplCopyWithImpl<$Res>
     Object? model = null,
     Object? name = null,
     Object? serialNumber = freezed,
-    Object? state = null,
+    Object? statusInfo = null,
     Object? supportedInputMethods = null,
   }) {
     return _then(_$ReaderInfoImpl(
@@ -2487,10 +2659,6 @@ class __$$ReaderInfoImplCopyWithImpl<$Res>
           ? _value.cardInsertionStatus
           : cardInsertionStatus // ignore: cast_nullable_to_non_nullable
               as CardInsertionStatus?,
-      connectionInfo: freezed == connectionInfo
-          ? _value.connectionInfo
-          : connectionInfo // ignore: cast_nullable_to_non_nullable
-              as ReaderConnectionInfo?,
       firmwareInfo: freezed == firmwareInfo
           ? _value.firmwareInfo
           : firmwareInfo // ignore: cast_nullable_to_non_nullable
@@ -2523,10 +2691,10 @@ class __$$ReaderInfoImplCopyWithImpl<$Res>
           ? _value.serialNumber
           : serialNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      state: null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as ReaderState,
+      statusInfo: null == statusInfo
+          ? _value.statusInfo
+          : statusInfo // ignore: cast_nullable_to_non_nullable
+              as ReaderStatusInfo,
       supportedInputMethods: null == supportedInputMethods
           ? _value._supportedInputMethods
           : supportedInputMethods // ignore: cast_nullable_to_non_nullable
@@ -2541,7 +2709,6 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
   const _$ReaderInfoImpl(
       {this.batteryStatus,
       this.cardInsertionStatus,
-      this.connectionInfo,
       this.firmwareInfo,
       required this.id,
       required this.isBlinkable,
@@ -2550,7 +2717,7 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
       required this.model,
       required this.name,
       this.serialNumber,
-      required this.state,
+      required this.statusInfo,
       required final List<CardInputMethod> supportedInputMethods})
       : _supportedInputMethods = supportedInputMethods;
 
@@ -2561,8 +2728,6 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
   final ReaderBatteryStatus? batteryStatus;
   @override
   final CardInsertionStatus? cardInsertionStatus;
-  @override
-  final ReaderConnectionInfo? connectionInfo;
   @override
   final ReaderFirmwareInfo? firmwareInfo;
   @override
@@ -2580,7 +2745,7 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
   @override
   final String? serialNumber;
   @override
-  final ReaderState state;
+  final ReaderStatusInfo statusInfo;
   final List<CardInputMethod> _supportedInputMethods;
   @override
   List<CardInputMethod> get supportedInputMethods {
@@ -2592,7 +2757,7 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, connectionInfo: $connectionInfo, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, model: $model, name: $name, serialNumber: $serialNumber, state: $state, supportedInputMethods: $supportedInputMethods)';
+    return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, model: $model, name: $name, serialNumber: $serialNumber, statusInfo: $statusInfo, supportedInputMethods: $supportedInputMethods)';
   }
 
   @override
@@ -2602,7 +2767,6 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
       ..add(DiagnosticsProperty('type', 'ReaderInfo'))
       ..add(DiagnosticsProperty('batteryStatus', batteryStatus))
       ..add(DiagnosticsProperty('cardInsertionStatus', cardInsertionStatus))
-      ..add(DiagnosticsProperty('connectionInfo', connectionInfo))
       ..add(DiagnosticsProperty('firmwareInfo', firmwareInfo))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('isBlinkable', isBlinkable))
@@ -2611,7 +2775,7 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
       ..add(DiagnosticsProperty('model', model))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('serialNumber', serialNumber))
-      ..add(DiagnosticsProperty('state', state))
+      ..add(DiagnosticsProperty('statusInfo', statusInfo))
       ..add(
           DiagnosticsProperty('supportedInputMethods', supportedInputMethods));
   }
@@ -2625,8 +2789,6 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
                 other.batteryStatus == batteryStatus) &&
             (identical(other.cardInsertionStatus, cardInsertionStatus) ||
                 other.cardInsertionStatus == cardInsertionStatus) &&
-            (identical(other.connectionInfo, connectionInfo) ||
-                other.connectionInfo == connectionInfo) &&
             (identical(other.firmwareInfo, firmwareInfo) ||
                 other.firmwareInfo == firmwareInfo) &&
             (identical(other.id, id) || other.id == id) &&
@@ -2640,7 +2802,8 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.serialNumber, serialNumber) ||
                 other.serialNumber == serialNumber) &&
-            (identical(other.state, state) || other.state == state) &&
+            (identical(other.statusInfo, statusInfo) ||
+                other.statusInfo == statusInfo) &&
             const DeepCollectionEquality()
                 .equals(other._supportedInputMethods, _supportedInputMethods));
   }
@@ -2651,7 +2814,6 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
       runtimeType,
       batteryStatus,
       cardInsertionStatus,
-      connectionInfo,
       firmwareInfo,
       id,
       isBlinkable,
@@ -2660,7 +2822,7 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
       model,
       name,
       serialNumber,
-      state,
+      statusInfo,
       const DeepCollectionEquality().hash(_supportedInputMethods));
 
   /// Create a copy of ReaderInfo
@@ -2683,7 +2845,6 @@ abstract class _ReaderInfo implements ReaderInfo {
   const factory _ReaderInfo(
           {final ReaderBatteryStatus? batteryStatus,
           final CardInsertionStatus? cardInsertionStatus,
-          final ReaderConnectionInfo? connectionInfo,
           final ReaderFirmwareInfo? firmwareInfo,
           required final String id,
           required final bool isBlinkable,
@@ -2692,7 +2853,7 @@ abstract class _ReaderInfo implements ReaderInfo {
           required final ReaderModel model,
           required final String name,
           final String? serialNumber,
-          required final ReaderState state,
+          required final ReaderStatusInfo statusInfo,
           required final List<CardInputMethod> supportedInputMethods}) =
       _$ReaderInfoImpl;
 
@@ -2703,8 +2864,6 @@ abstract class _ReaderInfo implements ReaderInfo {
   ReaderBatteryStatus? get batteryStatus;
   @override
   CardInsertionStatus? get cardInsertionStatus;
-  @override
-  ReaderConnectionInfo? get connectionInfo;
   @override
   ReaderFirmwareInfo? get firmwareInfo;
   @override
@@ -2722,7 +2881,7 @@ abstract class _ReaderInfo implements ReaderInfo {
   @override
   String? get serialNumber;
   @override
-  ReaderState get state;
+  ReaderStatusInfo get statusInfo;
   @override
   List<CardInputMethod> get supportedInputMethods;
 
@@ -3405,7 +3564,7 @@ mixin _$PaymentParameters {
   String? get customerId => throw _privateConstructorUsedError;
   DelayAction? get delayAction => throw _privateConstructorUsedError;
   num? get delayDuration => throw _privateConstructorUsedError;
-  num get processingMode => throw _privateConstructorUsedError; // 👈 new field
+  num get processingMode => throw _privateConstructorUsedError;
   String? get locationId => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
   String? get orderId => throw _privateConstructorUsedError;
@@ -3885,7 +4044,6 @@ class _$PaymentParametersImpl
   final num processingMode;
   @override
   final String paymentAttemptId;
-// 👈 new field
   @override
   final String? locationId;
   @override
@@ -4244,7 +4402,7 @@ abstract class _PaymentParameters implements PaymentParameters {
   num? get delayDuration;
   @override
   num get processingMode;
-  String get paymentAttemptId; // 👈 new field
+  String get paymentAttemptId;
   @override
   String? get locationId;
   @override
@@ -4441,7 +4599,6 @@ class _$LegacyPaymentParametersImpl
   final num processingMode;
   @override
   final String idempotencyKey;
-// 👈 old field
   @override
   final String? locationId;
   @override
@@ -4800,7 +4957,7 @@ abstract class _LegacyPaymentParameters implements PaymentParameters {
   num? get delayDuration;
   @override
   num get processingMode;
-  String get idempotencyKey; // 👈 old field
+  String get idempotencyKey;
   @override
   String? get locationId;
   @override

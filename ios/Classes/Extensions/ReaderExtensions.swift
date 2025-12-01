@@ -5,7 +5,6 @@ extension ReaderInfo {
         return [
             "batteryStatus" : batteryStatus?.toMap() ?? NSNull(),
             "cardInsertionStatus": cardInsertionStatus.toName(),
-            "connectionInfo": connectionInfo.toMap(),
             "firmwareInfo" : firmwareInfo?.toMap() ?? NSNull(),
             "id": String(id),
             "isBlinkable" : isBlinkable,
@@ -14,9 +13,7 @@ extension ReaderInfo {
             "model": model.toName(),
             "name" : name,
             "serialNumber" : serialNumber ?? NSNull(),
-            "state" : state.toName(),
-            "status": statusInfo.status.rawValue,
-            //no longer supported in 2.3.1 and not is contemplated in flutter model // "statusReason": statusInfo.reason.rawValue,
+            "statusInfo": statusInfo.toMap(),
             "supportedInputMethods" : supportedInputMethods.toList()
         ]
     }
@@ -218,6 +215,68 @@ extension ReaderBatteryStatus {
             "level" : level.toName(),
             "percentage" : percentage,
         ]
+    }
+}
+
+extension ReaderStatusInfo {
+    func toMap() -> NSDictionary {
+        return [
+            "status" : status.toName(),
+            "unavailableReason" : unavailableReasonInfo?.reason
+                .toName() ?? NSNull(),
+        ]
+    }
+}
+
+extension ReaderStatus {
+    func toName() -> String {
+        return switch self {
+        case .connectingToDevice:
+            "connectingToDevice"
+        case .connectingToSquare:
+            "connectingToSquare"
+        case .readerUnavailable :
+            "readerUnavailable"
+        case .faulty:
+            "faulty"
+        case .ready:
+            "ready"
+        default:
+            "unknown"
+        }
+    }
+}
+
+extension ReaderUnavailableReason {
+    func toName() -> String {
+        return switch self {
+        case .internalError:
+            "internalError"
+        case .bluetoothDisabled:
+            "bluetoothDisabled"
+        case .bluetoothFailure:
+            "bluetoothFailure"
+        case .secureConnectionToSquareFailure:
+            "secureConnectionToSquareFailure"
+        case .secureConnectionNetworkFailure:
+            "secureConnectionNetworkFailure"
+        case .blockingFirmwareUpdate:
+            "blockingUpdate"
+        case .maxReadersConnected:
+            "maxReadersConnected"
+        case .notConnectedToInternet:
+            "notConnectedToInternet"
+        case .readerTimeout:
+            "readerTimeout"
+        case .revokedByDevice:
+            "revokedByDevice"
+        case .tapToPayError:
+            "tapToPayError"
+        case .tapToPayIsNotLinked:
+            "tapToPayIsNotLinked"
+        default:
+            "unknown"
+        }
     }
 }
 
