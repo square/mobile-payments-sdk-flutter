@@ -2436,7 +2436,7 @@ mixin _$ReaderInfo {
   ReaderModel get model => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get serialNumber => throw _privateConstructorUsedError;
-  ReaderStatusInfo get status => throw _privateConstructorUsedError;
+  ReaderStatusInfo get statusInfo => throw _privateConstructorUsedError;
   List<CardInputMethod> get supportedInputMethods =>
       throw _privateConstructorUsedError;
 
@@ -2467,12 +2467,12 @@ abstract class $ReaderInfoCopyWith<$Res> {
       ReaderModel model,
       String name,
       String? serialNumber,
-      ReaderStatusInfo status,
+      ReaderStatusInfo statusInfo,
       List<CardInputMethod> supportedInputMethods});
 
   $ReaderBatteryStatusCopyWith<$Res>? get batteryStatus;
   $ReaderFirmwareInfoCopyWith<$Res>? get firmwareInfo;
-  $ReaderStatusInfoCopyWith<$Res> get status;
+  $ReaderStatusInfoCopyWith<$Res> get statusInfo;
 }
 
 /// @nodoc
@@ -2500,7 +2500,7 @@ class _$ReaderInfoCopyWithImpl<$Res, $Val extends ReaderInfo>
     Object? model = null,
     Object? name = null,
     Object? serialNumber = freezed,
-    Object? status = null,
+    Object? statusInfo = null,
     Object? supportedInputMethods = null,
   }) {
     return _then(_value.copyWith(
@@ -2544,9 +2544,9 @@ class _$ReaderInfoCopyWithImpl<$Res, $Val extends ReaderInfo>
           ? _value.serialNumber
           : serialNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      statusInfo: null == statusInfo
+          ? _value.statusInfo
+          : statusInfo // ignore: cast_nullable_to_non_nullable
               as ReaderStatusInfo,
       supportedInputMethods: null == supportedInputMethods
           ? _value.supportedInputMethods
@@ -2587,9 +2587,9 @@ class _$ReaderInfoCopyWithImpl<$Res, $Val extends ReaderInfo>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ReaderStatusInfoCopyWith<$Res> get status {
-    return $ReaderStatusInfoCopyWith<$Res>(_value.status, (value) {
-      return _then(_value.copyWith(status: value) as $Val);
+  $ReaderStatusInfoCopyWith<$Res> get statusInfo {
+    return $ReaderStatusInfoCopyWith<$Res>(_value.statusInfo, (value) {
+      return _then(_value.copyWith(statusInfo: value) as $Val);
     });
   }
 }
@@ -2613,7 +2613,7 @@ abstract class _$$ReaderInfoImplCopyWith<$Res>
       ReaderModel model,
       String name,
       String? serialNumber,
-      ReaderStatusInfo status,
+      ReaderStatusInfo statusInfo,
       List<CardInputMethod> supportedInputMethods});
 
   @override
@@ -2621,7 +2621,7 @@ abstract class _$$ReaderInfoImplCopyWith<$Res>
   @override
   $ReaderFirmwareInfoCopyWith<$Res>? get firmwareInfo;
   @override
-  $ReaderStatusInfoCopyWith<$Res> get status;
+  $ReaderStatusInfoCopyWith<$Res> get statusInfo;
 }
 
 /// @nodoc
@@ -2647,7 +2647,7 @@ class __$$ReaderInfoImplCopyWithImpl<$Res>
     Object? model = null,
     Object? name = null,
     Object? serialNumber = freezed,
-    Object? status = null,
+    Object? statusInfo = null,
     Object? supportedInputMethods = null,
   }) {
     return _then(_$ReaderInfoImpl(
@@ -2691,9 +2691,9 @@ class __$$ReaderInfoImplCopyWithImpl<$Res>
           ? _value.serialNumber
           : serialNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      statusInfo: null == statusInfo
+          ? _value.statusInfo
+          : statusInfo // ignore: cast_nullable_to_non_nullable
               as ReaderStatusInfo,
       supportedInputMethods: null == supportedInputMethods
           ? _value._supportedInputMethods
@@ -2717,7 +2717,7 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
       required this.model,
       required this.name,
       this.serialNumber,
-      required this.status,
+      required this.statusInfo,
       required final List<CardInputMethod> supportedInputMethods})
       : _supportedInputMethods = supportedInputMethods;
 
@@ -2745,7 +2745,7 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
   @override
   final String? serialNumber;
   @override
-  final ReaderStatusInfo status;
+  final ReaderStatusInfo statusInfo;
   final List<CardInputMethod> _supportedInputMethods;
   @override
   List<CardInputMethod> get supportedInputMethods {
@@ -2757,7 +2757,7 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, model: $model, name: $name, serialNumber: $serialNumber, status: $status, supportedInputMethods: $supportedInputMethods)';
+    return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, model: $model, name: $name, serialNumber: $serialNumber, statusInfo: $statusInfo, supportedInputMethods: $supportedInputMethods)';
   }
 
   @override
@@ -2775,7 +2775,7 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
       ..add(DiagnosticsProperty('model', model))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('serialNumber', serialNumber))
-      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('statusInfo', statusInfo))
       ..add(
           DiagnosticsProperty('supportedInputMethods', supportedInputMethods));
   }
@@ -2802,7 +2802,8 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.serialNumber, serialNumber) ||
                 other.serialNumber == serialNumber) &&
-            (identical(other.status, status) || other.status == status) &&
+            (identical(other.statusInfo, statusInfo) ||
+                other.statusInfo == statusInfo) &&
             const DeepCollectionEquality()
                 .equals(other._supportedInputMethods, _supportedInputMethods));
   }
@@ -2821,7 +2822,7 @@ class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
       model,
       name,
       serialNumber,
-      status,
+      statusInfo,
       const DeepCollectionEquality().hash(_supportedInputMethods));
 
   /// Create a copy of ReaderInfo
@@ -2852,7 +2853,7 @@ abstract class _ReaderInfo implements ReaderInfo {
           required final ReaderModel model,
           required final String name,
           final String? serialNumber,
-          required final ReaderStatusInfo status,
+          required final ReaderStatusInfo statusInfo,
           required final List<CardInputMethod> supportedInputMethods}) =
       _$ReaderInfoImpl;
 
@@ -2880,7 +2881,7 @@ abstract class _ReaderInfo implements ReaderInfo {
   @override
   String? get serialNumber;
   @override
-  ReaderStatusInfo get status;
+  ReaderStatusInfo get statusInfo;
   @override
   List<CardInputMethod> get supportedInputMethods;
 

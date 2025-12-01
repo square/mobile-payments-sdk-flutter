@@ -355,7 +355,8 @@ _$ReaderInfoImpl _$$ReaderInfoImplFromJson(Map<String, dynamic> json) =>
       model: $enumDecode(_$ReaderModelEnumMap, json['model']),
       name: json['name'] as String,
       serialNumber: json['serialNumber'] as String?,
-      status: ReaderStatusInfo.fromJson(json['status'] as Map<String, dynamic>),
+      statusInfo:
+          ReaderStatusInfo.fromJson(json['statusInfo'] as Map<String, dynamic>),
       supportedInputMethods: (json['supportedInputMethods'] as List<dynamic>)
           .map((e) => $enumDecode(_$CardInputMethodEnumMap, e))
           .toList(),
@@ -374,7 +375,7 @@ Map<String, dynamic> _$$ReaderInfoImplToJson(_$ReaderInfoImpl instance) =>
       'model': _$ReaderModelEnumMap[instance.model]!,
       'name': instance.name,
       'serialNumber': instance.serialNumber,
-      'status': instance.status,
+      'statusInfo': instance.statusInfo,
       'supportedInputMethods': instance.supportedInputMethods
           .map((e) => _$CardInputMethodEnumMap[e]!)
           .toList(),

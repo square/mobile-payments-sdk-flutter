@@ -19,7 +19,7 @@ fun ReaderInfo.toReaderInfoMap(): Map<String, Any?> {
         "supportedInputMethods" to supportedCardEntryMethods.map { it.toEntryMethodName() },
         "isForgettable" to isForgettable,
         "isBlinkable" to isBlinkable,
-        "status" to status.toStatusMap()
+        "statusInfo" to status.toStatusMap()
     )
 }
 

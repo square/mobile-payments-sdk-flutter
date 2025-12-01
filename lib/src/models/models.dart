@@ -160,7 +160,7 @@ class ReaderInfo with _$ReaderInfo {
     required ReaderModel model,
     required String name,
     String? serialNumber,
-    required ReaderStatusInfo status,
+    required ReaderStatusInfo statusInfo,
     required List<CardInputMethod> supportedInputMethods,
   }) = _ReaderInfo;
 

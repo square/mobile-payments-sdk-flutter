@@ -13,7 +13,7 @@ extension ReaderInfo {
             "model": model.toName(),
             "name" : name,
             "serialNumber" : serialNumber ?? NSNull(),
-            "status": statusInfo.toMap(),
+            "statusInfo": statusInfo.toMap(),
             "supportedInputMethods" : supportedInputMethods.toList()
         ]
     }
@@ -264,8 +264,8 @@ extension ReaderUnavailableReason {
             "blockingUpdate"
         case .maxReadersConnected:
             "maxReadersConnected"
-        case .notConnectedToInternet
-            : "notConnectedToInternet"
+        case .notConnectedToInternet:
+            "notConnectedToInternet"
         case .readerTimeout:
             "readerTimeout"
         case .revokedByDevice:
