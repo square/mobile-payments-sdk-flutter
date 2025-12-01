@@ -178,18 +178,33 @@ enum ReaderStatusInfoStatus {
 
 
 enum ReaderStatusInfoUnavailableReason {
-    blockingFirmwareUpdate,
-    bluetoothDisabled,
-    bluetoothFailure,
-    tapToPayError,
-    tapToPayIsNotLinked,
-    secureConnectionNetworkFailure,
-    readerTimeout,
-    maxReadersConnected,
-    internalError,
-    secureConnectionToSquareFailure,
-    notConnectedToInternet,
-    revokedByDevice
+  internalError,
+  bluetoothDisabled,
+  bluetoothFailure,
+  secureConnectionToSquareFailure,
+  secureConnectionNetworkFailure,
+  blockingUpdate,
+  //ios
+  maxReadersConnected,
+  notConnectedToInternet,
+  readerTimeout,
+  revokedByDevice,
+  tapToPayError,
+  tapToPayIsNotLinked,
+  //android
+  offLineSessionExpired,
+  readerUnavailableOffLine,
+  offlineModeDisabled,
+  readerUpdateFailed,
+  merchantSuspended,
+  merchantIneligible,
+  merchantNotActivated,
+  deviceNotSupported,
+  readerFirmwareUpdateRequired,
+  readerNotSupported,
+  deviceRooted,
+  deviceDeveloperMode,
+  disabled
 }
 
 

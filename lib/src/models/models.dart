@@ -127,10 +127,8 @@ class ReaderConnectionInfo with _$ReaderConnectionInfo {
 @freezed
 class ReaderStatusInfo with _$ReaderStatusInfo{
   const factory ReaderStatusInfo({
-   required ReaderStatusInfoStatus status,
-     ReaderStatusInfoUnavailableReason? unavailableReason,
-     String? unavailableReasonTitle,
-     String? unavailableReasonDescription,
+    required ReaderStatusInfoStatus status,
+    ReaderStatusInfoUnavailableReason? unavailableReason,
   }) = _ReaderStatusInfo;
 
   factory ReaderStatusInfo.fromJson(Map<String, Object?> json) =>
@@ -154,7 +152,6 @@ class ReaderInfo with _$ReaderInfo {
   const factory ReaderInfo({
     ReaderBatteryStatus? batteryStatus,
     CardInsertionStatus? cardInsertionStatus,
-    ReaderConnectionInfo? connectionInfo,
     ReaderFirmwareInfo? firmwareInfo,
     required String id,
     required bool isBlinkable,
@@ -163,7 +160,7 @@ class ReaderInfo with _$ReaderInfo {
     required ReaderModel model,
     required String name,
     String? serialNumber,
-    required ReaderState state,
+    required ReaderStatusInfo status,
     required List<CardInputMethod> supportedInputMethods,
   }) = _ReaderInfo;
 
