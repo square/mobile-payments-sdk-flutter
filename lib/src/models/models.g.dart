@@ -187,79 +187,6 @@ const _$ReaderBatteryLevelEnumMap = {
   ReaderBatteryLevel.mid: 'mid',
 };
 
-_$ReaderConnectionFailureInfoImpl _$$ReaderConnectionFailureInfoImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ReaderConnectionFailureInfoImpl(
-      failureReason: $enumDecode(
-          _$ReaderConnectionFailureReasonEnumMap, json['failureReason']),
-      localizedDescription: json['localizedDescription'] as String,
-      localizedTitle: json['localizedTitle'] as String,
-      recoverySuggestion: $enumDecode(
-          _$ReaderConnectionFailureRecoverySuggestionEnumMap,
-          json['recoverySuggestion']),
-    );
-
-Map<String, dynamic> _$$ReaderConnectionFailureInfoImplToJson(
-        _$ReaderConnectionFailureInfoImpl instance) =>
-    <String, dynamic>{
-      'failureReason':
-          _$ReaderConnectionFailureReasonEnumMap[instance.failureReason]!,
-      'localizedDescription': instance.localizedDescription,
-      'localizedTitle': instance.localizedTitle,
-      'recoverySuggestion': _$ReaderConnectionFailureRecoverySuggestionEnumMap[
-          instance.recoverySuggestion]!,
-    };
-
-const _$ReaderConnectionFailureReasonEnumMap = {
-  ReaderConnectionFailureReason.deniedByServer: 'deniedByServer',
-  ReaderConnectionFailureReason.genericError: 'genericError',
-  ReaderConnectionFailureReason.maxReadersConnected: 'maxReadersConnected',
-  ReaderConnectionFailureReason.networkTimeout: 'networkTimeout',
-  ReaderConnectionFailureReason.networkTransportError: 'networkTransportError',
-  ReaderConnectionFailureReason.notConnectedToInternet:
-      'notConnectedToInternet',
-  ReaderConnectionFailureReason.readerTimeout: 'readerTimeout',
-  ReaderConnectionFailureReason.revokedByDevice: 'revokedByDevice',
-  ReaderConnectionFailureReason.serverError: 'serverError',
-  ReaderConnectionFailureReason.tapToPayError: 'tapToPayError',
-  ReaderConnectionFailureReason.unknown: 'unknown',
-};
-
-const _$ReaderConnectionFailureRecoverySuggestionEnumMap = {
-  ReaderConnectionFailureRecoverySuggestion.activateAccount: 'activateAccount',
-  ReaderConnectionFailureRecoverySuggestion.contactSupport: 'contactSupport',
-  ReaderConnectionFailureRecoverySuggestion.enablePasscodeToUseTapToPay:
-      'enablePasscodeToUseTapToPay',
-  ReaderConnectionFailureRecoverySuggestion.noSuggestion: 'noSuggestion',
-  ReaderConnectionFailureRecoverySuggestion.reviewTapToPayGuidelines:
-      'reviewTapToPayGuidelines',
-  ReaderConnectionFailureRecoverySuggestion.retry: 'retry',
-};
-
-_$ReaderConnectionInfoImpl _$$ReaderConnectionInfoImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ReaderConnectionInfoImpl(
-      failureInfo: json['failureInfo'] == null
-          ? null
-          : ReaderConnectionFailureInfo.fromJson(
-              json['failureInfo'] as Map<String, dynamic>),
-      state: $enumDecode(_$ReaderConnectionStateEnumMap, json['state']),
-    );
-
-Map<String, dynamic> _$$ReaderConnectionInfoImplToJson(
-        _$ReaderConnectionInfoImpl instance) =>
-    <String, dynamic>{
-      'failureInfo': instance.failureInfo,
-      'state': _$ReaderConnectionStateEnumMap[instance.state]!,
-    };
-
-const _$ReaderConnectionStateEnumMap = {
-  ReaderConnectionState.connected: 'connected',
-  ReaderConnectionState.connecting: 'connecting',
-  ReaderConnectionState.failedToConnect: 'failedToConnect',
-  ReaderConnectionState.notConnected: 'notConnected',
-};
-
 _$ReaderStatusInfoImpl _$$ReaderStatusInfoImplFromJson(
         Map<String, dynamic> json) =>
     _$ReaderStatusInfoImpl(
@@ -717,11 +644,8 @@ const _$ReaderChangeEnumMap = {
   ReaderChange.batteryLevelDidChange: 'batteryLevelDidChange',
   ReaderChange.cardInserted: 'cardInserted',
   ReaderChange.cardRemoved: 'cardRemoved',
-  ReaderChange.connectionDidFail: 'connectionDidFail',
-  ReaderChange.connectionStateDidChange: 'connectionStateDidChange',
   ReaderChange.firmwareUpdateDidFail: 'firmwareUpdateDidFail',
   ReaderChange.firmwareUpdatePercentDidChange: 'firmwareUpdatePercentDidChange',
-  ReaderChange.stateDidChange: 'stateDidChange',
   ReaderChange.changedState: 'changedState',
   ReaderChange.added: 'added',
   ReaderChange.removed: 'removed',

@@ -156,8 +156,6 @@ extension PaymentError {
         switch self {
             case .deviceTimeDoesNotMatchServerTime:
                 return "deviceTimeDoesNotMatchServerTime"
-            case .idempotencyKeyReused:
-                return "idempotencyKeyReused"
             case .invalidPaymentParameters:
                 return "invalidPaymentParameters"
             case .invalidPaymentSource:
