@@ -184,6 +184,12 @@ extension PaymentError {
                 return "unexpected"
             case .unsupportedMode:
                 return "unsupportedMode"
+            case .noNetwork:
+                return "noNetwork"
+            case .trackingConsentIsPending:
+                return "trackingConsentIsPending"
+            case .paymentAttemptIdReused:
+                return "paymentAttemptIdReused"
             default: return "unknown"
         }
     }
