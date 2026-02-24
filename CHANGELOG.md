@@ -1,10 +1,10 @@
-## 2025.12.1
-
-Fix ReaderStatusInfo type issue
-
 ## 2026.2.4
 
 Upgrade native SDKs: Android 2.4.0, iOS: 2.4.0
+
+## 2025.12.1
+
+Fix ReaderStatusInfo type issue
 
 ## 2025.11.2
 
