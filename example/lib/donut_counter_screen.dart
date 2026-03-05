@@ -47,18 +47,6 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
     }
   }
 
-  _onTapToPay() async {
-    print("testing TTP");
-    try {
-      bool isAppleAccountLinked = await _squareMobilePaymentsSdkPlugin
-          .tapToPaySettings
-          .isDeviceCapable();
-      print("isAppleAccountLinked ");
-    } catch (e, stackTrace) {
-      print("Exception reader: $e");
-    }
-  }
-
   void showPaymentDialog(BuildContext context, Payment payment) {
     showDialog(
       context: context,
