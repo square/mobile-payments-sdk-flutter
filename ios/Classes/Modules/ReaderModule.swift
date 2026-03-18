@@ -1,11 +1,14 @@
 import Flutter
 import SquareMobilePaymentsSDK
+#if MOCK_READER_UI_ENABLED
 import MockReaderUI
+#endif
 
 public class ReaderModule {
     private static var globalReaderObserver: ReaderObserverCallback?
     private static var globalPairingHandle: PairingHandle?
 
+    #if MOCK_READER_UI_ENABLED
     static var mockReader: MockReaderUI? = {
         do {
             return try MockReaderUI(for: MobilePaymentsSDK.shared)
@@ -13,6 +16,7 @@ public class ReaderModule {
             return nil
         }
     }()
+    #endif
 
     static func parseTapToPayError(error: NSError, defaultError: String) -> String {
         let tapToPayReaderError = TapToPayReaderError(rawValue: error.code)
@@ -53,17 +57,25 @@ public class ReaderModule {
     }
 
     public static func showMockReaderUI(result: @escaping FlutterResult) {
+        #if MOCK_READER_UI_ENABLED
         do {
             try mockReader?.present()
             result("Mock Reader has been successfully presented.")
         } catch let error {
             result(FlutterError(code: "SHOW_MOCK_READER_UI", message: error.localizedDescription, details: nil))
         }
+        #else
+        result(FlutterError(code: "MOCK_READER_UNAVAILABLE", message: "MockReaderUI is not available. Add MockReaderUI to your Podfile to enable mock reader support.", details: nil))
+        #endif
     }
 
     public static func hideMockReaderUI(result: @escaping FlutterResult) {
+        #if MOCK_READER_UI_ENABLED
         mockReader?.dismiss()
         result("Mock Reader has been successfully hidden.")
+        #else
+        result(FlutterError(code: "MOCK_READER_UNAVAILABLE", message: "MockReaderUI is not available. Add MockReaderUI to your Podfile to enable mock reader support.", details: nil))
+        #endif
     }
 
     public static func linkAppleAccount(result: @escaping FlutterResult) {
