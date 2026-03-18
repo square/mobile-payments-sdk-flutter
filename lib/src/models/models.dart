@@ -16,8 +16,7 @@ class Location with _$Location {
     required String name,
   }) = _Location;
 
-  factory Location.fromJson(Map<String, Object?> json) =>
-      _$LocationFromJson(json);
+  factory Location.fromJson(Map<String, Object?> json) => _$LocationFromJson(json);
 }
 
 @freezed
@@ -56,16 +55,15 @@ class OfflineCard with _$OfflineCard {
     String? lastFourDigits,
   }) = _OfflineCard;
 
-  factory OfflineCard.fromJson(Map<String, Object?> json) =>
-      _$OfflineCardFromJson(json);
+  factory OfflineCard.fromJson(Map<String, Object?> json) => _$OfflineCardFromJson(json);
 }
 
 @freezed
 class CardPaymentDetails with _$CardPaymentDetails {
   const factory CardPaymentDetails({
-    required String applicationIdentifier,
-    required String applicationName,
-    required String authorizationCode,
+    required String? applicationIdentifier,
+    required String? applicationName,
+    required String? authorizationCode,
     required Card card,
     required EntryMethod entryMethod,
     required CardPaymentStatus status,
@@ -83,8 +81,7 @@ class CardInputMethods with _$CardInputMethods {
     required int swipe,
   }) = _CardInputMethods;
 
-  factory CardInputMethods.fromJson(Map<String, Object?> json) =>
-      _$CardInputMethodsFromJson(json);
+  factory CardInputMethods.fromJson(Map<String, Object?> json) => _$CardInputMethodsFromJson(json);
 }
 
 /// Reader objects
@@ -140,8 +137,7 @@ class ReaderInfo with _$ReaderInfo {
     required List<CardInputMethod> supportedInputMethods,
   }) = _ReaderInfo;
 
-  factory ReaderInfo.fromJson(Map<String, Object?> json) =>
-      _$ReaderInfoFromJson(json);
+  factory ReaderInfo.fromJson(Map<String, Object?> json) => _$ReaderInfoFromJson(json);
 }
 
 @freezed
@@ -151,8 +147,7 @@ class PromptParameters with _$PromptParameters {
     required PromptMode mode,
   }) = _PromptParameters;
 
-  factory PromptParameters.fromJson(Map<String, Object?> json) =>
-      _$PromptParametersFromJson(json);
+  factory PromptParameters.fromJson(Map<String, Object?> json) => _$PromptParametersFromJson(json);
 }
 
 /// Payments
@@ -170,16 +165,16 @@ class Payment with _$Payment {
     required SourceType sourceType,
     Money? tipMoney,
     required Money totalMoney,
+    @JsonKey(name: 'cardDetails') CardPaymentDetails? cardPaymentDetails,
     required DateTime updatedAt,
   }) = _Payment;
 
-  factory Payment.fromJson(Map<String, Object?> json) =>
-      _$PaymentFromJson(json);
+  factory Payment.fromJson(Map<String, Object?> json) => _$PaymentFromJson(json);
 }
 
 @Freezed(unionKey: 'type') // 👈 needed because we have two constructors
 class PaymentParameters with _$PaymentParameters {
-  /// ✅ Current / recommended constructor
+  /// ✅ Current / recommended constructor`
   @FreezedUnionValue('current')
   const factory PaymentParameters({
     int? acceptPartialAuthorization,
@@ -190,7 +185,7 @@ class PaymentParameters with _$PaymentParameters {
     DelayAction? delayAction,
     num? delayDuration,
     required num processingMode,
-    required String paymentAttemptId, 
+    required String paymentAttemptId,
     String? locationId,
     String? note,
     String? orderId,
@@ -199,7 +194,7 @@ class PaymentParameters with _$PaymentParameters {
     Money? tipMoney,
   }) = _PaymentParameters;
 
-  /// ⚠️ Deprecated constructor 
+  /// ⚠️ Deprecated constructor
   @Deprecated('Use the constructor with paymentAttemptId instead.')
   @FreezedUnionValue('legacy')
   const factory PaymentParameters.legacy({
@@ -211,7 +206,7 @@ class PaymentParameters with _$PaymentParameters {
     DelayAction? delayAction,
     num? delayDuration,
     required num processingMode,
-    required String idempotencyKey, 
+    required String idempotencyKey,
     String? locationId,
     String? note,
     String? orderId,
@@ -243,8 +238,7 @@ class OnlinePayment with _$OnlinePayment {
     required String updatedAt,
   }) = _OnlinePayment;
 
-  factory OnlinePayment.fromJson(Map<String, Object?> json) =>
-      _$OnlinePaymentFromJson(json);
+  factory OnlinePayment.fromJson(Map<String, Object?> json) => _$OnlinePaymentFromJson(json);
 }
 
 @freezed
@@ -266,8 +260,7 @@ class OfflinePayment with _$OfflinePayment {
     DateTime? uploadedAt,
   }) = _OfflinePayment;
 
-  factory OfflinePayment.fromJson(Map<String, dynamic> json) =>
-      _$OfflinePaymentFromJson(json);
+  factory OfflinePayment.fromJson(Map<String, dynamic> json) => _$OfflinePaymentFromJson(json);
 }
 
 @freezed
@@ -296,9 +289,8 @@ class ReaderCallbackReference {
 
 @freezed
 class ReaderChangedEvent with _$ReaderChangedEvent {
-  const factory ReaderChangedEvent(
-      {required ReaderInfo reader,
-      required ReaderChange change}) = _ReaderChangedEvent;
+  const factory ReaderChangedEvent({required ReaderInfo reader, required ReaderChange change}) =
+      _ReaderChangedEvent;
 
   factory ReaderChangedEvent.fromJson(Map<String, Object?> json) =>
       _$ReaderChangedEventFromJson(json);
