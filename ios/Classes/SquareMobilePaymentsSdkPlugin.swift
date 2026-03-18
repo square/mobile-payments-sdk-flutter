@@ -43,6 +43,8 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin, FlutterStre
       AuthModule.deauthorize(result: result)
     case "getAuthorizationState":
       AuthModule.getAuthorizationState(result: result)
+    case "getAuthorizedLocation":
+      AuthModule.getAuthorizedLocation(result: result)
     case "showMockReaderUI":
       ReaderModule.showMockReaderUI(result: result)
     case "hideMockReaderUI":
