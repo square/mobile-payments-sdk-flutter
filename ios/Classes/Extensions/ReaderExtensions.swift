@@ -42,27 +42,6 @@ extension CardInputMethods {
     }
 }
 
-extension ReaderState {
-    func toName() -> String {
-        return switch self {
-        case .connecting:
-            "connecting"
-        case .disabled:
-            "disabled"
-        case .disconnected:
-            "disconnected"
-        case .failedToConnect:
-            "failedToConnect"
-        case .ready:
-            "ready"
-        case .updatingFirmware:
-            "updatingFirmware"
-        default:
-            "unknown"
-        }
-    }
-}
-
 extension ReaderModel {
     func toName() -> String {
         return switch self {
@@ -88,94 +67,6 @@ extension ReaderFirmwareInfo {
             "failureReason" : failureReason?.localizedDescription ?? NSNull(),
             "updatePercentage" : updatePercentage,
             "version" : version
-        ]
-    }
-}
-
-extension ReaderConnectionFailureReason {
-    func toName() -> String {
-        return switch self {
-        case .deniedByServer:
-            "deniedByServer"
-        case .genericError:
-            "genericError"
-        case .maxReadersConnected:
-            "maxReadersConnected"
-        case .networkTimeout:
-            "networkTimeout"
-        case .networkTransportError:
-            "networkTransportError"
-        case .notConnectedToInternet:
-            "notConnectedToInternet"
-        case .readerTimeout:
-            "readerTimeout"
-        case .revokedByDevice:
-            "revokedByDevice"
-        case .serverError:
-            "serverError"
-        case .tapToPayError:
-            "tapToPayError"
-        case .unknown:
-            "unknown"
-        default : "unknown"
-        }
-    }
-}
-
-extension ReaderConnectionFailureRecoverySuggestion {
-    func toName() -> String {
-        return switch self {
-        case .activateAccount:
-            "activateAccount"
-        case .contactSupport:
-            "contactSupport"
-        case .enablePasscodeToUseTapToPay:
-            "enablePasscodeToUseTapToPay"
-        case .noSuggestion:
-            "noSuggestion"
-        case .retry:
-            "retry"
-        case .reviewTapToPayGuidelines:
-            "reviewTapToPayGuidelines"
-        default:
-            "unknown"
-        }
-    }
-}
-
-extension ReaderConnectionFailureInfo {
-    func toMap() -> NSDictionary {
-        return [
-            "failureReason" : failureReason.toName(),
-            "localizedDescription" : localizedDescription,
-            "localizedTitle" : localizedTitle,
-            "recoverySuggestion": recoverySuggestion.toName()
-        ]
-    }
-}
-
-extension ReaderConnectionState {
-    func toName() -> String {
-        return switch self {
-        case .connected:
-            "connected"
-        case .connecting:
-            "connecting"
-        case .failedToConnect:
-            "failedToConnect"
-        case .notConnected:
-            "notConnected"
-        default:
-            "unknown"
-        }
-    }
-}
-
-extension ReaderConnectionInfo {
-    func toMap() -> NSDictionary {
-        return [
-            "failureInfo" : failureInfo?.toMap() ?? NSNull(),
-            "state" : state.toName()
         ]
     }
 }
@@ -293,16 +184,10 @@ extension ReaderChange {
             "cardInserted"
         case .cardRemoved:
             "cardRemoved"
-        case .connectionDidFail:
-            "connectionDidFail"
-        case .connectionStateDidChange:
-            "connectionStateDidChange"
         case .firmwareUpdateDidFail:
             "firmwareUpdateDidFail"
         case .firmwareUpdatePercentDidChange:
             "firmwareUpdatePercentDidChange"
-        case .stateDidChange:
-            "stateDidChange"
         default:
             "unknown"
         }

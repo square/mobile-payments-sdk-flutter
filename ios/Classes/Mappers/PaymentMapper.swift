@@ -39,13 +39,6 @@ public class PaymentMapper {
                 processingMode: ProcessingMode(rawValue: processingMode)!
             )
         }
-        else if let idempotencyKey = paymentParameters["idempotencyKey"] as? String {
-            paymentParams = PaymentParameters(
-                idempotencyKey: idempotencyKey,
-                amountMoney: money,
-                processingMode: ProcessingMode(rawValue: processingMode)!
-            )
-        }
         
         guard let paymentParams
         else {
