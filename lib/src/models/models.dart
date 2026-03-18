@@ -101,30 +101,6 @@ class ReaderBatteryStatus with _$ReaderBatteryStatus {
 }
 
 @freezed
-class ReaderConnectionFailureInfo with _$ReaderConnectionFailureInfo {
-  const factory ReaderConnectionFailureInfo({
-    required ReaderConnectionFailureReason failureReason,
-    required String localizedDescription,
-    required String localizedTitle,
-    required ReaderConnectionFailureRecoverySuggestion recoverySuggestion,
-  }) = _ReaderConnectionFailureInfo;
-
-  factory ReaderConnectionFailureInfo.fromJson(Map<String, Object?> json) =>
-      _$ReaderConnectionFailureInfoFromJson(json);
-}
-
-@freezed
-class ReaderConnectionInfo with _$ReaderConnectionInfo {
-  const factory ReaderConnectionInfo({
-    ReaderConnectionFailureInfo? failureInfo,
-    required ReaderConnectionState state,
-  }) = _ReaderConnectionInfo;
-
-  factory ReaderConnectionInfo.fromJson(Map<String, Object?> json) =>
-      _$ReaderConnectionInfoFromJson(json);
-}
-
-@freezed
 class ReaderStatusInfo with _$ReaderStatusInfo{
   const factory ReaderStatusInfo({
     required ReaderStatusInfoStatus status,
