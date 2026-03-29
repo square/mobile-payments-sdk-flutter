@@ -42,7 +42,6 @@ enum PaymentErrorCode {
   missingParameters,
   notRootViewController,
   deviceTimeDoesNotMatchServerTime,
-  idempotencyKeyReused,
   invalidPaymentParameters,
   invalidPaymentSource,
   locationPermissionNeeded,

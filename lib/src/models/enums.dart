@@ -131,11 +131,8 @@ enum ReaderChange {
   batteryLevelDidChange,
   cardInserted,
   cardRemoved,
-  connectionDidFail,
-  connectionStateDidChange,
   firmwareUpdateDidFail,
   firmwareUpdatePercentDidChange,
-  stateDidChange,
   //android
   changedState,
   added,
@@ -143,22 +140,6 @@ enum ReaderChange {
   batteryThreshold,
   batteryCharging,
   firmwareProgress,
-}
-
-enum ReaderConnectionFailureRecoverySuggestion {
-  activateAccount,
-  contactSupport,
-  enablePasscodeToUseTapToPay,
-  noSuggestion,
-  reviewTapToPayGuidelines,
-  retry,
-}
-
-enum ReaderConnectionState {
-  connected,
-  connecting,
-  failedToConnect,
-  notConnected,
 }
 
 enum ReaderFirmwareUpdateError {
@@ -215,29 +196,6 @@ enum ReaderModel {
   stand,
   tapToPay,
   unknown,
-}
-
-enum ReaderConnectionFailureReason {
-  deniedByServer,
-  genericError,
-  maxReadersConnected,
-  networkTimeout,
-  networkTransportError,
-  notConnectedToInternet,
-  readerTimeout,
-  revokedByDevice,
-  serverError,
-  tapToPayError,
-  unknown,
-}
-
-enum ReaderState {
-  connecting,
-  disabled,
-  disconnected,
-  failedToConnect,
-  ready,
-  updatingFirmware,
 }
 
 enum OfflineStatus {
