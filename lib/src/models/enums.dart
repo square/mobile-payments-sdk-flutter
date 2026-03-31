@@ -140,6 +140,7 @@ enum ReaderChange {
   batteryThreshold,
   batteryCharging,
   firmwareProgress,
+  unknown
 }
 
 enum ReaderFirmwareUpdateError {

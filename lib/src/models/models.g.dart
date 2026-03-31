@@ -652,4 +652,5 @@ const _$ReaderChangeEnumMap = {
   ReaderChange.batteryThreshold: 'batteryThreshold',
   ReaderChange.batteryCharging: 'batteryCharging',
   ReaderChange.firmwareProgress: 'firmwareProgress',
+  ReaderChange.unknown: 'unknown',
 };
