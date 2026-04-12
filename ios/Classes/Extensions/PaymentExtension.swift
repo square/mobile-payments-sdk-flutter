@@ -42,6 +42,7 @@ extension OnlinePayment {
         return [
             "amountMoney": amountMoney.toMap(),
             "appFeeMoney" : appFeeMoney?.toMap(),
+            "cardDetails": cardDetails?.toMap(),
             "createdAt" : createdAt.ISO8601Format(),
             "id" : id,
             "locationId" : locationID,
@@ -51,6 +52,55 @@ extension OnlinePayment {
             "tipMoney": tipMoney?.toMap(),
             "totalMoney": totalMoney.toMap(),
             "updatedAt": updatedAt.ISO8601Format(),
+        ]
+    }
+}
+
+extension CardPaymentDetails {
+    public func toMap() -> [String: Any?] {
+        return [
+            "applicationIdentifier": applicationIdentifier,
+            "applicationName": applicationName,
+            "authorizationCode": authResultCode,
+            "card": card?.toMap(),
+            "entryMethod": entryMethod.getName(),
+            "status": status.getName(),
+        ]
+    }
+}
+
+extension CardPaymentStatus {
+    func getName() -> String {
+        switch self {
+            case .authorized: return "authorized"
+            case .captured: return "captured"
+            case .voided: return "voided"
+            case .failed: return "failed"
+            default: return "unknown"
+        }
+    }
+}
+
+extension CardCoBrand {
+    func getName() -> String {
+        switch self {
+            case .afterpay: return "afterpay"
+            case .none: return "none"
+            default: return "unknown"
+        }
+    }
+}
+
+extension Card {
+    public func toMap() -> [String: Any?] {
+        return [
+            "brand": cardBrand.getName(),
+            "cardholderName": cardholderName,
+            "coBrand": coBrand.getName(),
+            "expirationMonth": expMonth,
+            "expirationYear": expYear,
+            "id": id,
+            "lastFourDigits": last4,
         ]
     }
 }

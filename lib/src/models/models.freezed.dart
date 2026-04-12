@@ -388,8 +388,10 @@ Card _$CardFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Card {
+  @JsonKey(unknownEnumValue: CardBrand.unknown)
   CardBrand get brand => throw _privateConstructorUsedError;
   String? get cardholderName => throw _privateConstructorUsedError;
+  @JsonKey(unknownEnumValue: CardCoBrand.unknown)
   CardCoBrand get coBrand => throw _privateConstructorUsedError;
   num get expirationMonth => throw _privateConstructorUsedError;
   num get expirationYear => throw _privateConstructorUsedError;
@@ -411,9 +413,9 @@ abstract class $CardCopyWith<$Res> {
       _$CardCopyWithImpl<$Res, Card>;
   @useResult
   $Res call(
-      {CardBrand brand,
+      {@JsonKey(unknownEnumValue: CardBrand.unknown) CardBrand brand,
       String? cardholderName,
-      CardCoBrand coBrand,
+      @JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand coBrand,
       num expirationMonth,
       num expirationYear,
       String? id,
@@ -484,9 +486,9 @@ abstract class _$$CardImplCopyWith<$Res> implements $CardCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {CardBrand brand,
+      {@JsonKey(unknownEnumValue: CardBrand.unknown) CardBrand brand,
       String? cardholderName,
-      CardCoBrand coBrand,
+      @JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand coBrand,
       num expirationMonth,
       num expirationYear,
       String? id,
@@ -550,9 +552,9 @@ class __$$CardImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CardImpl with DiagnosticableTreeMixin implements _Card {
   const _$CardImpl(
-      {required this.brand,
+      {@JsonKey(unknownEnumValue: CardBrand.unknown) required this.brand,
       this.cardholderName,
-      required this.coBrand,
+      @JsonKey(unknownEnumValue: CardCoBrand.unknown) required this.coBrand,
       this.expirationMonth = 0,
       this.expirationYear = 0,
       this.id,
@@ -562,10 +564,12 @@ class _$CardImpl with DiagnosticableTreeMixin implements _Card {
       _$$CardImplFromJson(json);
 
   @override
+  @JsonKey(unknownEnumValue: CardBrand.unknown)
   final CardBrand brand;
   @override
   final String? cardholderName;
   @override
+  @JsonKey(unknownEnumValue: CardCoBrand.unknown)
   final CardCoBrand coBrand;
   @override
   @JsonKey()
@@ -638,8 +642,10 @@ class _$CardImpl with DiagnosticableTreeMixin implements _Card {
 
 abstract class _Card implements Card {
   const factory _Card(
-      {required final CardBrand brand,
+      {@JsonKey(unknownEnumValue: CardBrand.unknown)
+      required final CardBrand brand,
       final String? cardholderName,
+      @JsonKey(unknownEnumValue: CardCoBrand.unknown)
       required final CardCoBrand coBrand,
       final num expirationMonth,
       final num expirationYear,
@@ -649,10 +655,12 @@ abstract class _Card implements Card {
   factory _Card.fromJson(Map<String, dynamic> json) = _$CardImpl.fromJson;
 
   @override
+  @JsonKey(unknownEnumValue: CardBrand.unknown)
   CardBrand get brand;
   @override
   String? get cardholderName;
   @override
+  @JsonKey(unknownEnumValue: CardCoBrand.unknown)
   CardCoBrand get coBrand;
   @override
   num get expirationMonth;
@@ -901,11 +909,13 @@ CardPaymentDetails _$CardPaymentDetailsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CardPaymentDetails {
-  String get applicationIdentifier => throw _privateConstructorUsedError;
-  String get applicationName => throw _privateConstructorUsedError;
-  String get authorizationCode => throw _privateConstructorUsedError;
-  Card get card => throw _privateConstructorUsedError;
+  String? get applicationIdentifier => throw _privateConstructorUsedError;
+  String? get applicationName => throw _privateConstructorUsedError;
+  String? get authorizationCode => throw _privateConstructorUsedError;
+  Card? get card => throw _privateConstructorUsedError;
+  @JsonKey(unknownEnumValue: EntryMethod.unknown)
   EntryMethod get entryMethod => throw _privateConstructorUsedError;
+  @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
   CardPaymentStatus get status => throw _privateConstructorUsedError;
 
   /// Serializes this CardPaymentDetails to a JSON map.
@@ -925,14 +935,15 @@ abstract class $CardPaymentDetailsCopyWith<$Res> {
       _$CardPaymentDetailsCopyWithImpl<$Res, CardPaymentDetails>;
   @useResult
   $Res call(
-      {String applicationIdentifier,
-      String applicationName,
-      String authorizationCode,
-      Card card,
-      EntryMethod entryMethod,
+      {String? applicationIdentifier,
+      String? applicationName,
+      String? authorizationCode,
+      Card? card,
+      @JsonKey(unknownEnumValue: EntryMethod.unknown) EntryMethod entryMethod,
+      @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
       CardPaymentStatus status});
 
-  $CardCopyWith<$Res> get card;
+  $CardCopyWith<$Res>? get card;
 }
 
 /// @nodoc
@@ -950,30 +961,30 @@ class _$CardPaymentDetailsCopyWithImpl<$Res, $Val extends CardPaymentDetails>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? applicationIdentifier = null,
-    Object? applicationName = null,
-    Object? authorizationCode = null,
-    Object? card = null,
+    Object? applicationIdentifier = freezed,
+    Object? applicationName = freezed,
+    Object? authorizationCode = freezed,
+    Object? card = freezed,
     Object? entryMethod = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
-      applicationIdentifier: null == applicationIdentifier
+      applicationIdentifier: freezed == applicationIdentifier
           ? _value.applicationIdentifier
           : applicationIdentifier // ignore: cast_nullable_to_non_nullable
-              as String,
-      applicationName: null == applicationName
+              as String?,
+      applicationName: freezed == applicationName
           ? _value.applicationName
           : applicationName // ignore: cast_nullable_to_non_nullable
-              as String,
-      authorizationCode: null == authorizationCode
+              as String?,
+      authorizationCode: freezed == authorizationCode
           ? _value.authorizationCode
           : authorizationCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      card: null == card
+              as String?,
+      card: freezed == card
           ? _value.card
           : card // ignore: cast_nullable_to_non_nullable
-              as Card,
+              as Card?,
       entryMethod: null == entryMethod
           ? _value.entryMethod
           : entryMethod // ignore: cast_nullable_to_non_nullable
@@ -989,8 +1000,12 @@ class _$CardPaymentDetailsCopyWithImpl<$Res, $Val extends CardPaymentDetails>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CardCopyWith<$Res> get card {
-    return $CardCopyWith<$Res>(_value.card, (value) {
+  $CardCopyWith<$Res>? get card {
+    if (_value.card == null) {
+      return null;
+    }
+
+    return $CardCopyWith<$Res>(_value.card!, (value) {
       return _then(_value.copyWith(card: value) as $Val);
     });
   }
@@ -1005,15 +1020,16 @@ abstract class _$$CardPaymentDetailsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String applicationIdentifier,
-      String applicationName,
-      String authorizationCode,
-      Card card,
-      EntryMethod entryMethod,
+      {String? applicationIdentifier,
+      String? applicationName,
+      String? authorizationCode,
+      Card? card,
+      @JsonKey(unknownEnumValue: EntryMethod.unknown) EntryMethod entryMethod,
+      @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
       CardPaymentStatus status});
 
   @override
-  $CardCopyWith<$Res> get card;
+  $CardCopyWith<$Res>? get card;
 }
 
 /// @nodoc
@@ -1029,30 +1045,30 @@ class __$$CardPaymentDetailsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? applicationIdentifier = null,
-    Object? applicationName = null,
-    Object? authorizationCode = null,
-    Object? card = null,
+    Object? applicationIdentifier = freezed,
+    Object? applicationName = freezed,
+    Object? authorizationCode = freezed,
+    Object? card = freezed,
     Object? entryMethod = null,
     Object? status = null,
   }) {
     return _then(_$CardPaymentDetailsImpl(
-      applicationIdentifier: null == applicationIdentifier
+      applicationIdentifier: freezed == applicationIdentifier
           ? _value.applicationIdentifier
           : applicationIdentifier // ignore: cast_nullable_to_non_nullable
-              as String,
-      applicationName: null == applicationName
+              as String?,
+      applicationName: freezed == applicationName
           ? _value.applicationName
           : applicationName // ignore: cast_nullable_to_non_nullable
-              as String,
-      authorizationCode: null == authorizationCode
+              as String?,
+      authorizationCode: freezed == authorizationCode
           ? _value.authorizationCode
           : authorizationCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      card: null == card
+              as String?,
+      card: freezed == card
           ? _value.card
           : card // ignore: cast_nullable_to_non_nullable
-              as Card,
+              as Card?,
       entryMethod: null == entryMethod
           ? _value.entryMethod
           : entryMethod // ignore: cast_nullable_to_non_nullable
@@ -1071,27 +1087,30 @@ class _$CardPaymentDetailsImpl
     with DiagnosticableTreeMixin
     implements _CardPaymentDetails {
   const _$CardPaymentDetailsImpl(
-      {required this.applicationIdentifier,
-      required this.applicationName,
-      required this.authorizationCode,
-      required this.card,
-      required this.entryMethod,
+      {this.applicationIdentifier,
+      this.applicationName,
+      this.authorizationCode,
+      this.card,
+      @JsonKey(unknownEnumValue: EntryMethod.unknown) required this.entryMethod,
+      @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
       required this.status});
 
   factory _$CardPaymentDetailsImpl.fromJson(Map<String, dynamic> json) =>
       _$$CardPaymentDetailsImplFromJson(json);
 
   @override
-  final String applicationIdentifier;
+  final String? applicationIdentifier;
   @override
-  final String applicationName;
+  final String? applicationName;
   @override
-  final String authorizationCode;
+  final String? authorizationCode;
   @override
-  final Card card;
+  final Card? card;
   @override
+  @JsonKey(unknownEnumValue: EntryMethod.unknown)
   final EntryMethod entryMethod;
   @override
+  @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
   final CardPaymentStatus status;
 
   @override
@@ -1153,27 +1172,31 @@ class _$CardPaymentDetailsImpl
 
 abstract class _CardPaymentDetails implements CardPaymentDetails {
   const factory _CardPaymentDetails(
-      {required final String applicationIdentifier,
-      required final String applicationName,
-      required final String authorizationCode,
-      required final Card card,
+      {final String? applicationIdentifier,
+      final String? applicationName,
+      final String? authorizationCode,
+      final Card? card,
+      @JsonKey(unknownEnumValue: EntryMethod.unknown)
       required final EntryMethod entryMethod,
+      @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
       required final CardPaymentStatus status}) = _$CardPaymentDetailsImpl;
 
   factory _CardPaymentDetails.fromJson(Map<String, dynamic> json) =
       _$CardPaymentDetailsImpl.fromJson;
 
   @override
-  String get applicationIdentifier;
+  String? get applicationIdentifier;
   @override
-  String get applicationName;
+  String? get applicationName;
   @override
-  String get authorizationCode;
+  String? get authorizationCode;
   @override
-  Card get card;
+  Card? get card;
   @override
+  @JsonKey(unknownEnumValue: EntryMethod.unknown)
   EntryMethod get entryMethod;
   @override
+  @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
   CardPaymentStatus get status;
 
   /// Create a copy of CardPaymentDetails
@@ -3100,6 +3123,7 @@ Payment _$PaymentFromJson(Map<String, dynamic> json) {
 mixin _$Payment {
   Money get amountMoney => throw _privateConstructorUsedError;
   Money? get appFeeMoney => throw _privateConstructorUsedError;
+  CardPaymentDetails? get cardDetails => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
   String? get locationId => throw _privateConstructorUsedError;
@@ -3127,6 +3151,7 @@ abstract class $PaymentCopyWith<$Res> {
   $Res call(
       {Money amountMoney,
       Money? appFeeMoney,
+      CardPaymentDetails? cardDetails,
       DateTime createdAt,
       String? id,
       String? locationId,
@@ -3139,6 +3164,7 @@ abstract class $PaymentCopyWith<$Res> {
 
   $MoneyCopyWith<$Res> get amountMoney;
   $MoneyCopyWith<$Res>? get appFeeMoney;
+  $CardPaymentDetailsCopyWith<$Res>? get cardDetails;
   $MoneyCopyWith<$Res>? get tipMoney;
   $MoneyCopyWith<$Res> get totalMoney;
 }
@@ -3160,6 +3186,7 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
   $Res call({
     Object? amountMoney = null,
     Object? appFeeMoney = freezed,
+    Object? cardDetails = freezed,
     Object? createdAt = null,
     Object? id = freezed,
     Object? locationId = freezed,
@@ -3179,6 +3206,10 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
           ? _value.appFeeMoney
           : appFeeMoney // ignore: cast_nullable_to_non_nullable
               as Money?,
+      cardDetails: freezed == cardDetails
+          ? _value.cardDetails
+          : cardDetails // ignore: cast_nullable_to_non_nullable
+              as CardPaymentDetails?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -3246,6 +3277,20 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $CardPaymentDetailsCopyWith<$Res>? get cardDetails {
+    if (_value.cardDetails == null) {
+      return null;
+    }
+
+    return $CardPaymentDetailsCopyWith<$Res>(_value.cardDetails!, (value) {
+      return _then(_value.copyWith(cardDetails: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Payment
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $MoneyCopyWith<$Res>? get tipMoney {
     if (_value.tipMoney == null) {
       return null;
@@ -3277,6 +3322,7 @@ abstract class _$$PaymentImplCopyWith<$Res> implements $PaymentCopyWith<$Res> {
   $Res call(
       {Money amountMoney,
       Money? appFeeMoney,
+      CardPaymentDetails? cardDetails,
       DateTime createdAt,
       String? id,
       String? locationId,
@@ -3291,6 +3337,8 @@ abstract class _$$PaymentImplCopyWith<$Res> implements $PaymentCopyWith<$Res> {
   $MoneyCopyWith<$Res> get amountMoney;
   @override
   $MoneyCopyWith<$Res>? get appFeeMoney;
+  @override
+  $CardPaymentDetailsCopyWith<$Res>? get cardDetails;
   @override
   $MoneyCopyWith<$Res>? get tipMoney;
   @override
@@ -3312,6 +3360,7 @@ class __$$PaymentImplCopyWithImpl<$Res>
   $Res call({
     Object? amountMoney = null,
     Object? appFeeMoney = freezed,
+    Object? cardDetails = freezed,
     Object? createdAt = null,
     Object? id = freezed,
     Object? locationId = freezed,
@@ -3331,6 +3380,10 @@ class __$$PaymentImplCopyWithImpl<$Res>
           ? _value.appFeeMoney
           : appFeeMoney // ignore: cast_nullable_to_non_nullable
               as Money?,
+      cardDetails: freezed == cardDetails
+          ? _value.cardDetails
+          : cardDetails // ignore: cast_nullable_to_non_nullable
+              as CardPaymentDetails?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -3377,6 +3430,7 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
   const _$PaymentImpl(
       {required this.amountMoney,
       this.appFeeMoney,
+      this.cardDetails,
       required this.createdAt,
       this.id,
       this.locationId,
@@ -3394,6 +3448,8 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
   final Money amountMoney;
   @override
   final Money? appFeeMoney;
+  @override
+  final CardPaymentDetails? cardDetails;
   @override
   final DateTime createdAt;
   @override
@@ -3415,7 +3471,7 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Payment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, sourceType: $sourceType, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt)';
+    return 'Payment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cardDetails: $cardDetails, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, sourceType: $sourceType, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt)';
   }
 
   @override
@@ -3425,6 +3481,7 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
       ..add(DiagnosticsProperty('type', 'Payment'))
       ..add(DiagnosticsProperty('amountMoney', amountMoney))
       ..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))
+      ..add(DiagnosticsProperty('cardDetails', cardDetails))
       ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('locationId', locationId))
@@ -3445,6 +3502,8 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
                 other.amountMoney == amountMoney) &&
             (identical(other.appFeeMoney, appFeeMoney) ||
                 other.appFeeMoney == appFeeMoney) &&
+            (identical(other.cardDetails, cardDetails) ||
+                other.cardDetails == cardDetails) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.id, id) || other.id == id) &&
@@ -3469,6 +3528,7 @@ class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
       runtimeType,
       amountMoney,
       appFeeMoney,
+      cardDetails,
       createdAt,
       id,
       locationId,
@@ -3499,6 +3559,7 @@ abstract class _Payment implements Payment {
   const factory _Payment(
       {required final Money amountMoney,
       final Money? appFeeMoney,
+      final CardPaymentDetails? cardDetails,
       required final DateTime createdAt,
       final String? id,
       final String? locationId,
@@ -3515,6 +3576,8 @@ abstract class _Payment implements Payment {
   Money get amountMoney;
   @override
   Money? get appFeeMoney;
+  @override
+  CardPaymentDetails? get cardDetails;
   @override
   DateTime get createdAt;
   @override

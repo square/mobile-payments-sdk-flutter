@@ -160,8 +160,8 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
 
   fun Card.toCardMap(): Map<String, Any?> {
     return mapOf(
-      "brand" to brand.name,
-      "coBrand" to cardCoBrand.name,
+      "brand" to brand.toBrandName(),
+      "coBrand" to cardCoBrand.name.lowercase(),
       "lastFourDigits" to lastFourDigits,
       "expirationMonth" to expirationMonth,
       "expirationYear" to expirationYear,
@@ -196,11 +196,11 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
 
   fun CardPaymentDetails.OnlineCardPaymentDetails.toOnlineDetailsMap(): Map<String, Any?> {
     return mapOf(
-      "status" to status.name,
+      "status" to status.name.lowercase(),
       "card" to card.toCardMap(),
-      "entryMethod" to entryMethod.name,
+      "entryMethod" to entryMethod.toEntryMethodName(),
       "authorizationCode" to authorizationCode,
-      "applicationId" to applicationId,
+      "applicationIdentifier" to applicationId,
       "applicationName" to applicationName,
       "applicationCounter" to applicationCounter,
       "panSequenceNumber" to panSequenceNumber,

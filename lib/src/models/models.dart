@@ -35,9 +35,9 @@ class Money with _$Money {
 @freezed
 class Card with _$Card {
   const factory Card({
-    required CardBrand brand,
+    @JsonKey(unknownEnumValue: CardBrand.unknown) required CardBrand brand,
     String? cardholderName,
-    required CardCoBrand coBrand,
+    @JsonKey(unknownEnumValue: CardCoBrand.unknown) required CardCoBrand coBrand,
     @Default(0) num expirationMonth,
     @Default(0) num expirationYear,
     String? id,
@@ -63,12 +63,12 @@ class OfflineCard with _$OfflineCard {
 @freezed
 class CardPaymentDetails with _$CardPaymentDetails {
   const factory CardPaymentDetails({
-    required String applicationIdentifier,
-    required String applicationName,
-    required String authorizationCode,
-    required Card card,
-    required EntryMethod entryMethod,
-    required CardPaymentStatus status,
+    String? applicationIdentifier,
+    String? applicationName,
+    String? authorizationCode,
+    Card? card,
+    @JsonKey(unknownEnumValue: EntryMethod.unknown) required EntryMethod entryMethod,
+    @JsonKey(unknownEnumValue: CardPaymentStatus.unknown) required CardPaymentStatus status,
   }) = _CardPaymentDetails;
 
   factory CardPaymentDetails.fromJson(Map<String, Object?> json) =>
@@ -186,6 +186,7 @@ class Payment with _$Payment {
   const factory Payment({
     required Money amountMoney,
     Money? appFeeMoney,
+    CardPaymentDetails? cardDetails,
     required DateTime createdAt,
     String? id,
     String? locationId,
