@@ -317,7 +317,6 @@ void main() {
       final result = castToMap(raw);
 
       expect(result['valid'], 'kept');
-      expect(result.containsKey(42), isFalse);
       expect(result.length, 1);
     });
   });

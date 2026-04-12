@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => DonutCounterScreen(),
-        '/permissions': (context) => PermissionsScreen(),
-        '/offline-status': (context) => OfflineStatusScreen()
+        '/': (context) => const DonutCounterScreen(),
+        '/permissions': (context) => const PermissionsScreen(),
+        '/offline-status': (context) => const OfflineStatusScreen()
       },
     );
   }
