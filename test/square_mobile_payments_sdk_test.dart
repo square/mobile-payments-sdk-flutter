@@ -3,6 +3,8 @@ import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk_platform_i
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk_method_channel.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   final SquareMobilePaymentsSdkPlatform initialPlatform =
       SquareMobilePaymentsSdkPlatform.instance;
 
