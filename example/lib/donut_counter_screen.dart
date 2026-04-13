@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:square_mobile_payments_sdk_example/auth_state.dart';
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
+import 'package:square_mobile_payments_sdk/src/models/models.dart';
 import 'package:uuid/uuid.dart';
 
 final uuid = Uuid();
@@ -43,6 +44,18 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
       print("---------------------------------------");
       print("Unexpected error $e");
       print("---------------------------------------");
+    }
+  }
+
+  _onTapToPay() async {
+    print("testing TTP");
+    try {
+      bool isAppleAccountLinked = await _squareMobilePaymentsSdkPlugin
+          .tapToPaySettings
+          .isDeviceCapable();
+      print("isAppleAccountLinked ");
+    } catch (e, stackTrace) {
+      print("Exception reader: $e");
     }
   }
 
