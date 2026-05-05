@@ -1,6 +1,9 @@
-## 2026.4.1
+## 2026.5.1
 
 Upgrade native SDKs: Android 2.5.0, iOS: 2.5.0
+- Updated Android and iOS plugin modules for reader and settings flows.
+- Updated Flutter platform interface and method channel mappings.
+- Regenerated model serialization/freezed files for the 2.5.0 SDK changes.
 
 ## 2026.3.1
 
