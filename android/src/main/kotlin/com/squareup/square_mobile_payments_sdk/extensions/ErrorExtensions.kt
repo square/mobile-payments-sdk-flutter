@@ -15,6 +15,7 @@ fun AuthorizeErrorCode.toAuthorizeErrorCodeName(): String = when (this) {
     AuthorizeErrorCode.NO_NETWORK -> "noNetwork"
     AuthorizeErrorCode.UNSUPPORTED_COUNTRY -> "unsupportedCountry"
     AuthorizeErrorCode.USAGE_ERROR -> "usageError"
+    AuthorizeErrorCode.OBSOLETE_SDK -> "obsoleteSdk"
 }
 
 // settings
@@ -33,4 +34,5 @@ fun PaymentErrorCode.toPaymentErrorCodeName(): String = when (this) {
         PaymentErrorCode.DEVICE_CLOCK_SKEWED -> "deviceClockSkewed"
         PaymentErrorCode.USAGE_ERROR -> "usageError"
         PaymentErrorCode.CONSENT_NOT_PROVIDED -> "consentNotProvided"
+        PaymentErrorCode.OBSOLETE_SDK -> "obsoleteSdk"
 }

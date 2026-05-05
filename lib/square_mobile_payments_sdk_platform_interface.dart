@@ -153,10 +153,24 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
   }
 
   Future<String> getTrackingConsentState() {
-    throw UnimplementedError('getTrackingConsentState() has not been implemented.');
+    throw UnimplementedError(
+        'getTrackingConsentState() has not been implemented.');
   }
 
   Future<void> updateTrackingConsent({required bool granted}) {
-    throw UnimplementedError('updateTrackingConsent() has not been implemented.');
+    throw UnimplementedError(
+        'updateTrackingConsent() has not been implemented.');
+  }
+
+  Future<ReaderSettings> readerSettings() {
+    throw UnimplementedError('readerSettings() has not been implemented.');
+  }
+
+  Future<bool> isShowingSettings() {
+    throw UnimplementedError('isShowingSettings() has not been implemented.');
+  }
+
+  Future<bool> closeSettings() {
+    throw UnimplementedError('closeSettings() has not been implemented.');
   }
 }

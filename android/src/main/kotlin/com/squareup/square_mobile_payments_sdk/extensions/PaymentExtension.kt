@@ -6,8 +6,6 @@ import com.squareup.sdk.mobilepayments.payment.Card
 import com.squareup.sdk.mobilepayments.payment.CardPaymentDetails
 import com.squareup.sdk.mobilepayments.payment.ExternalPaymentDetails
 import com.squareup.sdk.mobilepayments.payment.PaymentProcessingFee
-import com.squareup.sdk.mobilepayments.payment.SquareAccountDetails
-import com.squareup.sdk.mobilepayments.payment.DigitalWalletDetails
 import com.squareup.sdk.mobilepayments.payment.CashPaymentDetails
 
 import java.text.SimpleDateFormat
@@ -23,7 +21,6 @@ fun Payment.SourceType.toName(): String {
     Payment.SourceType.BANK_ACCOUNT -> "bankAccount"
     Payment.SourceType.CARD_ON_FILE -> "cardOnFile"
     Payment.SourceType.SQUARE_ACCOUNT -> "squareAccount"
-    else -> "unknown"
   }
 }
 
@@ -34,7 +31,6 @@ fun Payment.OfflineStatus.toOfflineStatusName(): String {
     Payment.OfflineStatus.FAILED_TO_UPLOAD -> "failedToUpload"
     Payment.OfflineStatus.FAILED_TO_PROCESS -> "failedToProcess"
     Payment.OfflineStatus.PROCESSED -> "processed"
-    else -> "unknown"
   }
 }
 
@@ -45,7 +41,6 @@ fun CardPaymentDetails.EntryMethod.toEntryMethodName(): String {
     CardPaymentDetails.EntryMethod.EMV -> "emv"
     CardPaymentDetails.EntryMethod.CONTACTLESS -> "contactless"
     CardPaymentDetails.EntryMethod.ON_FILE -> "onFile"
-    else -> "unknown"
   }
 }
 
@@ -61,16 +56,10 @@ fun Card.Brand.toBrandName(): String {
     Card.Brand.JCB -> "jcb"
     Card.Brand.CHINA_UNIONPAY -> "chinaUnionPay"
     Card.Brand.SQUARE_GIFT_CARD -> "squareGiftCard"
-    Card.Brand.ALIPAY -> "alipay"
-    Card.Brand.CASH_APP -> "cashApp"
     Card.Brand.EFTPOS -> "eftpos"
     Card.Brand.FELICA -> "felica"
     Card.Brand.INTERAC -> "interac"
     Card.Brand.SQUARE_CAPITAL_CARD -> "squareCapitalCard"
-    Card.Brand.SUICA -> "suica"
-    Card.Brand.ID -> "id"
-    Card.Brand.QUICPAY -> "quicpay"
-    else -> "unknown"
   }
 }
 
@@ -118,10 +107,6 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "teamMemberId" to teamMemberId,
       //"capabilities" to capabilities.toMap(),
       "receiptNumber" to receiptNumber,
-      "remainingBalance" to remainingBalance?.toMoneyMap(),
-      "squareAccountDetails" to squareAccountDetails?.toAccountMap(),
-      "digitalWalletDetails" to digitalWalletDetails?.toWalletMap(),
-
       "totalMoney" to totalMoney?.toMoneyMap()
     )
   }
@@ -171,21 +156,6 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
     )
   }
 
-
-  fun DigitalWalletDetails.toWalletMap(): Map<String, Any?> {
-    return mapOf(
-      "walletBrand" to walletBrand?.name,
-      "buyerId" to buyerId
-    )
-  }
-
-  fun SquareAccountDetails.toAccountMap(): Map<String, Any?> {
-    return mapOf(
-      "paymentSourceToken" to paymentSourceToken,
-      "errors" to errors?.map { it.toErrorDetailsMap() }
-    )
-  }
-
   fun PaymentProcessingFee.toProcessingFeeMap(): Map<String, Any?> {
     return mapOf(
       "effectiveAt" to effectiveAt.time.toString(),
@@ -202,13 +172,8 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "authorizationCode" to authorizationCode,
       "applicationId" to applicationId,
       "applicationName" to applicationName,
-      "applicationCounter" to applicationCounter,
-      "panSequenceNumber" to panSequenceNumber,
       "verificationMethod" to verificationMethod?.name,
       "verificationResults" to verificationResults?.name,
-      "accountType" to accountType?.name,
-      "remainingBalanceAmountMoney" to remainingBalanceAmountMoney?.toMoneyMap(),
-      "felicaSprwdId" to felicaSprwdId
     )
   }
 

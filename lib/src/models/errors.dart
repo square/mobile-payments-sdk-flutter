@@ -21,7 +21,8 @@ enum AuthorizationErrorCode {
   unexpected,
   noNetwork,
   unsupportedCountry,
-  usageError
+  usageError,
+  obsoleteSdk
 }
 
 enum MockReaderUIErrorCode {
@@ -62,7 +63,8 @@ enum PaymentErrorCode {
   deviceClockSkewed,
   usageError,
   consentNotProvided,
-  unknown
+  unknown,
+  obsoleteSdk
 }
 
 enum OfflinePaymentQueueErrorCode {

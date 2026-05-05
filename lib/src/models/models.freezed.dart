@@ -6050,3 +6050,392 @@ abstract class _ReaderChangedEvent implements ReaderChangedEvent {
   _$$ReaderChangedEventImplCopyWith<_$ReaderChangedEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+TimeOfDay _$TimeOfDayFromJson(Map<String, dynamic> json) {
+  return _TimeOfDay.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TimeOfDay {
+  int get hour => throw _privateConstructorUsedError;
+  int get minute => throw _privateConstructorUsedError;
+
+  /// Serializes this TimeOfDay to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of TimeOfDay
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $TimeOfDayCopyWith<TimeOfDay> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TimeOfDayCopyWith<$Res> {
+  factory $TimeOfDayCopyWith(TimeOfDay value, $Res Function(TimeOfDay) then) =
+      _$TimeOfDayCopyWithImpl<$Res, TimeOfDay>;
+  @useResult
+  $Res call({int hour, int minute});
+}
+
+/// @nodoc
+class _$TimeOfDayCopyWithImpl<$Res, $Val extends TimeOfDay>
+    implements $TimeOfDayCopyWith<$Res> {
+  _$TimeOfDayCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of TimeOfDay
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? hour = null,
+    Object? minute = null,
+  }) {
+    return _then(_value.copyWith(
+      hour: null == hour
+          ? _value.hour
+          : hour // ignore: cast_nullable_to_non_nullable
+              as int,
+      minute: null == minute
+          ? _value.minute
+          : minute // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$TimeOfDayImplCopyWith<$Res>
+    implements $TimeOfDayCopyWith<$Res> {
+  factory _$$TimeOfDayImplCopyWith(
+          _$TimeOfDayImpl value, $Res Function(_$TimeOfDayImpl) then) =
+      __$$TimeOfDayImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int hour, int minute});
+}
+
+/// @nodoc
+class __$$TimeOfDayImplCopyWithImpl<$Res>
+    extends _$TimeOfDayCopyWithImpl<$Res, _$TimeOfDayImpl>
+    implements _$$TimeOfDayImplCopyWith<$Res> {
+  __$$TimeOfDayImplCopyWithImpl(
+      _$TimeOfDayImpl _value, $Res Function(_$TimeOfDayImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TimeOfDay
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? hour = null,
+    Object? minute = null,
+  }) {
+    return _then(_$TimeOfDayImpl(
+      hour: null == hour
+          ? _value.hour
+          : hour // ignore: cast_nullable_to_non_nullable
+              as int,
+      minute: null == minute
+          ? _value.minute
+          : minute // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$TimeOfDayImpl with DiagnosticableTreeMixin implements _TimeOfDay {
+  const _$TimeOfDayImpl({required this.hour, required this.minute});
+
+  factory _$TimeOfDayImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TimeOfDayImplFromJson(json);
+
+  @override
+  final int hour;
+  @override
+  final int minute;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'TimeOfDay(hour: $hour, minute: $minute)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'TimeOfDay'))
+      ..add(DiagnosticsProperty('hour', hour))
+      ..add(DiagnosticsProperty('minute', minute));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TimeOfDayImpl &&
+            (identical(other.hour, hour) || other.hour == hour) &&
+            (identical(other.minute, minute) || other.minute == minute));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, hour, minute);
+
+  /// Create a copy of TimeOfDay
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TimeOfDayImplCopyWith<_$TimeOfDayImpl> get copyWith =>
+      __$$TimeOfDayImplCopyWithImpl<_$TimeOfDayImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TimeOfDayImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TimeOfDay implements TimeOfDay {
+  const factory _TimeOfDay(
+      {required final int hour, required final int minute}) = _$TimeOfDayImpl;
+
+  factory _TimeOfDay.fromJson(Map<String, dynamic> json) =
+      _$TimeOfDayImpl.fromJson;
+
+  @override
+  int get hour;
+  @override
+  int get minute;
+
+  /// Create a copy of TimeOfDay
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TimeOfDayImplCopyWith<_$TimeOfDayImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ReaderSettings _$ReaderSettingsFromJson(Map<String, dynamic> json) {
+  return _ReaderSettings.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ReaderSettings {
+  bool get isReducedChargingModeEnabled => throw _privateConstructorUsedError;
+  TimeOfDay? get preferredFirmwareUpdateTime =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this ReaderSettings to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ReaderSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ReaderSettingsCopyWith<ReaderSettings> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ReaderSettingsCopyWith<$Res> {
+  factory $ReaderSettingsCopyWith(
+          ReaderSettings value, $Res Function(ReaderSettings) then) =
+      _$ReaderSettingsCopyWithImpl<$Res, ReaderSettings>;
+  @useResult
+  $Res call(
+      {bool isReducedChargingModeEnabled,
+      TimeOfDay? preferredFirmwareUpdateTime});
+
+  $TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime;
+}
+
+/// @nodoc
+class _$ReaderSettingsCopyWithImpl<$Res, $Val extends ReaderSettings>
+    implements $ReaderSettingsCopyWith<$Res> {
+  _$ReaderSettingsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ReaderSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isReducedChargingModeEnabled = null,
+    Object? preferredFirmwareUpdateTime = freezed,
+  }) {
+    return _then(_value.copyWith(
+      isReducedChargingModeEnabled: null == isReducedChargingModeEnabled
+          ? _value.isReducedChargingModeEnabled
+          : isReducedChargingModeEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      preferredFirmwareUpdateTime: freezed == preferredFirmwareUpdateTime
+          ? _value.preferredFirmwareUpdateTime
+          : preferredFirmwareUpdateTime // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay?,
+    ) as $Val);
+  }
+
+  /// Create a copy of ReaderSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime {
+    if (_value.preferredFirmwareUpdateTime == null) {
+      return null;
+    }
+
+    return $TimeOfDayCopyWith<$Res>(_value.preferredFirmwareUpdateTime!,
+        (value) {
+      return _then(_value.copyWith(preferredFirmwareUpdateTime: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$ReaderSettingsImplCopyWith<$Res>
+    implements $ReaderSettingsCopyWith<$Res> {
+  factory _$$ReaderSettingsImplCopyWith(_$ReaderSettingsImpl value,
+          $Res Function(_$ReaderSettingsImpl) then) =
+      __$$ReaderSettingsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool isReducedChargingModeEnabled,
+      TimeOfDay? preferredFirmwareUpdateTime});
+
+  @override
+  $TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime;
+}
+
+/// @nodoc
+class __$$ReaderSettingsImplCopyWithImpl<$Res>
+    extends _$ReaderSettingsCopyWithImpl<$Res, _$ReaderSettingsImpl>
+    implements _$$ReaderSettingsImplCopyWith<$Res> {
+  __$$ReaderSettingsImplCopyWithImpl(
+      _$ReaderSettingsImpl _value, $Res Function(_$ReaderSettingsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ReaderSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isReducedChargingModeEnabled = null,
+    Object? preferredFirmwareUpdateTime = freezed,
+  }) {
+    return _then(_$ReaderSettingsImpl(
+      isReducedChargingModeEnabled: null == isReducedChargingModeEnabled
+          ? _value.isReducedChargingModeEnabled
+          : isReducedChargingModeEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      preferredFirmwareUpdateTime: freezed == preferredFirmwareUpdateTime
+          ? _value.preferredFirmwareUpdateTime
+          : preferredFirmwareUpdateTime // ignore: cast_nullable_to_non_nullable
+              as TimeOfDay?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ReaderSettingsImpl
+    with DiagnosticableTreeMixin
+    implements _ReaderSettings {
+  const _$ReaderSettingsImpl(
+      {required this.isReducedChargingModeEnabled,
+      this.preferredFirmwareUpdateTime});
+
+  factory _$ReaderSettingsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReaderSettingsImplFromJson(json);
+
+  @override
+  final bool isReducedChargingModeEnabled;
+  @override
+  final TimeOfDay? preferredFirmwareUpdateTime;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ReaderSettings(isReducedChargingModeEnabled: $isReducedChargingModeEnabled, preferredFirmwareUpdateTime: $preferredFirmwareUpdateTime)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ReaderSettings'))
+      ..add(DiagnosticsProperty(
+          'isReducedChargingModeEnabled', isReducedChargingModeEnabled))
+      ..add(DiagnosticsProperty(
+          'preferredFirmwareUpdateTime', preferredFirmwareUpdateTime));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReaderSettingsImpl &&
+            (identical(other.isReducedChargingModeEnabled,
+                    isReducedChargingModeEnabled) ||
+                other.isReducedChargingModeEnabled ==
+                    isReducedChargingModeEnabled) &&
+            (identical(other.preferredFirmwareUpdateTime,
+                    preferredFirmwareUpdateTime) ||
+                other.preferredFirmwareUpdateTime ==
+                    preferredFirmwareUpdateTime));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, isReducedChargingModeEnabled, preferredFirmwareUpdateTime);
+
+  /// Create a copy of ReaderSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReaderSettingsImplCopyWith<_$ReaderSettingsImpl> get copyWith =>
+      __$$ReaderSettingsImplCopyWithImpl<_$ReaderSettingsImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ReaderSettingsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ReaderSettings implements ReaderSettings {
+  const factory _ReaderSettings(
+      {required final bool isReducedChargingModeEnabled,
+      final TimeOfDay? preferredFirmwareUpdateTime}) = _$ReaderSettingsImpl;
+
+  factory _ReaderSettings.fromJson(Map<String, dynamic> json) =
+      _$ReaderSettingsImpl.fromJson;
+
+  @override
+  bool get isReducedChargingModeEnabled;
+  @override
+  TimeOfDay? get preferredFirmwareUpdateTime;
+
+  /// Create a copy of ReaderSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ReaderSettingsImplCopyWith<_$ReaderSettingsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

@@ -63,11 +63,21 @@ class SettingsModule {
             val consentState = settingsManager.trackingConsentState
             result.success(consentState.name)
         }
+
         @JvmStatic
         fun updateTrackingConsent(result: MethodChannel.Result, granted: Boolean) {
             settingsManager.updateTrackingConsent(granted)
             result.success(true)
         }
 
+        @JvmStatic
+        fun closeSettings(result: MethodChannel.Result) {
+          result.success(settingsManager.closeSettings())
+        }
+
+        @JvmStatic
+        fun isShowingSettings(result: MethodChannel.Result) {
+          result.success(settingsManager.isShowingSettings())
+        }
     }
 }

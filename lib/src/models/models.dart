@@ -101,7 +101,7 @@ class ReaderBatteryStatus with _$ReaderBatteryStatus {
 }
 
 @freezed
-class ReaderStatusInfo with _$ReaderStatusInfo{
+class ReaderStatusInfo with _$ReaderStatusInfo {
   const factory ReaderStatusInfo({
     required ReaderStatusInfoStatus status,
     ReaderStatusInfoUnavailableReason? unavailableReason,
@@ -190,7 +190,7 @@ class PaymentParameters with _$PaymentParameters {
     DelayAction? delayAction,
     num? delayDuration,
     required num processingMode,
-    required String paymentAttemptId, 
+    required String paymentAttemptId,
     String? locationId,
     String? note,
     String? orderId,
@@ -199,7 +199,7 @@ class PaymentParameters with _$PaymentParameters {
     Money? tipMoney,
   }) = _PaymentParameters;
 
-  /// ⚠️ Deprecated constructor 
+  /// ⚠️ Deprecated constructor
   @Deprecated('Use the constructor with paymentAttemptId instead.')
   @FreezedUnionValue('legacy')
   const factory PaymentParameters.legacy({
@@ -211,7 +211,7 @@ class PaymentParameters with _$PaymentParameters {
     DelayAction? delayAction,
     num? delayDuration,
     required num processingMode,
-    required String idempotencyKey, 
+    required String idempotencyKey,
     String? locationId,
     String? note,
     String? orderId,
@@ -312,4 +312,21 @@ class PairingHandle {
   factory PairingHandle(Future<StopResult> Function() stop) {
     return PairingHandle._(stop);
   }
+}
+
+@freezed
+class TimeOfDay with _$TimeOfDay {
+  const factory TimeOfDay({required int hour, required int minute}) =
+      _TimeOfDay;
+  factory TimeOfDay.fromJson(Map<String, Object?> json) =>
+      _$TimeOfDayFromJson(json);
+}
+
+@freezed
+class ReaderSettings with _$ReaderSettings {
+  const factory ReaderSettings(
+      {required bool isReducedChargingModeEnabled,
+      TimeOfDay? preferredFirmwareUpdateTime}) = _ReaderSettings;
+  factory ReaderSettings.fromJson(Map<String, Object?> json) =>
+      _$ReaderSettingsFromJson(json);
 }

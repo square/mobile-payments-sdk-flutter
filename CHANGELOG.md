@@ -1,3 +1,7 @@
+## 2026.4.1
+
+Upgrade native SDKs: Android 2.5.0, iOS: 2.5.0
+
 ## 2026.3.1
 
 Upgrade native SDKs: Android 2.4.0, iOS: 2.4.0

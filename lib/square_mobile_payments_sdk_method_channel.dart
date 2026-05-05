@@ -28,8 +28,7 @@ class MethodChannelSquareMobilePaymentsSdk
           for (var callback in _readerCallbacks.values) {
             final payload = event["payload"];
             if (payload == null) continue;
-            final changeEvent =
-                ReaderChangedEvent.fromJson(castToMap(payload));
+            final changeEvent = ReaderChangedEvent.fromJson(castToMap(payload));
             callback(changeEvent);
           }
         default:
@@ -238,9 +237,7 @@ class MethodChannelSquareMobilePaymentsSdk
       if (result == null) {
         throw getChannelStateError("getPayments()", "returned null");
       }
-      return result
-          .map((e) => OfflinePayment.fromJson(castToMap(e)))
-          .toList();
+      return result.map((e) => OfflinePayment.fromJson(castToMap(e))).toList();
     } on PlatformException catch (e) {
       throw OfflinePaymentQueueError(e.code, e.message, e.details);
     }
@@ -303,7 +300,8 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<String> getTrackingConsentState() async {
-    final state = await methodChannel.invokeMethod<String>('getTrackingConsentState');
+    final state =
+        await methodChannel.invokeMethod<String>('getTrackingConsentState');
     if (state == null) {
       throw getChannelStateError("getTrackingConsentState()", "returned null");
     }
@@ -330,6 +328,24 @@ class MethodChannelSquareMobilePaymentsSdk
     _readerCallbacks.putIfAbsent(refId, () => callback);
     return ReaderCallbackReference(
         refId, () => removeReaderChangedCallback(refId));
+  }
+
+  @override
+  Future<ReaderSettings> readerSettings() async {
+    final result = await methodChannel.invokeMethod<Map>('readerSettings');
+    return ReaderSettings.fromJson(castToMap(result ?? {}));
+  }
+
+  @override
+  Future<bool> closeSettings() async {
+    final result = await methodChannel.invokeMethod<bool>('closeSettings');
+    return result ?? false;
+  }
+
+  @override
+  Future<bool> isShowingSettings() async {
+    final result = await methodChannel.invokeMethod<bool>('isShowingSettings');
+    return result ?? false;
   }
 
   void _startReaderCallbackIntent() {

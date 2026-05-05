@@ -11,6 +11,12 @@ android {
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
+    packaging {
+        resources {
+            pickFirsts += ['META-INF/versions/9/OSGI-INF/MANIFEST.MF']
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -31,7 +37,7 @@ android {
     }
 
     dependencies {
-        implementation("com.squareup.sdk:mobile-payments-sdk:2.4.0")
+        implementation("com.squareup.sdk:mobile-payments-sdk:2.5.0")
     }
 
     buildTypes {
