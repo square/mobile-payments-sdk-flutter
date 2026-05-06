@@ -1,9 +1,11 @@
 ## 2026.5.1
 
-Upgrade native SDKs: Android 2.5.0, iOS: 2.5.0
-- Updated Android and iOS plugin modules for reader and settings flows.
-- Updated Flutter platform interface and method channel mappings.
-- Regenerated model serialization/freezed files for the 2.5.0 SDK changes.
+* Upgrade Android and iOS native SDK to `2.5.0`
+* Add `SettingsManager.isShowingSettings()` to check whether the Settings screen is currently presented
+* Add `SettingsManager.closeSettings()` to programmatically dismiss the Settings screen
+* Add `ReaderManager.readerSettings()` which returns a new `ReaderSettings` object (`isReducedChargingModeEnabled`, `preferredFirmwareUpdateTime`). Adds a new `TimeOfDay` type (`hour`, `minute`) used by `preferredFirmwareUpdateTime`
+* **Breaking:** `ReaderInfo.firmwareVersion` and `ReaderInfo.firmwarePercent` have been replaced by a single `ReaderInfo.firmwareInfo` object of shape `{ version, updatePercentage }`, mirroring the 2.5.0 native API
+* **Breaking (Android):** Removed `ALIPAY`, `CASH_APP`, `SUICA`, `ID`, and `QUICPAY` from the mapped `Card.Brand` values — these were removed in native SDK `2.5.0`
 
 ## 2026.3.1
 
