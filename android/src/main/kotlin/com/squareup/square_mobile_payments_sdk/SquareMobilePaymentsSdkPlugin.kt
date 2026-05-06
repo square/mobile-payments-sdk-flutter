@@ -92,6 +92,9 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
       "removeReaderChangedCallback" -> ReaderModule.removeReaderChangedCallback(result)
       "pairReader" -> ReaderModule.pairReader(result)
       "stopPairing" -> ReaderModule.stopPairing(result)
+      "readerSettings" -> ReaderModule.readerSettings(result)
+      "closeSettings" -> SettingsModule.closeSettings(result)
+      "isShowingSettings" -> SettingsModule.isShowingSettings(result)
       else -> result.notImplemented()
     }
   }

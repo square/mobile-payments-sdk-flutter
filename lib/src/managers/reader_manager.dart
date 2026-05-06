@@ -36,6 +36,10 @@ class ReaderManager {
     return SquareMobilePaymentsSdkPlatform.instance.isPairingInProgress();
   }
 
+  Future<ReaderSettings> readerSettings() async {
+    return SquareMobilePaymentsSdkPlatform.instance.readerSettings();
+  }
+
   ReaderCallbackReference setReaderChangedCallback(
       FutureOr<void> Function(ReaderChangedEvent event) callback) {
     return SquareMobilePaymentsSdkPlatform.instance

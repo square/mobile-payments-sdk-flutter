@@ -653,3 +653,32 @@ const _$ReaderChangeEnumMap = {
   ReaderChange.batteryCharging: 'batteryCharging',
   ReaderChange.firmwareProgress: 'firmwareProgress',
 };
+
+_$TimeOfDayImpl _$$TimeOfDayImplFromJson(Map<String, dynamic> json) =>
+    _$TimeOfDayImpl(
+      hour: (json['hour'] as num).toInt(),
+      minute: (json['minute'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$TimeOfDayImplToJson(_$TimeOfDayImpl instance) =>
+    <String, dynamic>{
+      'hour': instance.hour,
+      'minute': instance.minute,
+    };
+
+_$ReaderSettingsImpl _$$ReaderSettingsImplFromJson(Map<String, dynamic> json) =>
+    _$ReaderSettingsImpl(
+      isReducedChargingModeEnabled:
+          json['isReducedChargingModeEnabled'] as bool,
+      preferredFirmwareUpdateTime: json['preferredFirmwareUpdateTime'] == null
+          ? null
+          : TimeOfDay.fromJson(
+              json['preferredFirmwareUpdateTime'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$ReaderSettingsImplToJson(
+        _$ReaderSettingsImpl instance) =>
+    <String, dynamic>{
+      'isReducedChargingModeEnabled': instance.isReducedChargingModeEnabled,
+      'preferredFirmwareUpdateTime': instance.preferredFirmwareUpdateTime,
+    };

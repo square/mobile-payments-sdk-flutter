@@ -32,6 +32,13 @@ class SettingsManager {
         .updateTrackingConsent(granted: granted);
   }
 
+  Future<bool> closeSettings() {
+    return SquareMobilePaymentsSdkPlatform.instance.closeSettings();
+  }
+
+  Future<bool> isShowingSettings() {
+    return SquareMobilePaymentsSdkPlatform.instance.isShowingSettings();
+  }
 
   final PaymentSettings paymentSettings = _PaymentSettings();
 }

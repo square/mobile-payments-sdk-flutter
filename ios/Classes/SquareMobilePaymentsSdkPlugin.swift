@@ -128,7 +128,12 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin, FlutterStre
       ReaderModule.pairReader(result: result)
     case "stopPairing":
       ReaderModule.stopPairing(result: result)
-
+    case "readerSettings":
+      ReaderModule.readerSettings(result: result)
+    case "closeSettings":
+      SettingsModule.closeSettings(result: result)
+    case "isShowingSettings":
+      SettingsModule.isShowingSettings(result: result)
     default:
       result(FlutterMethodNotImplemented)
     }

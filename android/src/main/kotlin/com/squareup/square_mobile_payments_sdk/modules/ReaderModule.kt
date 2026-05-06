@@ -8,6 +8,7 @@ import com.squareup.sdk.mobilepayments.cardreader.PairingHandle
 import com.squareup.sdk.mobilepayments.cardreader.PairingHandle.StopResult
 import com.squareup.sdk.mobilepayments.mockreader.ui.MockReaderUI
 import com.squareup.square_mobile_payments_sdk.extensions.toReaderInfoMap
+import com.squareup.square_mobile_payments_sdk.extensions.toReaderSettingsMap
 import com.squareup.square_mobile_payments_sdk.extensions.toChangedEventMap
 import com.squareup.square_mobile_payments_sdk.extensions.toStopResultName
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
@@ -132,6 +133,11 @@ class ReaderModule {
                 globalPairingHandle = null
                 result.success(stopResult?.toStopResultName())
             }
+        }
+
+        @JvmStatic
+        fun readerSettings(result: MethodChannel.Result) {
+            result.success(readerManager.readerSettings.toReaderSettingsMap())
         }
     }
 }

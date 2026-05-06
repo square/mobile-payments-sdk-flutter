@@ -1,9 +1,11 @@
 package com.squareup.square_mobile_payments_sdk.extensions
 
 import com.squareup.sdk.mobilepayments.cardreader.CardEntryMethod
-import com.squareup.sdk.mobilepayments.cardreader.ReaderInfo
-import com.squareup.sdk.mobilepayments.cardreader.ReaderChangedEvent
 import com.squareup.sdk.mobilepayments.cardreader.PairingHandle.StopResult
+import com.squareup.sdk.mobilepayments.cardreader.ReaderChangedEvent
+import com.squareup.sdk.mobilepayments.cardreader.ReaderInfo
+import com.squareup.sdk.mobilepayments.cardreader.ReaderSettings
+import com.squareup.sdk.mobilepayments.core.TimeOfDay
 
 fun ReaderInfo.toReaderInfoMap(): Map<String, Any?> {
     return mapOf(
@@ -13,14 +15,22 @@ fun ReaderInfo.toReaderInfoMap(): Map<String, Any?> {
         "name" to name,
         "batteryStatus" to batteryStatus?.toBatteryStatusMap(),
         "firmwareInfo" to mapOf(
-            "version" to firmwareVersion,
-            "updatePercentage" to (firmwarePercent ?: 0),
+            "version" to firmwareInfo.version,
+            "updatePercentage" to (firmwareInfo.updateStatus.toPercent() ?: 0),
         ),
         "supportedInputMethods" to supportedCardEntryMethods.map { it.toEntryMethodName() },
         "isForgettable" to isForgettable,
         "isBlinkable" to isBlinkable,
         "statusInfo" to status.toStatusMap()
     )
+}
+
+fun ReaderInfo.FirmwareUpdateStatus.toPercent(): Int? {
+   return  when (this) {
+     is ReaderInfo.FirmwareUpdateStatus.InProgress -> this.updatePercentage
+     is ReaderInfo.FirmwareUpdateStatus.None -> null
+     is ReaderInfo.FirmwareUpdateStatus.Pending -> null
+   }
 }
 
 fun ReaderInfo.Status.toStatusMap(): Map<String, Any?> {
@@ -78,18 +88,6 @@ fun ReaderInfo.Model.toModelName(): String {
     ReaderInfo.Model.TAP_TO_PAY -> "tapToPay"
   }
 }
-
-fun ReaderInfo.State.toStateName(): String {
-  return when(this) {
-    is ReaderInfo.State.Ready ->"ready"
-    is ReaderInfo.State.Disabled ->"disabled"
-    is ReaderInfo.State.Connecting ->"connecting"
-    is ReaderInfo.State.Disconnected ->"disconnected"
-    is ReaderInfo.State.FailedToConnect->"failedToConnect"
-    is ReaderInfo.State.UpdatingFirmware ->"updatingFirmware"
-  }
-}
-
 fun ReaderInfo.BatteryStatus.toBatteryStatusMap(): Map<String, Any> {
     return mapOf(
         "isCharging" to isCharging,
@@ -128,4 +126,18 @@ fun StopResult.toStopResultName(): String {
     StopResult.ALREADY_COMPLETE -> "alreadyComplete"
     StopResult.STOPPED -> "stopped"
   }
+}
+
+fun ReaderSettings.toReaderSettingsMap(): Map<String, Any?> {
+  return mapOf (
+    "isReducedChargingModeEnabled" to isReducedChargingModeEnabled,
+    "preferredFirmwareUpdateTime" to preferredFirmwareUpdateTime?.toTimeOfDayMap()
+  )
+}
+
+fun TimeOfDay.toTimeOfDayMap(): Map<String, Int> {
+  return mapOf (
+    "hour" to hour,
+    "minute" to minute
+  )
 }

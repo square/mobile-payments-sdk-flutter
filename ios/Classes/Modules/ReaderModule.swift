@@ -200,6 +200,11 @@ public class ReaderModule {
             }
         }
     }
+
+    public static func readerSettings(result: @escaping FlutterResult) {
+        let settings = MobilePaymentsSDK.shared.readerManager.readerSettings
+        result(settings.toMap())
+    }
 }
 
 class ReaderPairingDelegateImpl: ReaderPairingDelegate {

@@ -64,4 +64,12 @@ public class SettingsModule {
         settingsManager.updateTrackingConsent(withGranted: granted)
         result(true)
     }
+
+    public static func closeSettings(result: @escaping FlutterResult) {
+        result(settingsManager.dismissSettings())
+    }
+    
+    public static func isShowingSettings(result: @escaping FlutterResult) {
+        result(settingsManager.isSettingsPresented)
+    }
 }
