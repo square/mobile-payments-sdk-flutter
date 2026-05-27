@@ -41,20 +41,22 @@ Map<String, dynamic> _$$MoneyImplToJson(_$MoneyImpl instance) =>
     };
 
 _$CardImpl _$$CardImplFromJson(Map<String, dynamic> json) => _$CardImpl(
-      brand: $enumDecode(_$CardBrandEnumMap, json['brand']),
+      brand: $enumDecode(_$CardBrandEnumMap, json['brand'],
+          unknownValue: CardBrand.unknown),
       cardholderName: json['cardholderName'] as String?,
-      coBrand: $enumDecode(_$CardCoBrandEnumMap, json['coBrand']),
+      coBrand: $enumDecodeNullable(_$CardCoBrandEnumMap, json['coBrand'],
+          unknownValue: CardCoBrand.unknown),
       expirationMonth: json['expirationMonth'] as num? ?? 0,
       expirationYear: json['expirationYear'] as num? ?? 0,
       id: json['id'] as String?,
-      lastFourDigits: json['lastFourDigits'] as String,
+      lastFourDigits: json['lastFourDigits'] as String?,
     );
 
 Map<String, dynamic> _$$CardImplToJson(_$CardImpl instance) =>
     <String, dynamic>{
       'brand': _$CardBrandEnumMap[instance.brand]!,
       'cardholderName': instance.cardholderName,
-      'coBrand': _$CardCoBrandEnumMap[instance.coBrand]!,
+      'coBrand': _$CardCoBrandEnumMap[instance.coBrand],
       'expirationMonth': instance.expirationMonth,
       'expirationYear': instance.expirationYear,
       'id': instance.id,
@@ -71,17 +73,11 @@ const _$CardBrandEnumMap = {
   CardBrand.ebt: 'ebt',
   CardBrand.jcb: 'jcb',
   CardBrand.chinaUnionPay: 'chinaUnionPay',
-  CardBrand.unionPayInternational: 'unionPayInternational',
   CardBrand.squareGiftCard: 'squareGiftCard',
-  CardBrand.alipay: 'alipay',
-  CardBrand.cashApp: 'cashApp',
   CardBrand.eftpos: 'eftpos',
   CardBrand.felica: 'felica',
   CardBrand.interac: 'interac',
   CardBrand.squareCapitalCard: 'squareCapitalCard',
-  CardBrand.suica: 'suica',
-  CardBrand.id: 'id',
-  CardBrand.quicpay: 'quicpay',
   CardBrand.unknown: 'unknown',
 };
 
@@ -111,12 +107,16 @@ Map<String, dynamic> _$$OfflineCardImplToJson(_$OfflineCardImpl instance) =>
 _$CardPaymentDetailsImpl _$$CardPaymentDetailsImplFromJson(
         Map<String, dynamic> json) =>
     _$CardPaymentDetailsImpl(
-      applicationIdentifier: json['applicationIdentifier'] as String,
-      applicationName: json['applicationName'] as String,
-      authorizationCode: json['authorizationCode'] as String,
-      card: Card.fromJson(json['card'] as Map<String, dynamic>),
-      entryMethod: $enumDecode(_$EntryMethodEnumMap, json['entryMethod']),
-      status: $enumDecode(_$CardPaymentStatusEnumMap, json['status']),
+      applicationIdentifier: json['applicationIdentifier'] as String?,
+      applicationName: json['applicationName'] as String?,
+      authorizationCode: json['authorizationCode'] as String?,
+      card: json['card'] == null
+          ? null
+          : Card.fromJson(json['card'] as Map<String, dynamic>),
+      entryMethod: $enumDecode(_$EntryMethodEnumMap, json['entryMethod'],
+          unknownValue: EntryMethod.unknown),
+      status: $enumDecodeNullable(_$CardPaymentStatusEnumMap, json['status'],
+          unknownValue: CardPaymentStatus.unknown),
     );
 
 Map<String, dynamic> _$$CardPaymentDetailsImplToJson(
@@ -127,7 +127,7 @@ Map<String, dynamic> _$$CardPaymentDetailsImplToJson(
       'authorizationCode': instance.authorizationCode,
       'card': instance.card,
       'entryMethod': _$EntryMethodEnumMap[instance.entryMethod]!,
-      'status': _$CardPaymentStatusEnumMap[instance.status]!,
+      'status': _$CardPaymentStatusEnumMap[instance.status],
     };
 
 const _$EntryMethodEnumMap = {
@@ -364,6 +364,10 @@ _$PaymentImpl _$$PaymentImplFromJson(Map<String, dynamic> json) =>
       appFeeMoney: json['appFeeMoney'] == null
           ? null
           : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
+      cardDetails: json['cardDetails'] == null
+          ? null
+          : CardPaymentDetails.fromJson(
+              json['cardDetails'] as Map<String, dynamic>),
       createdAt: DateTime.parse(json['createdAt'] as String),
       id: json['id'] as String?,
       locationId: json['locationId'] as String?,
@@ -381,6 +385,7 @@ Map<String, dynamic> _$$PaymentImplToJson(_$PaymentImpl instance) =>
     <String, dynamic>{
       'amountMoney': instance.amountMoney,
       'appFeeMoney': instance.appFeeMoney,
+      'cardDetails': instance.cardDetails,
       'createdAt': instance.createdAt.toIso8601String(),
       'id': instance.id,
       'locationId': instance.locationId,

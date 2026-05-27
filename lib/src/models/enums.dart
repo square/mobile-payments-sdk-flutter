@@ -26,18 +26,12 @@ enum CardBrand {
   ebt,
   jcb,
   chinaUnionPay,
-  unionPayInternational, //unionPayInternational != chinaUnionPay ?
   squareGiftCard,
-  alipay,
-  cashApp,
   eftpos,
   felica,
   interac,
   squareCapitalCard,
-  suica,
-  id,
-  quicpay,
-  unknown,
+  unknown
 }
 
 enum CardCoBrand {
@@ -157,7 +151,6 @@ enum ReaderStatusInfoStatus {
   ready,
 }
 
-
 enum ReaderStatusInfoUnavailableReason {
   internalError,
   bluetoothDisabled,
@@ -187,7 +180,6 @@ enum ReaderStatusInfoUnavailableReason {
   deviceDeveloperMode,
   disabled
 }
-
 
 enum ReaderModel {
   contactlessAndChip,

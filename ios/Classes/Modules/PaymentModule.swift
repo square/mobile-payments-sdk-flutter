@@ -95,7 +95,7 @@ public class PaymentModule: PaymentManagerDelegate {
         if let onlinePayment = payment as? OnlinePayment {
             delegateResult?(onlinePayment.toMap())
         } else if let offlinePayment = payment as? OfflinePayment {
-            delegateResult?(nil)
+            delegateResult?(offlinePayment.toMap())
         } else {
             delegateResult?(nil)
         }

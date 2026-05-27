@@ -63,6 +63,24 @@ fun Card.Brand.toBrandName(): String {
   }
 }
 
+fun Card.CoBrand.toCoBrandName() : String {
+  return when (this) {
+    Card.CoBrand.AFTERPAY -> "afterpay"
+    Card.CoBrand.CLEARPAY -> "clearpay"
+    Card.CoBrand.NONE -> "none"
+    Card.CoBrand.UNKNOWN -> "unknown"
+  }
+}
+
+fun CardPaymentDetails.Status.toStatusName(): String {
+  return when (this) {
+    CardPaymentDetails.Status.AUTHORIZED -> "authorized"
+    CardPaymentDetails.Status.CAPTURED -> "captured"
+    CardPaymentDetails.Status.VOIDED -> "voided"
+    CardPaymentDetails.Status.FAILED -> "failed"
+  }
+}
+
 fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
     return mapOf(
       "createdAt" to createdAt.toISO8601String(),
@@ -74,7 +92,8 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "orderId" to orderId,
       "referenceId" to referenceId,
       "sourceType" to sourceType.toName(), 
-      "cashDetails" to cashDetails?.toCashDetailsMap(), 
+      "cashDetails" to cashDetails?.toCashDetailsMap(),
+      "cardDetails" to cardDetails?.toOfflineDetailsMap(),
       "externalDetails" to externalDetails?.toExternalDetailsMap(),
       "uploadedAt" to uploadedAt?.toISO8601String(),
       "localId" to localId,
@@ -145,8 +164,8 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
 
   fun Card.toCardMap(): Map<String, Any?> {
     return mapOf(
-      "brand" to brand.name,
-      "coBrand" to cardCoBrand.name,
+      "brand" to brand.toBrandName(),
+      "coBrand" to cardCoBrand.toCoBrandName(),
       "lastFourDigits" to lastFourDigits,
       "expirationMonth" to expirationMonth,
       "expirationYear" to expirationYear,
@@ -166,11 +185,11 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
 
   fun CardPaymentDetails.OnlineCardPaymentDetails.toOnlineDetailsMap(): Map<String, Any?> {
     return mapOf(
-      "status" to status.name,
+      "status" to status.toStatusName(),
       "card" to card.toCardMap(),
-      "entryMethod" to entryMethod.name,
+      "entryMethod" to entryMethod.toEntryMethodName(),
       "authorizationCode" to authorizationCode,
-      "applicationId" to applicationId,
+      "applicationIdentifier" to applicationId,
       "applicationName" to applicationName,
       "verificationMethod" to verificationMethod?.name,
       "verificationResults" to verificationResults?.name,
