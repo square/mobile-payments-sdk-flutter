@@ -31,6 +31,7 @@ enum MockReaderUIErrorCode {
   unexpected,
   notAuthorized,
   noScene,
+  unavailable,
   unknown,
 }
 

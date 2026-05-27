@@ -43,7 +43,7 @@ SPEC CHECKSUMS:
   integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
   MockReaderUI: 651252bf60bffc2699866448a6fb7250c06be785
   permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
-  square_mobile_payments_sdk: 3b999ca0e82fa416fab4c4c18ce0296f3585969c
+  square_mobile_payments_sdk: 02e5bb362be05ae223f10bed995d4de1ab38ce34
   SquareMobilePaymentsSDK: 61d783cb2ef4b238731f4433a42028d95c77893c
 
 PODFILE CHECKSUM: 40b3d892218f5282302711fd5815e53c97476e73

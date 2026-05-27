@@ -57,8 +57,8 @@ android {
     dependencies {
         // Mobile Payments SDK dependency
         implementation("com.squareup.sdk:mobile-payments-sdk:$squareSdkVersion")
-        // MockReader UI dependency
-        implementation("com.squareup.sdk:mockreader-ui:$squareSdkVersion")
+        // MockReader UI dependency (debug/sandbox only)
+        debugImplementation("com.squareup.sdk:mockreader-ui:$squareSdkVersion")
 
         testImplementation("org.jetbrains.kotlin:kotlin-test")
         testImplementation("org.mockito:mockito-core:5.0.0")

@@ -118,7 +118,11 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<void> hideMockReaderUI() async {
-    await methodChannel.invokeMethod<void>('hideMockReaderUI');
+    try {
+      await methodChannel.invokeMethod<void>('hideMockReaderUI');
+    } on PlatformException catch (e) {
+      throw MockReaderUIError(e.code, e.message, e.details);
+    }
   }
 
   @override

@@ -6,45 +6,26 @@ import com.squareup.sdk.mobilepayments.core.Result as SdkResult
 import com.squareup.sdk.mobilepayments.core.CallbackReference
 import com.squareup.sdk.mobilepayments.cardreader.PairingHandle
 import com.squareup.sdk.mobilepayments.cardreader.PairingHandle.StopResult
-import com.squareup.sdk.mobilepayments.mockreader.ui.MockReaderUI
 import com.squareup.square_mobile_payments_sdk.extensions.toReaderInfoMap
 import com.squareup.square_mobile_payments_sdk.extensions.toReaderSettingsMap
 import com.squareup.square_mobile_payments_sdk.extensions.toChangedEventMap
 import com.squareup.square_mobile_payments_sdk.extensions.toStopResultName
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
-import com.squareup.sdk.mobilepayments.settings.Environment
 
 class ReaderModule {
     companion object {
-        private val authManager = MobilePaymentsSdk.authorizationManager()
-        private val settingsManager = MobilePaymentsSdk.settingsManager()
-
         private val readerManager = MobilePaymentsSdk.readerManager()
         private var globalReaderCallbackReference: CallbackReference? = null
         private var globalPairingHandle: PairingHandle? = null
 
         @JvmStatic
         fun showMockReaderUI(result: MethodChannel.Result) {
-            try {
-                MockReaderUI.show() 
-                result.success(null)
-            } catch (e: IllegalStateException) {
-                // first invalid Id
-                val errorMessage = e.message ?: "Unknown error"
-                val errorCode = when {
-                    settingsManager.getSdkSettings().sdkEnvironment == Environment.SANDBOX -> "invalidApplicationId"
-                    !authManager.authorizationState.isAuthorized -> "notAuthorized"
-                    else -> "unknown"
-                }
-
-                result.error(errorCode, errorMessage, null)
-            }
+            MockReaderUIController.show(result)
         }
 
         @JvmStatic
         fun hideMockReaderUI(result: MethodChannel.Result) {
-            MockReaderUI.hide()
-            result.success(null)
+            MockReaderUIController.hide(result)
         }
 
         @JvmStatic

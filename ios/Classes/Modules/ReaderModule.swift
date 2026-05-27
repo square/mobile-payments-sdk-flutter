@@ -1,11 +1,15 @@
 import Flutter
 import SquareMobilePaymentsSDK
+
+#if DEBUG && canImport(MockReaderUI)
 import MockReaderUI
+#endif
 
 public class ReaderModule {
     private static var globalReaderObserver: ReaderObserverCallback?
     private static var globalPairingHandle: PairingHandle?
 
+#if DEBUG && canImport(MockReaderUI)
     static var mockReader: MockReaderUI? = {
         do {
             return try MockReaderUI(for: MobilePaymentsSDK.shared)
@@ -13,6 +17,7 @@ public class ReaderModule {
             return nil
         }
     }()
+#endif
 
     static func parseTapToPayError(error: NSError, defaultError: String) -> String {
         let tapToPayReaderError = TapToPayReaderError(rawValue: error.code)
@@ -53,17 +58,31 @@ public class ReaderModule {
     }
 
     public static func showMockReaderUI(result: @escaping FlutterResult) {
+#if DEBUG && canImport(MockReaderUI)
         do {
             try mockReader?.present()
             result("Mock Reader has been successfully presented.")
         } catch let error {
-            result(FlutterError(code: "SHOW_MOCK_READER_UI", message: error.localizedDescription, details: nil))
+            let code: String
+            if let mockError = error as? MockReaderUIError {
+                code = mockError.getName()
+            } else {
+                code = "unexpected"
+            }
+            result(FlutterError(code: code, message: error.localizedDescription, details: nil))
         }
+#else
+        result(FlutterError(code: "unavailable", message: "MockReaderUI is not available in this build configuration.", details: nil))
+#endif
     }
 
     public static func hideMockReaderUI(result: @escaping FlutterResult) {
+#if DEBUG && canImport(MockReaderUI)
         mockReader?.dismiss()
         result("Mock Reader has been successfully hidden.")
+#else
+        result(FlutterError(code: "unavailable", message: "MockReaderUI is not available in this build configuration.", details: nil))
+#endif
     }
 
     public static func linkAppleAccount(result: @escaping FlutterResult) {
