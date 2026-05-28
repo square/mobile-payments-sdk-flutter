@@ -188,8 +188,12 @@ extension ReaderChange {
             "firmwareUpdateDidFail"
         case .firmwareUpdatePercentDidChange:
             "firmwareUpdatePercentDidChange"
-        default:
-            "unknown"
+        case .firmwareUpdateStatusDidChange:
+            "firmwareUpdateStatusDidChange"
+        case .firmwareUpdateTimeDidChange:
+            "firmwareUpdateTimeDidChange"
+        case .readerStatusDidChange:
+            "readerStatusDidChange"
         }
     }
 }

@@ -133,6 +133,9 @@ enum ReaderChange {
   cardRemoved,
   firmwareUpdateDidFail,
   firmwareUpdatePercentDidChange,
+  firmwareUpdateStatusDidChange,
+  firmwareUpdateTimeDidChange,
+  readerStatusDidChange,
   //android
   changedState,
   added,
@@ -156,7 +159,6 @@ enum ReaderStatusInfoStatus {
   faulty,
   ready,
 }
-
 
 enum ReaderStatusInfoUnavailableReason {
   internalError,
@@ -187,7 +189,6 @@ enum ReaderStatusInfoUnavailableReason {
   deviceDeveloperMode,
   disabled
 }
-
 
 enum ReaderModel {
   contactlessAndChip,
