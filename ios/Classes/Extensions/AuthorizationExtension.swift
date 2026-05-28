@@ -35,3 +35,14 @@ extension AuthorizationError {
         }
     }
 }
+
+extension Location {
+    func toMap() -> [String: Any] {
+        return [
+            "id": id,
+            "currencyCode": currency.getCurrencyCode(),
+            "name": name,
+            "mcc": mcc
+        ]
+    }
+}

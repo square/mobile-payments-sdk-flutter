@@ -68,6 +68,7 @@ enum CurrencyCode {
   gbp,
   jpy,
   usd,
+  unknown,
 }
 
 enum DelayAction {
@@ -157,7 +158,6 @@ enum ReaderStatusInfoStatus {
   ready,
 }
 
-
 enum ReaderStatusInfoUnavailableReason {
   internalError,
   bluetoothDisabled,
@@ -187,7 +187,6 @@ enum ReaderStatusInfoUnavailableReason {
   deviceDeveloperMode,
   disabled
 }
-
 
 enum ReaderModel {
   contactlessAndChip,

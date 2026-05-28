@@ -21,8 +21,13 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Location {
   String get id => throw _privateConstructorUsedError;
+  @JsonKey(unknownEnumValue: CurrencyCode.unknown)
   CurrencyCode get currencyCode => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String? get merchantId => throw _privateConstructorUsedError;
+  String? get businessName => throw _privateConstructorUsedError;
+  bool? get cardProcessingActivated => throw _privateConstructorUsedError;
+  String? get mcc => throw _privateConstructorUsedError;
 
   /// Serializes this Location to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +44,15 @@ abstract class $LocationCopyWith<$Res> {
   factory $LocationCopyWith(Location value, $Res Function(Location) then) =
       _$LocationCopyWithImpl<$Res, Location>;
   @useResult
-  $Res call({String id, CurrencyCode currencyCode, String name});
+  $Res call(
+      {String id,
+      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
+      CurrencyCode currencyCode,
+      String name,
+      String? merchantId,
+      String? businessName,
+      bool? cardProcessingActivated,
+      String? mcc});
 }
 
 /// @nodoc
@@ -60,6 +73,10 @@ class _$LocationCopyWithImpl<$Res, $Val extends Location>
     Object? id = null,
     Object? currencyCode = null,
     Object? name = null,
+    Object? merchantId = freezed,
+    Object? businessName = freezed,
+    Object? cardProcessingActivated = freezed,
+    Object? mcc = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -74,6 +91,22 @@ class _$LocationCopyWithImpl<$Res, $Val extends Location>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      merchantId: freezed == merchantId
+          ? _value.merchantId
+          : merchantId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      businessName: freezed == businessName
+          ? _value.businessName
+          : businessName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cardProcessingActivated: freezed == cardProcessingActivated
+          ? _value.cardProcessingActivated
+          : cardProcessingActivated // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      mcc: freezed == mcc
+          ? _value.mcc
+          : mcc // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -86,7 +119,15 @@ abstract class _$$LocationImplCopyWith<$Res>
       __$$LocationImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, CurrencyCode currencyCode, String name});
+  $Res call(
+      {String id,
+      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
+      CurrencyCode currencyCode,
+      String name,
+      String? merchantId,
+      String? businessName,
+      bool? cardProcessingActivated,
+      String? mcc});
 }
 
 /// @nodoc
@@ -105,6 +146,10 @@ class __$$LocationImplCopyWithImpl<$Res>
     Object? id = null,
     Object? currencyCode = null,
     Object? name = null,
+    Object? merchantId = freezed,
+    Object? businessName = freezed,
+    Object? cardProcessingActivated = freezed,
+    Object? mcc = freezed,
   }) {
     return _then(_$LocationImpl(
       id: null == id
@@ -119,6 +164,22 @@ class __$$LocationImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      merchantId: freezed == merchantId
+          ? _value.merchantId
+          : merchantId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      businessName: freezed == businessName
+          ? _value.businessName
+          : businessName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cardProcessingActivated: freezed == cardProcessingActivated
+          ? _value.cardProcessingActivated
+          : cardProcessingActivated // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      mcc: freezed == mcc
+          ? _value.mcc
+          : mcc // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -127,7 +188,14 @@ class __$$LocationImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LocationImpl with DiagnosticableTreeMixin implements _Location {
   const _$LocationImpl(
-      {required this.id, required this.currencyCode, required this.name});
+      {required this.id,
+      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
+      required this.currencyCode,
+      required this.name,
+      this.merchantId,
+      this.businessName,
+      this.cardProcessingActivated,
+      this.mcc});
 
   factory _$LocationImpl.fromJson(Map<String, dynamic> json) =>
       _$$LocationImplFromJson(json);
@@ -135,13 +203,22 @@ class _$LocationImpl with DiagnosticableTreeMixin implements _Location {
   @override
   final String id;
   @override
+  @JsonKey(unknownEnumValue: CurrencyCode.unknown)
   final CurrencyCode currencyCode;
   @override
   final String name;
+  @override
+  final String? merchantId;
+  @override
+  final String? businessName;
+  @override
+  final bool? cardProcessingActivated;
+  @override
+  final String? mcc;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Location(id: $id, currencyCode: $currencyCode, name: $name)';
+    return 'Location(id: $id, currencyCode: $currencyCode, name: $name, merchantId: $merchantId, businessName: $businessName, cardProcessingActivated: $cardProcessingActivated, mcc: $mcc)';
   }
 
   @override
@@ -151,7 +228,12 @@ class _$LocationImpl with DiagnosticableTreeMixin implements _Location {
       ..add(DiagnosticsProperty('type', 'Location'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('currencyCode', currencyCode))
-      ..add(DiagnosticsProperty('name', name));
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('merchantId', merchantId))
+      ..add(DiagnosticsProperty('businessName', businessName))
+      ..add(DiagnosticsProperty(
+          'cardProcessingActivated', cardProcessingActivated))
+      ..add(DiagnosticsProperty('mcc', mcc));
   }
 
   @override
@@ -162,12 +244,21 @@ class _$LocationImpl with DiagnosticableTreeMixin implements _Location {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.currencyCode, currencyCode) ||
                 other.currencyCode == currencyCode) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.merchantId, merchantId) ||
+                other.merchantId == merchantId) &&
+            (identical(other.businessName, businessName) ||
+                other.businessName == businessName) &&
+            (identical(
+                    other.cardProcessingActivated, cardProcessingActivated) ||
+                other.cardProcessingActivated == cardProcessingActivated) &&
+            (identical(other.mcc, mcc) || other.mcc == mcc));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, currencyCode, name);
+  int get hashCode => Object.hash(runtimeType, id, currencyCode, name,
+      merchantId, businessName, cardProcessingActivated, mcc);
 
   /// Create a copy of Location
   /// with the given fields replaced by the non-null parameter values.
@@ -188,8 +279,13 @@ class _$LocationImpl with DiagnosticableTreeMixin implements _Location {
 abstract class _Location implements Location {
   const factory _Location(
       {required final String id,
+      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
       required final CurrencyCode currencyCode,
-      required final String name}) = _$LocationImpl;
+      required final String name,
+      final String? merchantId,
+      final String? businessName,
+      final bool? cardProcessingActivated,
+      final String? mcc}) = _$LocationImpl;
 
   factory _Location.fromJson(Map<String, dynamic> json) =
       _$LocationImpl.fromJson;
@@ -197,9 +293,18 @@ abstract class _Location implements Location {
   @override
   String get id;
   @override
+  @JsonKey(unknownEnumValue: CurrencyCode.unknown)
   CurrencyCode get currencyCode;
   @override
   String get name;
+  @override
+  String? get merchantId;
+  @override
+  String? get businessName;
+  @override
+  bool? get cardProcessingActivated;
+  @override
+  String? get mcc;
 
   /// Create a copy of Location
   /// with the given fields replaced by the non-null parameter values.

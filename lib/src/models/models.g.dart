@@ -9,8 +9,13 @@ part of 'models.dart';
 _$LocationImpl _$$LocationImplFromJson(Map<String, dynamic> json) =>
     _$LocationImpl(
       id: json['id'] as String,
-      currencyCode: $enumDecode(_$CurrencyCodeEnumMap, json['currencyCode']),
+      currencyCode: $enumDecode(_$CurrencyCodeEnumMap, json['currencyCode'],
+          unknownValue: CurrencyCode.unknown),
       name: json['name'] as String,
+      merchantId: json['merchantId'] as String?,
+      businessName: json['businessName'] as String?,
+      cardProcessingActivated: json['cardProcessingActivated'] as bool?,
+      mcc: json['mcc'] as String?,
     );
 
 Map<String, dynamic> _$$LocationImplToJson(_$LocationImpl instance) =>
@@ -18,6 +23,10 @@ Map<String, dynamic> _$$LocationImplToJson(_$LocationImpl instance) =>
       'id': instance.id,
       'currencyCode': _$CurrencyCodeEnumMap[instance.currencyCode]!,
       'name': instance.name,
+      'merchantId': instance.merchantId,
+      'businessName': instance.businessName,
+      'cardProcessingActivated': instance.cardProcessingActivated,
+      'mcc': instance.mcc,
     };
 
 const _$CurrencyCodeEnumMap = {
@@ -27,6 +36,7 @@ const _$CurrencyCodeEnumMap = {
   CurrencyCode.gbp: 'gbp',
   CurrencyCode.jpy: 'jpy',
   CurrencyCode.usd: 'usd',
+  CurrencyCode.unknown: 'unknown',
 };
 
 _$MoneyImpl _$$MoneyImplFromJson(Map<String, dynamic> json) => _$MoneyImpl(
