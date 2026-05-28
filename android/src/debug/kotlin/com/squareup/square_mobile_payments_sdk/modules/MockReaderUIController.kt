@@ -7,15 +7,34 @@ import com.squareup.sdk.mobilepayments.settings.Environment
 
 internal object MockReaderUIController {
     fun show(result: MethodChannel.Result) {
+        val settingsManager = MobilePaymentsSdk.settingsManager()
+        val authManager = MobilePaymentsSdk.authorizationManager()
+
+        if (settingsManager.getSdkSettings().sdkEnvironment != Environment.SANDBOX) {
+            result.error(
+                "invalidApplicationId",
+                "MockReaderUI is only available in the Sandbox environment.",
+                null,
+            )
+            return
+        }
+
+        if (!authManager.authorizationState.isAuthorized) {
+            result.error(
+                "notAuthorized",
+                "MockReaderUI requires the SDK to be authorized.",
+                null,
+            )
+            return
+        }
+
         try {
             MockReaderUI.show()
             result.success(null)
         } catch (e: IllegalStateException) {
             val errorMessage = e.message ?: "Unknown error"
-            val authManager = MobilePaymentsSdk.authorizationManager()
-            val settingsManager = MobilePaymentsSdk.settingsManager()
             val errorCode = when {
-                settingsManager.getSdkSettings().sdkEnvironment == Environment.SANDBOX -> "invalidApplicationId"
+                settingsManager.getSdkSettings().sdkEnvironment != Environment.SANDBOX -> "invalidApplicationId"
                 !authManager.authorizationState.isAuthorized -> "notAuthorized"
                 else -> "unknown"
             }

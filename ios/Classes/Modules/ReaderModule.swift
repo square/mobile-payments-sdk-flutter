@@ -62,14 +62,23 @@ public class ReaderModule {
         do {
             try mockReader?.present()
             result("Mock Reader has been successfully presented.")
-        } catch let error {
+        } catch {
+            let nsError = error as NSError
             let code: String
             if let mockError = error as? MockReaderUIError {
+                code = mockError.getName()
+            } else if let mockError = MockReaderUIError(rawValue: nsError.code) {
                 code = mockError.getName()
             } else {
                 code = "unexpected"
             }
-            result(FlutterError(code: code, message: error.localizedDescription, details: nil))
+            result(
+                FlutterError(
+                    code: code,
+                    message: nsError.localizedDescription,
+                    details: nsError.localizedFailureReason
+                )
+            )
         }
 #else
         result(FlutterError(code: "unavailable", message: "MockReaderUI is not available in this build configuration.", details: nil))
