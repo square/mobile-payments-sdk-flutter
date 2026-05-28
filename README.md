@@ -14,7 +14,7 @@ Before getting started, please review the Requirements and Limitations and Devic
 
 ## Installation
 ```sh
-  flutter pub add mobile-payment-sdk-flutter
+  flutter pub add square_mobile_payments_sdk
 ```
 
 For usage and in-detail documentation, visit our [documentation](doc/) section.
