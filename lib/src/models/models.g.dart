@@ -333,24 +333,21 @@ const _$CardInputMethodEnumMap = {
 _$PromptParametersImpl _$$PromptParametersImplFromJson(
         Map<String, dynamic> json) =>
     _$PromptParametersImpl(
-      additionalPaymentMethods:
-          (json['additionalPaymentMethods'] as List<dynamic>)
-              .map((e) => $enumDecode(_$AdditionalPaymentMethodTypeEnumMap, e))
-              .toList(),
+      additionalPaymentMethods: json['additionalPaymentMethods'] == null ? null : $enumDecode(_$AdditionalPaymentMethodTypeEnumMap, json['additionalPaymentMethods'] as dynamic),
       mode: $enumDecode(_$PromptModeEnumMap, json['mode']),
     );
 
 Map<String, dynamic> _$$PromptParametersImplToJson(
-        _$PromptParametersImpl instance) =>
-    <String, dynamic>{
-      'additionalPaymentMethods': instance.additionalPaymentMethods
-          .map((e) => _$AdditionalPaymentMethodTypeEnumMap[e]!)
-          .toList(),
-      'mode': _$PromptModeEnumMap[instance.mode]!,
-    };
+        _$PromptParametersImpl instance) => <String, dynamic>{
+            'additionalPaymentMethods': instance.additionalPaymentMethods == null ? null : _$AdditionalPaymentMethodTypeEnumMap[instance.additionalPaymentMethods!],
+            'mode': _$PromptModeEnumMap[instance.mode]!,
+          };
 
 const _$AdditionalPaymentMethodTypeEnumMap = {
+  AdditionalPaymentMethodType.all: 'all',
+  AdditionalPaymentMethodType.cash: 'cash',
   AdditionalPaymentMethodType.keyed: 'keyed',
+  AdditionalPaymentMethodType.tapToPay: 'tapToPay'
 };
 
 const _$PromptModeEnumMap = {

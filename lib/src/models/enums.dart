@@ -7,7 +7,10 @@ enum AccountType {
 }
 
 enum AdditionalPaymentMethodType {
+  all,
+  cash,
   keyed,
+  tapToPay;
 }
 
 enum AuthorizationState {

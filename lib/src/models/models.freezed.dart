@@ -2450,7 +2450,7 @@ PromptParameters _$PromptParametersFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PromptParameters {
-  List<AdditionalPaymentMethodType> get additionalPaymentMethods =>
+  AdditionalPaymentMethodType? get additionalPaymentMethods =>
       throw _privateConstructorUsedError;
   PromptMode get mode => throw _privateConstructorUsedError;
 
@@ -2471,7 +2471,7 @@ abstract class $PromptParametersCopyWith<$Res> {
       _$PromptParametersCopyWithImpl<$Res, PromptParameters>;
   @useResult
   $Res call(
-      {List<AdditionalPaymentMethodType> additionalPaymentMethods,
+      {AdditionalPaymentMethodType? additionalPaymentMethods,
       PromptMode mode});
 }
 
@@ -2497,7 +2497,7 @@ class _$PromptParametersCopyWithImpl<$Res, $Val extends PromptParameters>
       additionalPaymentMethods: null == additionalPaymentMethods
           ? _value.additionalPaymentMethods
           : additionalPaymentMethods // ignore: cast_nullable_to_non_nullable
-              as List<AdditionalPaymentMethodType>,
+              as AdditionalPaymentMethodType?,
       mode: null == mode
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
@@ -2515,7 +2515,7 @@ abstract class _$$PromptParametersImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<AdditionalPaymentMethodType> additionalPaymentMethods,
+      {AdditionalPaymentMethodType? additionalPaymentMethods,
       PromptMode mode});
 }
 
@@ -2539,7 +2539,7 @@ class __$$PromptParametersImplCopyWithImpl<$Res>
       additionalPaymentMethods: null == additionalPaymentMethods
           ? _value._additionalPaymentMethods
           : additionalPaymentMethods // ignore: cast_nullable_to_non_nullable
-              as List<AdditionalPaymentMethodType>,
+              as AdditionalPaymentMethodType?,
       mode: null == mode
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
@@ -2554,21 +2554,18 @@ class _$PromptParametersImpl
     with DiagnosticableTreeMixin
     implements _PromptParameters {
   const _$PromptParametersImpl(
-      {required final List<AdditionalPaymentMethodType>
-          additionalPaymentMethods,
-      required this.mode})
+      {required this.mode,
+      final AdditionalPaymentMethodType?
+          additionalPaymentMethods})
       : _additionalPaymentMethods = additionalPaymentMethods;
 
   factory _$PromptParametersImpl.fromJson(Map<String, dynamic> json) =>
       _$$PromptParametersImplFromJson(json);
 
-  final List<AdditionalPaymentMethodType> _additionalPaymentMethods;
+  final AdditionalPaymentMethodType? _additionalPaymentMethods;
   @override
-  List<AdditionalPaymentMethodType> get additionalPaymentMethods {
-    if (_additionalPaymentMethods is EqualUnmodifiableListView)
-      return _additionalPaymentMethods;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_additionalPaymentMethods);
+  AdditionalPaymentMethodType? get additionalPaymentMethods {
+    return _additionalPaymentMethods;
   }
 
   @override
@@ -2623,15 +2620,14 @@ class _$PromptParametersImpl
 
 abstract class _PromptParameters implements PromptParameters {
   const factory _PromptParameters(
-      {required final List<AdditionalPaymentMethodType>
-          additionalPaymentMethods,
-      required final PromptMode mode}) = _$PromptParametersImpl;
+      {required final PromptMode mode,
+      final AdditionalPaymentMethodType? additionalPaymentMethods}) = _$PromptParametersImpl;
 
   factory _PromptParameters.fromJson(Map<String, dynamic> json) =
       _$PromptParametersImpl.fromJson;
 
   @override
-  List<AdditionalPaymentMethodType> get additionalPaymentMethods;
+  AdditionalPaymentMethodType? get additionalPaymentMethods;
   @override
   PromptMode get mode;
 

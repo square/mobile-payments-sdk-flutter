@@ -31,8 +31,9 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
                       Money(amount: amount, currencyCode: CurrencyCode.eur),
                   paymentAttemptId: paymentAttemptId),
               PromptParameters(
-                  additionalPaymentMethods: List.empty(),
-                  mode: PromptMode.defaultMode));
+                  mode: PromptMode.defaultMode,
+                  additionalPaymentMethods: AdditionalPaymentMethodType.all
+              ));
       if (context.mounted) {
         showPaymentDialog(context, payment);
       }

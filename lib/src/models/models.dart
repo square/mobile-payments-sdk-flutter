@@ -147,8 +147,8 @@ class ReaderInfo with _$ReaderInfo {
 @freezed
 class PromptParameters with _$PromptParameters {
   const factory PromptParameters({
-    required List<AdditionalPaymentMethodType> additionalPaymentMethods,
     required PromptMode mode,
+    AdditionalPaymentMethodType? additionalPaymentMethods,
   }) = _PromptParameters;
 
   factory PromptParameters.fromJson(Map<String, Object?> json) =>

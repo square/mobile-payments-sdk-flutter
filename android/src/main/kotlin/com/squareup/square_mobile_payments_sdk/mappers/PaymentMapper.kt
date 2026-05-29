@@ -6,6 +6,8 @@ import com.squareup.sdk.mobilepayments.payment.PaymentParameters
 import com.squareup.sdk.mobilepayments.payment.PromptMode
 import com.squareup.sdk.mobilepayments.payment.PromptParameters
 import com.squareup.sdk.mobilepayments.payment.ProcessingMode
+import com.squareup.sdk.mobilepayments.payment.AdditionalPaymentMethod
+
 import java.util.UUID
 
 class PaymentMapper {
@@ -72,12 +74,28 @@ class PaymentMapper {
             2 -> ProcessingMode.ONLINE_ONLY
             else -> ProcessingMode.AUTO_DETECT
         }
+        
+        fun convertToPromptMode(value: String?) = when (value) {
+            "customMode" -> PromptMode.CUSTOM
+            "defaultMode" -> PromptMode.DEFAULT
+            else -> PromptMode.DEFAULT
+        }
+
+        fun convertToAdditionalPaymentMethod(value: String?): List<AdditionalPaymentMethod.Type> = when (value) {
+            "all" -> listOf(AdditionalPaymentMethod.Type.CASH, AdditionalPaymentMethod.Type.KEYED)
+            "cash" -> listOf(AdditionalPaymentMethod.Type.CASH)
+            "keyed" -> listOf(AdditionalPaymentMethod.Type.KEYED)
+            else -> listOf()
+        }
+
 
         @JvmStatic
         fun getPromptParameters(promptParameters: HashMap<String, Any>): PromptParameters {
-            
+            Log.d("PaymentMapper", promptParameters.get("additionalPaymentMethods") as? String ?: "none")
+            println(promptParameters.get("additionalPaymentMethods") as? String ?: "none")
             return PromptParameters(
-                mode = PromptMode.DEFAULT
+                mode = convertToPromptMode(promptParameters.get("mode") as? String ?: "defaultMode"),
+                additionalPaymentMethods = convertToAdditionalPaymentMethod(promptParameters.get("additionalPaymentMethods") as? String ?: "none")
             )
         }
     }
