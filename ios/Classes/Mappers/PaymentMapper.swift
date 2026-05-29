@@ -88,7 +88,28 @@ public class PaymentMapper {
     }
     
 
+    static func convertToPromptMode(value: String?) -> PromptMode {
+        switch value {
+            case "customMode": return PromptMode.custom
+            case "defaultMode": return PromptMode.default
+            default: return PromptMode.default
+        }
+    }
+
+    static func convertToAdditionalPaymentMethods(value: String?) -> AdditionalPaymentMethods {
+        switch value {
+            case "all": return AdditionalPaymentMethods.all
+            case "cash": return AdditionalPaymentMethods.cash
+            case "keyed": return AdditionalPaymentMethods.keyed
+            case "tapToPay": return AdditionalPaymentMethods.tapToPay
+            default: return AdditionalPaymentMethods()
+        }
+    }
+
     static func getPromptParameters(promptParameters: [String: Any]) -> PromptParameters {
-        return PromptParameters(mode: .default, additionalMethods: .all)
+        return PromptParameters(
+            mode: convertToPromptMode(value: promptParameters["mode"] as? String),
+            additionalMethods: convertToAdditionalPaymentMethods(value: promptParameters["additionalPaymentMethods"] as? String)
+        )
     }
 }
