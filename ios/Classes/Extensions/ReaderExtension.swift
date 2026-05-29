@@ -1,6 +1,6 @@
 import SquareMobilePaymentsSDK
 
-#if DEBUG && canImport(MockReaderUI)
+#if canImport(MockReaderUI)
 import MockReaderUI
 
 extension MockReaderUIError {

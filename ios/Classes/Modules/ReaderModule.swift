@@ -1,7 +1,7 @@
 import Flutter
 import SquareMobilePaymentsSDK
 
-#if DEBUG && canImport(MockReaderUI)
+#if canImport(MockReaderUI)
 import MockReaderUI
 #endif
 
@@ -9,7 +9,7 @@ public class ReaderModule {
     private static var globalReaderObserver: ReaderObserverCallback?
     private static var globalPairingHandle: PairingHandle?
 
-#if DEBUG && canImport(MockReaderUI)
+#if canImport(MockReaderUI)
     static var mockReader: MockReaderUI? = {
         do {
             return try MockReaderUI(for: MobilePaymentsSDK.shared)
@@ -58,7 +58,7 @@ public class ReaderModule {
     }
 
     public static func showMockReaderUI(result: @escaping FlutterResult) {
-#if DEBUG && canImport(MockReaderUI)
+#if canImport(MockReaderUI)
         do {
             try mockReader?.present()
             result("Mock Reader has been successfully presented.")
@@ -86,7 +86,7 @@ public class ReaderModule {
     }
 
     public static func hideMockReaderUI(result: @escaping FlutterResult) {
-#if DEBUG && canImport(MockReaderUI)
+#if canImport(MockReaderUI)
         mockReader?.dismiss()
         result("Mock Reader has been successfully hidden.")
 #else

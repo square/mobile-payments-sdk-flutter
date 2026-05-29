@@ -11,6 +11,8 @@ import com.squareup.square_mobile_payments_sdk.extensions.toReaderSettingsMap
 import com.squareup.square_mobile_payments_sdk.extensions.toChangedEventMap
 import com.squareup.square_mobile_payments_sdk.extensions.toStopResultName
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
+import com.squareup.sdk.mobilepayments.mockreader.ui.MockReaderUI
+import com.squareup.sdk.mobilepayments.settings.Environment
 
 class ReaderModule {
     companion object {
@@ -20,12 +22,45 @@ class ReaderModule {
 
         @JvmStatic
         fun showMockReaderUI(result: MethodChannel.Result) {
-            MockReaderUIController.show(result)
+            val settingsManager = MobilePaymentsSdk.settingsManager()
+            val authManager = MobilePaymentsSdk.authorizationManager()
+
+            if (settingsManager.getSdkSettings().sdkEnvironment != Environment.SANDBOX) {
+                result.error(
+                    "invalidApplicationId",
+                    "MockReaderUI is only available in the Sandbox environment.",
+                    null,
+                )
+                return
+            }
+
+            if (!authManager.authorizationState.isAuthorized) {
+                result.error(
+                    "notAuthorized",
+                    "MockReaderUI requires the SDK to be authorized.",
+                    null,
+                )
+                return
+            }
+
+            try {
+                MockReaderUI.show()
+                result.success(null)
+            } catch (e: IllegalStateException) {
+                val errorMessage = e.message ?: "Unknown error"
+                val errorCode = when {
+                    settingsManager.getSdkSettings().sdkEnvironment != Environment.SANDBOX -> "invalidApplicationId"
+                    !authManager.authorizationState.isAuthorized -> "notAuthorized"
+                    else -> "unknown"
+                }
+                result.error(errorCode, errorMessage, null)
+            }
         }
 
         @JvmStatic
         fun hideMockReaderUI(result: MethodChannel.Result) {
-            MockReaderUIController.hide(result)
+            MockReaderUI.hide()
+            result.success(null)
         }
 
         @JvmStatic
