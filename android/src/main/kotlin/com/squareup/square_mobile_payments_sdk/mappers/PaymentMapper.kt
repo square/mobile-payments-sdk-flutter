@@ -92,8 +92,8 @@ class PaymentMapper {
         @JvmStatic
         fun getPromptParameters(promptParameters: HashMap<String, Any>): PromptParameters {
             return PromptParameters(
-                mode = convertToPromptMode(promptParameters.get("mode") as? String ?: "defaultMode"),
-                additionalPaymentMethods = convertToAdditionalPaymentMethod(promptParameters.get("additionalPaymentMethods") as? String ?: "none")
+                mode = convertToPromptMode(promptParameters.get("mode") as? String),
+                additionalPaymentMethods = convertToAdditionalPaymentMethod(promptParameters.get("additionalPaymentMethods") as? String)
             )
         }
     }
