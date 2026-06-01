@@ -12,8 +12,13 @@ part 'errors.dart';
 class Location with _$Location {
   const factory Location({
     required String id,
+    @JsonKey(unknownEnumValue: CurrencyCode.unknown)
     required CurrencyCode currencyCode,
     required String name,
+    String? merchantId,
+    String? businessName,
+    bool? cardProcessingActivated,
+    String? mcc,
   }) = _Location;
 
   factory Location.fromJson(Map<String, Object?> json) =>

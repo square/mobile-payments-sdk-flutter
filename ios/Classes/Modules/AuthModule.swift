@@ -8,6 +8,13 @@ public class AuthModule {
         return result(authManager.state.getName())
     }
 
+    public static func getAuthorizedLocation(result: @escaping FlutterResult) {
+        guard let location = authManager.location else {
+            return result(nil)
+        }
+        return result(location.toMap())
+    }
+
     public static func authorize(
         result: @escaping FlutterResult,
         accessToken: String,

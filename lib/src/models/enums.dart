@@ -62,6 +62,7 @@ enum CurrencyCode {
   gbp,
   jpy,
   usd,
+  unknown,
 }
 
 enum DelayAction {
