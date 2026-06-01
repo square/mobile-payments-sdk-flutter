@@ -127,6 +127,9 @@ enum ReaderChange {
   cardRemoved,
   firmwareUpdateDidFail,
   firmwareUpdatePercentDidChange,
+  firmwareUpdateStatusDidChange,
+  firmwareUpdateTimeDidChange,
+  readerStatusDidChange,
   //android
   changedState,
   added,
