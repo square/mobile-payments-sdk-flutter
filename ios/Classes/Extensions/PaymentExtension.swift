@@ -47,6 +47,7 @@ extension OnlinePayment {
             "locationId" : locationID,
             "orderId": orderID,
             "referenceId" : referenceID,
+            "cardDetails": cardDetails?.toMap(),
             "sourceType" : sourceType.getName(),
             "tipMoney": tipMoney?.toMap(),
             "totalMoney": totalMoney.toMap(),
@@ -55,6 +56,54 @@ extension OnlinePayment {
     }
 }
 
+extension CardPaymentDetails {
+    public func toMap() -> [String: Any?] {
+        return [
+            "applicationIdentifier": applicationIdentifier,
+            "applicationName": applicationName,
+            "authorizationCode": authResultCode,
+            "card": card?.toMap(),
+            "entryMethod": entryMethod.getName(),
+            "status": status.getName(),
+        ]
+    }
+}
+
+extension CardPaymentStatus {
+    func getName() -> String {
+        switch self {
+            case .authorized: return "authorized"
+            case .captured: return "captured"
+            case .voided: return "voided"
+            case .failed: return "failed"
+            default: return "unknown"
+        }
+    }
+}
+
+extension CardCoBrand {
+    func getName() -> String {
+        switch self {
+            case .afterpay: return "afterpay"
+            case .none: return "none"
+            default: return "unknown"
+        }
+    }
+}
+
+extension Card {
+    public func toMap() -> [String: Any?] {
+        return [
+            "brand": cardBrand.getName(),
+            "cardholderName": cardholderName,
+            "coBrand": coBrand.getName(),
+            "expirationMonth": expMonth,
+            "expirationYear": expYear,
+            "id": id,
+            "lastFourDigits": last4,
+        ]
+    }
+}
 
 extension OfflineStatus {
     public func getName() -> String {
