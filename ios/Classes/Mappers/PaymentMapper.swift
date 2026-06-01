@@ -44,7 +44,7 @@ public class PaymentMapper {
             paymentParams = PaymentParameters(
                 paymentAttemptID: paymentAttemptID,
                 amountMoney: money,
-                processingMode: ProcessingMode(rawValue: processingMode)!
+                processingMode: Self.convertToProcessingMode(processingMode)
             )
         }
         
@@ -105,6 +105,14 @@ public class PaymentMapper {
         return paymentParams
     }
     
+
+    static func convertToProcessingMode(_ value: Int) -> ProcessingMode {
+        switch value {
+        case 1: return .offlineOnly
+        case 2: return .onlineOnly
+        default: return .autoDetect
+        }
+    }
 
     static func getPromptParameters(promptParameters: [String: Any]) -> PromptParameters {
         return PromptParameters(mode: .default, additionalMethods: .all)
