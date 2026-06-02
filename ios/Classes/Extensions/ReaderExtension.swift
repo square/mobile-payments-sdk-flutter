@@ -1,4 +1,6 @@
 import SquareMobilePaymentsSDK
+
+#if canImport(MockReaderUI)
 import MockReaderUI
 
 extension MockReaderUIError {
@@ -18,3 +20,4 @@ extension MockReaderUIError {
         }
     }
 }
+#endif
