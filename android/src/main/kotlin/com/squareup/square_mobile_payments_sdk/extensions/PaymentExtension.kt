@@ -10,7 +10,18 @@ import com.squareup.sdk.mobilepayments.payment.CashPaymentDetails
 
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 import java.util.TimeZone
+
+fun Payment.Status.toStatusName(): String {
+  return when (this) {
+    Payment.Status.FAILED -> "failed"
+    Payment.Status.APPROVED -> "approved"
+    Payment.Status.COMPLETED -> "complete"
+    Payment.Status.CANCELED -> "canceled"
+    Payment.Status.UNKNOWN -> "unknown"
+  }
+}
 
 fun Payment.SourceType.toName(): String {
   return when (this) {
@@ -85,7 +96,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
     return mapOf(
       "createdAt" to createdAt.toISO8601String(),
       "updatedAt" to updatedAt.toISO8601String(),
-      "amountMoney" to amountMoney?.toMoneyMap(),
+      "amountMoney" to amountMoney.toMoneyMap(),
       "tipMoney" to tipMoney?.toMoneyMap(),
       "appFeeMoney" to appFeeMoney?.toMoneyMap(),
       "locationId" to locationId,
@@ -99,7 +110,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "localId" to localId,
       "id" to id,
       "status" to status.toOfflineStatusName(),
-      "totalMoney" to totalMoney?.toMoneyMap()
+      "totalMoney" to totalMoney.toMoneyMap()
     )
   }
 
@@ -118,7 +129,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "externalDetails" to externalDetails?.toExternalDetailsMap(),
       "id" to id,
       "processingFee" to processingFee.map { it.toProcessingFeeMap() },
-      "status" to status.name,
+      "status" to status.toStatusName(),
       "cardDetails" to cardDetails?.toOnlineDetailsMap(),
       "customerId" to customerId,
       "note" to note,
@@ -126,7 +137,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "teamMemberId" to teamMemberId,
       //"capabilities" to capabilities.toMap(),
       "receiptNumber" to receiptNumber,
-      "totalMoney" to totalMoney?.toMoneyMap()
+      "totalMoney" to totalMoney.toMoneyMap()
     )
   }
 
@@ -177,7 +188,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
 
   fun PaymentProcessingFee.toProcessingFeeMap(): Map<String, Any?> {
     return mapOf(
-      "effectiveAt" to effectiveAt.time.toString(),
+      "effectiveAt" to effectiveAt.toISO8601String(),
       "type" to type.name,
       "amountMoney" to amountMoney.toMoneyMap()
     )
@@ -197,7 +208,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
   }
 
   fun Date.toISO8601String(): String {
-    val isoFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    val isoFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
     isoFormat.timeZone = TimeZone.getTimeZone("UTC")
     return isoFormat.format(this)
   }

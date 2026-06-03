@@ -55,8 +55,6 @@ extension ReaderModel {
                 "tapToPay"
             case .unknown:
                 "unknown"
-            default:
-                "unknown"
         }
     }
 }
@@ -80,8 +78,6 @@ extension CardInsertionStatus {
             "notInserted"
         case .unknown:
             "unknown"
-        default:
-            "unknown"
         }
     }
 }
@@ -94,7 +90,6 @@ extension ReaderBatteryLevel {
             case .mid: "mid"
             case .high: "high"
             case .full: "full"
-            default: "unknown"
         }
     }
 }
@@ -132,8 +127,6 @@ extension ReaderStatus {
             "faulty"
         case .ready:
             "ready"
-        default:
-            "unknown"
         }
     }
 }
@@ -165,8 +158,6 @@ extension ReaderUnavailableReason {
             "tapToPayError"
         case .tapToPayIsNotLinked:
             "tapToPayIsNotLinked"
-        default:
-            "unknown"
         }
     }
 }
@@ -214,4 +205,128 @@ extension TimeOfDay {
       "minute" : minute,
     ]
   }
+}
+
+extension ReaderPairingError {
+    func toName() -> String {
+        return switch self {
+        case .bluetoothDisabled:
+            "bluetoothDisabled"
+        case .bluetoothNotReady:
+            "bluetoothNotReady"
+        case .bluetoothNotSupported:
+            "bluetoothUnsupported"
+        case .bluetoothPermissionDenied:
+            "bluetoothPermissionDenied"
+        case .bluetoothPermissionNotDetermined:
+            "bluetoothPermissionNotDetermined"
+        case .bluetoothPermissionRestricted:
+            "bluetoothPermissionRestricted"
+        case .bluetoothPermissionUnknownCase:
+            "bluetoothPermissionUnknownCase"
+        case .bluetoothResetting:
+            "bluetoothResetting"
+        case .bluetoothUnknownError:
+            "bluetoothUnknownError"
+        case .bondingRemoved:
+            "bondFailed"
+        case .failedToConnect:
+            "failedToConnect"
+        case .notAuthorized:
+            "notAuthorized"
+        case .sandboxNotSupported:
+            "sandboxNotSupported"
+        case .simulatorNotSupported:
+            "simulatorNotSupported"
+        case .readerAlreadyPairing:
+            "readerAlreadyPairing"
+        case .timedOut:
+            "timeout"
+        case .updateRequired:
+            "updateRequired"
+        }
+    }
+}
+
+extension TapToPayReaderError {
+
+    func toName() -> String {
+        return switch self {
+        case .alreadyLinked:
+            "alreadyLinked"
+        case .banned:
+            "banned"
+        case .linkingFailed:
+            "linkingFailed"
+        case .linkingCanceled:
+            "linkingCanceled"
+        case .invalidToken:
+            "invalidToken"
+        case .notAuthorized:
+            "notAuthorized"
+        case .notAvailable:
+            "notAvailable"
+        case .noNetwork:
+            "noNetwork"
+        case .networkError:
+            "networkError"
+        case .other:
+            "other"
+        case .passcodeDisabled:
+            "passcodeDisabled"
+        case .unexpected:
+            "unexpected"
+        case .unsupportedOSVersion:
+            "unsupportedOSVersion"
+        case .unsupportedDeviceModel:
+            "unsupportedDeviceModel"
+        }
+    }
+
+    public func getMessage(defaultError: String) -> String {
+        var errorMessage: String
+        errorMessage = defaultError
+        switch self {
+        case .alreadyLinked:
+            errorMessage =
+                "Apple Tap to Pay Terms and Conditions have already been accepted."
+        case .banned:
+            errorMessage =
+                "This device is banned from using the Tap To Pay reader."
+        case .linkingFailed:
+            errorMessage =
+                "The Tap To Pay reader could not link/relink using the provided Apple ID."
+        case .linkingCanceled:
+            errorMessage = "User has canceled the linking/relinking operation."
+        case .invalidToken:
+            errorMessage = "The Tap To Pay reader generated an invalid token."
+        case .notAuthorized:
+            errorMessage =
+                "This device must be authorized with a Square account in order to use Tap To Pay."
+        case .notAvailable:
+            errorMessage =
+                "The Tap To Pay reader is not available on this device or device's operating system."
+        case .noNetwork:
+            errorMessage =
+                "The Tap To Pay reader could not connect to the network. Please reconnect to the Internet and try again."
+        case .networkError:
+            errorMessage = "The network responded with an error."
+        case .other:
+            errorMessage =
+                "An error with the Tap To Pay reader has occurred. Please try again."
+        case .passcodeDisabled:
+            errorMessage =
+                "This device does not currently have an active passcode set."
+        case .unexpected:
+            errorMessage =
+                "Mobile Payments SDK encountered an unexpected error. Please try again."
+        case .unsupportedOSVersion:
+            errorMessage =
+                "The device's OS version does not meet the minimum requirement of iOS 16.7 for Tap to Pay on iPhone."
+        case .unsupportedDeviceModel:
+            errorMessage =
+                "This device model is not currently supported to use the Tap To Pay reader."
+        }
+        return errorMessage
+    }
 }

@@ -170,8 +170,8 @@ enum ReaderStatusInfoUnavailableReason {
   tapToPayError,
   tapToPayIsNotLinked,
   //android
-  offLineSessionExpired,
-  readerUnavailableOffLine,
+  offlineSessionExpired,
+  readerUnavailableOffline,
   offlineModeDisabled,
   readerUpdateFailed,
   merchantSuspended,
@@ -187,7 +187,6 @@ enum ReaderStatusInfoUnavailableReason {
 
 enum ReaderModel {
   contactlessAndChip,
-  embedded,
   magstripe,
   stand,
   tapToPay,
@@ -210,3 +209,10 @@ enum ProcessingMode {
 }
 
 enum StopResult { alreadyComplete, stopped }
+
+enum TrackingConsentState {
+  pending,
+  granted,
+  denied,
+  notRequired,
+}

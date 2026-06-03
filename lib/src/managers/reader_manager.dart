@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk_platform_interface.dart';
 import 'package:square_mobile_payments_sdk/src/models/models.dart';
+import 'package:square_mobile_payments_sdk/src/errors/errors.dart';
 
 class ReaderManager {
   ReaderManager._privateConstructor();
@@ -47,7 +48,7 @@ class ReaderManager {
   }
 
   PairingHandle pairReader(
-      void Function(bool success, String? error) callback) {
+      void Function(bool success, ReaderPairingError? error) callback) {
     return SquareMobilePaymentsSdkPlatform.instance.pairReader(callback);
   }
 }

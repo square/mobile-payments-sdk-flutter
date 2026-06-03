@@ -32,16 +32,26 @@ enum MockReaderUIErrorCode {
   notAuthorized,
   noScene,
   unavailable,
-  unknown,
 }
 
 enum SettingsErrorCode {
+  missingParameters,
   notRootViewController,
   usageError,
 }
 
 enum PaymentErrorCode {
   missingParameters,
+  canceled,
+  notAuthorized,
+  timeout,
+  // android
+  locationServicesDisabled,
+  deviceClockSkewed,
+  usageError,
+  consentNotProvided,
+  obsoleteSdk,
+  // ios
   notRootViewController,
   deviceTimeDoesNotMatchServerTime,
   invalidPaymentParameters,
@@ -49,23 +59,14 @@ enum PaymentErrorCode {
   locationPermissionNeeded,
   merchantNotOptedIntoOfflineProcessing,
   noNetwork,
-  noNetworkAndMerchantNotOptedIntoOfflineProcessing,
-  notAuthorized,
   offlineStoredAmountExceeded,
   offlineTransactionAmountExceeded,
   paymentAlreadyInProgress,
   sandboxUnsupportedForOfflineProcessing,
-  timedOut,
   unexpected,
   unsupportedMode,
-  canceled,
-  timeout,
-  locationServicesDisabled,
-  deviceClockSkewed,
-  usageError,
-  consentNotProvided,
-  unknown,
-  obsoleteSdk
+  trackingConsentIsPending,
+  paymentAttemptIdReused,
 }
 
 enum OfflinePaymentQueueErrorCode {
@@ -77,7 +78,8 @@ enum OfflinePaymentQueueErrorCode {
   locationServicesDisabled,
   deviceClockSkewed,
   usageError,
-  unknown
+  consentNotProvided,
+  obsoleteSdk
 }
 
 enum ReaderCardInfoError {
@@ -89,22 +91,45 @@ enum ReaderCardInfoError {
   unsupportedEntryMethod,
 }
 
-enum ReaderPairingError {
+enum ReaderPairingErrorCode {
   bluetoothDisabled,
-  bluetoothNotReady,
-  bluetoothNotSupported,
+  bluetoothUnsupported,
   bluetoothPermissionDenied,
+  bondFailed,
+  notAuthorized,
+  timeout,
+  updateRequired,
+  unknown,
+  // android
+  bluetoothAlreadyScanning,
+  usageError,
+  internalFirmwareError,
+  // ios
+  bluetoothNotReady,
   bluetoothPermissionNotDetermined,
   bluetoothPermissionRestricted,
   bluetoothPermissionUnknownCase,
   bluetoothResetting,
   bluetoothUnknownError,
-  bondingRemoved,
   failedToConnect,
-  notAuthorized,
   sandboxNotSupported,
   simulatorNotSupported,
-  readerAlreadyPairing,
-  timedOut,
-  updateRequired,
+  readerAlreadyPairing
+}
+
+enum TapToPayErrorCode {
+  alreadyLinked,
+  banned,
+  linkingFailed,
+  linkingCanceled,
+  invalidToken,
+  notAuthorized,
+  notAvailable,
+  noNetwork,
+  networkError,
+  other,
+  passcodeDisabled,
+  unexpected,
+  unsupportedOSVersion,
+  unsupportedDeviceModel,
 }

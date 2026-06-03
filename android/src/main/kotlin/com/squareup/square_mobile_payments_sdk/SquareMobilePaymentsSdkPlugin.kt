@@ -70,6 +70,13 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
       "updateTrackingConsent" -> {
         val granted = call.argument<Boolean>("granted")
         granted?.let { SettingsModule.updateTrackingConsent(result, it) }
+          ?: run {
+            result.error(
+              "missingParameters",
+              "Missing granted parameter",
+              null
+            )
+          }
       }
 
       "getPayments" -> PaymentModule.getPayments(result)

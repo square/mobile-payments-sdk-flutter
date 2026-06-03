@@ -19,58 +19,18 @@ public class ReaderModule {
     }()
 #endif
 
-    static func parseTapToPayError(error: NSError, defaultError: String) -> String {
-        let tapToPayReaderError = TapToPayReaderError(rawValue: error.code)
-        let errorMessage: String
-        switch tapToPayReaderError {
-        case .alreadyLinked:
-            errorMessage = "Apple Tap to Pay Terms and Conditions have already been accepted."
-        case .banned:
-            errorMessage = "This device is banned from using the Tap To Pay reader."
-        case .linkingFailed:
-            errorMessage = "The Tap To Pay reader could not link/relink using the provided Apple ID."
-        case .linkingCanceled:
-            errorMessage = "User has canceled the linking/relinking operation."
-        case .invalidToken:
-            errorMessage = "The Tap To Pay reader generated an invalid token."
-        case .notAuthorized:
-            errorMessage = "This device must be authorized with a Square account in order to use Tap To Pay."
-        case .notAvailable:
-            errorMessage = "The Tap To Pay reader is not available on this device or device's operating system."
-        case .noNetwork:
-            errorMessage = "The Tap To Pay reader could not connect to the network. Please reconnect to the Internet and try again."
-        case .networkError:
-            errorMessage = "The network responded with an error."
-        case .other:
-            errorMessage = "An error with the Tap To Pay reader has occurred. Please try again."
-        case .passcodeDisabled:
-            errorMessage = "This device does not currently have an active passcode set."
-        case .unexpected:
-            errorMessage = "Mobile Payments SDK encountered an unexpected error. Please try again."
-        case .unsupportedOSVersion:
-            errorMessage = "The device's OS version does not meet the minimum requirement of iOS 16.7 for Tap to Pay on iPhone."
-        case .unsupportedDeviceModel:
-            errorMessage = "This device model is not currently supported to use the Tap To Pay reader."
-        default:
-            errorMessage = defaultError
-        }
-        return errorMessage
-    }
-
     public static func showMockReaderUI(result: @escaping FlutterResult) {
 #if canImport(MockReaderUI)
         do {
             try mockReader?.present()
-            result("Mock Reader has been successfully presented.")
+            result(NSNull())
         } catch {
             let nsError = error as NSError
             let code: String
-            if let mockError = error as? MockReaderUIError {
-                code = mockError.getName()
-            } else if let mockError = MockReaderUIError(rawValue: nsError.code) {
+            if let mockError = MockReaderUIError(rawValue: nsError.code) {
                 code = mockError.getName()
             } else {
-                code = "unexpected"
+                code = MockReaderUIError.unexpected.getName()
             }
             result(
                 FlutterError(
@@ -88,44 +48,122 @@ public class ReaderModule {
     public static func hideMockReaderUI(result: @escaping FlutterResult) {
 #if canImport(MockReaderUI)
         mockReader?.dismiss()
-        result("Mock Reader has been successfully hidden.")
+        result(NSNull())
 #else
         result(FlutterError(code: "unavailable", message: "MockReaderUI is not available in this build configuration.", details: nil))
 #endif
     }
 
     public static func linkAppleAccount(result: @escaping FlutterResult) {
-        MobilePaymentsSDK.shared.readerManager.tapToPaySettings.linkAppleAccount { error in
-
-            if let error = error as NSError? {
-                let errorMessage = parseTapToPayError(error: error, defaultError: "There has been an error linking apple account.")
-                result(FlutterError(code: "LINK_APPLE_ACCOUNT_ERROR", message: errorMessage, details: nil))
+        MobilePaymentsSDK.shared.readerManager.tapToPaySettings.linkAppleAccount
+        { error in
+            if let e = error {
+                let nsError = e as NSError
+                if let tapToPayError = TapToPayReaderError(
+                    rawValue: nsError.code
+                ) {
+                    result(
+                        FlutterError(
+                            code: tapToPayError.toName(),
+                            message: tapToPayError.getMessage(
+                                defaultError:
+                                    "There has been an error linking apple account."
+                            ),
+                            details: nsError.localizedFailureReason
+                        )
+                    )
+                } else {
+                    result(
+                        FlutterError(
+                            code: TapToPayReaderError.unexpected.toName(),
+                            message: TapToPayReaderError.unexpected
+                                .getMessage(
+                                    defaultError:
+                                        "There has been an error linking apple account."
+                                ),
+                            details: nsError.localizedFailureReason
+                        )
+                    )
+                }
             } else {
-                result("Apple account has been linked.")
+                result(NSNull())
             }
         }
     }
 
     public static func relinkAppleAccount(result: @escaping FlutterResult) {
-        MobilePaymentsSDK.shared.readerManager.tapToPaySettings.relinkAppleAccount { error in
-                if let error = error as NSError? {
-                  let errorMessage = parseTapToPayError(error: error, defaultError: "There has been an error re-linking apple account.")
-                  result(FlutterError(code: "RE_LINK_APPLE_ACCOUNT_ERROR", message: errorMessage, details: nil))
+        MobilePaymentsSDK.shared.readerManager.tapToPaySettings
+            .relinkAppleAccount { error in
+                if let e = error {
+                    let nsError = e as NSError
+                    if let tapToPayError = TapToPayReaderError(
+                        rawValue: nsError.code
+                    ) {
+                        result(
+                            FlutterError(
+                                code: tapToPayError.toName(),
+                                message: tapToPayError.getMessage(
+                                    defaultError:
+                                        "There has been an error re-linking apple account."
+                                ),
+                                details: nsError.localizedFailureReason
+                            )
+                        )
+                    } else {
+                        result(
+                            FlutterError(
+                                code: TapToPayReaderError.unexpected.toName(),
+                                message: TapToPayReaderError.unexpected
+                                    .getMessage(
+                                        defaultError:
+                                            "There has been an error re-linking apple account."
+                                    ),
+                                details: nsError.localizedFailureReason
+                            )
+                        )
+
+                    }
                 } else {
-                  result("Apple account has been re-linked.")
+                    result(NSNull())
                 }
-        }
+            }
     }
 
     public static func isAppleAccountLinked(result: @escaping FlutterResult) {
-        MobilePaymentsSDK.shared.readerManager.tapToPaySettings.isAppleAccountLinked { isLinked, error in
-            if let error = error as NSError? {
-                let errorMessage = parseTapToPayError(error: error, defaultError: "There has been an error checking if Apple Account is Linked.")
-                result(FlutterError(code: "IS_APPLE_ACCOUNT_LINKED_ERROR", message: errorMessage, details: nil))
-            } else {
-                result(isLinked)
+        MobilePaymentsSDK.shared.readerManager.tapToPaySettings
+            .isAppleAccountLinked { isLinked, error in
+                if let error = error as NSError? {
+                    let nsError = error as NSError
+                    if let tapToPayError = TapToPayReaderError(
+                        rawValue: nsError.code
+                    ) {
+                        result(
+                            FlutterError(
+                                code: tapToPayError.toName(),
+                                message: tapToPayError.getMessage(
+                                    defaultError:
+                                        "There has been an error checking if Apple Account is Linked."
+                                ),
+                                details: nsError.localizedFailureReason
+                            )
+                        )
+                    } else {
+                        result(
+                            FlutterError(
+                                code: TapToPayReaderError.unexpected.toName(),
+                                message: TapToPayReaderError.unexpected
+                                    .getMessage(
+                                        defaultError:
+                                            "There has been an error checking if Apple Account is Linked."
+                                    ),
+                                details: nsError.localizedFailureReason
+                            )
+                        )
+                    }
+                } else {
+                    result(isLinked)
+                }
             }
-        }
     }
 
     public static func isDeviceCapable(result: @escaping FlutterResult) {
@@ -148,7 +186,7 @@ public class ReaderModule {
 
     private static func parseId(readerId: String, result: @escaping FlutterResult) -> UInt? {
         guard let id = UInt(readerId) else {
-            result(FlutterError(code: "INVALID_ID", message: "ID '\(readerId)' is not valid", details: nil))
+            result(NSNull())
             return nil
         }
         return id
@@ -226,6 +264,8 @@ public class ReaderModule {
             } else {
                 result("alreadyComplete")
             }
+        } else {
+            result("alreadyComplete")
         }
     }
 
@@ -236,7 +276,7 @@ public class ReaderModule {
 }
 
 class ReaderPairingDelegateImpl: ReaderPairingDelegate {
-    private let result: FlutterResult
+    private var result: FlutterResult?
 
     init(result: @escaping FlutterResult) {
         self.result = result
@@ -245,11 +285,30 @@ class ReaderPairingDelegateImpl: ReaderPairingDelegate {
     func readerPairingDidBegin() {}
 
     func readerPairingDidFail(with error: Error) {
-        result(FlutterError(code: "PAIRING_ERROR", message: "pairing error", details: nil))
+        let e = error as NSError
+        if let pairingError = ReaderPairingError(rawValue: e.code) {
+            result?(
+                FlutterError(
+                    code: pairingError.toName(),
+                    message: e.localizedDescription,
+                    details: e.localizedFailureReason
+                )
+            )
+        } else {
+            result?(
+                FlutterError(
+                    code: "unknown",
+                    message: e.localizedDescription,
+                    details: e.localizedFailureReason
+                )
+            )
+        }
+        result = nil
     }
 
     func readerPairingDidSucceed() {
-        result(true)
+        result?(true)
+        result = nil
     }
 }
 

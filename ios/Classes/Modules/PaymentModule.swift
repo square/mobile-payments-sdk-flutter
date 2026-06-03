@@ -15,7 +15,7 @@ public class PaymentModule: PaymentManagerDelegate {
         let nativePaymentParameters = PaymentMapper.getPaymentParameters(paymentParameters:paymentParameters)
         let nativePromptParameters = PaymentMapper.getPromptParameters(promptParameters:promptParameters)
 
-        guard let topController = UIApplication.shared.keyWindow?.rootViewController else {
+        guard let topController = UIApplication.shared.rootViewController else {
             result(FlutterError(
                 code: "notRootViewController",
                 message: "No root view controller in window iOS app",
@@ -53,9 +53,9 @@ public class PaymentModule: PaymentManagerDelegate {
                     ))
                 } else {
                     result(FlutterError(
-                        code: "unknown",
-                        message: nil,
-                        details: nil
+                        code: OfflinePaymentQueueError.unexpected.getName(),
+                        message: e.localizedDescription,
+                        details: e.localizedFailureReason
                     ))
                 }
             } else {
@@ -78,9 +78,9 @@ public class PaymentModule: PaymentManagerDelegate {
                     ))
                 } else {
                     result(FlutterError(
-                        code: "unknown",
-                        message: nil,
-                        details: nil
+                        code: OfflinePaymentQueueError.unexpected.getName(),
+                        message: e.localizedDescription,
+                        details: e.localizedFailureReason
                     ))
                 }
             } else if let moneyAmount = moneyAmount {
@@ -112,9 +112,9 @@ public class PaymentModule: PaymentManagerDelegate {
             ))
         } else {
             delegateResult?(FlutterError(
-                code: "unknown",
-                message: nil,
-                details: nil
+                code: PaymentError.unexpected.getName(),
+                message: e.localizedDescription,
+                details: e.localizedDescription
             ))
         }
         delegateResult = nil
@@ -123,7 +123,7 @@ public class PaymentModule: PaymentManagerDelegate {
     public func paymentManager(_ paymentManager: PaymentManager, didCancel payment: Payment) {
         delegateResult?(FlutterError(
             code: "canceled",
-            message: "the payment was cancelled",
+            message: "The payment was cancelled",
             details: nil
         ))
         delegateResult = nil
