@@ -381,7 +381,10 @@ Defines the actions to be applied to the payment when the delayDuration has elap
 The Type of Payment that is about to take place.
 
 * `all` - Instructs the SDK to begin a payment showing all the available payment methods in the account and device.
+* `cash` - Instructs the SDK to begin a payment for a physical cash transaction.
 * `keyed` - Instructs the SDK to begin a payment for a keyed in credit card.
+* `tapToPay` - Instructs the SDK to begin a payment for a "Tap to Pay" compatible device. (currently only iOS compatible)
+* `null` - Instructs the SDK to begin a payment and only rely on any connected readers.
 
 ---
 

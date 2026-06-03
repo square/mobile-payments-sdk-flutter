@@ -124,7 +124,7 @@ try {
             amountMoney: Money(amount: 100, currencyCode: CurrencyCode.eur),
             idempotencyKey: idempotencyKey
         ),
-        PromptParameters(additionalPaymentMethods: List.empty(), mode: PromptMode.defaultMode));
+        PromptParameters(mode: PromptMode.defaultMode));
     print('Payment successful:: $payment');
 } catch (e) {
     print('Payment error: $e');
