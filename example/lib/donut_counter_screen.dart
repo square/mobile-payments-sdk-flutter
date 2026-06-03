@@ -26,7 +26,12 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
       Payment payment = await _squareMobilePaymentsSdkPlugin.paymentManager
           .startPayment(
               PaymentParameters(
-                processingMode: 0,
+                  autocomplete: false,
+                  delayDuration: 60 * 60, // 1 hour
+                  delayAction: DelayAction.cancel,
+                  note:
+                      "planned cancelled payment. This is used to create a new stored card for customer# 001",
+                  processingMode: 0,
                   amountMoney:
                       Money(amount: amount, currencyCode: CurrencyCode.eur),
                   paymentAttemptId: paymentAttemptId),

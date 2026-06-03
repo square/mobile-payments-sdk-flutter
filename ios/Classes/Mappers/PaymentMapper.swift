@@ -14,6 +14,14 @@ public class PaymentMapper {
         }
     }
 
+    static func getDelayAction(from delayAction: String) -> DelayAction {
+        switch delayAction.uppercased() {
+        case "cancel": return .cancel
+        case "complete": return .complete
+        default: return .cancel
+        }
+    }
+
     static func getPaymentParameters(paymentParameters: [String: Any]) -> PaymentParameters {
         // Required fields
         guard
@@ -36,7 +44,7 @@ public class PaymentMapper {
             paymentParams = PaymentParameters(
                 paymentAttemptID: paymentAttemptID,
                 amountMoney: money,
-                processingMode: ProcessingMode(rawValue: processingMode)!
+                processingMode: Self.convertToProcessingMode(processingMode)
             )
         }
         
@@ -73,7 +81,17 @@ public class PaymentMapper {
         if let note = paymentParameters["note"] as? String {
             paymentParams.note = note
         }
-        
+
+        // Optional: delayDuration
+        if let delayDuration = paymentParameters["delayDuration"] as? Int {
+            paymentParams.delayDuration = TimeInterval(delayDuration)
+        }
+
+        // Optional: delayAction
+        if let delayAction = paymentParameters["delayAction"] as? String {
+            paymentParams.delayAction = getDelayAction(from: delayAction)
+        }
+
         // Optional: orderId
         if let orderId = paymentParameters["orderId"] as? String {
             paymentParams.orderID = orderId
@@ -103,6 +121,14 @@ public class PaymentMapper {
             case "keyed": return AdditionalPaymentMethods.keyed
             case "tapToPay": return AdditionalPaymentMethods.tapToPay
             default: return AdditionalPaymentMethods()
+        }
+    }
+  
+    static func convertToProcessingMode(_ value: Int) -> ProcessingMode {
+        switch value {
+            case 1: return .offlineOnly
+            case 2: return .onlineOnly
+            default: return .autoDetect
         }
     }
 

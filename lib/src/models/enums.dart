@@ -29,18 +29,12 @@ enum CardBrand {
   ebt,
   jcb,
   chinaUnionPay,
-  unionPayInternational, //unionPayInternational != chinaUnionPay ?
   squareGiftCard,
-  alipay,
-  cashApp,
   eftpos,
   felica,
   interac,
   squareCapitalCard,
-  suica,
-  id,
-  quicpay,
-  unknown,
+  unknown
 }
 
 enum CardCoBrand {
@@ -71,6 +65,7 @@ enum CurrencyCode {
   gbp,
   jpy,
   usd,
+  unknown,
 }
 
 enum DelayAction {
@@ -136,6 +131,9 @@ enum ReaderChange {
   cardRemoved,
   firmwareUpdateDidFail,
   firmwareUpdatePercentDidChange,
+  firmwareUpdateStatusDidChange,
+  firmwareUpdateTimeDidChange,
+  readerStatusDidChange,
   //android
   changedState,
   added,
@@ -159,7 +157,6 @@ enum ReaderStatusInfoStatus {
   faulty,
   ready,
 }
-
 
 enum ReaderStatusInfoUnavailableReason {
   internalError,
@@ -190,7 +187,6 @@ enum ReaderStatusInfoUnavailableReason {
   deviceDeveloperMode,
   disabled
 }
-
 
 enum ReaderModel {
   contactlessAndChip,

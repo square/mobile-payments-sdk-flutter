@@ -7,7 +7,10 @@ fun AuthorizedLocation.toAuthorizedLocationMap(): Map<String, Any?> {
     return mapOf(
             "id" to locationId,
             "currencyCode" to currencyCode.name.lowercase(),
-            "name" to name
+            "name" to name,
+            "merchantId" to merchantId,
+            "businessName" to businessName,
+            "cardProcessingActivated" to cardProcessingActivated,
     )
 }
 
