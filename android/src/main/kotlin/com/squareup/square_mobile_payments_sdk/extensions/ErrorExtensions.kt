@@ -1,6 +1,7 @@
 package com.squareup.square_mobile_payments_sdk.extensions
 
 import com.squareup.sdk.mobilepayments.authorization.AuthorizeErrorCode
+import com.squareup.sdk.mobilepayments.cardreader.PairingErrorCode
 import com.squareup.sdk.mobilepayments.settings.SettingsErrorCode
 import com.squareup.sdk.mobilepayments.payment.PaymentErrorCode
 import com.squareup.sdk.mobilepayments.core.ErrorDetails
@@ -21,7 +22,7 @@ fun AuthorizeErrorCode.toAuthorizeErrorCodeName(): String = when (this) {
 // settings
 
 fun SettingsErrorCode.toSettingsErrorCodeName(): String = when (this) {
-        SettingsErrorCode.USAGE_ERROR -> "usageError"
+    SettingsErrorCode.USAGE_ERROR -> "usageError"
 }
 
 // Payment
@@ -35,4 +36,20 @@ fun PaymentErrorCode.toPaymentErrorCodeName(): String = when (this) {
         PaymentErrorCode.USAGE_ERROR -> "usageError"
         PaymentErrorCode.CONSENT_NOT_PROVIDED -> "consentNotProvided"
         PaymentErrorCode.OBSOLETE_SDK -> "obsoleteSdk"
+}
+
+// Reader Pairing
+
+fun PairingErrorCode.toPairingErrorCodeName(): String = when (this) {
+    PairingErrorCode.BLUETOOTH_ALREADY_SCANNING -> "bluetoothAlreadyScanning"
+    PairingErrorCode.BLUETOOTH_DISABLED -> "bluetoothDisabled"
+    PairingErrorCode.BLUETOOTH_UNSUPPORTED -> "bluetoothUnsupported"
+    PairingErrorCode.BLUETOOTH_PERMISSION_DENIED -> "bluetoothPermissionDenied"
+    PairingErrorCode.BOND_FAILED -> "bondFailed"
+    PairingErrorCode.NOT_AUTHORIZED -> "notAuthorized"
+    PairingErrorCode.TIMEOUT -> "timeout"
+    PairingErrorCode.USAGE_ERROR -> "usageError"
+    PairingErrorCode.APP_UPDATE_REQUIRED -> "updateRequired"
+    PairingErrorCode.INTERNAL_FIRMWARE_ERROR -> "internalFirmwareError"
+    PairingErrorCode.UNKNOWN_ERROR -> "unknown"
 }

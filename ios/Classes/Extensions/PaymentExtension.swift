@@ -9,7 +9,7 @@ extension SourceType {
             case .squareAccount: return "squareAccount"
             case .bankAccount: return "bankAccount"
             case .external: return "externalSource"
-            default: return "unknown"
+            case .unknown: return "unknown"
         }
     }
 }
@@ -23,7 +23,7 @@ extension Currency {
             case .GBP: return "gbp"
             case .JPY: return "jpy"
             case .USD: return "usd"
-            default: return "unknown"
+            case .unknown: return "unknown"
         }
     }
 }
@@ -76,7 +76,7 @@ extension CardPaymentStatus {
             case .captured: return "captured"
             case .voided: return "voided"
             case .failed: return "failed"
-            default: return "unknown"
+            case .unknown : return "unknown"
         }
     }
 }
@@ -86,7 +86,7 @@ extension CardCoBrand {
         switch self {
             case .afterpay: return "afterpay"
             case .none: return "none"
-            default: return "unknown"
+            case .unknown: return "unknown"
         }
     }
 }
@@ -114,7 +114,6 @@ extension OfflineStatus {
             case .queued: return "queued"
             case .uploaded: return "uploaded"
             case .unknown: return "unknown"
-            default: return "unknown"
         }
     }
 }
@@ -137,7 +136,6 @@ extension CardBrand {
             case .squareGiftCard: return "squareGiftCard"
             case .unknown: return "unknown"
             case .visa: return "visa"
-            default : return "unknown"
         }
     }
 }
@@ -162,7 +160,6 @@ extension CardEntryMethod {
             case .onFile: return "onFile"
             case .swiped: return "swiped"
             case .unknown: return "unknown"
-            default : return "unknown"
         }
     }
 }
@@ -215,8 +212,6 @@ extension PaymentError {
                 return "merchantNotOptedIntoOfflineProcessing"
             case .noNetwork:
                 return "noNetwork"
-            //case .noNetworkAndMerchantNotOptedIntoOfflineProcessing:
-                //return "noNetworkAndMerchantNotOptedIntoOfflineProcessing"
             case .notAuthorized:
                 return "notAuthorized"
             case .offlineStoredAmountExceeded:
@@ -228,18 +223,15 @@ extension PaymentError {
             case .sandboxUnsupportedForOfflineProcessing:
                 return "sandboxUnsupportedForOfflineProcessing"
             case .timedOut:
-                return "timedOut"
+                return "timeout"
             case .unexpected:
                 return "unexpected"
             case .unsupportedMode:
                 return "unsupportedMode"
-            case .noNetwork:
-                return "noNetwork"
             case .trackingConsentIsPending:
                 return "trackingConsentIsPending"
             case .paymentAttemptIdReused:
                 return "paymentAttemptIdReused"
-            default: return "unknown"
         }
     }
 }
@@ -253,7 +245,6 @@ extension OfflinePaymentQueueError {
                 return "unexpected"
             case .unsupportedSandboxEnvironment:
                 return "unsupportedSandboxEnvironment"
-            default: return "unknown"
         }
     }
 }

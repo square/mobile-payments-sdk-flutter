@@ -16,7 +16,6 @@ extension MockReaderUIError {
             "unexpected"
         case .versionMismatch:
             "versionMismatch"
-        default: "unknown"
         }
     }
 }

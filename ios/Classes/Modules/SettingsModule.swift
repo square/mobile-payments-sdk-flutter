@@ -6,7 +6,7 @@ public class SettingsModule {
     private static let settingsManager = MobilePaymentsSDK.shared.settingsManager
 
     public static func showSettings(result: @escaping FlutterResult) {
-        guard let topController = UIApplication.shared.keyWindow?.rootViewController else {
+        guard let topController = UIApplication.shared.rootViewController else {
             result(FlutterError(code: "notRootViewController", message: "No root view controller in window iOS app", details: nil))
             return
         }
@@ -24,7 +24,7 @@ public class SettingsModule {
     }
 
     public static func getEnvironment(result: @escaping FlutterResult) {
-        result(settingsManager.sdkSettings.environment.description.uppercased())
+        result(settingsManager.sdkSettings.environment.getName())
     }
 
     public static func getSdkVersion(result: @escaping FlutterResult) {
@@ -55,9 +55,7 @@ public class SettingsModule {
     }
     
     public static func getTrackingConsentState(result: @escaping FlutterResult) {
-        let consentState = settingsManager.trackingConsentState
-        let mappedState = TrackingConsent(from: consentState)
-        result(mappedState.rawValue) 
+        result(settingsManager.trackingConsentState.getName())
     }
 
     public static func updateTrackingConsent(result: @escaping FlutterResult, granted: Bool) {

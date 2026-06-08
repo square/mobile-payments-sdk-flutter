@@ -16,8 +16,8 @@ fun AuthorizedLocation.toAuthorizedLocationMap(): Map<String, Any?> {
 
 fun AuthorizationState.toAuthorizationStateName(): String {
     return when {
-        isAuthorized -> "authorized"
         isAuthorizationInProgress -> "authorizing"
+        isAuthorized -> "authorized"
         else -> "notAuthorized"
     }
 }

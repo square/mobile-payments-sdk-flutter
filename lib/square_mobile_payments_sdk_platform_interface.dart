@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:square_mobile_payments_sdk/src/models/models.dart';
-
+import 'package:square_mobile_payments_sdk/src/errors/errors.dart';
 import 'square_mobile_payments_sdk_method_channel.dart';
 
 abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
@@ -148,11 +148,12 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
         'setReaderChangedCallback() has not been implemented.');
   }
 
-  PairingHandle pairReader(void Function(bool, String?) callback) {
+  PairingHandle pairReader(
+      void Function(bool, ReaderPairingError? error) callback) {
     throw UnimplementedError('pairReader() has not been implemented.');
   }
 
-  Future<String> getTrackingConsentState() {
+  Future<TrackingConsentState> getTrackingConsentState() {
     throw UnimplementedError(
         'getTrackingConsentState() has not been implemented.');
   }

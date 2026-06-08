@@ -41,7 +41,8 @@ const _$CurrencyCodeEnumMap = {
 
 _$MoneyImpl _$$MoneyImplFromJson(Map<String, dynamic> json) => _$MoneyImpl(
       amount: (json['amount'] as num?)?.toInt(),
-      currencyCode: $enumDecode(_$CurrencyCodeEnumMap, json['currencyCode']),
+      currencyCode: $enumDecode(_$CurrencyCodeEnumMap, json['currencyCode'],
+          unknownValue: CurrencyCode.unknown),
     );
 
 Map<String, dynamic> _$$MoneyImplToJson(_$MoneyImpl instance) =>
@@ -238,10 +239,10 @@ const _$ReaderStatusInfoUnavailableReasonEnumMap = {
   ReaderStatusInfoUnavailableReason.revokedByDevice: 'revokedByDevice',
   ReaderStatusInfoUnavailableReason.tapToPayError: 'tapToPayError',
   ReaderStatusInfoUnavailableReason.tapToPayIsNotLinked: 'tapToPayIsNotLinked',
-  ReaderStatusInfoUnavailableReason.offLineSessionExpired:
-      'offLineSessionExpired',
-  ReaderStatusInfoUnavailableReason.readerUnavailableOffLine:
-      'readerUnavailableOffLine',
+  ReaderStatusInfoUnavailableReason.offlineSessionExpired:
+      'offlineSessionExpired',
+  ReaderStatusInfoUnavailableReason.readerUnavailableOffline:
+      'readerUnavailableOffline',
   ReaderStatusInfoUnavailableReason.offlineModeDisabled: 'offlineModeDisabled',
   ReaderStatusInfoUnavailableReason.readerUpdateFailed: 'readerUpdateFailed',
   ReaderStatusInfoUnavailableReason.merchantSuspended: 'merchantSuspended',
@@ -326,7 +327,6 @@ const _$CardInsertionStatusEnumMap = {
 
 const _$ReaderModelEnumMap = {
   ReaderModel.contactlessAndChip: 'contactlessAndChip',
-  ReaderModel.embedded: 'embedded',
   ReaderModel.magstripe: 'magstripe',
   ReaderModel.stand: 'stand',
   ReaderModel.tapToPay: 'tapToPay',
@@ -578,6 +578,7 @@ _$OfflinePaymentImpl _$$OfflinePaymentImplFromJson(Map<String, dynamic> json) =>
       tipMoney: json['tipMoney'] == null
           ? null
           : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
+      sourceType: $enumDecode(_$SourceTypeEnumMap, json['sourceType']),
       totalMoney: Money.fromJson(json['totalMoney'] as Map<String, dynamic>),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
       cardDetails: json['cardDetails'] == null
@@ -602,6 +603,7 @@ Map<String, dynamic> _$$OfflinePaymentImplToJson(
       'orderId': instance.orderId,
       'referenceId': instance.referenceId,
       'tipMoney': instance.tipMoney,
+      'sourceType': _$SourceTypeEnumMap[instance.sourceType]!,
       'totalMoney': instance.totalMoney,
       'updatedAt': instance.updatedAt.toIso8601String(),
       'cardDetails': instance.cardDetails,
