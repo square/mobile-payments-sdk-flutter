@@ -114,7 +114,7 @@ public class PaymentModule: PaymentManagerDelegate {
             delegateResult?(FlutterError(
                 code: PaymentError.unexpected.getName(),
                 message: e.localizedDescription,
-                details: e.localizedDescription
+                details: e.localizedFailureReason
             ))
         }
         delegateResult = nil

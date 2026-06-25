@@ -1,3 +1,23 @@
+## 2026.6.1
+
+Aligns iOS and Android error handling with exhaustive, typed Dart enums.
+
+### Breaking changes
+- `ReaderManager.pairReader` callback signature changed from `void Function(bool, String?)` to `void Function(bool, ReaderPairingError?)`. The second argument is now a typed `ReaderPairingError` exception instead of a raw message string.
+- `SettingsManager.getTrackingConsentState()` now returns `Future<TrackingConsentState>` (new enum) instead of `Future<String>`.
+- The `ReaderPairingError` *enum* was renamed to `ReaderPairingErrorCode`; `ReaderPairingError` is now an `Exception` class. Several cases were renamed: `bluetoothNotSupported` → `bluetoothUnsupported`, `bondingRemoved` → `bondFailed`, `timedOut` → `timeout`.
+- `PaymentErrorCode`: removed `timedOut` (→ `timeout`), `noNetworkAndMerchantNotOptedIntoOfflineProcessing`, and `unknown`; added `trackingConsentIsPending` and `paymentAttemptIdReused`.
+- `OfflinePaymentQueueErrorCode`: removed `unknown`; added `consentNotProvided` and `obsoleteSdk`.
+- `MockReaderUIErrorCode`: removed `unknown`.
+- `ReaderModel`: removed `embedded`.
+- `ReaderStatusInfoUnavailableReason`: `offLineSessionExpired` → `offlineSessionExpired`, `readerUnavailableOffLine` → `readerUnavailableOffline`.
+- `OfflinePayment` now has a required `sourceType` field.
+- `linkAppleAccount`, `relinkAppleAccount`, and `isAppleAccountLinked` now throw a typed `TapToPayError` (with `TapToPayErrorCode`) instead of returning/throwing generic strings.
+
+### Fixes
+- `AuthorizationManager.authorize` now reports a typed error (e.g. on revoked access tokens) instead of an `unknown` code or hanging. (#74)
+- Tracking consent, environment, and currency codes are normalized for `json_serializable`.
+
 ## 2026.5.1
 
 * Upgrade Android and iOS native SDK to `2.5.0`

@@ -208,7 +208,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
   }
 
   fun Date.toISO8601String(): String {
-    val isoFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+    val isoFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ROOT)
     isoFormat.timeZone = TimeZone.getTimeZone("UTC")
     return isoFormat.format(this)
   }
