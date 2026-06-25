@@ -183,19 +183,31 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<bool> isAppleAccountLinked() async {
-    final bool? linked =
-        await methodChannel.invokeMethod<bool>('isAppleAccountLinked');
-    return linked ?? false;
+    try {
+      final bool? linked =
+          await methodChannel.invokeMethod<bool>('isAppleAccountLinked');
+      return linked ?? false;
+    } on PlatformException catch (e) {
+      throw TapToPayError(e.code, e.message, e.details);
+    }
   }
 
   @override
   Future<void> linkAppleAccount() async {
-    await methodChannel.invokeMethod<void>('linkAppleAccount');
+    try {
+      await methodChannel.invokeMethod<void>('linkAppleAccount');
+    } on PlatformException catch (e) {
+      throw TapToPayError(e.code, e.message, e.details);
+    }
   }
 
   @override
   Future<void> relinkAppleAccount() async {
-    await methodChannel.invokeMethod<void>('relinkAppleAccount');
+    try {
+      await methodChannel.invokeMethod<void>('relinkAppleAccount');
+    } on PlatformException catch (e) {
+      throw TapToPayError(e.code, e.message, e.details);
+    }
   }
 
   @override
@@ -303,13 +315,13 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<String> getTrackingConsentState() async {
+  Future<TrackingConsentState> getTrackingConsentState() async {
     final state =
         await methodChannel.invokeMethod<String>('getTrackingConsentState');
     if (state == null) {
       throw getChannelStateError("getTrackingConsentState()", "returned null");
     }
-    return state;
+    return assertEnumValue(TrackingConsentState.values, state);
   }
 
   @override
@@ -370,7 +382,8 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  PairingHandle pairReader(void Function(bool, String?) callback) {
+  PairingHandle pairReader(
+      void Function(bool, ReaderPairingError? error) callback) {
     _startParing(callback);
     return PairingHandle(
       () {
@@ -379,7 +392,8 @@ class MethodChannelSquareMobilePaymentsSdk
     );
   }
 
-  void _startParing(void Function(bool, String? error) event) async {
+  void _startParing(
+      void Function(bool, ReaderPairingError? error) event) async {
     try {
       var result = await methodChannel.invokeMethod<bool>('pairReader');
       if (result == null) {
@@ -387,8 +401,10 @@ class MethodChannelSquareMobilePaymentsSdk
         return;
       }
       event(result, null);
-    } catch (e) {
-      event(false, "Pair failed");
+    } on PlatformException catch (e) {
+      ReaderPairingError error =
+          ReaderPairingError(e.code, e.message, e.details);
+      event(false, error);
     }
   }
 

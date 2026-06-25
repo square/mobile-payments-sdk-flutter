@@ -98,3 +98,35 @@ class OfflinePaymentQueueError implements Exception {
     return 'OfflinePaymentQueueError(code: $code, message: $message, details: $details)';
   }
 }
+
+class ReaderPairingError implements Exception {
+  late final ReaderPairingErrorCode code;
+  late final String message;
+  final dynamic details;
+
+  ReaderPairingError(String code, String? message, [this.details]) {
+    this.code = assertEnumValue(ReaderPairingErrorCode.values, code);
+    this.message = message ?? "Unknown Reader Pairing Error";
+  }
+
+  @override
+  String toString() {
+    return 'ReaderPairingError(code: $code, message: $message, details: $details)';
+  }
+}
+
+class TapToPayError implements Exception {
+  late final TapToPayErrorCode code;
+  late final String message;
+  final dynamic details;
+
+  TapToPayError(String code, String? message, [this.details]) {
+    this.code = assertEnumValue(TapToPayErrorCode.values, code);
+    this.message = message ?? "Unknown Tap To Pay Error";
+  }
+
+  @override
+  String toString() {
+    return 'TapToPayError(code: $code, message: $message, details: $details)';
+  }
+}

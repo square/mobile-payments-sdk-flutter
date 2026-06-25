@@ -7,6 +7,8 @@ import com.squareup.sdk.mobilepayments.core.Result as SdkResult
 import com.squareup.square_mobile_payments_sdk.extensions.toMoneyMap
 import com.squareup.square_mobile_payments_sdk.extensions.toSettingsErrorCodeName
 import com.squareup.square_mobile_payments_sdk.extensions.toErrorDetailsMap
+import com.squareup.square_mobile_payments_sdk.extensions.toEnvironmentName
+import com.squareup.square_mobile_payments_sdk.extensions.toConsentName
 
 class SettingsModule {
     companion object {
@@ -20,7 +22,8 @@ class SettingsModule {
 
         @JvmStatic
         fun getEnvironment(result: MethodChannel.Result) {
-          result.success(settingsManager.getSdkSettings().sdkEnvironment.name)
+          result.success(settingsManager.getSdkSettings().sdkEnvironment
+            .toEnvironmentName())
         }
 
         @JvmStatic
@@ -61,7 +64,7 @@ class SettingsModule {
         @JvmStatic
         fun getTrackingConsentState(result: MethodChannel.Result) {
             val consentState = settingsManager.trackingConsentState
-            result.success(consentState.name)
+            result.success(consentState.toConsentName())
         }
 
         @JvmStatic

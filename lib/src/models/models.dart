@@ -29,6 +29,7 @@ class Location with _$Location {
 class Money with _$Money {
   const factory Money({
     int? amount,
+    @JsonKey(unknownEnumValue: CurrencyCode.unknown)
     required CurrencyCode currencyCode,
   }) = _Money;
 
@@ -266,6 +267,7 @@ class OfflinePayment with _$OfflinePayment {
     String? orderId,
     String? referenceId,
     Money? tipMoney,
+    required SourceType sourceType,
     required Money totalMoney,
     required DateTime updatedAt,
     OfflineCardPaymentDetails? cardDetails,

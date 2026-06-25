@@ -56,9 +56,6 @@ class PaymentModule {
                             sdkResult.details.map { d -> d.toErrorDetailsMap() }
                         )
                     }
-                    else -> {
-                        result.error("unknown", null, null)
-                    }
                 }
             }
         }
@@ -89,7 +86,7 @@ class PaymentModule {
                     is SdkResult.Success -> {
                         val paymentList = ArrayList<Map<String, Any?>>()
                         sdkResult.value.forEach { payment ->
-                            paymentList.add(payment.toOfflineMap().mapKeys { it.key.toString() })
+                            paymentList.add(payment.toOfflineMap())
                         }
                         result.success(paymentList)
                     }

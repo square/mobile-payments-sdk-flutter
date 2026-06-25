@@ -31,7 +31,6 @@ extension AuthorizationError {
         case .noNetwork: "noNetwork"
         case .unexpected: "unexpected"
         case .unsupportedCountry: "unsupportedCountry"
-        default: "unknown"
         }
     }
 }
@@ -44,5 +43,18 @@ extension Location {
             "name": name,
             "mcc": mcc
         ]
+    }
+}
+
+extension UIApplication {
+    var rootViewController: UIViewController? {
+        let windowScenes = connectedScenes.compactMap { $0 as? UIWindowScene }
+        let window = windowScenes
+            .first(where: { $0.activationState == .foregroundActive })?
+            .windows
+            .first(where: \.isKeyWindow)
+            ?? windowScenes.flatMap(\.windows).first(where: \.isKeyWindow)
+            ?? windowScenes.flatMap(\.windows).first
+        return window?.rootViewController
     }
 }

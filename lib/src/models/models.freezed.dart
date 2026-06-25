@@ -321,6 +321,7 @@ Money _$MoneyFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Money {
   int? get amount => throw _privateConstructorUsedError;
+  @JsonKey(unknownEnumValue: CurrencyCode.unknown)
   CurrencyCode get currencyCode => throw _privateConstructorUsedError;
 
   /// Serializes this Money to a JSON map.
@@ -337,7 +338,10 @@ abstract class $MoneyCopyWith<$Res> {
   factory $MoneyCopyWith(Money value, $Res Function(Money) then) =
       _$MoneyCopyWithImpl<$Res, Money>;
   @useResult
-  $Res call({int? amount, CurrencyCode currencyCode});
+  $Res call(
+      {int? amount,
+      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
+      CurrencyCode currencyCode});
 }
 
 /// @nodoc
@@ -378,7 +382,10 @@ abstract class _$$MoneyImplCopyWith<$Res> implements $MoneyCopyWith<$Res> {
       __$$MoneyImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? amount, CurrencyCode currencyCode});
+  $Res call(
+      {int? amount,
+      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
+      CurrencyCode currencyCode});
 }
 
 /// @nodoc
@@ -413,7 +420,10 @@ class __$$MoneyImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$MoneyImpl with DiagnosticableTreeMixin implements _Money {
-  const _$MoneyImpl({this.amount, required this.currencyCode});
+  const _$MoneyImpl(
+      {this.amount,
+      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
+      required this.currencyCode});
 
   factory _$MoneyImpl.fromJson(Map<String, dynamic> json) =>
       _$$MoneyImplFromJson(json);
@@ -421,6 +431,7 @@ class _$MoneyImpl with DiagnosticableTreeMixin implements _Money {
   @override
   final int? amount;
   @override
+  @JsonKey(unknownEnumValue: CurrencyCode.unknown)
   final CurrencyCode currencyCode;
 
   @override
@@ -470,6 +481,7 @@ class _$MoneyImpl with DiagnosticableTreeMixin implements _Money {
 abstract class _Money implements Money {
   const factory _Money(
       {final int? amount,
+      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
       required final CurrencyCode currencyCode}) = _$MoneyImpl;
 
   factory _Money.fromJson(Map<String, dynamic> json) = _$MoneyImpl.fromJson;
@@ -477,6 +489,7 @@ abstract class _Money implements Money {
   @override
   int? get amount;
   @override
+  @JsonKey(unknownEnumValue: CurrencyCode.unknown)
   CurrencyCode get currencyCode;
 
   /// Create a copy of Money
@@ -5239,6 +5252,7 @@ mixin _$OfflinePayment {
   String? get orderId => throw _privateConstructorUsedError;
   String? get referenceId => throw _privateConstructorUsedError;
   Money? get tipMoney => throw _privateConstructorUsedError;
+  SourceType get sourceType => throw _privateConstructorUsedError;
   Money get totalMoney => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
   OfflineCardPaymentDetails? get cardDetails =>
@@ -5272,6 +5286,7 @@ abstract class $OfflinePaymentCopyWith<$Res> {
       String? orderId,
       String? referenceId,
       Money? tipMoney,
+      SourceType sourceType,
       Money totalMoney,
       DateTime updatedAt,
       OfflineCardPaymentDetails? cardDetails,
@@ -5309,6 +5324,7 @@ class _$OfflinePaymentCopyWithImpl<$Res, $Val extends OfflinePayment>
     Object? orderId = freezed,
     Object? referenceId = freezed,
     Object? tipMoney = freezed,
+    Object? sourceType = null,
     Object? totalMoney = null,
     Object? updatedAt = null,
     Object? cardDetails = freezed,
@@ -5349,6 +5365,10 @@ class _$OfflinePaymentCopyWithImpl<$Res, $Val extends OfflinePayment>
           ? _value.tipMoney
           : tipMoney // ignore: cast_nullable_to_non_nullable
               as Money?,
+      sourceType: null == sourceType
+          ? _value.sourceType
+          : sourceType // ignore: cast_nullable_to_non_nullable
+              as SourceType,
       totalMoney: null == totalMoney
           ? _value.totalMoney
           : totalMoney // ignore: cast_nullable_to_non_nullable
@@ -5457,6 +5477,7 @@ abstract class _$$OfflinePaymentImplCopyWith<$Res>
       String? orderId,
       String? referenceId,
       Money? tipMoney,
+      SourceType sourceType,
       Money totalMoney,
       DateTime updatedAt,
       OfflineCardPaymentDetails? cardDetails,
@@ -5497,6 +5518,7 @@ class __$$OfflinePaymentImplCopyWithImpl<$Res>
     Object? orderId = freezed,
     Object? referenceId = freezed,
     Object? tipMoney = freezed,
+    Object? sourceType = null,
     Object? totalMoney = null,
     Object? updatedAt = null,
     Object? cardDetails = freezed,
@@ -5537,6 +5559,10 @@ class __$$OfflinePaymentImplCopyWithImpl<$Res>
           ? _value.tipMoney
           : tipMoney // ignore: cast_nullable_to_non_nullable
               as Money?,
+      sourceType: null == sourceType
+          ? _value.sourceType
+          : sourceType // ignore: cast_nullable_to_non_nullable
+              as SourceType,
       totalMoney: null == totalMoney
           ? _value.totalMoney
           : totalMoney // ignore: cast_nullable_to_non_nullable
@@ -5579,6 +5605,7 @@ class _$OfflinePaymentImpl
       this.orderId,
       this.referenceId,
       this.tipMoney,
+      required this.sourceType,
       required this.totalMoney,
       required this.updatedAt,
       this.cardDetails,
@@ -5606,6 +5633,8 @@ class _$OfflinePaymentImpl
   @override
   final Money? tipMoney;
   @override
+  final SourceType sourceType;
+  @override
   final Money totalMoney;
   @override
   final DateTime updatedAt;
@@ -5620,7 +5649,7 @@ class _$OfflinePaymentImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OfflinePayment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt, cardDetails: $cardDetails, localId: $localId, status: $status, uploadedAt: $uploadedAt)';
+    return 'OfflinePayment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, tipMoney: $tipMoney, sourceType: $sourceType, totalMoney: $totalMoney, updatedAt: $updatedAt, cardDetails: $cardDetails, localId: $localId, status: $status, uploadedAt: $uploadedAt)';
   }
 
   @override
@@ -5636,6 +5665,7 @@ class _$OfflinePaymentImpl
       ..add(DiagnosticsProperty('orderId', orderId))
       ..add(DiagnosticsProperty('referenceId', referenceId))
       ..add(DiagnosticsProperty('tipMoney', tipMoney))
+      ..add(DiagnosticsProperty('sourceType', sourceType))
       ..add(DiagnosticsProperty('totalMoney', totalMoney))
       ..add(DiagnosticsProperty('updatedAt', updatedAt))
       ..add(DiagnosticsProperty('cardDetails', cardDetails))
@@ -5663,6 +5693,8 @@ class _$OfflinePaymentImpl
                 other.referenceId == referenceId) &&
             (identical(other.tipMoney, tipMoney) ||
                 other.tipMoney == tipMoney) &&
+            (identical(other.sourceType, sourceType) ||
+                other.sourceType == sourceType) &&
             (identical(other.totalMoney, totalMoney) ||
                 other.totalMoney == totalMoney) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -5687,6 +5719,7 @@ class _$OfflinePaymentImpl
       orderId,
       referenceId,
       tipMoney,
+      sourceType,
       totalMoney,
       updatedAt,
       cardDetails,
@@ -5721,6 +5754,7 @@ abstract class _OfflinePayment implements OfflinePayment {
       final String? orderId,
       final String? referenceId,
       final Money? tipMoney,
+      required final SourceType sourceType,
       required final Money totalMoney,
       required final DateTime updatedAt,
       final OfflineCardPaymentDetails? cardDetails,
@@ -5747,6 +5781,8 @@ abstract class _OfflinePayment implements OfflinePayment {
   String? get referenceId;
   @override
   Money? get tipMoney;
+  @override
+  SourceType get sourceType;
   @override
   Money get totalMoney;
   @override

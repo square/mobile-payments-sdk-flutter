@@ -28,7 +28,11 @@ class AuthModule {
     }
 
     @JvmStatic
-    fun authorize(result: MethodChannel.Result, accessToken: String?, locationId: String?) {
+    fun authorize(
+      result: MethodChannel.Result,
+      accessToken: String?,
+      locationId: String?
+    ) {
       if (accessToken == null || locationId == null) {
         result.error(
           "missingParameters",
@@ -38,18 +42,16 @@ class AuthModule {
         return
       }
       authManager.authorize(accessToken, locationId) { sdkResult ->
-
-          if(sdkResult is SdkResult.Success ) {
-            result.success(null)
-          }
-          if(sdkResult is SdkResult.Failure) {
-            result.error(
-                    sdkResult.errorCode.toAuthorizeErrorCodeName(),
-                    sdkResult.errorMessage,
-                    sdkResult.details.map { d -> d.toErrorDetailsMap() }
-            )
-          }
-        
+        if (sdkResult is SdkResult.Success) {
+          result.success(null)
+        }
+        if (sdkResult is SdkResult.Failure) {
+          result.error(
+            sdkResult.errorCode.toAuthorizeErrorCodeName(),
+            sdkResult.errorMessage,
+            sdkResult.details.map { d -> d.toErrorDetailsMap() }
+          )
+        }
       }
     }
 

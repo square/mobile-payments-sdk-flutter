@@ -10,9 +10,11 @@ import com.squareup.square_mobile_payments_sdk.extensions.toReaderInfoMap
 import com.squareup.square_mobile_payments_sdk.extensions.toReaderSettingsMap
 import com.squareup.square_mobile_payments_sdk.extensions.toChangedEventMap
 import com.squareup.square_mobile_payments_sdk.extensions.toStopResultName
+import com.squareup.square_mobile_payments_sdk.extensions.toPairingErrorCodeName
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
 import com.squareup.sdk.mobilepayments.mockreader.ui.MockReaderUI
 import com.squareup.sdk.mobilepayments.settings.Environment
+import com.squareup.square_mobile_payments_sdk.extensions.toErrorDetailsMap
 
 class ReaderModule {
     companion object {
@@ -47,11 +49,11 @@ class ReaderModule {
                 MockReaderUI.show()
                 result.success(null)
             } catch (e: IllegalStateException) {
-                val errorMessage = e.message ?: "Unknown error"
+                val errorMessage = e.message ?: "Unexpected error"
                 val errorCode = when {
                     settingsManager.getSdkSettings().sdkEnvironment != Environment.SANDBOX -> "invalidApplicationId"
                     !authManager.authorizationState.isAuthorized -> "notAuthorized"
-                    else -> "unknown"
+                    else -> "unexpected"
                 }
                 result.error(errorCode, errorMessage, null)
             }
@@ -135,9 +137,12 @@ class ReaderModule {
                             result.success(pairingResult.value)
                         }
                         is SdkResult.Failure -> {
-                            result.error("PAIRING_ERROR", "pairing error", null)
+                            result.error(
+                                pairingResult.errorCode.toPairingErrorCodeName(),
+                                pairingResult.errorMessage,
+                                pairingResult.details.map { d -> d.toErrorDetailsMap() }
+                            )
                         }
-                        else -> {result.error("PAIRING_ERROR", "pairing error", null)}
                     }
             }
         }
@@ -148,6 +153,8 @@ class ReaderModule {
                 val stopResult = globalPairingHandle?.stop()
                 globalPairingHandle = null
                 result.success(stopResult?.toStopResultName())
+            } else {
+                result.success(StopResult.ALREADY_COMPLETE.toStopResultName())
             }
         }
 
