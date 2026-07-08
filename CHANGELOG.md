@@ -1,4 +1,4 @@
-## 2026.6.1
+## 2026.7.1
 
 Aligns iOS and Android error handling with exhaustive, typed Dart enums.
 
