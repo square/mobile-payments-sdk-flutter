@@ -26,8 +26,9 @@ public class AuthModule {
             locationID: locationId
         ) { error in
             if let error {
-                var e = error as NSError
-                if let authError = AuthorizationError(rawValue: e.code) {
+                let e = error as NSError
+                if e.domain == SQMPAuthorizationErrorDomain,
+                   let authError = AuthorizationError(rawValue: e.code) {
                     result(
                         FlutterError(
                             code: authError.getName(),
@@ -40,7 +41,7 @@ public class AuthModule {
                         FlutterError(
                             code: AuthorizationError.unexpected.getName(),
                             message: e.localizedDescription,
-                            details: e.localizedFailureReason
+                            details: e.localizedDescription
                         )
                     )
                 }

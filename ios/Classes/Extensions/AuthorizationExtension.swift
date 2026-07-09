@@ -31,6 +31,7 @@ extension AuthorizationError {
         case .noNetwork: "noNetwork"
         case .unexpected: "unexpected"
         case .unsupportedCountry: "unsupportedCountry"
+        @unknown default: "unexpected"
         }
     }
 }
