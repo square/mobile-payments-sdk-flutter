@@ -8,7 +8,7 @@ class MainApplication : Application() {
         super.onCreate()
         MobilePaymentsSdk.initialize(MOBILE_PAYMENT_SDK_APPLICATION_ID, this)
     }
-companion object {
-      private const val MOBILE_PAYMENT_SDK_APPLICATION_ID = "REPLACE ME!"
-  }
+    companion object {
+        private const val MOBILE_PAYMENT_SDK_APPLICATION_ID = "REPLACE ME!"
+    }
 }

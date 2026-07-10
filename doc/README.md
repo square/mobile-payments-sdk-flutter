@@ -14,11 +14,11 @@ Install the Mobile Payments SDK package with `pub`:
 flutter pub add mobile-payment-sdk-flutter
 ```
 For iOS:
-1. Make sure you run `pod install` in the `ios` folder of the sample application to install the SDK and all the dependencies.
+1. The SDK and its dependencies are resolved automatically through Swift Package Manager when you build the app with Flutter 3.44 or later; no `pod install` step is required. (CocoaPods is still supported as a fallback for older Flutter versions.)
 2. Open your iOS project `Runner.xcodeproj` with **Xcode**.
-3. Set the `iOS Deployment Target` to 12.0 or above.
+3. Set the `iOS Deployment Target` to 16.0 or above.
 4. Add an Mobile Payments SDK build phase:
-    1. Open `Runner.xcworkspace` in Xcode.
+    1. Open `Runner.xcodeproj` in Xcode.
     2. In the **Build Phases** tab for your application target, click the **+**
         button at the top of the pane.
     3. Select **New Run Script Phase**.
@@ -29,18 +29,18 @@ For iOS:
         ```
 
 For Android:
-1. Modify your `/android/build.gradle`
-   - Add `squareSdkVersion = "2.0.1"` inside the `ext {...}` block
-   - Add `maven { url 'https://sdk.squareup.com/public/android/' }` inside the `allprojects`'s `repositories {...}` block
-2. Modify your `/android/app/build.gradle`
-   - Add `implementation("com.squareup.sdk:mobile-payments-sdk:$squareSdkVersion")` inside the `dependencies{...}` block
-3. Disable Proguard by adding the following to your `/android/app/build.gradle`:
-```gradle
+1. Modify your `/android/app/build.gradle.kts`
+   - Add `val squareSdkVersion = "2.5.0"` at the top of the file
+   - Add `maven { url = uri("https://sdk.squareup.com/public/android/") }` inside the module's `repositories {...}` block
+2. Modify your `/android/app/build.gradle.kts`
+   - Add `implementation("com.squareup.sdk:mobile-payments-sdk:$squareSdkVersion")` inside the `dependencies {...}` block
+3. Disable Proguard by adding the following to your `/android/app/build.gradle.kts`:
+```kotlin
 android {
     buildTypes {
         release {
-            minifyEnabled false
-            shrinkResources false
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }
@@ -57,19 +57,35 @@ You can also refer to [MPSDK Android Quickstart](https://developer.squareup.com/
 
 ## Step 3: Additional Platform Setup
 
-1. For iOS: update your application delegate as follows:
+1. For iOS: update your application delegate as follows. With the UIScene lifecycle used by Flutter 3.44+, plugin registration happens in `didInitializeImplicitFlutterEngine` (via `FlutterImplicitEngineDelegate`) instead of `didFinishLaunchingWithOptions`:
 ```Swift
+import Flutter
+import UIKit
 import SquareMobilePaymentsSDK
-// ...
-override func application(
+
+@main
+@objc class AppDelegate: FlutterAppDelegate, FlutterImplicitEngineDelegate {
+  override func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    GeneratedPluginRegistrant.register(with: self)
     let applicationId = "REPLACE ME!"
-      MobilePaymentsSDK.initialize(squareApplicationID: applicationId)
+    MobilePaymentsSDK.initialize(squareApplicationID: applicationId)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+
+  func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
+    GeneratedPluginRegistrant.register(with: engineBridge.pluginRegistry)
+  }
+}
+```
+
+You also need a `SceneDelegate` that subclasses `FlutterSceneDelegate`, and a `UIApplicationSceneManifest` entry in your `Info.plist` pointing to it (see the sample app's [`SceneDelegate.swift`](../example/ios/Runner/SceneDelegate.swift) and [`Info.plist`](../example/ios/Runner/Info.plist)):
+```Swift
+import Flutter
+import UIKit
+
+class SceneDelegate: FlutterSceneDelegate {}
 ```
 
 1. For Android: update your `MainApplication.kt` file as follows:

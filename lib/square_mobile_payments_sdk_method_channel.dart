@@ -16,12 +16,13 @@ class MethodChannelSquareMobilePaymentsSdk
   final _eventChannel = const EventChannel('square_mobile_payments_sdk/events');
   static StreamSubscription? _eventChannelSubscription;
   final Map<String, FutureOr<void> Function(ReaderChangedEvent event)>
-      _readerCallbacks = {};
+  _readerCallbacks = {};
 
   MethodChannelSquareMobilePaymentsSdk() {
     if (_eventChannelSubscription != null) return;
-    _eventChannelSubscription =
-        _eventChannel.receiveBroadcastStream().listen((e) {
+    _eventChannelSubscription = _eventChannel.receiveBroadcastStream().listen((
+      e,
+    ) {
       final Map<String, dynamic> event = Map<String, dynamic>.from(e);
       switch (event["type"]) {
         case "readerChange":
@@ -39,8 +40,9 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<String> getPlatformVersion() async {
-    final version =
-        await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version = await methodChannel.invokeMethod<String>(
+      'getPlatformVersion',
+    );
     if (version == null) {
       throw getChannelStateError("getPlatformVersion()", "returned null");
     }
@@ -69,13 +71,16 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<AuthorizationState> getAuthorizationState() async {
-    final authorizeStateName =
-        await methodChannel.invokeMethod<String>('getAuthorizationState');
+    final authorizeStateName = await methodChannel.invokeMethod<String>(
+      'getAuthorizationState',
+    );
     if (authorizeStateName == null) {
       throw getChannelStateError("getAuthorizationState()", "returned null");
     }
-    final authorizationState =
-        assertEnumValue(AuthorizationState.values, authorizeStateName);
+    final authorizationState = assertEnumValue(
+      AuthorizationState.values,
+      authorizeStateName,
+    );
     return authorizationState;
   }
 
@@ -135,24 +140,26 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<Payment> startPayment(PaymentParameters paymentParameters,
-      PromptParameters promptParameters) async {
+  Future<Payment> startPayment(
+    PaymentParameters paymentParameters,
+    PromptParameters promptParameters,
+  ) async {
     var amountMoney = {
       "amount": paymentParameters.amountMoney.amount,
-      "currencyCode": paymentParameters.amountMoney.currencyCode.name
+      "currencyCode": paymentParameters.amountMoney.currencyCode.name,
     };
 
     var appFeeMoney = paymentParameters.appFeeMoney != null
         ? {
             "amount": paymentParameters.appFeeMoney!.amount,
-            "currencyCode": paymentParameters.appFeeMoney!.currencyCode.name
+            "currencyCode": paymentParameters.appFeeMoney!.currencyCode.name,
           }
         : null;
 
     var tipMoney = paymentParameters.tipMoney != null
         ? {
             "amount": paymentParameters.tipMoney!.amount,
-            "currencyCode": paymentParameters.tipMoney!.currencyCode.name
+            "currencyCode": paymentParameters.tipMoney!.currencyCode.name,
           }
         : null;
 
@@ -161,14 +168,16 @@ class MethodChannelSquareMobilePaymentsSdk
         ...paymentParameters.toJson(),
         "amountMoney": amountMoney,
         "appFeeMoney": appFeeMoney,
-        "tipMoney": tipMoney
+        "tipMoney": tipMoney,
       },
       'promptParameters': promptParameters.toJson(),
     };
 
     try {
-      final response =
-          await methodChannel.invokeMethod<Map>('startPayment', params);
+      final response = await methodChannel.invokeMethod<Map>(
+        'startPayment',
+        params,
+      );
       if (response == null) {
         throw getChannelStateError("startPayment()", "returned null");
       }
@@ -184,8 +193,9 @@ class MethodChannelSquareMobilePaymentsSdk
   @override
   Future<bool> isAppleAccountLinked() async {
     try {
-      final bool? linked =
-          await methodChannel.invokeMethod<bool>('isAppleAccountLinked');
+      final bool? linked = await methodChannel.invokeMethod<bool>(
+        'isAppleAccountLinked',
+      );
       return linked ?? false;
     } on PlatformException catch (e) {
       throw TapToPayError(e.code, e.message, e.details);
@@ -212,8 +222,9 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<bool> isDeviceCapable() async {
-    final bool? capable =
-        await methodChannel.invokeMethod<bool>('isDeviceCapable');
+    final bool? capable = await methodChannel.invokeMethod<bool>(
+      'isDeviceCapable',
+    );
     return capable ?? false;
   }
 
@@ -221,27 +232,32 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<bool> isOfflineProcessingAllowed() async {
-    final result =
-        await methodChannel.invokeMethod<bool>('isOfflineProcessingAllowed');
+    final result = await methodChannel.invokeMethod<bool>(
+      'isOfflineProcessingAllowed',
+    );
     if (result == null) {
       throw getChannelStateError(
-          "isOfflineProcessingAllowed()", "returned null");
+        "isOfflineProcessingAllowed()",
+        "returned null",
+      );
     }
     return result;
   }
 
   @override
   Future<Money?> getOfflineTotalStoredAmountLimit() async {
-    final result = await methodChannel
-        .invokeMethod<Map>('getOfflineTotalStoredAmountLimit');
+    final result = await methodChannel.invokeMethod<Map>(
+      'getOfflineTotalStoredAmountLimit',
+    );
     if (result == null) return null;
     return Money.fromJson(result.cast<String, Object?>());
   }
 
   @override
   Future<Money?> getOfflineTransactionAmountLimit() async {
-    final result = await methodChannel
-        .invokeMethod<Map>('getOfflineTransactionAmountLimit');
+    final result = await methodChannel.invokeMethod<Map>(
+      'getOfflineTransactionAmountLimit',
+    );
     if (result == null) return null;
     return Money.fromJson(result.cast<String, Object?>());
   }
@@ -262,8 +278,9 @@ class MethodChannelSquareMobilePaymentsSdk
   @override
   Future<Money?> getTotalStoredPaymentAmount() async {
     try {
-      final result =
-          await methodChannel.invokeMethod<Map>('getTotalStoredPaymentAmount');
+      final result = await methodChannel.invokeMethod<Map>(
+        'getTotalStoredPaymentAmount',
+      );
       if (result == null) return null;
       return Money.fromJson(result.cast<String, Object?>());
     } on PlatformException catch (e) {
@@ -278,15 +295,17 @@ class MethodChannelSquareMobilePaymentsSdk
     if (result == null) {
       throw StateError("getPayments() returned null, which should not happen.");
     }
-    final readers =
-        result.map((r) => ReaderInfo.fromJson(castToMap(r))).toList();
+    final readers = result
+        .map((r) => ReaderInfo.fromJson(castToMap(r)))
+        .toList();
     return readers;
   }
 
   @override
   Future<ReaderInfo?> getReader(String id) async {
-    final result =
-        await methodChannel.invokeMethod<Map>('getReader', {"id": id});
+    final result = await methodChannel.invokeMethod<Map>('getReader', {
+      "id": id,
+    });
     if (result == null) {
       return null;
     }
@@ -305,19 +324,22 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<bool> isPairingInProgress() async {
-    final result =
-        await methodChannel.invokeMethod<bool>('isPairingInProgress');
+    final result = await methodChannel.invokeMethod<bool>(
+      'isPairingInProgress',
+    );
     if (result == null) {
       throw StateError(
-          "isPairingInProgress() returned null, which should not happen.");
+        "isPairingInProgress() returned null, which should not happen.",
+      );
     }
     return result;
   }
 
   @override
   Future<TrackingConsentState> getTrackingConsentState() async {
-    final state =
-        await methodChannel.invokeMethod<String>('getTrackingConsentState');
+    final state = await methodChannel.invokeMethod<String>(
+      'getTrackingConsentState',
+    );
     if (state == null) {
       throw getChannelStateError("getTrackingConsentState()", "returned null");
     }
@@ -327,10 +349,9 @@ class MethodChannelSquareMobilePaymentsSdk
   @override
   Future<void> updateTrackingConsent({required bool granted}) async {
     try {
-      await methodChannel.invokeMethod<void>(
-        'updateTrackingConsent',
-        {'granted': granted},
-      );
+      await methodChannel.invokeMethod<void>('updateTrackingConsent', {
+        'granted': granted,
+      });
     } on PlatformException catch (e) {
       throw SettingsError(e.code, e.message, e.details);
     }
@@ -338,12 +359,15 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   ReaderCallbackReference setReaderChangedCallback(
-      FutureOr<void> Function(ReaderChangedEvent event) callback) {
+    FutureOr<void> Function(ReaderChangedEvent event) callback,
+  ) {
     String refId = _generateUniqueId();
     _startReaderCallbackIntent();
     _readerCallbacks.putIfAbsent(refId, () => callback);
     return ReaderCallbackReference(
-        refId, () => removeReaderChangedCallback(refId));
+      refId,
+      () => removeReaderChangedCallback(refId),
+    );
   }
 
   @override
@@ -383,17 +407,17 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   PairingHandle pairReader(
-      void Function(bool, ReaderPairingError? error) callback) {
+    void Function(bool, ReaderPairingError? error) callback,
+  ) {
     _startParing(callback);
-    return PairingHandle(
-      () {
-        return _stopPairing();
-      },
-    );
+    return PairingHandle(() {
+      return _stopPairing();
+    });
   }
 
   void _startParing(
-      void Function(bool, ReaderPairingError? error) event) async {
+    void Function(bool, ReaderPairingError? error) event,
+  ) async {
     try {
       var result = await methodChannel.invokeMethod<bool>('pairReader');
       if (result == null) {
@@ -402,8 +426,11 @@ class MethodChannelSquareMobilePaymentsSdk
       }
       event(result, null);
     } on PlatformException catch (e) {
-      ReaderPairingError error =
-          ReaderPairingError(e.code, e.message, e.details);
+      ReaderPairingError error = ReaderPairingError(
+        e.code,
+        e.message,
+        e.details,
+      );
       event(false, error);
     }
   }
@@ -412,12 +439,15 @@ class MethodChannelSquareMobilePaymentsSdk
     var resultName = await methodChannel.invokeMethod<String>('stopPairing');
     if (resultName == null) {
       throw StateError(
-          "stopRPairing() returned null, which should not happen.");
+        "stopRPairing() returned null, which should not happen.",
+      );
     }
-    return StopResult.values.firstWhere((value) => value.name == resultName,
-        orElse: () {
-      throw ArgumentError("$resultName is not in ${StopResult.values}");
-    });
+    return StopResult.values.firstWhere(
+      (value) => value.name == resultName,
+      orElse: () {
+        throw ArgumentError("$resultName is not in ${StopResult.values}");
+      },
+    );
   }
 }
 

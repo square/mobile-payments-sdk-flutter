@@ -54,10 +54,9 @@ Click "Locations" in the left navigation and make note of the Default Test Accou
 ## 4. Run the app
 1. Make sure you're in the example folder of the repository. `cd example`
 2. Run the iOS simulator or Android emulator.
-3. Run `flutter run`.
-* For iOS: `cd ios`, and then run `pod install`
+3. Run `flutter run`. On iOS, the native dependencies are resolved automatically through Swift Package Manager the first time you build; no `pod install` step is required.
 
-You can also run the app for each individual platform by opening `ios/Runner.xcworkspace` in Xcode for iOS; or `android/build.gradle` in Android Studio, for Android.
+You can also run the app for each individual platform by opening `ios/Runner.xcodeproj` in Xcode for iOS; or the `android` folder in Android Studio, for Android.
 
 ## 5. Request required permissions
 On the first install of the application, you will be required to grant various device permissions in order for the SDK to be fully functional.
