@@ -41,12 +41,14 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
 
   Future<AuthorizationState> getAuthorizationState() {
     throw UnimplementedError(
-        'getAuthorizationState() has not been implemented.');
+      'getAuthorizationState() has not been implemented.',
+    );
   }
 
   Future<Location?> getAuthorizedLocation() {
     throw UnimplementedError(
-        'getAuthorizedLocation() has not been implemented.');
+      'getAuthorizedLocation() has not been implemented.',
+    );
   }
 
   Future<void> authorize(String accessToken, String locationId) {
@@ -69,8 +71,10 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     throw UnimplementedError('showSettings() has not been implemented.');
   }
 
-  Future<Payment> startPayment(PaymentParameters paymentParameters,
-      PromptParameters promptParameters) async {
+  Future<Payment> startPayment(
+    PaymentParameters paymentParameters,
+    PromptParameters promptParameters,
+  ) async {
     throw UnimplementedError('startPayment() has not been implemented.');
   }
 
@@ -81,7 +85,8 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
 
   Future<bool> isAppleAccountLinked() async {
     throw UnimplementedError(
-        'isAppleAccountLinked() has not been implemented.');
+      'isAppleAccountLinked() has not been implemented.',
+    );
   }
 
   Future<void> linkAppleAccount() async {
@@ -99,17 +104,20 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
   // **New Methods for Offline Payment Support**
   Future<bool> isOfflineProcessingAllowed() async {
     throw UnimplementedError(
-        'isOfflineProcessingAllowed() has not been implemented.');
+      'isOfflineProcessingAllowed() has not been implemented.',
+    );
   }
 
   Future<Money?> getOfflineTotalStoredAmountLimit() async {
     throw UnimplementedError(
-        'getOfflineTotalStoredAmountLimit() has not been implemented.');
+      'getOfflineTotalStoredAmountLimit() has not been implemented.',
+    );
   }
 
   Future<Money?> getOfflineTransactionAmountLimit() async {
     throw UnimplementedError(
-        'getOfflineTransactionAmountLimit() has not been implemented.');
+      'getOfflineTransactionAmountLimit() has not been implemented.',
+    );
   }
 
   Future<List<OfflinePayment>> getPayments() async {
@@ -118,7 +126,8 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
 
   Future<Money?> getTotalStoredPaymentAmount() async {
     throw UnimplementedError(
-        'getTotalStoredPaymentAmount() has not been implemented.');
+      'getTotalStoredPaymentAmount() has not been implemented.',
+    );
   }
 
   // **New Methods for Reader management Support**
@@ -143,24 +152,29 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
   }
 
   ReaderCallbackReference setReaderChangedCallback(
-      FutureOr<void> Function(ReaderChangedEvent event) callback) {
+    FutureOr<void> Function(ReaderChangedEvent event) callback,
+  ) {
     throw UnimplementedError(
-        'setReaderChangedCallback() has not been implemented.');
+      'setReaderChangedCallback() has not been implemented.',
+    );
   }
 
   PairingHandle pairReader(
-      void Function(bool, ReaderPairingError? error) callback) {
+    void Function(bool, ReaderPairingError? error) callback,
+  ) {
     throw UnimplementedError('pairReader() has not been implemented.');
   }
 
   Future<TrackingConsentState> getTrackingConsentState() {
     throw UnimplementedError(
-        'getTrackingConsentState() has not been implemented.');
+      'getTrackingConsentState() has not been implemented.',
+    );
   }
 
   Future<void> updateTrackingConsent({required bool granted}) {
     throw UnimplementedError(
-        'updateTrackingConsent() has not been implemented.');
+      'updateTrackingConsent() has not been implemented.',
+    );
   }
 
   Future<ReaderSettings> readerSettings() {
