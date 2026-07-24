@@ -1,5 +1,6 @@
 package com.squareup.square_mobile_payments_sdk.mappers
 
+import com.squareup.sdk.mobilepayments.payment.AdditionalPaymentMethod
 import com.squareup.sdk.mobilepayments.payment.CurrencyCode
 import com.squareup.sdk.mobilepayments.payment.DelayAction
 import com.squareup.sdk.mobilepayments.payment.Money
@@ -85,11 +86,31 @@ class PaymentMapper {
             else -> ProcessingMode.AUTO_DETECT
         }
 
+        fun getPromptMode(mode: String?) = when (mode) {
+            "customMode" -> PromptMode.CUSTOM
+            else -> PromptMode.DEFAULT
+        }
+
+        fun getAdditionalPaymentMethodType(type: String?): AdditionalPaymentMethod.Type? = when (type) {
+            "keyed" -> AdditionalPaymentMethod.Type.KEYED
+            "cash" -> AdditionalPaymentMethod.Type.CASH
+            else -> null
+        }
+
         @JvmStatic
         fun getPromptParameters(promptParameters: HashMap<String, Any>): PromptParameters {
-            
+            val mode = getPromptMode(promptParameters["mode"] as? String)
+
+            // Map the additional payment methods sent from Dart. An empty (or missing)
+            // list must result in no additional methods being shown, so we pass the
+            // explicit list instead of relying on the SDK default (all methods).
+            val additionalPaymentMethods = (promptParameters["additionalPaymentMethods"] as? List<*>)
+                ?.mapNotNull { getAdditionalPaymentMethodType(it as? String) }
+                ?: emptyList()
+
             return PromptParameters(
-                mode = PromptMode.DEFAULT
+                mode = mode,
+                additionalPaymentMethods = additionalPaymentMethods
             )
         }
     }

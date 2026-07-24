@@ -378,10 +378,10 @@ Defines the actions to be applied to the payment when the delayDuration has elap
 
 ### AdditionalPaymentMethodType
 
-The Type of Payment that is about to take place.
+The additional payment methods to allow, in addition to the card payment flow. Only the methods present in the list are shown. Pass an empty list to show no additional payment methods (card payment only).
 
-* `all` - Instructs the SDK to begin a payment showing all the available payment methods in the account and device.
-* `keyed` - Instructs the SDK to begin a payment for a keyed in credit card.
+* `keyed` - Allow a keyed-in credit card payment.
+* `cash` - Allow a cash payment.
 
 ---
 
