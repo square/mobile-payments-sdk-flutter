@@ -361,6 +361,7 @@ Map<String, dynamic> _$$PromptParametersImplToJson(
 
 const _$AdditionalPaymentMethodTypeEnumMap = {
   AdditionalPaymentMethodType.keyed: 'keyed',
+  AdditionalPaymentMethodType.cash: 'cash',
 };
 
 const _$PromptModeEnumMap = {

@@ -114,7 +114,33 @@ public class PaymentMapper {
         }
     }
 
+    static func getPromptMode(from mode: String) -> PromptMode {
+        switch mode {
+        case "customMode": return .custom
+        case "defaultMode": return .default
+        default: return .default
+        }
+    }
+
+    static func getAdditionalPaymentMethod(from type: String) -> AdditionalPaymentMethods? {
+        switch type {
+        case "keyed": return .keyed
+        case "cash": return .cash
+        case "tapToPay": return .tapToPay
+        default: return nil
+        }
+    }
+
     static func getPromptParameters(promptParameters: [String: Any]) -> PromptParameters {
-        return PromptParameters(mode: .default, additionalMethods: .all)
+        let mode = getPromptMode(from: promptParameters["mode"] as? String ?? "defaultMode")
+
+        // Map the additional payment methods sent from Dart. An empty (or missing)
+        // list must result in no additional methods being shown, so we intentionally
+        // avoid falling back to `.all`.
+        let methodNames = promptParameters["additionalPaymentMethods"] as? [String] ?? []
+        let methods = methodNames.compactMap { getAdditionalPaymentMethod(from: $0) }
+        let additionalMethods = AdditionalPaymentMethods(methods)
+
+        return PromptParameters(mode: mode, additionalMethods: additionalMethods)
     }
 }

@@ -8,6 +8,7 @@ enum AccountType {
 
 enum AdditionalPaymentMethodType {
   keyed,
+  cash,
 }
 
 enum AuthorizationState {
