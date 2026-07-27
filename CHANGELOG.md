@@ -1,4 +1,12 @@
-## 2026.6.1
+## 2026.7.3
+- Fix issue #84, fix additionalPaymentMethods Map in native side 
+in order to support keyed, cash, tapToPay additional methods
+
+## 2026.7.2
+- Fix issue #81
+- Improve authorization error handling and SDK compatibility
+
+## 2026.7.1
 
 Aligns iOS and Android error handling with exhaustive, typed Dart enums.
 
