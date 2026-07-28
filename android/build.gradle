@@ -3,14 +3,14 @@ version = "1.0-SNAPSHOT"
 
 buildscript {
     ext.kotlin_version = "2.2.21"
-    ext.squareSdkVersion = "2.5.0"
+    ext.squareSdkVersion = "2.6.0"
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:8.6.0")
+        classpath("com.android.tools.build:gradle:8.11.1")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 }

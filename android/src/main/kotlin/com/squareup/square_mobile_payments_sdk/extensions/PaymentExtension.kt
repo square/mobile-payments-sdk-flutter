@@ -4,7 +4,6 @@ import com.squareup.sdk.mobilepayments.payment.Payment
 import com.squareup.sdk.mobilepayments.payment.Money
 import com.squareup.sdk.mobilepayments.payment.Card
 import com.squareup.sdk.mobilepayments.payment.CardPaymentDetails
-import com.squareup.sdk.mobilepayments.payment.ExternalPaymentDetails
 import com.squareup.sdk.mobilepayments.payment.PaymentProcessingFee
 import com.squareup.sdk.mobilepayments.payment.CashPaymentDetails
 
@@ -105,7 +104,6 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "sourceType" to sourceType.toName(), 
       "cashDetails" to cashDetails?.toCashDetailsMap(),
       "cardDetails" to cardDetails?.toOfflineDetailsMap(),
-      "externalDetails" to externalDetails?.toExternalDetailsMap(),
       "uploadedAt" to uploadedAt?.toISO8601String(),
       "localId" to localId,
       "id" to id,
@@ -126,7 +124,6 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "referenceId" to referenceId,
       "sourceType" to sourceType.toName(),
       "cashDetails" to cashDetails?.toCashDetailsMap(),
-      "externalDetails" to externalDetails?.toExternalDetailsMap(),
       "id" to id,
       "processingFee" to processingFee.map { it.toProcessingFeeMap() },
       "status" to status.toStatusName(),
@@ -152,15 +149,6 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
     return mapOf(
       "changeBackMoney" to changeBackMoney.toMoneyMap(),
       "buyerSuppliedMoney" to buyerSuppliedMoney.toMoneyMap()
-    )
-  }
-
-  fun ExternalPaymentDetails.toExternalDetailsMap(): Map<String, Any?> {
-    return mapOf(
-      "type" to type,
-      "source" to source,
-      "sourceId" to sourceId,
-      "sourceFeeMoney" to sourceFeeMoney?.toMoneyMap()
     )
   }
 

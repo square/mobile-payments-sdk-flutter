@@ -31,7 +31,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
                   delayAction: DelayAction.cancel,
                   note:
                       "planned cancelled payment. This is used to create a new stored card for customer# 001",
-                  processingMode: 0,
+                  processingMode: 2,
                   amountMoney:
                       Money(amount: amount, currencyCode: CurrencyCode.eur),
                   paymentAttemptId: paymentAttemptId),

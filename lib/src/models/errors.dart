@@ -114,7 +114,9 @@ enum ReaderPairingErrorCode {
   failedToConnect,
   sandboxNotSupported,
   simulatorNotSupported,
-  readerAlreadyPairing
+  readerAlreadyPairing,
+  // android
+  hostIdMismatch
 }
 
 enum TapToPayErrorCode {

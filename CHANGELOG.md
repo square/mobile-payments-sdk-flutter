@@ -1,3 +1,10 @@
+## 2026.7.4
+
+* Upgrade Android and iOS native SDK to `2.6.0`
+* Add `hostIdMismatch` to `ReaderStatusInfoUnavailableReason` and `ReaderPairingErrorCode`. This surfaces the native `HOST_ID_MISMATCH` reason, reported when a reader refuses a connection because another device was its most-recently-paired host (previously reported as a generic internal/unknown error)
+* Cash payments may now be automatically rounded to the nearest five cents for CAD and AUD, and optionally USD when enabled. Payment results reflect the rounded amount
+* **Breaking (Android):** Removed `externalDetails` from `Payment` (offline and online). The native `ExternalPaymentDetails`, `ExternalTenderType`, and `Payment.externalDetails` APIs were removed in Android native SDK `2.6.0`. `SourceType.externalSource` remains available
+
 ## 2026.7.3
 - Fix issue #84, fix additionalPaymentMethods Map in native side 
 in order to support keyed, cash, tapToPay additional methods

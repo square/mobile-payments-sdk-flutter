@@ -183,7 +183,8 @@ enum ReaderStatusInfoUnavailableReason {
   readerNotSupported,
   deviceRooted,
   deviceDeveloperMode,
-  disabled
+  disabled,
+  hostIdMismatch
 }
 
 enum ReaderModel {
