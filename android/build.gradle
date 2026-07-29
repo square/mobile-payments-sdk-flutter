@@ -33,7 +33,7 @@ android {
         namespace = "com.squareup.square_mobile_payments_sdk"
     }
 
-    compileSdk = 35
+    compileSdk = 36
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -51,7 +51,7 @@ android {
 
     defaultConfig {
         minSdk = 28
-        targetSdk = 35
+        targetSdk = 36
     }
 
     dependencies {

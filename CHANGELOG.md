@@ -1,23 +1,33 @@
 ## 2026.7.4
 
-* Upgrade Android and iOS native SDK to `2.6.0` https://github.com/square/mobile-payments-sdk-flutter/pull/88#:~:text=https%3A//developer.squareup.com/docs/changelog/mobile%2Dlogs/2026%2D07%2D27
-* Add `hostIdMismatch` to `ReaderStatusInfoUnavailableReason` and `ReaderPairingErrorCode`. This surfaces the native `HOST_ID_MISMATCH` reason, reported when a reader refuses a connection because another device was its most-recently-paired host (previously reported as a generic internal/unknown error)
-* Cash payments may now be automatically rounded to the nearest five cents for CAD and AUD, and optionally USD when enabled. Payment results reflect the rounded amount
-* **Breaking (Android):** Removed `externalDetails` from `Payment` (offline and online). The native `ExternalPaymentDetails`, `ExternalTenderType`, and `Payment.externalDetails` APIs were removed in Android native SDK `2.6.0`. `SourceType.externalSource` remains available
+- Upgrade Android and iOS native SDK to `2.6.0`. See the native changelog: [https://developer.squareup.com/docs/changelog/mobile-logs/2026-07-27](https://developer.squareup.com/docs/changelog/mobile-logs/2026-07-27)
+- **(Android)** Add `hostIdMismatch` to `ReaderStatusInfoUnavailableReason` and `ReaderPairingErrorCode`. This surfaces the native `HOST_ID_MISMATCH` reason, reported when a reader refuses a connection because another device was its most-recently-paired host (previously reported as a generic internal/unknown error). This reason is Android-only; iOS `2.6.0` has no equivalent
+- Add `hostIdMismatch` to `ReaderStatusInfoUnavailableReason` and `ReaderPairingErrorCode`. This surfaces the native `HOST_ID_MISMATCH` reason, reported when a reader refuses a connection because another device was its most-recently-paired host (previously reported as a generic internal/unknown error)
+- Cash payments may now be automatically rounded to the nearest five cents for CAD and AUD, and optionally USD when enabled. Payment results reflect the rounded amount
+- Removed the native `ExternalPaymentDetails`, `ExternalTenderType`, and `Payment.externalDetails` APIs (removed in Android native SDK `2.6.0`). This has no impact on the Flutter API: `externalDetails` was never exposed on the Dart `Payment`/`OfflinePayment` models, so no migration is required. `SourceType.externalSource` remains available
+
+
 
 ## 2026.7.3
+
 - Fix issue #84, fix additionalPaymentMethods Map in native side 
 in order to support keyed, cash, tapToPay additional methods
 
+
+
 ## 2026.7.2
+
 - Fix issue #81
 - Improve authorization error handling and SDK compatibility
+
+
 
 ## 2026.7.1
 
 Aligns iOS and Android error handling with exhaustive, typed Dart enums.
 
 ### Breaking changes
+
 - `ReaderManager.pairReader` callback signature changed from `void Function(bool, String?)` to `void Function(bool, ReaderPairingError?)`. The second argument is now a typed `ReaderPairingError` exception instead of a raw message string.
 - `SettingsManager.getTrackingConsentState()` now returns `Future<TrackingConsentState>` (new enum) instead of `Future<String>`.
 - The `ReaderPairingError` *enum* was renamed to `ReaderPairingErrorCode`; `ReaderPairingError` is now an `Exception` class. Several cases were renamed: `bluetoothNotSupported` → `bluetoothUnsupported`, `bondingRemoved` → `bondFailed`, `timedOut` → `timeout`.
@@ -29,18 +39,25 @@ Aligns iOS and Android error handling with exhaustive, typed Dart enums.
 - `OfflinePayment` now has a required `sourceType` field.
 - `linkAppleAccount`, `relinkAppleAccount`, and `isAppleAccountLinked` now throw a typed `TapToPayError` (with `TapToPayErrorCode`) instead of returning/throwing generic strings.
 
+
+
 ### Fixes
+
 - `AuthorizationManager.authorize` now reports a typed error (e.g. on revoked access tokens) instead of an `unknown` code or hanging. (#74)
 - Tracking consent, environment, and currency codes are normalized for `json_serializable`.
 
+
+
 ## 2026.5.1
 
-* Upgrade Android and iOS native SDK to `2.5.0`
-* Add `SettingsManager.isShowingSettings()` to check whether the Settings screen is currently presented
-* Add `SettingsManager.closeSettings()` to programmatically dismiss the Settings screen
-* Add `ReaderManager.readerSettings()` which returns a new `ReaderSettings` object (`isReducedChargingModeEnabled`, `preferredFirmwareUpdateTime`). Adds a new `TimeOfDay` type (`hour`, `minute`) used by `preferredFirmwareUpdateTime`
-* **Breaking:** `ReaderInfo.firmwareVersion` and `ReaderInfo.firmwarePercent` have been replaced by a single `ReaderInfo.firmwareInfo` object of shape `{ version, updatePercentage }`, mirroring the 2.5.0 native API
-* **Breaking (Android):** Removed `ALIPAY`, `CASH_APP`, `SUICA`, `ID`, and `QUICPAY` from the mapped `Card.Brand` values — these were removed in native SDK `2.5.0`
+- Upgrade Android and iOS native SDK to `2.5.0`
+- Add `SettingsManager.isShowingSettings()` to check whether the Settings screen is currently presented
+- Add `SettingsManager.closeSettings()` to programmatically dismiss the Settings screen
+- Add `ReaderManager.readerSettings()` which returns a new `ReaderSettings` object (`isReducedChargingModeEnabled`, `preferredFirmwareUpdateTime`). Adds a new `TimeOfDay` type (`hour`, `minute`) used by `preferredFirmwareUpdateTime`
+- **Breaking:** `ReaderInfo.firmwareVersion` and `ReaderInfo.firmwarePercent` have been replaced by a single `ReaderInfo.firmwareInfo` object of shape `{ version, updatePercentage }`, mirroring the 2.5.0 native API
+- **Breaking (Android):** Removed `ALIPAY`, `CASH_APP`, `SUICA`, `ID`, and `QUICPAY` from the mapped `Card.Brand` values — these were removed in native SDK `2.5.0`
+
+
 
 ## 2026.3.1
 
@@ -56,14 +73,19 @@ Upgrade native SDKs: Android 2.3.4, iOS: 2.3.1
 
 ## 2025.11.1
 
-- Support for paymentAttemptId 
+- Support for paymentAttemptId
+
+
 
 ## 2025.9.1
 
 Upgrade native SDKs: Android 2.3.1, iOS: 2.3.0
 Remove deprecated use of toLower
+
 - Adding consent tracking  
 - (iOS) reader info states
+
+
 
 ## 2025.7.1
 
@@ -78,7 +100,6 @@ Add Reader management support.
 ## 2025.3.0
 
 Add Tap to Pay support for iOS.
-
 
 ## 2025.1.0
 

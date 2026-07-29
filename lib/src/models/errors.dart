@@ -104,6 +104,7 @@ enum ReaderPairingErrorCode {
   bluetoothAlreadyScanning,
   usageError,
   internalFirmwareError,
+  hostIdMismatch,
   // ios
   bluetoothNotReady,
   bluetoothPermissionNotDetermined,
@@ -115,8 +116,6 @@ enum ReaderPairingErrorCode {
   sandboxNotSupported,
   simulatorNotSupported,
   readerAlreadyPairing,
-  // android
-  hostIdMismatch
 }
 
 enum TapToPayErrorCode {
