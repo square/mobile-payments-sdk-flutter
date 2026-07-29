@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'square_mobile_payments_sdk'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'Square Mobile Payments SDK.'
   s.description      = <<-DESC
 Allows developers to take in-person payments using Square hardware.
@@ -17,8 +17,8 @@ Allows developers to take in-person payments using Square hardware.
   s.dependency 'Flutter'
   s.platform = :ios, '16.0'
 
-  s.dependency "SquareMobilePaymentsSDK", "~> 2.5.0"
-  s.dependency "MockReaderUI", "~> 2.5.0", :configurations => ['Debug']
+  s.dependency "SquareMobilePaymentsSDK", "~> 2.6.0"
+  s.dependency "MockReaderUI", "~> 2.6.0", :configurations => ['Debug']
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

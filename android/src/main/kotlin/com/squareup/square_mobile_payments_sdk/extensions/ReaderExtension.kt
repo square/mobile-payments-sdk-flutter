@@ -68,6 +68,7 @@ fun ReaderInfo.Status.ReaderUnavailable.toUnavailableReasonName(): String {
         ReaderInfo.Status.ReaderUnavailable.ReaderUnavailableReason.DEVICE_ROOTED -> "deviceRooted"
         ReaderInfo.Status.ReaderUnavailable.ReaderUnavailableReason.DEVICE_DEVELOPER_MODE -> "deviceDeveloperMode"
         ReaderInfo.Status.ReaderUnavailable.ReaderUnavailableReason.DISABLED -> "disabled"
+        ReaderInfo.Status.ReaderUnavailable.ReaderUnavailableReason.HOST_ID_MISMATCH -> "hostIdMismatch"
     }
 }
 

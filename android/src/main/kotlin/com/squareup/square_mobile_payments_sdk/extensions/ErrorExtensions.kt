@@ -51,5 +51,6 @@ fun PairingErrorCode.toPairingErrorCodeName(): String = when (this) {
     PairingErrorCode.USAGE_ERROR -> "usageError"
     PairingErrorCode.APP_UPDATE_REQUIRED -> "updateRequired"
     PairingErrorCode.INTERNAL_FIRMWARE_ERROR -> "internalFirmwareError"
+    PairingErrorCode.HOST_ID_MISMATCH -> "hostIdMismatch"
     PairingErrorCode.UNKNOWN_ERROR -> "unknown"
 }

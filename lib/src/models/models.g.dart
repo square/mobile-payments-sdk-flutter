@@ -256,6 +256,7 @@ const _$ReaderStatusInfoUnavailableReasonEnumMap = {
   ReaderStatusInfoUnavailableReason.deviceRooted: 'deviceRooted',
   ReaderStatusInfoUnavailableReason.deviceDeveloperMode: 'deviceDeveloperMode',
   ReaderStatusInfoUnavailableReason.disabled: 'disabled',
+  ReaderStatusInfoUnavailableReason.hostIdMismatch: 'hostIdMismatch',
 };
 
 _$ReaderFirmwareInfoImpl _$$ReaderFirmwareInfoImplFromJson(
