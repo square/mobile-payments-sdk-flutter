@@ -1,6 +1,6 @@
 ## 2026.7.4
 
-* Upgrade Android and iOS native SDK to `2.6.0`
+* Upgrade Android and iOS native SDK to `2.6.0` https://github.com/square/mobile-payments-sdk-flutter/pull/88#:~:text=https%3A//developer.squareup.com/docs/changelog/mobile%2Dlogs/2026%2D07%2D27
 * Add `hostIdMismatch` to `ReaderStatusInfoUnavailableReason` and `ReaderPairingErrorCode`. This surfaces the native `HOST_ID_MISMATCH` reason, reported when a reader refuses a connection because another device was its most-recently-paired host (previously reported as a generic internal/unknown error)
 * Cash payments may now be automatically rounded to the nearest five cents for CAD and AUD, and optionally USD when enabled. Payment results reflect the rounded amount
 * **Breaking (Android):** Removed `externalDetails` from `Payment` (offline and online). The native `ExternalPaymentDetails`, `ExternalTenderType`, and `Payment.externalDetails` APIs were removed in Android native SDK `2.6.0`. `SourceType.externalSource` remains available
