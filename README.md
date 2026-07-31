@@ -7,6 +7,8 @@ Mobile Payments SDK for Flutter supports the following SDK versions:
   * [iOS](https://developer.squareup.com/docs/mobile-payments-sdk/ios#1-install-the-sdk-and-dependencies): 2.6.0 and above
   * [Android](https://developer.squareup.com/docs/mobile-payments-sdk/android#1-install-the-sdk-and-dependencies): 2.6.0 and above
 
+It requires Flutter 3.44 or above, iOS 16.0 or above, and Android API 28 or above. On iOS the plugin is distributed as a Swift package; see the [installation guide](doc/README.md#step-1-install-flutter-plugin-for-mobile-payments-sdk) if your project still uses CocoaPods.
+
 ## Review requirements
 Before getting started, please review the Requirements and Limitations and Device Compatibility sections to ensure that the SDK can be used in your project:
 * Android: [Requirements and Limitations](https://developer.squareup.com/docs/mobile-payments-sdk/android#requirements-and-limitations), [Device Compatibility](https://developer.squareup.com/docs/mobile-payments-sdk/android#device-permissions)
@@ -29,7 +31,7 @@ If you need more assistance, contact [Developer and App Marketplace Support](htt
 ## Mobile Payments SDK Sample App
 <img src="./images/donut-counter-home.png" width="300"/> <img src="./images/donut-counter-take-payment.png" width="300"/>
 
-[Donut Counter](example/) is a sample application included in the `example` folder of this repository. It is built using Flutter 3.27.3 and designed to help developers utilize the Square Mobile Payments SDK. This application serves as a practical guide for integrating and leveraging the SDK's capabilities within your own projects. It demonstrates essential functions such as initializing and authorizing the SDK, using mock readers, and processing a $1.00 payment.
+[Donut Counter](example/) is a sample application included in the `example` folder of this repository. It is built using Flutter 3.44, resolving its iOS dependencies with Swift Package Manager and its Android build with the Gradle Kotlin DSL, and is designed to help developers utilize the Square Mobile Payments SDK. This application serves as a practical guide for integrating and leveraging the SDK's capabilities within your own projects. It demonstrates essential functions such as initializing and authorizing the SDK, using mock readers, and processing a $1.00 payment.
 
 ## License
 

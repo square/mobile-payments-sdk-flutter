@@ -36,6 +36,7 @@ The example app makes the following assumptions:
 * Clone this repo (if you have not already):
     *  `https://github.com/square/mobile-payments-sdk-flutter`
 * Make sure you've set up your environment for developing in Flutter
+* Install Flutter 3.44 or later, and Xcode 26 or later to build the iOS app
 
 ## 2. Get application credentials
 In your [Developer Dashboard](https://developer.squareup.com/apps), create an application or open an existing one you would like to use. If this is your first time creating an application with Square, you can review this [Get Started](https://developer.squareup.com/docs/square-get-) guide for more information.
@@ -55,9 +56,10 @@ Click "Locations" in the left navigation and make note of the Default Test Accou
 1. Make sure you're in the example folder of the repository. `cd example`
 2. Run the iOS simulator or Android emulator.
 3. Run `flutter run`.
-* For iOS: `cd ios`, and then run `pod install`
 
-You can also run the app for each individual platform by opening `ios/Runner.xcworkspace` in Xcode for iOS; or `android/build.gradle` in Android Studio, for Android.
+The iOS dependencies are resolved with Swift Package Manager on the first build, so there is no `pod install` step.
+
+You can also run the app for each individual platform by opening `ios/Runner.xcodeproj` in Xcode for iOS; or the `android` folder in Android Studio, for Android.
 
 ## 5. Request required permissions
 On the first install of the application, you will be required to grant various device permissions in order for the SDK to be fully functional.

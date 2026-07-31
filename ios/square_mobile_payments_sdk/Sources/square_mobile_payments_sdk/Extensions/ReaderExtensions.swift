@@ -1,3 +1,4 @@
+import Foundation
 import SquareMobilePaymentsSDK
 
 extension ReaderInfo {

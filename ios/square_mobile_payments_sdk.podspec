@@ -13,7 +13,7 @@ Allows developers to take in-person payments using Square hardware.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Block, Inc' => 'mpx@squareup.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'square_mobile_payments_sdk/Sources/square_mobile_payments_sdk/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '16.0'
 
@@ -28,5 +28,5 @@ Allows developers to take in-person payments using Square hardware.
   # required reason APIs, update the PrivacyInfo.xcprivacy file to describe your
   # plugin's privacy impact, and then uncomment this line. For more information,
   # see https://developer.apple.com/documentation/bundleresources/privacy_manifest_files
-  # s.resource_bundles = {'square_mobile_payments_sdk_privacy' => ['Resources/PrivacyInfo.xcprivacy']}
+  # s.resource_bundles = {'square_mobile_payments_sdk_privacy' => ['square_mobile_payments_sdk/Sources/square_mobile_payments_sdk/PrivacyInfo.xcprivacy']}
 end
