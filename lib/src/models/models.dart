@@ -9,7 +9,7 @@ part 'errors.dart';
 /// Basic types
 
 @freezed
-class Location with _$Location {
+abstract class Location with _$Location {
   const factory Location({
     required String id,
     @JsonKey(unknownEnumValue: CurrencyCode.unknown)
@@ -26,7 +26,7 @@ class Location with _$Location {
 }
 
 @freezed
-class Money with _$Money {
+abstract class Money with _$Money {
   const factory Money({
     int? amount,
     @JsonKey(unknownEnumValue: CurrencyCode.unknown)
@@ -39,7 +39,7 @@ class Money with _$Money {
 /// Card objects
 
 @freezed
-class Card with _$Card {
+abstract class Card with _$Card {
   const factory Card({
     @JsonKey(unknownEnumValue: CardBrand.unknown) required CardBrand brand,
     String? cardholderName,
@@ -54,7 +54,7 @@ class Card with _$Card {
 }
 
 @freezed
-class OfflineCard with _$OfflineCard {
+abstract class OfflineCard with _$OfflineCard {
   const factory OfflineCard({
     required CardBrand brand,
     String? cardholderName,
@@ -67,7 +67,7 @@ class OfflineCard with _$OfflineCard {
 }
 
 @freezed
-class CardPaymentDetails with _$CardPaymentDetails {
+abstract class CardPaymentDetails with _$CardPaymentDetails {
   const factory CardPaymentDetails({
     String? applicationIdentifier,
     String? applicationName,
@@ -84,7 +84,7 @@ class CardPaymentDetails with _$CardPaymentDetails {
 }
 
 @freezed
-class CardInputMethods with _$CardInputMethods {
+abstract class CardInputMethods with _$CardInputMethods {
   const factory CardInputMethods({
     required int chip,
     required int contactless,
@@ -97,7 +97,7 @@ class CardInputMethods with _$CardInputMethods {
 
 /// Reader objects
 @freezed
-class ReaderBatteryStatus with _$ReaderBatteryStatus {
+abstract class ReaderBatteryStatus with _$ReaderBatteryStatus {
   const factory ReaderBatteryStatus({
     required bool isCharging,
     ReaderBatteryLevel? level,
@@ -109,7 +109,7 @@ class ReaderBatteryStatus with _$ReaderBatteryStatus {
 }
 
 @freezed
-class ReaderStatusInfo with _$ReaderStatusInfo {
+abstract class ReaderStatusInfo with _$ReaderStatusInfo {
   const factory ReaderStatusInfo({
     required ReaderStatusInfoStatus status,
     ReaderStatusInfoUnavailableReason? unavailableReason,
@@ -120,7 +120,7 @@ class ReaderStatusInfo with _$ReaderStatusInfo {
 }
 
 @freezed
-class ReaderFirmwareInfo with _$ReaderFirmwareInfo {
+abstract class ReaderFirmwareInfo with _$ReaderFirmwareInfo {
   const factory ReaderFirmwareInfo({
     String? failureReason,
     int? updatePercentage,
@@ -132,7 +132,7 @@ class ReaderFirmwareInfo with _$ReaderFirmwareInfo {
 }
 
 @freezed
-class ReaderInfo with _$ReaderInfo {
+abstract class ReaderInfo with _$ReaderInfo {
   const factory ReaderInfo({
     ReaderBatteryStatus? batteryStatus,
     CardInsertionStatus? cardInsertionStatus,
@@ -153,7 +153,7 @@ class ReaderInfo with _$ReaderInfo {
 }
 
 @freezed
-class PromptParameters with _$PromptParameters {
+abstract class PromptParameters with _$PromptParameters {
   const factory PromptParameters({
     required List<AdditionalPaymentMethodType> additionalPaymentMethods,
     required PromptMode mode,
@@ -166,7 +166,7 @@ class PromptParameters with _$PromptParameters {
 /// Payments
 
 @freezed
-class Payment with _$Payment {
+abstract class Payment with _$Payment {
   const factory Payment({
     required Money amountMoney,
     Money? appFeeMoney,
@@ -187,7 +187,7 @@ class Payment with _$Payment {
 }
 
 @Freezed(unionKey: 'type') // 👈 needed because we have two constructors
-class PaymentParameters with _$PaymentParameters {
+sealed class PaymentParameters with _$PaymentParameters {
   /// ✅ Current / recommended constructor
   @FreezedUnionValue('current')
   const factory PaymentParameters({
@@ -206,7 +206,7 @@ class PaymentParameters with _$PaymentParameters {
     String? referenceId,
     String? teamMemberId,
     Money? tipMoney,
-  }) = _PaymentParameters;
+  }) = PaymentParametersCurrent;
 
   /// ⚠️ Deprecated constructor
   @Deprecated('Use the constructor with paymentAttemptId instead.')
@@ -234,7 +234,7 @@ class PaymentParameters with _$PaymentParameters {
 }
 
 @freezed
-class OnlinePayment with _$OnlinePayment {
+abstract class OnlinePayment with _$OnlinePayment {
   const factory OnlinePayment({
     required Money amountMoney,
     required Money appFeeMoney,
@@ -257,7 +257,7 @@ class OnlinePayment with _$OnlinePayment {
 }
 
 @freezed
-class OfflinePayment with _$OfflinePayment {
+abstract class OfflinePayment with _$OfflinePayment {
   const factory OfflinePayment({
     required Money amountMoney,
     Money? appFeeMoney,
@@ -281,7 +281,7 @@ class OfflinePayment with _$OfflinePayment {
 }
 
 @freezed
-class OfflineCardPaymentDetails with _$OfflineCardPaymentDetails {
+abstract class OfflineCardPaymentDetails with _$OfflineCardPaymentDetails {
   const factory OfflineCardPaymentDetails({
     String? applicationIdentifier,
     String? applicationName,
@@ -305,7 +305,7 @@ class ReaderCallbackReference {
 }
 
 @freezed
-class ReaderChangedEvent with _$ReaderChangedEvent {
+abstract class ReaderChangedEvent with _$ReaderChangedEvent {
   const factory ReaderChangedEvent(
       {required ReaderInfo reader,
       required ReaderChange change}) = _ReaderChangedEvent;
@@ -325,7 +325,7 @@ class PairingHandle {
 }
 
 @freezed
-class TimeOfDay with _$TimeOfDay {
+abstract class TimeOfDay with _$TimeOfDay {
   const factory TimeOfDay({required int hour, required int minute}) =
       _TimeOfDay;
   factory TimeOfDay.fromJson(Map<String, Object?> json) =>
@@ -333,7 +333,7 @@ class TimeOfDay with _$TimeOfDay {
 }
 
 @freezed
-class ReaderSettings with _$ReaderSettings {
+abstract class ReaderSettings with _$ReaderSettings {
   const factory ReaderSettings(
       {required bool isReducedChargingModeEnabled,
       TimeOfDay? preferredFirmwareUpdateTime}) = _ReaderSettings;

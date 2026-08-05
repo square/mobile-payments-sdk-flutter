@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,6636 +9,6231 @@ part of 'models.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Location _$LocationFromJson(Map<String, dynamic> json) {
-  return _Location.fromJson(json);
-}
-
 /// @nodoc
-mixin _$Location {
-  String get id => throw _privateConstructorUsedError;
-  @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-  CurrencyCode get currencyCode => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String? get merchantId => throw _privateConstructorUsedError;
-  String? get businessName => throw _privateConstructorUsedError;
-  bool? get cardProcessingActivated => throw _privateConstructorUsedError;
-  String? get mcc => throw _privateConstructorUsedError;
+mixin _$Location implements DiagnosticableTreeMixin {
+
+ String get id;@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode get currencyCode; String get name; String? get merchantId; String? get businessName; bool? get cardProcessingActivated; String? get mcc;
+/// Create a copy of Location
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LocationCopyWith<Location> get copyWith => _$LocationCopyWithImpl<Location>(this as Location, _$identity);
 
   /// Serializes this Location to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Location
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $LocationCopyWith<Location> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'Location'))
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('currencyCode', currencyCode))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('merchantId', merchantId))..add(DiagnosticsProperty('businessName', businessName))..add(DiagnosticsProperty('cardProcessingActivated', cardProcessingActivated))..add(DiagnosticsProperty('mcc', mcc));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Location&&(identical(other.id, id) || other.id == id)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.name, name) || other.name == name)&&(identical(other.merchantId, merchantId) || other.merchantId == merchantId)&&(identical(other.businessName, businessName) || other.businessName == businessName)&&(identical(other.cardProcessingActivated, cardProcessingActivated) || other.cardProcessingActivated == cardProcessingActivated)&&(identical(other.mcc, mcc) || other.mcc == mcc));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,currencyCode,name,merchantId,businessName,cardProcessingActivated,mcc);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'Location(id: $id, currencyCode: $currencyCode, name: $name, merchantId: $merchantId, businessName: $businessName, cardProcessingActivated: $cardProcessingActivated, mcc: $mcc)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $LocationCopyWith<$Res> {
-  factory $LocationCopyWith(Location value, $Res Function(Location) then) =
-      _$LocationCopyWithImpl<$Res, Location>;
-  @useResult
-  $Res call(
-      {String id,
-      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-      CurrencyCode currencyCode,
-      String name,
-      String? merchantId,
-      String? businessName,
-      bool? cardProcessingActivated,
-      String? mcc});
-}
+abstract mixin class $LocationCopyWith<$Res>  {
+  factory $LocationCopyWith(Location value, $Res Function(Location) _then) = _$LocationCopyWithImpl;
+@useResult
+$Res call({
+ String id,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currencyCode, String name, String? merchantId, String? businessName, bool? cardProcessingActivated, String? mcc
+});
 
+
+
+
+}
 /// @nodoc
-class _$LocationCopyWithImpl<$Res, $Val extends Location>
+class _$LocationCopyWithImpl<$Res>
     implements $LocationCopyWith<$Res> {
-  _$LocationCopyWithImpl(this._value, this._then);
+  _$LocationCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Location _self;
+  final $Res Function(Location) _then;
 
-  /// Create a copy of Location
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? currencyCode = null,
-    Object? name = null,
-    Object? merchantId = freezed,
-    Object? businessName = freezed,
-    Object? cardProcessingActivated = freezed,
-    Object? mcc = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      currencyCode: null == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
-              as CurrencyCode,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      merchantId: freezed == merchantId
-          ? _value.merchantId
-          : merchantId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      businessName: freezed == businessName
-          ? _value.businessName
-          : businessName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cardProcessingActivated: freezed == cardProcessingActivated
-          ? _value.cardProcessingActivated
-          : cardProcessingActivated // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      mcc: freezed == mcc
-          ? _value.mcc
-          : mcc // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of Location
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? currencyCode = null,Object? name = null,Object? merchantId = freezed,Object? businessName = freezed,Object? cardProcessingActivated = freezed,Object? mcc = freezed,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
+as CurrencyCode,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,merchantId: freezed == merchantId ? _self.merchantId : merchantId // ignore: cast_nullable_to_non_nullable
+as String?,businessName: freezed == businessName ? _self.businessName : businessName // ignore: cast_nullable_to_non_nullable
+as String?,cardProcessingActivated: freezed == cardProcessingActivated ? _self.cardProcessingActivated : cardProcessingActivated // ignore: cast_nullable_to_non_nullable
+as bool?,mcc: freezed == mcc ? _self.mcc : mcc // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$LocationImplCopyWith<$Res>
-    implements $LocationCopyWith<$Res> {
-  factory _$$LocationImplCopyWith(
-          _$LocationImpl value, $Res Function(_$LocationImpl) then) =
-      __$$LocationImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String id,
-      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-      CurrencyCode currencyCode,
-      String name,
-      String? merchantId,
-      String? businessName,
-      bool? cardProcessingActivated,
-      String? mcc});
 }
 
-/// @nodoc
-class __$$LocationImplCopyWithImpl<$Res>
-    extends _$LocationCopyWithImpl<$Res, _$LocationImpl>
-    implements _$$LocationImplCopyWith<$Res> {
-  __$$LocationImplCopyWithImpl(
-      _$LocationImpl _value, $Res Function(_$LocationImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of Location
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? currencyCode = null,
-    Object? name = null,
-    Object? merchantId = freezed,
-    Object? businessName = freezed,
-    Object? cardProcessingActivated = freezed,
-    Object? mcc = freezed,
-  }) {
-    return _then(_$LocationImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      currencyCode: null == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
-              as CurrencyCode,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      merchantId: freezed == merchantId
-          ? _value.merchantId
-          : merchantId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      businessName: freezed == businessName
-          ? _value.businessName
-          : businessName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cardProcessingActivated: freezed == cardProcessingActivated
-          ? _value.cardProcessingActivated
-          : cardProcessingActivated // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      mcc: freezed == mcc
-          ? _value.mcc
-          : mcc // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Location].
+extension LocationPatterns on Location {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Location value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Location() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Location value)  $default,){
+final _that = this;
+switch (_that) {
+case _Location():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Location value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Location() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currencyCode,  String name,  String? merchantId,  String? businessName,  bool? cardProcessingActivated,  String? mcc)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Location() when $default != null:
+return $default(_that.id,_that.currencyCode,_that.name,_that.merchantId,_that.businessName,_that.cardProcessingActivated,_that.mcc);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currencyCode,  String name,  String? merchantId,  String? businessName,  bool? cardProcessingActivated,  String? mcc)  $default,) {final _that = this;
+switch (_that) {
+case _Location():
+return $default(_that.id,_that.currencyCode,_that.name,_that.merchantId,_that.businessName,_that.cardProcessingActivated,_that.mcc);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currencyCode,  String name,  String? merchantId,  String? businessName,  bool? cardProcessingActivated,  String? mcc)?  $default,) {final _that = this;
+switch (_that) {
+case _Location() when $default != null:
+return $default(_that.id,_that.currencyCode,_that.name,_that.merchantId,_that.businessName,_that.cardProcessingActivated,_that.mcc);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$LocationImpl with DiagnosticableTreeMixin implements _Location {
-  const _$LocationImpl(
-      {required this.id,
-      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-      required this.currencyCode,
-      required this.name,
-      this.merchantId,
-      this.businessName,
-      this.cardProcessingActivated,
-      this.mcc});
 
-  factory _$LocationImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LocationImplFromJson(json);
+class _Location with DiagnosticableTreeMixin implements Location {
+  const _Location({required this.id, @JsonKey(unknownEnumValue: CurrencyCode.unknown) required this.currencyCode, required this.name, this.merchantId, this.businessName, this.cardProcessingActivated, this.mcc});
+  factory _Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);
 
-  @override
-  final String id;
-  @override
-  @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-  final CurrencyCode currencyCode;
-  @override
-  final String name;
-  @override
-  final String? merchantId;
-  @override
-  final String? businessName;
-  @override
-  final bool? cardProcessingActivated;
-  @override
-  final String? mcc;
+@override final  String id;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode currencyCode;
+@override final  String name;
+@override final  String? merchantId;
+@override final  String? businessName;
+@override final  bool? cardProcessingActivated;
+@override final  String? mcc;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Location(id: $id, currencyCode: $currencyCode, name: $name, merchantId: $merchantId, businessName: $businessName, cardProcessingActivated: $cardProcessingActivated, mcc: $mcc)';
-  }
+/// Create a copy of Location
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LocationCopyWith<_Location> get copyWith => __$LocationCopyWithImpl<_Location>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Location'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('currencyCode', currencyCode))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('merchantId', merchantId))
-      ..add(DiagnosticsProperty('businessName', businessName))
-      ..add(DiagnosticsProperty(
-          'cardProcessingActivated', cardProcessingActivated))
-      ..add(DiagnosticsProperty('mcc', mcc));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LocationImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.currencyCode, currencyCode) ||
-                other.currencyCode == currencyCode) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.merchantId, merchantId) ||
-                other.merchantId == merchantId) &&
-            (identical(other.businessName, businessName) ||
-                other.businessName == businessName) &&
-            (identical(
-                    other.cardProcessingActivated, cardProcessingActivated) ||
-                other.cardProcessingActivated == cardProcessingActivated) &&
-            (identical(other.mcc, mcc) || other.mcc == mcc));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, currencyCode, name,
-      merchantId, businessName, cardProcessingActivated, mcc);
-
-  /// Create a copy of Location
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LocationImplCopyWith<_$LocationImpl> get copyWith =>
-      __$$LocationImplCopyWithImpl<_$LocationImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LocationImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$LocationToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'Location'))
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('currencyCode', currencyCode))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('merchantId', merchantId))..add(DiagnosticsProperty('businessName', businessName))..add(DiagnosticsProperty('cardProcessingActivated', cardProcessingActivated))..add(DiagnosticsProperty('mcc', mcc));
 }
 
-abstract class _Location implements Location {
-  const factory _Location(
-      {required final String id,
-      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-      required final CurrencyCode currencyCode,
-      required final String name,
-      final String? merchantId,
-      final String? businessName,
-      final bool? cardProcessingActivated,
-      final String? mcc}) = _$LocationImpl;
-
-  factory _Location.fromJson(Map<String, dynamic> json) =
-      _$LocationImpl.fromJson;
-
-  @override
-  String get id;
-  @override
-  @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-  CurrencyCode get currencyCode;
-  @override
-  String get name;
-  @override
-  String? get merchantId;
-  @override
-  String? get businessName;
-  @override
-  bool? get cardProcessingActivated;
-  @override
-  String? get mcc;
-
-  /// Create a copy of Location
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LocationImplCopyWith<_$LocationImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Location&&(identical(other.id, id) || other.id == id)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.name, name) || other.name == name)&&(identical(other.merchantId, merchantId) || other.merchantId == merchantId)&&(identical(other.businessName, businessName) || other.businessName == businessName)&&(identical(other.cardProcessingActivated, cardProcessingActivated) || other.cardProcessingActivated == cardProcessingActivated)&&(identical(other.mcc, mcc) || other.mcc == mcc));
 }
 
-Money _$MoneyFromJson(Map<String, dynamic> json) {
-  return _Money.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,currencyCode,name,merchantId,businessName,cardProcessingActivated,mcc);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'Location(id: $id, currencyCode: $currencyCode, name: $name, merchantId: $merchantId, businessName: $businessName, cardProcessingActivated: $cardProcessingActivated, mcc: $mcc)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$Money {
-  int? get amount => throw _privateConstructorUsedError;
-  @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-  CurrencyCode get currencyCode => throw _privateConstructorUsedError;
+abstract mixin class _$LocationCopyWith<$Res> implements $LocationCopyWith<$Res> {
+  factory _$LocationCopyWith(_Location value, $Res Function(_Location) _then) = __$LocationCopyWithImpl;
+@override @useResult
+$Res call({
+ String id,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currencyCode, String name, String? merchantId, String? businessName, bool? cardProcessingActivated, String? mcc
+});
+
+
+
+
+}
+/// @nodoc
+class __$LocationCopyWithImpl<$Res>
+    implements _$LocationCopyWith<$Res> {
+  __$LocationCopyWithImpl(this._self, this._then);
+
+  final _Location _self;
+  final $Res Function(_Location) _then;
+
+/// Create a copy of Location
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? currencyCode = null,Object? name = null,Object? merchantId = freezed,Object? businessName = freezed,Object? cardProcessingActivated = freezed,Object? mcc = freezed,}) {
+  return _then(_Location(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
+as CurrencyCode,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,merchantId: freezed == merchantId ? _self.merchantId : merchantId // ignore: cast_nullable_to_non_nullable
+as String?,businessName: freezed == businessName ? _self.businessName : businessName // ignore: cast_nullable_to_non_nullable
+as String?,cardProcessingActivated: freezed == cardProcessingActivated ? _self.cardProcessingActivated : cardProcessingActivated // ignore: cast_nullable_to_non_nullable
+as bool?,mcc: freezed == mcc ? _self.mcc : mcc // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$Money implements DiagnosticableTreeMixin {
+
+ int? get amount;@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode get currencyCode;
+/// Create a copy of Money
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<Money> get copyWith => _$MoneyCopyWithImpl<Money>(this as Money, _$identity);
 
   /// Serializes this Money to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Money
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MoneyCopyWith<Money> get copyWith => throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'Money'))
+    ..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('currencyCode', currencyCode));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Money&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,amount,currencyCode);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'Money(amount: $amount, currencyCode: $currencyCode)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $MoneyCopyWith<$Res> {
-  factory $MoneyCopyWith(Money value, $Res Function(Money) then) =
-      _$MoneyCopyWithImpl<$Res, Money>;
-  @useResult
-  $Res call(
-      {int? amount,
-      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-      CurrencyCode currencyCode});
-}
+abstract mixin class $MoneyCopyWith<$Res>  {
+  factory $MoneyCopyWith(Money value, $Res Function(Money) _then) = _$MoneyCopyWithImpl;
+@useResult
+$Res call({
+ int? amount,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currencyCode
+});
 
+
+
+
+}
 /// @nodoc
-class _$MoneyCopyWithImpl<$Res, $Val extends Money>
+class _$MoneyCopyWithImpl<$Res>
     implements $MoneyCopyWith<$Res> {
-  _$MoneyCopyWithImpl(this._value, this._then);
+  _$MoneyCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Money _self;
+  final $Res Function(Money) _then;
 
-  /// Create a copy of Money
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? amount = freezed,
-    Object? currencyCode = null,
-  }) {
-    return _then(_value.copyWith(
-      amount: freezed == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      currencyCode: null == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
-              as CurrencyCode,
-    ) as $Val);
-  }
+/// Create a copy of Money
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? amount = freezed,Object? currencyCode = null,}) {
+  return _then(_self.copyWith(
+amount: freezed == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as int?,currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
+as CurrencyCode,
+  ));
 }
 
-/// @nodoc
-abstract class _$$MoneyImplCopyWith<$Res> implements $MoneyCopyWith<$Res> {
-  factory _$$MoneyImplCopyWith(
-          _$MoneyImpl value, $Res Function(_$MoneyImpl) then) =
-      __$$MoneyImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int? amount,
-      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-      CurrencyCode currencyCode});
 }
 
-/// @nodoc
-class __$$MoneyImplCopyWithImpl<$Res>
-    extends _$MoneyCopyWithImpl<$Res, _$MoneyImpl>
-    implements _$$MoneyImplCopyWith<$Res> {
-  __$$MoneyImplCopyWithImpl(
-      _$MoneyImpl _value, $Res Function(_$MoneyImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of Money
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? amount = freezed,
-    Object? currencyCode = null,
-  }) {
-    return _then(_$MoneyImpl(
-      amount: freezed == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      currencyCode: null == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
-              as CurrencyCode,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Money].
+extension MoneyPatterns on Money {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Money value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Money() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Money value)  $default,){
+final _that = this;
+switch (_that) {
+case _Money():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Money value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Money() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? amount, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currencyCode)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Money() when $default != null:
+return $default(_that.amount,_that.currencyCode);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? amount, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currencyCode)  $default,) {final _that = this;
+switch (_that) {
+case _Money():
+return $default(_that.amount,_that.currencyCode);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? amount, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currencyCode)?  $default,) {final _that = this;
+switch (_that) {
+case _Money() when $default != null:
+return $default(_that.amount,_that.currencyCode);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$MoneyImpl with DiagnosticableTreeMixin implements _Money {
-  const _$MoneyImpl(
-      {this.amount,
-      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-      required this.currencyCode});
 
-  factory _$MoneyImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MoneyImplFromJson(json);
+class _Money with DiagnosticableTreeMixin implements Money {
+  const _Money({this.amount, @JsonKey(unknownEnumValue: CurrencyCode.unknown) required this.currencyCode});
+  factory _Money.fromJson(Map<String, dynamic> json) => _$MoneyFromJson(json);
 
-  @override
-  final int? amount;
-  @override
-  @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-  final CurrencyCode currencyCode;
+@override final  int? amount;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode currencyCode;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Money(amount: $amount, currencyCode: $currencyCode)';
-  }
+/// Create a copy of Money
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$MoneyCopyWith<_Money> get copyWith => __$MoneyCopyWithImpl<_Money>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Money'))
-      ..add(DiagnosticsProperty('amount', amount))
-      ..add(DiagnosticsProperty('currencyCode', currencyCode));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MoneyImpl &&
-            (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.currencyCode, currencyCode) ||
-                other.currencyCode == currencyCode));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, amount, currencyCode);
-
-  /// Create a copy of Money
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MoneyImplCopyWith<_$MoneyImpl> get copyWith =>
-      __$$MoneyImplCopyWithImpl<_$MoneyImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MoneyImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$MoneyToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'Money'))
+    ..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('currencyCode', currencyCode));
 }
 
-abstract class _Money implements Money {
-  const factory _Money(
-      {final int? amount,
-      @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-      required final CurrencyCode currencyCode}) = _$MoneyImpl;
-
-  factory _Money.fromJson(Map<String, dynamic> json) = _$MoneyImpl.fromJson;
-
-  @override
-  int? get amount;
-  @override
-  @JsonKey(unknownEnumValue: CurrencyCode.unknown)
-  CurrencyCode get currencyCode;
-
-  /// Create a copy of Money
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MoneyImplCopyWith<_$MoneyImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Money&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode));
 }
 
-Card _$CardFromJson(Map<String, dynamic> json) {
-  return _Card.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,amount,currencyCode);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'Money(amount: $amount, currencyCode: $currencyCode)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$Card {
-  @JsonKey(unknownEnumValue: CardBrand.unknown)
-  CardBrand get brand => throw _privateConstructorUsedError;
-  String? get cardholderName => throw _privateConstructorUsedError;
-  @JsonKey(unknownEnumValue: CardCoBrand.unknown)
-  CardCoBrand? get coBrand => throw _privateConstructorUsedError;
-  num get expirationMonth => throw _privateConstructorUsedError;
-  num get expirationYear => throw _privateConstructorUsedError;
-  String? get id => throw _privateConstructorUsedError;
-  String? get lastFourDigits => throw _privateConstructorUsedError;
+abstract mixin class _$MoneyCopyWith<$Res> implements $MoneyCopyWith<$Res> {
+  factory _$MoneyCopyWith(_Money value, $Res Function(_Money) _then) = __$MoneyCopyWithImpl;
+@override @useResult
+$Res call({
+ int? amount,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currencyCode
+});
+
+
+
+
+}
+/// @nodoc
+class __$MoneyCopyWithImpl<$Res>
+    implements _$MoneyCopyWith<$Res> {
+  __$MoneyCopyWithImpl(this._self, this._then);
+
+  final _Money _self;
+  final $Res Function(_Money) _then;
+
+/// Create a copy of Money
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? amount = freezed,Object? currencyCode = null,}) {
+  return _then(_Money(
+amount: freezed == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as int?,currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
+as CurrencyCode,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$Card implements DiagnosticableTreeMixin {
+
+@JsonKey(unknownEnumValue: CardBrand.unknown) CardBrand get brand; String? get cardholderName;@JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand? get coBrand; num get expirationMonth; num get expirationYear; String? get id; String? get lastFourDigits;
+/// Create a copy of Card
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CardCopyWith<Card> get copyWith => _$CardCopyWithImpl<Card>(this as Card, _$identity);
 
   /// Serializes this Card to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Card
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $CardCopyWith<Card> get copyWith => throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'Card'))
+    ..add(DiagnosticsProperty('brand', brand))..add(DiagnosticsProperty('cardholderName', cardholderName))..add(DiagnosticsProperty('coBrand', coBrand))..add(DiagnosticsProperty('expirationMonth', expirationMonth))..add(DiagnosticsProperty('expirationYear', expirationYear))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('lastFourDigits', lastFourDigits));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Card&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.cardholderName, cardholderName) || other.cardholderName == cardholderName)&&(identical(other.coBrand, coBrand) || other.coBrand == coBrand)&&(identical(other.expirationMonth, expirationMonth) || other.expirationMonth == expirationMonth)&&(identical(other.expirationYear, expirationYear) || other.expirationYear == expirationYear)&&(identical(other.id, id) || other.id == id)&&(identical(other.lastFourDigits, lastFourDigits) || other.lastFourDigits == lastFourDigits));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,brand,cardholderName,coBrand,expirationMonth,expirationYear,id,lastFourDigits);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'Card(brand: $brand, cardholderName: $cardholderName, coBrand: $coBrand, expirationMonth: $expirationMonth, expirationYear: $expirationYear, id: $id, lastFourDigits: $lastFourDigits)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CardCopyWith<$Res> {
-  factory $CardCopyWith(Card value, $Res Function(Card) then) =
-      _$CardCopyWithImpl<$Res, Card>;
-  @useResult
-  $Res call(
-      {@JsonKey(unknownEnumValue: CardBrand.unknown) CardBrand brand,
-      String? cardholderName,
-      @JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand? coBrand,
-      num expirationMonth,
-      num expirationYear,
-      String? id,
-      String? lastFourDigits});
-}
+abstract mixin class $CardCopyWith<$Res>  {
+  factory $CardCopyWith(Card value, $Res Function(Card) _then) = _$CardCopyWithImpl;
+@useResult
+$Res call({
+@JsonKey(unknownEnumValue: CardBrand.unknown) CardBrand brand, String? cardholderName,@JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand? coBrand, num expirationMonth, num expirationYear, String? id, String? lastFourDigits
+});
 
+
+
+
+}
 /// @nodoc
-class _$CardCopyWithImpl<$Res, $Val extends Card>
+class _$CardCopyWithImpl<$Res>
     implements $CardCopyWith<$Res> {
-  _$CardCopyWithImpl(this._value, this._then);
+  _$CardCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Card _self;
+  final $Res Function(Card) _then;
 
-  /// Create a copy of Card
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? brand = null,
-    Object? cardholderName = freezed,
-    Object? coBrand = freezed,
-    Object? expirationMonth = null,
-    Object? expirationYear = null,
-    Object? id = freezed,
-    Object? lastFourDigits = freezed,
-  }) {
-    return _then(_value.copyWith(
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as CardBrand,
-      cardholderName: freezed == cardholderName
-          ? _value.cardholderName
-          : cardholderName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      coBrand: freezed == coBrand
-          ? _value.coBrand
-          : coBrand // ignore: cast_nullable_to_non_nullable
-              as CardCoBrand?,
-      expirationMonth: null == expirationMonth
-          ? _value.expirationMonth
-          : expirationMonth // ignore: cast_nullable_to_non_nullable
-              as num,
-      expirationYear: null == expirationYear
-          ? _value.expirationYear
-          : expirationYear // ignore: cast_nullable_to_non_nullable
-              as num,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastFourDigits: freezed == lastFourDigits
-          ? _value.lastFourDigits
-          : lastFourDigits // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of Card
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? brand = null,Object? cardholderName = freezed,Object? coBrand = freezed,Object? expirationMonth = null,Object? expirationYear = null,Object? id = freezed,Object? lastFourDigits = freezed,}) {
+  return _then(_self.copyWith(
+brand: null == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
+as CardBrand,cardholderName: freezed == cardholderName ? _self.cardholderName : cardholderName // ignore: cast_nullable_to_non_nullable
+as String?,coBrand: freezed == coBrand ? _self.coBrand : coBrand // ignore: cast_nullable_to_non_nullable
+as CardCoBrand?,expirationMonth: null == expirationMonth ? _self.expirationMonth : expirationMonth // ignore: cast_nullable_to_non_nullable
+as num,expirationYear: null == expirationYear ? _self.expirationYear : expirationYear // ignore: cast_nullable_to_non_nullable
+as num,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,lastFourDigits: freezed == lastFourDigits ? _self.lastFourDigits : lastFourDigits // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$CardImplCopyWith<$Res> implements $CardCopyWith<$Res> {
-  factory _$$CardImplCopyWith(
-          _$CardImpl value, $Res Function(_$CardImpl) then) =
-      __$$CardImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(unknownEnumValue: CardBrand.unknown) CardBrand brand,
-      String? cardholderName,
-      @JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand? coBrand,
-      num expirationMonth,
-      num expirationYear,
-      String? id,
-      String? lastFourDigits});
 }
 
-/// @nodoc
-class __$$CardImplCopyWithImpl<$Res>
-    extends _$CardCopyWithImpl<$Res, _$CardImpl>
-    implements _$$CardImplCopyWith<$Res> {
-  __$$CardImplCopyWithImpl(_$CardImpl _value, $Res Function(_$CardImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of Card
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? brand = null,
-    Object? cardholderName = freezed,
-    Object? coBrand = freezed,
-    Object? expirationMonth = null,
-    Object? expirationYear = null,
-    Object? id = freezed,
-    Object? lastFourDigits = freezed,
-  }) {
-    return _then(_$CardImpl(
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as CardBrand,
-      cardholderName: freezed == cardholderName
-          ? _value.cardholderName
-          : cardholderName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      coBrand: freezed == coBrand
-          ? _value.coBrand
-          : coBrand // ignore: cast_nullable_to_non_nullable
-              as CardCoBrand?,
-      expirationMonth: null == expirationMonth
-          ? _value.expirationMonth
-          : expirationMonth // ignore: cast_nullable_to_non_nullable
-              as num,
-      expirationYear: null == expirationYear
-          ? _value.expirationYear
-          : expirationYear // ignore: cast_nullable_to_non_nullable
-              as num,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastFourDigits: freezed == lastFourDigits
-          ? _value.lastFourDigits
-          : lastFourDigits // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Card].
+extension CardPatterns on Card {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Card value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Card() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Card value)  $default,){
+final _that = this;
+switch (_that) {
+case _Card():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Card value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Card() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: CardBrand.unknown)  CardBrand brand,  String? cardholderName, @JsonKey(unknownEnumValue: CardCoBrand.unknown)  CardCoBrand? coBrand,  num expirationMonth,  num expirationYear,  String? id,  String? lastFourDigits)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Card() when $default != null:
+return $default(_that.brand,_that.cardholderName,_that.coBrand,_that.expirationMonth,_that.expirationYear,_that.id,_that.lastFourDigits);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: CardBrand.unknown)  CardBrand brand,  String? cardholderName, @JsonKey(unknownEnumValue: CardCoBrand.unknown)  CardCoBrand? coBrand,  num expirationMonth,  num expirationYear,  String? id,  String? lastFourDigits)  $default,) {final _that = this;
+switch (_that) {
+case _Card():
+return $default(_that.brand,_that.cardholderName,_that.coBrand,_that.expirationMonth,_that.expirationYear,_that.id,_that.lastFourDigits);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(unknownEnumValue: CardBrand.unknown)  CardBrand brand,  String? cardholderName, @JsonKey(unknownEnumValue: CardCoBrand.unknown)  CardCoBrand? coBrand,  num expirationMonth,  num expirationYear,  String? id,  String? lastFourDigits)?  $default,) {final _that = this;
+switch (_that) {
+case _Card() when $default != null:
+return $default(_that.brand,_that.cardholderName,_that.coBrand,_that.expirationMonth,_that.expirationYear,_that.id,_that.lastFourDigits);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$CardImpl with DiagnosticableTreeMixin implements _Card {
-  const _$CardImpl(
-      {@JsonKey(unknownEnumValue: CardBrand.unknown) required this.brand,
-      this.cardholderName,
-      @JsonKey(unknownEnumValue: CardCoBrand.unknown) this.coBrand,
-      this.expirationMonth = 0,
-      this.expirationYear = 0,
-      this.id,
-      this.lastFourDigits});
 
-  factory _$CardImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CardImplFromJson(json);
+class _Card with DiagnosticableTreeMixin implements Card {
+  const _Card({@JsonKey(unknownEnumValue: CardBrand.unknown) required this.brand, this.cardholderName, @JsonKey(unknownEnumValue: CardCoBrand.unknown) this.coBrand, this.expirationMonth = 0, this.expirationYear = 0, this.id, this.lastFourDigits});
+  factory _Card.fromJson(Map<String, dynamic> json) => _$CardFromJson(json);
 
-  @override
-  @JsonKey(unknownEnumValue: CardBrand.unknown)
-  final CardBrand brand;
-  @override
-  final String? cardholderName;
-  @override
-  @JsonKey(unknownEnumValue: CardCoBrand.unknown)
-  final CardCoBrand? coBrand;
-  @override
-  @JsonKey()
-  final num expirationMonth;
-  @override
-  @JsonKey()
-  final num expirationYear;
-  @override
-  final String? id;
-  @override
-  final String? lastFourDigits;
+@override@JsonKey(unknownEnumValue: CardBrand.unknown) final  CardBrand brand;
+@override final  String? cardholderName;
+@override@JsonKey(unknownEnumValue: CardCoBrand.unknown) final  CardCoBrand? coBrand;
+@override@JsonKey() final  num expirationMonth;
+@override@JsonKey() final  num expirationYear;
+@override final  String? id;
+@override final  String? lastFourDigits;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Card(brand: $brand, cardholderName: $cardholderName, coBrand: $coBrand, expirationMonth: $expirationMonth, expirationYear: $expirationYear, id: $id, lastFourDigits: $lastFourDigits)';
-  }
+/// Create a copy of Card
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CardCopyWith<_Card> get copyWith => __$CardCopyWithImpl<_Card>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Card'))
-      ..add(DiagnosticsProperty('brand', brand))
-      ..add(DiagnosticsProperty('cardholderName', cardholderName))
-      ..add(DiagnosticsProperty('coBrand', coBrand))
-      ..add(DiagnosticsProperty('expirationMonth', expirationMonth))
-      ..add(DiagnosticsProperty('expirationYear', expirationYear))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('lastFourDigits', lastFourDigits));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CardImpl &&
-            (identical(other.brand, brand) || other.brand == brand) &&
-            (identical(other.cardholderName, cardholderName) ||
-                other.cardholderName == cardholderName) &&
-            (identical(other.coBrand, coBrand) || other.coBrand == coBrand) &&
-            (identical(other.expirationMonth, expirationMonth) ||
-                other.expirationMonth == expirationMonth) &&
-            (identical(other.expirationYear, expirationYear) ||
-                other.expirationYear == expirationYear) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.lastFourDigits, lastFourDigits) ||
-                other.lastFourDigits == lastFourDigits));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, brand, cardholderName, coBrand,
-      expirationMonth, expirationYear, id, lastFourDigits);
-
-  /// Create a copy of Card
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CardImplCopyWith<_$CardImpl> get copyWith =>
-      __$$CardImplCopyWithImpl<_$CardImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CardImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$CardToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'Card'))
+    ..add(DiagnosticsProperty('brand', brand))..add(DiagnosticsProperty('cardholderName', cardholderName))..add(DiagnosticsProperty('coBrand', coBrand))..add(DiagnosticsProperty('expirationMonth', expirationMonth))..add(DiagnosticsProperty('expirationYear', expirationYear))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('lastFourDigits', lastFourDigits));
 }
 
-abstract class _Card implements Card {
-  const factory _Card(
-      {@JsonKey(unknownEnumValue: CardBrand.unknown)
-      required final CardBrand brand,
-      final String? cardholderName,
-      @JsonKey(unknownEnumValue: CardCoBrand.unknown)
-      final CardCoBrand? coBrand,
-      final num expirationMonth,
-      final num expirationYear,
-      final String? id,
-      final String? lastFourDigits}) = _$CardImpl;
-
-  factory _Card.fromJson(Map<String, dynamic> json) = _$CardImpl.fromJson;
-
-  @override
-  @JsonKey(unknownEnumValue: CardBrand.unknown)
-  CardBrand get brand;
-  @override
-  String? get cardholderName;
-  @override
-  @JsonKey(unknownEnumValue: CardCoBrand.unknown)
-  CardCoBrand? get coBrand;
-  @override
-  num get expirationMonth;
-  @override
-  num get expirationYear;
-  @override
-  String? get id;
-  @override
-  String? get lastFourDigits;
-
-  /// Create a copy of Card
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CardImplCopyWith<_$CardImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Card&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.cardholderName, cardholderName) || other.cardholderName == cardholderName)&&(identical(other.coBrand, coBrand) || other.coBrand == coBrand)&&(identical(other.expirationMonth, expirationMonth) || other.expirationMonth == expirationMonth)&&(identical(other.expirationYear, expirationYear) || other.expirationYear == expirationYear)&&(identical(other.id, id) || other.id == id)&&(identical(other.lastFourDigits, lastFourDigits) || other.lastFourDigits == lastFourDigits));
 }
 
-OfflineCard _$OfflineCardFromJson(Map<String, dynamic> json) {
-  return _OfflineCard.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,brand,cardholderName,coBrand,expirationMonth,expirationYear,id,lastFourDigits);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'Card(brand: $brand, cardholderName: $cardholderName, coBrand: $coBrand, expirationMonth: $expirationMonth, expirationYear: $expirationYear, id: $id, lastFourDigits: $lastFourDigits)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$OfflineCard {
-  CardBrand get brand => throw _privateConstructorUsedError;
-  String? get cardholderName => throw _privateConstructorUsedError;
-  String? get id => throw _privateConstructorUsedError;
-  String? get lastFourDigits => throw _privateConstructorUsedError;
+abstract mixin class _$CardCopyWith<$Res> implements $CardCopyWith<$Res> {
+  factory _$CardCopyWith(_Card value, $Res Function(_Card) _then) = __$CardCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(unknownEnumValue: CardBrand.unknown) CardBrand brand, String? cardholderName,@JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand? coBrand, num expirationMonth, num expirationYear, String? id, String? lastFourDigits
+});
+
+
+
+
+}
+/// @nodoc
+class __$CardCopyWithImpl<$Res>
+    implements _$CardCopyWith<$Res> {
+  __$CardCopyWithImpl(this._self, this._then);
+
+  final _Card _self;
+  final $Res Function(_Card) _then;
+
+/// Create a copy of Card
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? brand = null,Object? cardholderName = freezed,Object? coBrand = freezed,Object? expirationMonth = null,Object? expirationYear = null,Object? id = freezed,Object? lastFourDigits = freezed,}) {
+  return _then(_Card(
+brand: null == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
+as CardBrand,cardholderName: freezed == cardholderName ? _self.cardholderName : cardholderName // ignore: cast_nullable_to_non_nullable
+as String?,coBrand: freezed == coBrand ? _self.coBrand : coBrand // ignore: cast_nullable_to_non_nullable
+as CardCoBrand?,expirationMonth: null == expirationMonth ? _self.expirationMonth : expirationMonth // ignore: cast_nullable_to_non_nullable
+as num,expirationYear: null == expirationYear ? _self.expirationYear : expirationYear // ignore: cast_nullable_to_non_nullable
+as num,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,lastFourDigits: freezed == lastFourDigits ? _self.lastFourDigits : lastFourDigits // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$OfflineCard implements DiagnosticableTreeMixin {
+
+ CardBrand get brand; String? get cardholderName; String? get id; String? get lastFourDigits;
+/// Create a copy of OfflineCard
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OfflineCardCopyWith<OfflineCard> get copyWith => _$OfflineCardCopyWithImpl<OfflineCard>(this as OfflineCard, _$identity);
 
   /// Serializes this OfflineCard to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of OfflineCard
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OfflineCardCopyWith<OfflineCard> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OfflineCard'))
+    ..add(DiagnosticsProperty('brand', brand))..add(DiagnosticsProperty('cardholderName', cardholderName))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('lastFourDigits', lastFourDigits));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OfflineCard&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.cardholderName, cardholderName) || other.cardholderName == cardholderName)&&(identical(other.id, id) || other.id == id)&&(identical(other.lastFourDigits, lastFourDigits) || other.lastFourDigits == lastFourDigits));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,brand,cardholderName,id,lastFourDigits);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OfflineCard(brand: $brand, cardholderName: $cardholderName, id: $id, lastFourDigits: $lastFourDigits)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $OfflineCardCopyWith<$Res> {
-  factory $OfflineCardCopyWith(
-          OfflineCard value, $Res Function(OfflineCard) then) =
-      _$OfflineCardCopyWithImpl<$Res, OfflineCard>;
-  @useResult
-  $Res call(
-      {CardBrand brand,
-      String? cardholderName,
-      String? id,
-      String? lastFourDigits});
-}
+abstract mixin class $OfflineCardCopyWith<$Res>  {
+  factory $OfflineCardCopyWith(OfflineCard value, $Res Function(OfflineCard) _then) = _$OfflineCardCopyWithImpl;
+@useResult
+$Res call({
+ CardBrand brand, String? cardholderName, String? id, String? lastFourDigits
+});
 
+
+
+
+}
 /// @nodoc
-class _$OfflineCardCopyWithImpl<$Res, $Val extends OfflineCard>
+class _$OfflineCardCopyWithImpl<$Res>
     implements $OfflineCardCopyWith<$Res> {
-  _$OfflineCardCopyWithImpl(this._value, this._then);
+  _$OfflineCardCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final OfflineCard _self;
+  final $Res Function(OfflineCard) _then;
 
-  /// Create a copy of OfflineCard
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? brand = null,
-    Object? cardholderName = freezed,
-    Object? id = freezed,
-    Object? lastFourDigits = freezed,
-  }) {
-    return _then(_value.copyWith(
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as CardBrand,
-      cardholderName: freezed == cardholderName
-          ? _value.cardholderName
-          : cardholderName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastFourDigits: freezed == lastFourDigits
-          ? _value.lastFourDigits
-          : lastFourDigits // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of OfflineCard
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? brand = null,Object? cardholderName = freezed,Object? id = freezed,Object? lastFourDigits = freezed,}) {
+  return _then(_self.copyWith(
+brand: null == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
+as CardBrand,cardholderName: freezed == cardholderName ? _self.cardholderName : cardholderName // ignore: cast_nullable_to_non_nullable
+as String?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,lastFourDigits: freezed == lastFourDigits ? _self.lastFourDigits : lastFourDigits // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$OfflineCardImplCopyWith<$Res>
-    implements $OfflineCardCopyWith<$Res> {
-  factory _$$OfflineCardImplCopyWith(
-          _$OfflineCardImpl value, $Res Function(_$OfflineCardImpl) then) =
-      __$$OfflineCardImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {CardBrand brand,
-      String? cardholderName,
-      String? id,
-      String? lastFourDigits});
 }
 
-/// @nodoc
-class __$$OfflineCardImplCopyWithImpl<$Res>
-    extends _$OfflineCardCopyWithImpl<$Res, _$OfflineCardImpl>
-    implements _$$OfflineCardImplCopyWith<$Res> {
-  __$$OfflineCardImplCopyWithImpl(
-      _$OfflineCardImpl _value, $Res Function(_$OfflineCardImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of OfflineCard
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? brand = null,
-    Object? cardholderName = freezed,
-    Object? id = freezed,
-    Object? lastFourDigits = freezed,
-  }) {
-    return _then(_$OfflineCardImpl(
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as CardBrand,
-      cardholderName: freezed == cardholderName
-          ? _value.cardholderName
-          : cardholderName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastFourDigits: freezed == lastFourDigits
-          ? _value.lastFourDigits
-          : lastFourDigits // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [OfflineCard].
+extension OfflineCardPatterns on OfflineCard {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OfflineCard value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OfflineCard() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OfflineCard value)  $default,){
+final _that = this;
+switch (_that) {
+case _OfflineCard():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OfflineCard value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OfflineCard() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( CardBrand brand,  String? cardholderName,  String? id,  String? lastFourDigits)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OfflineCard() when $default != null:
+return $default(_that.brand,_that.cardholderName,_that.id,_that.lastFourDigits);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( CardBrand brand,  String? cardholderName,  String? id,  String? lastFourDigits)  $default,) {final _that = this;
+switch (_that) {
+case _OfflineCard():
+return $default(_that.brand,_that.cardholderName,_that.id,_that.lastFourDigits);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( CardBrand brand,  String? cardholderName,  String? id,  String? lastFourDigits)?  $default,) {final _that = this;
+switch (_that) {
+case _OfflineCard() when $default != null:
+return $default(_that.brand,_that.cardholderName,_that.id,_that.lastFourDigits);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$OfflineCardImpl with DiagnosticableTreeMixin implements _OfflineCard {
-  const _$OfflineCardImpl(
-      {required this.brand, this.cardholderName, this.id, this.lastFourDigits});
 
-  factory _$OfflineCardImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OfflineCardImplFromJson(json);
+class _OfflineCard with DiagnosticableTreeMixin implements OfflineCard {
+  const _OfflineCard({required this.brand, this.cardholderName, this.id, this.lastFourDigits});
+  factory _OfflineCard.fromJson(Map<String, dynamic> json) => _$OfflineCardFromJson(json);
 
-  @override
-  final CardBrand brand;
-  @override
-  final String? cardholderName;
-  @override
-  final String? id;
-  @override
-  final String? lastFourDigits;
+@override final  CardBrand brand;
+@override final  String? cardholderName;
+@override final  String? id;
+@override final  String? lastFourDigits;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OfflineCard(brand: $brand, cardholderName: $cardholderName, id: $id, lastFourDigits: $lastFourDigits)';
-  }
+/// Create a copy of OfflineCard
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OfflineCardCopyWith<_OfflineCard> get copyWith => __$OfflineCardCopyWithImpl<_OfflineCard>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OfflineCard'))
-      ..add(DiagnosticsProperty('brand', brand))
-      ..add(DiagnosticsProperty('cardholderName', cardholderName))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('lastFourDigits', lastFourDigits));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OfflineCardImpl &&
-            (identical(other.brand, brand) || other.brand == brand) &&
-            (identical(other.cardholderName, cardholderName) ||
-                other.cardholderName == cardholderName) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.lastFourDigits, lastFourDigits) ||
-                other.lastFourDigits == lastFourDigits));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, brand, cardholderName, id, lastFourDigits);
-
-  /// Create a copy of OfflineCard
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OfflineCardImplCopyWith<_$OfflineCardImpl> get copyWith =>
-      __$$OfflineCardImplCopyWithImpl<_$OfflineCardImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OfflineCardImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$OfflineCardToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OfflineCard'))
+    ..add(DiagnosticsProperty('brand', brand))..add(DiagnosticsProperty('cardholderName', cardholderName))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('lastFourDigits', lastFourDigits));
 }
 
-abstract class _OfflineCard implements OfflineCard {
-  const factory _OfflineCard(
-      {required final CardBrand brand,
-      final String? cardholderName,
-      final String? id,
-      final String? lastFourDigits}) = _$OfflineCardImpl;
-
-  factory _OfflineCard.fromJson(Map<String, dynamic> json) =
-      _$OfflineCardImpl.fromJson;
-
-  @override
-  CardBrand get brand;
-  @override
-  String? get cardholderName;
-  @override
-  String? get id;
-  @override
-  String? get lastFourDigits;
-
-  /// Create a copy of OfflineCard
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OfflineCardImplCopyWith<_$OfflineCardImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OfflineCard&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.cardholderName, cardholderName) || other.cardholderName == cardholderName)&&(identical(other.id, id) || other.id == id)&&(identical(other.lastFourDigits, lastFourDigits) || other.lastFourDigits == lastFourDigits));
 }
 
-CardPaymentDetails _$CardPaymentDetailsFromJson(Map<String, dynamic> json) {
-  return _CardPaymentDetails.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,brand,cardholderName,id,lastFourDigits);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OfflineCard(brand: $brand, cardholderName: $cardholderName, id: $id, lastFourDigits: $lastFourDigits)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$CardPaymentDetails {
-  String? get applicationIdentifier => throw _privateConstructorUsedError;
-  String? get applicationName => throw _privateConstructorUsedError;
-  String? get authorizationCode => throw _privateConstructorUsedError;
-  Card? get card => throw _privateConstructorUsedError;
-  @JsonKey(unknownEnumValue: EntryMethod.unknown)
-  EntryMethod get entryMethod => throw _privateConstructorUsedError;
-  @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
-  CardPaymentStatus? get status => throw _privateConstructorUsedError;
+abstract mixin class _$OfflineCardCopyWith<$Res> implements $OfflineCardCopyWith<$Res> {
+  factory _$OfflineCardCopyWith(_OfflineCard value, $Res Function(_OfflineCard) _then) = __$OfflineCardCopyWithImpl;
+@override @useResult
+$Res call({
+ CardBrand brand, String? cardholderName, String? id, String? lastFourDigits
+});
+
+
+
+
+}
+/// @nodoc
+class __$OfflineCardCopyWithImpl<$Res>
+    implements _$OfflineCardCopyWith<$Res> {
+  __$OfflineCardCopyWithImpl(this._self, this._then);
+
+  final _OfflineCard _self;
+  final $Res Function(_OfflineCard) _then;
+
+/// Create a copy of OfflineCard
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? brand = null,Object? cardholderName = freezed,Object? id = freezed,Object? lastFourDigits = freezed,}) {
+  return _then(_OfflineCard(
+brand: null == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
+as CardBrand,cardholderName: freezed == cardholderName ? _self.cardholderName : cardholderName // ignore: cast_nullable_to_non_nullable
+as String?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,lastFourDigits: freezed == lastFourDigits ? _self.lastFourDigits : lastFourDigits // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$CardPaymentDetails implements DiagnosticableTreeMixin {
+
+ String? get applicationIdentifier; String? get applicationName; String? get authorizationCode; Card? get card;@JsonKey(unknownEnumValue: EntryMethod.unknown) EntryMethod get entryMethod;@JsonKey(unknownEnumValue: CardPaymentStatus.unknown) CardPaymentStatus? get status;
+/// Create a copy of CardPaymentDetails
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CardPaymentDetailsCopyWith<CardPaymentDetails> get copyWith => _$CardPaymentDetailsCopyWithImpl<CardPaymentDetails>(this as CardPaymentDetails, _$identity);
 
   /// Serializes this CardPaymentDetails to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of CardPaymentDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $CardPaymentDetailsCopyWith<CardPaymentDetails> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'CardPaymentDetails'))
+    ..add(DiagnosticsProperty('applicationIdentifier', applicationIdentifier))..add(DiagnosticsProperty('applicationName', applicationName))..add(DiagnosticsProperty('authorizationCode', authorizationCode))..add(DiagnosticsProperty('card', card))..add(DiagnosticsProperty('entryMethod', entryMethod))..add(DiagnosticsProperty('status', status));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardPaymentDetails&&(identical(other.applicationIdentifier, applicationIdentifier) || other.applicationIdentifier == applicationIdentifier)&&(identical(other.applicationName, applicationName) || other.applicationName == applicationName)&&(identical(other.authorizationCode, authorizationCode) || other.authorizationCode == authorizationCode)&&(identical(other.card, card) || other.card == card)&&(identical(other.entryMethod, entryMethod) || other.entryMethod == entryMethod)&&(identical(other.status, status) || other.status == status));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,applicationIdentifier,applicationName,authorizationCode,card,entryMethod,status);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'CardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, authorizationCode: $authorizationCode, card: $card, entryMethod: $entryMethod, status: $status)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CardPaymentDetailsCopyWith<$Res> {
-  factory $CardPaymentDetailsCopyWith(
-          CardPaymentDetails value, $Res Function(CardPaymentDetails) then) =
-      _$CardPaymentDetailsCopyWithImpl<$Res, CardPaymentDetails>;
-  @useResult
-  $Res call(
-      {String? applicationIdentifier,
-      String? applicationName,
-      String? authorizationCode,
-      Card? card,
-      @JsonKey(unknownEnumValue: EntryMethod.unknown) EntryMethod entryMethod,
-      @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
-      CardPaymentStatus? status});
+abstract mixin class $CardPaymentDetailsCopyWith<$Res>  {
+  factory $CardPaymentDetailsCopyWith(CardPaymentDetails value, $Res Function(CardPaymentDetails) _then) = _$CardPaymentDetailsCopyWithImpl;
+@useResult
+$Res call({
+ String? applicationIdentifier, String? applicationName, String? authorizationCode, Card? card,@JsonKey(unknownEnumValue: EntryMethod.unknown) EntryMethod entryMethod,@JsonKey(unknownEnumValue: CardPaymentStatus.unknown) CardPaymentStatus? status
+});
 
-  $CardCopyWith<$Res>? get card;
+
+$CardCopyWith<$Res>? get card;
+
 }
-
 /// @nodoc
-class _$CardPaymentDetailsCopyWithImpl<$Res, $Val extends CardPaymentDetails>
+class _$CardPaymentDetailsCopyWithImpl<$Res>
     implements $CardPaymentDetailsCopyWith<$Res> {
-  _$CardPaymentDetailsCopyWithImpl(this._value, this._then);
+  _$CardPaymentDetailsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final CardPaymentDetails _self;
+  final $Res Function(CardPaymentDetails) _then;
 
-  /// Create a copy of CardPaymentDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? applicationIdentifier = freezed,
-    Object? applicationName = freezed,
-    Object? authorizationCode = freezed,
-    Object? card = freezed,
-    Object? entryMethod = null,
-    Object? status = freezed,
-  }) {
-    return _then(_value.copyWith(
-      applicationIdentifier: freezed == applicationIdentifier
-          ? _value.applicationIdentifier
-          : applicationIdentifier // ignore: cast_nullable_to_non_nullable
-              as String?,
-      applicationName: freezed == applicationName
-          ? _value.applicationName
-          : applicationName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      authorizationCode: freezed == authorizationCode
-          ? _value.authorizationCode
-          : authorizationCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      card: freezed == card
-          ? _value.card
-          : card // ignore: cast_nullable_to_non_nullable
-              as Card?,
-      entryMethod: null == entryMethod
-          ? _value.entryMethod
-          : entryMethod // ignore: cast_nullable_to_non_nullable
-              as EntryMethod,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as CardPaymentStatus?,
-    ) as $Val);
+/// Create a copy of CardPaymentDetails
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? applicationIdentifier = freezed,Object? applicationName = freezed,Object? authorizationCode = freezed,Object? card = freezed,Object? entryMethod = null,Object? status = freezed,}) {
+  return _then(_self.copyWith(
+applicationIdentifier: freezed == applicationIdentifier ? _self.applicationIdentifier : applicationIdentifier // ignore: cast_nullable_to_non_nullable
+as String?,applicationName: freezed == applicationName ? _self.applicationName : applicationName // ignore: cast_nullable_to_non_nullable
+as String?,authorizationCode: freezed == authorizationCode ? _self.authorizationCode : authorizationCode // ignore: cast_nullable_to_non_nullable
+as String?,card: freezed == card ? _self.card : card // ignore: cast_nullable_to_non_nullable
+as Card?,entryMethod: null == entryMethod ? _self.entryMethod : entryMethod // ignore: cast_nullable_to_non_nullable
+as EntryMethod,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as CardPaymentStatus?,
+  ));
+}
+/// Create a copy of CardPaymentDetails
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CardCopyWith<$Res>? get card {
+    if (_self.card == null) {
+    return null;
   }
 
-  /// Create a copy of CardPaymentDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CardCopyWith<$Res>? get card {
-    if (_value.card == null) {
-      return null;
-    }
-
-    return $CardCopyWith<$Res>(_value.card!, (value) {
-      return _then(_value.copyWith(card: value) as $Val);
-    });
-  }
+  return $CardCopyWith<$Res>(_self.card!, (value) {
+    return _then(_self.copyWith(card: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$CardPaymentDetailsImplCopyWith<$Res>
-    implements $CardPaymentDetailsCopyWith<$Res> {
-  factory _$$CardPaymentDetailsImplCopyWith(_$CardPaymentDetailsImpl value,
-          $Res Function(_$CardPaymentDetailsImpl) then) =
-      __$$CardPaymentDetailsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? applicationIdentifier,
-      String? applicationName,
-      String? authorizationCode,
-      Card? card,
-      @JsonKey(unknownEnumValue: EntryMethod.unknown) EntryMethod entryMethod,
-      @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
-      CardPaymentStatus? status});
 
-  @override
-  $CardCopyWith<$Res>? get card;
+/// Adds pattern-matching-related methods to [CardPaymentDetails].
+extension CardPaymentDetailsPatterns on CardPaymentDetails {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CardPaymentDetails value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CardPaymentDetails() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CardPaymentDetails value)  $default,){
+final _that = this;
+switch (_that) {
+case _CardPaymentDetails():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CardPaymentDetails value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CardPaymentDetails() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? applicationIdentifier,  String? applicationName,  String? authorizationCode,  Card? card, @JsonKey(unknownEnumValue: EntryMethod.unknown)  EntryMethod entryMethod, @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)  CardPaymentStatus? status)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CardPaymentDetails() when $default != null:
+return $default(_that.applicationIdentifier,_that.applicationName,_that.authorizationCode,_that.card,_that.entryMethod,_that.status);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? applicationIdentifier,  String? applicationName,  String? authorizationCode,  Card? card, @JsonKey(unknownEnumValue: EntryMethod.unknown)  EntryMethod entryMethod, @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)  CardPaymentStatus? status)  $default,) {final _that = this;
+switch (_that) {
+case _CardPaymentDetails():
+return $default(_that.applicationIdentifier,_that.applicationName,_that.authorizationCode,_that.card,_that.entryMethod,_that.status);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? applicationIdentifier,  String? applicationName,  String? authorizationCode,  Card? card, @JsonKey(unknownEnumValue: EntryMethod.unknown)  EntryMethod entryMethod, @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)  CardPaymentStatus? status)?  $default,) {final _that = this;
+switch (_that) {
+case _CardPaymentDetails() when $default != null:
+return $default(_that.applicationIdentifier,_that.applicationName,_that.authorizationCode,_that.card,_that.entryMethod,_that.status);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$CardPaymentDetailsImplCopyWithImpl<$Res>
-    extends _$CardPaymentDetailsCopyWithImpl<$Res, _$CardPaymentDetailsImpl>
-    implements _$$CardPaymentDetailsImplCopyWith<$Res> {
-  __$$CardPaymentDetailsImplCopyWithImpl(_$CardPaymentDetailsImpl _value,
-      $Res Function(_$CardPaymentDetailsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CardPaymentDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? applicationIdentifier = freezed,
-    Object? applicationName = freezed,
-    Object? authorizationCode = freezed,
-    Object? card = freezed,
-    Object? entryMethod = null,
-    Object? status = freezed,
-  }) {
-    return _then(_$CardPaymentDetailsImpl(
-      applicationIdentifier: freezed == applicationIdentifier
-          ? _value.applicationIdentifier
-          : applicationIdentifier // ignore: cast_nullable_to_non_nullable
-              as String?,
-      applicationName: freezed == applicationName
-          ? _value.applicationName
-          : applicationName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      authorizationCode: freezed == authorizationCode
-          ? _value.authorizationCode
-          : authorizationCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      card: freezed == card
-          ? _value.card
-          : card // ignore: cast_nullable_to_non_nullable
-              as Card?,
-      entryMethod: null == entryMethod
-          ? _value.entryMethod
-          : entryMethod // ignore: cast_nullable_to_non_nullable
-              as EntryMethod,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as CardPaymentStatus?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$CardPaymentDetailsImpl
-    with DiagnosticableTreeMixin
-    implements _CardPaymentDetails {
-  const _$CardPaymentDetailsImpl(
-      {this.applicationIdentifier,
-      this.applicationName,
-      this.authorizationCode,
-      this.card,
-      @JsonKey(unknownEnumValue: EntryMethod.unknown) required this.entryMethod,
-      @JsonKey(unknownEnumValue: CardPaymentStatus.unknown) this.status});
 
-  factory _$CardPaymentDetailsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CardPaymentDetailsImplFromJson(json);
+class _CardPaymentDetails with DiagnosticableTreeMixin implements CardPaymentDetails {
+  const _CardPaymentDetails({this.applicationIdentifier, this.applicationName, this.authorizationCode, this.card, @JsonKey(unknownEnumValue: EntryMethod.unknown) required this.entryMethod, @JsonKey(unknownEnumValue: CardPaymentStatus.unknown) this.status});
+  factory _CardPaymentDetails.fromJson(Map<String, dynamic> json) => _$CardPaymentDetailsFromJson(json);
 
-  @override
-  final String? applicationIdentifier;
-  @override
-  final String? applicationName;
-  @override
-  final String? authorizationCode;
-  @override
-  final Card? card;
-  @override
-  @JsonKey(unknownEnumValue: EntryMethod.unknown)
-  final EntryMethod entryMethod;
-  @override
-  @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
-  final CardPaymentStatus? status;
+@override final  String? applicationIdentifier;
+@override final  String? applicationName;
+@override final  String? authorizationCode;
+@override final  Card? card;
+@override@JsonKey(unknownEnumValue: EntryMethod.unknown) final  EntryMethod entryMethod;
+@override@JsonKey(unknownEnumValue: CardPaymentStatus.unknown) final  CardPaymentStatus? status;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, authorizationCode: $authorizationCode, card: $card, entryMethod: $entryMethod, status: $status)';
-  }
+/// Create a copy of CardPaymentDetails
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CardPaymentDetailsCopyWith<_CardPaymentDetails> get copyWith => __$CardPaymentDetailsCopyWithImpl<_CardPaymentDetails>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'CardPaymentDetails'))
-      ..add(DiagnosticsProperty('applicationIdentifier', applicationIdentifier))
-      ..add(DiagnosticsProperty('applicationName', applicationName))
-      ..add(DiagnosticsProperty('authorizationCode', authorizationCode))
-      ..add(DiagnosticsProperty('card', card))
-      ..add(DiagnosticsProperty('entryMethod', entryMethod))
-      ..add(DiagnosticsProperty('status', status));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CardPaymentDetailsImpl &&
-            (identical(other.applicationIdentifier, applicationIdentifier) ||
-                other.applicationIdentifier == applicationIdentifier) &&
-            (identical(other.applicationName, applicationName) ||
-                other.applicationName == applicationName) &&
-            (identical(other.authorizationCode, authorizationCode) ||
-                other.authorizationCode == authorizationCode) &&
-            (identical(other.card, card) || other.card == card) &&
-            (identical(other.entryMethod, entryMethod) ||
-                other.entryMethod == entryMethod) &&
-            (identical(other.status, status) || other.status == status));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, applicationIdentifier,
-      applicationName, authorizationCode, card, entryMethod, status);
-
-  /// Create a copy of CardPaymentDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CardPaymentDetailsImplCopyWith<_$CardPaymentDetailsImpl> get copyWith =>
-      __$$CardPaymentDetailsImplCopyWithImpl<_$CardPaymentDetailsImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CardPaymentDetailsImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$CardPaymentDetailsToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'CardPaymentDetails'))
+    ..add(DiagnosticsProperty('applicationIdentifier', applicationIdentifier))..add(DiagnosticsProperty('applicationName', applicationName))..add(DiagnosticsProperty('authorizationCode', authorizationCode))..add(DiagnosticsProperty('card', card))..add(DiagnosticsProperty('entryMethod', entryMethod))..add(DiagnosticsProperty('status', status));
 }
 
-abstract class _CardPaymentDetails implements CardPaymentDetails {
-  const factory _CardPaymentDetails(
-      {final String? applicationIdentifier,
-      final String? applicationName,
-      final String? authorizationCode,
-      final Card? card,
-      @JsonKey(unknownEnumValue: EntryMethod.unknown)
-      required final EntryMethod entryMethod,
-      @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
-      final CardPaymentStatus? status}) = _$CardPaymentDetailsImpl;
-
-  factory _CardPaymentDetails.fromJson(Map<String, dynamic> json) =
-      _$CardPaymentDetailsImpl.fromJson;
-
-  @override
-  String? get applicationIdentifier;
-  @override
-  String? get applicationName;
-  @override
-  String? get authorizationCode;
-  @override
-  Card? get card;
-  @override
-  @JsonKey(unknownEnumValue: EntryMethod.unknown)
-  EntryMethod get entryMethod;
-  @override
-  @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
-  CardPaymentStatus? get status;
-
-  /// Create a copy of CardPaymentDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CardPaymentDetailsImplCopyWith<_$CardPaymentDetailsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardPaymentDetails&&(identical(other.applicationIdentifier, applicationIdentifier) || other.applicationIdentifier == applicationIdentifier)&&(identical(other.applicationName, applicationName) || other.applicationName == applicationName)&&(identical(other.authorizationCode, authorizationCode) || other.authorizationCode == authorizationCode)&&(identical(other.card, card) || other.card == card)&&(identical(other.entryMethod, entryMethod) || other.entryMethod == entryMethod)&&(identical(other.status, status) || other.status == status));
 }
 
-CardInputMethods _$CardInputMethodsFromJson(Map<String, dynamic> json) {
-  return _CardInputMethods.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,applicationIdentifier,applicationName,authorizationCode,card,entryMethod,status);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'CardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, authorizationCode: $authorizationCode, card: $card, entryMethod: $entryMethod, status: $status)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$CardInputMethods {
-  int get chip => throw _privateConstructorUsedError;
-  int get contactless => throw _privateConstructorUsedError;
-  int get swipe => throw _privateConstructorUsedError;
+abstract mixin class _$CardPaymentDetailsCopyWith<$Res> implements $CardPaymentDetailsCopyWith<$Res> {
+  factory _$CardPaymentDetailsCopyWith(_CardPaymentDetails value, $Res Function(_CardPaymentDetails) _then) = __$CardPaymentDetailsCopyWithImpl;
+@override @useResult
+$Res call({
+ String? applicationIdentifier, String? applicationName, String? authorizationCode, Card? card,@JsonKey(unknownEnumValue: EntryMethod.unknown) EntryMethod entryMethod,@JsonKey(unknownEnumValue: CardPaymentStatus.unknown) CardPaymentStatus? status
+});
+
+
+@override $CardCopyWith<$Res>? get card;
+
+}
+/// @nodoc
+class __$CardPaymentDetailsCopyWithImpl<$Res>
+    implements _$CardPaymentDetailsCopyWith<$Res> {
+  __$CardPaymentDetailsCopyWithImpl(this._self, this._then);
+
+  final _CardPaymentDetails _self;
+  final $Res Function(_CardPaymentDetails) _then;
+
+/// Create a copy of CardPaymentDetails
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? applicationIdentifier = freezed,Object? applicationName = freezed,Object? authorizationCode = freezed,Object? card = freezed,Object? entryMethod = null,Object? status = freezed,}) {
+  return _then(_CardPaymentDetails(
+applicationIdentifier: freezed == applicationIdentifier ? _self.applicationIdentifier : applicationIdentifier // ignore: cast_nullable_to_non_nullable
+as String?,applicationName: freezed == applicationName ? _self.applicationName : applicationName // ignore: cast_nullable_to_non_nullable
+as String?,authorizationCode: freezed == authorizationCode ? _self.authorizationCode : authorizationCode // ignore: cast_nullable_to_non_nullable
+as String?,card: freezed == card ? _self.card : card // ignore: cast_nullable_to_non_nullable
+as Card?,entryMethod: null == entryMethod ? _self.entryMethod : entryMethod // ignore: cast_nullable_to_non_nullable
+as EntryMethod,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as CardPaymentStatus?,
+  ));
+}
+
+/// Create a copy of CardPaymentDetails
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CardCopyWith<$Res>? get card {
+    if (_self.card == null) {
+    return null;
+  }
+
+  return $CardCopyWith<$Res>(_self.card!, (value) {
+    return _then(_self.copyWith(card: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$CardInputMethods implements DiagnosticableTreeMixin {
+
+ int get chip; int get contactless; int get swipe;
+/// Create a copy of CardInputMethods
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CardInputMethodsCopyWith<CardInputMethods> get copyWith => _$CardInputMethodsCopyWithImpl<CardInputMethods>(this as CardInputMethods, _$identity);
 
   /// Serializes this CardInputMethods to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of CardInputMethods
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $CardInputMethodsCopyWith<CardInputMethods> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'CardInputMethods'))
+    ..add(DiagnosticsProperty('chip', chip))..add(DiagnosticsProperty('contactless', contactless))..add(DiagnosticsProperty('swipe', swipe));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardInputMethods&&(identical(other.chip, chip) || other.chip == chip)&&(identical(other.contactless, contactless) || other.contactless == contactless)&&(identical(other.swipe, swipe) || other.swipe == swipe));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,chip,contactless,swipe);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'CardInputMethods(chip: $chip, contactless: $contactless, swipe: $swipe)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CardInputMethodsCopyWith<$Res> {
-  factory $CardInputMethodsCopyWith(
-          CardInputMethods value, $Res Function(CardInputMethods) then) =
-      _$CardInputMethodsCopyWithImpl<$Res, CardInputMethods>;
-  @useResult
-  $Res call({int chip, int contactless, int swipe});
-}
+abstract mixin class $CardInputMethodsCopyWith<$Res>  {
+  factory $CardInputMethodsCopyWith(CardInputMethods value, $Res Function(CardInputMethods) _then) = _$CardInputMethodsCopyWithImpl;
+@useResult
+$Res call({
+ int chip, int contactless, int swipe
+});
 
+
+
+
+}
 /// @nodoc
-class _$CardInputMethodsCopyWithImpl<$Res, $Val extends CardInputMethods>
+class _$CardInputMethodsCopyWithImpl<$Res>
     implements $CardInputMethodsCopyWith<$Res> {
-  _$CardInputMethodsCopyWithImpl(this._value, this._then);
+  _$CardInputMethodsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final CardInputMethods _self;
+  final $Res Function(CardInputMethods) _then;
 
-  /// Create a copy of CardInputMethods
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? chip = null,
-    Object? contactless = null,
-    Object? swipe = null,
-  }) {
-    return _then(_value.copyWith(
-      chip: null == chip
-          ? _value.chip
-          : chip // ignore: cast_nullable_to_non_nullable
-              as int,
-      contactless: null == contactless
-          ? _value.contactless
-          : contactless // ignore: cast_nullable_to_non_nullable
-              as int,
-      swipe: null == swipe
-          ? _value.swipe
-          : swipe // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
+/// Create a copy of CardInputMethods
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? chip = null,Object? contactless = null,Object? swipe = null,}) {
+  return _then(_self.copyWith(
+chip: null == chip ? _self.chip : chip // ignore: cast_nullable_to_non_nullable
+as int,contactless: null == contactless ? _self.contactless : contactless // ignore: cast_nullable_to_non_nullable
+as int,swipe: null == swipe ? _self.swipe : swipe // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-abstract class _$$CardInputMethodsImplCopyWith<$Res>
-    implements $CardInputMethodsCopyWith<$Res> {
-  factory _$$CardInputMethodsImplCopyWith(_$CardInputMethodsImpl value,
-          $Res Function(_$CardInputMethodsImpl) then) =
-      __$$CardInputMethodsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int chip, int contactless, int swipe});
 }
 
-/// @nodoc
-class __$$CardInputMethodsImplCopyWithImpl<$Res>
-    extends _$CardInputMethodsCopyWithImpl<$Res, _$CardInputMethodsImpl>
-    implements _$$CardInputMethodsImplCopyWith<$Res> {
-  __$$CardInputMethodsImplCopyWithImpl(_$CardInputMethodsImpl _value,
-      $Res Function(_$CardInputMethodsImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of CardInputMethods
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? chip = null,
-    Object? contactless = null,
-    Object? swipe = null,
-  }) {
-    return _then(_$CardInputMethodsImpl(
-      chip: null == chip
-          ? _value.chip
-          : chip // ignore: cast_nullable_to_non_nullable
-              as int,
-      contactless: null == contactless
-          ? _value.contactless
-          : contactless // ignore: cast_nullable_to_non_nullable
-              as int,
-      swipe: null == swipe
-          ? _value.swipe
-          : swipe // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
+/// Adds pattern-matching-related methods to [CardInputMethods].
+extension CardInputMethodsPatterns on CardInputMethods {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CardInputMethods value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CardInputMethods() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CardInputMethods value)  $default,){
+final _that = this;
+switch (_that) {
+case _CardInputMethods():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CardInputMethods value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CardInputMethods() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int chip,  int contactless,  int swipe)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CardInputMethods() when $default != null:
+return $default(_that.chip,_that.contactless,_that.swipe);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int chip,  int contactless,  int swipe)  $default,) {final _that = this;
+switch (_that) {
+case _CardInputMethods():
+return $default(_that.chip,_that.contactless,_that.swipe);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int chip,  int contactless,  int swipe)?  $default,) {final _that = this;
+switch (_that) {
+case _CardInputMethods() when $default != null:
+return $default(_that.chip,_that.contactless,_that.swipe);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$CardInputMethodsImpl
-    with DiagnosticableTreeMixin
-    implements _CardInputMethods {
-  const _$CardInputMethodsImpl(
-      {required this.chip, required this.contactless, required this.swipe});
 
-  factory _$CardInputMethodsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CardInputMethodsImplFromJson(json);
+class _CardInputMethods with DiagnosticableTreeMixin implements CardInputMethods {
+  const _CardInputMethods({required this.chip, required this.contactless, required this.swipe});
+  factory _CardInputMethods.fromJson(Map<String, dynamic> json) => _$CardInputMethodsFromJson(json);
 
-  @override
-  final int chip;
-  @override
-  final int contactless;
-  @override
-  final int swipe;
+@override final  int chip;
+@override final  int contactless;
+@override final  int swipe;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CardInputMethods(chip: $chip, contactless: $contactless, swipe: $swipe)';
-  }
+/// Create a copy of CardInputMethods
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CardInputMethodsCopyWith<_CardInputMethods> get copyWith => __$CardInputMethodsCopyWithImpl<_CardInputMethods>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'CardInputMethods'))
-      ..add(DiagnosticsProperty('chip', chip))
-      ..add(DiagnosticsProperty('contactless', contactless))
-      ..add(DiagnosticsProperty('swipe', swipe));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CardInputMethodsImpl &&
-            (identical(other.chip, chip) || other.chip == chip) &&
-            (identical(other.contactless, contactless) ||
-                other.contactless == contactless) &&
-            (identical(other.swipe, swipe) || other.swipe == swipe));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, chip, contactless, swipe);
-
-  /// Create a copy of CardInputMethods
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CardInputMethodsImplCopyWith<_$CardInputMethodsImpl> get copyWith =>
-      __$$CardInputMethodsImplCopyWithImpl<_$CardInputMethodsImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CardInputMethodsImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$CardInputMethodsToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'CardInputMethods'))
+    ..add(DiagnosticsProperty('chip', chip))..add(DiagnosticsProperty('contactless', contactless))..add(DiagnosticsProperty('swipe', swipe));
 }
 
-abstract class _CardInputMethods implements CardInputMethods {
-  const factory _CardInputMethods(
-      {required final int chip,
-      required final int contactless,
-      required final int swipe}) = _$CardInputMethodsImpl;
-
-  factory _CardInputMethods.fromJson(Map<String, dynamic> json) =
-      _$CardInputMethodsImpl.fromJson;
-
-  @override
-  int get chip;
-  @override
-  int get contactless;
-  @override
-  int get swipe;
-
-  /// Create a copy of CardInputMethods
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CardInputMethodsImplCopyWith<_$CardInputMethodsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardInputMethods&&(identical(other.chip, chip) || other.chip == chip)&&(identical(other.contactless, contactless) || other.contactless == contactless)&&(identical(other.swipe, swipe) || other.swipe == swipe));
 }
 
-ReaderBatteryStatus _$ReaderBatteryStatusFromJson(Map<String, dynamic> json) {
-  return _ReaderBatteryStatus.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,chip,contactless,swipe);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'CardInputMethods(chip: $chip, contactless: $contactless, swipe: $swipe)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$ReaderBatteryStatus {
-  bool get isCharging => throw _privateConstructorUsedError;
-  ReaderBatteryLevel? get level => throw _privateConstructorUsedError;
-  int get percentage => throw _privateConstructorUsedError;
+abstract mixin class _$CardInputMethodsCopyWith<$Res> implements $CardInputMethodsCopyWith<$Res> {
+  factory _$CardInputMethodsCopyWith(_CardInputMethods value, $Res Function(_CardInputMethods) _then) = __$CardInputMethodsCopyWithImpl;
+@override @useResult
+$Res call({
+ int chip, int contactless, int swipe
+});
+
+
+
+
+}
+/// @nodoc
+class __$CardInputMethodsCopyWithImpl<$Res>
+    implements _$CardInputMethodsCopyWith<$Res> {
+  __$CardInputMethodsCopyWithImpl(this._self, this._then);
+
+  final _CardInputMethods _self;
+  final $Res Function(_CardInputMethods) _then;
+
+/// Create a copy of CardInputMethods
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? chip = null,Object? contactless = null,Object? swipe = null,}) {
+  return _then(_CardInputMethods(
+chip: null == chip ? _self.chip : chip // ignore: cast_nullable_to_non_nullable
+as int,contactless: null == contactless ? _self.contactless : contactless // ignore: cast_nullable_to_non_nullable
+as int,swipe: null == swipe ? _self.swipe : swipe // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$ReaderBatteryStatus implements DiagnosticableTreeMixin {
+
+ bool get isCharging; ReaderBatteryLevel? get level; int get percentage;
+/// Create a copy of ReaderBatteryStatus
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ReaderBatteryStatusCopyWith<ReaderBatteryStatus> get copyWith => _$ReaderBatteryStatusCopyWithImpl<ReaderBatteryStatus>(this as ReaderBatteryStatus, _$identity);
 
   /// Serializes this ReaderBatteryStatus to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ReaderBatteryStatus
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ReaderBatteryStatusCopyWith<ReaderBatteryStatus> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ReaderBatteryStatus'))
+    ..add(DiagnosticsProperty('isCharging', isCharging))..add(DiagnosticsProperty('level', level))..add(DiagnosticsProperty('percentage', percentage));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderBatteryStatus&&(identical(other.isCharging, isCharging) || other.isCharging == isCharging)&&(identical(other.level, level) || other.level == level)&&(identical(other.percentage, percentage) || other.percentage == percentage));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,isCharging,level,percentage);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ReaderBatteryStatus(isCharging: $isCharging, level: $level, percentage: $percentage)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ReaderBatteryStatusCopyWith<$Res> {
-  factory $ReaderBatteryStatusCopyWith(
-          ReaderBatteryStatus value, $Res Function(ReaderBatteryStatus) then) =
-      _$ReaderBatteryStatusCopyWithImpl<$Res, ReaderBatteryStatus>;
-  @useResult
-  $Res call({bool isCharging, ReaderBatteryLevel? level, int percentage});
-}
+abstract mixin class $ReaderBatteryStatusCopyWith<$Res>  {
+  factory $ReaderBatteryStatusCopyWith(ReaderBatteryStatus value, $Res Function(ReaderBatteryStatus) _then) = _$ReaderBatteryStatusCopyWithImpl;
+@useResult
+$Res call({
+ bool isCharging, ReaderBatteryLevel? level, int percentage
+});
 
+
+
+
+}
 /// @nodoc
-class _$ReaderBatteryStatusCopyWithImpl<$Res, $Val extends ReaderBatteryStatus>
+class _$ReaderBatteryStatusCopyWithImpl<$Res>
     implements $ReaderBatteryStatusCopyWith<$Res> {
-  _$ReaderBatteryStatusCopyWithImpl(this._value, this._then);
+  _$ReaderBatteryStatusCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ReaderBatteryStatus _self;
+  final $Res Function(ReaderBatteryStatus) _then;
 
-  /// Create a copy of ReaderBatteryStatus
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isCharging = null,
-    Object? level = freezed,
-    Object? percentage = null,
-  }) {
-    return _then(_value.copyWith(
-      isCharging: null == isCharging
-          ? _value.isCharging
-          : isCharging // ignore: cast_nullable_to_non_nullable
-              as bool,
-      level: freezed == level
-          ? _value.level
-          : level // ignore: cast_nullable_to_non_nullable
-              as ReaderBatteryLevel?,
-      percentage: null == percentage
-          ? _value.percentage
-          : percentage // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
+/// Create a copy of ReaderBatteryStatus
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? isCharging = null,Object? level = freezed,Object? percentage = null,}) {
+  return _then(_self.copyWith(
+isCharging: null == isCharging ? _self.isCharging : isCharging // ignore: cast_nullable_to_non_nullable
+as bool,level: freezed == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
+as ReaderBatteryLevel?,percentage: null == percentage ? _self.percentage : percentage // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ReaderBatteryStatusImplCopyWith<$Res>
-    implements $ReaderBatteryStatusCopyWith<$Res> {
-  factory _$$ReaderBatteryStatusImplCopyWith(_$ReaderBatteryStatusImpl value,
-          $Res Function(_$ReaderBatteryStatusImpl) then) =
-      __$$ReaderBatteryStatusImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({bool isCharging, ReaderBatteryLevel? level, int percentage});
 }
 
-/// @nodoc
-class __$$ReaderBatteryStatusImplCopyWithImpl<$Res>
-    extends _$ReaderBatteryStatusCopyWithImpl<$Res, _$ReaderBatteryStatusImpl>
-    implements _$$ReaderBatteryStatusImplCopyWith<$Res> {
-  __$$ReaderBatteryStatusImplCopyWithImpl(_$ReaderBatteryStatusImpl _value,
-      $Res Function(_$ReaderBatteryStatusImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ReaderBatteryStatus
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isCharging = null,
-    Object? level = freezed,
-    Object? percentage = null,
-  }) {
-    return _then(_$ReaderBatteryStatusImpl(
-      isCharging: null == isCharging
-          ? _value.isCharging
-          : isCharging // ignore: cast_nullable_to_non_nullable
-              as bool,
-      level: freezed == level
-          ? _value.level
-          : level // ignore: cast_nullable_to_non_nullable
-              as ReaderBatteryLevel?,
-      percentage: null == percentage
-          ? _value.percentage
-          : percentage // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ReaderBatteryStatus].
+extension ReaderBatteryStatusPatterns on ReaderBatteryStatus {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ReaderBatteryStatus value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ReaderBatteryStatus() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ReaderBatteryStatus value)  $default,){
+final _that = this;
+switch (_that) {
+case _ReaderBatteryStatus():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ReaderBatteryStatus value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ReaderBatteryStatus() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isCharging,  ReaderBatteryLevel? level,  int percentage)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ReaderBatteryStatus() when $default != null:
+return $default(_that.isCharging,_that.level,_that.percentage);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isCharging,  ReaderBatteryLevel? level,  int percentage)  $default,) {final _that = this;
+switch (_that) {
+case _ReaderBatteryStatus():
+return $default(_that.isCharging,_that.level,_that.percentage);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isCharging,  ReaderBatteryLevel? level,  int percentage)?  $default,) {final _that = this;
+switch (_that) {
+case _ReaderBatteryStatus() when $default != null:
+return $default(_that.isCharging,_that.level,_that.percentage);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ReaderBatteryStatusImpl
-    with DiagnosticableTreeMixin
-    implements _ReaderBatteryStatus {
-  const _$ReaderBatteryStatusImpl(
-      {required this.isCharging, this.level, required this.percentage});
 
-  factory _$ReaderBatteryStatusImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReaderBatteryStatusImplFromJson(json);
+class _ReaderBatteryStatus with DiagnosticableTreeMixin implements ReaderBatteryStatus {
+  const _ReaderBatteryStatus({required this.isCharging, this.level, required this.percentage});
+  factory _ReaderBatteryStatus.fromJson(Map<String, dynamic> json) => _$ReaderBatteryStatusFromJson(json);
 
-  @override
-  final bool isCharging;
-  @override
-  final ReaderBatteryLevel? level;
-  @override
-  final int percentage;
+@override final  bool isCharging;
+@override final  ReaderBatteryLevel? level;
+@override final  int percentage;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ReaderBatteryStatus(isCharging: $isCharging, level: $level, percentage: $percentage)';
-  }
+/// Create a copy of ReaderBatteryStatus
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ReaderBatteryStatusCopyWith<_ReaderBatteryStatus> get copyWith => __$ReaderBatteryStatusCopyWithImpl<_ReaderBatteryStatus>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ReaderBatteryStatus'))
-      ..add(DiagnosticsProperty('isCharging', isCharging))
-      ..add(DiagnosticsProperty('level', level))
-      ..add(DiagnosticsProperty('percentage', percentage));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ReaderBatteryStatusImpl &&
-            (identical(other.isCharging, isCharging) ||
-                other.isCharging == isCharging) &&
-            (identical(other.level, level) || other.level == level) &&
-            (identical(other.percentage, percentage) ||
-                other.percentage == percentage));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, isCharging, level, percentage);
-
-  /// Create a copy of ReaderBatteryStatus
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ReaderBatteryStatusImplCopyWith<_$ReaderBatteryStatusImpl> get copyWith =>
-      __$$ReaderBatteryStatusImplCopyWithImpl<_$ReaderBatteryStatusImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ReaderBatteryStatusImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ReaderBatteryStatusToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ReaderBatteryStatus'))
+    ..add(DiagnosticsProperty('isCharging', isCharging))..add(DiagnosticsProperty('level', level))..add(DiagnosticsProperty('percentage', percentage));
 }
 
-abstract class _ReaderBatteryStatus implements ReaderBatteryStatus {
-  const factory _ReaderBatteryStatus(
-      {required final bool isCharging,
-      final ReaderBatteryLevel? level,
-      required final int percentage}) = _$ReaderBatteryStatusImpl;
-
-  factory _ReaderBatteryStatus.fromJson(Map<String, dynamic> json) =
-      _$ReaderBatteryStatusImpl.fromJson;
-
-  @override
-  bool get isCharging;
-  @override
-  ReaderBatteryLevel? get level;
-  @override
-  int get percentage;
-
-  /// Create a copy of ReaderBatteryStatus
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ReaderBatteryStatusImplCopyWith<_$ReaderBatteryStatusImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderBatteryStatus&&(identical(other.isCharging, isCharging) || other.isCharging == isCharging)&&(identical(other.level, level) || other.level == level)&&(identical(other.percentage, percentage) || other.percentage == percentage));
 }
 
-ReaderStatusInfo _$ReaderStatusInfoFromJson(Map<String, dynamic> json) {
-  return _ReaderStatusInfo.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,isCharging,level,percentage);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ReaderBatteryStatus(isCharging: $isCharging, level: $level, percentage: $percentage)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$ReaderStatusInfo {
-  ReaderStatusInfoStatus get status => throw _privateConstructorUsedError;
-  ReaderStatusInfoUnavailableReason? get unavailableReason =>
-      throw _privateConstructorUsedError;
+abstract mixin class _$ReaderBatteryStatusCopyWith<$Res> implements $ReaderBatteryStatusCopyWith<$Res> {
+  factory _$ReaderBatteryStatusCopyWith(_ReaderBatteryStatus value, $Res Function(_ReaderBatteryStatus) _then) = __$ReaderBatteryStatusCopyWithImpl;
+@override @useResult
+$Res call({
+ bool isCharging, ReaderBatteryLevel? level, int percentage
+});
+
+
+
+
+}
+/// @nodoc
+class __$ReaderBatteryStatusCopyWithImpl<$Res>
+    implements _$ReaderBatteryStatusCopyWith<$Res> {
+  __$ReaderBatteryStatusCopyWithImpl(this._self, this._then);
+
+  final _ReaderBatteryStatus _self;
+  final $Res Function(_ReaderBatteryStatus) _then;
+
+/// Create a copy of ReaderBatteryStatus
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? isCharging = null,Object? level = freezed,Object? percentage = null,}) {
+  return _then(_ReaderBatteryStatus(
+isCharging: null == isCharging ? _self.isCharging : isCharging // ignore: cast_nullable_to_non_nullable
+as bool,level: freezed == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
+as ReaderBatteryLevel?,percentage: null == percentage ? _self.percentage : percentage // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$ReaderStatusInfo implements DiagnosticableTreeMixin {
+
+ ReaderStatusInfoStatus get status; ReaderStatusInfoUnavailableReason? get unavailableReason;
+/// Create a copy of ReaderStatusInfo
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ReaderStatusInfoCopyWith<ReaderStatusInfo> get copyWith => _$ReaderStatusInfoCopyWithImpl<ReaderStatusInfo>(this as ReaderStatusInfo, _$identity);
 
   /// Serializes this ReaderStatusInfo to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ReaderStatusInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ReaderStatusInfoCopyWith<ReaderStatusInfo> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ReaderStatusInfo'))
+    ..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('unavailableReason', unavailableReason));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderStatusInfo&&(identical(other.status, status) || other.status == status)&&(identical(other.unavailableReason, unavailableReason) || other.unavailableReason == unavailableReason));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,status,unavailableReason);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ReaderStatusInfo(status: $status, unavailableReason: $unavailableReason)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ReaderStatusInfoCopyWith<$Res> {
-  factory $ReaderStatusInfoCopyWith(
-          ReaderStatusInfo value, $Res Function(ReaderStatusInfo) then) =
-      _$ReaderStatusInfoCopyWithImpl<$Res, ReaderStatusInfo>;
-  @useResult
-  $Res call(
-      {ReaderStatusInfoStatus status,
-      ReaderStatusInfoUnavailableReason? unavailableReason});
-}
+abstract mixin class $ReaderStatusInfoCopyWith<$Res>  {
+  factory $ReaderStatusInfoCopyWith(ReaderStatusInfo value, $Res Function(ReaderStatusInfo) _then) = _$ReaderStatusInfoCopyWithImpl;
+@useResult
+$Res call({
+ ReaderStatusInfoStatus status, ReaderStatusInfoUnavailableReason? unavailableReason
+});
 
+
+
+
+}
 /// @nodoc
-class _$ReaderStatusInfoCopyWithImpl<$Res, $Val extends ReaderStatusInfo>
+class _$ReaderStatusInfoCopyWithImpl<$Res>
     implements $ReaderStatusInfoCopyWith<$Res> {
-  _$ReaderStatusInfoCopyWithImpl(this._value, this._then);
+  _$ReaderStatusInfoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ReaderStatusInfo _self;
+  final $Res Function(ReaderStatusInfo) _then;
 
-  /// Create a copy of ReaderStatusInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? unavailableReason = freezed,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ReaderStatusInfoStatus,
-      unavailableReason: freezed == unavailableReason
-          ? _value.unavailableReason
-          : unavailableReason // ignore: cast_nullable_to_non_nullable
-              as ReaderStatusInfoUnavailableReason?,
-    ) as $Val);
-  }
+/// Create a copy of ReaderStatusInfo
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? unavailableReason = freezed,}) {
+  return _then(_self.copyWith(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as ReaderStatusInfoStatus,unavailableReason: freezed == unavailableReason ? _self.unavailableReason : unavailableReason // ignore: cast_nullable_to_non_nullable
+as ReaderStatusInfoUnavailableReason?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ReaderStatusInfoImplCopyWith<$Res>
-    implements $ReaderStatusInfoCopyWith<$Res> {
-  factory _$$ReaderStatusInfoImplCopyWith(_$ReaderStatusInfoImpl value,
-          $Res Function(_$ReaderStatusInfoImpl) then) =
-      __$$ReaderStatusInfoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {ReaderStatusInfoStatus status,
-      ReaderStatusInfoUnavailableReason? unavailableReason});
 }
 
-/// @nodoc
-class __$$ReaderStatusInfoImplCopyWithImpl<$Res>
-    extends _$ReaderStatusInfoCopyWithImpl<$Res, _$ReaderStatusInfoImpl>
-    implements _$$ReaderStatusInfoImplCopyWith<$Res> {
-  __$$ReaderStatusInfoImplCopyWithImpl(_$ReaderStatusInfoImpl _value,
-      $Res Function(_$ReaderStatusInfoImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ReaderStatusInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? unavailableReason = freezed,
-  }) {
-    return _then(_$ReaderStatusInfoImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ReaderStatusInfoStatus,
-      unavailableReason: freezed == unavailableReason
-          ? _value.unavailableReason
-          : unavailableReason // ignore: cast_nullable_to_non_nullable
-              as ReaderStatusInfoUnavailableReason?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ReaderStatusInfo].
+extension ReaderStatusInfoPatterns on ReaderStatusInfo {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ReaderStatusInfo value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ReaderStatusInfo() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ReaderStatusInfo value)  $default,){
+final _that = this;
+switch (_that) {
+case _ReaderStatusInfo():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ReaderStatusInfo value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ReaderStatusInfo() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ReaderStatusInfoStatus status,  ReaderStatusInfoUnavailableReason? unavailableReason)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ReaderStatusInfo() when $default != null:
+return $default(_that.status,_that.unavailableReason);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ReaderStatusInfoStatus status,  ReaderStatusInfoUnavailableReason? unavailableReason)  $default,) {final _that = this;
+switch (_that) {
+case _ReaderStatusInfo():
+return $default(_that.status,_that.unavailableReason);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ReaderStatusInfoStatus status,  ReaderStatusInfoUnavailableReason? unavailableReason)?  $default,) {final _that = this;
+switch (_that) {
+case _ReaderStatusInfo() when $default != null:
+return $default(_that.status,_that.unavailableReason);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ReaderStatusInfoImpl
-    with DiagnosticableTreeMixin
-    implements _ReaderStatusInfo {
-  const _$ReaderStatusInfoImpl({required this.status, this.unavailableReason});
 
-  factory _$ReaderStatusInfoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReaderStatusInfoImplFromJson(json);
+class _ReaderStatusInfo with DiagnosticableTreeMixin implements ReaderStatusInfo {
+  const _ReaderStatusInfo({required this.status, this.unavailableReason});
+  factory _ReaderStatusInfo.fromJson(Map<String, dynamic> json) => _$ReaderStatusInfoFromJson(json);
 
-  @override
-  final ReaderStatusInfoStatus status;
-  @override
-  final ReaderStatusInfoUnavailableReason? unavailableReason;
+@override final  ReaderStatusInfoStatus status;
+@override final  ReaderStatusInfoUnavailableReason? unavailableReason;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ReaderStatusInfo(status: $status, unavailableReason: $unavailableReason)';
-  }
+/// Create a copy of ReaderStatusInfo
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ReaderStatusInfoCopyWith<_ReaderStatusInfo> get copyWith => __$ReaderStatusInfoCopyWithImpl<_ReaderStatusInfo>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ReaderStatusInfo'))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('unavailableReason', unavailableReason));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ReaderStatusInfoImpl &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.unavailableReason, unavailableReason) ||
-                other.unavailableReason == unavailableReason));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, status, unavailableReason);
-
-  /// Create a copy of ReaderStatusInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ReaderStatusInfoImplCopyWith<_$ReaderStatusInfoImpl> get copyWith =>
-      __$$ReaderStatusInfoImplCopyWithImpl<_$ReaderStatusInfoImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ReaderStatusInfoImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ReaderStatusInfoToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ReaderStatusInfo'))
+    ..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('unavailableReason', unavailableReason));
 }
 
-abstract class _ReaderStatusInfo implements ReaderStatusInfo {
-  const factory _ReaderStatusInfo(
-          {required final ReaderStatusInfoStatus status,
-          final ReaderStatusInfoUnavailableReason? unavailableReason}) =
-      _$ReaderStatusInfoImpl;
-
-  factory _ReaderStatusInfo.fromJson(Map<String, dynamic> json) =
-      _$ReaderStatusInfoImpl.fromJson;
-
-  @override
-  ReaderStatusInfoStatus get status;
-  @override
-  ReaderStatusInfoUnavailableReason? get unavailableReason;
-
-  /// Create a copy of ReaderStatusInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ReaderStatusInfoImplCopyWith<_$ReaderStatusInfoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderStatusInfo&&(identical(other.status, status) || other.status == status)&&(identical(other.unavailableReason, unavailableReason) || other.unavailableReason == unavailableReason));
 }
 
-ReaderFirmwareInfo _$ReaderFirmwareInfoFromJson(Map<String, dynamic> json) {
-  return _ReaderFirmwareInfo.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,status,unavailableReason);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ReaderStatusInfo(status: $status, unavailableReason: $unavailableReason)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$ReaderFirmwareInfo {
-  String? get failureReason => throw _privateConstructorUsedError;
-  int? get updatePercentage => throw _privateConstructorUsedError;
-  String? get version => throw _privateConstructorUsedError;
+abstract mixin class _$ReaderStatusInfoCopyWith<$Res> implements $ReaderStatusInfoCopyWith<$Res> {
+  factory _$ReaderStatusInfoCopyWith(_ReaderStatusInfo value, $Res Function(_ReaderStatusInfo) _then) = __$ReaderStatusInfoCopyWithImpl;
+@override @useResult
+$Res call({
+ ReaderStatusInfoStatus status, ReaderStatusInfoUnavailableReason? unavailableReason
+});
+
+
+
+
+}
+/// @nodoc
+class __$ReaderStatusInfoCopyWithImpl<$Res>
+    implements _$ReaderStatusInfoCopyWith<$Res> {
+  __$ReaderStatusInfoCopyWithImpl(this._self, this._then);
+
+  final _ReaderStatusInfo _self;
+  final $Res Function(_ReaderStatusInfo) _then;
+
+/// Create a copy of ReaderStatusInfo
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? unavailableReason = freezed,}) {
+  return _then(_ReaderStatusInfo(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as ReaderStatusInfoStatus,unavailableReason: freezed == unavailableReason ? _self.unavailableReason : unavailableReason // ignore: cast_nullable_to_non_nullable
+as ReaderStatusInfoUnavailableReason?,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$ReaderFirmwareInfo implements DiagnosticableTreeMixin {
+
+ String? get failureReason; int? get updatePercentage; String? get version;
+/// Create a copy of ReaderFirmwareInfo
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ReaderFirmwareInfoCopyWith<ReaderFirmwareInfo> get copyWith => _$ReaderFirmwareInfoCopyWithImpl<ReaderFirmwareInfo>(this as ReaderFirmwareInfo, _$identity);
 
   /// Serializes this ReaderFirmwareInfo to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ReaderFirmwareInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ReaderFirmwareInfoCopyWith<ReaderFirmwareInfo> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ReaderFirmwareInfo'))
+    ..add(DiagnosticsProperty('failureReason', failureReason))..add(DiagnosticsProperty('updatePercentage', updatePercentage))..add(DiagnosticsProperty('version', version));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderFirmwareInfo&&(identical(other.failureReason, failureReason) || other.failureReason == failureReason)&&(identical(other.updatePercentage, updatePercentage) || other.updatePercentage == updatePercentage)&&(identical(other.version, version) || other.version == version));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,failureReason,updatePercentage,version);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ReaderFirmwareInfo(failureReason: $failureReason, updatePercentage: $updatePercentage, version: $version)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ReaderFirmwareInfoCopyWith<$Res> {
-  factory $ReaderFirmwareInfoCopyWith(
-          ReaderFirmwareInfo value, $Res Function(ReaderFirmwareInfo) then) =
-      _$ReaderFirmwareInfoCopyWithImpl<$Res, ReaderFirmwareInfo>;
-  @useResult
-  $Res call({String? failureReason, int? updatePercentage, String? version});
-}
+abstract mixin class $ReaderFirmwareInfoCopyWith<$Res>  {
+  factory $ReaderFirmwareInfoCopyWith(ReaderFirmwareInfo value, $Res Function(ReaderFirmwareInfo) _then) = _$ReaderFirmwareInfoCopyWithImpl;
+@useResult
+$Res call({
+ String? failureReason, int? updatePercentage, String? version
+});
 
+
+
+
+}
 /// @nodoc
-class _$ReaderFirmwareInfoCopyWithImpl<$Res, $Val extends ReaderFirmwareInfo>
+class _$ReaderFirmwareInfoCopyWithImpl<$Res>
     implements $ReaderFirmwareInfoCopyWith<$Res> {
-  _$ReaderFirmwareInfoCopyWithImpl(this._value, this._then);
+  _$ReaderFirmwareInfoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ReaderFirmwareInfo _self;
+  final $Res Function(ReaderFirmwareInfo) _then;
 
-  /// Create a copy of ReaderFirmwareInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? failureReason = freezed,
-    Object? updatePercentage = freezed,
-    Object? version = freezed,
-  }) {
-    return _then(_value.copyWith(
-      failureReason: freezed == failureReason
-          ? _value.failureReason
-          : failureReason // ignore: cast_nullable_to_non_nullable
-              as String?,
-      updatePercentage: freezed == updatePercentage
-          ? _value.updatePercentage
-          : updatePercentage // ignore: cast_nullable_to_non_nullable
-              as int?,
-      version: freezed == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of ReaderFirmwareInfo
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? failureReason = freezed,Object? updatePercentage = freezed,Object? version = freezed,}) {
+  return _then(_self.copyWith(
+failureReason: freezed == failureReason ? _self.failureReason : failureReason // ignore: cast_nullable_to_non_nullable
+as String?,updatePercentage: freezed == updatePercentage ? _self.updatePercentage : updatePercentage // ignore: cast_nullable_to_non_nullable
+as int?,version: freezed == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ReaderFirmwareInfoImplCopyWith<$Res>
-    implements $ReaderFirmwareInfoCopyWith<$Res> {
-  factory _$$ReaderFirmwareInfoImplCopyWith(_$ReaderFirmwareInfoImpl value,
-          $Res Function(_$ReaderFirmwareInfoImpl) then) =
-      __$$ReaderFirmwareInfoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? failureReason, int? updatePercentage, String? version});
 }
 
-/// @nodoc
-class __$$ReaderFirmwareInfoImplCopyWithImpl<$Res>
-    extends _$ReaderFirmwareInfoCopyWithImpl<$Res, _$ReaderFirmwareInfoImpl>
-    implements _$$ReaderFirmwareInfoImplCopyWith<$Res> {
-  __$$ReaderFirmwareInfoImplCopyWithImpl(_$ReaderFirmwareInfoImpl _value,
-      $Res Function(_$ReaderFirmwareInfoImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ReaderFirmwareInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? failureReason = freezed,
-    Object? updatePercentage = freezed,
-    Object? version = freezed,
-  }) {
-    return _then(_$ReaderFirmwareInfoImpl(
-      failureReason: freezed == failureReason
-          ? _value.failureReason
-          : failureReason // ignore: cast_nullable_to_non_nullable
-              as String?,
-      updatePercentage: freezed == updatePercentage
-          ? _value.updatePercentage
-          : updatePercentage // ignore: cast_nullable_to_non_nullable
-              as int?,
-      version: freezed == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ReaderFirmwareInfo].
+extension ReaderFirmwareInfoPatterns on ReaderFirmwareInfo {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ReaderFirmwareInfo value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ReaderFirmwareInfo() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ReaderFirmwareInfo value)  $default,){
+final _that = this;
+switch (_that) {
+case _ReaderFirmwareInfo():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ReaderFirmwareInfo value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ReaderFirmwareInfo() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? failureReason,  int? updatePercentage,  String? version)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ReaderFirmwareInfo() when $default != null:
+return $default(_that.failureReason,_that.updatePercentage,_that.version);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? failureReason,  int? updatePercentage,  String? version)  $default,) {final _that = this;
+switch (_that) {
+case _ReaderFirmwareInfo():
+return $default(_that.failureReason,_that.updatePercentage,_that.version);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? failureReason,  int? updatePercentage,  String? version)?  $default,) {final _that = this;
+switch (_that) {
+case _ReaderFirmwareInfo() when $default != null:
+return $default(_that.failureReason,_that.updatePercentage,_that.version);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ReaderFirmwareInfoImpl
-    with DiagnosticableTreeMixin
-    implements _ReaderFirmwareInfo {
-  const _$ReaderFirmwareInfoImpl(
-      {this.failureReason, this.updatePercentage, this.version});
 
-  factory _$ReaderFirmwareInfoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReaderFirmwareInfoImplFromJson(json);
+class _ReaderFirmwareInfo with DiagnosticableTreeMixin implements ReaderFirmwareInfo {
+  const _ReaderFirmwareInfo({this.failureReason, this.updatePercentage, this.version});
+  factory _ReaderFirmwareInfo.fromJson(Map<String, dynamic> json) => _$ReaderFirmwareInfoFromJson(json);
 
-  @override
-  final String? failureReason;
-  @override
-  final int? updatePercentage;
-  @override
-  final String? version;
+@override final  String? failureReason;
+@override final  int? updatePercentage;
+@override final  String? version;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ReaderFirmwareInfo(failureReason: $failureReason, updatePercentage: $updatePercentage, version: $version)';
-  }
+/// Create a copy of ReaderFirmwareInfo
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ReaderFirmwareInfoCopyWith<_ReaderFirmwareInfo> get copyWith => __$ReaderFirmwareInfoCopyWithImpl<_ReaderFirmwareInfo>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ReaderFirmwareInfo'))
-      ..add(DiagnosticsProperty('failureReason', failureReason))
-      ..add(DiagnosticsProperty('updatePercentage', updatePercentage))
-      ..add(DiagnosticsProperty('version', version));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ReaderFirmwareInfoImpl &&
-            (identical(other.failureReason, failureReason) ||
-                other.failureReason == failureReason) &&
-            (identical(other.updatePercentage, updatePercentage) ||
-                other.updatePercentage == updatePercentage) &&
-            (identical(other.version, version) || other.version == version));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, failureReason, updatePercentage, version);
-
-  /// Create a copy of ReaderFirmwareInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ReaderFirmwareInfoImplCopyWith<_$ReaderFirmwareInfoImpl> get copyWith =>
-      __$$ReaderFirmwareInfoImplCopyWithImpl<_$ReaderFirmwareInfoImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ReaderFirmwareInfoImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ReaderFirmwareInfoToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ReaderFirmwareInfo'))
+    ..add(DiagnosticsProperty('failureReason', failureReason))..add(DiagnosticsProperty('updatePercentage', updatePercentage))..add(DiagnosticsProperty('version', version));
 }
 
-abstract class _ReaderFirmwareInfo implements ReaderFirmwareInfo {
-  const factory _ReaderFirmwareInfo(
-      {final String? failureReason,
-      final int? updatePercentage,
-      final String? version}) = _$ReaderFirmwareInfoImpl;
-
-  factory _ReaderFirmwareInfo.fromJson(Map<String, dynamic> json) =
-      _$ReaderFirmwareInfoImpl.fromJson;
-
-  @override
-  String? get failureReason;
-  @override
-  int? get updatePercentage;
-  @override
-  String? get version;
-
-  /// Create a copy of ReaderFirmwareInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ReaderFirmwareInfoImplCopyWith<_$ReaderFirmwareInfoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderFirmwareInfo&&(identical(other.failureReason, failureReason) || other.failureReason == failureReason)&&(identical(other.updatePercentage, updatePercentage) || other.updatePercentage == updatePercentage)&&(identical(other.version, version) || other.version == version));
 }
 
-ReaderInfo _$ReaderInfoFromJson(Map<String, dynamic> json) {
-  return _ReaderInfo.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,failureReason,updatePercentage,version);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ReaderFirmwareInfo(failureReason: $failureReason, updatePercentage: $updatePercentage, version: $version)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$ReaderInfo {
-  ReaderBatteryStatus? get batteryStatus => throw _privateConstructorUsedError;
-  CardInsertionStatus? get cardInsertionStatus =>
-      throw _privateConstructorUsedError;
-  ReaderFirmwareInfo? get firmwareInfo => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
-  bool get isBlinkable => throw _privateConstructorUsedError;
-  bool? get isConnectionRetryable => throw _privateConstructorUsedError;
-  bool get isForgettable => throw _privateConstructorUsedError;
-  ReaderModel get model => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String? get serialNumber => throw _privateConstructorUsedError;
-  ReaderStatusInfo get statusInfo => throw _privateConstructorUsedError;
-  List<CardInputMethod> get supportedInputMethods =>
-      throw _privateConstructorUsedError;
+abstract mixin class _$ReaderFirmwareInfoCopyWith<$Res> implements $ReaderFirmwareInfoCopyWith<$Res> {
+  factory _$ReaderFirmwareInfoCopyWith(_ReaderFirmwareInfo value, $Res Function(_ReaderFirmwareInfo) _then) = __$ReaderFirmwareInfoCopyWithImpl;
+@override @useResult
+$Res call({
+ String? failureReason, int? updatePercentage, String? version
+});
+
+
+
+
+}
+/// @nodoc
+class __$ReaderFirmwareInfoCopyWithImpl<$Res>
+    implements _$ReaderFirmwareInfoCopyWith<$Res> {
+  __$ReaderFirmwareInfoCopyWithImpl(this._self, this._then);
+
+  final _ReaderFirmwareInfo _self;
+  final $Res Function(_ReaderFirmwareInfo) _then;
+
+/// Create a copy of ReaderFirmwareInfo
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? failureReason = freezed,Object? updatePercentage = freezed,Object? version = freezed,}) {
+  return _then(_ReaderFirmwareInfo(
+failureReason: freezed == failureReason ? _self.failureReason : failureReason // ignore: cast_nullable_to_non_nullable
+as String?,updatePercentage: freezed == updatePercentage ? _self.updatePercentage : updatePercentage // ignore: cast_nullable_to_non_nullable
+as int?,version: freezed == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$ReaderInfo implements DiagnosticableTreeMixin {
+
+ ReaderBatteryStatus? get batteryStatus; CardInsertionStatus? get cardInsertionStatus; ReaderFirmwareInfo? get firmwareInfo; String get id; bool get isBlinkable; bool? get isConnectionRetryable; bool get isForgettable; ReaderModel get model; String get name; String? get serialNumber; ReaderStatusInfo get statusInfo; List<CardInputMethod> get supportedInputMethods;
+/// Create a copy of ReaderInfo
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ReaderInfoCopyWith<ReaderInfo> get copyWith => _$ReaderInfoCopyWithImpl<ReaderInfo>(this as ReaderInfo, _$identity);
 
   /// Serializes this ReaderInfo to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ReaderInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ReaderInfoCopyWith<ReaderInfo> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ReaderInfo'))
+    ..add(DiagnosticsProperty('batteryStatus', batteryStatus))..add(DiagnosticsProperty('cardInsertionStatus', cardInsertionStatus))..add(DiagnosticsProperty('firmwareInfo', firmwareInfo))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('isBlinkable', isBlinkable))..add(DiagnosticsProperty('isConnectionRetryable', isConnectionRetryable))..add(DiagnosticsProperty('isForgettable', isForgettable))..add(DiagnosticsProperty('model', model))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('serialNumber', serialNumber))..add(DiagnosticsProperty('statusInfo', statusInfo))..add(DiagnosticsProperty('supportedInputMethods', supportedInputMethods));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderInfo&&(identical(other.batteryStatus, batteryStatus) || other.batteryStatus == batteryStatus)&&(identical(other.cardInsertionStatus, cardInsertionStatus) || other.cardInsertionStatus == cardInsertionStatus)&&(identical(other.firmwareInfo, firmwareInfo) || other.firmwareInfo == firmwareInfo)&&(identical(other.id, id) || other.id == id)&&(identical(other.isBlinkable, isBlinkable) || other.isBlinkable == isBlinkable)&&(identical(other.isConnectionRetryable, isConnectionRetryable) || other.isConnectionRetryable == isConnectionRetryable)&&(identical(other.isForgettable, isForgettable) || other.isForgettable == isForgettable)&&(identical(other.model, model) || other.model == model)&&(identical(other.name, name) || other.name == name)&&(identical(other.serialNumber, serialNumber) || other.serialNumber == serialNumber)&&(identical(other.statusInfo, statusInfo) || other.statusInfo == statusInfo)&&const DeepCollectionEquality().equals(other.supportedInputMethods, supportedInputMethods));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,batteryStatus,cardInsertionStatus,firmwareInfo,id,isBlinkable,isConnectionRetryable,isForgettable,model,name,serialNumber,statusInfo,const DeepCollectionEquality().hash(supportedInputMethods));
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, model: $model, name: $name, serialNumber: $serialNumber, statusInfo: $statusInfo, supportedInputMethods: $supportedInputMethods)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ReaderInfoCopyWith<$Res> {
-  factory $ReaderInfoCopyWith(
-          ReaderInfo value, $Res Function(ReaderInfo) then) =
-      _$ReaderInfoCopyWithImpl<$Res, ReaderInfo>;
-  @useResult
-  $Res call(
-      {ReaderBatteryStatus? batteryStatus,
-      CardInsertionStatus? cardInsertionStatus,
-      ReaderFirmwareInfo? firmwareInfo,
-      String id,
-      bool isBlinkable,
-      bool? isConnectionRetryable,
-      bool isForgettable,
-      ReaderModel model,
-      String name,
-      String? serialNumber,
-      ReaderStatusInfo statusInfo,
-      List<CardInputMethod> supportedInputMethods});
+abstract mixin class $ReaderInfoCopyWith<$Res>  {
+  factory $ReaderInfoCopyWith(ReaderInfo value, $Res Function(ReaderInfo) _then) = _$ReaderInfoCopyWithImpl;
+@useResult
+$Res call({
+ ReaderBatteryStatus? batteryStatus, CardInsertionStatus? cardInsertionStatus, ReaderFirmwareInfo? firmwareInfo, String id, bool isBlinkable, bool? isConnectionRetryable, bool isForgettable, ReaderModel model, String name, String? serialNumber, ReaderStatusInfo statusInfo, List<CardInputMethod> supportedInputMethods
+});
 
-  $ReaderBatteryStatusCopyWith<$Res>? get batteryStatus;
-  $ReaderFirmwareInfoCopyWith<$Res>? get firmwareInfo;
-  $ReaderStatusInfoCopyWith<$Res> get statusInfo;
+
+$ReaderBatteryStatusCopyWith<$Res>? get batteryStatus;$ReaderFirmwareInfoCopyWith<$Res>? get firmwareInfo;$ReaderStatusInfoCopyWith<$Res> get statusInfo;
+
 }
-
 /// @nodoc
-class _$ReaderInfoCopyWithImpl<$Res, $Val extends ReaderInfo>
+class _$ReaderInfoCopyWithImpl<$Res>
     implements $ReaderInfoCopyWith<$Res> {
-  _$ReaderInfoCopyWithImpl(this._value, this._then);
+  _$ReaderInfoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ReaderInfo _self;
+  final $Res Function(ReaderInfo) _then;
 
-  /// Create a copy of ReaderInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? batteryStatus = freezed,
-    Object? cardInsertionStatus = freezed,
-    Object? firmwareInfo = freezed,
-    Object? id = null,
-    Object? isBlinkable = null,
-    Object? isConnectionRetryable = freezed,
-    Object? isForgettable = null,
-    Object? model = null,
-    Object? name = null,
-    Object? serialNumber = freezed,
-    Object? statusInfo = null,
-    Object? supportedInputMethods = null,
-  }) {
-    return _then(_value.copyWith(
-      batteryStatus: freezed == batteryStatus
-          ? _value.batteryStatus
-          : batteryStatus // ignore: cast_nullable_to_non_nullable
-              as ReaderBatteryStatus?,
-      cardInsertionStatus: freezed == cardInsertionStatus
-          ? _value.cardInsertionStatus
-          : cardInsertionStatus // ignore: cast_nullable_to_non_nullable
-              as CardInsertionStatus?,
-      firmwareInfo: freezed == firmwareInfo
-          ? _value.firmwareInfo
-          : firmwareInfo // ignore: cast_nullable_to_non_nullable
-              as ReaderFirmwareInfo?,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      isBlinkable: null == isBlinkable
-          ? _value.isBlinkable
-          : isBlinkable // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isConnectionRetryable: freezed == isConnectionRetryable
-          ? _value.isConnectionRetryable
-          : isConnectionRetryable // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isForgettable: null == isForgettable
-          ? _value.isForgettable
-          : isForgettable // ignore: cast_nullable_to_non_nullable
-              as bool,
-      model: null == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as ReaderModel,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      serialNumber: freezed == serialNumber
-          ? _value.serialNumber
-          : serialNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      statusInfo: null == statusInfo
-          ? _value.statusInfo
-          : statusInfo // ignore: cast_nullable_to_non_nullable
-              as ReaderStatusInfo,
-      supportedInputMethods: null == supportedInputMethods
-          ? _value.supportedInputMethods
-          : supportedInputMethods // ignore: cast_nullable_to_non_nullable
-              as List<CardInputMethod>,
-    ) as $Val);
+/// Create a copy of ReaderInfo
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? batteryStatus = freezed,Object? cardInsertionStatus = freezed,Object? firmwareInfo = freezed,Object? id = null,Object? isBlinkable = null,Object? isConnectionRetryable = freezed,Object? isForgettable = null,Object? model = null,Object? name = null,Object? serialNumber = freezed,Object? statusInfo = null,Object? supportedInputMethods = null,}) {
+  return _then(_self.copyWith(
+batteryStatus: freezed == batteryStatus ? _self.batteryStatus : batteryStatus // ignore: cast_nullable_to_non_nullable
+as ReaderBatteryStatus?,cardInsertionStatus: freezed == cardInsertionStatus ? _self.cardInsertionStatus : cardInsertionStatus // ignore: cast_nullable_to_non_nullable
+as CardInsertionStatus?,firmwareInfo: freezed == firmwareInfo ? _self.firmwareInfo : firmwareInfo // ignore: cast_nullable_to_non_nullable
+as ReaderFirmwareInfo?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,isBlinkable: null == isBlinkable ? _self.isBlinkable : isBlinkable // ignore: cast_nullable_to_non_nullable
+as bool,isConnectionRetryable: freezed == isConnectionRetryable ? _self.isConnectionRetryable : isConnectionRetryable // ignore: cast_nullable_to_non_nullable
+as bool?,isForgettable: null == isForgettable ? _self.isForgettable : isForgettable // ignore: cast_nullable_to_non_nullable
+as bool,model: null == model ? _self.model : model // ignore: cast_nullable_to_non_nullable
+as ReaderModel,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,serialNumber: freezed == serialNumber ? _self.serialNumber : serialNumber // ignore: cast_nullable_to_non_nullable
+as String?,statusInfo: null == statusInfo ? _self.statusInfo : statusInfo // ignore: cast_nullable_to_non_nullable
+as ReaderStatusInfo,supportedInputMethods: null == supportedInputMethods ? _self.supportedInputMethods : supportedInputMethods // ignore: cast_nullable_to_non_nullable
+as List<CardInputMethod>,
+  ));
+}
+/// Create a copy of ReaderInfo
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ReaderBatteryStatusCopyWith<$Res>? get batteryStatus {
+    if (_self.batteryStatus == null) {
+    return null;
   }
 
-  /// Create a copy of ReaderInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ReaderBatteryStatusCopyWith<$Res>? get batteryStatus {
-    if (_value.batteryStatus == null) {
-      return null;
-    }
-
-    return $ReaderBatteryStatusCopyWith<$Res>(_value.batteryStatus!, (value) {
-      return _then(_value.copyWith(batteryStatus: value) as $Val);
-    });
+  return $ReaderBatteryStatusCopyWith<$Res>(_self.batteryStatus!, (value) {
+    return _then(_self.copyWith(batteryStatus: value));
+  });
+}/// Create a copy of ReaderInfo
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ReaderFirmwareInfoCopyWith<$Res>? get firmwareInfo {
+    if (_self.firmwareInfo == null) {
+    return null;
   }
 
-  /// Create a copy of ReaderInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ReaderFirmwareInfoCopyWith<$Res>? get firmwareInfo {
-    if (_value.firmwareInfo == null) {
-      return null;
-    }
-
-    return $ReaderFirmwareInfoCopyWith<$Res>(_value.firmwareInfo!, (value) {
-      return _then(_value.copyWith(firmwareInfo: value) as $Val);
-    });
-  }
-
-  /// Create a copy of ReaderInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ReaderStatusInfoCopyWith<$Res> get statusInfo {
-    return $ReaderStatusInfoCopyWith<$Res>(_value.statusInfo, (value) {
-      return _then(_value.copyWith(statusInfo: value) as $Val);
-    });
-  }
+  return $ReaderFirmwareInfoCopyWith<$Res>(_self.firmwareInfo!, (value) {
+    return _then(_self.copyWith(firmwareInfo: value));
+  });
+}/// Create a copy of ReaderInfo
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ReaderStatusInfoCopyWith<$Res> get statusInfo {
+  
+  return $ReaderStatusInfoCopyWith<$Res>(_self.statusInfo, (value) {
+    return _then(_self.copyWith(statusInfo: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$ReaderInfoImplCopyWith<$Res>
-    implements $ReaderInfoCopyWith<$Res> {
-  factory _$$ReaderInfoImplCopyWith(
-          _$ReaderInfoImpl value, $Res Function(_$ReaderInfoImpl) then) =
-      __$$ReaderInfoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {ReaderBatteryStatus? batteryStatus,
-      CardInsertionStatus? cardInsertionStatus,
-      ReaderFirmwareInfo? firmwareInfo,
-      String id,
-      bool isBlinkable,
-      bool? isConnectionRetryable,
-      bool isForgettable,
-      ReaderModel model,
-      String name,
-      String? serialNumber,
-      ReaderStatusInfo statusInfo,
-      List<CardInputMethod> supportedInputMethods});
 
-  @override
-  $ReaderBatteryStatusCopyWith<$Res>? get batteryStatus;
-  @override
-  $ReaderFirmwareInfoCopyWith<$Res>? get firmwareInfo;
-  @override
-  $ReaderStatusInfoCopyWith<$Res> get statusInfo;
+/// Adds pattern-matching-related methods to [ReaderInfo].
+extension ReaderInfoPatterns on ReaderInfo {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ReaderInfo value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ReaderInfo() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ReaderInfo value)  $default,){
+final _that = this;
+switch (_that) {
+case _ReaderInfo():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ReaderInfo value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ReaderInfo() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ReaderBatteryStatus? batteryStatus,  CardInsertionStatus? cardInsertionStatus,  ReaderFirmwareInfo? firmwareInfo,  String id,  bool isBlinkable,  bool? isConnectionRetryable,  bool isForgettable,  ReaderModel model,  String name,  String? serialNumber,  ReaderStatusInfo statusInfo,  List<CardInputMethod> supportedInputMethods)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ReaderInfo() when $default != null:
+return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.firmwareInfo,_that.id,_that.isBlinkable,_that.isConnectionRetryable,_that.isForgettable,_that.model,_that.name,_that.serialNumber,_that.statusInfo,_that.supportedInputMethods);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ReaderBatteryStatus? batteryStatus,  CardInsertionStatus? cardInsertionStatus,  ReaderFirmwareInfo? firmwareInfo,  String id,  bool isBlinkable,  bool? isConnectionRetryable,  bool isForgettable,  ReaderModel model,  String name,  String? serialNumber,  ReaderStatusInfo statusInfo,  List<CardInputMethod> supportedInputMethods)  $default,) {final _that = this;
+switch (_that) {
+case _ReaderInfo():
+return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.firmwareInfo,_that.id,_that.isBlinkable,_that.isConnectionRetryable,_that.isForgettable,_that.model,_that.name,_that.serialNumber,_that.statusInfo,_that.supportedInputMethods);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ReaderBatteryStatus? batteryStatus,  CardInsertionStatus? cardInsertionStatus,  ReaderFirmwareInfo? firmwareInfo,  String id,  bool isBlinkable,  bool? isConnectionRetryable,  bool isForgettable,  ReaderModel model,  String name,  String? serialNumber,  ReaderStatusInfo statusInfo,  List<CardInputMethod> supportedInputMethods)?  $default,) {final _that = this;
+switch (_that) {
+case _ReaderInfo() when $default != null:
+return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.firmwareInfo,_that.id,_that.isBlinkable,_that.isConnectionRetryable,_that.isForgettable,_that.model,_that.name,_that.serialNumber,_that.statusInfo,_that.supportedInputMethods);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$ReaderInfoImplCopyWithImpl<$Res>
-    extends _$ReaderInfoCopyWithImpl<$Res, _$ReaderInfoImpl>
-    implements _$$ReaderInfoImplCopyWith<$Res> {
-  __$$ReaderInfoImplCopyWithImpl(
-      _$ReaderInfoImpl _value, $Res Function(_$ReaderInfoImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ReaderInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? batteryStatus = freezed,
-    Object? cardInsertionStatus = freezed,
-    Object? firmwareInfo = freezed,
-    Object? id = null,
-    Object? isBlinkable = null,
-    Object? isConnectionRetryable = freezed,
-    Object? isForgettable = null,
-    Object? model = null,
-    Object? name = null,
-    Object? serialNumber = freezed,
-    Object? statusInfo = null,
-    Object? supportedInputMethods = null,
-  }) {
-    return _then(_$ReaderInfoImpl(
-      batteryStatus: freezed == batteryStatus
-          ? _value.batteryStatus
-          : batteryStatus // ignore: cast_nullable_to_non_nullable
-              as ReaderBatteryStatus?,
-      cardInsertionStatus: freezed == cardInsertionStatus
-          ? _value.cardInsertionStatus
-          : cardInsertionStatus // ignore: cast_nullable_to_non_nullable
-              as CardInsertionStatus?,
-      firmwareInfo: freezed == firmwareInfo
-          ? _value.firmwareInfo
-          : firmwareInfo // ignore: cast_nullable_to_non_nullable
-              as ReaderFirmwareInfo?,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      isBlinkable: null == isBlinkable
-          ? _value.isBlinkable
-          : isBlinkable // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isConnectionRetryable: freezed == isConnectionRetryable
-          ? _value.isConnectionRetryable
-          : isConnectionRetryable // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isForgettable: null == isForgettable
-          ? _value.isForgettable
-          : isForgettable // ignore: cast_nullable_to_non_nullable
-              as bool,
-      model: null == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as ReaderModel,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      serialNumber: freezed == serialNumber
-          ? _value.serialNumber
-          : serialNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      statusInfo: null == statusInfo
-          ? _value.statusInfo
-          : statusInfo // ignore: cast_nullable_to_non_nullable
-              as ReaderStatusInfo,
-      supportedInputMethods: null == supportedInputMethods
-          ? _value._supportedInputMethods
-          : supportedInputMethods // ignore: cast_nullable_to_non_nullable
-              as List<CardInputMethod>,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ReaderInfoImpl with DiagnosticableTreeMixin implements _ReaderInfo {
-  const _$ReaderInfoImpl(
-      {this.batteryStatus,
-      this.cardInsertionStatus,
-      this.firmwareInfo,
-      required this.id,
-      required this.isBlinkable,
-      this.isConnectionRetryable,
-      required this.isForgettable,
-      required this.model,
-      required this.name,
-      this.serialNumber,
-      required this.statusInfo,
-      required final List<CardInputMethod> supportedInputMethods})
-      : _supportedInputMethods = supportedInputMethods;
 
-  factory _$ReaderInfoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReaderInfoImplFromJson(json);
+class _ReaderInfo with DiagnosticableTreeMixin implements ReaderInfo {
+  const _ReaderInfo({this.batteryStatus, this.cardInsertionStatus, this.firmwareInfo, required this.id, required this.isBlinkable, this.isConnectionRetryable, required this.isForgettable, required this.model, required this.name, this.serialNumber, required this.statusInfo, required final  List<CardInputMethod> supportedInputMethods}): _supportedInputMethods = supportedInputMethods;
+  factory _ReaderInfo.fromJson(Map<String, dynamic> json) => _$ReaderInfoFromJson(json);
 
-  @override
-  final ReaderBatteryStatus? batteryStatus;
-  @override
-  final CardInsertionStatus? cardInsertionStatus;
-  @override
-  final ReaderFirmwareInfo? firmwareInfo;
-  @override
-  final String id;
-  @override
-  final bool isBlinkable;
-  @override
-  final bool? isConnectionRetryable;
-  @override
-  final bool isForgettable;
-  @override
-  final ReaderModel model;
-  @override
-  final String name;
-  @override
-  final String? serialNumber;
-  @override
-  final ReaderStatusInfo statusInfo;
-  final List<CardInputMethod> _supportedInputMethods;
-  @override
-  List<CardInputMethod> get supportedInputMethods {
-    if (_supportedInputMethods is EqualUnmodifiableListView)
-      return _supportedInputMethods;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_supportedInputMethods);
-  }
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, model: $model, name: $name, serialNumber: $serialNumber, statusInfo: $statusInfo, supportedInputMethods: $supportedInputMethods)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ReaderInfo'))
-      ..add(DiagnosticsProperty('batteryStatus', batteryStatus))
-      ..add(DiagnosticsProperty('cardInsertionStatus', cardInsertionStatus))
-      ..add(DiagnosticsProperty('firmwareInfo', firmwareInfo))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('isBlinkable', isBlinkable))
-      ..add(DiagnosticsProperty('isConnectionRetryable', isConnectionRetryable))
-      ..add(DiagnosticsProperty('isForgettable', isForgettable))
-      ..add(DiagnosticsProperty('model', model))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('serialNumber', serialNumber))
-      ..add(DiagnosticsProperty('statusInfo', statusInfo))
-      ..add(
-          DiagnosticsProperty('supportedInputMethods', supportedInputMethods));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ReaderInfoImpl &&
-            (identical(other.batteryStatus, batteryStatus) ||
-                other.batteryStatus == batteryStatus) &&
-            (identical(other.cardInsertionStatus, cardInsertionStatus) ||
-                other.cardInsertionStatus == cardInsertionStatus) &&
-            (identical(other.firmwareInfo, firmwareInfo) ||
-                other.firmwareInfo == firmwareInfo) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.isBlinkable, isBlinkable) ||
-                other.isBlinkable == isBlinkable) &&
-            (identical(other.isConnectionRetryable, isConnectionRetryable) ||
-                other.isConnectionRetryable == isConnectionRetryable) &&
-            (identical(other.isForgettable, isForgettable) ||
-                other.isForgettable == isForgettable) &&
-            (identical(other.model, model) || other.model == model) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.serialNumber, serialNumber) ||
-                other.serialNumber == serialNumber) &&
-            (identical(other.statusInfo, statusInfo) ||
-                other.statusInfo == statusInfo) &&
-            const DeepCollectionEquality()
-                .equals(other._supportedInputMethods, _supportedInputMethods));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      batteryStatus,
-      cardInsertionStatus,
-      firmwareInfo,
-      id,
-      isBlinkable,
-      isConnectionRetryable,
-      isForgettable,
-      model,
-      name,
-      serialNumber,
-      statusInfo,
-      const DeepCollectionEquality().hash(_supportedInputMethods));
-
-  /// Create a copy of ReaderInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ReaderInfoImplCopyWith<_$ReaderInfoImpl> get copyWith =>
-      __$$ReaderInfoImplCopyWithImpl<_$ReaderInfoImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ReaderInfoImplToJson(
-      this,
-    );
-  }
+@override final  ReaderBatteryStatus? batteryStatus;
+@override final  CardInsertionStatus? cardInsertionStatus;
+@override final  ReaderFirmwareInfo? firmwareInfo;
+@override final  String id;
+@override final  bool isBlinkable;
+@override final  bool? isConnectionRetryable;
+@override final  bool isForgettable;
+@override final  ReaderModel model;
+@override final  String name;
+@override final  String? serialNumber;
+@override final  ReaderStatusInfo statusInfo;
+ final  List<CardInputMethod> _supportedInputMethods;
+@override List<CardInputMethod> get supportedInputMethods {
+  if (_supportedInputMethods is EqualUnmodifiableListView) return _supportedInputMethods;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_supportedInputMethods);
 }
 
-abstract class _ReaderInfo implements ReaderInfo {
-  const factory _ReaderInfo(
-          {final ReaderBatteryStatus? batteryStatus,
-          final CardInsertionStatus? cardInsertionStatus,
-          final ReaderFirmwareInfo? firmwareInfo,
-          required final String id,
-          required final bool isBlinkable,
-          final bool? isConnectionRetryable,
-          required final bool isForgettable,
-          required final ReaderModel model,
-          required final String name,
-          final String? serialNumber,
-          required final ReaderStatusInfo statusInfo,
-          required final List<CardInputMethod> supportedInputMethods}) =
-      _$ReaderInfoImpl;
 
-  factory _ReaderInfo.fromJson(Map<String, dynamic> json) =
-      _$ReaderInfoImpl.fromJson;
+/// Create a copy of ReaderInfo
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ReaderInfoCopyWith<_ReaderInfo> get copyWith => __$ReaderInfoCopyWithImpl<_ReaderInfo>(this, _$identity);
 
-  @override
-  ReaderBatteryStatus? get batteryStatus;
-  @override
-  CardInsertionStatus? get cardInsertionStatus;
-  @override
-  ReaderFirmwareInfo? get firmwareInfo;
-  @override
-  String get id;
-  @override
-  bool get isBlinkable;
-  @override
-  bool? get isConnectionRetryable;
-  @override
-  bool get isForgettable;
-  @override
-  ReaderModel get model;
-  @override
-  String get name;
-  @override
-  String? get serialNumber;
-  @override
-  ReaderStatusInfo get statusInfo;
-  @override
-  List<CardInputMethod> get supportedInputMethods;
-
-  /// Create a copy of ReaderInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ReaderInfoImplCopyWith<_$ReaderInfoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$ReaderInfoToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ReaderInfo'))
+    ..add(DiagnosticsProperty('batteryStatus', batteryStatus))..add(DiagnosticsProperty('cardInsertionStatus', cardInsertionStatus))..add(DiagnosticsProperty('firmwareInfo', firmwareInfo))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('isBlinkable', isBlinkable))..add(DiagnosticsProperty('isConnectionRetryable', isConnectionRetryable))..add(DiagnosticsProperty('isForgettable', isForgettable))..add(DiagnosticsProperty('model', model))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('serialNumber', serialNumber))..add(DiagnosticsProperty('statusInfo', statusInfo))..add(DiagnosticsProperty('supportedInputMethods', supportedInputMethods));
 }
 
-PromptParameters _$PromptParametersFromJson(Map<String, dynamic> json) {
-  return _PromptParameters.fromJson(json);
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderInfo&&(identical(other.batteryStatus, batteryStatus) || other.batteryStatus == batteryStatus)&&(identical(other.cardInsertionStatus, cardInsertionStatus) || other.cardInsertionStatus == cardInsertionStatus)&&(identical(other.firmwareInfo, firmwareInfo) || other.firmwareInfo == firmwareInfo)&&(identical(other.id, id) || other.id == id)&&(identical(other.isBlinkable, isBlinkable) || other.isBlinkable == isBlinkable)&&(identical(other.isConnectionRetryable, isConnectionRetryable) || other.isConnectionRetryable == isConnectionRetryable)&&(identical(other.isForgettable, isForgettable) || other.isForgettable == isForgettable)&&(identical(other.model, model) || other.model == model)&&(identical(other.name, name) || other.name == name)&&(identical(other.serialNumber, serialNumber) || other.serialNumber == serialNumber)&&(identical(other.statusInfo, statusInfo) || other.statusInfo == statusInfo)&&const DeepCollectionEquality().equals(other._supportedInputMethods, _supportedInputMethods));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,batteryStatus,cardInsertionStatus,firmwareInfo,id,isBlinkable,isConnectionRetryable,isForgettable,model,name,serialNumber,statusInfo,const DeepCollectionEquality().hash(_supportedInputMethods));
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, model: $model, name: $name, serialNumber: $serialNumber, statusInfo: $statusInfo, supportedInputMethods: $supportedInputMethods)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$PromptParameters {
-  List<AdditionalPaymentMethodType> get additionalPaymentMethods =>
-      throw _privateConstructorUsedError;
-  PromptMode get mode => throw _privateConstructorUsedError;
+abstract mixin class _$ReaderInfoCopyWith<$Res> implements $ReaderInfoCopyWith<$Res> {
+  factory _$ReaderInfoCopyWith(_ReaderInfo value, $Res Function(_ReaderInfo) _then) = __$ReaderInfoCopyWithImpl;
+@override @useResult
+$Res call({
+ ReaderBatteryStatus? batteryStatus, CardInsertionStatus? cardInsertionStatus, ReaderFirmwareInfo? firmwareInfo, String id, bool isBlinkable, bool? isConnectionRetryable, bool isForgettable, ReaderModel model, String name, String? serialNumber, ReaderStatusInfo statusInfo, List<CardInputMethod> supportedInputMethods
+});
+
+
+@override $ReaderBatteryStatusCopyWith<$Res>? get batteryStatus;@override $ReaderFirmwareInfoCopyWith<$Res>? get firmwareInfo;@override $ReaderStatusInfoCopyWith<$Res> get statusInfo;
+
+}
+/// @nodoc
+class __$ReaderInfoCopyWithImpl<$Res>
+    implements _$ReaderInfoCopyWith<$Res> {
+  __$ReaderInfoCopyWithImpl(this._self, this._then);
+
+  final _ReaderInfo _self;
+  final $Res Function(_ReaderInfo) _then;
+
+/// Create a copy of ReaderInfo
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? batteryStatus = freezed,Object? cardInsertionStatus = freezed,Object? firmwareInfo = freezed,Object? id = null,Object? isBlinkable = null,Object? isConnectionRetryable = freezed,Object? isForgettable = null,Object? model = null,Object? name = null,Object? serialNumber = freezed,Object? statusInfo = null,Object? supportedInputMethods = null,}) {
+  return _then(_ReaderInfo(
+batteryStatus: freezed == batteryStatus ? _self.batteryStatus : batteryStatus // ignore: cast_nullable_to_non_nullable
+as ReaderBatteryStatus?,cardInsertionStatus: freezed == cardInsertionStatus ? _self.cardInsertionStatus : cardInsertionStatus // ignore: cast_nullable_to_non_nullable
+as CardInsertionStatus?,firmwareInfo: freezed == firmwareInfo ? _self.firmwareInfo : firmwareInfo // ignore: cast_nullable_to_non_nullable
+as ReaderFirmwareInfo?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,isBlinkable: null == isBlinkable ? _self.isBlinkable : isBlinkable // ignore: cast_nullable_to_non_nullable
+as bool,isConnectionRetryable: freezed == isConnectionRetryable ? _self.isConnectionRetryable : isConnectionRetryable // ignore: cast_nullable_to_non_nullable
+as bool?,isForgettable: null == isForgettable ? _self.isForgettable : isForgettable // ignore: cast_nullable_to_non_nullable
+as bool,model: null == model ? _self.model : model // ignore: cast_nullable_to_non_nullable
+as ReaderModel,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,serialNumber: freezed == serialNumber ? _self.serialNumber : serialNumber // ignore: cast_nullable_to_non_nullable
+as String?,statusInfo: null == statusInfo ? _self.statusInfo : statusInfo // ignore: cast_nullable_to_non_nullable
+as ReaderStatusInfo,supportedInputMethods: null == supportedInputMethods ? _self._supportedInputMethods : supportedInputMethods // ignore: cast_nullable_to_non_nullable
+as List<CardInputMethod>,
+  ));
+}
+
+/// Create a copy of ReaderInfo
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ReaderBatteryStatusCopyWith<$Res>? get batteryStatus {
+    if (_self.batteryStatus == null) {
+    return null;
+  }
+
+  return $ReaderBatteryStatusCopyWith<$Res>(_self.batteryStatus!, (value) {
+    return _then(_self.copyWith(batteryStatus: value));
+  });
+}/// Create a copy of ReaderInfo
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ReaderFirmwareInfoCopyWith<$Res>? get firmwareInfo {
+    if (_self.firmwareInfo == null) {
+    return null;
+  }
+
+  return $ReaderFirmwareInfoCopyWith<$Res>(_self.firmwareInfo!, (value) {
+    return _then(_self.copyWith(firmwareInfo: value));
+  });
+}/// Create a copy of ReaderInfo
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ReaderStatusInfoCopyWith<$Res> get statusInfo {
+  
+  return $ReaderStatusInfoCopyWith<$Res>(_self.statusInfo, (value) {
+    return _then(_self.copyWith(statusInfo: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$PromptParameters implements DiagnosticableTreeMixin {
+
+ List<AdditionalPaymentMethodType> get additionalPaymentMethods; PromptMode get mode;
+/// Create a copy of PromptParameters
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PromptParametersCopyWith<PromptParameters> get copyWith => _$PromptParametersCopyWithImpl<PromptParameters>(this as PromptParameters, _$identity);
 
   /// Serializes this PromptParameters to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of PromptParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PromptParametersCopyWith<PromptParameters> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'PromptParameters'))
+    ..add(DiagnosticsProperty('additionalPaymentMethods', additionalPaymentMethods))..add(DiagnosticsProperty('mode', mode));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PromptParameters&&const DeepCollectionEquality().equals(other.additionalPaymentMethods, additionalPaymentMethods)&&(identical(other.mode, mode) || other.mode == mode));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(additionalPaymentMethods),mode);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'PromptParameters(additionalPaymentMethods: $additionalPaymentMethods, mode: $mode)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PromptParametersCopyWith<$Res> {
-  factory $PromptParametersCopyWith(
-          PromptParameters value, $Res Function(PromptParameters) then) =
-      _$PromptParametersCopyWithImpl<$Res, PromptParameters>;
-  @useResult
-  $Res call(
-      {List<AdditionalPaymentMethodType> additionalPaymentMethods,
-      PromptMode mode});
-}
+abstract mixin class $PromptParametersCopyWith<$Res>  {
+  factory $PromptParametersCopyWith(PromptParameters value, $Res Function(PromptParameters) _then) = _$PromptParametersCopyWithImpl;
+@useResult
+$Res call({
+ List<AdditionalPaymentMethodType> additionalPaymentMethods, PromptMode mode
+});
 
+
+
+
+}
 /// @nodoc
-class _$PromptParametersCopyWithImpl<$Res, $Val extends PromptParameters>
+class _$PromptParametersCopyWithImpl<$Res>
     implements $PromptParametersCopyWith<$Res> {
-  _$PromptParametersCopyWithImpl(this._value, this._then);
+  _$PromptParametersCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PromptParameters _self;
+  final $Res Function(PromptParameters) _then;
 
-  /// Create a copy of PromptParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? additionalPaymentMethods = null,
-    Object? mode = null,
-  }) {
-    return _then(_value.copyWith(
-      additionalPaymentMethods: null == additionalPaymentMethods
-          ? _value.additionalPaymentMethods
-          : additionalPaymentMethods // ignore: cast_nullable_to_non_nullable
-              as List<AdditionalPaymentMethodType>,
-      mode: null == mode
-          ? _value.mode
-          : mode // ignore: cast_nullable_to_non_nullable
-              as PromptMode,
-    ) as $Val);
-  }
+/// Create a copy of PromptParameters
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? additionalPaymentMethods = null,Object? mode = null,}) {
+  return _then(_self.copyWith(
+additionalPaymentMethods: null == additionalPaymentMethods ? _self.additionalPaymentMethods : additionalPaymentMethods // ignore: cast_nullable_to_non_nullable
+as List<AdditionalPaymentMethodType>,mode: null == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
+as PromptMode,
+  ));
 }
 
-/// @nodoc
-abstract class _$$PromptParametersImplCopyWith<$Res>
-    implements $PromptParametersCopyWith<$Res> {
-  factory _$$PromptParametersImplCopyWith(_$PromptParametersImpl value,
-          $Res Function(_$PromptParametersImpl) then) =
-      __$$PromptParametersImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {List<AdditionalPaymentMethodType> additionalPaymentMethods,
-      PromptMode mode});
 }
 
-/// @nodoc
-class __$$PromptParametersImplCopyWithImpl<$Res>
-    extends _$PromptParametersCopyWithImpl<$Res, _$PromptParametersImpl>
-    implements _$$PromptParametersImplCopyWith<$Res> {
-  __$$PromptParametersImplCopyWithImpl(_$PromptParametersImpl _value,
-      $Res Function(_$PromptParametersImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of PromptParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? additionalPaymentMethods = null,
-    Object? mode = null,
-  }) {
-    return _then(_$PromptParametersImpl(
-      additionalPaymentMethods: null == additionalPaymentMethods
-          ? _value._additionalPaymentMethods
-          : additionalPaymentMethods // ignore: cast_nullable_to_non_nullable
-              as List<AdditionalPaymentMethodType>,
-      mode: null == mode
-          ? _value.mode
-          : mode // ignore: cast_nullable_to_non_nullable
-              as PromptMode,
-    ));
-  }
+/// Adds pattern-matching-related methods to [PromptParameters].
+extension PromptParametersPatterns on PromptParameters {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PromptParameters value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _PromptParameters() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PromptParameters value)  $default,){
+final _that = this;
+switch (_that) {
+case _PromptParameters():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PromptParameters value)?  $default,){
+final _that = this;
+switch (_that) {
+case _PromptParameters() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<AdditionalPaymentMethodType> additionalPaymentMethods,  PromptMode mode)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _PromptParameters() when $default != null:
+return $default(_that.additionalPaymentMethods,_that.mode);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<AdditionalPaymentMethodType> additionalPaymentMethods,  PromptMode mode)  $default,) {final _that = this;
+switch (_that) {
+case _PromptParameters():
+return $default(_that.additionalPaymentMethods,_that.mode);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<AdditionalPaymentMethodType> additionalPaymentMethods,  PromptMode mode)?  $default,) {final _that = this;
+switch (_that) {
+case _PromptParameters() when $default != null:
+return $default(_that.additionalPaymentMethods,_that.mode);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PromptParametersImpl
-    with DiagnosticableTreeMixin
-    implements _PromptParameters {
-  const _$PromptParametersImpl(
-      {required final List<AdditionalPaymentMethodType>
-          additionalPaymentMethods,
-      required this.mode})
-      : _additionalPaymentMethods = additionalPaymentMethods;
 
-  factory _$PromptParametersImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PromptParametersImplFromJson(json);
+class _PromptParameters with DiagnosticableTreeMixin implements PromptParameters {
+  const _PromptParameters({required final  List<AdditionalPaymentMethodType> additionalPaymentMethods, required this.mode}): _additionalPaymentMethods = additionalPaymentMethods;
+  factory _PromptParameters.fromJson(Map<String, dynamic> json) => _$PromptParametersFromJson(json);
 
-  final List<AdditionalPaymentMethodType> _additionalPaymentMethods;
-  @override
-  List<AdditionalPaymentMethodType> get additionalPaymentMethods {
-    if (_additionalPaymentMethods is EqualUnmodifiableListView)
-      return _additionalPaymentMethods;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_additionalPaymentMethods);
-  }
-
-  @override
-  final PromptMode mode;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PromptParameters(additionalPaymentMethods: $additionalPaymentMethods, mode: $mode)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PromptParameters'))
-      ..add(DiagnosticsProperty(
-          'additionalPaymentMethods', additionalPaymentMethods))
-      ..add(DiagnosticsProperty('mode', mode));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PromptParametersImpl &&
-            const DeepCollectionEquality().equals(
-                other._additionalPaymentMethods, _additionalPaymentMethods) &&
-            (identical(other.mode, mode) || other.mode == mode));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_additionalPaymentMethods), mode);
-
-  /// Create a copy of PromptParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PromptParametersImplCopyWith<_$PromptParametersImpl> get copyWith =>
-      __$$PromptParametersImplCopyWithImpl<_$PromptParametersImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PromptParametersImplToJson(
-      this,
-    );
-  }
+ final  List<AdditionalPaymentMethodType> _additionalPaymentMethods;
+@override List<AdditionalPaymentMethodType> get additionalPaymentMethods {
+  if (_additionalPaymentMethods is EqualUnmodifiableListView) return _additionalPaymentMethods;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_additionalPaymentMethods);
 }
 
-abstract class _PromptParameters implements PromptParameters {
-  const factory _PromptParameters(
-      {required final List<AdditionalPaymentMethodType>
-          additionalPaymentMethods,
-      required final PromptMode mode}) = _$PromptParametersImpl;
+@override final  PromptMode mode;
 
-  factory _PromptParameters.fromJson(Map<String, dynamic> json) =
-      _$PromptParametersImpl.fromJson;
+/// Create a copy of PromptParameters
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PromptParametersCopyWith<_PromptParameters> get copyWith => __$PromptParametersCopyWithImpl<_PromptParameters>(this, _$identity);
 
-  @override
-  List<AdditionalPaymentMethodType> get additionalPaymentMethods;
-  @override
-  PromptMode get mode;
-
-  /// Create a copy of PromptParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PromptParametersImplCopyWith<_$PromptParametersImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$PromptParametersToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'PromptParameters'))
+    ..add(DiagnosticsProperty('additionalPaymentMethods', additionalPaymentMethods))..add(DiagnosticsProperty('mode', mode));
 }
 
-Payment _$PaymentFromJson(Map<String, dynamic> json) {
-  return _Payment.fromJson(json);
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PromptParameters&&const DeepCollectionEquality().equals(other._additionalPaymentMethods, _additionalPaymentMethods)&&(identical(other.mode, mode) || other.mode == mode));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_additionalPaymentMethods),mode);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'PromptParameters(additionalPaymentMethods: $additionalPaymentMethods, mode: $mode)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$Payment {
-  Money get amountMoney => throw _privateConstructorUsedError;
-  Money? get appFeeMoney => throw _privateConstructorUsedError;
-  CardPaymentDetails? get cardDetails => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  String? get id => throw _privateConstructorUsedError;
-  String? get locationId => throw _privateConstructorUsedError;
-  String? get orderId => throw _privateConstructorUsedError;
-  String? get referenceId => throw _privateConstructorUsedError;
-  SourceType get sourceType => throw _privateConstructorUsedError;
-  Money? get tipMoney => throw _privateConstructorUsedError;
-  Money get totalMoney => throw _privateConstructorUsedError;
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+abstract mixin class _$PromptParametersCopyWith<$Res> implements $PromptParametersCopyWith<$Res> {
+  factory _$PromptParametersCopyWith(_PromptParameters value, $Res Function(_PromptParameters) _then) = __$PromptParametersCopyWithImpl;
+@override @useResult
+$Res call({
+ List<AdditionalPaymentMethodType> additionalPaymentMethods, PromptMode mode
+});
+
+
+
+
+}
+/// @nodoc
+class __$PromptParametersCopyWithImpl<$Res>
+    implements _$PromptParametersCopyWith<$Res> {
+  __$PromptParametersCopyWithImpl(this._self, this._then);
+
+  final _PromptParameters _self;
+  final $Res Function(_PromptParameters) _then;
+
+/// Create a copy of PromptParameters
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? additionalPaymentMethods = null,Object? mode = null,}) {
+  return _then(_PromptParameters(
+additionalPaymentMethods: null == additionalPaymentMethods ? _self._additionalPaymentMethods : additionalPaymentMethods // ignore: cast_nullable_to_non_nullable
+as List<AdditionalPaymentMethodType>,mode: null == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
+as PromptMode,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$Payment implements DiagnosticableTreeMixin {
+
+ Money get amountMoney; Money? get appFeeMoney; CardPaymentDetails? get cardDetails; DateTime get createdAt; String? get id; String? get locationId; String? get orderId; String? get referenceId; SourceType get sourceType; Money? get tipMoney; Money get totalMoney; DateTime get updatedAt;
+/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PaymentCopyWith<Payment> get copyWith => _$PaymentCopyWithImpl<Payment>(this as Payment, _$identity);
 
   /// Serializes this Payment to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Payment
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PaymentCopyWith<Payment> get copyWith => throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'Payment'))
+    ..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('cardDetails', cardDetails))..add(DiagnosticsProperty('createdAt', createdAt))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('sourceType', sourceType))..add(DiagnosticsProperty('tipMoney', tipMoney))..add(DiagnosticsProperty('totalMoney', totalMoney))..add(DiagnosticsProperty('updatedAt', updatedAt));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Payment&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.cardDetails, cardDetails) || other.cardDetails == cardDetails)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.id, id) || other.id == id)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.sourceType, sourceType) || other.sourceType == sourceType)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney)&&(identical(other.totalMoney, totalMoney) || other.totalMoney == totalMoney)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,amountMoney,appFeeMoney,cardDetails,createdAt,id,locationId,orderId,referenceId,sourceType,tipMoney,totalMoney,updatedAt);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'Payment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cardDetails: $cardDetails, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, sourceType: $sourceType, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PaymentCopyWith<$Res> {
-  factory $PaymentCopyWith(Payment value, $Res Function(Payment) then) =
-      _$PaymentCopyWithImpl<$Res, Payment>;
-  @useResult
-  $Res call(
-      {Money amountMoney,
-      Money? appFeeMoney,
-      CardPaymentDetails? cardDetails,
-      DateTime createdAt,
-      String? id,
-      String? locationId,
-      String? orderId,
-      String? referenceId,
-      SourceType sourceType,
-      Money? tipMoney,
-      Money totalMoney,
-      DateTime updatedAt});
+abstract mixin class $PaymentCopyWith<$Res>  {
+  factory $PaymentCopyWith(Payment value, $Res Function(Payment) _then) = _$PaymentCopyWithImpl;
+@useResult
+$Res call({
+ Money amountMoney, Money? appFeeMoney, CardPaymentDetails? cardDetails, DateTime createdAt, String? id, String? locationId, String? orderId, String? referenceId, SourceType sourceType, Money? tipMoney, Money totalMoney, DateTime updatedAt
+});
 
-  $MoneyCopyWith<$Res> get amountMoney;
-  $MoneyCopyWith<$Res>? get appFeeMoney;
-  $CardPaymentDetailsCopyWith<$Res>? get cardDetails;
-  $MoneyCopyWith<$Res>? get tipMoney;
-  $MoneyCopyWith<$Res> get totalMoney;
+
+$MoneyCopyWith<$Res> get amountMoney;$MoneyCopyWith<$Res>? get appFeeMoney;$CardPaymentDetailsCopyWith<$Res>? get cardDetails;$MoneyCopyWith<$Res>? get tipMoney;$MoneyCopyWith<$Res> get totalMoney;
+
 }
-
 /// @nodoc
-class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
+class _$PaymentCopyWithImpl<$Res>
     implements $PaymentCopyWith<$Res> {
-  _$PaymentCopyWithImpl(this._value, this._then);
+  _$PaymentCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Payment _self;
+  final $Res Function(Payment) _then;
 
-  /// Create a copy of Payment
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? amountMoney = null,
-    Object? appFeeMoney = freezed,
-    Object? cardDetails = freezed,
-    Object? createdAt = null,
-    Object? id = freezed,
-    Object? locationId = freezed,
-    Object? orderId = freezed,
-    Object? referenceId = freezed,
-    Object? sourceType = null,
-    Object? tipMoney = freezed,
-    Object? totalMoney = null,
-    Object? updatedAt = null,
-  }) {
-    return _then(_value.copyWith(
-      amountMoney: null == amountMoney
-          ? _value.amountMoney
-          : amountMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      appFeeMoney: freezed == appFeeMoney
-          ? _value.appFeeMoney
-          : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      cardDetails: freezed == cardDetails
-          ? _value.cardDetails
-          : cardDetails // ignore: cast_nullable_to_non_nullable
-              as CardPaymentDetails?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      locationId: freezed == locationId
-          ? _value.locationId
-          : locationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referenceId: freezed == referenceId
-          ? _value.referenceId
-          : referenceId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sourceType: null == sourceType
-          ? _value.sourceType
-          : sourceType // ignore: cast_nullable_to_non_nullable
-              as SourceType,
-      tipMoney: freezed == tipMoney
-          ? _value.tipMoney
-          : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      totalMoney: null == totalMoney
-          ? _value.totalMoney
-          : totalMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
+/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? amountMoney = null,Object? appFeeMoney = freezed,Object? cardDetails = freezed,Object? createdAt = null,Object? id = freezed,Object? locationId = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? sourceType = null,Object? tipMoney = freezed,Object? totalMoney = null,Object? updatedAt = null,}) {
+  return _then(_self.copyWith(
+amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
+as Money,appFeeMoney: freezed == appFeeMoney ? _self.appFeeMoney : appFeeMoney // ignore: cast_nullable_to_non_nullable
+as Money?,cardDetails: freezed == cardDetails ? _self.cardDetails : cardDetails // ignore: cast_nullable_to_non_nullable
+as CardPaymentDetails?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,locationId: freezed == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
+as String?,orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
+as String?,referenceId: freezed == referenceId ? _self.referenceId : referenceId // ignore: cast_nullable_to_non_nullable
+as String?,sourceType: null == sourceType ? _self.sourceType : sourceType // ignore: cast_nullable_to_non_nullable
+as SourceType,tipMoney: freezed == tipMoney ? _self.tipMoney : tipMoney // ignore: cast_nullable_to_non_nullable
+as Money?,totalMoney: null == totalMoney ? _self.totalMoney : totalMoney // ignore: cast_nullable_to_non_nullable
+as Money,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,
+  ));
+}
+/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get amountMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.amountMoney, (value) {
+    return _then(_self.copyWith(amountMoney: value));
+  });
+}/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get appFeeMoney {
+    if (_self.appFeeMoney == null) {
+    return null;
   }
 
-  /// Create a copy of Payment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get amountMoney {
-    return $MoneyCopyWith<$Res>(_value.amountMoney, (value) {
-      return _then(_value.copyWith(amountMoney: value) as $Val);
-    });
+  return $MoneyCopyWith<$Res>(_self.appFeeMoney!, (value) {
+    return _then(_self.copyWith(appFeeMoney: value));
+  });
+}/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CardPaymentDetailsCopyWith<$Res>? get cardDetails {
+    if (_self.cardDetails == null) {
+    return null;
   }
 
-  /// Create a copy of Payment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res>? get appFeeMoney {
-    if (_value.appFeeMoney == null) {
-      return null;
-    }
-
-    return $MoneyCopyWith<$Res>(_value.appFeeMoney!, (value) {
-      return _then(_value.copyWith(appFeeMoney: value) as $Val);
-    });
+  return $CardPaymentDetailsCopyWith<$Res>(_self.cardDetails!, (value) {
+    return _then(_self.copyWith(cardDetails: value));
+  });
+}/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get tipMoney {
+    if (_self.tipMoney == null) {
+    return null;
   }
 
-  /// Create a copy of Payment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CardPaymentDetailsCopyWith<$Res>? get cardDetails {
-    if (_value.cardDetails == null) {
-      return null;
-    }
-
-    return $CardPaymentDetailsCopyWith<$Res>(_value.cardDetails!, (value) {
-      return _then(_value.copyWith(cardDetails: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Payment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res>? get tipMoney {
-    if (_value.tipMoney == null) {
-      return null;
-    }
-
-    return $MoneyCopyWith<$Res>(_value.tipMoney!, (value) {
-      return _then(_value.copyWith(tipMoney: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Payment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get totalMoney {
-    return $MoneyCopyWith<$Res>(_value.totalMoney, (value) {
-      return _then(_value.copyWith(totalMoney: value) as $Val);
-    });
-  }
+  return $MoneyCopyWith<$Res>(_self.tipMoney!, (value) {
+    return _then(_self.copyWith(tipMoney: value));
+  });
+}/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get totalMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.totalMoney, (value) {
+    return _then(_self.copyWith(totalMoney: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$PaymentImplCopyWith<$Res> implements $PaymentCopyWith<$Res> {
-  factory _$$PaymentImplCopyWith(
-          _$PaymentImpl value, $Res Function(_$PaymentImpl) then) =
-      __$$PaymentImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Money amountMoney,
-      Money? appFeeMoney,
-      CardPaymentDetails? cardDetails,
-      DateTime createdAt,
-      String? id,
-      String? locationId,
-      String? orderId,
-      String? referenceId,
-      SourceType sourceType,
-      Money? tipMoney,
-      Money totalMoney,
-      DateTime updatedAt});
 
-  @override
-  $MoneyCopyWith<$Res> get amountMoney;
-  @override
-  $MoneyCopyWith<$Res>? get appFeeMoney;
-  @override
-  $CardPaymentDetailsCopyWith<$Res>? get cardDetails;
-  @override
-  $MoneyCopyWith<$Res>? get tipMoney;
-  @override
-  $MoneyCopyWith<$Res> get totalMoney;
+/// Adds pattern-matching-related methods to [Payment].
+extension PaymentPatterns on Payment {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Payment value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Payment() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Payment value)  $default,){
+final _that = this;
+switch (_that) {
+case _Payment():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Payment value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Payment() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Money amountMoney,  Money? appFeeMoney,  CardPaymentDetails? cardDetails,  DateTime createdAt,  String? id,  String? locationId,  String? orderId,  String? referenceId,  SourceType sourceType,  Money? tipMoney,  Money totalMoney,  DateTime updatedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Payment() when $default != null:
+return $default(_that.amountMoney,_that.appFeeMoney,_that.cardDetails,_that.createdAt,_that.id,_that.locationId,_that.orderId,_that.referenceId,_that.sourceType,_that.tipMoney,_that.totalMoney,_that.updatedAt);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Money amountMoney,  Money? appFeeMoney,  CardPaymentDetails? cardDetails,  DateTime createdAt,  String? id,  String? locationId,  String? orderId,  String? referenceId,  SourceType sourceType,  Money? tipMoney,  Money totalMoney,  DateTime updatedAt)  $default,) {final _that = this;
+switch (_that) {
+case _Payment():
+return $default(_that.amountMoney,_that.appFeeMoney,_that.cardDetails,_that.createdAt,_that.id,_that.locationId,_that.orderId,_that.referenceId,_that.sourceType,_that.tipMoney,_that.totalMoney,_that.updatedAt);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Money amountMoney,  Money? appFeeMoney,  CardPaymentDetails? cardDetails,  DateTime createdAt,  String? id,  String? locationId,  String? orderId,  String? referenceId,  SourceType sourceType,  Money? tipMoney,  Money totalMoney,  DateTime updatedAt)?  $default,) {final _that = this;
+switch (_that) {
+case _Payment() when $default != null:
+return $default(_that.amountMoney,_that.appFeeMoney,_that.cardDetails,_that.createdAt,_that.id,_that.locationId,_that.orderId,_that.referenceId,_that.sourceType,_that.tipMoney,_that.totalMoney,_that.updatedAt);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$PaymentImplCopyWithImpl<$Res>
-    extends _$PaymentCopyWithImpl<$Res, _$PaymentImpl>
-    implements _$$PaymentImplCopyWith<$Res> {
-  __$$PaymentImplCopyWithImpl(
-      _$PaymentImpl _value, $Res Function(_$PaymentImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Payment
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? amountMoney = null,
-    Object? appFeeMoney = freezed,
-    Object? cardDetails = freezed,
-    Object? createdAt = null,
-    Object? id = freezed,
-    Object? locationId = freezed,
-    Object? orderId = freezed,
-    Object? referenceId = freezed,
-    Object? sourceType = null,
-    Object? tipMoney = freezed,
-    Object? totalMoney = null,
-    Object? updatedAt = null,
-  }) {
-    return _then(_$PaymentImpl(
-      amountMoney: null == amountMoney
-          ? _value.amountMoney
-          : amountMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      appFeeMoney: freezed == appFeeMoney
-          ? _value.appFeeMoney
-          : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      cardDetails: freezed == cardDetails
-          ? _value.cardDetails
-          : cardDetails // ignore: cast_nullable_to_non_nullable
-              as CardPaymentDetails?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      locationId: freezed == locationId
-          ? _value.locationId
-          : locationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referenceId: freezed == referenceId
-          ? _value.referenceId
-          : referenceId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sourceType: null == sourceType
-          ? _value.sourceType
-          : sourceType // ignore: cast_nullable_to_non_nullable
-              as SourceType,
-      tipMoney: freezed == tipMoney
-          ? _value.tipMoney
-          : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      totalMoney: null == totalMoney
-          ? _value.totalMoney
-          : totalMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PaymentImpl with DiagnosticableTreeMixin implements _Payment {
-  const _$PaymentImpl(
-      {required this.amountMoney,
-      this.appFeeMoney,
-      this.cardDetails,
-      required this.createdAt,
-      this.id,
-      this.locationId,
-      this.orderId,
-      this.referenceId,
-      required this.sourceType,
-      this.tipMoney,
-      required this.totalMoney,
-      required this.updatedAt});
 
-  factory _$PaymentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PaymentImplFromJson(json);
+class _Payment with DiagnosticableTreeMixin implements Payment {
+  const _Payment({required this.amountMoney, this.appFeeMoney, this.cardDetails, required this.createdAt, this.id, this.locationId, this.orderId, this.referenceId, required this.sourceType, this.tipMoney, required this.totalMoney, required this.updatedAt});
+  factory _Payment.fromJson(Map<String, dynamic> json) => _$PaymentFromJson(json);
 
-  @override
-  final Money amountMoney;
-  @override
-  final Money? appFeeMoney;
-  @override
-  final CardPaymentDetails? cardDetails;
-  @override
-  final DateTime createdAt;
-  @override
-  final String? id;
-  @override
-  final String? locationId;
-  @override
-  final String? orderId;
-  @override
-  final String? referenceId;
-  @override
-  final SourceType sourceType;
-  @override
-  final Money? tipMoney;
-  @override
-  final Money totalMoney;
-  @override
-  final DateTime updatedAt;
+@override final  Money amountMoney;
+@override final  Money? appFeeMoney;
+@override final  CardPaymentDetails? cardDetails;
+@override final  DateTime createdAt;
+@override final  String? id;
+@override final  String? locationId;
+@override final  String? orderId;
+@override final  String? referenceId;
+@override final  SourceType sourceType;
+@override final  Money? tipMoney;
+@override final  Money totalMoney;
+@override final  DateTime updatedAt;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Payment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cardDetails: $cardDetails, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, sourceType: $sourceType, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt)';
-  }
+/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PaymentCopyWith<_Payment> get copyWith => __$PaymentCopyWithImpl<_Payment>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Payment'))
-      ..add(DiagnosticsProperty('amountMoney', amountMoney))
-      ..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))
-      ..add(DiagnosticsProperty('cardDetails', cardDetails))
-      ..add(DiagnosticsProperty('createdAt', createdAt))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('locationId', locationId))
-      ..add(DiagnosticsProperty('orderId', orderId))
-      ..add(DiagnosticsProperty('referenceId', referenceId))
-      ..add(DiagnosticsProperty('sourceType', sourceType))
-      ..add(DiagnosticsProperty('tipMoney', tipMoney))
-      ..add(DiagnosticsProperty('totalMoney', totalMoney))
-      ..add(DiagnosticsProperty('updatedAt', updatedAt));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PaymentImpl &&
-            (identical(other.amountMoney, amountMoney) ||
-                other.amountMoney == amountMoney) &&
-            (identical(other.appFeeMoney, appFeeMoney) ||
-                other.appFeeMoney == appFeeMoney) &&
-            (identical(other.cardDetails, cardDetails) ||
-                other.cardDetails == cardDetails) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.locationId, locationId) ||
-                other.locationId == locationId) &&
-            (identical(other.orderId, orderId) || other.orderId == orderId) &&
-            (identical(other.referenceId, referenceId) ||
-                other.referenceId == referenceId) &&
-            (identical(other.sourceType, sourceType) ||
-                other.sourceType == sourceType) &&
-            (identical(other.tipMoney, tipMoney) ||
-                other.tipMoney == tipMoney) &&
-            (identical(other.totalMoney, totalMoney) ||
-                other.totalMoney == totalMoney) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      amountMoney,
-      appFeeMoney,
-      cardDetails,
-      createdAt,
-      id,
-      locationId,
-      orderId,
-      referenceId,
-      sourceType,
-      tipMoney,
-      totalMoney,
-      updatedAt);
-
-  /// Create a copy of Payment
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaymentImplCopyWith<_$PaymentImpl> get copyWith =>
-      __$$PaymentImplCopyWithImpl<_$PaymentImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PaymentImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$PaymentToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'Payment'))
+    ..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('cardDetails', cardDetails))..add(DiagnosticsProperty('createdAt', createdAt))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('sourceType', sourceType))..add(DiagnosticsProperty('tipMoney', tipMoney))..add(DiagnosticsProperty('totalMoney', totalMoney))..add(DiagnosticsProperty('updatedAt', updatedAt));
 }
 
-abstract class _Payment implements Payment {
-  const factory _Payment(
-      {required final Money amountMoney,
-      final Money? appFeeMoney,
-      final CardPaymentDetails? cardDetails,
-      required final DateTime createdAt,
-      final String? id,
-      final String? locationId,
-      final String? orderId,
-      final String? referenceId,
-      required final SourceType sourceType,
-      final Money? tipMoney,
-      required final Money totalMoney,
-      required final DateTime updatedAt}) = _$PaymentImpl;
-
-  factory _Payment.fromJson(Map<String, dynamic> json) = _$PaymentImpl.fromJson;
-
-  @override
-  Money get amountMoney;
-  @override
-  Money? get appFeeMoney;
-  @override
-  CardPaymentDetails? get cardDetails;
-  @override
-  DateTime get createdAt;
-  @override
-  String? get id;
-  @override
-  String? get locationId;
-  @override
-  String? get orderId;
-  @override
-  String? get referenceId;
-  @override
-  SourceType get sourceType;
-  @override
-  Money? get tipMoney;
-  @override
-  Money get totalMoney;
-  @override
-  DateTime get updatedAt;
-
-  /// Create a copy of Payment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PaymentImplCopyWith<_$PaymentImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Payment&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.cardDetails, cardDetails) || other.cardDetails == cardDetails)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.id, id) || other.id == id)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.sourceType, sourceType) || other.sourceType == sourceType)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney)&&(identical(other.totalMoney, totalMoney) || other.totalMoney == totalMoney)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
-PaymentParameters _$PaymentParametersFromJson(Map<String, dynamic> json) {
-  switch (json['type']) {
-    case 'current':
-      return _PaymentParameters.fromJson(json);
-    case 'legacy':
-      return _LegacyPaymentParameters.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,amountMoney,appFeeMoney,cardDetails,createdAt,id,locationId,orderId,referenceId,sourceType,tipMoney,totalMoney,updatedAt);
 
-    default:
-      throw CheckedFromJsonException(json, 'type', 'PaymentParameters',
-          'Invalid union type "${json['type']}"!');
-  }
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'Payment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cardDetails: $cardDetails, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, sourceType: $sourceType, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$PaymentParameters {
-  int? get acceptPartialAuthorization => throw _privateConstructorUsedError;
-  Money get amountMoney => throw _privateConstructorUsedError;
-  Money? get appFeeMoney => throw _privateConstructorUsedError;
-  bool? get autocomplete => throw _privateConstructorUsedError;
-  String? get customerId => throw _privateConstructorUsedError;
-  DelayAction? get delayAction => throw _privateConstructorUsedError;
-  num? get delayDuration => throw _privateConstructorUsedError;
-  num get processingMode => throw _privateConstructorUsedError;
-  String? get locationId => throw _privateConstructorUsedError;
-  String? get note => throw _privateConstructorUsedError;
-  String? get orderId => throw _privateConstructorUsedError;
-  String? get referenceId => throw _privateConstructorUsedError;
-  String? get teamMemberId => throw _privateConstructorUsedError;
-  Money? get tipMoney => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String paymentAttemptId,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)
-        $default, {
-    required TResult Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String idempotencyKey,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)
-        legacy,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String paymentAttemptId,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)?
-        $default, {
-    TResult? Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String idempotencyKey,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)?
-        legacy,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String paymentAttemptId,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)?
-        $default, {
-    TResult Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String idempotencyKey,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)?
-        legacy,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PaymentParameters value) $default, {
-    required TResult Function(_LegacyPaymentParameters value) legacy,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PaymentParameters value)? $default, {
-    TResult? Function(_LegacyPaymentParameters value)? legacy,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PaymentParameters value)? $default, {
-    TResult Function(_LegacyPaymentParameters value)? legacy,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+abstract mixin class _$PaymentCopyWith<$Res> implements $PaymentCopyWith<$Res> {
+  factory _$PaymentCopyWith(_Payment value, $Res Function(_Payment) _then) = __$PaymentCopyWithImpl;
+@override @useResult
+$Res call({
+ Money amountMoney, Money? appFeeMoney, CardPaymentDetails? cardDetails, DateTime createdAt, String? id, String? locationId, String? orderId, String? referenceId, SourceType sourceType, Money? tipMoney, Money totalMoney, DateTime updatedAt
+});
+
+
+@override $MoneyCopyWith<$Res> get amountMoney;@override $MoneyCopyWith<$Res>? get appFeeMoney;@override $CardPaymentDetailsCopyWith<$Res>? get cardDetails;@override $MoneyCopyWith<$Res>? get tipMoney;@override $MoneyCopyWith<$Res> get totalMoney;
+
+}
+/// @nodoc
+class __$PaymentCopyWithImpl<$Res>
+    implements _$PaymentCopyWith<$Res> {
+  __$PaymentCopyWithImpl(this._self, this._then);
+
+  final _Payment _self;
+  final $Res Function(_Payment) _then;
+
+/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? amountMoney = null,Object? appFeeMoney = freezed,Object? cardDetails = freezed,Object? createdAt = null,Object? id = freezed,Object? locationId = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? sourceType = null,Object? tipMoney = freezed,Object? totalMoney = null,Object? updatedAt = null,}) {
+  return _then(_Payment(
+amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
+as Money,appFeeMoney: freezed == appFeeMoney ? _self.appFeeMoney : appFeeMoney // ignore: cast_nullable_to_non_nullable
+as Money?,cardDetails: freezed == cardDetails ? _self.cardDetails : cardDetails // ignore: cast_nullable_to_non_nullable
+as CardPaymentDetails?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,locationId: freezed == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
+as String?,orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
+as String?,referenceId: freezed == referenceId ? _self.referenceId : referenceId // ignore: cast_nullable_to_non_nullable
+as String?,sourceType: null == sourceType ? _self.sourceType : sourceType // ignore: cast_nullable_to_non_nullable
+as SourceType,tipMoney: freezed == tipMoney ? _self.tipMoney : tipMoney // ignore: cast_nullable_to_non_nullable
+as Money?,totalMoney: null == totalMoney ? _self.totalMoney : totalMoney // ignore: cast_nullable_to_non_nullable
+as Money,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,
+  ));
+}
+
+/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get amountMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.amountMoney, (value) {
+    return _then(_self.copyWith(amountMoney: value));
+  });
+}/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get appFeeMoney {
+    if (_self.appFeeMoney == null) {
+    return null;
+  }
+
+  return $MoneyCopyWith<$Res>(_self.appFeeMoney!, (value) {
+    return _then(_self.copyWith(appFeeMoney: value));
+  });
+}/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CardPaymentDetailsCopyWith<$Res>? get cardDetails {
+    if (_self.cardDetails == null) {
+    return null;
+  }
+
+  return $CardPaymentDetailsCopyWith<$Res>(_self.cardDetails!, (value) {
+    return _then(_self.copyWith(cardDetails: value));
+  });
+}/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get tipMoney {
+    if (_self.tipMoney == null) {
+    return null;
+  }
+
+  return $MoneyCopyWith<$Res>(_self.tipMoney!, (value) {
+    return _then(_self.copyWith(tipMoney: value));
+  });
+}/// Create a copy of Payment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get totalMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.totalMoney, (value) {
+    return _then(_self.copyWith(totalMoney: value));
+  });
+}
+}
+
+PaymentParameters _$PaymentParametersFromJson(
+  Map<String, dynamic> json
+) {
+        switch (json['type']) {
+                  case 'current':
+          return PaymentParametersCurrent.fromJson(
+            json
+          );
+                case 'legacy':
+          return _LegacyPaymentParameters.fromJson(
+            json
+          );
+        
+          default:
+            throw CheckedFromJsonException(
+  json,
+  'type',
+  'PaymentParameters',
+  'Invalid union type "${json['type']}"!'
+);
+        }
+      
+}
+
+/// @nodoc
+mixin _$PaymentParameters implements DiagnosticableTreeMixin {
+
+ int? get acceptPartialAuthorization; Money get amountMoney; Money? get appFeeMoney; bool? get autocomplete; String? get customerId; DelayAction? get delayAction; num? get delayDuration; num get processingMode; String? get locationId; String? get note; String? get orderId; String? get referenceId; String? get teamMemberId; Money? get tipMoney;
+/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PaymentParametersCopyWith<PaymentParameters> get copyWith => _$PaymentParametersCopyWithImpl<PaymentParameters>(this as PaymentParameters, _$identity);
 
   /// Serializes this PaymentParameters to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of PaymentParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PaymentParametersCopyWith<PaymentParameters> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'PaymentParameters'))
+    ..add(DiagnosticsProperty('acceptPartialAuthorization', acceptPartialAuthorization))..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('autocomplete', autocomplete))..add(DiagnosticsProperty('customerId', customerId))..add(DiagnosticsProperty('delayAction', delayAction))..add(DiagnosticsProperty('delayDuration', delayDuration))..add(DiagnosticsProperty('processingMode', processingMode))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('note', note))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('teamMemberId', teamMemberId))..add(DiagnosticsProperty('tipMoney', tipMoney));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentParameters&&(identical(other.acceptPartialAuthorization, acceptPartialAuthorization) || other.acceptPartialAuthorization == acceptPartialAuthorization)&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.autocomplete, autocomplete) || other.autocomplete == autocomplete)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.delayAction, delayAction) || other.delayAction == delayAction)&&(identical(other.delayDuration, delayDuration) || other.delayDuration == delayDuration)&&(identical(other.processingMode, processingMode) || other.processingMode == processingMode)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,acceptPartialAuthorization,amountMoney,appFeeMoney,autocomplete,customerId,delayAction,delayDuration,processingMode,locationId,note,orderId,referenceId,teamMemberId,tipMoney);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'PaymentParameters(acceptPartialAuthorization: $acceptPartialAuthorization, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PaymentParametersCopyWith<$Res> {
-  factory $PaymentParametersCopyWith(
-          PaymentParameters value, $Res Function(PaymentParameters) then) =
-      _$PaymentParametersCopyWithImpl<$Res, PaymentParameters>;
-  @useResult
-  $Res call(
-      {int? acceptPartialAuthorization,
-      Money amountMoney,
-      Money? appFeeMoney,
-      bool? autocomplete,
-      String? customerId,
-      DelayAction? delayAction,
-      num? delayDuration,
-      num processingMode,
-      String? locationId,
-      String? note,
-      String? orderId,
-      String? referenceId,
-      String? teamMemberId,
-      Money? tipMoney});
+abstract mixin class $PaymentParametersCopyWith<$Res>  {
+  factory $PaymentParametersCopyWith(PaymentParameters value, $Res Function(PaymentParameters) _then) = _$PaymentParametersCopyWithImpl;
+@useResult
+$Res call({
+ int? acceptPartialAuthorization, Money amountMoney, Money? appFeeMoney, bool? autocomplete, String? customerId, DelayAction? delayAction, num? delayDuration, num processingMode, String? locationId, String? note, String? orderId, String? referenceId, String? teamMemberId, Money? tipMoney
+});
 
-  $MoneyCopyWith<$Res> get amountMoney;
-  $MoneyCopyWith<$Res>? get appFeeMoney;
-  $MoneyCopyWith<$Res>? get tipMoney;
+
+$MoneyCopyWith<$Res> get amountMoney;$MoneyCopyWith<$Res>? get appFeeMoney;$MoneyCopyWith<$Res>? get tipMoney;
+
 }
-
 /// @nodoc
-class _$PaymentParametersCopyWithImpl<$Res, $Val extends PaymentParameters>
+class _$PaymentParametersCopyWithImpl<$Res>
     implements $PaymentParametersCopyWith<$Res> {
-  _$PaymentParametersCopyWithImpl(this._value, this._then);
+  _$PaymentParametersCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PaymentParameters _self;
+  final $Res Function(PaymentParameters) _then;
 
-  /// Create a copy of PaymentParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? acceptPartialAuthorization = freezed,
-    Object? amountMoney = null,
-    Object? appFeeMoney = freezed,
-    Object? autocomplete = freezed,
-    Object? customerId = freezed,
-    Object? delayAction = freezed,
-    Object? delayDuration = freezed,
-    Object? processingMode = null,
-    Object? locationId = freezed,
-    Object? note = freezed,
-    Object? orderId = freezed,
-    Object? referenceId = freezed,
-    Object? teamMemberId = freezed,
-    Object? tipMoney = freezed,
-  }) {
-    return _then(_value.copyWith(
-      acceptPartialAuthorization: freezed == acceptPartialAuthorization
-          ? _value.acceptPartialAuthorization
-          : acceptPartialAuthorization // ignore: cast_nullable_to_non_nullable
-              as int?,
-      amountMoney: null == amountMoney
-          ? _value.amountMoney
-          : amountMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      appFeeMoney: freezed == appFeeMoney
-          ? _value.appFeeMoney
-          : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      autocomplete: freezed == autocomplete
-          ? _value.autocomplete
-          : autocomplete // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      customerId: freezed == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      delayAction: freezed == delayAction
-          ? _value.delayAction
-          : delayAction // ignore: cast_nullable_to_non_nullable
-              as DelayAction?,
-      delayDuration: freezed == delayDuration
-          ? _value.delayDuration
-          : delayDuration // ignore: cast_nullable_to_non_nullable
-              as num?,
-      processingMode: null == processingMode
-          ? _value.processingMode
-          : processingMode // ignore: cast_nullable_to_non_nullable
-              as num,
-      locationId: freezed == locationId
-          ? _value.locationId
-          : locationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      note: freezed == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String?,
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referenceId: freezed == referenceId
-          ? _value.referenceId
-          : referenceId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      teamMemberId: freezed == teamMemberId
-          ? _value.teamMemberId
-          : teamMemberId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipMoney: freezed == tipMoney
-          ? _value.tipMoney
-          : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-    ) as $Val);
+/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? acceptPartialAuthorization = freezed,Object? amountMoney = null,Object? appFeeMoney = freezed,Object? autocomplete = freezed,Object? customerId = freezed,Object? delayAction = freezed,Object? delayDuration = freezed,Object? processingMode = null,Object? locationId = freezed,Object? note = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? teamMemberId = freezed,Object? tipMoney = freezed,}) {
+  return _then(_self.copyWith(
+acceptPartialAuthorization: freezed == acceptPartialAuthorization ? _self.acceptPartialAuthorization : acceptPartialAuthorization // ignore: cast_nullable_to_non_nullable
+as int?,amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
+as Money,appFeeMoney: freezed == appFeeMoney ? _self.appFeeMoney : appFeeMoney // ignore: cast_nullable_to_non_nullable
+as Money?,autocomplete: freezed == autocomplete ? _self.autocomplete : autocomplete // ignore: cast_nullable_to_non_nullable
+as bool?,customerId: freezed == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
+as String?,delayAction: freezed == delayAction ? _self.delayAction : delayAction // ignore: cast_nullable_to_non_nullable
+as DelayAction?,delayDuration: freezed == delayDuration ? _self.delayDuration : delayDuration // ignore: cast_nullable_to_non_nullable
+as num?,processingMode: null == processingMode ? _self.processingMode : processingMode // ignore: cast_nullable_to_non_nullable
+as num,locationId: freezed == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
+as String?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
+as String?,orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
+as String?,referenceId: freezed == referenceId ? _self.referenceId : referenceId // ignore: cast_nullable_to_non_nullable
+as String?,teamMemberId: freezed == teamMemberId ? _self.teamMemberId : teamMemberId // ignore: cast_nullable_to_non_nullable
+as String?,tipMoney: freezed == tipMoney ? _self.tipMoney : tipMoney // ignore: cast_nullable_to_non_nullable
+as Money?,
+  ));
+}
+/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get amountMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.amountMoney, (value) {
+    return _then(_self.copyWith(amountMoney: value));
+  });
+}/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get appFeeMoney {
+    if (_self.appFeeMoney == null) {
+    return null;
   }
 
-  /// Create a copy of PaymentParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get amountMoney {
-    return $MoneyCopyWith<$Res>(_value.amountMoney, (value) {
-      return _then(_value.copyWith(amountMoney: value) as $Val);
-    });
+  return $MoneyCopyWith<$Res>(_self.appFeeMoney!, (value) {
+    return _then(_self.copyWith(appFeeMoney: value));
+  });
+}/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get tipMoney {
+    if (_self.tipMoney == null) {
+    return null;
   }
 
-  /// Create a copy of PaymentParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res>? get appFeeMoney {
-    if (_value.appFeeMoney == null) {
-      return null;
-    }
-
-    return $MoneyCopyWith<$Res>(_value.appFeeMoney!, (value) {
-      return _then(_value.copyWith(appFeeMoney: value) as $Val);
-    });
-  }
-
-  /// Create a copy of PaymentParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res>? get tipMoney {
-    if (_value.tipMoney == null) {
-      return null;
-    }
-
-    return $MoneyCopyWith<$Res>(_value.tipMoney!, (value) {
-      return _then(_value.copyWith(tipMoney: value) as $Val);
-    });
-  }
+  return $MoneyCopyWith<$Res>(_self.tipMoney!, (value) {
+    return _then(_self.copyWith(tipMoney: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$PaymentParametersImplCopyWith<$Res>
-    implements $PaymentParametersCopyWith<$Res> {
-  factory _$$PaymentParametersImplCopyWith(_$PaymentParametersImpl value,
-          $Res Function(_$PaymentParametersImpl) then) =
-      __$$PaymentParametersImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int? acceptPartialAuthorization,
-      Money amountMoney,
-      Money? appFeeMoney,
-      bool? autocomplete,
-      String? customerId,
-      DelayAction? delayAction,
-      num? delayDuration,
-      num processingMode,
-      String paymentAttemptId,
-      String? locationId,
-      String? note,
-      String? orderId,
-      String? referenceId,
-      String? teamMemberId,
-      Money? tipMoney});
 
-  @override
-  $MoneyCopyWith<$Res> get amountMoney;
-  @override
-  $MoneyCopyWith<$Res>? get appFeeMoney;
-  @override
-  $MoneyCopyWith<$Res>? get tipMoney;
+/// Adds pattern-matching-related methods to [PaymentParameters].
+extension PaymentParametersPatterns on PaymentParameters {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( PaymentParametersCurrent value)?  $default,{TResult Function( _LegacyPaymentParameters value)?  legacy,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case PaymentParametersCurrent() when $default != null:
+return $default(_that);case _LegacyPaymentParameters() when legacy != null:
+return legacy(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( PaymentParametersCurrent value)  $default,{required TResult Function( _LegacyPaymentParameters value)  legacy,}){
+final _that = this;
+switch (_that) {
+case PaymentParametersCurrent():
+return $default(_that);case _LegacyPaymentParameters():
+return legacy(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( PaymentParametersCurrent value)?  $default,{TResult? Function( _LegacyPaymentParameters value)?  legacy,}){
+final _that = this;
+switch (_that) {
+case PaymentParametersCurrent() when $default != null:
+return $default(_that);case _LegacyPaymentParameters() when legacy != null:
+return legacy(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? acceptPartialAuthorization,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  num processingMode,  String paymentAttemptId,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? teamMemberId,  Money? tipMoney)?  $default,{TResult Function( int? acceptPartialAuthorization,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  num processingMode,  String idempotencyKey,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? teamMemberId,  Money? tipMoney)?  legacy,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case PaymentParametersCurrent() when $default != null:
+return $default(_that.acceptPartialAuthorization,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.paymentAttemptId,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.teamMemberId,_that.tipMoney);case _LegacyPaymentParameters() when legacy != null:
+return legacy(_that.acceptPartialAuthorization,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.idempotencyKey,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.teamMemberId,_that.tipMoney);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? acceptPartialAuthorization,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  num processingMode,  String paymentAttemptId,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? teamMemberId,  Money? tipMoney)  $default,{required TResult Function( int? acceptPartialAuthorization,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  num processingMode,  String idempotencyKey,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? teamMemberId,  Money? tipMoney)  legacy,}) {final _that = this;
+switch (_that) {
+case PaymentParametersCurrent():
+return $default(_that.acceptPartialAuthorization,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.paymentAttemptId,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.teamMemberId,_that.tipMoney);case _LegacyPaymentParameters():
+return legacy(_that.acceptPartialAuthorization,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.idempotencyKey,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.teamMemberId,_that.tipMoney);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? acceptPartialAuthorization,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  num processingMode,  String paymentAttemptId,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? teamMemberId,  Money? tipMoney)?  $default,{TResult? Function( int? acceptPartialAuthorization,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  num processingMode,  String idempotencyKey,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? teamMemberId,  Money? tipMoney)?  legacy,}) {final _that = this;
+switch (_that) {
+case PaymentParametersCurrent() when $default != null:
+return $default(_that.acceptPartialAuthorization,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.paymentAttemptId,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.teamMemberId,_that.tipMoney);case _LegacyPaymentParameters() when legacy != null:
+return legacy(_that.acceptPartialAuthorization,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.idempotencyKey,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.teamMemberId,_that.tipMoney);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$PaymentParametersImplCopyWithImpl<$Res>
-    extends _$PaymentParametersCopyWithImpl<$Res, _$PaymentParametersImpl>
-    implements _$$PaymentParametersImplCopyWith<$Res> {
-  __$$PaymentParametersImplCopyWithImpl(_$PaymentParametersImpl _value,
-      $Res Function(_$PaymentParametersImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PaymentParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? acceptPartialAuthorization = freezed,
-    Object? amountMoney = null,
-    Object? appFeeMoney = freezed,
-    Object? autocomplete = freezed,
-    Object? customerId = freezed,
-    Object? delayAction = freezed,
-    Object? delayDuration = freezed,
-    Object? processingMode = null,
-    Object? paymentAttemptId = null,
-    Object? locationId = freezed,
-    Object? note = freezed,
-    Object? orderId = freezed,
-    Object? referenceId = freezed,
-    Object? teamMemberId = freezed,
-    Object? tipMoney = freezed,
-  }) {
-    return _then(_$PaymentParametersImpl(
-      acceptPartialAuthorization: freezed == acceptPartialAuthorization
-          ? _value.acceptPartialAuthorization
-          : acceptPartialAuthorization // ignore: cast_nullable_to_non_nullable
-              as int?,
-      amountMoney: null == amountMoney
-          ? _value.amountMoney
-          : amountMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      appFeeMoney: freezed == appFeeMoney
-          ? _value.appFeeMoney
-          : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      autocomplete: freezed == autocomplete
-          ? _value.autocomplete
-          : autocomplete // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      customerId: freezed == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      delayAction: freezed == delayAction
-          ? _value.delayAction
-          : delayAction // ignore: cast_nullable_to_non_nullable
-              as DelayAction?,
-      delayDuration: freezed == delayDuration
-          ? _value.delayDuration
-          : delayDuration // ignore: cast_nullable_to_non_nullable
-              as num?,
-      processingMode: null == processingMode
-          ? _value.processingMode
-          : processingMode // ignore: cast_nullable_to_non_nullable
-              as num,
-      paymentAttemptId: null == paymentAttemptId
-          ? _value.paymentAttemptId
-          : paymentAttemptId // ignore: cast_nullable_to_non_nullable
-              as String,
-      locationId: freezed == locationId
-          ? _value.locationId
-          : locationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      note: freezed == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String?,
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referenceId: freezed == referenceId
-          ? _value.referenceId
-          : referenceId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      teamMemberId: freezed == teamMemberId
-          ? _value.teamMemberId
-          : teamMemberId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipMoney: freezed == tipMoney
-          ? _value.tipMoney
-          : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PaymentParametersImpl
-    with DiagnosticableTreeMixin
-    implements _PaymentParameters {
-  const _$PaymentParametersImpl(
-      {this.acceptPartialAuthorization,
-      required this.amountMoney,
-      this.appFeeMoney,
-      this.autocomplete,
-      this.customerId,
-      this.delayAction,
-      this.delayDuration,
-      required this.processingMode,
-      required this.paymentAttemptId,
-      this.locationId,
-      this.note,
-      this.orderId,
-      this.referenceId,
-      this.teamMemberId,
-      this.tipMoney,
-      final String? $type})
-      : $type = $type ?? 'current';
 
-  factory _$PaymentParametersImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PaymentParametersImplFromJson(json);
+class PaymentParametersCurrent with DiagnosticableTreeMixin implements PaymentParameters {
+  const PaymentParametersCurrent({this.acceptPartialAuthorization, required this.amountMoney, this.appFeeMoney, this.autocomplete, this.customerId, this.delayAction, this.delayDuration, required this.processingMode, required this.paymentAttemptId, this.locationId, this.note, this.orderId, this.referenceId, this.teamMemberId, this.tipMoney, final  String? $type}): $type = $type ?? 'current';
+  factory PaymentParametersCurrent.fromJson(Map<String, dynamic> json) => _$PaymentParametersCurrentFromJson(json);
 
-  @override
-  final int? acceptPartialAuthorization;
-  @override
-  final Money amountMoney;
-  @override
-  final Money? appFeeMoney;
-  @override
-  final bool? autocomplete;
-  @override
-  final String? customerId;
-  @override
-  final DelayAction? delayAction;
-  @override
-  final num? delayDuration;
-  @override
-  final num processingMode;
-  @override
-  final String paymentAttemptId;
-  @override
-  final String? locationId;
-  @override
-  final String? note;
-  @override
-  final String? orderId;
-  @override
-  final String? referenceId;
-  @override
-  final String? teamMemberId;
-  @override
-  final Money? tipMoney;
+@override final  int? acceptPartialAuthorization;
+@override final  Money amountMoney;
+@override final  Money? appFeeMoney;
+@override final  bool? autocomplete;
+@override final  String? customerId;
+@override final  DelayAction? delayAction;
+@override final  num? delayDuration;
+@override final  num processingMode;
+ final  String paymentAttemptId;
+@override final  String? locationId;
+@override final  String? note;
+@override final  String? orderId;
+@override final  String? referenceId;
+@override final  String? teamMemberId;
+@override final  Money? tipMoney;
 
-  @JsonKey(name: 'type')
-  final String $type;
+@JsonKey(name: 'type')
+final String $type;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PaymentParameters(acceptPartialAuthorization: $acceptPartialAuthorization, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, paymentAttemptId: $paymentAttemptId, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
-  }
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PaymentParameters'))
-      ..add(DiagnosticsProperty(
-          'acceptPartialAuthorization', acceptPartialAuthorization))
-      ..add(DiagnosticsProperty('amountMoney', amountMoney))
-      ..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))
-      ..add(DiagnosticsProperty('autocomplete', autocomplete))
-      ..add(DiagnosticsProperty('customerId', customerId))
-      ..add(DiagnosticsProperty('delayAction', delayAction))
-      ..add(DiagnosticsProperty('delayDuration', delayDuration))
-      ..add(DiagnosticsProperty('processingMode', processingMode))
-      ..add(DiagnosticsProperty('paymentAttemptId', paymentAttemptId))
-      ..add(DiagnosticsProperty('locationId', locationId))
-      ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('orderId', orderId))
-      ..add(DiagnosticsProperty('referenceId', referenceId))
-      ..add(DiagnosticsProperty('teamMemberId', teamMemberId))
-      ..add(DiagnosticsProperty('tipMoney', tipMoney));
-  }
+/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PaymentParametersCurrentCopyWith<PaymentParametersCurrent> get copyWith => _$PaymentParametersCurrentCopyWithImpl<PaymentParametersCurrent>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PaymentParametersImpl &&
-            (identical(other.acceptPartialAuthorization,
-                    acceptPartialAuthorization) ||
-                other.acceptPartialAuthorization ==
-                    acceptPartialAuthorization) &&
-            (identical(other.amountMoney, amountMoney) ||
-                other.amountMoney == amountMoney) &&
-            (identical(other.appFeeMoney, appFeeMoney) ||
-                other.appFeeMoney == appFeeMoney) &&
-            (identical(other.autocomplete, autocomplete) ||
-                other.autocomplete == autocomplete) &&
-            (identical(other.customerId, customerId) ||
-                other.customerId == customerId) &&
-            (identical(other.delayAction, delayAction) ||
-                other.delayAction == delayAction) &&
-            (identical(other.delayDuration, delayDuration) ||
-                other.delayDuration == delayDuration) &&
-            (identical(other.processingMode, processingMode) ||
-                other.processingMode == processingMode) &&
-            (identical(other.paymentAttemptId, paymentAttemptId) ||
-                other.paymentAttemptId == paymentAttemptId) &&
-            (identical(other.locationId, locationId) ||
-                other.locationId == locationId) &&
-            (identical(other.note, note) || other.note == note) &&
-            (identical(other.orderId, orderId) || other.orderId == orderId) &&
-            (identical(other.referenceId, referenceId) ||
-                other.referenceId == referenceId) &&
-            (identical(other.teamMemberId, teamMemberId) ||
-                other.teamMemberId == teamMemberId) &&
-            (identical(other.tipMoney, tipMoney) ||
-                other.tipMoney == tipMoney));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      acceptPartialAuthorization,
-      amountMoney,
-      appFeeMoney,
-      autocomplete,
-      customerId,
-      delayAction,
-      delayDuration,
-      processingMode,
-      paymentAttemptId,
-      locationId,
-      note,
-      orderId,
-      referenceId,
-      teamMemberId,
-      tipMoney);
-
-  /// Create a copy of PaymentParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaymentParametersImplCopyWith<_$PaymentParametersImpl> get copyWith =>
-      __$$PaymentParametersImplCopyWithImpl<_$PaymentParametersImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String paymentAttemptId,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)
-        $default, {
-    required TResult Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String idempotencyKey,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)
-        legacy,
-  }) {
-    return $default(
-        acceptPartialAuthorization,
-        amountMoney,
-        appFeeMoney,
-        autocomplete,
-        customerId,
-        delayAction,
-        delayDuration,
-        processingMode,
-        paymentAttemptId,
-        locationId,
-        note,
-        orderId,
-        referenceId,
-        teamMemberId,
-        tipMoney);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String paymentAttemptId,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)?
-        $default, {
-    TResult? Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String idempotencyKey,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)?
-        legacy,
-  }) {
-    return $default?.call(
-        acceptPartialAuthorization,
-        amountMoney,
-        appFeeMoney,
-        autocomplete,
-        customerId,
-        delayAction,
-        delayDuration,
-        processingMode,
-        paymentAttemptId,
-        locationId,
-        note,
-        orderId,
-        referenceId,
-        teamMemberId,
-        tipMoney);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String paymentAttemptId,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)?
-        $default, {
-    TResult Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String idempotencyKey,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)?
-        legacy,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(
-          acceptPartialAuthorization,
-          amountMoney,
-          appFeeMoney,
-          autocomplete,
-          customerId,
-          delayAction,
-          delayDuration,
-          processingMode,
-          paymentAttemptId,
-          locationId,
-          note,
-          orderId,
-          referenceId,
-          teamMemberId,
-          tipMoney);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PaymentParameters value) $default, {
-    required TResult Function(_LegacyPaymentParameters value) legacy,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PaymentParameters value)? $default, {
-    TResult? Function(_LegacyPaymentParameters value)? legacy,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PaymentParameters value)? $default, {
-    TResult Function(_LegacyPaymentParameters value)? legacy,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PaymentParametersImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$PaymentParametersCurrentToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'PaymentParameters'))
+    ..add(DiagnosticsProperty('acceptPartialAuthorization', acceptPartialAuthorization))..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('autocomplete', autocomplete))..add(DiagnosticsProperty('customerId', customerId))..add(DiagnosticsProperty('delayAction', delayAction))..add(DiagnosticsProperty('delayDuration', delayDuration))..add(DiagnosticsProperty('processingMode', processingMode))..add(DiagnosticsProperty('paymentAttemptId', paymentAttemptId))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('note', note))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('teamMemberId', teamMemberId))..add(DiagnosticsProperty('tipMoney', tipMoney));
 }
 
-abstract class _PaymentParameters implements PaymentParameters {
-  const factory _PaymentParameters(
-      {final int? acceptPartialAuthorization,
-      required final Money amountMoney,
-      final Money? appFeeMoney,
-      final bool? autocomplete,
-      final String? customerId,
-      final DelayAction? delayAction,
-      final num? delayDuration,
-      required final num processingMode,
-      required final String paymentAttemptId,
-      final String? locationId,
-      final String? note,
-      final String? orderId,
-      final String? referenceId,
-      final String? teamMemberId,
-      final Money? tipMoney}) = _$PaymentParametersImpl;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentParametersCurrent&&(identical(other.acceptPartialAuthorization, acceptPartialAuthorization) || other.acceptPartialAuthorization == acceptPartialAuthorization)&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.autocomplete, autocomplete) || other.autocomplete == autocomplete)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.delayAction, delayAction) || other.delayAction == delayAction)&&(identical(other.delayDuration, delayDuration) || other.delayDuration == delayDuration)&&(identical(other.processingMode, processingMode) || other.processingMode == processingMode)&&(identical(other.paymentAttemptId, paymentAttemptId) || other.paymentAttemptId == paymentAttemptId)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney));
+}
 
-  factory _PaymentParameters.fromJson(Map<String, dynamic> json) =
-      _$PaymentParametersImpl.fromJson;
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,acceptPartialAuthorization,amountMoney,appFeeMoney,autocomplete,customerId,delayAction,delayDuration,processingMode,paymentAttemptId,locationId,note,orderId,referenceId,teamMemberId,tipMoney);
 
-  @override
-  int? get acceptPartialAuthorization;
-  @override
-  Money get amountMoney;
-  @override
-  Money? get appFeeMoney;
-  @override
-  bool? get autocomplete;
-  @override
-  String? get customerId;
-  @override
-  DelayAction? get delayAction;
-  @override
-  num? get delayDuration;
-  @override
-  num get processingMode;
-  String get paymentAttemptId;
-  @override
-  String? get locationId;
-  @override
-  String? get note;
-  @override
-  String? get orderId;
-  @override
-  String? get referenceId;
-  @override
-  String? get teamMemberId;
-  @override
-  Money? get tipMoney;
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'PaymentParameters(acceptPartialAuthorization: $acceptPartialAuthorization, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, paymentAttemptId: $paymentAttemptId, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
+}
 
-  /// Create a copy of PaymentParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PaymentParametersImplCopyWith<_$PaymentParametersImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+
 }
 
 /// @nodoc
-abstract class _$$LegacyPaymentParametersImplCopyWith<$Res>
-    implements $PaymentParametersCopyWith<$Res> {
-  factory _$$LegacyPaymentParametersImplCopyWith(
-          _$LegacyPaymentParametersImpl value,
-          $Res Function(_$LegacyPaymentParametersImpl) then) =
-      __$$LegacyPaymentParametersImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int? acceptPartialAuthorization,
-      Money amountMoney,
-      Money? appFeeMoney,
-      bool? autocomplete,
-      String? customerId,
-      DelayAction? delayAction,
-      num? delayDuration,
-      num processingMode,
-      String idempotencyKey,
-      String? locationId,
-      String? note,
-      String? orderId,
-      String? referenceId,
-      String? teamMemberId,
-      Money? tipMoney});
+abstract mixin class $PaymentParametersCurrentCopyWith<$Res> implements $PaymentParametersCopyWith<$Res> {
+  factory $PaymentParametersCurrentCopyWith(PaymentParametersCurrent value, $Res Function(PaymentParametersCurrent) _then) = _$PaymentParametersCurrentCopyWithImpl;
+@override @useResult
+$Res call({
+ int? acceptPartialAuthorization, Money amountMoney, Money? appFeeMoney, bool? autocomplete, String? customerId, DelayAction? delayAction, num? delayDuration, num processingMode, String paymentAttemptId, String? locationId, String? note, String? orderId, String? referenceId, String? teamMemberId, Money? tipMoney
+});
 
-  @override
-  $MoneyCopyWith<$Res> get amountMoney;
-  @override
-  $MoneyCopyWith<$Res>? get appFeeMoney;
-  @override
-  $MoneyCopyWith<$Res>? get tipMoney;
+
+@override $MoneyCopyWith<$Res> get amountMoney;@override $MoneyCopyWith<$Res>? get appFeeMoney;@override $MoneyCopyWith<$Res>? get tipMoney;
+
+}
+/// @nodoc
+class _$PaymentParametersCurrentCopyWithImpl<$Res>
+    implements $PaymentParametersCurrentCopyWith<$Res> {
+  _$PaymentParametersCurrentCopyWithImpl(this._self, this._then);
+
+  final PaymentParametersCurrent _self;
+  final $Res Function(PaymentParametersCurrent) _then;
+
+/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? acceptPartialAuthorization = freezed,Object? amountMoney = null,Object? appFeeMoney = freezed,Object? autocomplete = freezed,Object? customerId = freezed,Object? delayAction = freezed,Object? delayDuration = freezed,Object? processingMode = null,Object? paymentAttemptId = null,Object? locationId = freezed,Object? note = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? teamMemberId = freezed,Object? tipMoney = freezed,}) {
+  return _then(PaymentParametersCurrent(
+acceptPartialAuthorization: freezed == acceptPartialAuthorization ? _self.acceptPartialAuthorization : acceptPartialAuthorization // ignore: cast_nullable_to_non_nullable
+as int?,amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
+as Money,appFeeMoney: freezed == appFeeMoney ? _self.appFeeMoney : appFeeMoney // ignore: cast_nullable_to_non_nullable
+as Money?,autocomplete: freezed == autocomplete ? _self.autocomplete : autocomplete // ignore: cast_nullable_to_non_nullable
+as bool?,customerId: freezed == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
+as String?,delayAction: freezed == delayAction ? _self.delayAction : delayAction // ignore: cast_nullable_to_non_nullable
+as DelayAction?,delayDuration: freezed == delayDuration ? _self.delayDuration : delayDuration // ignore: cast_nullable_to_non_nullable
+as num?,processingMode: null == processingMode ? _self.processingMode : processingMode // ignore: cast_nullable_to_non_nullable
+as num,paymentAttemptId: null == paymentAttemptId ? _self.paymentAttemptId : paymentAttemptId // ignore: cast_nullable_to_non_nullable
+as String,locationId: freezed == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
+as String?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
+as String?,orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
+as String?,referenceId: freezed == referenceId ? _self.referenceId : referenceId // ignore: cast_nullable_to_non_nullable
+as String?,teamMemberId: freezed == teamMemberId ? _self.teamMemberId : teamMemberId // ignore: cast_nullable_to_non_nullable
+as String?,tipMoney: freezed == tipMoney ? _self.tipMoney : tipMoney // ignore: cast_nullable_to_non_nullable
+as Money?,
+  ));
 }
 
-/// @nodoc
-class __$$LegacyPaymentParametersImplCopyWithImpl<$Res>
-    extends _$PaymentParametersCopyWithImpl<$Res, _$LegacyPaymentParametersImpl>
-    implements _$$LegacyPaymentParametersImplCopyWith<$Res> {
-  __$$LegacyPaymentParametersImplCopyWithImpl(
-      _$LegacyPaymentParametersImpl _value,
-      $Res Function(_$LegacyPaymentParametersImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PaymentParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? acceptPartialAuthorization = freezed,
-    Object? amountMoney = null,
-    Object? appFeeMoney = freezed,
-    Object? autocomplete = freezed,
-    Object? customerId = freezed,
-    Object? delayAction = freezed,
-    Object? delayDuration = freezed,
-    Object? processingMode = null,
-    Object? idempotencyKey = null,
-    Object? locationId = freezed,
-    Object? note = freezed,
-    Object? orderId = freezed,
-    Object? referenceId = freezed,
-    Object? teamMemberId = freezed,
-    Object? tipMoney = freezed,
-  }) {
-    return _then(_$LegacyPaymentParametersImpl(
-      acceptPartialAuthorization: freezed == acceptPartialAuthorization
-          ? _value.acceptPartialAuthorization
-          : acceptPartialAuthorization // ignore: cast_nullable_to_non_nullable
-              as int?,
-      amountMoney: null == amountMoney
-          ? _value.amountMoney
-          : amountMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      appFeeMoney: freezed == appFeeMoney
-          ? _value.appFeeMoney
-          : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      autocomplete: freezed == autocomplete
-          ? _value.autocomplete
-          : autocomplete // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      customerId: freezed == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      delayAction: freezed == delayAction
-          ? _value.delayAction
-          : delayAction // ignore: cast_nullable_to_non_nullable
-              as DelayAction?,
-      delayDuration: freezed == delayDuration
-          ? _value.delayDuration
-          : delayDuration // ignore: cast_nullable_to_non_nullable
-              as num?,
-      processingMode: null == processingMode
-          ? _value.processingMode
-          : processingMode // ignore: cast_nullable_to_non_nullable
-              as num,
-      idempotencyKey: null == idempotencyKey
-          ? _value.idempotencyKey
-          : idempotencyKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      locationId: freezed == locationId
-          ? _value.locationId
-          : locationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      note: freezed == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String?,
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referenceId: freezed == referenceId
-          ? _value.referenceId
-          : referenceId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      teamMemberId: freezed == teamMemberId
-          ? _value.teamMemberId
-          : teamMemberId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipMoney: freezed == tipMoney
-          ? _value.tipMoney
-          : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-    ));
+/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get amountMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.amountMoney, (value) {
+    return _then(_self.copyWith(amountMoney: value));
+  });
+}/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get appFeeMoney {
+    if (_self.appFeeMoney == null) {
+    return null;
   }
+
+  return $MoneyCopyWith<$Res>(_self.appFeeMoney!, (value) {
+    return _then(_self.copyWith(appFeeMoney: value));
+  });
+}/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get tipMoney {
+    if (_self.tipMoney == null) {
+    return null;
+  }
+
+  return $MoneyCopyWith<$Res>(_self.tipMoney!, (value) {
+    return _then(_self.copyWith(tipMoney: value));
+  });
+}
 }
 
 /// @nodoc
 @JsonSerializable()
 @Deprecated('Use the constructor with paymentAttemptId instead.')
-class _$LegacyPaymentParametersImpl
-    with DiagnosticableTreeMixin
-    implements _LegacyPaymentParameters {
-  const _$LegacyPaymentParametersImpl(
-      {this.acceptPartialAuthorization,
-      required this.amountMoney,
-      this.appFeeMoney,
-      this.autocomplete,
-      this.customerId,
-      this.delayAction,
-      this.delayDuration,
-      required this.processingMode,
-      required this.idempotencyKey,
-      this.locationId,
-      this.note,
-      this.orderId,
-      this.referenceId,
-      this.teamMemberId,
-      this.tipMoney,
-      final String? $type})
-      : $type = $type ?? 'legacy';
+class _LegacyPaymentParameters with DiagnosticableTreeMixin implements PaymentParameters {
+  const _LegacyPaymentParameters({this.acceptPartialAuthorization, required this.amountMoney, this.appFeeMoney, this.autocomplete, this.customerId, this.delayAction, this.delayDuration, required this.processingMode, required this.idempotencyKey, this.locationId, this.note, this.orderId, this.referenceId, this.teamMemberId, this.tipMoney, final  String? $type}): $type = $type ?? 'legacy';
+  factory _LegacyPaymentParameters.fromJson(Map<String, dynamic> json) => _$LegacyPaymentParametersFromJson(json);
 
-  factory _$LegacyPaymentParametersImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LegacyPaymentParametersImplFromJson(json);
+@override final  int? acceptPartialAuthorization;
+@override final  Money amountMoney;
+@override final  Money? appFeeMoney;
+@override final  bool? autocomplete;
+@override final  String? customerId;
+@override final  DelayAction? delayAction;
+@override final  num? delayDuration;
+@override final  num processingMode;
+ final  String idempotencyKey;
+@override final  String? locationId;
+@override final  String? note;
+@override final  String? orderId;
+@override final  String? referenceId;
+@override final  String? teamMemberId;
+@override final  Money? tipMoney;
 
-  @override
-  final int? acceptPartialAuthorization;
-  @override
-  final Money amountMoney;
-  @override
-  final Money? appFeeMoney;
-  @override
-  final bool? autocomplete;
-  @override
-  final String? customerId;
-  @override
-  final DelayAction? delayAction;
-  @override
-  final num? delayDuration;
-  @override
-  final num processingMode;
-  @override
-  final String idempotencyKey;
-  @override
-  final String? locationId;
-  @override
-  final String? note;
-  @override
-  final String? orderId;
-  @override
-  final String? referenceId;
-  @override
-  final String? teamMemberId;
-  @override
-  final Money? tipMoney;
+@JsonKey(name: 'type')
+final String $type;
 
-  @JsonKey(name: 'type')
-  final String $type;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PaymentParameters.legacy(acceptPartialAuthorization: $acceptPartialAuthorization, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, idempotencyKey: $idempotencyKey, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
-  }
+/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LegacyPaymentParametersCopyWith<_LegacyPaymentParameters> get copyWith => __$LegacyPaymentParametersCopyWithImpl<_LegacyPaymentParameters>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PaymentParameters.legacy'))
-      ..add(DiagnosticsProperty(
-          'acceptPartialAuthorization', acceptPartialAuthorization))
-      ..add(DiagnosticsProperty('amountMoney', amountMoney))
-      ..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))
-      ..add(DiagnosticsProperty('autocomplete', autocomplete))
-      ..add(DiagnosticsProperty('customerId', customerId))
-      ..add(DiagnosticsProperty('delayAction', delayAction))
-      ..add(DiagnosticsProperty('delayDuration', delayDuration))
-      ..add(DiagnosticsProperty('processingMode', processingMode))
-      ..add(DiagnosticsProperty('idempotencyKey', idempotencyKey))
-      ..add(DiagnosticsProperty('locationId', locationId))
-      ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('orderId', orderId))
-      ..add(DiagnosticsProperty('referenceId', referenceId))
-      ..add(DiagnosticsProperty('teamMemberId', teamMemberId))
-      ..add(DiagnosticsProperty('tipMoney', tipMoney));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LegacyPaymentParametersImpl &&
-            (identical(other.acceptPartialAuthorization,
-                    acceptPartialAuthorization) ||
-                other.acceptPartialAuthorization ==
-                    acceptPartialAuthorization) &&
-            (identical(other.amountMoney, amountMoney) ||
-                other.amountMoney == amountMoney) &&
-            (identical(other.appFeeMoney, appFeeMoney) ||
-                other.appFeeMoney == appFeeMoney) &&
-            (identical(other.autocomplete, autocomplete) ||
-                other.autocomplete == autocomplete) &&
-            (identical(other.customerId, customerId) ||
-                other.customerId == customerId) &&
-            (identical(other.delayAction, delayAction) ||
-                other.delayAction == delayAction) &&
-            (identical(other.delayDuration, delayDuration) ||
-                other.delayDuration == delayDuration) &&
-            (identical(other.processingMode, processingMode) ||
-                other.processingMode == processingMode) &&
-            (identical(other.idempotencyKey, idempotencyKey) ||
-                other.idempotencyKey == idempotencyKey) &&
-            (identical(other.locationId, locationId) ||
-                other.locationId == locationId) &&
-            (identical(other.note, note) || other.note == note) &&
-            (identical(other.orderId, orderId) || other.orderId == orderId) &&
-            (identical(other.referenceId, referenceId) ||
-                other.referenceId == referenceId) &&
-            (identical(other.teamMemberId, teamMemberId) ||
-                other.teamMemberId == teamMemberId) &&
-            (identical(other.tipMoney, tipMoney) ||
-                other.tipMoney == tipMoney));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      acceptPartialAuthorization,
-      amountMoney,
-      appFeeMoney,
-      autocomplete,
-      customerId,
-      delayAction,
-      delayDuration,
-      processingMode,
-      idempotencyKey,
-      locationId,
-      note,
-      orderId,
-      referenceId,
-      teamMemberId,
-      tipMoney);
-
-  /// Create a copy of PaymentParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LegacyPaymentParametersImplCopyWith<_$LegacyPaymentParametersImpl>
-      get copyWith => __$$LegacyPaymentParametersImplCopyWithImpl<
-          _$LegacyPaymentParametersImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String paymentAttemptId,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)
-        $default, {
-    required TResult Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String idempotencyKey,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)
-        legacy,
-  }) {
-    return legacy(
-        acceptPartialAuthorization,
-        amountMoney,
-        appFeeMoney,
-        autocomplete,
-        customerId,
-        delayAction,
-        delayDuration,
-        processingMode,
-        idempotencyKey,
-        locationId,
-        note,
-        orderId,
-        referenceId,
-        teamMemberId,
-        tipMoney);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String paymentAttemptId,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)?
-        $default, {
-    TResult? Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String idempotencyKey,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)?
-        legacy,
-  }) {
-    return legacy?.call(
-        acceptPartialAuthorization,
-        amountMoney,
-        appFeeMoney,
-        autocomplete,
-        customerId,
-        delayAction,
-        delayDuration,
-        processingMode,
-        idempotencyKey,
-        locationId,
-        note,
-        orderId,
-        referenceId,
-        teamMemberId,
-        tipMoney);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String paymentAttemptId,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)?
-        $default, {
-    TResult Function(
-            int? acceptPartialAuthorization,
-            Money amountMoney,
-            Money? appFeeMoney,
-            bool? autocomplete,
-            String? customerId,
-            DelayAction? delayAction,
-            num? delayDuration,
-            num processingMode,
-            String idempotencyKey,
-            String? locationId,
-            String? note,
-            String? orderId,
-            String? referenceId,
-            String? teamMemberId,
-            Money? tipMoney)?
-        legacy,
-    required TResult orElse(),
-  }) {
-    if (legacy != null) {
-      return legacy(
-          acceptPartialAuthorization,
-          amountMoney,
-          appFeeMoney,
-          autocomplete,
-          customerId,
-          delayAction,
-          delayDuration,
-          processingMode,
-          idempotencyKey,
-          locationId,
-          note,
-          orderId,
-          referenceId,
-          teamMemberId,
-          tipMoney);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PaymentParameters value) $default, {
-    required TResult Function(_LegacyPaymentParameters value) legacy,
-  }) {
-    return legacy(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PaymentParameters value)? $default, {
-    TResult? Function(_LegacyPaymentParameters value)? legacy,
-  }) {
-    return legacy?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PaymentParameters value)? $default, {
-    TResult Function(_LegacyPaymentParameters value)? legacy,
-    required TResult orElse(),
-  }) {
-    if (legacy != null) {
-      return legacy(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LegacyPaymentParametersImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$LegacyPaymentParametersToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'PaymentParameters.legacy'))
+    ..add(DiagnosticsProperty('acceptPartialAuthorization', acceptPartialAuthorization))..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('autocomplete', autocomplete))..add(DiagnosticsProperty('customerId', customerId))..add(DiagnosticsProperty('delayAction', delayAction))..add(DiagnosticsProperty('delayDuration', delayDuration))..add(DiagnosticsProperty('processingMode', processingMode))..add(DiagnosticsProperty('idempotencyKey', idempotencyKey))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('note', note))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('teamMemberId', teamMemberId))..add(DiagnosticsProperty('tipMoney', tipMoney));
 }
 
-abstract class _LegacyPaymentParameters implements PaymentParameters {
-  const factory _LegacyPaymentParameters(
-      {final int? acceptPartialAuthorization,
-      required final Money amountMoney,
-      final Money? appFeeMoney,
-      final bool? autocomplete,
-      final String? customerId,
-      final DelayAction? delayAction,
-      final num? delayDuration,
-      required final num processingMode,
-      required final String idempotencyKey,
-      final String? locationId,
-      final String? note,
-      final String? orderId,
-      final String? referenceId,
-      final String? teamMemberId,
-      final Money? tipMoney}) = _$LegacyPaymentParametersImpl;
-
-  factory _LegacyPaymentParameters.fromJson(Map<String, dynamic> json) =
-      _$LegacyPaymentParametersImpl.fromJson;
-
-  @override
-  int? get acceptPartialAuthorization;
-  @override
-  Money get amountMoney;
-  @override
-  Money? get appFeeMoney;
-  @override
-  bool? get autocomplete;
-  @override
-  String? get customerId;
-  @override
-  DelayAction? get delayAction;
-  @override
-  num? get delayDuration;
-  @override
-  num get processingMode;
-  String get idempotencyKey;
-  @override
-  String? get locationId;
-  @override
-  String? get note;
-  @override
-  String? get orderId;
-  @override
-  String? get referenceId;
-  @override
-  String? get teamMemberId;
-  @override
-  Money? get tipMoney;
-
-  /// Create a copy of PaymentParameters
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LegacyPaymentParametersImplCopyWith<_$LegacyPaymentParametersImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LegacyPaymentParameters&&(identical(other.acceptPartialAuthorization, acceptPartialAuthorization) || other.acceptPartialAuthorization == acceptPartialAuthorization)&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.autocomplete, autocomplete) || other.autocomplete == autocomplete)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.delayAction, delayAction) || other.delayAction == delayAction)&&(identical(other.delayDuration, delayDuration) || other.delayDuration == delayDuration)&&(identical(other.processingMode, processingMode) || other.processingMode == processingMode)&&(identical(other.idempotencyKey, idempotencyKey) || other.idempotencyKey == idempotencyKey)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney));
 }
 
-OnlinePayment _$OnlinePaymentFromJson(Map<String, dynamic> json) {
-  return _OnlinePayment.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,acceptPartialAuthorization,amountMoney,appFeeMoney,autocomplete,customerId,delayAction,delayDuration,processingMode,idempotencyKey,locationId,note,orderId,referenceId,teamMemberId,tipMoney);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'PaymentParameters.legacy(acceptPartialAuthorization: $acceptPartialAuthorization, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, idempotencyKey: $idempotencyKey, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$OnlinePayment {
-  Money get amountMoney => throw _privateConstructorUsedError;
-  Money get appFeeMoney => throw _privateConstructorUsedError;
-  CardPaymentDetails get cardDetails => throw _privateConstructorUsedError;
-  String get createdAt => throw _privateConstructorUsedError;
-  String get customerId => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
-  String get locationId => throw _privateConstructorUsedError;
-  String get note => throw _privateConstructorUsedError;
-  String get orderId => throw _privateConstructorUsedError;
-  String get referenceId => throw _privateConstructorUsedError;
-  PaymentStatus get status => throw _privateConstructorUsedError;
-  Money get tipMoney => throw _privateConstructorUsedError;
-  Money get totalMoney => throw _privateConstructorUsedError;
-  String get updatedAt => throw _privateConstructorUsedError;
+abstract mixin class _$LegacyPaymentParametersCopyWith<$Res> implements $PaymentParametersCopyWith<$Res> {
+  factory _$LegacyPaymentParametersCopyWith(_LegacyPaymentParameters value, $Res Function(_LegacyPaymentParameters) _then) = __$LegacyPaymentParametersCopyWithImpl;
+@override @useResult
+$Res call({
+ int? acceptPartialAuthorization, Money amountMoney, Money? appFeeMoney, bool? autocomplete, String? customerId, DelayAction? delayAction, num? delayDuration, num processingMode, String idempotencyKey, String? locationId, String? note, String? orderId, String? referenceId, String? teamMemberId, Money? tipMoney
+});
+
+
+@override $MoneyCopyWith<$Res> get amountMoney;@override $MoneyCopyWith<$Res>? get appFeeMoney;@override $MoneyCopyWith<$Res>? get tipMoney;
+
+}
+/// @nodoc
+class __$LegacyPaymentParametersCopyWithImpl<$Res>
+    implements _$LegacyPaymentParametersCopyWith<$Res> {
+  __$LegacyPaymentParametersCopyWithImpl(this._self, this._then);
+
+  final _LegacyPaymentParameters _self;
+  final $Res Function(_LegacyPaymentParameters) _then;
+
+/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? acceptPartialAuthorization = freezed,Object? amountMoney = null,Object? appFeeMoney = freezed,Object? autocomplete = freezed,Object? customerId = freezed,Object? delayAction = freezed,Object? delayDuration = freezed,Object? processingMode = null,Object? idempotencyKey = null,Object? locationId = freezed,Object? note = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? teamMemberId = freezed,Object? tipMoney = freezed,}) {
+  return _then(_LegacyPaymentParameters(
+acceptPartialAuthorization: freezed == acceptPartialAuthorization ? _self.acceptPartialAuthorization : acceptPartialAuthorization // ignore: cast_nullable_to_non_nullable
+as int?,amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
+as Money,appFeeMoney: freezed == appFeeMoney ? _self.appFeeMoney : appFeeMoney // ignore: cast_nullable_to_non_nullable
+as Money?,autocomplete: freezed == autocomplete ? _self.autocomplete : autocomplete // ignore: cast_nullable_to_non_nullable
+as bool?,customerId: freezed == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
+as String?,delayAction: freezed == delayAction ? _self.delayAction : delayAction // ignore: cast_nullable_to_non_nullable
+as DelayAction?,delayDuration: freezed == delayDuration ? _self.delayDuration : delayDuration // ignore: cast_nullable_to_non_nullable
+as num?,processingMode: null == processingMode ? _self.processingMode : processingMode // ignore: cast_nullable_to_non_nullable
+as num,idempotencyKey: null == idempotencyKey ? _self.idempotencyKey : idempotencyKey // ignore: cast_nullable_to_non_nullable
+as String,locationId: freezed == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
+as String?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
+as String?,orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
+as String?,referenceId: freezed == referenceId ? _self.referenceId : referenceId // ignore: cast_nullable_to_non_nullable
+as String?,teamMemberId: freezed == teamMemberId ? _self.teamMemberId : teamMemberId // ignore: cast_nullable_to_non_nullable
+as String?,tipMoney: freezed == tipMoney ? _self.tipMoney : tipMoney // ignore: cast_nullable_to_non_nullable
+as Money?,
+  ));
+}
+
+/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get amountMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.amountMoney, (value) {
+    return _then(_self.copyWith(amountMoney: value));
+  });
+}/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get appFeeMoney {
+    if (_self.appFeeMoney == null) {
+    return null;
+  }
+
+  return $MoneyCopyWith<$Res>(_self.appFeeMoney!, (value) {
+    return _then(_self.copyWith(appFeeMoney: value));
+  });
+}/// Create a copy of PaymentParameters
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get tipMoney {
+    if (_self.tipMoney == null) {
+    return null;
+  }
+
+  return $MoneyCopyWith<$Res>(_self.tipMoney!, (value) {
+    return _then(_self.copyWith(tipMoney: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$OnlinePayment implements DiagnosticableTreeMixin {
+
+ Money get amountMoney; Money get appFeeMoney; CardPaymentDetails get cardDetails; String get createdAt; String get customerId; String get id; String get locationId; String get note; String get orderId; String get referenceId; PaymentStatus get status; Money get tipMoney; Money get totalMoney; String get updatedAt;
+/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OnlinePaymentCopyWith<OnlinePayment> get copyWith => _$OnlinePaymentCopyWithImpl<OnlinePayment>(this as OnlinePayment, _$identity);
 
   /// Serializes this OnlinePayment to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of OnlinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OnlinePaymentCopyWith<OnlinePayment> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OnlinePayment'))
+    ..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('cardDetails', cardDetails))..add(DiagnosticsProperty('createdAt', createdAt))..add(DiagnosticsProperty('customerId', customerId))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('note', note))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('tipMoney', tipMoney))..add(DiagnosticsProperty('totalMoney', totalMoney))..add(DiagnosticsProperty('updatedAt', updatedAt));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnlinePayment&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.cardDetails, cardDetails) || other.cardDetails == cardDetails)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.id, id) || other.id == id)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.status, status) || other.status == status)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney)&&(identical(other.totalMoney, totalMoney) || other.totalMoney == totalMoney)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,amountMoney,appFeeMoney,cardDetails,createdAt,customerId,id,locationId,note,orderId,referenceId,status,tipMoney,totalMoney,updatedAt);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OnlinePayment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cardDetails: $cardDetails, createdAt: $createdAt, customerId: $customerId, id: $id, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, status: $status, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $OnlinePaymentCopyWith<$Res> {
-  factory $OnlinePaymentCopyWith(
-          OnlinePayment value, $Res Function(OnlinePayment) then) =
-      _$OnlinePaymentCopyWithImpl<$Res, OnlinePayment>;
-  @useResult
-  $Res call(
-      {Money amountMoney,
-      Money appFeeMoney,
-      CardPaymentDetails cardDetails,
-      String createdAt,
-      String customerId,
-      String id,
-      String locationId,
-      String note,
-      String orderId,
-      String referenceId,
-      PaymentStatus status,
-      Money tipMoney,
-      Money totalMoney,
-      String updatedAt});
+abstract mixin class $OnlinePaymentCopyWith<$Res>  {
+  factory $OnlinePaymentCopyWith(OnlinePayment value, $Res Function(OnlinePayment) _then) = _$OnlinePaymentCopyWithImpl;
+@useResult
+$Res call({
+ Money amountMoney, Money appFeeMoney, CardPaymentDetails cardDetails, String createdAt, String customerId, String id, String locationId, String note, String orderId, String referenceId, PaymentStatus status, Money tipMoney, Money totalMoney, String updatedAt
+});
 
-  $MoneyCopyWith<$Res> get amountMoney;
-  $MoneyCopyWith<$Res> get appFeeMoney;
-  $CardPaymentDetailsCopyWith<$Res> get cardDetails;
-  $MoneyCopyWith<$Res> get tipMoney;
-  $MoneyCopyWith<$Res> get totalMoney;
+
+$MoneyCopyWith<$Res> get amountMoney;$MoneyCopyWith<$Res> get appFeeMoney;$CardPaymentDetailsCopyWith<$Res> get cardDetails;$MoneyCopyWith<$Res> get tipMoney;$MoneyCopyWith<$Res> get totalMoney;
+
 }
-
 /// @nodoc
-class _$OnlinePaymentCopyWithImpl<$Res, $Val extends OnlinePayment>
+class _$OnlinePaymentCopyWithImpl<$Res>
     implements $OnlinePaymentCopyWith<$Res> {
-  _$OnlinePaymentCopyWithImpl(this._value, this._then);
+  _$OnlinePaymentCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final OnlinePayment _self;
+  final $Res Function(OnlinePayment) _then;
 
-  /// Create a copy of OnlinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? amountMoney = null,
-    Object? appFeeMoney = null,
-    Object? cardDetails = null,
-    Object? createdAt = null,
-    Object? customerId = null,
-    Object? id = null,
-    Object? locationId = null,
-    Object? note = null,
-    Object? orderId = null,
-    Object? referenceId = null,
-    Object? status = null,
-    Object? tipMoney = null,
-    Object? totalMoney = null,
-    Object? updatedAt = null,
-  }) {
-    return _then(_value.copyWith(
-      amountMoney: null == amountMoney
-          ? _value.amountMoney
-          : amountMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      appFeeMoney: null == appFeeMoney
-          ? _value.appFeeMoney
-          : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      cardDetails: null == cardDetails
-          ? _value.cardDetails
-          : cardDetails // ignore: cast_nullable_to_non_nullable
-              as CardPaymentDetails,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      locationId: null == locationId
-          ? _value.locationId
-          : locationId // ignore: cast_nullable_to_non_nullable
-              as String,
-      note: null == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      referenceId: null == referenceId
-          ? _value.referenceId
-          : referenceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as PaymentStatus,
-      tipMoney: null == tipMoney
-          ? _value.tipMoney
-          : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      totalMoney: null == totalMoney
-          ? _value.totalMoney
-          : totalMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-
-  /// Create a copy of OnlinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get amountMoney {
-    return $MoneyCopyWith<$Res>(_value.amountMoney, (value) {
-      return _then(_value.copyWith(amountMoney: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OnlinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get appFeeMoney {
-    return $MoneyCopyWith<$Res>(_value.appFeeMoney, (value) {
-      return _then(_value.copyWith(appFeeMoney: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OnlinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CardPaymentDetailsCopyWith<$Res> get cardDetails {
-    return $CardPaymentDetailsCopyWith<$Res>(_value.cardDetails, (value) {
-      return _then(_value.copyWith(cardDetails: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OnlinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get tipMoney {
-    return $MoneyCopyWith<$Res>(_value.tipMoney, (value) {
-      return _then(_value.copyWith(tipMoney: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OnlinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get totalMoney {
-    return $MoneyCopyWith<$Res>(_value.totalMoney, (value) {
-      return _then(_value.copyWith(totalMoney: value) as $Val);
-    });
-  }
+/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? amountMoney = null,Object? appFeeMoney = null,Object? cardDetails = null,Object? createdAt = null,Object? customerId = null,Object? id = null,Object? locationId = null,Object? note = null,Object? orderId = null,Object? referenceId = null,Object? status = null,Object? tipMoney = null,Object? totalMoney = null,Object? updatedAt = null,}) {
+  return _then(_self.copyWith(
+amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
+as Money,appFeeMoney: null == appFeeMoney ? _self.appFeeMoney : appFeeMoney // ignore: cast_nullable_to_non_nullable
+as Money,cardDetails: null == cardDetails ? _self.cardDetails : cardDetails // ignore: cast_nullable_to_non_nullable
+as CardPaymentDetails,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as String,customerId: null == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
+as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,locationId: null == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
+as String,note: null == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
+as String,orderId: null == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
+as String,referenceId: null == referenceId ? _self.referenceId : referenceId // ignore: cast_nullable_to_non_nullable
+as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as PaymentStatus,tipMoney: null == tipMoney ? _self.tipMoney : tipMoney // ignore: cast_nullable_to_non_nullable
+as Money,totalMoney: null == totalMoney ? _self.totalMoney : totalMoney // ignore: cast_nullable_to_non_nullable
+as Money,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get amountMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.amountMoney, (value) {
+    return _then(_self.copyWith(amountMoney: value));
+  });
+}/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get appFeeMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.appFeeMoney, (value) {
+    return _then(_self.copyWith(appFeeMoney: value));
+  });
+}/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CardPaymentDetailsCopyWith<$Res> get cardDetails {
+  
+  return $CardPaymentDetailsCopyWith<$Res>(_self.cardDetails, (value) {
+    return _then(_self.copyWith(cardDetails: value));
+  });
+}/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get tipMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.tipMoney, (value) {
+    return _then(_self.copyWith(tipMoney: value));
+  });
+}/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get totalMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.totalMoney, (value) {
+    return _then(_self.copyWith(totalMoney: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$OnlinePaymentImplCopyWith<$Res>
-    implements $OnlinePaymentCopyWith<$Res> {
-  factory _$$OnlinePaymentImplCopyWith(
-          _$OnlinePaymentImpl value, $Res Function(_$OnlinePaymentImpl) then) =
-      __$$OnlinePaymentImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Money amountMoney,
-      Money appFeeMoney,
-      CardPaymentDetails cardDetails,
-      String createdAt,
-      String customerId,
-      String id,
-      String locationId,
-      String note,
-      String orderId,
-      String referenceId,
-      PaymentStatus status,
-      Money tipMoney,
-      Money totalMoney,
-      String updatedAt});
 
-  @override
-  $MoneyCopyWith<$Res> get amountMoney;
-  @override
-  $MoneyCopyWith<$Res> get appFeeMoney;
-  @override
-  $CardPaymentDetailsCopyWith<$Res> get cardDetails;
-  @override
-  $MoneyCopyWith<$Res> get tipMoney;
-  @override
-  $MoneyCopyWith<$Res> get totalMoney;
+/// Adds pattern-matching-related methods to [OnlinePayment].
+extension OnlinePaymentPatterns on OnlinePayment {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OnlinePayment value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OnlinePayment() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OnlinePayment value)  $default,){
+final _that = this;
+switch (_that) {
+case _OnlinePayment():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OnlinePayment value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OnlinePayment() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Money amountMoney,  Money appFeeMoney,  CardPaymentDetails cardDetails,  String createdAt,  String customerId,  String id,  String locationId,  String note,  String orderId,  String referenceId,  PaymentStatus status,  Money tipMoney,  Money totalMoney,  String updatedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OnlinePayment() when $default != null:
+return $default(_that.amountMoney,_that.appFeeMoney,_that.cardDetails,_that.createdAt,_that.customerId,_that.id,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.status,_that.tipMoney,_that.totalMoney,_that.updatedAt);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Money amountMoney,  Money appFeeMoney,  CardPaymentDetails cardDetails,  String createdAt,  String customerId,  String id,  String locationId,  String note,  String orderId,  String referenceId,  PaymentStatus status,  Money tipMoney,  Money totalMoney,  String updatedAt)  $default,) {final _that = this;
+switch (_that) {
+case _OnlinePayment():
+return $default(_that.amountMoney,_that.appFeeMoney,_that.cardDetails,_that.createdAt,_that.customerId,_that.id,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.status,_that.tipMoney,_that.totalMoney,_that.updatedAt);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Money amountMoney,  Money appFeeMoney,  CardPaymentDetails cardDetails,  String createdAt,  String customerId,  String id,  String locationId,  String note,  String orderId,  String referenceId,  PaymentStatus status,  Money tipMoney,  Money totalMoney,  String updatedAt)?  $default,) {final _that = this;
+switch (_that) {
+case _OnlinePayment() when $default != null:
+return $default(_that.amountMoney,_that.appFeeMoney,_that.cardDetails,_that.createdAt,_that.customerId,_that.id,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.status,_that.tipMoney,_that.totalMoney,_that.updatedAt);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$OnlinePaymentImplCopyWithImpl<$Res>
-    extends _$OnlinePaymentCopyWithImpl<$Res, _$OnlinePaymentImpl>
-    implements _$$OnlinePaymentImplCopyWith<$Res> {
-  __$$OnlinePaymentImplCopyWithImpl(
-      _$OnlinePaymentImpl _value, $Res Function(_$OnlinePaymentImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of OnlinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? amountMoney = null,
-    Object? appFeeMoney = null,
-    Object? cardDetails = null,
-    Object? createdAt = null,
-    Object? customerId = null,
-    Object? id = null,
-    Object? locationId = null,
-    Object? note = null,
-    Object? orderId = null,
-    Object? referenceId = null,
-    Object? status = null,
-    Object? tipMoney = null,
-    Object? totalMoney = null,
-    Object? updatedAt = null,
-  }) {
-    return _then(_$OnlinePaymentImpl(
-      amountMoney: null == amountMoney
-          ? _value.amountMoney
-          : amountMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      appFeeMoney: null == appFeeMoney
-          ? _value.appFeeMoney
-          : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      cardDetails: null == cardDetails
-          ? _value.cardDetails
-          : cardDetails // ignore: cast_nullable_to_non_nullable
-              as CardPaymentDetails,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      locationId: null == locationId
-          ? _value.locationId
-          : locationId // ignore: cast_nullable_to_non_nullable
-              as String,
-      note: null == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      referenceId: null == referenceId
-          ? _value.referenceId
-          : referenceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as PaymentStatus,
-      tipMoney: null == tipMoney
-          ? _value.tipMoney
-          : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      totalMoney: null == totalMoney
-          ? _value.totalMoney
-          : totalMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$OnlinePaymentImpl
-    with DiagnosticableTreeMixin
-    implements _OnlinePayment {
-  const _$OnlinePaymentImpl(
-      {required this.amountMoney,
-      required this.appFeeMoney,
-      required this.cardDetails,
-      required this.createdAt,
-      required this.customerId,
-      required this.id,
-      required this.locationId,
-      required this.note,
-      required this.orderId,
-      required this.referenceId,
-      required this.status,
-      required this.tipMoney,
-      required this.totalMoney,
-      required this.updatedAt});
 
-  factory _$OnlinePaymentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OnlinePaymentImplFromJson(json);
+class _OnlinePayment with DiagnosticableTreeMixin implements OnlinePayment {
+  const _OnlinePayment({required this.amountMoney, required this.appFeeMoney, required this.cardDetails, required this.createdAt, required this.customerId, required this.id, required this.locationId, required this.note, required this.orderId, required this.referenceId, required this.status, required this.tipMoney, required this.totalMoney, required this.updatedAt});
+  factory _OnlinePayment.fromJson(Map<String, dynamic> json) => _$OnlinePaymentFromJson(json);
 
-  @override
-  final Money amountMoney;
-  @override
-  final Money appFeeMoney;
-  @override
-  final CardPaymentDetails cardDetails;
-  @override
-  final String createdAt;
-  @override
-  final String customerId;
-  @override
-  final String id;
-  @override
-  final String locationId;
-  @override
-  final String note;
-  @override
-  final String orderId;
-  @override
-  final String referenceId;
-  @override
-  final PaymentStatus status;
-  @override
-  final Money tipMoney;
-  @override
-  final Money totalMoney;
-  @override
-  final String updatedAt;
+@override final  Money amountMoney;
+@override final  Money appFeeMoney;
+@override final  CardPaymentDetails cardDetails;
+@override final  String createdAt;
+@override final  String customerId;
+@override final  String id;
+@override final  String locationId;
+@override final  String note;
+@override final  String orderId;
+@override final  String referenceId;
+@override final  PaymentStatus status;
+@override final  Money tipMoney;
+@override final  Money totalMoney;
+@override final  String updatedAt;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OnlinePayment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cardDetails: $cardDetails, createdAt: $createdAt, customerId: $customerId, id: $id, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, status: $status, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt)';
-  }
+/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OnlinePaymentCopyWith<_OnlinePayment> get copyWith => __$OnlinePaymentCopyWithImpl<_OnlinePayment>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OnlinePayment'))
-      ..add(DiagnosticsProperty('amountMoney', amountMoney))
-      ..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))
-      ..add(DiagnosticsProperty('cardDetails', cardDetails))
-      ..add(DiagnosticsProperty('createdAt', createdAt))
-      ..add(DiagnosticsProperty('customerId', customerId))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('locationId', locationId))
-      ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('orderId', orderId))
-      ..add(DiagnosticsProperty('referenceId', referenceId))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('tipMoney', tipMoney))
-      ..add(DiagnosticsProperty('totalMoney', totalMoney))
-      ..add(DiagnosticsProperty('updatedAt', updatedAt));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OnlinePaymentImpl &&
-            (identical(other.amountMoney, amountMoney) ||
-                other.amountMoney == amountMoney) &&
-            (identical(other.appFeeMoney, appFeeMoney) ||
-                other.appFeeMoney == appFeeMoney) &&
-            (identical(other.cardDetails, cardDetails) ||
-                other.cardDetails == cardDetails) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.customerId, customerId) ||
-                other.customerId == customerId) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.locationId, locationId) ||
-                other.locationId == locationId) &&
-            (identical(other.note, note) || other.note == note) &&
-            (identical(other.orderId, orderId) || other.orderId == orderId) &&
-            (identical(other.referenceId, referenceId) ||
-                other.referenceId == referenceId) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.tipMoney, tipMoney) ||
-                other.tipMoney == tipMoney) &&
-            (identical(other.totalMoney, totalMoney) ||
-                other.totalMoney == totalMoney) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      amountMoney,
-      appFeeMoney,
-      cardDetails,
-      createdAt,
-      customerId,
-      id,
-      locationId,
-      note,
-      orderId,
-      referenceId,
-      status,
-      tipMoney,
-      totalMoney,
-      updatedAt);
-
-  /// Create a copy of OnlinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OnlinePaymentImplCopyWith<_$OnlinePaymentImpl> get copyWith =>
-      __$$OnlinePaymentImplCopyWithImpl<_$OnlinePaymentImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OnlinePaymentImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$OnlinePaymentToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OnlinePayment'))
+    ..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('cardDetails', cardDetails))..add(DiagnosticsProperty('createdAt', createdAt))..add(DiagnosticsProperty('customerId', customerId))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('note', note))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('tipMoney', tipMoney))..add(DiagnosticsProperty('totalMoney', totalMoney))..add(DiagnosticsProperty('updatedAt', updatedAt));
 }
 
-abstract class _OnlinePayment implements OnlinePayment {
-  const factory _OnlinePayment(
-      {required final Money amountMoney,
-      required final Money appFeeMoney,
-      required final CardPaymentDetails cardDetails,
-      required final String createdAt,
-      required final String customerId,
-      required final String id,
-      required final String locationId,
-      required final String note,
-      required final String orderId,
-      required final String referenceId,
-      required final PaymentStatus status,
-      required final Money tipMoney,
-      required final Money totalMoney,
-      required final String updatedAt}) = _$OnlinePaymentImpl;
-
-  factory _OnlinePayment.fromJson(Map<String, dynamic> json) =
-      _$OnlinePaymentImpl.fromJson;
-
-  @override
-  Money get amountMoney;
-  @override
-  Money get appFeeMoney;
-  @override
-  CardPaymentDetails get cardDetails;
-  @override
-  String get createdAt;
-  @override
-  String get customerId;
-  @override
-  String get id;
-  @override
-  String get locationId;
-  @override
-  String get note;
-  @override
-  String get orderId;
-  @override
-  String get referenceId;
-  @override
-  PaymentStatus get status;
-  @override
-  Money get tipMoney;
-  @override
-  Money get totalMoney;
-  @override
-  String get updatedAt;
-
-  /// Create a copy of OnlinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OnlinePaymentImplCopyWith<_$OnlinePaymentImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OnlinePayment&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.cardDetails, cardDetails) || other.cardDetails == cardDetails)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.id, id) || other.id == id)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.status, status) || other.status == status)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney)&&(identical(other.totalMoney, totalMoney) || other.totalMoney == totalMoney)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
-OfflinePayment _$OfflinePaymentFromJson(Map<String, dynamic> json) {
-  return _OfflinePayment.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,amountMoney,appFeeMoney,cardDetails,createdAt,customerId,id,locationId,note,orderId,referenceId,status,tipMoney,totalMoney,updatedAt);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OnlinePayment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cardDetails: $cardDetails, createdAt: $createdAt, customerId: $customerId, id: $id, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, status: $status, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$OfflinePayment {
-  Money get amountMoney => throw _privateConstructorUsedError;
-  Money? get appFeeMoney => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  String? get id => throw _privateConstructorUsedError;
-  String? get locationId => throw _privateConstructorUsedError;
-  String? get orderId => throw _privateConstructorUsedError;
-  String? get referenceId => throw _privateConstructorUsedError;
-  Money? get tipMoney => throw _privateConstructorUsedError;
-  SourceType get sourceType => throw _privateConstructorUsedError;
-  Money get totalMoney => throw _privateConstructorUsedError;
-  DateTime get updatedAt => throw _privateConstructorUsedError;
-  OfflineCardPaymentDetails? get cardDetails =>
-      throw _privateConstructorUsedError;
-  String get localId => throw _privateConstructorUsedError;
-  OfflineStatus get status => throw _privateConstructorUsedError;
-  DateTime? get uploadedAt => throw _privateConstructorUsedError;
+abstract mixin class _$OnlinePaymentCopyWith<$Res> implements $OnlinePaymentCopyWith<$Res> {
+  factory _$OnlinePaymentCopyWith(_OnlinePayment value, $Res Function(_OnlinePayment) _then) = __$OnlinePaymentCopyWithImpl;
+@override @useResult
+$Res call({
+ Money amountMoney, Money appFeeMoney, CardPaymentDetails cardDetails, String createdAt, String customerId, String id, String locationId, String note, String orderId, String referenceId, PaymentStatus status, Money tipMoney, Money totalMoney, String updatedAt
+});
+
+
+@override $MoneyCopyWith<$Res> get amountMoney;@override $MoneyCopyWith<$Res> get appFeeMoney;@override $CardPaymentDetailsCopyWith<$Res> get cardDetails;@override $MoneyCopyWith<$Res> get tipMoney;@override $MoneyCopyWith<$Res> get totalMoney;
+
+}
+/// @nodoc
+class __$OnlinePaymentCopyWithImpl<$Res>
+    implements _$OnlinePaymentCopyWith<$Res> {
+  __$OnlinePaymentCopyWithImpl(this._self, this._then);
+
+  final _OnlinePayment _self;
+  final $Res Function(_OnlinePayment) _then;
+
+/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? amountMoney = null,Object? appFeeMoney = null,Object? cardDetails = null,Object? createdAt = null,Object? customerId = null,Object? id = null,Object? locationId = null,Object? note = null,Object? orderId = null,Object? referenceId = null,Object? status = null,Object? tipMoney = null,Object? totalMoney = null,Object? updatedAt = null,}) {
+  return _then(_OnlinePayment(
+amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
+as Money,appFeeMoney: null == appFeeMoney ? _self.appFeeMoney : appFeeMoney // ignore: cast_nullable_to_non_nullable
+as Money,cardDetails: null == cardDetails ? _self.cardDetails : cardDetails // ignore: cast_nullable_to_non_nullable
+as CardPaymentDetails,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as String,customerId: null == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
+as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,locationId: null == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
+as String,note: null == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
+as String,orderId: null == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
+as String,referenceId: null == referenceId ? _self.referenceId : referenceId // ignore: cast_nullable_to_non_nullable
+as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as PaymentStatus,tipMoney: null == tipMoney ? _self.tipMoney : tipMoney // ignore: cast_nullable_to_non_nullable
+as Money,totalMoney: null == totalMoney ? _self.totalMoney : totalMoney // ignore: cast_nullable_to_non_nullable
+as Money,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get amountMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.amountMoney, (value) {
+    return _then(_self.copyWith(amountMoney: value));
+  });
+}/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get appFeeMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.appFeeMoney, (value) {
+    return _then(_self.copyWith(appFeeMoney: value));
+  });
+}/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CardPaymentDetailsCopyWith<$Res> get cardDetails {
+  
+  return $CardPaymentDetailsCopyWith<$Res>(_self.cardDetails, (value) {
+    return _then(_self.copyWith(cardDetails: value));
+  });
+}/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get tipMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.tipMoney, (value) {
+    return _then(_self.copyWith(tipMoney: value));
+  });
+}/// Create a copy of OnlinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get totalMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.totalMoney, (value) {
+    return _then(_self.copyWith(totalMoney: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$OfflinePayment implements DiagnosticableTreeMixin {
+
+ Money get amountMoney; Money? get appFeeMoney; DateTime get createdAt; String? get id; String? get locationId; String? get orderId; String? get referenceId; Money? get tipMoney; SourceType get sourceType; Money get totalMoney; DateTime get updatedAt; OfflineCardPaymentDetails? get cardDetails; String get localId; OfflineStatus get status; DateTime? get uploadedAt;
+/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OfflinePaymentCopyWith<OfflinePayment> get copyWith => _$OfflinePaymentCopyWithImpl<OfflinePayment>(this as OfflinePayment, _$identity);
 
   /// Serializes this OfflinePayment to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of OfflinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OfflinePaymentCopyWith<OfflinePayment> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OfflinePayment'))
+    ..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('createdAt', createdAt))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('tipMoney', tipMoney))..add(DiagnosticsProperty('sourceType', sourceType))..add(DiagnosticsProperty('totalMoney', totalMoney))..add(DiagnosticsProperty('updatedAt', updatedAt))..add(DiagnosticsProperty('cardDetails', cardDetails))..add(DiagnosticsProperty('localId', localId))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('uploadedAt', uploadedAt));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OfflinePayment&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.id, id) || other.id == id)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney)&&(identical(other.sourceType, sourceType) || other.sourceType == sourceType)&&(identical(other.totalMoney, totalMoney) || other.totalMoney == totalMoney)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.cardDetails, cardDetails) || other.cardDetails == cardDetails)&&(identical(other.localId, localId) || other.localId == localId)&&(identical(other.status, status) || other.status == status)&&(identical(other.uploadedAt, uploadedAt) || other.uploadedAt == uploadedAt));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,amountMoney,appFeeMoney,createdAt,id,locationId,orderId,referenceId,tipMoney,sourceType,totalMoney,updatedAt,cardDetails,localId,status,uploadedAt);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OfflinePayment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, tipMoney: $tipMoney, sourceType: $sourceType, totalMoney: $totalMoney, updatedAt: $updatedAt, cardDetails: $cardDetails, localId: $localId, status: $status, uploadedAt: $uploadedAt)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $OfflinePaymentCopyWith<$Res> {
-  factory $OfflinePaymentCopyWith(
-          OfflinePayment value, $Res Function(OfflinePayment) then) =
-      _$OfflinePaymentCopyWithImpl<$Res, OfflinePayment>;
-  @useResult
-  $Res call(
-      {Money amountMoney,
-      Money? appFeeMoney,
-      DateTime createdAt,
-      String? id,
-      String? locationId,
-      String? orderId,
-      String? referenceId,
-      Money? tipMoney,
-      SourceType sourceType,
-      Money totalMoney,
-      DateTime updatedAt,
-      OfflineCardPaymentDetails? cardDetails,
-      String localId,
-      OfflineStatus status,
-      DateTime? uploadedAt});
+abstract mixin class $OfflinePaymentCopyWith<$Res>  {
+  factory $OfflinePaymentCopyWith(OfflinePayment value, $Res Function(OfflinePayment) _then) = _$OfflinePaymentCopyWithImpl;
+@useResult
+$Res call({
+ Money amountMoney, Money? appFeeMoney, DateTime createdAt, String? id, String? locationId, String? orderId, String? referenceId, Money? tipMoney, SourceType sourceType, Money totalMoney, DateTime updatedAt, OfflineCardPaymentDetails? cardDetails, String localId, OfflineStatus status, DateTime? uploadedAt
+});
 
-  $MoneyCopyWith<$Res> get amountMoney;
-  $MoneyCopyWith<$Res>? get appFeeMoney;
-  $MoneyCopyWith<$Res>? get tipMoney;
-  $MoneyCopyWith<$Res> get totalMoney;
-  $OfflineCardPaymentDetailsCopyWith<$Res>? get cardDetails;
+
+$MoneyCopyWith<$Res> get amountMoney;$MoneyCopyWith<$Res>? get appFeeMoney;$MoneyCopyWith<$Res>? get tipMoney;$MoneyCopyWith<$Res> get totalMoney;$OfflineCardPaymentDetailsCopyWith<$Res>? get cardDetails;
+
 }
-
 /// @nodoc
-class _$OfflinePaymentCopyWithImpl<$Res, $Val extends OfflinePayment>
+class _$OfflinePaymentCopyWithImpl<$Res>
     implements $OfflinePaymentCopyWith<$Res> {
-  _$OfflinePaymentCopyWithImpl(this._value, this._then);
+  _$OfflinePaymentCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final OfflinePayment _self;
+  final $Res Function(OfflinePayment) _then;
 
-  /// Create a copy of OfflinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? amountMoney = null,
-    Object? appFeeMoney = freezed,
-    Object? createdAt = null,
-    Object? id = freezed,
-    Object? locationId = freezed,
-    Object? orderId = freezed,
-    Object? referenceId = freezed,
-    Object? tipMoney = freezed,
-    Object? sourceType = null,
-    Object? totalMoney = null,
-    Object? updatedAt = null,
-    Object? cardDetails = freezed,
-    Object? localId = null,
-    Object? status = null,
-    Object? uploadedAt = freezed,
-  }) {
-    return _then(_value.copyWith(
-      amountMoney: null == amountMoney
-          ? _value.amountMoney
-          : amountMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      appFeeMoney: freezed == appFeeMoney
-          ? _value.appFeeMoney
-          : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      locationId: freezed == locationId
-          ? _value.locationId
-          : locationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referenceId: freezed == referenceId
-          ? _value.referenceId
-          : referenceId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipMoney: freezed == tipMoney
-          ? _value.tipMoney
-          : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      sourceType: null == sourceType
-          ? _value.sourceType
-          : sourceType // ignore: cast_nullable_to_non_nullable
-              as SourceType,
-      totalMoney: null == totalMoney
-          ? _value.totalMoney
-          : totalMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      cardDetails: freezed == cardDetails
-          ? _value.cardDetails
-          : cardDetails // ignore: cast_nullable_to_non_nullable
-              as OfflineCardPaymentDetails?,
-      localId: null == localId
-          ? _value.localId
-          : localId // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as OfflineStatus,
-      uploadedAt: freezed == uploadedAt
-          ? _value.uploadedAt
-          : uploadedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ) as $Val);
+/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? amountMoney = null,Object? appFeeMoney = freezed,Object? createdAt = null,Object? id = freezed,Object? locationId = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? tipMoney = freezed,Object? sourceType = null,Object? totalMoney = null,Object? updatedAt = null,Object? cardDetails = freezed,Object? localId = null,Object? status = null,Object? uploadedAt = freezed,}) {
+  return _then(_self.copyWith(
+amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
+as Money,appFeeMoney: freezed == appFeeMoney ? _self.appFeeMoney : appFeeMoney // ignore: cast_nullable_to_non_nullable
+as Money?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,locationId: freezed == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
+as String?,orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
+as String?,referenceId: freezed == referenceId ? _self.referenceId : referenceId // ignore: cast_nullable_to_non_nullable
+as String?,tipMoney: freezed == tipMoney ? _self.tipMoney : tipMoney // ignore: cast_nullable_to_non_nullable
+as Money?,sourceType: null == sourceType ? _self.sourceType : sourceType // ignore: cast_nullable_to_non_nullable
+as SourceType,totalMoney: null == totalMoney ? _self.totalMoney : totalMoney // ignore: cast_nullable_to_non_nullable
+as Money,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,cardDetails: freezed == cardDetails ? _self.cardDetails : cardDetails // ignore: cast_nullable_to_non_nullable
+as OfflineCardPaymentDetails?,localId: null == localId ? _self.localId : localId // ignore: cast_nullable_to_non_nullable
+as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as OfflineStatus,uploadedAt: freezed == uploadedAt ? _self.uploadedAt : uploadedAt // ignore: cast_nullable_to_non_nullable
+as DateTime?,
+  ));
+}
+/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get amountMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.amountMoney, (value) {
+    return _then(_self.copyWith(amountMoney: value));
+  });
+}/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get appFeeMoney {
+    if (_self.appFeeMoney == null) {
+    return null;
   }
 
-  /// Create a copy of OfflinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get amountMoney {
-    return $MoneyCopyWith<$Res>(_value.amountMoney, (value) {
-      return _then(_value.copyWith(amountMoney: value) as $Val);
-    });
+  return $MoneyCopyWith<$Res>(_self.appFeeMoney!, (value) {
+    return _then(_self.copyWith(appFeeMoney: value));
+  });
+}/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get tipMoney {
+    if (_self.tipMoney == null) {
+    return null;
   }
 
-  /// Create a copy of OfflinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res>? get appFeeMoney {
-    if (_value.appFeeMoney == null) {
-      return null;
-    }
-
-    return $MoneyCopyWith<$Res>(_value.appFeeMoney!, (value) {
-      return _then(_value.copyWith(appFeeMoney: value) as $Val);
-    });
+  return $MoneyCopyWith<$Res>(_self.tipMoney!, (value) {
+    return _then(_self.copyWith(tipMoney: value));
+  });
+}/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get totalMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.totalMoney, (value) {
+    return _then(_self.copyWith(totalMoney: value));
+  });
+}/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$OfflineCardPaymentDetailsCopyWith<$Res>? get cardDetails {
+    if (_self.cardDetails == null) {
+    return null;
   }
 
-  /// Create a copy of OfflinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res>? get tipMoney {
-    if (_value.tipMoney == null) {
-      return null;
-    }
-
-    return $MoneyCopyWith<$Res>(_value.tipMoney!, (value) {
-      return _then(_value.copyWith(tipMoney: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OfflinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MoneyCopyWith<$Res> get totalMoney {
-    return $MoneyCopyWith<$Res>(_value.totalMoney, (value) {
-      return _then(_value.copyWith(totalMoney: value) as $Val);
-    });
-  }
-
-  /// Create a copy of OfflinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OfflineCardPaymentDetailsCopyWith<$Res>? get cardDetails {
-    if (_value.cardDetails == null) {
-      return null;
-    }
-
-    return $OfflineCardPaymentDetailsCopyWith<$Res>(_value.cardDetails!,
-        (value) {
-      return _then(_value.copyWith(cardDetails: value) as $Val);
-    });
-  }
+  return $OfflineCardPaymentDetailsCopyWith<$Res>(_self.cardDetails!, (value) {
+    return _then(_self.copyWith(cardDetails: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$OfflinePaymentImplCopyWith<$Res>
-    implements $OfflinePaymentCopyWith<$Res> {
-  factory _$$OfflinePaymentImplCopyWith(_$OfflinePaymentImpl value,
-          $Res Function(_$OfflinePaymentImpl) then) =
-      __$$OfflinePaymentImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Money amountMoney,
-      Money? appFeeMoney,
-      DateTime createdAt,
-      String? id,
-      String? locationId,
-      String? orderId,
-      String? referenceId,
-      Money? tipMoney,
-      SourceType sourceType,
-      Money totalMoney,
-      DateTime updatedAt,
-      OfflineCardPaymentDetails? cardDetails,
-      String localId,
-      OfflineStatus status,
-      DateTime? uploadedAt});
 
-  @override
-  $MoneyCopyWith<$Res> get amountMoney;
-  @override
-  $MoneyCopyWith<$Res>? get appFeeMoney;
-  @override
-  $MoneyCopyWith<$Res>? get tipMoney;
-  @override
-  $MoneyCopyWith<$Res> get totalMoney;
-  @override
-  $OfflineCardPaymentDetailsCopyWith<$Res>? get cardDetails;
+/// Adds pattern-matching-related methods to [OfflinePayment].
+extension OfflinePaymentPatterns on OfflinePayment {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OfflinePayment value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OfflinePayment() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OfflinePayment value)  $default,){
+final _that = this;
+switch (_that) {
+case _OfflinePayment():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OfflinePayment value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OfflinePayment() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Money amountMoney,  Money? appFeeMoney,  DateTime createdAt,  String? id,  String? locationId,  String? orderId,  String? referenceId,  Money? tipMoney,  SourceType sourceType,  Money totalMoney,  DateTime updatedAt,  OfflineCardPaymentDetails? cardDetails,  String localId,  OfflineStatus status,  DateTime? uploadedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OfflinePayment() when $default != null:
+return $default(_that.amountMoney,_that.appFeeMoney,_that.createdAt,_that.id,_that.locationId,_that.orderId,_that.referenceId,_that.tipMoney,_that.sourceType,_that.totalMoney,_that.updatedAt,_that.cardDetails,_that.localId,_that.status,_that.uploadedAt);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Money amountMoney,  Money? appFeeMoney,  DateTime createdAt,  String? id,  String? locationId,  String? orderId,  String? referenceId,  Money? tipMoney,  SourceType sourceType,  Money totalMoney,  DateTime updatedAt,  OfflineCardPaymentDetails? cardDetails,  String localId,  OfflineStatus status,  DateTime? uploadedAt)  $default,) {final _that = this;
+switch (_that) {
+case _OfflinePayment():
+return $default(_that.amountMoney,_that.appFeeMoney,_that.createdAt,_that.id,_that.locationId,_that.orderId,_that.referenceId,_that.tipMoney,_that.sourceType,_that.totalMoney,_that.updatedAt,_that.cardDetails,_that.localId,_that.status,_that.uploadedAt);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Money amountMoney,  Money? appFeeMoney,  DateTime createdAt,  String? id,  String? locationId,  String? orderId,  String? referenceId,  Money? tipMoney,  SourceType sourceType,  Money totalMoney,  DateTime updatedAt,  OfflineCardPaymentDetails? cardDetails,  String localId,  OfflineStatus status,  DateTime? uploadedAt)?  $default,) {final _that = this;
+switch (_that) {
+case _OfflinePayment() when $default != null:
+return $default(_that.amountMoney,_that.appFeeMoney,_that.createdAt,_that.id,_that.locationId,_that.orderId,_that.referenceId,_that.tipMoney,_that.sourceType,_that.totalMoney,_that.updatedAt,_that.cardDetails,_that.localId,_that.status,_that.uploadedAt);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$OfflinePaymentImplCopyWithImpl<$Res>
-    extends _$OfflinePaymentCopyWithImpl<$Res, _$OfflinePaymentImpl>
-    implements _$$OfflinePaymentImplCopyWith<$Res> {
-  __$$OfflinePaymentImplCopyWithImpl(
-      _$OfflinePaymentImpl _value, $Res Function(_$OfflinePaymentImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of OfflinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? amountMoney = null,
-    Object? appFeeMoney = freezed,
-    Object? createdAt = null,
-    Object? id = freezed,
-    Object? locationId = freezed,
-    Object? orderId = freezed,
-    Object? referenceId = freezed,
-    Object? tipMoney = freezed,
-    Object? sourceType = null,
-    Object? totalMoney = null,
-    Object? updatedAt = null,
-    Object? cardDetails = freezed,
-    Object? localId = null,
-    Object? status = null,
-    Object? uploadedAt = freezed,
-  }) {
-    return _then(_$OfflinePaymentImpl(
-      amountMoney: null == amountMoney
-          ? _value.amountMoney
-          : amountMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      appFeeMoney: freezed == appFeeMoney
-          ? _value.appFeeMoney
-          : appFeeMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      locationId: freezed == locationId
-          ? _value.locationId
-          : locationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referenceId: freezed == referenceId
-          ? _value.referenceId
-          : referenceId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipMoney: freezed == tipMoney
-          ? _value.tipMoney
-          : tipMoney // ignore: cast_nullable_to_non_nullable
-              as Money?,
-      sourceType: null == sourceType
-          ? _value.sourceType
-          : sourceType // ignore: cast_nullable_to_non_nullable
-              as SourceType,
-      totalMoney: null == totalMoney
-          ? _value.totalMoney
-          : totalMoney // ignore: cast_nullable_to_non_nullable
-              as Money,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      cardDetails: freezed == cardDetails
-          ? _value.cardDetails
-          : cardDetails // ignore: cast_nullable_to_non_nullable
-              as OfflineCardPaymentDetails?,
-      localId: null == localId
-          ? _value.localId
-          : localId // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as OfflineStatus,
-      uploadedAt: freezed == uploadedAt
-          ? _value.uploadedAt
-          : uploadedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$OfflinePaymentImpl
-    with DiagnosticableTreeMixin
-    implements _OfflinePayment {
-  const _$OfflinePaymentImpl(
-      {required this.amountMoney,
-      this.appFeeMoney,
-      required this.createdAt,
-      this.id,
-      this.locationId,
-      this.orderId,
-      this.referenceId,
-      this.tipMoney,
-      required this.sourceType,
-      required this.totalMoney,
-      required this.updatedAt,
-      this.cardDetails,
-      required this.localId,
-      required this.status,
-      this.uploadedAt});
 
-  factory _$OfflinePaymentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OfflinePaymentImplFromJson(json);
+class _OfflinePayment with DiagnosticableTreeMixin implements OfflinePayment {
+  const _OfflinePayment({required this.amountMoney, this.appFeeMoney, required this.createdAt, this.id, this.locationId, this.orderId, this.referenceId, this.tipMoney, required this.sourceType, required this.totalMoney, required this.updatedAt, this.cardDetails, required this.localId, required this.status, this.uploadedAt});
+  factory _OfflinePayment.fromJson(Map<String, dynamic> json) => _$OfflinePaymentFromJson(json);
 
-  @override
-  final Money amountMoney;
-  @override
-  final Money? appFeeMoney;
-  @override
-  final DateTime createdAt;
-  @override
-  final String? id;
-  @override
-  final String? locationId;
-  @override
-  final String? orderId;
-  @override
-  final String? referenceId;
-  @override
-  final Money? tipMoney;
-  @override
-  final SourceType sourceType;
-  @override
-  final Money totalMoney;
-  @override
-  final DateTime updatedAt;
-  @override
-  final OfflineCardPaymentDetails? cardDetails;
-  @override
-  final String localId;
-  @override
-  final OfflineStatus status;
-  @override
-  final DateTime? uploadedAt;
+@override final  Money amountMoney;
+@override final  Money? appFeeMoney;
+@override final  DateTime createdAt;
+@override final  String? id;
+@override final  String? locationId;
+@override final  String? orderId;
+@override final  String? referenceId;
+@override final  Money? tipMoney;
+@override final  SourceType sourceType;
+@override final  Money totalMoney;
+@override final  DateTime updatedAt;
+@override final  OfflineCardPaymentDetails? cardDetails;
+@override final  String localId;
+@override final  OfflineStatus status;
+@override final  DateTime? uploadedAt;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OfflinePayment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, tipMoney: $tipMoney, sourceType: $sourceType, totalMoney: $totalMoney, updatedAt: $updatedAt, cardDetails: $cardDetails, localId: $localId, status: $status, uploadedAt: $uploadedAt)';
-  }
+/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OfflinePaymentCopyWith<_OfflinePayment> get copyWith => __$OfflinePaymentCopyWithImpl<_OfflinePayment>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OfflinePayment'))
-      ..add(DiagnosticsProperty('amountMoney', amountMoney))
-      ..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))
-      ..add(DiagnosticsProperty('createdAt', createdAt))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('locationId', locationId))
-      ..add(DiagnosticsProperty('orderId', orderId))
-      ..add(DiagnosticsProperty('referenceId', referenceId))
-      ..add(DiagnosticsProperty('tipMoney', tipMoney))
-      ..add(DiagnosticsProperty('sourceType', sourceType))
-      ..add(DiagnosticsProperty('totalMoney', totalMoney))
-      ..add(DiagnosticsProperty('updatedAt', updatedAt))
-      ..add(DiagnosticsProperty('cardDetails', cardDetails))
-      ..add(DiagnosticsProperty('localId', localId))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('uploadedAt', uploadedAt));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OfflinePaymentImpl &&
-            (identical(other.amountMoney, amountMoney) ||
-                other.amountMoney == amountMoney) &&
-            (identical(other.appFeeMoney, appFeeMoney) ||
-                other.appFeeMoney == appFeeMoney) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.locationId, locationId) ||
-                other.locationId == locationId) &&
-            (identical(other.orderId, orderId) || other.orderId == orderId) &&
-            (identical(other.referenceId, referenceId) ||
-                other.referenceId == referenceId) &&
-            (identical(other.tipMoney, tipMoney) ||
-                other.tipMoney == tipMoney) &&
-            (identical(other.sourceType, sourceType) ||
-                other.sourceType == sourceType) &&
-            (identical(other.totalMoney, totalMoney) ||
-                other.totalMoney == totalMoney) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            (identical(other.cardDetails, cardDetails) ||
-                other.cardDetails == cardDetails) &&
-            (identical(other.localId, localId) || other.localId == localId) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.uploadedAt, uploadedAt) ||
-                other.uploadedAt == uploadedAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      amountMoney,
-      appFeeMoney,
-      createdAt,
-      id,
-      locationId,
-      orderId,
-      referenceId,
-      tipMoney,
-      sourceType,
-      totalMoney,
-      updatedAt,
-      cardDetails,
-      localId,
-      status,
-      uploadedAt);
-
-  /// Create a copy of OfflinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OfflinePaymentImplCopyWith<_$OfflinePaymentImpl> get copyWith =>
-      __$$OfflinePaymentImplCopyWithImpl<_$OfflinePaymentImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OfflinePaymentImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$OfflinePaymentToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OfflinePayment'))
+    ..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('createdAt', createdAt))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('tipMoney', tipMoney))..add(DiagnosticsProperty('sourceType', sourceType))..add(DiagnosticsProperty('totalMoney', totalMoney))..add(DiagnosticsProperty('updatedAt', updatedAt))..add(DiagnosticsProperty('cardDetails', cardDetails))..add(DiagnosticsProperty('localId', localId))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('uploadedAt', uploadedAt));
 }
 
-abstract class _OfflinePayment implements OfflinePayment {
-  const factory _OfflinePayment(
-      {required final Money amountMoney,
-      final Money? appFeeMoney,
-      required final DateTime createdAt,
-      final String? id,
-      final String? locationId,
-      final String? orderId,
-      final String? referenceId,
-      final Money? tipMoney,
-      required final SourceType sourceType,
-      required final Money totalMoney,
-      required final DateTime updatedAt,
-      final OfflineCardPaymentDetails? cardDetails,
-      required final String localId,
-      required final OfflineStatus status,
-      final DateTime? uploadedAt}) = _$OfflinePaymentImpl;
-
-  factory _OfflinePayment.fromJson(Map<String, dynamic> json) =
-      _$OfflinePaymentImpl.fromJson;
-
-  @override
-  Money get amountMoney;
-  @override
-  Money? get appFeeMoney;
-  @override
-  DateTime get createdAt;
-  @override
-  String? get id;
-  @override
-  String? get locationId;
-  @override
-  String? get orderId;
-  @override
-  String? get referenceId;
-  @override
-  Money? get tipMoney;
-  @override
-  SourceType get sourceType;
-  @override
-  Money get totalMoney;
-  @override
-  DateTime get updatedAt;
-  @override
-  OfflineCardPaymentDetails? get cardDetails;
-  @override
-  String get localId;
-  @override
-  OfflineStatus get status;
-  @override
-  DateTime? get uploadedAt;
-
-  /// Create a copy of OfflinePayment
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OfflinePaymentImplCopyWith<_$OfflinePaymentImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OfflinePayment&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.id, id) || other.id == id)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney)&&(identical(other.sourceType, sourceType) || other.sourceType == sourceType)&&(identical(other.totalMoney, totalMoney) || other.totalMoney == totalMoney)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.cardDetails, cardDetails) || other.cardDetails == cardDetails)&&(identical(other.localId, localId) || other.localId == localId)&&(identical(other.status, status) || other.status == status)&&(identical(other.uploadedAt, uploadedAt) || other.uploadedAt == uploadedAt));
 }
 
-OfflineCardPaymentDetails _$OfflineCardPaymentDetailsFromJson(
-    Map<String, dynamic> json) {
-  return _OfflineCardPaymentDetails.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,amountMoney,appFeeMoney,createdAt,id,locationId,orderId,referenceId,tipMoney,sourceType,totalMoney,updatedAt,cardDetails,localId,status,uploadedAt);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OfflinePayment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, tipMoney: $tipMoney, sourceType: $sourceType, totalMoney: $totalMoney, updatedAt: $updatedAt, cardDetails: $cardDetails, localId: $localId, status: $status, uploadedAt: $uploadedAt)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$OfflineCardPaymentDetails {
-  String? get applicationIdentifier => throw _privateConstructorUsedError;
-  String? get applicationName => throw _privateConstructorUsedError;
-  OfflineCard? get card => throw _privateConstructorUsedError;
-  EntryMethod get entryMethod => throw _privateConstructorUsedError;
+abstract mixin class _$OfflinePaymentCopyWith<$Res> implements $OfflinePaymentCopyWith<$Res> {
+  factory _$OfflinePaymentCopyWith(_OfflinePayment value, $Res Function(_OfflinePayment) _then) = __$OfflinePaymentCopyWithImpl;
+@override @useResult
+$Res call({
+ Money amountMoney, Money? appFeeMoney, DateTime createdAt, String? id, String? locationId, String? orderId, String? referenceId, Money? tipMoney, SourceType sourceType, Money totalMoney, DateTime updatedAt, OfflineCardPaymentDetails? cardDetails, String localId, OfflineStatus status, DateTime? uploadedAt
+});
+
+
+@override $MoneyCopyWith<$Res> get amountMoney;@override $MoneyCopyWith<$Res>? get appFeeMoney;@override $MoneyCopyWith<$Res>? get tipMoney;@override $MoneyCopyWith<$Res> get totalMoney;@override $OfflineCardPaymentDetailsCopyWith<$Res>? get cardDetails;
+
+}
+/// @nodoc
+class __$OfflinePaymentCopyWithImpl<$Res>
+    implements _$OfflinePaymentCopyWith<$Res> {
+  __$OfflinePaymentCopyWithImpl(this._self, this._then);
+
+  final _OfflinePayment _self;
+  final $Res Function(_OfflinePayment) _then;
+
+/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? amountMoney = null,Object? appFeeMoney = freezed,Object? createdAt = null,Object? id = freezed,Object? locationId = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? tipMoney = freezed,Object? sourceType = null,Object? totalMoney = null,Object? updatedAt = null,Object? cardDetails = freezed,Object? localId = null,Object? status = null,Object? uploadedAt = freezed,}) {
+  return _then(_OfflinePayment(
+amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
+as Money,appFeeMoney: freezed == appFeeMoney ? _self.appFeeMoney : appFeeMoney // ignore: cast_nullable_to_non_nullable
+as Money?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,locationId: freezed == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
+as String?,orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
+as String?,referenceId: freezed == referenceId ? _self.referenceId : referenceId // ignore: cast_nullable_to_non_nullable
+as String?,tipMoney: freezed == tipMoney ? _self.tipMoney : tipMoney // ignore: cast_nullable_to_non_nullable
+as Money?,sourceType: null == sourceType ? _self.sourceType : sourceType // ignore: cast_nullable_to_non_nullable
+as SourceType,totalMoney: null == totalMoney ? _self.totalMoney : totalMoney // ignore: cast_nullable_to_non_nullable
+as Money,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,cardDetails: freezed == cardDetails ? _self.cardDetails : cardDetails // ignore: cast_nullable_to_non_nullable
+as OfflineCardPaymentDetails?,localId: null == localId ? _self.localId : localId // ignore: cast_nullable_to_non_nullable
+as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as OfflineStatus,uploadedAt: freezed == uploadedAt ? _self.uploadedAt : uploadedAt // ignore: cast_nullable_to_non_nullable
+as DateTime?,
+  ));
+}
+
+/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get amountMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.amountMoney, (value) {
+    return _then(_self.copyWith(amountMoney: value));
+  });
+}/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get appFeeMoney {
+    if (_self.appFeeMoney == null) {
+    return null;
+  }
+
+  return $MoneyCopyWith<$Res>(_self.appFeeMoney!, (value) {
+    return _then(_self.copyWith(appFeeMoney: value));
+  });
+}/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get tipMoney {
+    if (_self.tipMoney == null) {
+    return null;
+  }
+
+  return $MoneyCopyWith<$Res>(_self.tipMoney!, (value) {
+    return _then(_self.copyWith(tipMoney: value));
+  });
+}/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res> get totalMoney {
+  
+  return $MoneyCopyWith<$Res>(_self.totalMoney, (value) {
+    return _then(_self.copyWith(totalMoney: value));
+  });
+}/// Create a copy of OfflinePayment
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$OfflineCardPaymentDetailsCopyWith<$Res>? get cardDetails {
+    if (_self.cardDetails == null) {
+    return null;
+  }
+
+  return $OfflineCardPaymentDetailsCopyWith<$Res>(_self.cardDetails!, (value) {
+    return _then(_self.copyWith(cardDetails: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$OfflineCardPaymentDetails implements DiagnosticableTreeMixin {
+
+ String? get applicationIdentifier; String? get applicationName; OfflineCard? get card; EntryMethod get entryMethod;
+/// Create a copy of OfflineCardPaymentDetails
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OfflineCardPaymentDetailsCopyWith<OfflineCardPaymentDetails> get copyWith => _$OfflineCardPaymentDetailsCopyWithImpl<OfflineCardPaymentDetails>(this as OfflineCardPaymentDetails, _$identity);
 
   /// Serializes this OfflineCardPaymentDetails to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of OfflineCardPaymentDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OfflineCardPaymentDetailsCopyWith<OfflineCardPaymentDetails> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OfflineCardPaymentDetails'))
+    ..add(DiagnosticsProperty('applicationIdentifier', applicationIdentifier))..add(DiagnosticsProperty('applicationName', applicationName))..add(DiagnosticsProperty('card', card))..add(DiagnosticsProperty('entryMethod', entryMethod));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OfflineCardPaymentDetails&&(identical(other.applicationIdentifier, applicationIdentifier) || other.applicationIdentifier == applicationIdentifier)&&(identical(other.applicationName, applicationName) || other.applicationName == applicationName)&&(identical(other.card, card) || other.card == card)&&(identical(other.entryMethod, entryMethod) || other.entryMethod == entryMethod));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,applicationIdentifier,applicationName,card,entryMethod);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OfflineCardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, card: $card, entryMethod: $entryMethod)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $OfflineCardPaymentDetailsCopyWith<$Res> {
-  factory $OfflineCardPaymentDetailsCopyWith(OfflineCardPaymentDetails value,
-          $Res Function(OfflineCardPaymentDetails) then) =
-      _$OfflineCardPaymentDetailsCopyWithImpl<$Res, OfflineCardPaymentDetails>;
-  @useResult
-  $Res call(
-      {String? applicationIdentifier,
-      String? applicationName,
-      OfflineCard? card,
-      EntryMethod entryMethod});
+abstract mixin class $OfflineCardPaymentDetailsCopyWith<$Res>  {
+  factory $OfflineCardPaymentDetailsCopyWith(OfflineCardPaymentDetails value, $Res Function(OfflineCardPaymentDetails) _then) = _$OfflineCardPaymentDetailsCopyWithImpl;
+@useResult
+$Res call({
+ String? applicationIdentifier, String? applicationName, OfflineCard? card, EntryMethod entryMethod
+});
 
-  $OfflineCardCopyWith<$Res>? get card;
+
+$OfflineCardCopyWith<$Res>? get card;
+
 }
-
 /// @nodoc
-class _$OfflineCardPaymentDetailsCopyWithImpl<$Res,
-        $Val extends OfflineCardPaymentDetails>
+class _$OfflineCardPaymentDetailsCopyWithImpl<$Res>
     implements $OfflineCardPaymentDetailsCopyWith<$Res> {
-  _$OfflineCardPaymentDetailsCopyWithImpl(this._value, this._then);
+  _$OfflineCardPaymentDetailsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final OfflineCardPaymentDetails _self;
+  final $Res Function(OfflineCardPaymentDetails) _then;
 
-  /// Create a copy of OfflineCardPaymentDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? applicationIdentifier = freezed,
-    Object? applicationName = freezed,
-    Object? card = freezed,
-    Object? entryMethod = null,
-  }) {
-    return _then(_value.copyWith(
-      applicationIdentifier: freezed == applicationIdentifier
-          ? _value.applicationIdentifier
-          : applicationIdentifier // ignore: cast_nullable_to_non_nullable
-              as String?,
-      applicationName: freezed == applicationName
-          ? _value.applicationName
-          : applicationName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      card: freezed == card
-          ? _value.card
-          : card // ignore: cast_nullable_to_non_nullable
-              as OfflineCard?,
-      entryMethod: null == entryMethod
-          ? _value.entryMethod
-          : entryMethod // ignore: cast_nullable_to_non_nullable
-              as EntryMethod,
-    ) as $Val);
+/// Create a copy of OfflineCardPaymentDetails
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? applicationIdentifier = freezed,Object? applicationName = freezed,Object? card = freezed,Object? entryMethod = null,}) {
+  return _then(_self.copyWith(
+applicationIdentifier: freezed == applicationIdentifier ? _self.applicationIdentifier : applicationIdentifier // ignore: cast_nullable_to_non_nullable
+as String?,applicationName: freezed == applicationName ? _self.applicationName : applicationName // ignore: cast_nullable_to_non_nullable
+as String?,card: freezed == card ? _self.card : card // ignore: cast_nullable_to_non_nullable
+as OfflineCard?,entryMethod: null == entryMethod ? _self.entryMethod : entryMethod // ignore: cast_nullable_to_non_nullable
+as EntryMethod,
+  ));
+}
+/// Create a copy of OfflineCardPaymentDetails
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$OfflineCardCopyWith<$Res>? get card {
+    if (_self.card == null) {
+    return null;
   }
 
-  /// Create a copy of OfflineCardPaymentDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OfflineCardCopyWith<$Res>? get card {
-    if (_value.card == null) {
-      return null;
-    }
-
-    return $OfflineCardCopyWith<$Res>(_value.card!, (value) {
-      return _then(_value.copyWith(card: value) as $Val);
-    });
-  }
+  return $OfflineCardCopyWith<$Res>(_self.card!, (value) {
+    return _then(_self.copyWith(card: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$OfflineCardPaymentDetailsImplCopyWith<$Res>
-    implements $OfflineCardPaymentDetailsCopyWith<$Res> {
-  factory _$$OfflineCardPaymentDetailsImplCopyWith(
-          _$OfflineCardPaymentDetailsImpl value,
-          $Res Function(_$OfflineCardPaymentDetailsImpl) then) =
-      __$$OfflineCardPaymentDetailsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? applicationIdentifier,
-      String? applicationName,
-      OfflineCard? card,
-      EntryMethod entryMethod});
 
-  @override
-  $OfflineCardCopyWith<$Res>? get card;
+/// Adds pattern-matching-related methods to [OfflineCardPaymentDetails].
+extension OfflineCardPaymentDetailsPatterns on OfflineCardPaymentDetails {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _OfflineCardPaymentDetails value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _OfflineCardPaymentDetails() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _OfflineCardPaymentDetails value)  $default,){
+final _that = this;
+switch (_that) {
+case _OfflineCardPaymentDetails():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _OfflineCardPaymentDetails value)?  $default,){
+final _that = this;
+switch (_that) {
+case _OfflineCardPaymentDetails() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? applicationIdentifier,  String? applicationName,  OfflineCard? card,  EntryMethod entryMethod)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _OfflineCardPaymentDetails() when $default != null:
+return $default(_that.applicationIdentifier,_that.applicationName,_that.card,_that.entryMethod);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? applicationIdentifier,  String? applicationName,  OfflineCard? card,  EntryMethod entryMethod)  $default,) {final _that = this;
+switch (_that) {
+case _OfflineCardPaymentDetails():
+return $default(_that.applicationIdentifier,_that.applicationName,_that.card,_that.entryMethod);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? applicationIdentifier,  String? applicationName,  OfflineCard? card,  EntryMethod entryMethod)?  $default,) {final _that = this;
+switch (_that) {
+case _OfflineCardPaymentDetails() when $default != null:
+return $default(_that.applicationIdentifier,_that.applicationName,_that.card,_that.entryMethod);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$OfflineCardPaymentDetailsImplCopyWithImpl<$Res>
-    extends _$OfflineCardPaymentDetailsCopyWithImpl<$Res,
-        _$OfflineCardPaymentDetailsImpl>
-    implements _$$OfflineCardPaymentDetailsImplCopyWith<$Res> {
-  __$$OfflineCardPaymentDetailsImplCopyWithImpl(
-      _$OfflineCardPaymentDetailsImpl _value,
-      $Res Function(_$OfflineCardPaymentDetailsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of OfflineCardPaymentDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? applicationIdentifier = freezed,
-    Object? applicationName = freezed,
-    Object? card = freezed,
-    Object? entryMethod = null,
-  }) {
-    return _then(_$OfflineCardPaymentDetailsImpl(
-      applicationIdentifier: freezed == applicationIdentifier
-          ? _value.applicationIdentifier
-          : applicationIdentifier // ignore: cast_nullable_to_non_nullable
-              as String?,
-      applicationName: freezed == applicationName
-          ? _value.applicationName
-          : applicationName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      card: freezed == card
-          ? _value.card
-          : card // ignore: cast_nullable_to_non_nullable
-              as OfflineCard?,
-      entryMethod: null == entryMethod
-          ? _value.entryMethod
-          : entryMethod // ignore: cast_nullable_to_non_nullable
-              as EntryMethod,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$OfflineCardPaymentDetailsImpl
-    with DiagnosticableTreeMixin
-    implements _OfflineCardPaymentDetails {
-  const _$OfflineCardPaymentDetailsImpl(
-      {this.applicationIdentifier,
-      this.applicationName,
-      this.card,
-      required this.entryMethod});
 
-  factory _$OfflineCardPaymentDetailsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OfflineCardPaymentDetailsImplFromJson(json);
+class _OfflineCardPaymentDetails with DiagnosticableTreeMixin implements OfflineCardPaymentDetails {
+  const _OfflineCardPaymentDetails({this.applicationIdentifier, this.applicationName, this.card, required this.entryMethod});
+  factory _OfflineCardPaymentDetails.fromJson(Map<String, dynamic> json) => _$OfflineCardPaymentDetailsFromJson(json);
 
-  @override
-  final String? applicationIdentifier;
-  @override
-  final String? applicationName;
-  @override
-  final OfflineCard? card;
-  @override
-  final EntryMethod entryMethod;
+@override final  String? applicationIdentifier;
+@override final  String? applicationName;
+@override final  OfflineCard? card;
+@override final  EntryMethod entryMethod;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OfflineCardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, card: $card, entryMethod: $entryMethod)';
-  }
+/// Create a copy of OfflineCardPaymentDetails
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OfflineCardPaymentDetailsCopyWith<_OfflineCardPaymentDetails> get copyWith => __$OfflineCardPaymentDetailsCopyWithImpl<_OfflineCardPaymentDetails>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OfflineCardPaymentDetails'))
-      ..add(DiagnosticsProperty('applicationIdentifier', applicationIdentifier))
-      ..add(DiagnosticsProperty('applicationName', applicationName))
-      ..add(DiagnosticsProperty('card', card))
-      ..add(DiagnosticsProperty('entryMethod', entryMethod));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OfflineCardPaymentDetailsImpl &&
-            (identical(other.applicationIdentifier, applicationIdentifier) ||
-                other.applicationIdentifier == applicationIdentifier) &&
-            (identical(other.applicationName, applicationName) ||
-                other.applicationName == applicationName) &&
-            (identical(other.card, card) || other.card == card) &&
-            (identical(other.entryMethod, entryMethod) ||
-                other.entryMethod == entryMethod));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, applicationIdentifier, applicationName, card, entryMethod);
-
-  /// Create a copy of OfflineCardPaymentDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OfflineCardPaymentDetailsImplCopyWith<_$OfflineCardPaymentDetailsImpl>
-      get copyWith => __$$OfflineCardPaymentDetailsImplCopyWithImpl<
-          _$OfflineCardPaymentDetailsImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OfflineCardPaymentDetailsImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$OfflineCardPaymentDetailsToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'OfflineCardPaymentDetails'))
+    ..add(DiagnosticsProperty('applicationIdentifier', applicationIdentifier))..add(DiagnosticsProperty('applicationName', applicationName))..add(DiagnosticsProperty('card', card))..add(DiagnosticsProperty('entryMethod', entryMethod));
 }
 
-abstract class _OfflineCardPaymentDetails implements OfflineCardPaymentDetails {
-  const factory _OfflineCardPaymentDetails(
-          {final String? applicationIdentifier,
-          final String? applicationName,
-          final OfflineCard? card,
-          required final EntryMethod entryMethod}) =
-      _$OfflineCardPaymentDetailsImpl;
-
-  factory _OfflineCardPaymentDetails.fromJson(Map<String, dynamic> json) =
-      _$OfflineCardPaymentDetailsImpl.fromJson;
-
-  @override
-  String? get applicationIdentifier;
-  @override
-  String? get applicationName;
-  @override
-  OfflineCard? get card;
-  @override
-  EntryMethod get entryMethod;
-
-  /// Create a copy of OfflineCardPaymentDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OfflineCardPaymentDetailsImplCopyWith<_$OfflineCardPaymentDetailsImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OfflineCardPaymentDetails&&(identical(other.applicationIdentifier, applicationIdentifier) || other.applicationIdentifier == applicationIdentifier)&&(identical(other.applicationName, applicationName) || other.applicationName == applicationName)&&(identical(other.card, card) || other.card == card)&&(identical(other.entryMethod, entryMethod) || other.entryMethod == entryMethod));
 }
 
-ReaderChangedEvent _$ReaderChangedEventFromJson(Map<String, dynamic> json) {
-  return _ReaderChangedEvent.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,applicationIdentifier,applicationName,card,entryMethod);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'OfflineCardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, card: $card, entryMethod: $entryMethod)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$ReaderChangedEvent {
-  ReaderInfo get reader => throw _privateConstructorUsedError;
-  ReaderChange get change => throw _privateConstructorUsedError;
+abstract mixin class _$OfflineCardPaymentDetailsCopyWith<$Res> implements $OfflineCardPaymentDetailsCopyWith<$Res> {
+  factory _$OfflineCardPaymentDetailsCopyWith(_OfflineCardPaymentDetails value, $Res Function(_OfflineCardPaymentDetails) _then) = __$OfflineCardPaymentDetailsCopyWithImpl;
+@override @useResult
+$Res call({
+ String? applicationIdentifier, String? applicationName, OfflineCard? card, EntryMethod entryMethod
+});
+
+
+@override $OfflineCardCopyWith<$Res>? get card;
+
+}
+/// @nodoc
+class __$OfflineCardPaymentDetailsCopyWithImpl<$Res>
+    implements _$OfflineCardPaymentDetailsCopyWith<$Res> {
+  __$OfflineCardPaymentDetailsCopyWithImpl(this._self, this._then);
+
+  final _OfflineCardPaymentDetails _self;
+  final $Res Function(_OfflineCardPaymentDetails) _then;
+
+/// Create a copy of OfflineCardPaymentDetails
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? applicationIdentifier = freezed,Object? applicationName = freezed,Object? card = freezed,Object? entryMethod = null,}) {
+  return _then(_OfflineCardPaymentDetails(
+applicationIdentifier: freezed == applicationIdentifier ? _self.applicationIdentifier : applicationIdentifier // ignore: cast_nullable_to_non_nullable
+as String?,applicationName: freezed == applicationName ? _self.applicationName : applicationName // ignore: cast_nullable_to_non_nullable
+as String?,card: freezed == card ? _self.card : card // ignore: cast_nullable_to_non_nullable
+as OfflineCard?,entryMethod: null == entryMethod ? _self.entryMethod : entryMethod // ignore: cast_nullable_to_non_nullable
+as EntryMethod,
+  ));
+}
+
+/// Create a copy of OfflineCardPaymentDetails
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$OfflineCardCopyWith<$Res>? get card {
+    if (_self.card == null) {
+    return null;
+  }
+
+  return $OfflineCardCopyWith<$Res>(_self.card!, (value) {
+    return _then(_self.copyWith(card: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$ReaderChangedEvent implements DiagnosticableTreeMixin {
+
+ ReaderInfo get reader; ReaderChange get change;
+/// Create a copy of ReaderChangedEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ReaderChangedEventCopyWith<ReaderChangedEvent> get copyWith => _$ReaderChangedEventCopyWithImpl<ReaderChangedEvent>(this as ReaderChangedEvent, _$identity);
 
   /// Serializes this ReaderChangedEvent to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ReaderChangedEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ReaderChangedEventCopyWith<ReaderChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ReaderChangedEvent'))
+    ..add(DiagnosticsProperty('reader', reader))..add(DiagnosticsProperty('change', change));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderChangedEvent&&(identical(other.reader, reader) || other.reader == reader)&&(identical(other.change, change) || other.change == change));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,reader,change);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ReaderChangedEvent(reader: $reader, change: $change)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ReaderChangedEventCopyWith<$Res> {
-  factory $ReaderChangedEventCopyWith(
-          ReaderChangedEvent value, $Res Function(ReaderChangedEvent) then) =
-      _$ReaderChangedEventCopyWithImpl<$Res, ReaderChangedEvent>;
-  @useResult
-  $Res call({ReaderInfo reader, ReaderChange change});
+abstract mixin class $ReaderChangedEventCopyWith<$Res>  {
+  factory $ReaderChangedEventCopyWith(ReaderChangedEvent value, $Res Function(ReaderChangedEvent) _then) = _$ReaderChangedEventCopyWithImpl;
+@useResult
+$Res call({
+ ReaderInfo reader, ReaderChange change
+});
 
-  $ReaderInfoCopyWith<$Res> get reader;
+
+$ReaderInfoCopyWith<$Res> get reader;
+
 }
-
 /// @nodoc
-class _$ReaderChangedEventCopyWithImpl<$Res, $Val extends ReaderChangedEvent>
+class _$ReaderChangedEventCopyWithImpl<$Res>
     implements $ReaderChangedEventCopyWith<$Res> {
-  _$ReaderChangedEventCopyWithImpl(this._value, this._then);
+  _$ReaderChangedEventCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ReaderChangedEvent _self;
+  final $Res Function(ReaderChangedEvent) _then;
 
-  /// Create a copy of ReaderChangedEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? reader = null,
-    Object? change = null,
-  }) {
-    return _then(_value.copyWith(
-      reader: null == reader
-          ? _value.reader
-          : reader // ignore: cast_nullable_to_non_nullable
-              as ReaderInfo,
-      change: null == change
-          ? _value.change
-          : change // ignore: cast_nullable_to_non_nullable
-              as ReaderChange,
-    ) as $Val);
-  }
-
-  /// Create a copy of ReaderChangedEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ReaderInfoCopyWith<$Res> get reader {
-    return $ReaderInfoCopyWith<$Res>(_value.reader, (value) {
-      return _then(_value.copyWith(reader: value) as $Val);
-    });
-  }
+/// Create a copy of ReaderChangedEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? reader = null,Object? change = null,}) {
+  return _then(_self.copyWith(
+reader: null == reader ? _self.reader : reader // ignore: cast_nullable_to_non_nullable
+as ReaderInfo,change: null == change ? _self.change : change // ignore: cast_nullable_to_non_nullable
+as ReaderChange,
+  ));
+}
+/// Create a copy of ReaderChangedEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ReaderInfoCopyWith<$Res> get reader {
+  
+  return $ReaderInfoCopyWith<$Res>(_self.reader, (value) {
+    return _then(_self.copyWith(reader: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$ReaderChangedEventImplCopyWith<$Res>
-    implements $ReaderChangedEventCopyWith<$Res> {
-  factory _$$ReaderChangedEventImplCopyWith(_$ReaderChangedEventImpl value,
-          $Res Function(_$ReaderChangedEventImpl) then) =
-      __$$ReaderChangedEventImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({ReaderInfo reader, ReaderChange change});
 
-  @override
-  $ReaderInfoCopyWith<$Res> get reader;
+/// Adds pattern-matching-related methods to [ReaderChangedEvent].
+extension ReaderChangedEventPatterns on ReaderChangedEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ReaderChangedEvent value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ReaderChangedEvent() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ReaderChangedEvent value)  $default,){
+final _that = this;
+switch (_that) {
+case _ReaderChangedEvent():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ReaderChangedEvent value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ReaderChangedEvent() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ReaderInfo reader,  ReaderChange change)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ReaderChangedEvent() when $default != null:
+return $default(_that.reader,_that.change);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ReaderInfo reader,  ReaderChange change)  $default,) {final _that = this;
+switch (_that) {
+case _ReaderChangedEvent():
+return $default(_that.reader,_that.change);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ReaderInfo reader,  ReaderChange change)?  $default,) {final _that = this;
+switch (_that) {
+case _ReaderChangedEvent() when $default != null:
+return $default(_that.reader,_that.change);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$ReaderChangedEventImplCopyWithImpl<$Res>
-    extends _$ReaderChangedEventCopyWithImpl<$Res, _$ReaderChangedEventImpl>
-    implements _$$ReaderChangedEventImplCopyWith<$Res> {
-  __$$ReaderChangedEventImplCopyWithImpl(_$ReaderChangedEventImpl _value,
-      $Res Function(_$ReaderChangedEventImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ReaderChangedEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? reader = null,
-    Object? change = null,
-  }) {
-    return _then(_$ReaderChangedEventImpl(
-      reader: null == reader
-          ? _value.reader
-          : reader // ignore: cast_nullable_to_non_nullable
-              as ReaderInfo,
-      change: null == change
-          ? _value.change
-          : change // ignore: cast_nullable_to_non_nullable
-              as ReaderChange,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ReaderChangedEventImpl
-    with DiagnosticableTreeMixin
-    implements _ReaderChangedEvent {
-  const _$ReaderChangedEventImpl({required this.reader, required this.change});
 
-  factory _$ReaderChangedEventImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReaderChangedEventImplFromJson(json);
+class _ReaderChangedEvent with DiagnosticableTreeMixin implements ReaderChangedEvent {
+  const _ReaderChangedEvent({required this.reader, required this.change});
+  factory _ReaderChangedEvent.fromJson(Map<String, dynamic> json) => _$ReaderChangedEventFromJson(json);
 
-  @override
-  final ReaderInfo reader;
-  @override
-  final ReaderChange change;
+@override final  ReaderInfo reader;
+@override final  ReaderChange change;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ReaderChangedEvent(reader: $reader, change: $change)';
-  }
+/// Create a copy of ReaderChangedEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ReaderChangedEventCopyWith<_ReaderChangedEvent> get copyWith => __$ReaderChangedEventCopyWithImpl<_ReaderChangedEvent>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ReaderChangedEvent'))
-      ..add(DiagnosticsProperty('reader', reader))
-      ..add(DiagnosticsProperty('change', change));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ReaderChangedEventImpl &&
-            (identical(other.reader, reader) || other.reader == reader) &&
-            (identical(other.change, change) || other.change == change));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, reader, change);
-
-  /// Create a copy of ReaderChangedEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ReaderChangedEventImplCopyWith<_$ReaderChangedEventImpl> get copyWith =>
-      __$$ReaderChangedEventImplCopyWithImpl<_$ReaderChangedEventImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ReaderChangedEventImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ReaderChangedEventToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ReaderChangedEvent'))
+    ..add(DiagnosticsProperty('reader', reader))..add(DiagnosticsProperty('change', change));
 }
 
-abstract class _ReaderChangedEvent implements ReaderChangedEvent {
-  const factory _ReaderChangedEvent(
-      {required final ReaderInfo reader,
-      required final ReaderChange change}) = _$ReaderChangedEventImpl;
-
-  factory _ReaderChangedEvent.fromJson(Map<String, dynamic> json) =
-      _$ReaderChangedEventImpl.fromJson;
-
-  @override
-  ReaderInfo get reader;
-  @override
-  ReaderChange get change;
-
-  /// Create a copy of ReaderChangedEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ReaderChangedEventImplCopyWith<_$ReaderChangedEventImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderChangedEvent&&(identical(other.reader, reader) || other.reader == reader)&&(identical(other.change, change) || other.change == change));
 }
 
-TimeOfDay _$TimeOfDayFromJson(Map<String, dynamic> json) {
-  return _TimeOfDay.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,reader,change);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ReaderChangedEvent(reader: $reader, change: $change)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$TimeOfDay {
-  int get hour => throw _privateConstructorUsedError;
-  int get minute => throw _privateConstructorUsedError;
+abstract mixin class _$ReaderChangedEventCopyWith<$Res> implements $ReaderChangedEventCopyWith<$Res> {
+  factory _$ReaderChangedEventCopyWith(_ReaderChangedEvent value, $Res Function(_ReaderChangedEvent) _then) = __$ReaderChangedEventCopyWithImpl;
+@override @useResult
+$Res call({
+ ReaderInfo reader, ReaderChange change
+});
+
+
+@override $ReaderInfoCopyWith<$Res> get reader;
+
+}
+/// @nodoc
+class __$ReaderChangedEventCopyWithImpl<$Res>
+    implements _$ReaderChangedEventCopyWith<$Res> {
+  __$ReaderChangedEventCopyWithImpl(this._self, this._then);
+
+  final _ReaderChangedEvent _self;
+  final $Res Function(_ReaderChangedEvent) _then;
+
+/// Create a copy of ReaderChangedEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? reader = null,Object? change = null,}) {
+  return _then(_ReaderChangedEvent(
+reader: null == reader ? _self.reader : reader // ignore: cast_nullable_to_non_nullable
+as ReaderInfo,change: null == change ? _self.change : change // ignore: cast_nullable_to_non_nullable
+as ReaderChange,
+  ));
+}
+
+/// Create a copy of ReaderChangedEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ReaderInfoCopyWith<$Res> get reader {
+  
+  return $ReaderInfoCopyWith<$Res>(_self.reader, (value) {
+    return _then(_self.copyWith(reader: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$TimeOfDay implements DiagnosticableTreeMixin {
+
+ int get hour; int get minute;
+/// Create a copy of TimeOfDay
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TimeOfDayCopyWith<TimeOfDay> get copyWith => _$TimeOfDayCopyWithImpl<TimeOfDay>(this as TimeOfDay, _$identity);
 
   /// Serializes this TimeOfDay to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of TimeOfDay
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $TimeOfDayCopyWith<TimeOfDay> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'TimeOfDay'))
+    ..add(DiagnosticsProperty('hour', hour))..add(DiagnosticsProperty('minute', minute));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TimeOfDay&&(identical(other.hour, hour) || other.hour == hour)&&(identical(other.minute, minute) || other.minute == minute));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,hour,minute);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'TimeOfDay(hour: $hour, minute: $minute)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $TimeOfDayCopyWith<$Res> {
-  factory $TimeOfDayCopyWith(TimeOfDay value, $Res Function(TimeOfDay) then) =
-      _$TimeOfDayCopyWithImpl<$Res, TimeOfDay>;
-  @useResult
-  $Res call({int hour, int minute});
-}
+abstract mixin class $TimeOfDayCopyWith<$Res>  {
+  factory $TimeOfDayCopyWith(TimeOfDay value, $Res Function(TimeOfDay) _then) = _$TimeOfDayCopyWithImpl;
+@useResult
+$Res call({
+ int hour, int minute
+});
 
+
+
+
+}
 /// @nodoc
-class _$TimeOfDayCopyWithImpl<$Res, $Val extends TimeOfDay>
+class _$TimeOfDayCopyWithImpl<$Res>
     implements $TimeOfDayCopyWith<$Res> {
-  _$TimeOfDayCopyWithImpl(this._value, this._then);
+  _$TimeOfDayCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final TimeOfDay _self;
+  final $Res Function(TimeOfDay) _then;
 
-  /// Create a copy of TimeOfDay
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? hour = null,
-    Object? minute = null,
-  }) {
-    return _then(_value.copyWith(
-      hour: null == hour
-          ? _value.hour
-          : hour // ignore: cast_nullable_to_non_nullable
-              as int,
-      minute: null == minute
-          ? _value.minute
-          : minute // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
+/// Create a copy of TimeOfDay
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? hour = null,Object? minute = null,}) {
+  return _then(_self.copyWith(
+hour: null == hour ? _self.hour : hour // ignore: cast_nullable_to_non_nullable
+as int,minute: null == minute ? _self.minute : minute // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-abstract class _$$TimeOfDayImplCopyWith<$Res>
-    implements $TimeOfDayCopyWith<$Res> {
-  factory _$$TimeOfDayImplCopyWith(
-          _$TimeOfDayImpl value, $Res Function(_$TimeOfDayImpl) then) =
-      __$$TimeOfDayImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int hour, int minute});
 }
 
-/// @nodoc
-class __$$TimeOfDayImplCopyWithImpl<$Res>
-    extends _$TimeOfDayCopyWithImpl<$Res, _$TimeOfDayImpl>
-    implements _$$TimeOfDayImplCopyWith<$Res> {
-  __$$TimeOfDayImplCopyWithImpl(
-      _$TimeOfDayImpl _value, $Res Function(_$TimeOfDayImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of TimeOfDay
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? hour = null,
-    Object? minute = null,
-  }) {
-    return _then(_$TimeOfDayImpl(
-      hour: null == hour
-          ? _value.hour
-          : hour // ignore: cast_nullable_to_non_nullable
-              as int,
-      minute: null == minute
-          ? _value.minute
-          : minute // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
+/// Adds pattern-matching-related methods to [TimeOfDay].
+extension TimeOfDayPatterns on TimeOfDay {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _TimeOfDay value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _TimeOfDay() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _TimeOfDay value)  $default,){
+final _that = this;
+switch (_that) {
+case _TimeOfDay():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _TimeOfDay value)?  $default,){
+final _that = this;
+switch (_that) {
+case _TimeOfDay() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int hour,  int minute)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _TimeOfDay() when $default != null:
+return $default(_that.hour,_that.minute);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int hour,  int minute)  $default,) {final _that = this;
+switch (_that) {
+case _TimeOfDay():
+return $default(_that.hour,_that.minute);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int hour,  int minute)?  $default,) {final _that = this;
+switch (_that) {
+case _TimeOfDay() when $default != null:
+return $default(_that.hour,_that.minute);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$TimeOfDayImpl with DiagnosticableTreeMixin implements _TimeOfDay {
-  const _$TimeOfDayImpl({required this.hour, required this.minute});
 
-  factory _$TimeOfDayImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TimeOfDayImplFromJson(json);
+class _TimeOfDay with DiagnosticableTreeMixin implements TimeOfDay {
+  const _TimeOfDay({required this.hour, required this.minute});
+  factory _TimeOfDay.fromJson(Map<String, dynamic> json) => _$TimeOfDayFromJson(json);
 
-  @override
-  final int hour;
-  @override
-  final int minute;
+@override final  int hour;
+@override final  int minute;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TimeOfDay(hour: $hour, minute: $minute)';
-  }
+/// Create a copy of TimeOfDay
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$TimeOfDayCopyWith<_TimeOfDay> get copyWith => __$TimeOfDayCopyWithImpl<_TimeOfDay>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TimeOfDay'))
-      ..add(DiagnosticsProperty('hour', hour))
-      ..add(DiagnosticsProperty('minute', minute));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TimeOfDayImpl &&
-            (identical(other.hour, hour) || other.hour == hour) &&
-            (identical(other.minute, minute) || other.minute == minute));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, hour, minute);
-
-  /// Create a copy of TimeOfDay
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TimeOfDayImplCopyWith<_$TimeOfDayImpl> get copyWith =>
-      __$$TimeOfDayImplCopyWithImpl<_$TimeOfDayImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TimeOfDayImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$TimeOfDayToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'TimeOfDay'))
+    ..add(DiagnosticsProperty('hour', hour))..add(DiagnosticsProperty('minute', minute));
 }
 
-abstract class _TimeOfDay implements TimeOfDay {
-  const factory _TimeOfDay(
-      {required final int hour, required final int minute}) = _$TimeOfDayImpl;
-
-  factory _TimeOfDay.fromJson(Map<String, dynamic> json) =
-      _$TimeOfDayImpl.fromJson;
-
-  @override
-  int get hour;
-  @override
-  int get minute;
-
-  /// Create a copy of TimeOfDay
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TimeOfDayImplCopyWith<_$TimeOfDayImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TimeOfDay&&(identical(other.hour, hour) || other.hour == hour)&&(identical(other.minute, minute) || other.minute == minute));
 }
 
-ReaderSettings _$ReaderSettingsFromJson(Map<String, dynamic> json) {
-  return _ReaderSettings.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,hour,minute);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'TimeOfDay(hour: $hour, minute: $minute)';
+}
+
+
 }
 
 /// @nodoc
-mixin _$ReaderSettings {
-  bool get isReducedChargingModeEnabled => throw _privateConstructorUsedError;
-  TimeOfDay? get preferredFirmwareUpdateTime =>
-      throw _privateConstructorUsedError;
+abstract mixin class _$TimeOfDayCopyWith<$Res> implements $TimeOfDayCopyWith<$Res> {
+  factory _$TimeOfDayCopyWith(_TimeOfDay value, $Res Function(_TimeOfDay) _then) = __$TimeOfDayCopyWithImpl;
+@override @useResult
+$Res call({
+ int hour, int minute
+});
+
+
+
+
+}
+/// @nodoc
+class __$TimeOfDayCopyWithImpl<$Res>
+    implements _$TimeOfDayCopyWith<$Res> {
+  __$TimeOfDayCopyWithImpl(this._self, this._then);
+
+  final _TimeOfDay _self;
+  final $Res Function(_TimeOfDay) _then;
+
+/// Create a copy of TimeOfDay
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? hour = null,Object? minute = null,}) {
+  return _then(_TimeOfDay(
+hour: null == hour ? _self.hour : hour // ignore: cast_nullable_to_non_nullable
+as int,minute: null == minute ? _self.minute : minute // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$ReaderSettings implements DiagnosticableTreeMixin {
+
+ bool get isReducedChargingModeEnabled; TimeOfDay? get preferredFirmwareUpdateTime;
+/// Create a copy of ReaderSettings
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ReaderSettingsCopyWith<ReaderSettings> get copyWith => _$ReaderSettingsCopyWithImpl<ReaderSettings>(this as ReaderSettings, _$identity);
 
   /// Serializes this ReaderSettings to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ReaderSettings
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ReaderSettingsCopyWith<ReaderSettings> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ReaderSettings'))
+    ..add(DiagnosticsProperty('isReducedChargingModeEnabled', isReducedChargingModeEnabled))..add(DiagnosticsProperty('preferredFirmwareUpdateTime', preferredFirmwareUpdateTime));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderSettings&&(identical(other.isReducedChargingModeEnabled, isReducedChargingModeEnabled) || other.isReducedChargingModeEnabled == isReducedChargingModeEnabled)&&(identical(other.preferredFirmwareUpdateTime, preferredFirmwareUpdateTime) || other.preferredFirmwareUpdateTime == preferredFirmwareUpdateTime));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,isReducedChargingModeEnabled,preferredFirmwareUpdateTime);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ReaderSettings(isReducedChargingModeEnabled: $isReducedChargingModeEnabled, preferredFirmwareUpdateTime: $preferredFirmwareUpdateTime)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ReaderSettingsCopyWith<$Res> {
-  factory $ReaderSettingsCopyWith(
-          ReaderSettings value, $Res Function(ReaderSettings) then) =
-      _$ReaderSettingsCopyWithImpl<$Res, ReaderSettings>;
-  @useResult
-  $Res call(
-      {bool isReducedChargingModeEnabled,
-      TimeOfDay? preferredFirmwareUpdateTime});
+abstract mixin class $ReaderSettingsCopyWith<$Res>  {
+  factory $ReaderSettingsCopyWith(ReaderSettings value, $Res Function(ReaderSettings) _then) = _$ReaderSettingsCopyWithImpl;
+@useResult
+$Res call({
+ bool isReducedChargingModeEnabled, TimeOfDay? preferredFirmwareUpdateTime
+});
 
-  $TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime;
+
+$TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime;
+
 }
-
 /// @nodoc
-class _$ReaderSettingsCopyWithImpl<$Res, $Val extends ReaderSettings>
+class _$ReaderSettingsCopyWithImpl<$Res>
     implements $ReaderSettingsCopyWith<$Res> {
-  _$ReaderSettingsCopyWithImpl(this._value, this._then);
+  _$ReaderSettingsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ReaderSettings _self;
+  final $Res Function(ReaderSettings) _then;
 
-  /// Create a copy of ReaderSettings
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isReducedChargingModeEnabled = null,
-    Object? preferredFirmwareUpdateTime = freezed,
-  }) {
-    return _then(_value.copyWith(
-      isReducedChargingModeEnabled: null == isReducedChargingModeEnabled
-          ? _value.isReducedChargingModeEnabled
-          : isReducedChargingModeEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      preferredFirmwareUpdateTime: freezed == preferredFirmwareUpdateTime
-          ? _value.preferredFirmwareUpdateTime
-          : preferredFirmwareUpdateTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay?,
-    ) as $Val);
+/// Create a copy of ReaderSettings
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? isReducedChargingModeEnabled = null,Object? preferredFirmwareUpdateTime = freezed,}) {
+  return _then(_self.copyWith(
+isReducedChargingModeEnabled: null == isReducedChargingModeEnabled ? _self.isReducedChargingModeEnabled : isReducedChargingModeEnabled // ignore: cast_nullable_to_non_nullable
+as bool,preferredFirmwareUpdateTime: freezed == preferredFirmwareUpdateTime ? _self.preferredFirmwareUpdateTime : preferredFirmwareUpdateTime // ignore: cast_nullable_to_non_nullable
+as TimeOfDay?,
+  ));
+}
+/// Create a copy of ReaderSettings
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime {
+    if (_self.preferredFirmwareUpdateTime == null) {
+    return null;
   }
 
-  /// Create a copy of ReaderSettings
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime {
-    if (_value.preferredFirmwareUpdateTime == null) {
-      return null;
-    }
-
-    return $TimeOfDayCopyWith<$Res>(_value.preferredFirmwareUpdateTime!,
-        (value) {
-      return _then(_value.copyWith(preferredFirmwareUpdateTime: value) as $Val);
-    });
-  }
+  return $TimeOfDayCopyWith<$Res>(_self.preferredFirmwareUpdateTime!, (value) {
+    return _then(_self.copyWith(preferredFirmwareUpdateTime: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$ReaderSettingsImplCopyWith<$Res>
-    implements $ReaderSettingsCopyWith<$Res> {
-  factory _$$ReaderSettingsImplCopyWith(_$ReaderSettingsImpl value,
-          $Res Function(_$ReaderSettingsImpl) then) =
-      __$$ReaderSettingsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {bool isReducedChargingModeEnabled,
-      TimeOfDay? preferredFirmwareUpdateTime});
 
-  @override
-  $TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime;
+/// Adds pattern-matching-related methods to [ReaderSettings].
+extension ReaderSettingsPatterns on ReaderSettings {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ReaderSettings value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ReaderSettings() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ReaderSettings value)  $default,){
+final _that = this;
+switch (_that) {
+case _ReaderSettings():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ReaderSettings value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ReaderSettings() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isReducedChargingModeEnabled,  TimeOfDay? preferredFirmwareUpdateTime)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ReaderSettings() when $default != null:
+return $default(_that.isReducedChargingModeEnabled,_that.preferredFirmwareUpdateTime);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isReducedChargingModeEnabled,  TimeOfDay? preferredFirmwareUpdateTime)  $default,) {final _that = this;
+switch (_that) {
+case _ReaderSettings():
+return $default(_that.isReducedChargingModeEnabled,_that.preferredFirmwareUpdateTime);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isReducedChargingModeEnabled,  TimeOfDay? preferredFirmwareUpdateTime)?  $default,) {final _that = this;
+switch (_that) {
+case _ReaderSettings() when $default != null:
+return $default(_that.isReducedChargingModeEnabled,_that.preferredFirmwareUpdateTime);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$ReaderSettingsImplCopyWithImpl<$Res>
-    extends _$ReaderSettingsCopyWithImpl<$Res, _$ReaderSettingsImpl>
-    implements _$$ReaderSettingsImplCopyWith<$Res> {
-  __$$ReaderSettingsImplCopyWithImpl(
-      _$ReaderSettingsImpl _value, $Res Function(_$ReaderSettingsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ReaderSettings
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isReducedChargingModeEnabled = null,
-    Object? preferredFirmwareUpdateTime = freezed,
-  }) {
-    return _then(_$ReaderSettingsImpl(
-      isReducedChargingModeEnabled: null == isReducedChargingModeEnabled
-          ? _value.isReducedChargingModeEnabled
-          : isReducedChargingModeEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      preferredFirmwareUpdateTime: freezed == preferredFirmwareUpdateTime
-          ? _value.preferredFirmwareUpdateTime
-          : preferredFirmwareUpdateTime // ignore: cast_nullable_to_non_nullable
-              as TimeOfDay?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ReaderSettingsImpl
-    with DiagnosticableTreeMixin
-    implements _ReaderSettings {
-  const _$ReaderSettingsImpl(
-      {required this.isReducedChargingModeEnabled,
-      this.preferredFirmwareUpdateTime});
 
-  factory _$ReaderSettingsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReaderSettingsImplFromJson(json);
+class _ReaderSettings with DiagnosticableTreeMixin implements ReaderSettings {
+  const _ReaderSettings({required this.isReducedChargingModeEnabled, this.preferredFirmwareUpdateTime});
+  factory _ReaderSettings.fromJson(Map<String, dynamic> json) => _$ReaderSettingsFromJson(json);
 
-  @override
-  final bool isReducedChargingModeEnabled;
-  @override
-  final TimeOfDay? preferredFirmwareUpdateTime;
+@override final  bool isReducedChargingModeEnabled;
+@override final  TimeOfDay? preferredFirmwareUpdateTime;
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ReaderSettings(isReducedChargingModeEnabled: $isReducedChargingModeEnabled, preferredFirmwareUpdateTime: $preferredFirmwareUpdateTime)';
-  }
+/// Create a copy of ReaderSettings
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ReaderSettingsCopyWith<_ReaderSettings> get copyWith => __$ReaderSettingsCopyWithImpl<_ReaderSettings>(this, _$identity);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ReaderSettings'))
-      ..add(DiagnosticsProperty(
-          'isReducedChargingModeEnabled', isReducedChargingModeEnabled))
-      ..add(DiagnosticsProperty(
-          'preferredFirmwareUpdateTime', preferredFirmwareUpdateTime));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ReaderSettingsImpl &&
-            (identical(other.isReducedChargingModeEnabled,
-                    isReducedChargingModeEnabled) ||
-                other.isReducedChargingModeEnabled ==
-                    isReducedChargingModeEnabled) &&
-            (identical(other.preferredFirmwareUpdateTime,
-                    preferredFirmwareUpdateTime) ||
-                other.preferredFirmwareUpdateTime ==
-                    preferredFirmwareUpdateTime));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, isReducedChargingModeEnabled, preferredFirmwareUpdateTime);
-
-  /// Create a copy of ReaderSettings
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ReaderSettingsImplCopyWith<_$ReaderSettingsImpl> get copyWith =>
-      __$$ReaderSettingsImplCopyWithImpl<_$ReaderSettingsImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ReaderSettingsImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$ReaderSettingsToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ReaderSettings'))
+    ..add(DiagnosticsProperty('isReducedChargingModeEnabled', isReducedChargingModeEnabled))..add(DiagnosticsProperty('preferredFirmwareUpdateTime', preferredFirmwareUpdateTime));
 }
 
-abstract class _ReaderSettings implements ReaderSettings {
-  const factory _ReaderSettings(
-      {required final bool isReducedChargingModeEnabled,
-      final TimeOfDay? preferredFirmwareUpdateTime}) = _$ReaderSettingsImpl;
-
-  factory _ReaderSettings.fromJson(Map<String, dynamic> json) =
-      _$ReaderSettingsImpl.fromJson;
-
-  @override
-  bool get isReducedChargingModeEnabled;
-  @override
-  TimeOfDay? get preferredFirmwareUpdateTime;
-
-  /// Create a copy of ReaderSettings
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ReaderSettingsImplCopyWith<_$ReaderSettingsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderSettings&&(identical(other.isReducedChargingModeEnabled, isReducedChargingModeEnabled) || other.isReducedChargingModeEnabled == isReducedChargingModeEnabled)&&(identical(other.preferredFirmwareUpdateTime, preferredFirmwareUpdateTime) || other.preferredFirmwareUpdateTime == preferredFirmwareUpdateTime));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,isReducedChargingModeEnabled,preferredFirmwareUpdateTime);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ReaderSettings(isReducedChargingModeEnabled: $isReducedChargingModeEnabled, preferredFirmwareUpdateTime: $preferredFirmwareUpdateTime)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ReaderSettingsCopyWith<$Res> implements $ReaderSettingsCopyWith<$Res> {
+  factory _$ReaderSettingsCopyWith(_ReaderSettings value, $Res Function(_ReaderSettings) _then) = __$ReaderSettingsCopyWithImpl;
+@override @useResult
+$Res call({
+ bool isReducedChargingModeEnabled, TimeOfDay? preferredFirmwareUpdateTime
+});
+
+
+@override $TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime;
+
+}
+/// @nodoc
+class __$ReaderSettingsCopyWithImpl<$Res>
+    implements _$ReaderSettingsCopyWith<$Res> {
+  __$ReaderSettingsCopyWithImpl(this._self, this._then);
+
+  final _ReaderSettings _self;
+  final $Res Function(_ReaderSettings) _then;
+
+/// Create a copy of ReaderSettings
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? isReducedChargingModeEnabled = null,Object? preferredFirmwareUpdateTime = freezed,}) {
+  return _then(_ReaderSettings(
+isReducedChargingModeEnabled: null == isReducedChargingModeEnabled ? _self.isReducedChargingModeEnabled : isReducedChargingModeEnabled // ignore: cast_nullable_to_non_nullable
+as bool,preferredFirmwareUpdateTime: freezed == preferredFirmwareUpdateTime ? _self.preferredFirmwareUpdateTime : preferredFirmwareUpdateTime // ignore: cast_nullable_to_non_nullable
+as TimeOfDay?,
+  ));
+}
+
+/// Create a copy of ReaderSettings
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime {
+    if (_self.preferredFirmwareUpdateTime == null) {
+    return null;
+  }
+
+  return $TimeOfDayCopyWith<$Res>(_self.preferredFirmwareUpdateTime!, (value) {
+    return _then(_self.copyWith(preferredFirmwareUpdateTime: value));
+  });
+}
+}
+
+// dart format on

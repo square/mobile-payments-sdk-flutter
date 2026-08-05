@@ -1,7 +1,6 @@
-group = "com.squareup.square_mobile_payments_sdk"
-version = "1.0-SNAPSHOT"
-
-val squareSdkVersion = "2.6.0"
+plugins {
+    id("com.android.library")
+}
 
 buildscript {
     val kotlinVersion = "2.2.21"
@@ -16,6 +15,11 @@ buildscript {
     }
 }
 
+group = "com.squareup.square_mobile_payments_sdk"
+version = "1.0-SNAPSHOT"
+
+val squareSdkVersion = "2.6.0"
+
 allprojects {
     repositories {
         google()
@@ -24,10 +28,6 @@ allprojects {
             url = uri("https://sdk.squareup.com/public/android")
         }
     }
-}
-
-plugins {
-    id("com.android.library")
 }
 
 android {

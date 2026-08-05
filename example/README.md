@@ -89,6 +89,8 @@ To pair a reader:
 ### Sandbox
 In a sandbox environment, you are only able to add mock readers utilizing the `MockReader` calls. `MockReader` is provided as a part of this repo and has already been added to the DonutCounter app. Please note that `MockReader` is to only be used in debug builds of your application, not in a production application.
 
+> **iOS + Swift Package Manager:** This sample links `MockReaderUI` directly in its Runner target because `MockReaderUI` is not bundled by the plugin over SPM. To enable it in your own app (and understand the Release-build caveat), see [Using MockReaderUI with Swift Package Manager](../doc/MOCK_READER_UI_SPM.md).
+
 To pair a mock reader:
 1. Once the SDK has been authorized in the sandbox, a Square-reader-shaped button should appear on the screen. This button can be placed anywhere on the screen by holding down the button and dragging it around the screen.
 2. Tapping the button should bring up a menu to add a mock magstripe or contactless & chip reader.

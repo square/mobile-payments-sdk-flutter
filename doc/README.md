@@ -60,7 +60,7 @@ android.useAndroidX=true
 android.enableJetifier=true
 ```
 
-The plugin targets Java 17 and requires Android Gradle Plugin 8.4.2 or later. The sample app is built with Android Gradle Plugin 8.12.1 and Gradle 8.14.
+The plugin targets Java 17 and requires Android Gradle Plugin 8.9.1 or later. The sample app is built with Android Gradle Plugin 8.12.1 and Gradle 8.14.
 
 You can also refer to [MPSDK Android Quickstart](https://developer.squareup.com/docs/mobile-payments-sdk/android#1-install-the-sdk-and-dependencies)'s SDK installation section.
 
@@ -195,7 +195,11 @@ try {
 Payment parameters supports a number of additional attributes, which can be seen in the [PaymentParameters definition](REFERENCE.md#paymentparameters). For error descriptions, visit the respective pages for [iOS](https://developer.squareup.com/docs/mobile-payments-sdk/ios/handling-errors), and [Android](https://developer.squareup.com/docs/mobile-payments-sdk/android/handling-errors).
 
 ## Optional: Use Mock Readers in Sandbox
-You can use mock readers to take payments in Sandbox, which allows you to test the payment flow without moving real money. To do this, make sure you're using a Sandbox Application ID, access token, and location ID, available in the Developer console (see Step 3: Square Application ID and Access Token). Once you've configured your application to start in Sandbox, you can show or hide the mock reader as follows:
+You can use mock readers to take payments in Sandbox, which allows you to test the payment flow without moving real money. To do this, make sure you're using a Sandbox Application ID, access token, and location ID, available in the Developer console (see Step 3: Square Application ID and Access Token).
+
+> **iOS + Swift Package Manager:** `MockReaderUI` is not bundled by default and must be added to your app's Runner target. See [Using MockReaderUI with Swift Package Manager](MOCK_READER_UI_SPM.md) for the setup steps and the important version/Release-build caveats.
+
+Once you've configured your application to start in Sandbox, you can show or hide the mock reader as follows:
 
 ```Dart
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';

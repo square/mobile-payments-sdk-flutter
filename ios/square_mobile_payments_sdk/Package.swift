@@ -13,15 +13,21 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "FlutterFramework", path: "../FlutterFramework"),
-        .package(url: "https://github.com/square/mobile-payments-sdk-ios", exact: "2.6.0")
+        .package(url: "https://github.com/square/mobile-payments-sdk-ios", .upToNextMinor(from: "2.6.0"))
     ],
     targets: [
         .target(
             name: "square_mobile_payments_sdk",
             dependencies: [
                 .product(name: "FlutterFramework", package: "FlutterFramework"),
-                .product(name: "SquareMobilePaymentsSDK", package: "mobile-payments-sdk-ios"),
-                .product(name: "MockReaderUI", package: "mobile-payments-sdk-ios")
+                .product(name: "SquareMobilePaymentsSDK", package: "mobile-payments-sdk-ios")
+                // NOTE: MockReaderUI is intentionally NOT declared here. SPM has no
+                // Debug-only dependencies, so declaring it links MockReaderUI.framework into
+                // release archives. Its Info.plist is packaged as CFBundlePackageType=APPL,
+                // which makes App Store upload validation reject the app. The plugin's
+                // MockReaderUI code is guarded by `#if canImport(MockReaderUI)`, so without
+                // this dependency it safely compiles to an "unavailable" response. Consumers
+                // who require mock readers should follow the steps described in doc/MOCK_READER_UI_SPM.md
             ],
             resources: [
                 // If your plugin requires a privacy manifest, for example if it uses any required

@@ -13,7 +13,7 @@ Allows developers to take in-person payments using Square hardware.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Block, Inc' => 'mpx@squareup.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'square_mobile_payments_sdk/Sources/square_mobile_payments_sdk/**/*'
+  s.source_files = 'square_mobile_payments_sdk/Sources/square_mobile_payments_sdk/**/*.swift'
   s.dependency 'Flutter'
   s.platform = :ios, '16.0'
 
