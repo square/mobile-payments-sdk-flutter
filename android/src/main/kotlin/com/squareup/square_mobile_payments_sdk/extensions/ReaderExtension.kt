@@ -6,6 +6,10 @@ import com.squareup.sdk.mobilepayments.cardreader.ReaderChangedEvent
 import com.squareup.sdk.mobilepayments.cardreader.ReaderInfo
 import com.squareup.sdk.mobilepayments.cardreader.ReaderSettings
 import com.squareup.sdk.mobilepayments.core.TimeOfDay
+import java.util.Date
+import java.util.Locale
+import java.util.TimeZone
+import java.text.SimpleDateFormat
 
 fun ReaderInfo.toReaderInfoMap(): Map<String, Any?> {
     return mapOf(
@@ -13,11 +17,9 @@ fun ReaderInfo.toReaderInfoMap(): Map<String, Any?> {
         "model" to model.toModelName(),
         "serialNumber" to serialNumber,
         "name" to name,
+        "connectionType" to connectionType.toConnectionTypeName(),
         "batteryStatus" to batteryStatus?.toBatteryStatusMap(),
-        "firmwareInfo" to mapOf(
-            "version" to firmwareInfo.version,
-            "updatePercentage" to (firmwareInfo.updateStatus.toPercent() ?: 0),
-        ),
+        "firmwareInfo" to firmwareInfo.toFirmwareInfoMap(),
         "supportedInputMethods" to supportedCardEntryMethods.map { it.toEntryMethodName() },
         "isForgettable" to isForgettable,
         "isBlinkable" to isBlinkable,
@@ -25,11 +27,45 @@ fun ReaderInfo.toReaderInfoMap(): Map<String, Any?> {
     )
 }
 
+fun ReaderInfo.ConnectionType.toConnectionTypeName(): String {
+    return when (this) {
+        ReaderInfo.ConnectionType.USB -> "usb"
+        ReaderInfo.ConnectionType.BLUETOOTH -> "bluetooth"
+        ReaderInfo.ConnectionType.AUDIO -> "audio"
+        ReaderInfo.ConnectionType.EMBEDDED -> "embedded"
+    }
+}
+
+fun ReaderInfo.ReaderFirmwareInfo.toFirmwareInfoMap(): Map<String, Any?> {
+    return mapOf(
+        "version" to version,
+        "updateStatus" to updateStatus.toUpdateStatusName(),
+        "updatePercentage" to updateStatus.toPercent(),
+        "updateTime" to updateStatus.toUpdateTime()
+    )
+}
+
+fun ReaderInfo.FirmwareUpdateStatus.toUpdateStatusName(): String {
+   return when (this) {
+     is ReaderInfo.FirmwareUpdateStatus.InProgress -> "inProgress"
+     is ReaderInfo.FirmwareUpdateStatus.None -> "none"
+     is ReaderInfo.FirmwareUpdateStatus.Pending -> "pending"
+   }
+}
+
 fun ReaderInfo.FirmwareUpdateStatus.toPercent(): Int? {
    return  when (this) {
      is ReaderInfo.FirmwareUpdateStatus.InProgress -> this.updatePercentage
      is ReaderInfo.FirmwareUpdateStatus.None -> null
      is ReaderInfo.FirmwareUpdateStatus.Pending -> null
+   }
+}
+
+fun ReaderInfo.FirmwareUpdateStatus.toUpdateTime(): String? {
+   return when (this) {
+     is ReaderInfo.FirmwareUpdateStatus.InProgress -> null
+     is ReaderInfo.FirmwareUpdateStatus.None -> null
+     is ReaderInfo.FirmwareUpdateStatus.Pending -> toISO8601String(this.updateDate)
    }
 }
 
@@ -141,4 +177,10 @@ fun TimeOfDay.toTimeOfDayMap(): Map<String, Int> {
     "hour" to hour,
     "minute" to minute
   )
+}
+
+fun toISO8601String(date: Date): String {
+  val isoFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ROOT)
+  isoFormat.timeZone = TimeZone.getTimeZone("UTC")
+  return isoFormat.format(date)
 }
