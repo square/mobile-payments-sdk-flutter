@@ -24,8 +24,8 @@ class PaymentMapper {
             
             val builder = PaymentParameters.Builder(
                 amount = Money(amount, currencyCode),
-                processingMode = convertToProcessingMode(paymentParameters.get("processingMode") as? Int ?: 0),
-                allowCardSurcharge = paymentParameters.get("allowCardSurcharge") as? Boolean ?: false,
+                processingMode = convertToProcessingMode(paymentParameters.get("processingMode") as? String),
+                allowCardSurcharge = paymentParameters.get("allowCardSurcharge") as? Boolean ?: true,
                 paymentAttemptId = paymentParameters.get("paymentAttemptId") as String ?: ""
                 )
 
@@ -77,12 +77,34 @@ class PaymentMapper {
                     builder.autocomplete(paymentParameters.get("autocomplete") as? Boolean ?: false)
                 }
 
+                if(paymentParameters.get("acceptPartialAuthorization") != null) {
+                    builder.acceptPartialAuthorization(
+                        paymentParameters.get("acceptPartialAuthorization") as? Boolean ?: false
+                    )
+                }
+
+                if(paymentParameters.get("customerId") != null) {
+                    builder.customerId(paymentParameters.get("customerId") as? String)
+                }
+
+                if(paymentParameters.get("locationId") != null) {
+                    builder.locationId(paymentParameters.get("locationId") as? String)
+                }
+
+                if(paymentParameters.get("teamMemberId") != null) {
+                    builder.teamMemberId(paymentParameters.get("teamMemberId") as? String)
+                }
+
+                if(paymentParameters.get("statementDescription") != null) {
+                    builder.statementDescription(paymentParameters.get("statementDescription") as? String)
+                }
+
                 return builder.build()
         }
 
-        fun convertToProcessingMode(value: Int?) = when (value) {
-            1 -> ProcessingMode.OFFLINE_ONLY
-            2 -> ProcessingMode.ONLINE_ONLY
+        fun convertToProcessingMode(value: String?) = when (value) {
+            "offlineOnly" -> ProcessingMode.OFFLINE_ONLY
+            "onlineOnly" -> ProcessingMode.ONLINE_ONLY
             else -> ProcessingMode.AUTO_DETECT
         }
 
