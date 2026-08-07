@@ -7,8 +7,8 @@ class TapToPaySettings {
       TapToPaySettings._privateConstructor();
   factory TapToPaySettings() => _instance;
 
-  static Never _notSupportedError() {
-    throw UnsupportedError('This feature is only available on iOS.');
+  static UnsupportedError _notSupportedError() {
+    return UnsupportedError('This feature is only available on iOS.');
   }
 
   Future<void> linkAppleAccount() {
