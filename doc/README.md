@@ -6,45 +6,61 @@ This guide walks you through the process of setting up a new Flutter project wit
 
 * You will need a Square account enabled for payment processing. If you have not enabled payment processing on your account (or you are not sure), visit [squareup.com/activate](https://squareup.com/activate).
 * Set-up your Flutter environment by following the [official guide](https://docs.flutter.dev/get-started/install).
+* Use Flutter 3.44 or later. The iOS plugin is distributed as a Swift package and the sample app adopts the `UIScene` lifecycle, both of which require this version.
 
 ## Step 1: Install Flutter plugin for Mobile Payments SDK
 
 Install the Mobile Payments SDK package with `pub`:
 ```sh
-flutter pub add mobile-payment-sdk-flutter
+flutter pub add square_mobile_payments_sdk
 ```
+
 For iOS:
-1. Make sure you run `pod install` in the `ios` folder of the sample application to install the SDK and all the dependencies.
-2. Open your iOS project `Runner.xcodeproj` with **Xcode**.
-3. Set the `iOS Deployment Target` to 12.0 or above.
-4. Add an Mobile Payments SDK build phase:
-    1. Open `Runner.xcworkspace` in Xcode.
-    2. In the **Build Phases** tab for your application target, click the **+**
+1. Open your iOS project `Runner.xcodeproj` with **Xcode**.
+2. Set the `iOS Deployment Target` to 16.0 or above. Projects created with `flutter create` default to a lower target and fail to resolve the SDK.
+3. Add a Mobile Payments SDK build phase:
+    1. In the **Build Phases** tab for your application target, click the **+**
         button at the top of the pane.
-    3. Select **New Run Script Phase**.
-    4. Paste the following into the editor panel of the new run script:
+    2. Select **New Run Script Phase**.
+    3. Paste the following into the editor panel of the new run script:
         ```
         FRAMEWORKS="${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}"
         "${FRAMEWORKS}/SquareMobilePaymentsSDK.framework/setup"
         ```
 
+The iOS dependencies are resolved through Swift Package Manager, which Flutter enables by default. There is no `pod install` step and no `Podfile` in the sample app.
+
+If your project still relies on CocoaPods, the plugin ships a podspec as a fallback. Opt out of Swift Package Manager in your application's `pubspec.yaml`:
+```yaml
+flutter:
+  config:
+    enable-swift-package-manager: false
+```
+This setting is scoped to the project, so it does not change your global Flutter configuration. Run `flutter pub get` afterwards and Flutter will generate a `Podfile` and run `pod install` on the next build.
+
 For Android:
-1. Modify your `/android/build.gradle`
-   - Add `squareSdkVersion = "2.0.1"` inside the `ext {...}` block
-   - Add `maven { url 'https://sdk.squareup.com/public/android/' }` inside the `allprojects`'s `repositories {...}` block
-2. Modify your `/android/app/build.gradle`
-   - Add `implementation("com.squareup.sdk:mobile-payments-sdk:$squareSdkVersion")` inside the `dependencies{...}` block
-3. Disable Proguard by adding the following to your `/android/app/build.gradle`:
-```gradle
+1. Modify your `/android/app/build.gradle.kts`
+   - Add `val squareSdkVersion = "2.6.0"` at the top of the file
+   - Add `maven { url = uri("https://sdk.squareup.com/public/android/") }` inside the module's `repositories {...}` block
+   - Add `implementation("com.squareup.sdk:mobile-payments-sdk:$squareSdkVersion")` inside the `dependencies {...}` block
+2. Disable Proguard by adding the following to your `/android/app/build.gradle.kts`. The Mobile Payments SDK does not support code shrinking, which may strip bytecode the SDK needs at runtime:
+```kotlin
 android {
     buildTypes {
         release {
-            minifyEnabled false
-            shrinkResources false
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }
 ```
+3. Make sure your `/android/gradle.properties` enables AndroidX and Jetifier. The SDK bundles a dependency that still references the legacy support library:
+```properties
+android.useAndroidX=true
+android.enableJetifier=true
+```
+
+The plugin targets Java 17 and requires Android Gradle Plugin 8.9.1 or later. The sample app is built with Android Gradle Plugin 8.12.1 and Gradle 8.14.
 
 You can also refer to [MPSDK Android Quickstart](https://developer.squareup.com/docs/mobile-payments-sdk/android#1-install-the-sdk-and-dependencies)'s SDK installation section.
 
@@ -57,20 +73,65 @@ You can also refer to [MPSDK Android Quickstart](https://developer.squareup.com/
 
 ## Step 3: Additional Platform Setup
 
-1. For iOS: update your application delegate as follows:
+1. For iOS: update your application delegate as follows.
 ```Swift
+import Flutter
+import UIKit
 import SquareMobilePaymentsSDK
-// ...
-override func application(
+
+@main
+@objc class AppDelegate: FlutterAppDelegate, FlutterImplicitEngineDelegate {
+  override func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    GeneratedPluginRegistrant.register(with: self)
     let applicationId = "REPLACE ME!"
-      MobilePaymentsSDK.initialize(squareApplicationID: applicationId)
+    MobilePaymentsSDK.initialize(squareApplicationID: applicationId)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+
+  func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
+    GeneratedPluginRegistrant.register(with: engineBridge.pluginRegistry)
+  }
+}
 ```
+
+Under the `UIScene` lifecycle, plugins are registered from `didInitializeImplicitFlutterEngine` instead of `didFinishLaunchingWithOptions`. Registering in both places raises an assertion in `FlutterEngine` and terminates the app at launch.
+
+You also need a `SceneDelegate` that subclasses `FlutterSceneDelegate`:
+```Swift
+import Flutter
+import UIKit
+
+class SceneDelegate: FlutterSceneDelegate {}
+```
+
+And a `UIApplicationSceneManifest` entry in your `Info.plist` pointing to it:
+```xml
+<key>UIApplicationSceneManifest</key>
+<dict>
+	<key>UIApplicationSupportsMultipleScenes</key>
+	<false/>
+	<key>UISceneConfigurations</key>
+	<dict>
+		<key>UIWindowSceneSessionRoleApplication</key>
+		<array>
+			<dict>
+				<key>UISceneClassName</key>
+				<string>UIWindowScene</string>
+				<key>UISceneConfigurationName</key>
+				<string>flutter</string>
+				<key>UISceneDelegateClassName</key>
+				<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+				<key>UISceneStoryboardFile</key>
+				<string>Main</string>
+			</dict>
+		</array>
+	</dict>
+</dict>
+```
+
+Verify that `SceneDelegate.swift` is listed in the target's **Compile Sources**. If the class is missing at runtime, the scene starts without a root view controller and the app shows a black screen with no error. See the sample app's [`AppDelegate.swift`](../example/ios/Runner/AppDelegate.swift), [`SceneDelegate.swift`](../example/ios/Runner/SceneDelegate.swift) and [`Info.plist`](../example/ios/Runner/Info.plist) for a complete setup, and Flutter's [UIScene adoption guide](https://docs.flutter.dev/release/breaking-changes/uiscenedelegate) for background.
 
 1. For Android: update your `MainApplication.kt` file as follows:
 ```Kotlin
@@ -134,7 +195,11 @@ try {
 Payment parameters supports a number of additional attributes, which can be seen in the [PaymentParameters definition](REFERENCE.md#paymentparameters). For error descriptions, visit the respective pages for [iOS](https://developer.squareup.com/docs/mobile-payments-sdk/ios/handling-errors), and [Android](https://developer.squareup.com/docs/mobile-payments-sdk/android/handling-errors).
 
 ## Optional: Use Mock Readers in Sandbox
-You can use mock readers to take payments in Sandbox, which allows you to test the payment flow without moving real money. To do this, make sure you're using a Sandbox Application ID, access token, and location ID, available in the Developer console (see Step 3: Square Application ID and Access Token). Once you've configured your application to start in Sandbox, you can show or hide the mock reader as follows:
+You can use mock readers to take payments in Sandbox, which allows you to test the payment flow without moving real money. To do this, make sure you're using a Sandbox Application ID, access token, and location ID, available in the Developer console (see Step 3: Square Application ID and Access Token).
+
+> **iOS + Swift Package Manager:** `MockReaderUI` is not bundled by default and must be added to your app's Runner target. See [Using MockReaderUI with Swift Package Manager](MOCK_READER_UI_SPM.md) for the setup steps and the important version/Release-build caveats.
+
+Once you've configured your application to start in Sandbox, you can show or hide the mock reader as follows:
 
 ```Dart
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';

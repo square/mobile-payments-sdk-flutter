@@ -6,28 +6,29 @@ part of 'models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LocationImpl _$$LocationImplFromJson(Map<String, dynamic> json) =>
-    _$LocationImpl(
-      id: json['id'] as String,
-      currencyCode: $enumDecode(_$CurrencyCodeEnumMap, json['currencyCode'],
-          unknownValue: CurrencyCode.unknown),
-      name: json['name'] as String,
-      merchantId: json['merchantId'] as String?,
-      businessName: json['businessName'] as String?,
-      cardProcessingActivated: json['cardProcessingActivated'] as bool?,
-      mcc: json['mcc'] as String?,
-    );
+_Location _$LocationFromJson(Map<String, dynamic> json) => _Location(
+  id: json['id'] as String,
+  currencyCode: $enumDecode(
+    _$CurrencyCodeEnumMap,
+    json['currencyCode'],
+    unknownValue: CurrencyCode.unknown,
+  ),
+  name: json['name'] as String,
+  merchantId: json['merchantId'] as String?,
+  businessName: json['businessName'] as String?,
+  cardProcessingActivated: json['cardProcessingActivated'] as bool?,
+  mcc: json['mcc'] as String?,
+);
 
-Map<String, dynamic> _$$LocationImplToJson(_$LocationImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'currencyCode': _$CurrencyCodeEnumMap[instance.currencyCode]!,
-      'name': instance.name,
-      'merchantId': instance.merchantId,
-      'businessName': instance.businessName,
-      'cardProcessingActivated': instance.cardProcessingActivated,
-      'mcc': instance.mcc,
-    };
+Map<String, dynamic> _$LocationToJson(_Location instance) => <String, dynamic>{
+  'id': instance.id,
+  'currencyCode': _$CurrencyCodeEnumMap[instance.currencyCode]!,
+  'name': instance.name,
+  'merchantId': instance.merchantId,
+  'businessName': instance.businessName,
+  'cardProcessingActivated': instance.cardProcessingActivated,
+  'mcc': instance.mcc,
+};
 
 const _$CurrencyCodeEnumMap = {
   CurrencyCode.aud: 'aud',
@@ -39,40 +40,47 @@ const _$CurrencyCodeEnumMap = {
   CurrencyCode.unknown: 'unknown',
 };
 
-_$MoneyImpl _$$MoneyImplFromJson(Map<String, dynamic> json) => _$MoneyImpl(
-      amount: (json['amount'] as num?)?.toInt(),
-      currencyCode: $enumDecode(_$CurrencyCodeEnumMap, json['currencyCode'],
-          unknownValue: CurrencyCode.unknown),
-    );
+_Money _$MoneyFromJson(Map<String, dynamic> json) => _Money(
+  amount: (json['amount'] as num?)?.toInt(),
+  currencyCode: $enumDecode(
+    _$CurrencyCodeEnumMap,
+    json['currencyCode'],
+    unknownValue: CurrencyCode.unknown,
+  ),
+);
 
-Map<String, dynamic> _$$MoneyImplToJson(_$MoneyImpl instance) =>
-    <String, dynamic>{
-      'amount': instance.amount,
-      'currencyCode': _$CurrencyCodeEnumMap[instance.currencyCode]!,
-    };
+Map<String, dynamic> _$MoneyToJson(_Money instance) => <String, dynamic>{
+  'amount': instance.amount,
+  'currencyCode': _$CurrencyCodeEnumMap[instance.currencyCode]!,
+};
 
-_$CardImpl _$$CardImplFromJson(Map<String, dynamic> json) => _$CardImpl(
-      brand: $enumDecode(_$CardBrandEnumMap, json['brand'],
-          unknownValue: CardBrand.unknown),
-      cardholderName: json['cardholderName'] as String?,
-      coBrand: $enumDecodeNullable(_$CardCoBrandEnumMap, json['coBrand'],
-          unknownValue: CardCoBrand.unknown),
-      expirationMonth: json['expirationMonth'] as num? ?? 0,
-      expirationYear: json['expirationYear'] as num? ?? 0,
-      id: json['id'] as String?,
-      lastFourDigits: json['lastFourDigits'] as String?,
-    );
+_Card _$CardFromJson(Map<String, dynamic> json) => _Card(
+  brand: $enumDecode(
+    _$CardBrandEnumMap,
+    json['brand'],
+    unknownValue: CardBrand.unknown,
+  ),
+  cardholderName: json['cardholderName'] as String?,
+  coBrand: $enumDecodeNullable(
+    _$CardCoBrandEnumMap,
+    json['coBrand'],
+    unknownValue: CardCoBrand.unknown,
+  ),
+  expirationMonth: json['expirationMonth'] as num? ?? 0,
+  expirationYear: json['expirationYear'] as num? ?? 0,
+  id: json['id'] as String?,
+  lastFourDigits: json['lastFourDigits'] as String?,
+);
 
-Map<String, dynamic> _$$CardImplToJson(_$CardImpl instance) =>
-    <String, dynamic>{
-      'brand': _$CardBrandEnumMap[instance.brand]!,
-      'cardholderName': instance.cardholderName,
-      'coBrand': _$CardCoBrandEnumMap[instance.coBrand],
-      'expirationMonth': instance.expirationMonth,
-      'expirationYear': instance.expirationYear,
-      'id': instance.id,
-      'lastFourDigits': instance.lastFourDigits,
-    };
+Map<String, dynamic> _$CardToJson(_Card instance) => <String, dynamic>{
+  'brand': _$CardBrandEnumMap[instance.brand]!,
+  'cardholderName': instance.cardholderName,
+  'coBrand': _$CardCoBrandEnumMap[instance.coBrand],
+  'expirationMonth': instance.expirationMonth,
+  'expirationYear': instance.expirationYear,
+  'id': instance.id,
+  'lastFourDigits': instance.lastFourDigits,
+};
 
 const _$CardBrandEnumMap = {
   CardBrand.otherBrand: 'otherBrand',
@@ -99,15 +107,14 @@ const _$CardCoBrandEnumMap = {
   CardCoBrand.unknown: 'unknown',
 };
 
-_$OfflineCardImpl _$$OfflineCardImplFromJson(Map<String, dynamic> json) =>
-    _$OfflineCardImpl(
-      brand: $enumDecode(_$CardBrandEnumMap, json['brand']),
-      cardholderName: json['cardholderName'] as String?,
-      id: json['id'] as String?,
-      lastFourDigits: json['lastFourDigits'] as String?,
-    );
+_OfflineCard _$OfflineCardFromJson(Map<String, dynamic> json) => _OfflineCard(
+  brand: $enumDecode(_$CardBrandEnumMap, json['brand']),
+  cardholderName: json['cardholderName'] as String?,
+  id: json['id'] as String?,
+  lastFourDigits: json['lastFourDigits'] as String?,
+);
 
-Map<String, dynamic> _$$OfflineCardImplToJson(_$OfflineCardImpl instance) =>
+Map<String, dynamic> _$OfflineCardToJson(_OfflineCard instance) =>
     <String, dynamic>{
       'brand': _$CardBrandEnumMap[instance.brand]!,
       'cardholderName': instance.cardholderName,
@@ -115,23 +122,27 @@ Map<String, dynamic> _$$OfflineCardImplToJson(_$OfflineCardImpl instance) =>
       'lastFourDigits': instance.lastFourDigits,
     };
 
-_$CardPaymentDetailsImpl _$$CardPaymentDetailsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CardPaymentDetailsImpl(
+_CardPaymentDetails _$CardPaymentDetailsFromJson(Map<String, dynamic> json) =>
+    _CardPaymentDetails(
       applicationIdentifier: json['applicationIdentifier'] as String?,
       applicationName: json['applicationName'] as String?,
       authorizationCode: json['authorizationCode'] as String?,
       card: json['card'] == null
           ? null
           : Card.fromJson(json['card'] as Map<String, dynamic>),
-      entryMethod: $enumDecode(_$EntryMethodEnumMap, json['entryMethod'],
-          unknownValue: EntryMethod.unknown),
-      status: $enumDecodeNullable(_$CardPaymentStatusEnumMap, json['status'],
-          unknownValue: CardPaymentStatus.unknown),
+      entryMethod: $enumDecode(
+        _$EntryMethodEnumMap,
+        json['entryMethod'],
+        unknownValue: EntryMethod.unknown,
+      ),
+      status: $enumDecodeNullable(
+        _$CardPaymentStatusEnumMap,
+        json['status'],
+        unknownValue: CardPaymentStatus.unknown,
+      ),
     );
 
-Map<String, dynamic> _$$CardPaymentDetailsImplToJson(
-        _$CardPaymentDetailsImpl instance) =>
+Map<String, dynamic> _$CardPaymentDetailsToJson(_CardPaymentDetails instance) =>
     <String, dynamic>{
       'applicationIdentifier': instance.applicationIdentifier,
       'applicationName': instance.applicationName,
@@ -158,37 +169,34 @@ const _$CardPaymentStatusEnumMap = {
   CardPaymentStatus.unknown: 'unknown',
 };
 
-_$CardInputMethodsImpl _$$CardInputMethodsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CardInputMethodsImpl(
+_CardInputMethods _$CardInputMethodsFromJson(Map<String, dynamic> json) =>
+    _CardInputMethods(
       chip: (json['chip'] as num).toInt(),
       contactless: (json['contactless'] as num).toInt(),
       swipe: (json['swipe'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$CardInputMethodsImplToJson(
-        _$CardInputMethodsImpl instance) =>
+Map<String, dynamic> _$CardInputMethodsToJson(_CardInputMethods instance) =>
     <String, dynamic>{
       'chip': instance.chip,
       'contactless': instance.contactless,
       'swipe': instance.swipe,
     };
 
-_$ReaderBatteryStatusImpl _$$ReaderBatteryStatusImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ReaderBatteryStatusImpl(
+_ReaderBatteryStatus _$ReaderBatteryStatusFromJson(Map<String, dynamic> json) =>
+    _ReaderBatteryStatus(
       isCharging: json['isCharging'] as bool,
       level: $enumDecodeNullable(_$ReaderBatteryLevelEnumMap, json['level']),
       percentage: (json['percentage'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$ReaderBatteryStatusImplToJson(
-        _$ReaderBatteryStatusImpl instance) =>
-    <String, dynamic>{
-      'isCharging': instance.isCharging,
-      'level': _$ReaderBatteryLevelEnumMap[instance.level],
-      'percentage': instance.percentage,
-    };
+Map<String, dynamic> _$ReaderBatteryStatusToJson(
+  _ReaderBatteryStatus instance,
+) => <String, dynamic>{
+  'isCharging': instance.isCharging,
+  'level': _$ReaderBatteryLevelEnumMap[instance.level],
+  'percentage': instance.percentage,
+};
 
 const _$ReaderBatteryLevelEnumMap = {
   ReaderBatteryLevel.criticallyLow: 'criticallyLow',
@@ -198,22 +206,22 @@ const _$ReaderBatteryLevelEnumMap = {
   ReaderBatteryLevel.mid: 'mid',
 };
 
-_$ReaderStatusInfoImpl _$$ReaderStatusInfoImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ReaderStatusInfoImpl(
+_ReaderStatusInfo _$ReaderStatusInfoFromJson(Map<String, dynamic> json) =>
+    _ReaderStatusInfo(
       status: $enumDecode(_$ReaderStatusInfoStatusEnumMap, json['status']),
       unavailableReason: $enumDecodeNullable(
-          _$ReaderStatusInfoUnavailableReasonEnumMap,
-          json['unavailableReason']),
+        _$ReaderStatusInfoUnavailableReasonEnumMap,
+        json['unavailableReason'],
+      ),
     );
 
-Map<String, dynamic> _$$ReaderStatusInfoImplToJson(
-        _$ReaderStatusInfoImpl instance) =>
-    <String, dynamic>{
-      'status': _$ReaderStatusInfoStatusEnumMap[instance.status]!,
-      'unavailableReason': _$ReaderStatusInfoUnavailableReasonEnumMap[
-          instance.unavailableReason],
-    };
+Map<String, dynamic> _$ReaderStatusInfoToJson(
+  _ReaderStatusInfo instance,
+) => <String, dynamic>{
+  'status': _$ReaderStatusInfoStatusEnumMap[instance.status]!,
+  'unavailableReason':
+      _$ReaderStatusInfoUnavailableReasonEnumMap[instance.unavailableReason],
+};
 
 const _$ReaderStatusInfoStatusEnumMap = {
   ReaderStatusInfoStatus.connectingToDevice: 'connectingToDevice',
@@ -259,49 +267,51 @@ const _$ReaderStatusInfoUnavailableReasonEnumMap = {
   ReaderStatusInfoUnavailableReason.hostIdMismatch: 'hostIdMismatch',
 };
 
-_$ReaderFirmwareInfoImpl _$$ReaderFirmwareInfoImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ReaderFirmwareInfoImpl(
+_ReaderFirmwareInfo _$ReaderFirmwareInfoFromJson(Map<String, dynamic> json) =>
+    _ReaderFirmwareInfo(
       failureReason: json['failureReason'] as String?,
       updatePercentage: (json['updatePercentage'] as num?)?.toInt(),
       version: json['version'] as String?,
     );
 
-Map<String, dynamic> _$$ReaderFirmwareInfoImplToJson(
-        _$ReaderFirmwareInfoImpl instance) =>
+Map<String, dynamic> _$ReaderFirmwareInfoToJson(_ReaderFirmwareInfo instance) =>
     <String, dynamic>{
       'failureReason': instance.failureReason,
       'updatePercentage': instance.updatePercentage,
       'version': instance.version,
     };
 
-_$ReaderInfoImpl _$$ReaderInfoImplFromJson(Map<String, dynamic> json) =>
-    _$ReaderInfoImpl(
-      batteryStatus: json['batteryStatus'] == null
-          ? null
-          : ReaderBatteryStatus.fromJson(
-              json['batteryStatus'] as Map<String, dynamic>),
-      cardInsertionStatus: $enumDecodeNullable(
-          _$CardInsertionStatusEnumMap, json['cardInsertionStatus']),
-      firmwareInfo: json['firmwareInfo'] == null
-          ? null
-          : ReaderFirmwareInfo.fromJson(
-              json['firmwareInfo'] as Map<String, dynamic>),
-      id: json['id'] as String,
-      isBlinkable: json['isBlinkable'] as bool,
-      isConnectionRetryable: json['isConnectionRetryable'] as bool?,
-      isForgettable: json['isForgettable'] as bool,
-      model: $enumDecode(_$ReaderModelEnumMap, json['model']),
-      name: json['name'] as String,
-      serialNumber: json['serialNumber'] as String?,
-      statusInfo:
-          ReaderStatusInfo.fromJson(json['statusInfo'] as Map<String, dynamic>),
-      supportedInputMethods: (json['supportedInputMethods'] as List<dynamic>)
-          .map((e) => $enumDecode(_$CardInputMethodEnumMap, e))
-          .toList(),
-    );
+_ReaderInfo _$ReaderInfoFromJson(Map<String, dynamic> json) => _ReaderInfo(
+  batteryStatus: json['batteryStatus'] == null
+      ? null
+      : ReaderBatteryStatus.fromJson(
+          json['batteryStatus'] as Map<String, dynamic>,
+        ),
+  cardInsertionStatus: $enumDecodeNullable(
+    _$CardInsertionStatusEnumMap,
+    json['cardInsertionStatus'],
+  ),
+  firmwareInfo: json['firmwareInfo'] == null
+      ? null
+      : ReaderFirmwareInfo.fromJson(
+          json['firmwareInfo'] as Map<String, dynamic>,
+        ),
+  id: json['id'] as String,
+  isBlinkable: json['isBlinkable'] as bool,
+  isConnectionRetryable: json['isConnectionRetryable'] as bool?,
+  isForgettable: json['isForgettable'] as bool,
+  model: $enumDecode(_$ReaderModelEnumMap, json['model']),
+  name: json['name'] as String,
+  serialNumber: json['serialNumber'] as String?,
+  statusInfo: ReaderStatusInfo.fromJson(
+    json['statusInfo'] as Map<String, dynamic>,
+  ),
+  supportedInputMethods: (json['supportedInputMethods'] as List<dynamic>)
+      .map((e) => $enumDecode(_$CardInputMethodEnumMap, e))
+      .toList(),
+);
 
-Map<String, dynamic> _$$ReaderInfoImplToJson(_$ReaderInfoImpl instance) =>
+Map<String, dynamic> _$ReaderInfoToJson(_ReaderInfo instance) =>
     <String, dynamic>{
       'batteryStatus': instance.batteryStatus,
       'cardInsertionStatus':
@@ -341,9 +351,8 @@ const _$CardInputMethodEnumMap = {
   CardInputMethod.chip: 'chip',
 };
 
-_$PromptParametersImpl _$$PromptParametersImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PromptParametersImpl(
+_PromptParameters _$PromptParametersFromJson(Map<String, dynamic> json) =>
+    _PromptParameters(
       additionalPaymentMethods:
           (json['additionalPaymentMethods'] as List<dynamic>)
               .map((e) => $enumDecode(_$AdditionalPaymentMethodTypeEnumMap, e))
@@ -351,8 +360,7 @@ _$PromptParametersImpl _$$PromptParametersImplFromJson(
       mode: $enumDecode(_$PromptModeEnumMap, json['mode']),
     );
 
-Map<String, dynamic> _$$PromptParametersImplToJson(
-        _$PromptParametersImpl instance) =>
+Map<String, dynamic> _$PromptParametersToJson(_PromptParameters instance) =>
     <String, dynamic>{
       'additionalPaymentMethods': instance.additionalPaymentMethods
           .map((e) => _$AdditionalPaymentMethodTypeEnumMap[e]!)
@@ -370,44 +378,43 @@ const _$PromptModeEnumMap = {
   PromptMode.defaultMode: 'defaultMode',
 };
 
-_$PaymentImpl _$$PaymentImplFromJson(Map<String, dynamic> json) =>
-    _$PaymentImpl(
-      amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
-      appFeeMoney: json['appFeeMoney'] == null
-          ? null
-          : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
-      cardDetails: json['cardDetails'] == null
-          ? null
-          : CardPaymentDetails.fromJson(
-              json['cardDetails'] as Map<String, dynamic>),
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      id: json['id'] as String?,
-      locationId: json['locationId'] as String?,
-      orderId: json['orderId'] as String?,
-      referenceId: json['referenceId'] as String?,
-      sourceType: $enumDecode(_$SourceTypeEnumMap, json['sourceType']),
-      tipMoney: json['tipMoney'] == null
-          ? null
-          : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
-      totalMoney: Money.fromJson(json['totalMoney'] as Map<String, dynamic>),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
-    );
+_Payment _$PaymentFromJson(Map<String, dynamic> json) => _Payment(
+  amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
+  appFeeMoney: json['appFeeMoney'] == null
+      ? null
+      : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
+  cardDetails: json['cardDetails'] == null
+      ? null
+      : CardPaymentDetails.fromJson(
+          json['cardDetails'] as Map<String, dynamic>,
+        ),
+  createdAt: DateTime.parse(json['createdAt'] as String),
+  id: json['id'] as String?,
+  locationId: json['locationId'] as String?,
+  orderId: json['orderId'] as String?,
+  referenceId: json['referenceId'] as String?,
+  sourceType: $enumDecode(_$SourceTypeEnumMap, json['sourceType']),
+  tipMoney: json['tipMoney'] == null
+      ? null
+      : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
+  totalMoney: Money.fromJson(json['totalMoney'] as Map<String, dynamic>),
+  updatedAt: DateTime.parse(json['updatedAt'] as String),
+);
 
-Map<String, dynamic> _$$PaymentImplToJson(_$PaymentImpl instance) =>
-    <String, dynamic>{
-      'amountMoney': instance.amountMoney,
-      'appFeeMoney': instance.appFeeMoney,
-      'cardDetails': instance.cardDetails,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'id': instance.id,
-      'locationId': instance.locationId,
-      'orderId': instance.orderId,
-      'referenceId': instance.referenceId,
-      'sourceType': _$SourceTypeEnumMap[instance.sourceType]!,
-      'tipMoney': instance.tipMoney,
-      'totalMoney': instance.totalMoney,
-      'updatedAt': instance.updatedAt.toIso8601String(),
-    };
+Map<String, dynamic> _$PaymentToJson(_Payment instance) => <String, dynamic>{
+  'amountMoney': instance.amountMoney,
+  'appFeeMoney': instance.appFeeMoney,
+  'cardDetails': instance.cardDetails,
+  'createdAt': instance.createdAt.toIso8601String(),
+  'id': instance.id,
+  'locationId': instance.locationId,
+  'orderId': instance.orderId,
+  'referenceId': instance.referenceId,
+  'sourceType': _$SourceTypeEnumMap[instance.sourceType]!,
+  'tipMoney': instance.tipMoney,
+  'totalMoney': instance.totalMoney,
+  'updatedAt': instance.updatedAt.toIso8601String(),
+};
 
 const _$SourceTypeEnumMap = {
   SourceType.bankAccount: 'bankAccount',
@@ -420,113 +427,112 @@ const _$SourceTypeEnumMap = {
   SourceType.wallet: 'wallet',
 };
 
-_$PaymentParametersImpl _$$PaymentParametersImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PaymentParametersImpl(
-      acceptPartialAuthorization:
-          (json['acceptPartialAuthorization'] as num?)?.toInt(),
-      amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
-      appFeeMoney: json['appFeeMoney'] == null
-          ? null
-          : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
-      autocomplete: json['autocomplete'] as bool?,
-      customerId: json['customerId'] as String?,
-      delayAction:
-          $enumDecodeNullable(_$DelayActionEnumMap, json['delayAction']),
-      delayDuration: json['delayDuration'] as num?,
-      processingMode: json['processingMode'] as num,
-      paymentAttemptId: json['paymentAttemptId'] as String,
-      locationId: json['locationId'] as String?,
-      note: json['note'] as String?,
-      orderId: json['orderId'] as String?,
-      referenceId: json['referenceId'] as String?,
-      teamMemberId: json['teamMemberId'] as String?,
-      tipMoney: json['tipMoney'] == null
-          ? null
-          : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
-    );
+PaymentParametersCurrent _$PaymentParametersCurrentFromJson(
+  Map<String, dynamic> json,
+) => PaymentParametersCurrent(
+  acceptPartialAuthorization: (json['acceptPartialAuthorization'] as num?)
+      ?.toInt(),
+  amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
+  appFeeMoney: json['appFeeMoney'] == null
+      ? null
+      : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
+  autocomplete: json['autocomplete'] as bool?,
+  customerId: json['customerId'] as String?,
+  delayAction: $enumDecodeNullable(_$DelayActionEnumMap, json['delayAction']),
+  delayDuration: json['delayDuration'] as num?,
+  processingMode: json['processingMode'] as num,
+  paymentAttemptId: json['paymentAttemptId'] as String,
+  locationId: json['locationId'] as String?,
+  note: json['note'] as String?,
+  orderId: json['orderId'] as String?,
+  referenceId: json['referenceId'] as String?,
+  teamMemberId: json['teamMemberId'] as String?,
+  tipMoney: json['tipMoney'] == null
+      ? null
+      : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
+  $type: json['type'] as String?,
+);
 
-Map<String, dynamic> _$$PaymentParametersImplToJson(
-        _$PaymentParametersImpl instance) =>
-    <String, dynamic>{
-      'acceptPartialAuthorization': instance.acceptPartialAuthorization,
-      'amountMoney': instance.amountMoney,
-      'appFeeMoney': instance.appFeeMoney,
-      'autocomplete': instance.autocomplete,
-      'customerId': instance.customerId,
-      'delayAction': _$DelayActionEnumMap[instance.delayAction],
-      'delayDuration': instance.delayDuration,
-      'processingMode': instance.processingMode,
-      'paymentAttemptId': instance.paymentAttemptId,
-      'locationId': instance.locationId,
-      'note': instance.note,
-      'orderId': instance.orderId,
-      'referenceId': instance.referenceId,
-      'teamMemberId': instance.teamMemberId,
-      'tipMoney': instance.tipMoney,
-      'type': instance.$type,
-    };
+Map<String, dynamic> _$PaymentParametersCurrentToJson(
+  PaymentParametersCurrent instance,
+) => <String, dynamic>{
+  'acceptPartialAuthorization': instance.acceptPartialAuthorization,
+  'amountMoney': instance.amountMoney,
+  'appFeeMoney': instance.appFeeMoney,
+  'autocomplete': instance.autocomplete,
+  'customerId': instance.customerId,
+  'delayAction': _$DelayActionEnumMap[instance.delayAction],
+  'delayDuration': instance.delayDuration,
+  'processingMode': instance.processingMode,
+  'paymentAttemptId': instance.paymentAttemptId,
+  'locationId': instance.locationId,
+  'note': instance.note,
+  'orderId': instance.orderId,
+  'referenceId': instance.referenceId,
+  'teamMemberId': instance.teamMemberId,
+  'tipMoney': instance.tipMoney,
+  'type': instance.$type,
+};
 
 const _$DelayActionEnumMap = {
   DelayAction.cancel: 'cancel',
   DelayAction.complete: 'complete',
 };
 
-_$LegacyPaymentParametersImpl _$$LegacyPaymentParametersImplFromJson(
-        Map<String, dynamic> json) =>
-    _$LegacyPaymentParametersImpl(
-      acceptPartialAuthorization:
-          (json['acceptPartialAuthorization'] as num?)?.toInt(),
-      amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
-      appFeeMoney: json['appFeeMoney'] == null
-          ? null
-          : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
-      autocomplete: json['autocomplete'] as bool?,
-      customerId: json['customerId'] as String?,
-      delayAction:
-          $enumDecodeNullable(_$DelayActionEnumMap, json['delayAction']),
-      delayDuration: json['delayDuration'] as num?,
-      processingMode: json['processingMode'] as num,
-      idempotencyKey: json['idempotencyKey'] as String,
-      locationId: json['locationId'] as String?,
-      note: json['note'] as String?,
-      orderId: json['orderId'] as String?,
-      referenceId: json['referenceId'] as String?,
-      teamMemberId: json['teamMemberId'] as String?,
-      tipMoney: json['tipMoney'] == null
-          ? null
-          : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
-    );
+_LegacyPaymentParameters _$LegacyPaymentParametersFromJson(
+  Map<String, dynamic> json,
+) => _LegacyPaymentParameters(
+  acceptPartialAuthorization: (json['acceptPartialAuthorization'] as num?)
+      ?.toInt(),
+  amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
+  appFeeMoney: json['appFeeMoney'] == null
+      ? null
+      : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
+  autocomplete: json['autocomplete'] as bool?,
+  customerId: json['customerId'] as String?,
+  delayAction: $enumDecodeNullable(_$DelayActionEnumMap, json['delayAction']),
+  delayDuration: json['delayDuration'] as num?,
+  processingMode: json['processingMode'] as num,
+  idempotencyKey: json['idempotencyKey'] as String,
+  locationId: json['locationId'] as String?,
+  note: json['note'] as String?,
+  orderId: json['orderId'] as String?,
+  referenceId: json['referenceId'] as String?,
+  teamMemberId: json['teamMemberId'] as String?,
+  tipMoney: json['tipMoney'] == null
+      ? null
+      : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
+  $type: json['type'] as String?,
+);
 
-Map<String, dynamic> _$$LegacyPaymentParametersImplToJson(
-        _$LegacyPaymentParametersImpl instance) =>
-    <String, dynamic>{
-      'acceptPartialAuthorization': instance.acceptPartialAuthorization,
-      'amountMoney': instance.amountMoney,
-      'appFeeMoney': instance.appFeeMoney,
-      'autocomplete': instance.autocomplete,
-      'customerId': instance.customerId,
-      'delayAction': _$DelayActionEnumMap[instance.delayAction],
-      'delayDuration': instance.delayDuration,
-      'processingMode': instance.processingMode,
-      'idempotencyKey': instance.idempotencyKey,
-      'locationId': instance.locationId,
-      'note': instance.note,
-      'orderId': instance.orderId,
-      'referenceId': instance.referenceId,
-      'teamMemberId': instance.teamMemberId,
-      'tipMoney': instance.tipMoney,
-      'type': instance.$type,
-    };
+Map<String, dynamic> _$LegacyPaymentParametersToJson(
+  _LegacyPaymentParameters instance,
+) => <String, dynamic>{
+  'acceptPartialAuthorization': instance.acceptPartialAuthorization,
+  'amountMoney': instance.amountMoney,
+  'appFeeMoney': instance.appFeeMoney,
+  'autocomplete': instance.autocomplete,
+  'customerId': instance.customerId,
+  'delayAction': _$DelayActionEnumMap[instance.delayAction],
+  'delayDuration': instance.delayDuration,
+  'processingMode': instance.processingMode,
+  'idempotencyKey': instance.idempotencyKey,
+  'locationId': instance.locationId,
+  'note': instance.note,
+  'orderId': instance.orderId,
+  'referenceId': instance.referenceId,
+  'teamMemberId': instance.teamMemberId,
+  'tipMoney': instance.tipMoney,
+  'type': instance.$type,
+};
 
-_$OnlinePaymentImpl _$$OnlinePaymentImplFromJson(Map<String, dynamic> json) =>
-    _$OnlinePaymentImpl(
+_OnlinePayment _$OnlinePaymentFromJson(Map<String, dynamic> json) =>
+    _OnlinePayment(
       amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
       appFeeMoney: Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
       cardDetails: CardPaymentDetails.fromJson(
-          json['cardDetails'] as Map<String, dynamic>),
+        json['cardDetails'] as Map<String, dynamic>,
+      ),
       createdAt: json['createdAt'] as String,
       customerId: json['customerId'] as String,
       id: json['id'] as String,
@@ -540,7 +546,7 @@ _$OnlinePaymentImpl _$$OnlinePaymentImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updatedAt'] as String,
     );
 
-Map<String, dynamic> _$$OnlinePaymentImplToJson(_$OnlinePaymentImpl instance) =>
+Map<String, dynamic> _$OnlinePaymentToJson(_OnlinePayment instance) =>
     <String, dynamic>{
       'amountMoney': instance.amountMoney,
       'appFeeMoney': instance.appFeeMoney,
@@ -566,8 +572,8 @@ const _$PaymentStatusEnumMap = {
   PaymentStatus.unknown: 'unknown',
 };
 
-_$OfflinePaymentImpl _$$OfflinePaymentImplFromJson(Map<String, dynamic> json) =>
-    _$OfflinePaymentImpl(
+_OfflinePayment _$OfflinePaymentFromJson(Map<String, dynamic> json) =>
+    _OfflinePayment(
       amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
       appFeeMoney: json['appFeeMoney'] == null
           ? null
@@ -586,7 +592,8 @@ _$OfflinePaymentImpl _$$OfflinePaymentImplFromJson(Map<String, dynamic> json) =>
       cardDetails: json['cardDetails'] == null
           ? null
           : OfflineCardPaymentDetails.fromJson(
-              json['cardDetails'] as Map<String, dynamic>),
+              json['cardDetails'] as Map<String, dynamic>,
+            ),
       localId: json['localId'] as String,
       status: $enumDecode(_$OfflineStatusEnumMap, json['status']),
       uploadedAt: json['uploadedAt'] == null
@@ -594,8 +601,7 @@ _$OfflinePaymentImpl _$$OfflinePaymentImplFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['uploadedAt'] as String),
     );
 
-Map<String, dynamic> _$$OfflinePaymentImplToJson(
-        _$OfflinePaymentImpl instance) =>
+Map<String, dynamic> _$OfflinePaymentToJson(_OfflinePayment instance) =>
     <String, dynamic>{
       'amountMoney': instance.amountMoney,
       'appFeeMoney': instance.appFeeMoney,
@@ -623,35 +629,33 @@ const _$OfflineStatusEnumMap = {
   OfflineStatus.uploaded: 'uploaded',
 };
 
-_$OfflineCardPaymentDetailsImpl _$$OfflineCardPaymentDetailsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$OfflineCardPaymentDetailsImpl(
-      applicationIdentifier: json['applicationIdentifier'] as String?,
-      applicationName: json['applicationName'] as String?,
-      card: json['card'] == null
-          ? null
-          : OfflineCard.fromJson(json['card'] as Map<String, dynamic>),
-      entryMethod: $enumDecode(_$EntryMethodEnumMap, json['entryMethod']),
-    );
+_OfflineCardPaymentDetails _$OfflineCardPaymentDetailsFromJson(
+  Map<String, dynamic> json,
+) => _OfflineCardPaymentDetails(
+  applicationIdentifier: json['applicationIdentifier'] as String?,
+  applicationName: json['applicationName'] as String?,
+  card: json['card'] == null
+      ? null
+      : OfflineCard.fromJson(json['card'] as Map<String, dynamic>),
+  entryMethod: $enumDecode(_$EntryMethodEnumMap, json['entryMethod']),
+);
 
-Map<String, dynamic> _$$OfflineCardPaymentDetailsImplToJson(
-        _$OfflineCardPaymentDetailsImpl instance) =>
-    <String, dynamic>{
-      'applicationIdentifier': instance.applicationIdentifier,
-      'applicationName': instance.applicationName,
-      'card': instance.card,
-      'entryMethod': _$EntryMethodEnumMap[instance.entryMethod]!,
-    };
+Map<String, dynamic> _$OfflineCardPaymentDetailsToJson(
+  _OfflineCardPaymentDetails instance,
+) => <String, dynamic>{
+  'applicationIdentifier': instance.applicationIdentifier,
+  'applicationName': instance.applicationName,
+  'card': instance.card,
+  'entryMethod': _$EntryMethodEnumMap[instance.entryMethod]!,
+};
 
-_$ReaderChangedEventImpl _$$ReaderChangedEventImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ReaderChangedEventImpl(
+_ReaderChangedEvent _$ReaderChangedEventFromJson(Map<String, dynamic> json) =>
+    _ReaderChangedEvent(
       reader: ReaderInfo.fromJson(json['reader'] as Map<String, dynamic>),
       change: $enumDecode(_$ReaderChangeEnumMap, json['change']),
     );
 
-Map<String, dynamic> _$$ReaderChangedEventImplToJson(
-        _$ReaderChangedEventImpl instance) =>
+Map<String, dynamic> _$ReaderChangedEventToJson(_ReaderChangedEvent instance) =>
     <String, dynamic>{
       'reader': instance.reader,
       'change': _$ReaderChangeEnumMap[instance.change]!,
@@ -676,30 +680,26 @@ const _$ReaderChangeEnumMap = {
   ReaderChange.firmwareProgress: 'firmwareProgress',
 };
 
-_$TimeOfDayImpl _$$TimeOfDayImplFromJson(Map<String, dynamic> json) =>
-    _$TimeOfDayImpl(
-      hour: (json['hour'] as num).toInt(),
-      minute: (json['minute'] as num).toInt(),
-    );
+_TimeOfDay _$TimeOfDayFromJson(Map<String, dynamic> json) => _TimeOfDay(
+  hour: (json['hour'] as num).toInt(),
+  minute: (json['minute'] as num).toInt(),
+);
 
-Map<String, dynamic> _$$TimeOfDayImplToJson(_$TimeOfDayImpl instance) =>
-    <String, dynamic>{
-      'hour': instance.hour,
-      'minute': instance.minute,
-    };
+Map<String, dynamic> _$TimeOfDayToJson(_TimeOfDay instance) =>
+    <String, dynamic>{'hour': instance.hour, 'minute': instance.minute};
 
-_$ReaderSettingsImpl _$$ReaderSettingsImplFromJson(Map<String, dynamic> json) =>
-    _$ReaderSettingsImpl(
+_ReaderSettings _$ReaderSettingsFromJson(Map<String, dynamic> json) =>
+    _ReaderSettings(
       isReducedChargingModeEnabled:
           json['isReducedChargingModeEnabled'] as bool,
       preferredFirmwareUpdateTime: json['preferredFirmwareUpdateTime'] == null
           ? null
           : TimeOfDay.fromJson(
-              json['preferredFirmwareUpdateTime'] as Map<String, dynamic>),
+              json['preferredFirmwareUpdateTime'] as Map<String, dynamic>,
+            ),
     );
 
-Map<String, dynamic> _$$ReaderSettingsImplToJson(
-        _$ReaderSettingsImpl instance) =>
+Map<String, dynamic> _$ReaderSettingsToJson(_ReaderSettings instance) =>
     <String, dynamic>{
       'isReducedChargingModeEnabled': instance.isReducedChargingModeEnabled,
       'preferredFirmwareUpdateTime': instance.preferredFirmwareUpdateTime,

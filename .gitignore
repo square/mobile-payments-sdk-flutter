@@ -5,6 +5,9 @@ build/
 # Local configuration file (sdk path, etc)
 local.properties
 .DS_Store
+.build/
+.swiftpm/
+.flutter-plugins-dependencies
 
 # Log/OS Files
 *.log

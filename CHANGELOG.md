@@ -1,3 +1,19 @@
+## 2026.8.0
+
+The iOS plugin is now distributed as a Swift package. There are no changes to the Dart API.
+
+### Breaking changes
+
+- Flutter `3.44.0` or later is now required. The plugin ships a `Package.swift` and the sample app adopts the `UIScene` lifecycle, neither of which is supported by earlier versions.
+- **(iOS)** Applications using the `UIScene` lifecycle must register plugins from `didInitializeImplicitFlutterEngine` instead of `application(_:didFinishLaunchingWithOptions:)`, and provide a `SceneDelegate` that subclasses `FlutterSceneDelegate` together with a `UIApplicationSceneManifest` entry in `Info.plist`. See the [setup guide](doc/README.md#step-3-additional-platform-setup).
+
+### Changes
+
+- **(iOS)** Resolve `SquareMobilePaymentsSDK` through Swift Package Manager. `MockReaderUI` is no longer bundled by default over SPM: it can't be scoped to Debug, and its framework is packaged as an application (`CFBundlePackageType = APPL`), so shipping it in a Release archive breaks App Store upload. Apps that want mock readers add it to their own target — see [Using MockReaderUI with Swift Package Manager](doc/MOCK_READER_UI_SPM.md). CocoaPods remains supported as a fallback (`enable-swift-package-manager: false`) and keeps `MockReaderUI` scoped to Debug
+- **(iOS)** Move the plugin sources to `ios/square_mobile_payments_sdk/Sources`
+- **(Android)** Convert the plugin and sample app build scripts to the Gradle Kotlin DSL, target Java 17, and require Android Gradle Plugin `8.9.1` or later
+- Remove CocoaPods from the sample app and update the setup guides for both platforms
+
 ## 2026.7.4
 
 - Upgrade Android and iOS native SDK to `2.6.0`. See the native changelog: [https://developer.squareup.com/docs/changelog/mobile-logs/2026-07-27](https://developer.squareup.com/docs/changelog/mobile-logs/2026-07-27)

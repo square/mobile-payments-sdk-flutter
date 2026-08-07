@@ -1,11 +1,11 @@
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
 
-getChannelStateError(String tag, String desc) {
+StateError getChannelStateError(String tag, String desc) {
   return StateError(
       "$tag, $desc, which should not happen. It might indicate a problem with the channel native implementation");
 }
 
-getChannelArgumentError(
+ArgumentError getChannelArgumentError(
     String typeName, Object type, Iterable<String> validTypeNames) {
   return ArgumentError(
       "Invalid $typeName: Channel return '$type'. Expected one of: ${validTypeNames.join(', ')}");
