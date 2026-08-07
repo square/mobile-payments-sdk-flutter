@@ -6,11 +6,13 @@ extension ReaderInfo {
         return [
             "batteryStatus" : batteryStatus?.toMap() ?? NSNull(),
             "cardInsertionStatus": cardInsertionStatus.toName(),
+            "connectionType": connectionType.toName(),
             "firmwareInfo" : firmwareInfo?.toMap() ?? NSNull(),
             "id": String(id),
             "isBlinkable" : isBlinkable,
             "isConnectionRetryable" : isConnectionRetryable,
             "isForgettable" : isForgettable,
+            "isRebootable" : isRebootable,
             "model": model.toName(),
             "name" : name,
             "serialNumber" : serialNumber ?? NSNull(),
@@ -60,11 +62,45 @@ extension ReaderModel {
     }
 }
 
+extension ReaderConnectionType {
+    func toName() -> String {
+        return switch self {
+        case .usb:
+            "usb"
+        case .bluetooth:
+            "bluetooth"
+        case .audio:
+            "audio"
+        case .embedded:
+            "embedded"
+        case .unknown:
+            "unknown"
+        }
+    }
+}
+
+extension FirmwareUpdateStatus {
+    func toName() -> String {
+        return switch self {
+        case .none:
+            "none"
+        case .pending:
+            "pending"
+        case .inProgress:
+            "inProgress"
+        case .failed:
+            "failed"
+        }
+    }
+}
+
 extension ReaderFirmwareInfo {
     func toMap() -> NSDictionary {
         return [
             "failureReason" : failureReason?.localizedDescription ?? NSNull(),
             "updatePercentage" : updatePercentage,
+            "updateStatus" : updateStatus.toName(),
+            "updateTime" : updateTime?.ISO8601Format() ?? NSNull(),
             "version" : version
         ]
     }
@@ -111,6 +147,8 @@ extension ReaderStatusInfo {
             "status" : status.toName(),
             "unavailableReason" : unavailableReasonInfo?.reason
                 .toName() ?? NSNull(),
+            "unavailableReasonTitle" : unavailableReasonInfo?.title ?? NSNull(),
+            "unavailableReasonDetail" : unavailableReasonInfo?.detail ?? NSNull(),
         ]
     }
 }

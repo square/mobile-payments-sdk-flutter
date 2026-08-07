@@ -28,7 +28,7 @@ abstract class Location with _$Location {
 @freezed
 abstract class Money with _$Money {
   const factory Money({
-    int? amount,
+    required int amount,
     @JsonKey(unknownEnumValue: CurrencyCode.unknown)
     required CurrencyCode currencyCode,
   }) = _Money;
@@ -48,6 +48,7 @@ abstract class Card with _$Card {
     @Default(0) num expirationYear,
     String? id,
     String? lastFourDigits,
+    String? bin,
   }) = _Card;
 
   factory Card.fromJson(Map<String, Object?> json) => _$CardFromJson(json);
@@ -56,10 +57,14 @@ abstract class Card with _$Card {
 @freezed
 abstract class OfflineCard with _$OfflineCard {
   const factory OfflineCard({
-    required CardBrand brand,
+    @JsonKey(unknownEnumValue: CardBrand.unknown) required CardBrand brand,
     String? cardholderName,
     String? id,
     String? lastFourDigits,
+    @JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand? coBrand,
+    num? expirationMonth,
+    num? expirationYear,
+    String? bin,
   }) = _OfflineCard;
 
   factory OfflineCard.fromJson(Map<String, Object?> json) =>
@@ -76,11 +81,37 @@ abstract class CardPaymentDetails with _$CardPaymentDetails {
     @JsonKey(unknownEnumValue: EntryMethod.unknown)
     required EntryMethod entryMethod,
     @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
-    CardPaymentStatus? status,
+    required CardPaymentStatus status,
+    CardSurchargeDetails? appliedCardSurchargeDetails,
+    VerificationMethod? verificationMethod,
+    VerificationResult? verificationResults,
   }) = _CardPaymentDetails;
 
   factory CardPaymentDetails.fromJson(Map<String, Object?> json) =>
       _$CardPaymentDetailsFromJson(json);
+}
+
+@freezed
+abstract class CardSurchargeDetails with _$CardSurchargeDetails {
+  const factory CardSurchargeDetails({
+    required Money cardSurchargeMoney,
+    Money? taxOnCardSurchargeMoney,
+    Money? totalSurchargeMoney,
+  }) = _CardSurchargeDetails;
+
+  factory CardSurchargeDetails.fromJson(Map<String, Object?> json) =>
+      _$CardSurchargeDetailsFromJson(json);
+}
+
+@freezed
+abstract class CashPaymentDetails with _$CashPaymentDetails {
+  const factory CashPaymentDetails({
+    Money? buyerSuppliedMoney,
+    Money? changeBackMoney,
+  }) = _CashPaymentDetails;
+
+  factory CashPaymentDetails.fromJson(Map<String, Object?> json) =>
+      _$CashPaymentDetailsFromJson(json);
 }
 
 @freezed
@@ -113,6 +144,8 @@ abstract class ReaderStatusInfo with _$ReaderStatusInfo {
   const factory ReaderStatusInfo({
     required ReaderStatusInfoStatus status,
     ReaderStatusInfoUnavailableReason? unavailableReason,
+    String? unavailableReasonTitle,
+    String? unavailableReasonDetail,
   }) = _ReaderStatusInfo;
 
   factory ReaderStatusInfo.fromJson(Map<String, Object?> json) =>
@@ -123,7 +156,9 @@ abstract class ReaderStatusInfo with _$ReaderStatusInfo {
 abstract class ReaderFirmwareInfo with _$ReaderFirmwareInfo {
   const factory ReaderFirmwareInfo({
     String? failureReason,
+    required FirmwareUpdateStatus updateStatus,
     int? updatePercentage,
+    DateTime? updateTime,
     String? version,
   }) = _ReaderFirmwareInfo;
 
@@ -136,11 +171,14 @@ abstract class ReaderInfo with _$ReaderInfo {
   const factory ReaderInfo({
     ReaderBatteryStatus? batteryStatus,
     CardInsertionStatus? cardInsertionStatus,
+    @JsonKey(unknownEnumValue: ReaderConnectionType.unknown)
+    required ReaderConnectionType connectionType,
     ReaderFirmwareInfo? firmwareInfo,
     required String id,
     required bool isBlinkable,
     bool? isConnectionRetryable,
     required bool isForgettable,
+    bool? isRebootable,
     required ReaderModel model,
     required String name,
     String? serialNumber,
@@ -165,25 +203,97 @@ abstract class PromptParameters with _$PromptParameters {
 
 /// Payments
 
-@freezed
-abstract class Payment with _$Payment {
-  const factory Payment({
+/// A payment taken with the Mobile Payments SDK.
+///
+/// Mirrors the native hierarchy: every payment is either an [OnlinePayment] or
+/// an [OfflinePayment]. Fields shared by both are available directly on
+/// [Payment]; use a `switch` to reach the members specific to each variant.
+@Freezed(unionKey: 'type')
+sealed class Payment with _$Payment {
+  const factory Payment.online({
     required Money amountMoney,
     Money? appFeeMoney,
-    CardPaymentDetails? cardDetails,
+    CashPaymentDetails? cashDetails,
     required DateTime createdAt,
     String? id,
     String? locationId,
     String? orderId,
     String? referenceId,
+    @JsonKey(unknownEnumValue: SourceType.unknown)
     required SourceType sourceType,
     Money? tipMoney,
     required Money totalMoney,
     required DateTime updatedAt,
-  }) = _Payment;
+    CardPaymentDetails? cardDetails,
+    String? customerId,
+    String? note,
+    @JsonKey(unknownEnumValue: PaymentStatus.unknown)
+    required PaymentStatus status,
+    String? teamMemberId,
+    PaymentCapabilities? capabilities,
+    List<PaymentProcessingFee>? processingFee,
+    String? receiptNumber,
+    String? receiptUrl,
+    String? statementDescription,
+  }) = OnlinePayment;
+
+  const factory Payment.offline({
+    required Money amountMoney,
+    Money? appFeeMoney,
+    CashPaymentDetails? cashDetails,
+    required DateTime createdAt,
+    String? id,
+    String? locationId,
+    String? orderId,
+    String? referenceId,
+    @JsonKey(unknownEnumValue: SourceType.unknown)
+    required SourceType sourceType,
+    Money? tipMoney,
+    required Money totalMoney,
+    required DateTime updatedAt,
+    OfflineCardPaymentDetails? cardDetails,
+    required String localId,
+    @JsonKey(unknownEnumValue: OfflineStatus.unknown)
+    required OfflineStatus status,
+    DateTime? uploadedAt,
+  }) = OfflinePayment;
 
   factory Payment.fromJson(Map<String, Object?> json) =>
       _$PaymentFromJson(json);
+}
+
+@freezed
+abstract class PaymentCapabilities with _$PaymentCapabilities {
+  const PaymentCapabilities._();
+
+  const factory PaymentCapabilities({
+    @Default(<String>[]) List<String> allCapabilities,
+  }) = _PaymentCapabilities;
+
+  factory PaymentCapabilities.fromJson(Map<String, Object?> json) =>
+      _$PaymentCapabilitiesFromJson(json);
+
+  static const String editTipAmountUp = 'EDIT_TIP_AMOUNT_UP';
+  static const String editTipAmountDown = 'EDIT_TIP_AMOUNT_DOWN';
+  static const String editAmountUp = 'EDIT_AMOUNT_UP';
+  static const String editAmountDown = 'EDIT_AMOUNT_DOWN';
+
+  bool get canEditTipUp => allCapabilities.contains(editTipAmountUp);
+  bool get canEditTipDown => allCapabilities.contains(editTipAmountDown);
+  bool get canEditAmountUp => allCapabilities.contains(editAmountUp);
+  bool get canEditAmountDown => allCapabilities.contains(editAmountDown);
+}
+
+@freezed
+abstract class PaymentProcessingFee with _$PaymentProcessingFee {
+  const factory PaymentProcessingFee({
+    required Money amountMoney,
+    required DateTime effectiveAt,
+    required ProcessingFeeType type,
+  }) = _PaymentProcessingFee;
+
+  factory PaymentProcessingFee.fromJson(Map<String, Object?> json) =>
+      _$PaymentProcessingFeeFromJson(json);
 }
 
 @Freezed(unionKey: 'type') // 👈 needed because we have two constructors
@@ -191,19 +301,21 @@ sealed class PaymentParameters with _$PaymentParameters {
   /// ✅ Current / recommended constructor
   @FreezedUnionValue('current')
   const factory PaymentParameters({
-    int? acceptPartialAuthorization,
+    bool? acceptPartialAuthorization,
+    bool? allowCardSurcharge,
     required Money amountMoney,
     Money? appFeeMoney,
     bool? autocomplete,
     String? customerId,
     DelayAction? delayAction,
     num? delayDuration,
-    required num processingMode,
+    required ProcessingMode processingMode,
     required String paymentAttemptId,
     String? locationId,
     String? note,
     String? orderId,
     String? referenceId,
+    String? statementDescription,
     String? teamMemberId,
     Money? tipMoney,
   }) = PaymentParametersCurrent;
@@ -212,19 +324,21 @@ sealed class PaymentParameters with _$PaymentParameters {
   @Deprecated('Use the constructor with paymentAttemptId instead.')
   @FreezedUnionValue('legacy')
   const factory PaymentParameters.legacy({
-    int? acceptPartialAuthorization,
+    bool? acceptPartialAuthorization,
+    bool? allowCardSurcharge,
     required Money amountMoney,
     Money? appFeeMoney,
     bool? autocomplete,
     String? customerId,
     DelayAction? delayAction,
     num? delayDuration,
-    required num processingMode,
+    required ProcessingMode processingMode,
     required String idempotencyKey,
     String? locationId,
     String? note,
     String? orderId,
     String? referenceId,
+    String? statementDescription,
     String? teamMemberId,
     Money? tipMoney,
   }) = _LegacyPaymentParameters;
@@ -234,58 +348,12 @@ sealed class PaymentParameters with _$PaymentParameters {
 }
 
 @freezed
-abstract class OnlinePayment with _$OnlinePayment {
-  const factory OnlinePayment({
-    required Money amountMoney,
-    required Money appFeeMoney,
-    required CardPaymentDetails cardDetails,
-    required String createdAt,
-    required String customerId,
-    required String id,
-    required String locationId,
-    required String note,
-    required String orderId,
-    required String referenceId,
-    required PaymentStatus status,
-    required Money tipMoney,
-    required Money totalMoney,
-    required String updatedAt,
-  }) = _OnlinePayment;
-
-  factory OnlinePayment.fromJson(Map<String, Object?> json) =>
-      _$OnlinePaymentFromJson(json);
-}
-
-@freezed
-abstract class OfflinePayment with _$OfflinePayment {
-  const factory OfflinePayment({
-    required Money amountMoney,
-    Money? appFeeMoney,
-    required DateTime createdAt,
-    String? id,
-    String? locationId,
-    String? orderId,
-    String? referenceId,
-    Money? tipMoney,
-    required SourceType sourceType,
-    required Money totalMoney,
-    required DateTime updatedAt,
-    OfflineCardPaymentDetails? cardDetails,
-    required String localId,
-    required OfflineStatus status,
-    DateTime? uploadedAt,
-  }) = _OfflinePayment;
-
-  factory OfflinePayment.fromJson(Map<String, dynamic> json) =>
-      _$OfflinePaymentFromJson(json);
-}
-
-@freezed
 abstract class OfflineCardPaymentDetails with _$OfflineCardPaymentDetails {
   const factory OfflineCardPaymentDetails({
     String? applicationIdentifier,
     String? applicationName,
     OfflineCard? card,
+    @JsonKey(unknownEnumValue: EntryMethod.unknown)
     required EntryMethod entryMethod,
   }) = _OfflineCardPaymentDetails;
 
@@ -306,9 +374,10 @@ class ReaderCallbackReference {
 
 @freezed
 abstract class ReaderChangedEvent with _$ReaderChangedEvent {
-  const factory ReaderChangedEvent(
-      {required ReaderInfo reader,
-      required ReaderChange change}) = _ReaderChangedEvent;
+  const factory ReaderChangedEvent({
+    required ReaderInfo reader,
+    required ReaderChange change,
+  }) = _ReaderChangedEvent;
 
   factory ReaderChangedEvent.fromJson(Map<String, Object?> json) =>
       _$ReaderChangedEventFromJson(json);
@@ -334,9 +403,10 @@ abstract class TimeOfDay with _$TimeOfDay {
 
 @freezed
 abstract class ReaderSettings with _$ReaderSettings {
-  const factory ReaderSettings(
-      {required bool isReducedChargingModeEnabled,
-      TimeOfDay? preferredFirmwareUpdateTime}) = _ReaderSettings;
+  const factory ReaderSettings({
+    required bool isReducedChargingModeEnabled,
+    TimeOfDay? preferredFirmwareUpdateTime,
+  }) = _ReaderSettings;
   factory ReaderSettings.fromJson(Map<String, Object?> json) =>
       _$ReaderSettingsFromJson(json);
 }

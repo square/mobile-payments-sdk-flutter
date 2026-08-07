@@ -9,6 +9,7 @@ enum AccountType {
 enum AdditionalPaymentMethodType {
   keyed,
   cash,
+  tapToPay,
 }
 
 enum AuthorizationState {
@@ -32,7 +33,7 @@ enum CardBrand {
   felica,
   interac,
   squareCapitalCard,
-  unknown
+  unknown,
 }
 
 enum CardCoBrand {
@@ -90,7 +91,29 @@ enum PaymentStatus {
   complete,
   canceled,
   failed,
+  // ios
+  initialized,
+  pending,
   unknown,
+}
+
+enum VerificationMethod {
+  pin,
+  signature,
+  pinAndSignature,
+  onDevice,
+  none,
+}
+
+enum VerificationResult {
+  success,
+  failure,
+  unknown,
+}
+
+enum ProcessingFeeType {
+  initial,
+  adjustment,
 }
 
 // Note: in native SDKs the enums don't have the Mode suffix. In Dart, default is a reserved keyword
@@ -141,6 +164,23 @@ enum ReaderChange {
   firmwareProgress,
 }
 
+enum ReaderConnectionType {
+  usb,
+  bluetooth,
+  audio,
+  embedded,
+  // ios
+  unknown,
+}
+
+enum FirmwareUpdateStatus {
+  none,
+  pending,
+  inProgress,
+  // ios
+  failed,
+}
+
 enum ReaderFirmwareUpdateError {
   connectionTimeout,
   firmwareFailure,
@@ -184,7 +224,7 @@ enum ReaderStatusInfoUnavailableReason {
   deviceRooted,
   deviceDeveloperMode,
   disabled,
-  hostIdMismatch
+  hostIdMismatch,
 }
 
 enum ReaderModel {

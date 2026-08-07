@@ -1,6 +1,16 @@
-## 2026.8.2
+## 2026.8.3
 
-- Upgrade Android native SDK to `2.6.1`, which fixes a bug where Tap to Pay on Android became unavailable for up to 2 hours before the daily payment-key rotation
+Payment, reader, and related Dart models were updated to better match the native Mobile Payments SDK APIs. Several fields were added across platforms; only the breaking API changes are listed below.
+
+### Breaking changes
+
+- `Payment` is now a sealed class with `Payment.online` / `Payment.offline` variants (discriminated by `type`). Code that treated `Payment` as a single concrete model, or constructed the former standalone `OnlinePayment` / `OfflinePayment` classes, must switch on the union instead.
+- `PaymentParameters.processingMode` changed from `num` to the `ProcessingMode` enum (native side now expects a string, not an int).
+- `PaymentParameters.acceptPartialAuthorization` changed from `int?` to `bool?`.
+- `Money.amount` is now required (`int` instead of `int?`).
+- `CardPaymentDetails.status` is now required.
+- `ReaderInfo.connectionType` is a new required field (`ReaderConnectionType`).
+- `ReaderFirmwareInfo.updateStatus` is a new required field (`FirmwareUpdateStatus`).
 
 ## 2026.8.1
 
