@@ -1,3 +1,7 @@
+## 2026.8.1
+
+- Propagate platform errors from manager methods that previously discarded the platform `Future` (`ReaderManager.showMockReaderUI` / `hideMockReaderUI` / `forget` / `blink`, `AuthManager.deauthorize`, `SettingsManager.showSettings`), so callers receive failures instead of unhandled async errors. Also deliver Tap to Pay unsupported-platform errors asynchronously so they can be caught with `await` or `.catchError`.
+
 ## 2026.8.0
 
 The iOS plugin is now distributed as a Swift package. There are no changes to the Dart API.

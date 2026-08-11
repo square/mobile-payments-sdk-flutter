@@ -10,11 +10,11 @@ class ReaderManager {
   factory ReaderManager() => _instance;
 
   Future<void> showMockReaderUI() async {
-    SquareMobilePaymentsSdkPlatform.instance.showMockReaderUI();
+    return SquareMobilePaymentsSdkPlatform.instance.showMockReaderUI();
   }
 
   Future<void> hideMockReaderUI() async {
-    SquareMobilePaymentsSdkPlatform.instance.hideMockReaderUI();
+    return SquareMobilePaymentsSdkPlatform.instance.hideMockReaderUI();
   }
 
   Future<List<ReaderInfo>> getReaders() async {
@@ -26,11 +26,11 @@ class ReaderManager {
   }
 
   Future<void> forget(String id) async {
-    SquareMobilePaymentsSdkPlatform.instance.forget(id);
+    return SquareMobilePaymentsSdkPlatform.instance.forget(id);
   }
 
   Future<void> blink(String id) async {
-    SquareMobilePaymentsSdkPlatform.instance.blink(id);
+    return SquareMobilePaymentsSdkPlatform.instance.blink(id);
   }
 
   Future<bool> isPairingInProgress() async {

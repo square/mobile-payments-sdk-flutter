@@ -20,7 +20,7 @@ class SettingsManager {
   }
 
   Future<void> showSettings() async {
-    SquareMobilePaymentsSdkPlatform.instance.showSettings();
+    return SquareMobilePaymentsSdkPlatform.instance.showSettings();
   }
 
   Future<TrackingConsentState> getTrackingConsentState() {
