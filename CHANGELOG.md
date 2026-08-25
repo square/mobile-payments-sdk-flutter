@@ -1,3 +1,7 @@
+## 2026.8.2
+
+- Upgrade Android native SDK to `2.6.1`, which fixes a bug where Tap to Pay on Android became unavailable for up to 2 hours before the daily payment-key rotation
+
 ## 2026.8.1
 
 - Propagate platform errors from manager methods that previously discarded the platform `Future` (`ReaderManager.showMockReaderUI` / `hideMockReaderUI` / `forget` / `blink`, `AuthManager.deauthorize`, `SettingsManager.showSettings`), so callers receive failures instead of unhandled async errors. Also deliver Tap to Pay unsupported-platform errors asynchronously so they can be caught with `await` or `.catchError`.
