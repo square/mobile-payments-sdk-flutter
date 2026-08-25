@@ -40,7 +40,7 @@ This setting is scoped to the project, so it does not change your global Flutter
 
 For Android:
 1. Modify your `/android/app/build.gradle.kts`
-   - Add `val squareSdkVersion = "2.6.0"` at the top of the file
+   - Add `val squareSdkVersion = "2.6.1"` at the top of the file
    - Add `maven { url = uri("https://sdk.squareup.com/public/android/") }` inside the module's `repositories {...}` block
    - Add `implementation("com.squareup.sdk:mobile-payments-sdk:$squareSdkVersion")` inside the `dependencies {...}` block
 2. Disable Proguard by adding the following to your `/android/app/build.gradle.kts`. The Mobile Payments SDK does not support code shrinking, which may strip bytecode the SDK needs at runtime:

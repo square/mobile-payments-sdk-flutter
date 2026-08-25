@@ -18,7 +18,7 @@ buildscript {
 group = "com.squareup.square_mobile_payments_sdk"
 version = "1.0-SNAPSHOT"
 
-val squareSdkVersion = "2.6.0"
+val squareSdkVersion = "2.6.1"
 
 allprojects {
     repositories {
