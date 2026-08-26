@@ -27,6 +27,7 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
           .startPayment(
               PaymentParameters(
                   autocomplete: false,
+                  allowCardSurcharge: true,
                   delayDuration: 60 * 60, // 1 hour
                   delayAction: DelayAction.cancel,
                   note:

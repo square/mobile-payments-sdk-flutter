@@ -6,6 +6,8 @@ Payment, reader, and related Dart models were updated to better match the native
 
 - `Payment` is now a sealed class with `Payment.online` / `Payment.offline` variants (discriminated by `type`). Code that treated `Payment` as a single concrete model, or constructed the former standalone `OnlinePayment` / `OfflinePayment` classes, must switch on the union instead.
 - `PaymentParameters.processingMode` changed from `num` to the `ProcessingMode` enum (native side now expects a string, not an int).
+- `PaymentParameters.allowCardSurcharge` is now required (`bool`). The plugin no longer defaults this value when it is missing; callers must set it explicitly and it is passed through to both Android and iOS.
+- `PaymentParameters.legacy` / `idempotencyKey` have been removed. Use `paymentAttemptId` (required on both Android and iOS).
 - `PaymentParameters.acceptPartialAuthorization` changed from `int?` to `bool?`.
 - `Money.amount` is now required (`int` instead of `int?`).
 - `CardPaymentDetails.status` is now required.
@@ -42,8 +44,8 @@ The iOS plugin is now distributed as a Swift package. There are no changes to th
 
 ## 2026.7.3
 
-- Fix issue #84, fix additionalPaymentMethods Map in native side 
-in order to support keyed, cash, tapToPay additional methods
+- Fix issue #84, fix additionalPaymentMethods Map in native side
+  in order to support keyed, cash, tapToPay additional methods
 
 ## 2026.7.2
 
@@ -58,7 +60,7 @@ Aligns iOS and Android error handling with exhaustive, typed Dart enums.
 
 - `ReaderManager.pairReader` callback signature changed from `void Function(bool, String?)` to `void Function(bool, ReaderPairingError?)`. The second argument is now a typed `ReaderPairingError` exception instead of a raw message string.
 - `SettingsManager.getTrackingConsentState()` now returns `Future<TrackingConsentState>` (new enum) instead of `Future<String>`.
-- The `ReaderPairingError` *enum* was renamed to `ReaderPairingErrorCode`; `ReaderPairingError` is now an `Exception` class. Several cases were renamed: `bluetoothNotSupported` → `bluetoothUnsupported`, `bondingRemoved` → `bondFailed`, `timedOut` → `timeout`.
+- The `ReaderPairingError` _enum_ was renamed to `ReaderPairingErrorCode`; `ReaderPairingError` is now an `Exception` class. Several cases were renamed: `bluetoothNotSupported` → `bluetoothUnsupported`, `bondingRemoved` → `bondFailed`, `timedOut` → `timeout`.
 - `PaymentErrorCode`: removed `timedOut` (→ `timeout`), `noNetworkAndMerchantNotOptedIntoOfflineProcessing`, and `unknown`; added `trackingConsentIsPending` and `paymentAttemptIdReused`.
 - `OfflinePaymentQueueErrorCode`: removed `unknown`; added `consentNotProvided` and `obsoleteSdk`.
 - `MockReaderUIErrorCode`: removed `unknown`.
@@ -102,7 +104,7 @@ Upgrade native SDKs: Android 2.3.4, iOS: 2.3.1
 Upgrade native SDKs: Android 2.3.1, iOS: 2.3.0
 Remove deprecated use of toLower
 
-- Adding consent tracking  
+- Adding consent tracking
 - (iOS) reader info states
 
 ## 2025.7.1

@@ -29,7 +29,9 @@ public class PaymentMapper {
             let amountMoney = paymentParameters["amountMoney"] as? [String: Any],
             let amount = amountMoney["amount"] as? UInt,
             let currencyCode = amountMoney["currencyCode"] as? String,
-            let processingMode = paymentParameters["processingMode"] as? String
+            let processingMode = paymentParameters["processingMode"] as? String,
+            let allowCardSurcharge = paymentParameters["allowCardSurcharge"] as? Bool,
+            let paymentAttemptID = paymentParameters["paymentAttemptId"] as? String
         else {
             fatalError("Error: Missing or invalid required payment parameters")
         }
@@ -40,19 +42,14 @@ public class PaymentMapper {
         // Create the amountMoney object
         let money = Money(amount: amount, currency: currency)
         
-        var paymentParams: PaymentParameters? = nil
-        if let paymentAttemptID = paymentParameters["paymentAttemptId"] as? String{
-            paymentParams = PaymentParameters(
-                paymentAttemptID: paymentAttemptID,
-                amountMoney: money,
-                processingMode: Self.convertToProcessingMode(processingMode)
-            )
-        }
-        
-        guard let paymentParams
-        else {
-                fatalError("Error: Missing or invalid required payment parameters")
-        }
+        let paymentParams = PaymentParameters(
+            paymentAttemptID: paymentAttemptID,
+            amountMoney: money,
+            processingMode: Self.convertToProcessingMode(processingMode)
+        )
+
+        paymentParams.allowCardSurcharge = allowCardSurcharge
+
         // Optional: appFeeMoney
         if let appFeeMoney = paymentParameters["appFeeMoney"] as? [String: Any],
            let appFeeAmount = appFeeMoney["amount"] as? UInt,
@@ -106,11 +103,6 @@ public class PaymentMapper {
         // Optional: acceptPartialAuthorization
         if let acceptPartialAuthorization = paymentParameters["acceptPartialAuthorization"] as? Bool {
             paymentParams.acceptPartialAuthorization = acceptPartialAuthorization
-        }
-
-        // Optional: allowCardSurcharge
-        if let allowCardSurcharge = paymentParameters["allowCardSurcharge"] as? Bool {
-            paymentParams.allowCardSurcharge = allowCardSurcharge
         }
 
         // Optional: customerId

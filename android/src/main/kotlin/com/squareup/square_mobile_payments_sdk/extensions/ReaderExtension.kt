@@ -6,10 +6,6 @@ import com.squareup.sdk.mobilepayments.cardreader.ReaderChangedEvent
 import com.squareup.sdk.mobilepayments.cardreader.ReaderInfo
 import com.squareup.sdk.mobilepayments.cardreader.ReaderSettings
 import com.squareup.sdk.mobilepayments.core.TimeOfDay
-import java.util.Date
-import java.util.Locale
-import java.util.TimeZone
-import java.text.SimpleDateFormat
 
 fun ReaderInfo.toReaderInfoMap(): Map<String, Any?> {
     return mapOf(
@@ -65,7 +61,7 @@ fun ReaderInfo.FirmwareUpdateStatus.toUpdateTime(): String? {
    return when (this) {
      is ReaderInfo.FirmwareUpdateStatus.InProgress -> null
      is ReaderInfo.FirmwareUpdateStatus.None -> null
-     is ReaderInfo.FirmwareUpdateStatus.Pending -> toISO8601String(this.updateDate)
+     is ReaderInfo.FirmwareUpdateStatus.Pending -> this.updateDate.toISO8601String()
    }
 }
 
@@ -177,10 +173,4 @@ fun TimeOfDay.toTimeOfDayMap(): Map<String, Int> {
     "hour" to hour,
     "minute" to minute
   )
-}
-
-fun toISO8601String(date: Date): String {
-  val isoFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ROOT)
-  isoFormat.timeZone = TimeZone.getTimeZone("UTC")
-  return isoFormat.format(date)
 }

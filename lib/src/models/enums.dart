@@ -9,7 +9,7 @@ enum AccountType {
 enum AdditionalPaymentMethodType {
   keyed,
   cash,
-  tapToPay,
+  tapToPay, // iOS only
 }
 
 enum AuthorizationState {
@@ -91,9 +91,8 @@ enum PaymentStatus {
   complete,
   canceled,
   failed,
-  // ios
-  initialized,
-  pending,
+  initialized, // iOS only
+  pending, // iOS only
   unknown,
 }
 
@@ -169,7 +168,6 @@ enum ReaderConnectionType {
   bluetooth,
   audio,
   embedded,
-  // ios
   unknown,
 }
 
@@ -177,8 +175,7 @@ enum FirmwareUpdateStatus {
   none,
   pending,
   inProgress,
-  // ios
-  failed,
+  failed, // iOS only
 }
 
 enum ReaderFirmwareUpdateError {
@@ -203,7 +200,6 @@ enum ReaderStatusInfoUnavailableReason {
   secureConnectionToSquareFailure,
   secureConnectionNetworkFailure,
   blockingUpdate,
-  //ios
   maxReadersConnected,
   notConnectedToInternet,
   readerTimeout,

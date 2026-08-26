@@ -8,7 +8,6 @@ import com.squareup.sdk.mobilepayments.payment.PaymentParameters
 import com.squareup.sdk.mobilepayments.payment.PromptMode
 import com.squareup.sdk.mobilepayments.payment.PromptParameters
 import com.squareup.sdk.mobilepayments.payment.ProcessingMode
-import java.util.UUID
 
 class PaymentMapper {
 
@@ -25,8 +24,8 @@ class PaymentMapper {
             val builder = PaymentParameters.Builder(
                 amount = Money(amount, currencyCode),
                 processingMode = convertToProcessingMode(paymentParameters.get("processingMode") as? String),
-                allowCardSurcharge = paymentParameters.get("allowCardSurcharge") as? Boolean ?: true,
-                paymentAttemptId = paymentParameters.get("paymentAttemptId") as String ?: ""
+                allowCardSurcharge = paymentParameters.get("allowCardSurcharge") as Boolean,
+                paymentAttemptId = paymentParameters.get("paymentAttemptId") as String
                 )
 
                 if(paymentParameters.get("appFeeMoney") != null){

@@ -711,11 +711,11 @@ const _$ProcessingFeeTypeEnumMap = {
   ProcessingFeeType.adjustment: 'adjustment',
 };
 
-PaymentParametersCurrent _$PaymentParametersCurrentFromJson(
+_PaymentParameters _$PaymentParametersFromJson(
   Map<String, dynamic> json,
-) => PaymentParametersCurrent(
+) => _PaymentParameters(
   acceptPartialAuthorization: json['acceptPartialAuthorization'] as bool?,
-  allowCardSurcharge: json['allowCardSurcharge'] as bool?,
+  allowCardSurcharge: json['allowCardSurcharge'] as bool,
   amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
   appFeeMoney: json['appFeeMoney'] == null
       ? null
@@ -735,31 +735,28 @@ PaymentParametersCurrent _$PaymentParametersCurrentFromJson(
   tipMoney: json['tipMoney'] == null
       ? null
       : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
-  $type: json['type'] as String?,
 );
 
-Map<String, dynamic> _$PaymentParametersCurrentToJson(
-  PaymentParametersCurrent instance,
-) => <String, dynamic>{
-  'acceptPartialAuthorization': instance.acceptPartialAuthorization,
-  'allowCardSurcharge': instance.allowCardSurcharge,
-  'amountMoney': instance.amountMoney,
-  'appFeeMoney': instance.appFeeMoney,
-  'autocomplete': instance.autocomplete,
-  'customerId': instance.customerId,
-  'delayAction': _$DelayActionEnumMap[instance.delayAction],
-  'delayDuration': instance.delayDuration,
-  'processingMode': _$ProcessingModeEnumMap[instance.processingMode]!,
-  'paymentAttemptId': instance.paymentAttemptId,
-  'locationId': instance.locationId,
-  'note': instance.note,
-  'orderId': instance.orderId,
-  'referenceId': instance.referenceId,
-  'statementDescription': instance.statementDescription,
-  'teamMemberId': instance.teamMemberId,
-  'tipMoney': instance.tipMoney,
-  'type': instance.$type,
-};
+Map<String, dynamic> _$PaymentParametersToJson(_PaymentParameters instance) =>
+    <String, dynamic>{
+      'acceptPartialAuthorization': instance.acceptPartialAuthorization,
+      'allowCardSurcharge': instance.allowCardSurcharge,
+      'amountMoney': instance.amountMoney,
+      'appFeeMoney': instance.appFeeMoney,
+      'autocomplete': instance.autocomplete,
+      'customerId': instance.customerId,
+      'delayAction': _$DelayActionEnumMap[instance.delayAction],
+      'delayDuration': instance.delayDuration,
+      'processingMode': _$ProcessingModeEnumMap[instance.processingMode]!,
+      'paymentAttemptId': instance.paymentAttemptId,
+      'locationId': instance.locationId,
+      'note': instance.note,
+      'orderId': instance.orderId,
+      'referenceId': instance.referenceId,
+      'statementDescription': instance.statementDescription,
+      'teamMemberId': instance.teamMemberId,
+      'tipMoney': instance.tipMoney,
+    };
 
 const _$DelayActionEnumMap = {
   DelayAction.cancel: 'cancel',
@@ -770,56 +767,6 @@ const _$ProcessingModeEnumMap = {
   ProcessingMode.autoDetect: 'autoDetect',
   ProcessingMode.offlineOnly: 'offlineOnly',
   ProcessingMode.onlineOnly: 'onlineOnly',
-};
-
-_LegacyPaymentParameters _$LegacyPaymentParametersFromJson(
-  Map<String, dynamic> json,
-) => _LegacyPaymentParameters(
-  acceptPartialAuthorization: json['acceptPartialAuthorization'] as bool?,
-  allowCardSurcharge: json['allowCardSurcharge'] as bool?,
-  amountMoney: Money.fromJson(json['amountMoney'] as Map<String, dynamic>),
-  appFeeMoney: json['appFeeMoney'] == null
-      ? null
-      : Money.fromJson(json['appFeeMoney'] as Map<String, dynamic>),
-  autocomplete: json['autocomplete'] as bool?,
-  customerId: json['customerId'] as String?,
-  delayAction: $enumDecodeNullable(_$DelayActionEnumMap, json['delayAction']),
-  delayDuration: json['delayDuration'] as num?,
-  processingMode: $enumDecode(_$ProcessingModeEnumMap, json['processingMode']),
-  idempotencyKey: json['idempotencyKey'] as String,
-  locationId: json['locationId'] as String?,
-  note: json['note'] as String?,
-  orderId: json['orderId'] as String?,
-  referenceId: json['referenceId'] as String?,
-  statementDescription: json['statementDescription'] as String?,
-  teamMemberId: json['teamMemberId'] as String?,
-  tipMoney: json['tipMoney'] == null
-      ? null
-      : Money.fromJson(json['tipMoney'] as Map<String, dynamic>),
-  $type: json['type'] as String?,
-);
-
-Map<String, dynamic> _$LegacyPaymentParametersToJson(
-  _LegacyPaymentParameters instance,
-) => <String, dynamic>{
-  'acceptPartialAuthorization': instance.acceptPartialAuthorization,
-  'allowCardSurcharge': instance.allowCardSurcharge,
-  'amountMoney': instance.amountMoney,
-  'appFeeMoney': instance.appFeeMoney,
-  'autocomplete': instance.autocomplete,
-  'customerId': instance.customerId,
-  'delayAction': _$DelayActionEnumMap[instance.delayAction],
-  'delayDuration': instance.delayDuration,
-  'processingMode': _$ProcessingModeEnumMap[instance.processingMode]!,
-  'idempotencyKey': instance.idempotencyKey,
-  'locationId': instance.locationId,
-  'note': instance.note,
-  'orderId': instance.orderId,
-  'referenceId': instance.referenceId,
-  'statementDescription': instance.statementDescription,
-  'teamMemberId': instance.teamMemberId,
-  'tipMoney': instance.tipMoney,
-  'type': instance.$type,
 };
 
 _OfflineCardPaymentDetails _$OfflineCardPaymentDetailsFromJson(

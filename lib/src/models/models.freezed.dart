@@ -882,7 +882,10 @@ as String?,
 /// @nodoc
 mixin _$OfflineCard implements DiagnosticableTreeMixin {
 
-@JsonKey(unknownEnumValue: CardBrand.unknown) CardBrand get brand; String? get cardholderName; String? get id; String? get lastFourDigits;@JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand? get coBrand; num? get expirationMonth; num? get expirationYear; String? get bin;
+@JsonKey(unknownEnumValue: CardBrand.unknown) CardBrand get brand; String? get cardholderName; String? get id; String? get lastFourDigits;@JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand? get coBrand;// Android only
+ num? get expirationMonth;// Android only
+ num? get expirationYear;// Android only
+ String? get bin;
 /// Create a copy of OfflineCard
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1097,8 +1100,11 @@ class _OfflineCard with DiagnosticableTreeMixin implements OfflineCard {
 @override final  String? id;
 @override final  String? lastFourDigits;
 @override@JsonKey(unknownEnumValue: CardCoBrand.unknown) final  CardCoBrand? coBrand;
+// Android only
 @override final  num? expirationMonth;
+// Android only
 @override final  num? expirationYear;
+// Android only
 @override final  String? bin;
 
 /// Create a copy of OfflineCard
@@ -1178,7 +1184,8 @@ as String?,
 /// @nodoc
 mixin _$CardPaymentDetails implements DiagnosticableTreeMixin {
 
- String? get applicationIdentifier; String? get applicationName; String? get authorizationCode; Card? get card;@JsonKey(unknownEnumValue: EntryMethod.unknown) EntryMethod get entryMethod;@JsonKey(unknownEnumValue: CardPaymentStatus.unknown) CardPaymentStatus get status; CardSurchargeDetails? get appliedCardSurchargeDetails; VerificationMethod? get verificationMethod; VerificationResult? get verificationResults;
+ String? get applicationIdentifier; String? get applicationName; String? get authorizationCode; Card? get card;@JsonKey(unknownEnumValue: EntryMethod.unknown) EntryMethod get entryMethod;@JsonKey(unknownEnumValue: CardPaymentStatus.unknown) CardPaymentStatus get status; CardSurchargeDetails? get appliedCardSurchargeDetails; VerificationMethod? get verificationMethod;// Android only
+ VerificationResult? get verificationResults;
 /// Create a copy of CardPaymentDetails
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1421,6 +1428,7 @@ class _CardPaymentDetails with DiagnosticableTreeMixin implements CardPaymentDet
 @override@JsonKey(unknownEnumValue: CardPaymentStatus.unknown) final  CardPaymentStatus status;
 @override final  CardSurchargeDetails? appliedCardSurchargeDetails;
 @override final  VerificationMethod? verificationMethod;
+// Android only
 @override final  VerificationResult? verificationResults;
 
 /// Create a copy of CardPaymentDetails
@@ -2760,7 +2768,8 @@ as int,
 /// @nodoc
 mixin _$ReaderStatusInfo implements DiagnosticableTreeMixin {
 
- ReaderStatusInfoStatus get status; ReaderStatusInfoUnavailableReason? get unavailableReason; String? get unavailableReasonTitle; String? get unavailableReasonDetail;
+ ReaderStatusInfoStatus get status; ReaderStatusInfoUnavailableReason? get unavailableReason; String? get unavailableReasonTitle;// iOS only
+ String? get unavailableReasonDetail;
 /// Create a copy of ReaderStatusInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2969,6 +2978,7 @@ class _ReaderStatusInfo with DiagnosticableTreeMixin implements ReaderStatusInfo
 @override final  ReaderStatusInfoStatus status;
 @override final  ReaderStatusInfoUnavailableReason? unavailableReason;
 @override final  String? unavailableReasonTitle;
+// iOS only
 @override final  String? unavailableReasonDetail;
 
 /// Create a copy of ReaderStatusInfo
@@ -3044,7 +3054,8 @@ as String?,
 /// @nodoc
 mixin _$ReaderFirmwareInfo implements DiagnosticableTreeMixin {
 
- String? get failureReason; FirmwareUpdateStatus get updateStatus; int? get updatePercentage; DateTime? get updateTime; String? get version;
+ String? get failureReason;// iOS only
+ FirmwareUpdateStatus get updateStatus; int? get updatePercentage; DateTime? get updateTime; String? get version;
 /// Create a copy of ReaderFirmwareInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3252,6 +3263,7 @@ class _ReaderFirmwareInfo with DiagnosticableTreeMixin implements ReaderFirmware
   factory _ReaderFirmwareInfo.fromJson(Map<String, dynamic> json) => _$ReaderFirmwareInfoFromJson(json);
 
 @override final  String? failureReason;
+// iOS only
 @override final  FirmwareUpdateStatus updateStatus;
 @override final  int? updatePercentage;
 @override final  DateTime? updateTime;
@@ -3331,7 +3343,10 @@ as String?,
 /// @nodoc
 mixin _$ReaderInfo implements DiagnosticableTreeMixin {
 
- ReaderBatteryStatus? get batteryStatus; CardInsertionStatus? get cardInsertionStatus;@JsonKey(unknownEnumValue: ReaderConnectionType.unknown) ReaderConnectionType get connectionType; ReaderFirmwareInfo? get firmwareInfo; String get id; bool get isBlinkable; bool? get isConnectionRetryable; bool get isForgettable; bool? get isRebootable; ReaderModel get model; String get name; String? get serialNumber; ReaderStatusInfo get statusInfo; List<CardInputMethod> get supportedInputMethods;
+ ReaderBatteryStatus? get batteryStatus; CardInsertionStatus? get cardInsertionStatus;// iOS only
+@JsonKey(unknownEnumValue: ReaderConnectionType.unknown) ReaderConnectionType get connectionType; ReaderFirmwareInfo? get firmwareInfo; String get id; bool get isBlinkable; bool? get isConnectionRetryable;// iOS only
+ bool get isForgettable; bool? get isRebootable;// iOS only
+ ReaderModel get model; String get name; String? get serialNumber; ReaderStatusInfo get statusInfo; List<CardInputMethod> get supportedInputMethods;
 /// Create a copy of ReaderInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3582,13 +3597,16 @@ class _ReaderInfo with DiagnosticableTreeMixin implements ReaderInfo {
 
 @override final  ReaderBatteryStatus? batteryStatus;
 @override final  CardInsertionStatus? cardInsertionStatus;
+// iOS only
 @override@JsonKey(unknownEnumValue: ReaderConnectionType.unknown) final  ReaderConnectionType connectionType;
 @override final  ReaderFirmwareInfo? firmwareInfo;
 @override final  String id;
 @override final  bool isBlinkable;
 @override final  bool? isConnectionRetryable;
+// iOS only
 @override final  bool isForgettable;
 @override final  bool? isRebootable;
+// iOS only
 @override final  ReaderModel model;
 @override final  String name;
 @override final  String? serialNumber;
@@ -4310,7 +4328,9 @@ class OnlinePayment with DiagnosticableTreeMixin implements Payment {
 @override@JsonKey(unknownEnumValue: PaymentStatus.unknown) final  PaymentStatus status;
  final  String? teamMemberId;
  final  PaymentCapabilities? capabilities;
+// Android only
  final  List<PaymentProcessingFee>? _processingFee;
+// Android only
  List<PaymentProcessingFee>? get processingFee {
   final value = _processingFee;
   if (value == null) return null;
@@ -4319,8 +4339,11 @@ class OnlinePayment with DiagnosticableTreeMixin implements Payment {
   return EqualUnmodifiableListView(value);
 }
 
+// Android only
  final  String? receiptNumber;
+// Android only
  final  String? receiptUrl;
+// Android only
  final  String? statementDescription;
 
 @JsonKey(name: 'type')
@@ -5247,34 +5270,11 @@ $MoneyCopyWith<$Res> get amountMoney {
 }
 }
 
-PaymentParameters _$PaymentParametersFromJson(
-  Map<String, dynamic> json
-) {
-        switch (json['type']) {
-                  case 'current':
-          return PaymentParametersCurrent.fromJson(
-            json
-          );
-                case 'legacy':
-          return _LegacyPaymentParameters.fromJson(
-            json
-          );
-        
-          default:
-            throw CheckedFromJsonException(
-  json,
-  'type',
-  'PaymentParameters',
-  'Invalid union type "${json['type']}"!'
-);
-        }
-      
-}
 
 /// @nodoc
 mixin _$PaymentParameters implements DiagnosticableTreeMixin {
 
- bool? get acceptPartialAuthorization; bool? get allowCardSurcharge; Money get amountMoney; Money? get appFeeMoney; bool? get autocomplete; String? get customerId; DelayAction? get delayAction; num? get delayDuration; ProcessingMode get processingMode; String? get locationId; String? get note; String? get orderId; String? get referenceId; String? get statementDescription; String? get teamMemberId; Money? get tipMoney;
+ bool? get acceptPartialAuthorization; bool get allowCardSurcharge; Money get amountMoney; Money? get appFeeMoney; bool? get autocomplete; String? get customerId; DelayAction? get delayAction; num? get delayDuration; ProcessingMode get processingMode; String get paymentAttemptId; String? get locationId; String? get note; String? get orderId; String? get referenceId; String? get statementDescription; String? get teamMemberId; Money? get tipMoney;
 /// Create a copy of PaymentParameters
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -5288,21 +5288,21 @@ $PaymentParametersCopyWith<PaymentParameters> get copyWith => _$PaymentParameter
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'PaymentParameters'))
-    ..add(DiagnosticsProperty('acceptPartialAuthorization', acceptPartialAuthorization))..add(DiagnosticsProperty('allowCardSurcharge', allowCardSurcharge))..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('autocomplete', autocomplete))..add(DiagnosticsProperty('customerId', customerId))..add(DiagnosticsProperty('delayAction', delayAction))..add(DiagnosticsProperty('delayDuration', delayDuration))..add(DiagnosticsProperty('processingMode', processingMode))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('note', note))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('statementDescription', statementDescription))..add(DiagnosticsProperty('teamMemberId', teamMemberId))..add(DiagnosticsProperty('tipMoney', tipMoney));
+    ..add(DiagnosticsProperty('acceptPartialAuthorization', acceptPartialAuthorization))..add(DiagnosticsProperty('allowCardSurcharge', allowCardSurcharge))..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('autocomplete', autocomplete))..add(DiagnosticsProperty('customerId', customerId))..add(DiagnosticsProperty('delayAction', delayAction))..add(DiagnosticsProperty('delayDuration', delayDuration))..add(DiagnosticsProperty('processingMode', processingMode))..add(DiagnosticsProperty('paymentAttemptId', paymentAttemptId))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('note', note))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('statementDescription', statementDescription))..add(DiagnosticsProperty('teamMemberId', teamMemberId))..add(DiagnosticsProperty('tipMoney', tipMoney));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentParameters&&(identical(other.acceptPartialAuthorization, acceptPartialAuthorization) || other.acceptPartialAuthorization == acceptPartialAuthorization)&&(identical(other.allowCardSurcharge, allowCardSurcharge) || other.allowCardSurcharge == allowCardSurcharge)&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.autocomplete, autocomplete) || other.autocomplete == autocomplete)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.delayAction, delayAction) || other.delayAction == delayAction)&&(identical(other.delayDuration, delayDuration) || other.delayDuration == delayDuration)&&(identical(other.processingMode, processingMode) || other.processingMode == processingMode)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.statementDescription, statementDescription) || other.statementDescription == statementDescription)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentParameters&&(identical(other.acceptPartialAuthorization, acceptPartialAuthorization) || other.acceptPartialAuthorization == acceptPartialAuthorization)&&(identical(other.allowCardSurcharge, allowCardSurcharge) || other.allowCardSurcharge == allowCardSurcharge)&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.autocomplete, autocomplete) || other.autocomplete == autocomplete)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.delayAction, delayAction) || other.delayAction == delayAction)&&(identical(other.delayDuration, delayDuration) || other.delayDuration == delayDuration)&&(identical(other.processingMode, processingMode) || other.processingMode == processingMode)&&(identical(other.paymentAttemptId, paymentAttemptId) || other.paymentAttemptId == paymentAttemptId)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.statementDescription, statementDescription) || other.statementDescription == statementDescription)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,acceptPartialAuthorization,allowCardSurcharge,amountMoney,appFeeMoney,autocomplete,customerId,delayAction,delayDuration,processingMode,locationId,note,orderId,referenceId,statementDescription,teamMemberId,tipMoney);
+int get hashCode => Object.hash(runtimeType,acceptPartialAuthorization,allowCardSurcharge,amountMoney,appFeeMoney,autocomplete,customerId,delayAction,delayDuration,processingMode,paymentAttemptId,locationId,note,orderId,referenceId,statementDescription,teamMemberId,tipMoney);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PaymentParameters(acceptPartialAuthorization: $acceptPartialAuthorization, allowCardSurcharge: $allowCardSurcharge, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, statementDescription: $statementDescription, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
+  return 'PaymentParameters(acceptPartialAuthorization: $acceptPartialAuthorization, allowCardSurcharge: $allowCardSurcharge, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, paymentAttemptId: $paymentAttemptId, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, statementDescription: $statementDescription, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
 }
 
 
@@ -5313,7 +5313,7 @@ abstract mixin class $PaymentParametersCopyWith<$Res>  {
   factory $PaymentParametersCopyWith(PaymentParameters value, $Res Function(PaymentParameters) _then) = _$PaymentParametersCopyWithImpl;
 @useResult
 $Res call({
- bool? acceptPartialAuthorization, bool? allowCardSurcharge, Money amountMoney, Money? appFeeMoney, bool? autocomplete, String? customerId, DelayAction? delayAction, num? delayDuration, ProcessingMode processingMode, String? locationId, String? note, String? orderId, String? referenceId, String? statementDescription, String? teamMemberId, Money? tipMoney
+ bool? acceptPartialAuthorization, bool allowCardSurcharge, Money amountMoney, Money? appFeeMoney, bool? autocomplete, String? customerId, DelayAction? delayAction, num? delayDuration, ProcessingMode processingMode, String paymentAttemptId, String? locationId, String? note, String? orderId, String? referenceId, String? statementDescription, String? teamMemberId, Money? tipMoney
 });
 
 
@@ -5330,18 +5330,19 @@ class _$PaymentParametersCopyWithImpl<$Res>
 
 /// Create a copy of PaymentParameters
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? acceptPartialAuthorization = freezed,Object? allowCardSurcharge = freezed,Object? amountMoney = null,Object? appFeeMoney = freezed,Object? autocomplete = freezed,Object? customerId = freezed,Object? delayAction = freezed,Object? delayDuration = freezed,Object? processingMode = null,Object? locationId = freezed,Object? note = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? statementDescription = freezed,Object? teamMemberId = freezed,Object? tipMoney = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? acceptPartialAuthorization = freezed,Object? allowCardSurcharge = null,Object? amountMoney = null,Object? appFeeMoney = freezed,Object? autocomplete = freezed,Object? customerId = freezed,Object? delayAction = freezed,Object? delayDuration = freezed,Object? processingMode = null,Object? paymentAttemptId = null,Object? locationId = freezed,Object? note = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? statementDescription = freezed,Object? teamMemberId = freezed,Object? tipMoney = freezed,}) {
   return _then(_self.copyWith(
 acceptPartialAuthorization: freezed == acceptPartialAuthorization ? _self.acceptPartialAuthorization : acceptPartialAuthorization // ignore: cast_nullable_to_non_nullable
-as bool?,allowCardSurcharge: freezed == allowCardSurcharge ? _self.allowCardSurcharge : allowCardSurcharge // ignore: cast_nullable_to_non_nullable
-as bool?,amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
+as bool?,allowCardSurcharge: null == allowCardSurcharge ? _self.allowCardSurcharge : allowCardSurcharge // ignore: cast_nullable_to_non_nullable
+as bool,amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
 as Money,appFeeMoney: freezed == appFeeMoney ? _self.appFeeMoney : appFeeMoney // ignore: cast_nullable_to_non_nullable
 as Money?,autocomplete: freezed == autocomplete ? _self.autocomplete : autocomplete // ignore: cast_nullable_to_non_nullable
 as bool?,customerId: freezed == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
 as String?,delayAction: freezed == delayAction ? _self.delayAction : delayAction // ignore: cast_nullable_to_non_nullable
 as DelayAction?,delayDuration: freezed == delayDuration ? _self.delayDuration : delayDuration // ignore: cast_nullable_to_non_nullable
 as num?,processingMode: null == processingMode ? _self.processingMode : processingMode // ignore: cast_nullable_to_non_nullable
-as ProcessingMode,locationId: freezed == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
+as ProcessingMode,paymentAttemptId: null == paymentAttemptId ? _self.paymentAttemptId : paymentAttemptId // ignore: cast_nullable_to_non_nullable
+as String,locationId: freezed == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
 as String?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
 as String?,orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
 as String?,referenceId: freezed == referenceId ? _self.referenceId : referenceId // ignore: cast_nullable_to_non_nullable
@@ -5402,12 +5403,11 @@ extension PaymentParametersPatterns on PaymentParameters {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( PaymentParametersCurrent value)?  $default,{TResult Function( _LegacyPaymentParameters value)?  legacy,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PaymentParameters value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case PaymentParametersCurrent() when $default != null:
-return $default(_that);case _LegacyPaymentParameters() when legacy != null:
-return legacy(_that);case _:
+case _PaymentParameters() when $default != null:
+return $default(_that);case _:
   return orElse();
 
 }
@@ -5425,12 +5425,14 @@ return legacy(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( PaymentParametersCurrent value)  $default,{required TResult Function( _LegacyPaymentParameters value)  legacy,}){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PaymentParameters value)  $default,){
 final _that = this;
 switch (_that) {
-case PaymentParametersCurrent():
-return $default(_that);case _LegacyPaymentParameters():
-return legacy(_that);}
+case _PaymentParameters():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -5444,12 +5446,11 @@ return legacy(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( PaymentParametersCurrent value)?  $default,{TResult? Function( _LegacyPaymentParameters value)?  legacy,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PaymentParameters value)?  $default,){
 final _that = this;
 switch (_that) {
-case PaymentParametersCurrent() when $default != null:
-return $default(_that);case _LegacyPaymentParameters() when legacy != null:
-return legacy(_that);case _:
+case _PaymentParameters() when $default != null:
+return $default(_that);case _:
   return null;
 
 }
@@ -5466,11 +5467,10 @@ return legacy(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? acceptPartialAuthorization,  bool? allowCardSurcharge,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  ProcessingMode processingMode,  String paymentAttemptId,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? statementDescription,  String? teamMemberId,  Money? tipMoney)?  $default,{TResult Function( bool? acceptPartialAuthorization,  bool? allowCardSurcharge,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  ProcessingMode processingMode,  String idempotencyKey,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? statementDescription,  String? teamMemberId,  Money? tipMoney)?  legacy,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? acceptPartialAuthorization,  bool allowCardSurcharge,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  ProcessingMode processingMode,  String paymentAttemptId,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? statementDescription,  String? teamMemberId,  Money? tipMoney)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case PaymentParametersCurrent() when $default != null:
-return $default(_that.acceptPartialAuthorization,_that.allowCardSurcharge,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.paymentAttemptId,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.statementDescription,_that.teamMemberId,_that.tipMoney);case _LegacyPaymentParameters() when legacy != null:
-return legacy(_that.acceptPartialAuthorization,_that.allowCardSurcharge,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.idempotencyKey,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.statementDescription,_that.teamMemberId,_that.tipMoney);case _:
+case _PaymentParameters() when $default != null:
+return $default(_that.acceptPartialAuthorization,_that.allowCardSurcharge,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.paymentAttemptId,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.statementDescription,_that.teamMemberId,_that.tipMoney);case _:
   return orElse();
 
 }
@@ -5488,11 +5488,13 @@ return legacy(_that.acceptPartialAuthorization,_that.allowCardSurcharge,_that.am
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? acceptPartialAuthorization,  bool? allowCardSurcharge,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  ProcessingMode processingMode,  String paymentAttemptId,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? statementDescription,  String? teamMemberId,  Money? tipMoney)  $default,{required TResult Function( bool? acceptPartialAuthorization,  bool? allowCardSurcharge,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  ProcessingMode processingMode,  String idempotencyKey,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? statementDescription,  String? teamMemberId,  Money? tipMoney)  legacy,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? acceptPartialAuthorization,  bool allowCardSurcharge,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  ProcessingMode processingMode,  String paymentAttemptId,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? statementDescription,  String? teamMemberId,  Money? tipMoney)  $default,) {final _that = this;
 switch (_that) {
-case PaymentParametersCurrent():
-return $default(_that.acceptPartialAuthorization,_that.allowCardSurcharge,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.paymentAttemptId,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.statementDescription,_that.teamMemberId,_that.tipMoney);case _LegacyPaymentParameters():
-return legacy(_that.acceptPartialAuthorization,_that.allowCardSurcharge,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.idempotencyKey,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.statementDescription,_that.teamMemberId,_that.tipMoney);}
+case _PaymentParameters():
+return $default(_that.acceptPartialAuthorization,_that.allowCardSurcharge,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.paymentAttemptId,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.statementDescription,_that.teamMemberId,_that.tipMoney);case _:
+  throw StateError('Unexpected subclass');
+
+}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -5506,11 +5508,10 @@ return legacy(_that.acceptPartialAuthorization,_that.allowCardSurcharge,_that.am
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? acceptPartialAuthorization,  bool? allowCardSurcharge,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  ProcessingMode processingMode,  String paymentAttemptId,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? statementDescription,  String? teamMemberId,  Money? tipMoney)?  $default,{TResult? Function( bool? acceptPartialAuthorization,  bool? allowCardSurcharge,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  ProcessingMode processingMode,  String idempotencyKey,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? statementDescription,  String? teamMemberId,  Money? tipMoney)?  legacy,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? acceptPartialAuthorization,  bool allowCardSurcharge,  Money amountMoney,  Money? appFeeMoney,  bool? autocomplete,  String? customerId,  DelayAction? delayAction,  num? delayDuration,  ProcessingMode processingMode,  String paymentAttemptId,  String? locationId,  String? note,  String? orderId,  String? referenceId,  String? statementDescription,  String? teamMemberId,  Money? tipMoney)?  $default,) {final _that = this;
 switch (_that) {
-case PaymentParametersCurrent() when $default != null:
-return $default(_that.acceptPartialAuthorization,_that.allowCardSurcharge,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.paymentAttemptId,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.statementDescription,_that.teamMemberId,_that.tipMoney);case _LegacyPaymentParameters() when legacy != null:
-return legacy(_that.acceptPartialAuthorization,_that.allowCardSurcharge,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.idempotencyKey,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.statementDescription,_that.teamMemberId,_that.tipMoney);case _:
+case _PaymentParameters() when $default != null:
+return $default(_that.acceptPartialAuthorization,_that.allowCardSurcharge,_that.amountMoney,_that.appFeeMoney,_that.autocomplete,_that.customerId,_that.delayAction,_that.delayDuration,_that.processingMode,_that.paymentAttemptId,_that.locationId,_that.note,_that.orderId,_that.referenceId,_that.statementDescription,_that.teamMemberId,_that.tipMoney);case _:
   return null;
 
 }
@@ -5521,12 +5522,12 @@ return legacy(_that.acceptPartialAuthorization,_that.allowCardSurcharge,_that.am
 /// @nodoc
 @JsonSerializable()
 
-class PaymentParametersCurrent with DiagnosticableTreeMixin implements PaymentParameters {
-  const PaymentParametersCurrent({this.acceptPartialAuthorization, this.allowCardSurcharge, required this.amountMoney, this.appFeeMoney, this.autocomplete, this.customerId, this.delayAction, this.delayDuration, required this.processingMode, required this.paymentAttemptId, this.locationId, this.note, this.orderId, this.referenceId, this.statementDescription, this.teamMemberId, this.tipMoney, final  String? $type}): $type = $type ?? 'current';
-  factory PaymentParametersCurrent.fromJson(Map<String, dynamic> json) => _$PaymentParametersCurrentFromJson(json);
+class _PaymentParameters with DiagnosticableTreeMixin implements PaymentParameters {
+  const _PaymentParameters({this.acceptPartialAuthorization, required this.allowCardSurcharge, required this.amountMoney, this.appFeeMoney, this.autocomplete, this.customerId, this.delayAction, this.delayDuration, required this.processingMode, required this.paymentAttemptId, this.locationId, this.note, this.orderId, this.referenceId, this.statementDescription, this.teamMemberId, this.tipMoney});
+  factory _PaymentParameters.fromJson(Map<String, dynamic> json) => _$PaymentParametersFromJson(json);
 
 @override final  bool? acceptPartialAuthorization;
-@override final  bool? allowCardSurcharge;
+@override final  bool allowCardSurcharge;
 @override final  Money amountMoney;
 @override final  Money? appFeeMoney;
 @override final  bool? autocomplete;
@@ -5534,7 +5535,7 @@ class PaymentParametersCurrent with DiagnosticableTreeMixin implements PaymentPa
 @override final  DelayAction? delayAction;
 @override final  num? delayDuration;
 @override final  ProcessingMode processingMode;
- final  String paymentAttemptId;
+@override final  String paymentAttemptId;
 @override final  String? locationId;
 @override final  String? note;
 @override final  String? orderId;
@@ -5543,19 +5544,15 @@ class PaymentParametersCurrent with DiagnosticableTreeMixin implements PaymentPa
 @override final  String? teamMemberId;
 @override final  Money? tipMoney;
 
-@JsonKey(name: 'type')
-final String $type;
-
-
 /// Create a copy of PaymentParameters
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$PaymentParametersCurrentCopyWith<PaymentParametersCurrent> get copyWith => _$PaymentParametersCurrentCopyWithImpl<PaymentParametersCurrent>(this, _$identity);
+_$PaymentParametersCopyWith<_PaymentParameters> get copyWith => __$PaymentParametersCopyWithImpl<_PaymentParameters>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$PaymentParametersCurrentToJson(this, );
+  return _$PaymentParametersToJson(this, );
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -5566,7 +5563,7 @@ void debugFillProperties(DiagnosticPropertiesBuilder properties) {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentParametersCurrent&&(identical(other.acceptPartialAuthorization, acceptPartialAuthorization) || other.acceptPartialAuthorization == acceptPartialAuthorization)&&(identical(other.allowCardSurcharge, allowCardSurcharge) || other.allowCardSurcharge == allowCardSurcharge)&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.autocomplete, autocomplete) || other.autocomplete == autocomplete)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.delayAction, delayAction) || other.delayAction == delayAction)&&(identical(other.delayDuration, delayDuration) || other.delayDuration == delayDuration)&&(identical(other.processingMode, processingMode) || other.processingMode == processingMode)&&(identical(other.paymentAttemptId, paymentAttemptId) || other.paymentAttemptId == paymentAttemptId)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.statementDescription, statementDescription) || other.statementDescription == statementDescription)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentParameters&&(identical(other.acceptPartialAuthorization, acceptPartialAuthorization) || other.acceptPartialAuthorization == acceptPartialAuthorization)&&(identical(other.allowCardSurcharge, allowCardSurcharge) || other.allowCardSurcharge == allowCardSurcharge)&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.autocomplete, autocomplete) || other.autocomplete == autocomplete)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.delayAction, delayAction) || other.delayAction == delayAction)&&(identical(other.delayDuration, delayDuration) || other.delayDuration == delayDuration)&&(identical(other.processingMode, processingMode) || other.processingMode == processingMode)&&(identical(other.paymentAttemptId, paymentAttemptId) || other.paymentAttemptId == paymentAttemptId)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.statementDescription, statementDescription) || other.statementDescription == statementDescription)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -5582,11 +5579,11 @@ String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
 }
 
 /// @nodoc
-abstract mixin class $PaymentParametersCurrentCopyWith<$Res> implements $PaymentParametersCopyWith<$Res> {
-  factory $PaymentParametersCurrentCopyWith(PaymentParametersCurrent value, $Res Function(PaymentParametersCurrent) _then) = _$PaymentParametersCurrentCopyWithImpl;
+abstract mixin class _$PaymentParametersCopyWith<$Res> implements $PaymentParametersCopyWith<$Res> {
+  factory _$PaymentParametersCopyWith(_PaymentParameters value, $Res Function(_PaymentParameters) _then) = __$PaymentParametersCopyWithImpl;
 @override @useResult
 $Res call({
- bool? acceptPartialAuthorization, bool? allowCardSurcharge, Money amountMoney, Money? appFeeMoney, bool? autocomplete, String? customerId, DelayAction? delayAction, num? delayDuration, ProcessingMode processingMode, String paymentAttemptId, String? locationId, String? note, String? orderId, String? referenceId, String? statementDescription, String? teamMemberId, Money? tipMoney
+ bool? acceptPartialAuthorization, bool allowCardSurcharge, Money amountMoney, Money? appFeeMoney, bool? autocomplete, String? customerId, DelayAction? delayAction, num? delayDuration, ProcessingMode processingMode, String paymentAttemptId, String? locationId, String? note, String? orderId, String? referenceId, String? statementDescription, String? teamMemberId, Money? tipMoney
 });
 
 
@@ -5594,20 +5591,20 @@ $Res call({
 
 }
 /// @nodoc
-class _$PaymentParametersCurrentCopyWithImpl<$Res>
-    implements $PaymentParametersCurrentCopyWith<$Res> {
-  _$PaymentParametersCurrentCopyWithImpl(this._self, this._then);
+class __$PaymentParametersCopyWithImpl<$Res>
+    implements _$PaymentParametersCopyWith<$Res> {
+  __$PaymentParametersCopyWithImpl(this._self, this._then);
 
-  final PaymentParametersCurrent _self;
-  final $Res Function(PaymentParametersCurrent) _then;
+  final _PaymentParameters _self;
+  final $Res Function(_PaymentParameters) _then;
 
 /// Create a copy of PaymentParameters
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? acceptPartialAuthorization = freezed,Object? allowCardSurcharge = freezed,Object? amountMoney = null,Object? appFeeMoney = freezed,Object? autocomplete = freezed,Object? customerId = freezed,Object? delayAction = freezed,Object? delayDuration = freezed,Object? processingMode = null,Object? paymentAttemptId = null,Object? locationId = freezed,Object? note = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? statementDescription = freezed,Object? teamMemberId = freezed,Object? tipMoney = freezed,}) {
-  return _then(PaymentParametersCurrent(
+@override @pragma('vm:prefer-inline') $Res call({Object? acceptPartialAuthorization = freezed,Object? allowCardSurcharge = null,Object? amountMoney = null,Object? appFeeMoney = freezed,Object? autocomplete = freezed,Object? customerId = freezed,Object? delayAction = freezed,Object? delayDuration = freezed,Object? processingMode = null,Object? paymentAttemptId = null,Object? locationId = freezed,Object? note = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? statementDescription = freezed,Object? teamMemberId = freezed,Object? tipMoney = freezed,}) {
+  return _then(_PaymentParameters(
 acceptPartialAuthorization: freezed == acceptPartialAuthorization ? _self.acceptPartialAuthorization : acceptPartialAuthorization // ignore: cast_nullable_to_non_nullable
-as bool?,allowCardSurcharge: freezed == allowCardSurcharge ? _self.allowCardSurcharge : allowCardSurcharge // ignore: cast_nullable_to_non_nullable
-as bool?,amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
+as bool?,allowCardSurcharge: null == allowCardSurcharge ? _self.allowCardSurcharge : allowCardSurcharge // ignore: cast_nullable_to_non_nullable
+as bool,amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
 as Money,appFeeMoney: freezed == appFeeMoney ? _self.appFeeMoney : appFeeMoney // ignore: cast_nullable_to_non_nullable
 as Money?,autocomplete: freezed == autocomplete ? _self.autocomplete : autocomplete // ignore: cast_nullable_to_non_nullable
 as bool?,customerId: freezed == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
@@ -5615,150 +5612,6 @@ as String?,delayAction: freezed == delayAction ? _self.delayAction : delayAction
 as DelayAction?,delayDuration: freezed == delayDuration ? _self.delayDuration : delayDuration // ignore: cast_nullable_to_non_nullable
 as num?,processingMode: null == processingMode ? _self.processingMode : processingMode // ignore: cast_nullable_to_non_nullable
 as ProcessingMode,paymentAttemptId: null == paymentAttemptId ? _self.paymentAttemptId : paymentAttemptId // ignore: cast_nullable_to_non_nullable
-as String,locationId: freezed == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
-as String?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
-as String?,orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
-as String?,referenceId: freezed == referenceId ? _self.referenceId : referenceId // ignore: cast_nullable_to_non_nullable
-as String?,statementDescription: freezed == statementDescription ? _self.statementDescription : statementDescription // ignore: cast_nullable_to_non_nullable
-as String?,teamMemberId: freezed == teamMemberId ? _self.teamMemberId : teamMemberId // ignore: cast_nullable_to_non_nullable
-as String?,tipMoney: freezed == tipMoney ? _self.tipMoney : tipMoney // ignore: cast_nullable_to_non_nullable
-as Money?,
-  ));
-}
-
-/// Create a copy of PaymentParameters
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$MoneyCopyWith<$Res> get amountMoney {
-  
-  return $MoneyCopyWith<$Res>(_self.amountMoney, (value) {
-    return _then(_self.copyWith(amountMoney: value));
-  });
-}/// Create a copy of PaymentParameters
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$MoneyCopyWith<$Res>? get appFeeMoney {
-    if (_self.appFeeMoney == null) {
-    return null;
-  }
-
-  return $MoneyCopyWith<$Res>(_self.appFeeMoney!, (value) {
-    return _then(_self.copyWith(appFeeMoney: value));
-  });
-}/// Create a copy of PaymentParameters
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$MoneyCopyWith<$Res>? get tipMoney {
-    if (_self.tipMoney == null) {
-    return null;
-  }
-
-  return $MoneyCopyWith<$Res>(_self.tipMoney!, (value) {
-    return _then(_self.copyWith(tipMoney: value));
-  });
-}
-}
-
-/// @nodoc
-@JsonSerializable()
-@Deprecated('Use the constructor with paymentAttemptId instead.')
-class _LegacyPaymentParameters with DiagnosticableTreeMixin implements PaymentParameters {
-  const _LegacyPaymentParameters({this.acceptPartialAuthorization, this.allowCardSurcharge, required this.amountMoney, this.appFeeMoney, this.autocomplete, this.customerId, this.delayAction, this.delayDuration, required this.processingMode, required this.idempotencyKey, this.locationId, this.note, this.orderId, this.referenceId, this.statementDescription, this.teamMemberId, this.tipMoney, final  String? $type}): $type = $type ?? 'legacy';
-  factory _LegacyPaymentParameters.fromJson(Map<String, dynamic> json) => _$LegacyPaymentParametersFromJson(json);
-
-@override final  bool? acceptPartialAuthorization;
-@override final  bool? allowCardSurcharge;
-@override final  Money amountMoney;
-@override final  Money? appFeeMoney;
-@override final  bool? autocomplete;
-@override final  String? customerId;
-@override final  DelayAction? delayAction;
-@override final  num? delayDuration;
-@override final  ProcessingMode processingMode;
- final  String idempotencyKey;
-@override final  String? locationId;
-@override final  String? note;
-@override final  String? orderId;
-@override final  String? referenceId;
-@override final  String? statementDescription;
-@override final  String? teamMemberId;
-@override final  Money? tipMoney;
-
-@JsonKey(name: 'type')
-final String $type;
-
-
-/// Create a copy of PaymentParameters
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$LegacyPaymentParametersCopyWith<_LegacyPaymentParameters> get copyWith => __$LegacyPaymentParametersCopyWithImpl<_LegacyPaymentParameters>(this, _$identity);
-
-@override
-Map<String, dynamic> toJson() {
-  return _$LegacyPaymentParametersToJson(this, );
-}
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'PaymentParameters.legacy'))
-    ..add(DiagnosticsProperty('acceptPartialAuthorization', acceptPartialAuthorization))..add(DiagnosticsProperty('allowCardSurcharge', allowCardSurcharge))..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('autocomplete', autocomplete))..add(DiagnosticsProperty('customerId', customerId))..add(DiagnosticsProperty('delayAction', delayAction))..add(DiagnosticsProperty('delayDuration', delayDuration))..add(DiagnosticsProperty('processingMode', processingMode))..add(DiagnosticsProperty('idempotencyKey', idempotencyKey))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('note', note))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('statementDescription', statementDescription))..add(DiagnosticsProperty('teamMemberId', teamMemberId))..add(DiagnosticsProperty('tipMoney', tipMoney));
-}
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LegacyPaymentParameters&&(identical(other.acceptPartialAuthorization, acceptPartialAuthorization) || other.acceptPartialAuthorization == acceptPartialAuthorization)&&(identical(other.allowCardSurcharge, allowCardSurcharge) || other.allowCardSurcharge == allowCardSurcharge)&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.autocomplete, autocomplete) || other.autocomplete == autocomplete)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.delayAction, delayAction) || other.delayAction == delayAction)&&(identical(other.delayDuration, delayDuration) || other.delayDuration == delayDuration)&&(identical(other.processingMode, processingMode) || other.processingMode == processingMode)&&(identical(other.idempotencyKey, idempotencyKey) || other.idempotencyKey == idempotencyKey)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.statementDescription, statementDescription) || other.statementDescription == statementDescription)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,acceptPartialAuthorization,allowCardSurcharge,amountMoney,appFeeMoney,autocomplete,customerId,delayAction,delayDuration,processingMode,idempotencyKey,locationId,note,orderId,referenceId,statementDescription,teamMemberId,tipMoney);
-
-@override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PaymentParameters.legacy(acceptPartialAuthorization: $acceptPartialAuthorization, allowCardSurcharge: $allowCardSurcharge, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, idempotencyKey: $idempotencyKey, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, statementDescription: $statementDescription, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$LegacyPaymentParametersCopyWith<$Res> implements $PaymentParametersCopyWith<$Res> {
-  factory _$LegacyPaymentParametersCopyWith(_LegacyPaymentParameters value, $Res Function(_LegacyPaymentParameters) _then) = __$LegacyPaymentParametersCopyWithImpl;
-@override @useResult
-$Res call({
- bool? acceptPartialAuthorization, bool? allowCardSurcharge, Money amountMoney, Money? appFeeMoney, bool? autocomplete, String? customerId, DelayAction? delayAction, num? delayDuration, ProcessingMode processingMode, String idempotencyKey, String? locationId, String? note, String? orderId, String? referenceId, String? statementDescription, String? teamMemberId, Money? tipMoney
-});
-
-
-@override $MoneyCopyWith<$Res> get amountMoney;@override $MoneyCopyWith<$Res>? get appFeeMoney;@override $MoneyCopyWith<$Res>? get tipMoney;
-
-}
-/// @nodoc
-class __$LegacyPaymentParametersCopyWithImpl<$Res>
-    implements _$LegacyPaymentParametersCopyWith<$Res> {
-  __$LegacyPaymentParametersCopyWithImpl(this._self, this._then);
-
-  final _LegacyPaymentParameters _self;
-  final $Res Function(_LegacyPaymentParameters) _then;
-
-/// Create a copy of PaymentParameters
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? acceptPartialAuthorization = freezed,Object? allowCardSurcharge = freezed,Object? amountMoney = null,Object? appFeeMoney = freezed,Object? autocomplete = freezed,Object? customerId = freezed,Object? delayAction = freezed,Object? delayDuration = freezed,Object? processingMode = null,Object? idempotencyKey = null,Object? locationId = freezed,Object? note = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? statementDescription = freezed,Object? teamMemberId = freezed,Object? tipMoney = freezed,}) {
-  return _then(_LegacyPaymentParameters(
-acceptPartialAuthorization: freezed == acceptPartialAuthorization ? _self.acceptPartialAuthorization : acceptPartialAuthorization // ignore: cast_nullable_to_non_nullable
-as bool?,allowCardSurcharge: freezed == allowCardSurcharge ? _self.allowCardSurcharge : allowCardSurcharge // ignore: cast_nullable_to_non_nullable
-as bool?,amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
-as Money,appFeeMoney: freezed == appFeeMoney ? _self.appFeeMoney : appFeeMoney // ignore: cast_nullable_to_non_nullable
-as Money?,autocomplete: freezed == autocomplete ? _self.autocomplete : autocomplete // ignore: cast_nullable_to_non_nullable
-as bool?,customerId: freezed == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
-as String?,delayAction: freezed == delayAction ? _self.delayAction : delayAction // ignore: cast_nullable_to_non_nullable
-as DelayAction?,delayDuration: freezed == delayDuration ? _self.delayDuration : delayDuration // ignore: cast_nullable_to_non_nullable
-as num?,processingMode: null == processingMode ? _self.processingMode : processingMode // ignore: cast_nullable_to_non_nullable
-as ProcessingMode,idempotencyKey: null == idempotencyKey ? _self.idempotencyKey : idempotencyKey // ignore: cast_nullable_to_non_nullable
 as String,locationId: freezed == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
 as String?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
 as String?,orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable

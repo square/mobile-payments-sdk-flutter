@@ -48,7 +48,7 @@ abstract class Card with _$Card {
     @Default(0) num expirationYear,
     String? id,
     String? lastFourDigits,
-    String? bin,
+    String? bin, // Android only
   }) = _Card;
 
   factory Card.fromJson(Map<String, Object?> json) => _$CardFromJson(json);
@@ -61,10 +61,11 @@ abstract class OfflineCard with _$OfflineCard {
     String? cardholderName,
     String? id,
     String? lastFourDigits,
-    @JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand? coBrand,
-    num? expirationMonth,
-    num? expirationYear,
-    String? bin,
+    @JsonKey(unknownEnumValue: CardCoBrand.unknown)
+    CardCoBrand? coBrand, // Android only
+    num? expirationMonth, // Android only
+    num? expirationYear, // Android only
+    String? bin, // Android only
   }) = _OfflineCard;
 
   factory OfflineCard.fromJson(Map<String, Object?> json) =>
@@ -83,8 +84,8 @@ abstract class CardPaymentDetails with _$CardPaymentDetails {
     @JsonKey(unknownEnumValue: CardPaymentStatus.unknown)
     required CardPaymentStatus status,
     CardSurchargeDetails? appliedCardSurchargeDetails,
-    VerificationMethod? verificationMethod,
-    VerificationResult? verificationResults,
+    VerificationMethod? verificationMethod, // Android only
+    VerificationResult? verificationResults, // Android only
   }) = _CardPaymentDetails;
 
   factory CardPaymentDetails.fromJson(Map<String, Object?> json) =>
@@ -96,7 +97,7 @@ abstract class CardSurchargeDetails with _$CardSurchargeDetails {
   const factory CardSurchargeDetails({
     required Money cardSurchargeMoney,
     Money? taxOnCardSurchargeMoney,
-    Money? totalSurchargeMoney,
+    Money? totalSurchargeMoney, // Android only
   }) = _CardSurchargeDetails;
 
   factory CardSurchargeDetails.fromJson(Map<String, Object?> json) =>
@@ -144,8 +145,8 @@ abstract class ReaderStatusInfo with _$ReaderStatusInfo {
   const factory ReaderStatusInfo({
     required ReaderStatusInfoStatus status,
     ReaderStatusInfoUnavailableReason? unavailableReason,
-    String? unavailableReasonTitle,
-    String? unavailableReasonDetail,
+    String? unavailableReasonTitle, // iOS only
+    String? unavailableReasonDetail, // iOS only
   }) = _ReaderStatusInfo;
 
   factory ReaderStatusInfo.fromJson(Map<String, Object?> json) =>
@@ -155,7 +156,7 @@ abstract class ReaderStatusInfo with _$ReaderStatusInfo {
 @freezed
 abstract class ReaderFirmwareInfo with _$ReaderFirmwareInfo {
   const factory ReaderFirmwareInfo({
-    String? failureReason,
+    String? failureReason, // iOS only
     required FirmwareUpdateStatus updateStatus,
     int? updatePercentage,
     DateTime? updateTime,
@@ -170,15 +171,15 @@ abstract class ReaderFirmwareInfo with _$ReaderFirmwareInfo {
 abstract class ReaderInfo with _$ReaderInfo {
   const factory ReaderInfo({
     ReaderBatteryStatus? batteryStatus,
-    CardInsertionStatus? cardInsertionStatus,
+    CardInsertionStatus? cardInsertionStatus, // iOS only
     @JsonKey(unknownEnumValue: ReaderConnectionType.unknown)
     required ReaderConnectionType connectionType,
     ReaderFirmwareInfo? firmwareInfo,
     required String id,
     required bool isBlinkable,
-    bool? isConnectionRetryable,
+    bool? isConnectionRetryable, // iOS only
     required bool isForgettable,
-    bool? isRebootable,
+    bool? isRebootable, // iOS only
     required ReaderModel model,
     required String name,
     String? serialNumber,
@@ -230,11 +231,11 @@ sealed class Payment with _$Payment {
     @JsonKey(unknownEnumValue: PaymentStatus.unknown)
     required PaymentStatus status,
     String? teamMemberId,
-    PaymentCapabilities? capabilities,
-    List<PaymentProcessingFee>? processingFee,
-    String? receiptNumber,
-    String? receiptUrl,
-    String? statementDescription,
+    PaymentCapabilities? capabilities, // Android only
+    List<PaymentProcessingFee>? processingFee, // Android only
+    String? receiptNumber, // Android only
+    String? receiptUrl, // Android only
+    String? statementDescription, // Android only
   }) = OnlinePayment;
 
   const factory Payment.offline({
@@ -262,6 +263,7 @@ sealed class Payment with _$Payment {
       _$PaymentFromJson(json);
 }
 
+/// Android only. Returned on [OnlinePayment] from the Android SDK.
 @freezed
 abstract class PaymentCapabilities with _$PaymentCapabilities {
   const PaymentCapabilities._();
@@ -284,6 +286,7 @@ abstract class PaymentCapabilities with _$PaymentCapabilities {
   bool get canEditAmountDown => allCapabilities.contains(editAmountDown);
 }
 
+/// Android only. Returned on [OnlinePayment] from the Android SDK.
 @freezed
 abstract class PaymentProcessingFee with _$PaymentProcessingFee {
   const factory PaymentProcessingFee({
@@ -296,13 +299,11 @@ abstract class PaymentProcessingFee with _$PaymentProcessingFee {
       _$PaymentProcessingFeeFromJson(json);
 }
 
-@Freezed(unionKey: 'type') // 👈 needed because we have two constructors
-sealed class PaymentParameters with _$PaymentParameters {
-  /// ✅ Current / recommended constructor
-  @FreezedUnionValue('current')
+@freezed
+abstract class PaymentParameters with _$PaymentParameters {
   const factory PaymentParameters({
     bool? acceptPartialAuthorization,
-    bool? allowCardSurcharge,
+    required bool allowCardSurcharge,
     required Money amountMoney,
     Money? appFeeMoney,
     bool? autocomplete,
@@ -318,30 +319,7 @@ sealed class PaymentParameters with _$PaymentParameters {
     String? statementDescription,
     String? teamMemberId,
     Money? tipMoney,
-  }) = PaymentParametersCurrent;
-
-  /// ⚠️ Deprecated constructor
-  @Deprecated('Use the constructor with paymentAttemptId instead.')
-  @FreezedUnionValue('legacy')
-  const factory PaymentParameters.legacy({
-    bool? acceptPartialAuthorization,
-    bool? allowCardSurcharge,
-    required Money amountMoney,
-    Money? appFeeMoney,
-    bool? autocomplete,
-    String? customerId,
-    DelayAction? delayAction,
-    num? delayDuration,
-    required ProcessingMode processingMode,
-    required String idempotencyKey,
-    String? locationId,
-    String? note,
-    String? orderId,
-    String? referenceId,
-    String? statementDescription,
-    String? teamMemberId,
-    Money? tipMoney,
-  }) = _LegacyPaymentParameters;
+  }) = _PaymentParameters;
 
   factory PaymentParameters.fromJson(Map<String, Object?> json) =>
       _$PaymentParametersFromJson(json);
