@@ -1,3 +1,7 @@
+## 2026.8.4
+
+Removing targetSdk = 36 in android/build.gradle.kts in order to setup target in app level.
+
 ## 2026.8.3
 
 Payment, reader, and related Dart models were updated to better match the native Mobile Payments SDK APIs. Several fields were added across platforms; only the breaking API changes are listed below.
