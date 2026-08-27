@@ -179,11 +179,13 @@ import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
 //...
 final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
 try {
-    String idempotencyKey = uuid.v4();
-    Payment payment = await _squareMobilePaymentsSdkPlugin.startPayment(
+    String paymentAttemptId = uuid.v4();
+    Payment payment = await _squareMobilePaymentsSdkPlugin.paymentManager.startPayment(
         PaymentParameters(
             amountMoney: Money(amount: 100, currencyCode: CurrencyCode.eur),
-            idempotencyKey: idempotencyKey
+            paymentAttemptId: paymentAttemptId,
+            processingMode: ProcessingMode.autoDetect,
+            allowCardSurcharge: true,
         ),
         PromptParameters(additionalPaymentMethods: List.empty(), mode: PromptMode.defaultMode));
     print('Payment successful:: $payment');

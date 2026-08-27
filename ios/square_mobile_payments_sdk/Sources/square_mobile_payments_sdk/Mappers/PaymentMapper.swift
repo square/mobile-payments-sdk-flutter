@@ -16,7 +16,7 @@ public class PaymentMapper {
     }
 
     static func getDelayAction(from delayAction: String) -> DelayAction {
-        switch delayAction.uppercased() {
+        switch delayAction {
         case "cancel": return .cancel
         case "complete": return .complete
         default: return .cancel
@@ -29,7 +29,9 @@ public class PaymentMapper {
             let amountMoney = paymentParameters["amountMoney"] as? [String: Any],
             let amount = amountMoney["amount"] as? UInt,
             let currencyCode = amountMoney["currencyCode"] as? String,
-            let processingMode = paymentParameters["processingMode"] as? Int
+            let processingMode = paymentParameters["processingMode"] as? String,
+            let allowCardSurcharge = paymentParameters["allowCardSurcharge"] as? Bool,
+            let paymentAttemptID = paymentParameters["paymentAttemptId"] as? String
         else {
             fatalError("Error: Missing or invalid required payment parameters")
         }
@@ -40,19 +42,14 @@ public class PaymentMapper {
         // Create the amountMoney object
         let money = Money(amount: amount, currency: currency)
         
-        var paymentParams: PaymentParameters? = nil
-        if let paymentAttemptID = paymentParameters["paymentAttemptId"] as? String{
-            paymentParams = PaymentParameters(
-                paymentAttemptID: paymentAttemptID,
-                amountMoney: money,
-                processingMode: Self.convertToProcessingMode(processingMode)
-            )
-        }
-        
-        guard let paymentParams
-        else {
-                fatalError("Error: Missing or invalid required payment parameters")
-        }
+        let paymentParams = PaymentParameters(
+            paymentAttemptID: paymentAttemptID,
+            amountMoney: money,
+            processingMode: Self.convertToProcessingMode(processingMode)
+        )
+
+        paymentParams.allowCardSurcharge = allowCardSurcharge
+
         // Optional: appFeeMoney
         if let appFeeMoney = paymentParameters["appFeeMoney"] as? [String: Any],
            let appFeeAmount = appFeeMoney["amount"] as? UInt,
@@ -102,15 +99,40 @@ public class PaymentMapper {
         if let autocomplete = paymentParameters["autocomplete"] as? Bool {
             paymentParams.autocomplete = autocomplete
         }
-        
+
+        // Optional: acceptPartialAuthorization
+        if let acceptPartialAuthorization = paymentParameters["acceptPartialAuthorization"] as? Bool {
+            paymentParams.acceptPartialAuthorization = acceptPartialAuthorization
+        }
+
+        // Optional: customerId
+        if let customerId = paymentParameters["customerId"] as? String {
+            paymentParams.customerID = customerId
+        }
+
+        // Optional: locationId
+        if let locationId = paymentParameters["locationId"] as? String {
+            paymentParams.locationID = locationId
+        }
+
+        // Optional: teamMemberId
+        if let teamMemberId = paymentParameters["teamMemberId"] as? String {
+            paymentParams.teamMemberID = teamMemberId
+        }
+
+        // Optional: statementDescription
+        if let statementDescription = paymentParameters["statementDescription"] as? String {
+            paymentParams.statementDescriptionIdentifier = statementDescription
+        }
+
         return paymentParams
     }
-    
 
-    static func convertToProcessingMode(_ value: Int) -> ProcessingMode {
+
+    static func convertToProcessingMode(_ value: String) -> ProcessingMode {
         switch value {
-        case 1: return .offlineOnly
-        case 2: return .onlineOnly
+        case "offlineOnly": return .offlineOnly
+        case "onlineOnly": return .onlineOnly
         default: return .autoDetect
         }
     }

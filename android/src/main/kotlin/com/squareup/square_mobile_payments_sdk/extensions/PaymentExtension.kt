@@ -91,8 +91,34 @@ fun CardPaymentDetails.Status.toStatusName(): String {
   }
 }
 
+fun CardPaymentDetails.VerificationMethod.toVerificationMethodName(): String {
+  return when (this) {
+    CardPaymentDetails.VerificationMethod.PIN -> "pin"
+    CardPaymentDetails.VerificationMethod.SIGNATURE -> "signature"
+    CardPaymentDetails.VerificationMethod.PIN_AND_SIGNATURE -> "pinAndSignature"
+    CardPaymentDetails.VerificationMethod.ON_DEVICE -> "onDevice"
+    CardPaymentDetails.VerificationMethod.NONE -> "none"
+  }
+}
+
+fun CardPaymentDetails.VerificationResult.toVerificationResultName(): String {
+  return when (this) {
+    CardPaymentDetails.VerificationResult.SUCCESS -> "success"
+    CardPaymentDetails.VerificationResult.FAILURE -> "failure"
+    CardPaymentDetails.VerificationResult.UNKNOWN -> "unknown"
+  }
+}
+
+fun PaymentProcessingFee.Type.toProcessingFeeTypeName(): String {
+  return when (this) {
+    PaymentProcessingFee.Type.INITIAL -> "initial"
+    PaymentProcessingFee.Type.ADJUSTMENT -> "adjustment"
+  }
+}
+
 fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
     return mapOf(
+      "type" to "offline",
       "createdAt" to createdAt.toISO8601String(),
       "updatedAt" to updatedAt.toISO8601String(),
       "amountMoney" to amountMoney.toMoneyMap(),
@@ -114,6 +140,7 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
 
   fun Payment.OnlinePayment.toOnlineMap(): Map<String, Any?> {
     return mapOf(
+      "type" to "online",
       "createdAt" to createdAt.toISO8601String(),
       "updatedAt" to updatedAt.toISO8601String(),
       "locationId" to locationId,
@@ -132,9 +159,16 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "note" to note,
       "statementDescription" to statementDescription,
       "teamMemberId" to teamMemberId,
-      //"capabilities" to capabilities.toMap(),
+      "capabilities" to capabilities.toCapabilitiesMap(),
       "receiptNumber" to receiptNumber,
+      "receiptUrl" to receiptUrl,
       "totalMoney" to totalMoney.toMoneyMap()
+    )
+  }
+
+  fun Payment.Capabilities.toCapabilitiesMap(): Map<String, Any?> {
+    return mapOf(
+      "allCapabilities" to allCapabilities.toList()
     )
   }
 
@@ -177,8 +211,16 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
   fun PaymentProcessingFee.toProcessingFeeMap(): Map<String, Any?> {
     return mapOf(
       "effectiveAt" to effectiveAt.toISO8601String(),
-      "type" to type.name,
+      "type" to type.toProcessingFeeTypeName(),
       "amountMoney" to amountMoney.toMoneyMap()
+    )
+  }
+
+  fun CardPaymentDetails.CardSurchargeDetails.toCardSurchargeDetailsMap(): Map<String, Any?> {
+    return mapOf(
+      "cardSurchargeMoney" to cardSurchargeMoney.toMoneyMap(),
+      "taxOnCardSurchargeMoney" to taxOnSurchargeMoney?.toMoneyMap(),
+      "totalSurchargeMoney" to totalSurchargeMoney.toMoneyMap()
     )
   }
 
@@ -190,8 +232,9 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "authorizationCode" to authorizationCode,
       "applicationIdentifier" to applicationId,
       "applicationName" to applicationName,
-      "verificationMethod" to verificationMethod?.name,
-      "verificationResults" to verificationResults?.name,
+      "verificationMethod" to verificationMethod?.toVerificationMethodName(),
+      "verificationResults" to verificationResults?.toVerificationResultName(),
+      "appliedCardSurchargeDetails" to appliedCardSurchargeDetails?.toCardSurchargeDetailsMap(),
     )
   }
 

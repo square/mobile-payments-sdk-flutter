@@ -430,13 +430,22 @@ Map<String, Object?> castToMap(Map response) {
 
   for (var entry in response.entries) {
     if (entry.key is String) {
-      if (entry.value is Map) {
-        result[entry.key as String] = castToMap(entry.value);
-      } else {
-        result[entry.key as String] = entry.value;
-      }
+      result[entry.key as String] = _castValue(entry.value);
     }
   }
 
   return result;
+}
+
+/// Platform channels hand back `Map<Object?, Object?>` at every depth, including
+/// inside lists, so nested values have to be cast recursively before they reach
+/// the generated `fromJson` constructors.
+Object? _castValue(Object? value) {
+  if (value is Map) {
+    return castToMap(value);
+  }
+  if (value is List) {
+    return value.map(_castValue).toList();
+  }
+  return value;
 }

@@ -40,18 +40,56 @@ extension MoneyAmount {
 extension OnlinePayment {
     public func toMap() -> [String: Any?] {
         return [
+            "type": "online",
             "amountMoney": amountMoney.toMap(),
             "appFeeMoney" : appFeeMoney?.toMap(),
+            "cashDetails": cashDetails?.toMap(),
             "createdAt" : createdAt.ISO8601Format(),
             "id" : id,
             "locationId" : locationID,
             "orderId": orderID,
             "referenceId" : referenceID,
             "cardDetails": cardDetails?.toMap(),
+            "customerId": customerID,
+            "note": note,
             "sourceType" : sourceType.getName(),
+            "status": status.getName(),
+            "teamMemberId": teamMemberID,
             "tipMoney": tipMoney?.toMap(),
             "totalMoney": totalMoney.toMap(),
             "updatedAt": updatedAt.ISO8601Format(),
+        ]
+    }
+}
+
+extension PaymentStatus {
+    public func getName() -> String {
+        switch self {
+            case .approved: return "approved"
+            case .canceled: return "canceled"
+            case .completed: return "complete"
+            case .failed: return "failed"
+            case .initialized: return "initialized"
+            case .pending: return "pending"
+            case .unknown: return "unknown"
+        }
+    }
+}
+
+extension CashPaymentDetails {
+    public func toMap() -> [String: Any?] {
+        return [
+            "buyerSuppliedMoney": buyerSuppliedMoney?.toMap(),
+            "changeBackMoney": changeBackMoney?.toMap(),
+        ]
+    }
+}
+
+extension CardSurchargeDetails {
+    public func toMap() -> [String: Any?] {
+        return [
+            "cardSurchargeMoney": cardSurchargeMoney.toMap(),
+            "taxOnCardSurchargeMoney": taxOnCardSurchargeMoney?.toMap(),
         ]
     }
 }
@@ -61,6 +99,7 @@ extension CardPaymentDetails {
         return [
             "applicationIdentifier": applicationIdentifier,
             "applicationName": applicationName,
+            "appliedCardSurchargeDetails": appliedCardSurchargeDetails?.toMap(),
             "authorizationCode": authResultCode,
             "card": card?.toMap(),
             "entryMethod": entryMethod.getName(),
@@ -178,8 +217,10 @@ extension OfflineCardPaymentDetails {
 extension OfflinePayment {
     public func toMap() -> [String: Any?] {
         return [
+            "type": "offline",
             "amountMoney": amountMoney.toMap(),
             "appFeeMoney" : appFeeMoney?.toMap(),
+            "cashDetails": cashDetails?.toMap(),
             "createdAt" : createdAt.ISO8601Format(),
             "id" : id,
             "locationId" : locationID,
