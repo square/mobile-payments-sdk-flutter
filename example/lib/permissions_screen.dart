@@ -88,7 +88,6 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
   Future<void> authorizeSDK() async {
     String accessToken = "YOUR_ACCESS_TOKEN";
     String locationId = "YOUR_LOCATION_ID";
-    String response;
 
     setState(() {
       _signInState = SignInState.loading;
@@ -129,7 +128,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
     try {
       await _squareMobilePaymentsSdkPlugin.readerManager.hideMockReaderUI();
     } on Exception {
-      print("Exception in hide reader");
+      debugPrint("Exception in hide reader");
     }
   }
 
@@ -143,11 +142,11 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
     });
   }
 
-  _onSignIn() {
+  void _onSignIn() {
     authorizeSDK();
   }
 
-  _signOut() {
+  void _signOut() {
     deauthorizeSDK();
   }
 
@@ -166,7 +165,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
 
     final isAuthorized = Provider.of<AuthState>(context).isAuthorized;
 
-    Widget _buildPermissionItem({
+    Widget buildPermissionItem({
       required String title,
       required String description,
       required bool isGranted,
@@ -228,21 +227,21 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildPermissionItem(
+              buildPermissionItem(
                 title: 'Bluetooth',
                 description:
                     'Square uses Bluetooth to connect and communicate with Square devices. You should ask for this permission if you are using readers that connect via Bluetooth.',
                 isGranted: isBluetoothGranted,
                 onRequestPermission: _requestBluetoothPermissions,
               ),
-              _buildPermissionItem(
+              buildPermissionItem(
                 title: 'Location',
                 description:
                     'Square uses location to know where transactions take place. This reduces risk and minimizes payment disputes.',
                 isGranted: isLocationGranted,
                 onRequestPermission: _requestLocationPermission,
               ),
-              _buildPermissionItem(
+              buildPermissionItem(
                 title: 'Microphone',
                 description:
                     'Square\'s R4 reader uses the microphone jack to communicate payment card data to your device. You should ask for this permission if you are using an R4 reader.',
@@ -251,7 +250,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
               ),
               if (!Platform.isIOS) const SizedBox(height: 20),
               if (!Platform.isIOS)
-                _buildPermissionItem(
+                buildPermissionItem(
                   title: 'Read Phone State',
                   description:
                       'Square needs phone access in order to uniquely identify the devices associated with your account and ensure that unauthorized devices are not able to act on your behalf.',
