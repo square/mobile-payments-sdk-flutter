@@ -5,6 +5,7 @@ import SquareMobilePaymentsSDK
 public class PaymentModule: PaymentManagerDelegate {
     private static let paymentManager = MobilePaymentsSDK.shared.paymentManager
     private static let paymentDelegate = PaymentModule()
+    private static var availableCardInputMethodsObserver: AvailableCardInputMethodsObserverCallback?
     private var delegateResult: FlutterResult?
 
     public static func startPayment(
@@ -38,6 +39,39 @@ public class PaymentModule: PaymentManagerDelegate {
             from: topController,
             delegate: paymentDelegate
         )
+    }
+
+    public static func cancelPayment(result: @escaping FlutterResult) {
+        guard let handle = paymentManager.currentPaymentHandle else {
+            result("noPaymentInProgress")
+            return
+        }
+        result(handle.cancelPayment() ? "canceled" : "notCancelable")
+    }
+
+    public static func getIdempotencyKey(result: @escaping FlutterResult, paymentAttemptId: String) {
+        result(paymentManager.getIdempotencyKey(withPaymentAttemptId: paymentAttemptId))
+    }
+
+    public static func getAvailableCardEntryMethods(result: @escaping FlutterResult) {
+        result(paymentManager.availableCardInputMethods.toList())
+    }
+
+    public static func setAvailableCardEntryMethodChangedCallback(result: @escaping FlutterResult, sink: FlutterEventSink?) {
+        if let eventSink = sink, availableCardInputMethodsObserver == nil {
+            let observer = AvailableCardInputMethodsObserverCallback(eventSink: eventSink)
+            paymentManager.add(observer)
+            availableCardInputMethodsObserver = observer
+        }
+        result(NSNull())
+    }
+
+    public static func removeAvailableCardEntryMethodChangedCallback(result: @escaping FlutterResult) {
+        if let observer = availableCardInputMethodsObserver {
+            paymentManager.remove(observer)
+            availableCardInputMethodsObserver = nil
+        }
+        result(NSNull())
     }
 
     public static func getPayments(result: @escaping FlutterResult) {
@@ -140,5 +174,20 @@ public class PaymentModule: PaymentManagerDelegate {
 
     public func paymentManager(_ paymentManager: PaymentManager, willCancel payment: Payment) {
         print("Payment cancellation is in progress.")
+    }
+}
+
+class AvailableCardInputMethodsObserverCallback: AvailableCardInputMethodsObserver {
+    private let eventSink: FlutterEventSink
+
+    init(eventSink: @escaping FlutterEventSink) {
+        self.eventSink = eventSink
+    }
+
+    func availableCardInputMethodsDidChange(_ cardInputMethods: CardInputMethods) {
+        eventSink([
+            "type": "availableCardEntryMethodsChange",
+            "payload": cardInputMethods.toList()
+        ])
     }
 }

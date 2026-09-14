@@ -248,6 +248,15 @@ enum ProcessingMode {
 
 enum StopResult { alreadyComplete, stopped }
 
+enum CancelResult { canceled, notCancelable, noPaymentInProgress }
+
+enum RetryConnectionResult {
+  startingReconnection,
+  readerAlreadyConnectingToSquare,
+  unableToRetry,
+  readerNotFound,
+}
+
 enum TrackingConsentState {
   pending,
   granted,

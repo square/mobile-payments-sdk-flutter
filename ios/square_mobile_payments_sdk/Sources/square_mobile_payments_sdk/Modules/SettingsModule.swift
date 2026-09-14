@@ -31,6 +31,15 @@ public class SettingsModule {
         result(settingsManager.sdkSettings.version)
     }
 
+    public static func getSdkSettings(result: @escaping FlutterResult) {
+        let sdkSettings = settingsManager.sdkSettings
+        result([
+            "version": sdkSettings.version,
+            "environment": sdkSettings.environment.getName(),
+            "securityComplianceVersion": sdkSettings.securityComplianceVersion
+        ])
+    }
+
     public static func isOfflineProcessingAllowed(result: @escaping FlutterResult) {
         let paymentSettings = settingsManager.paymentSettings
         result(paymentSettings.isOfflineProcessingAllowed)

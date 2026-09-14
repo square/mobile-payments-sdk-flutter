@@ -1,3 +1,16 @@
+## Unreleased
+
+- Add `PaymentManager.cancelPayment()`, which cancels the payment in progress and returns a `CancelResult`.
+- Add `AuthManager.setAuthorizationStateChangedCallback()` to observe authorization state changes. It returns the new `CallbackReference`.
+- **(Android)** Add `PaymentManager.completePayment(paymentId)` to complete payments started with `autocomplete: false`.
+- Add `PaymentManager.getIdempotencyKey(paymentAttemptId)`, which returns the idempotency key the SDK generated for a payment attempt.
+- **(Android)** Add `PaymentManager.getAllIdempotencyKeys()`, which returns the stored idempotency keys as `IdempotencyKeyData`.
+- Add `PaymentManager.getAvailableCardEntryMethods()` and `setAvailableCardEntryMethodChangedCallback()` to read and observe the available card entry methods.
+- Add `ReaderManager.retryConnection(id)`, which retries a reader's connection and returns a `RetryConnectionResult`.
+- Add `ReaderManager.setPreferredFirmwareUpdateTime(time)` and `setReducedChargingModeEnabled(enabled)` to change reader settings.
+- **(iOS)** Add `ReaderManager.rebootReader(id)` to reboot a reader.
+- Add `SettingsManager.getSdkSettings()`, which returns the new `SdkSettings` including the SDK's security compliance version.
+
 ## 2026.8.4
 
 Removing targetSdk = 36 in android/build.gradle.kts in order to setup target in app level.

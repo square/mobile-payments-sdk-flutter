@@ -300,6 +300,18 @@ abstract class PaymentProcessingFee with _$PaymentProcessingFee {
 }
 
 @freezed
+abstract class IdempotencyKeyData with _$IdempotencyKeyData {
+  const factory IdempotencyKeyData({
+    required String paymentAttemptId,
+    required String idempotencyKey,
+    required DateTime updatedAt,
+  }) = _IdempotencyKeyData;
+
+  factory IdempotencyKeyData.fromJson(Map<String, Object?> json) =>
+      _$IdempotencyKeyDataFromJson(json);
+}
+
+@freezed
 abstract class PaymentParameters with _$PaymentParameters {
   const factory PaymentParameters({
     bool? acceptPartialAuthorization,
@@ -350,6 +362,17 @@ class ReaderCallbackReference {
   }
 }
 
+class CallbackReference {
+  final String id;
+  final void Function() clear;
+
+  CallbackReference._(this.id, this.clear);
+
+  factory CallbackReference(String id, void Function() clear) {
+    return CallbackReference._(id, clear);
+  }
+}
+
 @freezed
 abstract class ReaderChangedEvent with _$ReaderChangedEvent {
   const factory ReaderChangedEvent({
@@ -387,4 +410,16 @@ abstract class ReaderSettings with _$ReaderSettings {
   }) = _ReaderSettings;
   factory ReaderSettings.fromJson(Map<String, Object?> json) =>
       _$ReaderSettingsFromJson(json);
+}
+
+@freezed
+abstract class SdkSettings with _$SdkSettings {
+  const factory SdkSettings({
+    required String version,
+    required Environment environment,
+    required String securityComplianceVersion,
+  }) = _SdkSettings;
+
+  factory SdkSettings.fromJson(Map<String, Object?> json) =>
+      _$SdkSettingsFromJson(json);
 }

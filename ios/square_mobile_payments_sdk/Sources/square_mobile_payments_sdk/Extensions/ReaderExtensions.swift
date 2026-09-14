@@ -246,6 +246,21 @@ extension TimeOfDay {
   }
 }
 
+extension RetryConnectionResult {
+    func toName() -> String {
+        return switch self {
+        case .startingReconnection:
+            "startingReconnection"
+        case .readerAlreadyConnectingToSquare:
+            "readerAlreadyConnectingToSquare"
+        case .unableToRetry:
+            "unableToRetry"
+        case .readerNotFound:
+            "readerNotFound"
+        }
+    }
+}
+
 extension ReaderPairingError {
     func toName() -> String {
         return switch self {
