@@ -1,4 +1,4 @@
-## Unreleased
+## 2026.10.1
 
 - Add `PaymentManager.cancelPayment()`, which cancels the payment in progress and returns a `CancelResult`.
 - Add `AuthManager.setAuthorizationStateChangedCallback()` to observe authorization state changes. It returns the new `CallbackReference`.
@@ -10,6 +10,8 @@
 - Add `ReaderManager.setPreferredFirmwareUpdateTime(time)` and `setReducedChargingModeEnabled(enabled)` to change reader settings.
 - **(iOS)** Add `ReaderManager.rebootReader(id)` to reboot a reader.
 - Add `SettingsManager.getSdkSettings()`, which returns the new `SdkSettings` including the SDK's security compliance version.
+- **(iOS)** Chip card entry is now reported as `CardInputMethod.emv`, matching Android. `CardInputMethod.chip` is deprecated.
+- `ReaderCallbackReference` now extends `CallbackReference`. `ReaderCallbackReference.redId` is deprecated in favor of `id`.
 
 ## 2026.8.4
 

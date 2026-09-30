@@ -34,7 +34,7 @@ extension CardInputMethods {
     func toName() -> String {
         return switch self {
         case .chip:
-            "chip"
+            "emv"
         case .contactless:
             "contactless"
         case .swipe:

@@ -351,26 +351,18 @@ abstract class OfflineCardPaymentDetails with _$OfflineCardPaymentDetails {
       _$OfflineCardPaymentDetailsFromJson(json);
 }
 
-class ReaderCallbackReference {
-  final String redId;
-  final void Function() clear;
+class ReaderCallbackReference extends CallbackReference {
+  ReaderCallbackReference(super.id, super.clear);
 
-  ReaderCallbackReference._(this.redId, this.clear);
-
-  factory ReaderCallbackReference(String redId, void Function() clear) {
-    return ReaderCallbackReference._(redId, clear);
-  }
+  @Deprecated('Use id')
+  String get redId => id;
 }
 
 class CallbackReference {
   final String id;
   final void Function() clear;
 
-  CallbackReference._(this.id, this.clear);
-
-  factory CallbackReference(String id, void Function() clear) {
-    return CallbackReference._(id, clear);
-  }
+  CallbackReference(this.id, this.clear);
 }
 
 @freezed

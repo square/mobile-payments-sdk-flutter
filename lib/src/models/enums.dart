@@ -133,7 +133,7 @@ enum SourceType {
 }
 
 // Reader Enums
-enum CardInputMethod { swiped, emv, contactless, chip }
+enum CardInputMethod { swiped, emv, contactless, @Deprecated('Use emv') chip }
 
 enum ReaderBatteryLevel {
   criticallyLow,
