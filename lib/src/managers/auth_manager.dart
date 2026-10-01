@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk_platform_interface.dart';
 import 'package:square_mobile_payments_sdk/src/models/models.dart';
 
@@ -8,6 +10,12 @@ class AuthManager {
 
   Future<AuthorizationState> getAuthorizationState() async {
     return SquareMobilePaymentsSdkPlatform.instance.getAuthorizationState();
+  }
+
+  CallbackReference setAuthorizationStateChangedCallback(
+      FutureOr<void> Function(AuthorizationState state) callback) {
+    return SquareMobilePaymentsSdkPlatform.instance
+        .setAuthorizationStateChangedCallback(callback);
   }
 
   Future<Location?> getAuthorizedLocation() async {

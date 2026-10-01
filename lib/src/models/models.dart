@@ -300,6 +300,18 @@ abstract class PaymentProcessingFee with _$PaymentProcessingFee {
 }
 
 @freezed
+abstract class IdempotencyKeyData with _$IdempotencyKeyData {
+  const factory IdempotencyKeyData({
+    required String paymentAttemptId,
+    required String idempotencyKey,
+    required DateTime updatedAt,
+  }) = _IdempotencyKeyData;
+
+  factory IdempotencyKeyData.fromJson(Map<String, Object?> json) =>
+      _$IdempotencyKeyDataFromJson(json);
+}
+
+@freezed
 abstract class PaymentParameters with _$PaymentParameters {
   const factory PaymentParameters({
     bool? acceptPartialAuthorization,
@@ -339,15 +351,18 @@ abstract class OfflineCardPaymentDetails with _$OfflineCardPaymentDetails {
       _$OfflineCardPaymentDetailsFromJson(json);
 }
 
-class ReaderCallbackReference {
-  final String redId;
+class ReaderCallbackReference extends CallbackReference {
+  ReaderCallbackReference(super.id, super.clear);
+
+  @Deprecated('Use id')
+  String get redId => id;
+}
+
+class CallbackReference {
+  final String id;
   final void Function() clear;
 
-  ReaderCallbackReference._(this.redId, this.clear);
-
-  factory ReaderCallbackReference(String redId, void Function() clear) {
-    return ReaderCallbackReference._(redId, clear);
-  }
+  CallbackReference(this.id, this.clear);
 }
 
 @freezed
@@ -387,4 +402,16 @@ abstract class ReaderSettings with _$ReaderSettings {
   }) = _ReaderSettings;
   factory ReaderSettings.fromJson(Map<String, Object?> json) =>
       _$ReaderSettingsFromJson(json);
+}
+
+@freezed
+abstract class SdkSettings with _$SdkSettings {
+  const factory SdkSettings({
+    required String version,
+    required Environment environment,
+    required String securityComplianceVersion,
+  }) = _SdkSettings;
+
+  factory SdkSettings.fromJson(Map<String, Object?> json) =>
+      _$SdkSettingsFromJson(json);
 }

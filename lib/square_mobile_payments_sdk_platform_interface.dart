@@ -39,9 +39,19 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     throw UnimplementedError('getEnvironment() has not been implemented.');
   }
 
+  Future<SdkSettings> getSdkSettings() {
+    throw UnimplementedError('getSdkSettings() has not been implemented.');
+  }
+
   Future<AuthorizationState> getAuthorizationState() {
     throw UnimplementedError(
         'getAuthorizationState() has not been implemented.');
+  }
+
+  CallbackReference setAuthorizationStateChangedCallback(
+      FutureOr<void> Function(AuthorizationState state) callback) {
+    throw UnimplementedError(
+        'setAuthorizationStateChangedCallback() has not been implemented.');
   }
 
   Future<Location?> getAuthorizedLocation() {
@@ -72,6 +82,34 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
   Future<Payment> startPayment(PaymentParameters paymentParameters,
       PromptParameters promptParameters) async {
     throw UnimplementedError('startPayment() has not been implemented.');
+  }
+
+  Future<CancelResult> cancelPayment() async {
+    throw UnimplementedError('cancelPayment() has not been implemented.');
+  }
+
+  Future<Payment> completePayment(String paymentId) async {
+    throw UnimplementedError('completePayment() has not been implemented.');
+  }
+
+  Future<String?> getIdempotencyKey(String paymentAttemptId) async {
+    throw UnimplementedError('getIdempotencyKey() has not been implemented.');
+  }
+
+  Future<List<IdempotencyKeyData>> getAllIdempotencyKeys() async {
+    throw UnimplementedError(
+        'getAllIdempotencyKeys() has not been implemented.');
+  }
+
+  Future<List<CardInputMethod>> getAvailableCardEntryMethods() async {
+    throw UnimplementedError(
+        'getAvailableCardEntryMethods() has not been implemented.');
+  }
+
+  CallbackReference setAvailableCardEntryMethodChangedCallback(
+      FutureOr<void> Function(List<CardInputMethod> methods) callback) {
+    throw UnimplementedError(
+        'setAvailableCardEntryMethodChangedCallback() has not been implemented.');
   }
 
   /// **New Methods for Tap to Pay Support**
@@ -136,6 +174,24 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
 
   Future<void> blink(String id) async {
     throw UnimplementedError('blink() has not been implemented.');
+  }
+
+  Future<RetryConnectionResult> retryConnection(String id) async {
+    throw UnimplementedError('retryConnection() has not been implemented.');
+  }
+
+  Future<void> setPreferredFirmwareUpdateTime(TimeOfDay? time) async {
+    throw UnimplementedError(
+        'setPreferredFirmwareUpdateTime() has not been implemented.');
+  }
+
+  Future<void> setReducedChargingModeEnabled(bool enabled) async {
+    throw UnimplementedError(
+        'setReducedChargingModeEnabled() has not been implemented.');
+  }
+
+  Future<void> rebootReader(String id) async {
+    throw UnimplementedError('rebootReader() has not been implemented.');
   }
 
   Future<bool> isPairingInProgress() async {

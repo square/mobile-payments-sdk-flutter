@@ -711,6 +711,20 @@ const _$ProcessingFeeTypeEnumMap = {
   ProcessingFeeType.adjustment: 'adjustment',
 };
 
+_IdempotencyKeyData _$IdempotencyKeyDataFromJson(Map<String, dynamic> json) =>
+    _IdempotencyKeyData(
+      paymentAttemptId: json['paymentAttemptId'] as String,
+      idempotencyKey: json['idempotencyKey'] as String,
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
+    );
+
+Map<String, dynamic> _$IdempotencyKeyDataToJson(_IdempotencyKeyData instance) =>
+    <String, dynamic>{
+      'paymentAttemptId': instance.paymentAttemptId,
+      'idempotencyKey': instance.idempotencyKey,
+      'updatedAt': instance.updatedAt.toIso8601String(),
+    };
+
 _PaymentParameters _$PaymentParametersFromJson(
   Map<String, dynamic> json,
 ) => _PaymentParameters(
@@ -848,3 +862,21 @@ Map<String, dynamic> _$ReaderSettingsToJson(_ReaderSettings instance) =>
       'isReducedChargingModeEnabled': instance.isReducedChargingModeEnabled,
       'preferredFirmwareUpdateTime': instance.preferredFirmwareUpdateTime,
     };
+
+_SdkSettings _$SdkSettingsFromJson(Map<String, dynamic> json) => _SdkSettings(
+  version: json['version'] as String,
+  environment: $enumDecode(_$EnvironmentEnumMap, json['environment']),
+  securityComplianceVersion: json['securityComplianceVersion'] as String,
+);
+
+Map<String, dynamic> _$SdkSettingsToJson(_SdkSettings instance) =>
+    <String, dynamic>{
+      'version': instance.version,
+      'environment': _$EnvironmentEnumMap[instance.environment]!,
+      'securityComplianceVersion': instance.securityComplianceVersion,
+    };
+
+const _$EnvironmentEnumMap = {
+  Environment.production: 'production',
+  Environment.sandbox: 'sandbox',
+};

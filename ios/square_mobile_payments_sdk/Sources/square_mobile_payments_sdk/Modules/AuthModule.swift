@@ -5,6 +5,7 @@ import SquareMobilePaymentsSDK
 public class AuthModule {
     private static let authManager = MobilePaymentsSDK.shared
         .authorizationManager
+    private static var authorizationStateObserver: AuthorizationStateObserverCallback?
 
     public static func getAuthorizationState(result: @escaping FlutterResult) {
         return result(authManager.state.getName())
@@ -56,5 +57,37 @@ public class AuthModule {
         authManager.deauthorize {
             result(NSNull())
         }
+    }
+
+    public static func setAuthorizationStateChangedCallback(result: @escaping FlutterResult, sink: FlutterEventSink?) {
+        if let eventSink = sink, authorizationStateObserver == nil {
+            let observer = AuthorizationStateObserverCallback(eventSink: eventSink)
+            authManager.add(observer)
+            authorizationStateObserver = observer
+        }
+        result(NSNull())
+    }
+
+    public static func removeAuthorizationStateChangedCallback(result: @escaping FlutterResult) {
+        if let observer = authorizationStateObserver {
+            authManager.remove(observer)
+            authorizationStateObserver = nil
+        }
+        result(NSNull())
+    }
+}
+
+class AuthorizationStateObserverCallback: AuthorizationStateObserver {
+    private let eventSink: FlutterEventSink
+
+    init(eventSink: @escaping FlutterEventSink) {
+        self.eventSink = eventSink
+    }
+
+    func authorizationStateDidChange(_ authorizationState: AuthorizationState) {
+        eventSink([
+            "type": "authorizationStateChange",
+            "payload": authorizationState.getName()
+        ])
     }
 }

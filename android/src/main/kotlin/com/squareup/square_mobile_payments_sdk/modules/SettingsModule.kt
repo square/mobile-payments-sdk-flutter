@@ -27,6 +27,18 @@ class SettingsModule {
         }
 
         @JvmStatic
+        fun getSdkSettings(result: MethodChannel.Result) {
+          val sdkSettings = settingsManager.getSdkSettings()
+          result.success(
+            mapOf(
+              "version" to sdkSettings.sdkVersion,
+              "environment" to sdkSettings.sdkEnvironment.toEnvironmentName(),
+              "securityComplianceVersion" to sdkSettings.securityComplianceVersion
+            )
+          )
+        }
+
+        @JvmStatic
         fun showSettings(result: MethodChannel.Result) {
           settingsManager.showSettings {
             sdkResult -> when (sdkResult) {

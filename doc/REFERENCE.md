@@ -15,10 +15,21 @@ In this reference, you'll find detailed information about the data types and met
         - [deauthorize](#deauthorize)
         - [getAuthorizedLocation](#getauthorizedlocation)
         - [getAuthorizationState](#getauthorizationstate)
+        - [setAuthorizationStateChangedCallback](#setauthorizationstatechangedcallback)
     - [Payment](#payment)
       - [Method details](#method-details-1)
         - [startPayment](#startpayment)
+        - [cancelPayment](#cancelpayment)
+        - [completePayment](#completepayment)
+        - [getIdempotencyKey](#getidempotencykey)
+        - [getAllIdempotencyKeys](#getallidempotencykeys)
+        - [getAvailableCardEntryMethods](#getavailablecardentrymethods)
+        - [setAvailableCardEntryMethodChangedCallback](#setavailablecardentrymethodchangedcallback)
     - [Reader](#reader)
+      - [retryConnection](#retryconnection)
+      - [setPreferredFirmwareUpdateTime](#setpreferredfirmwareupdatetime)
+      - [setReducedChargingModeEnabled](#setreducedchargingmodeenabled)
+      - [rebootReader](#rebootreader)
     - [TapToPaySettings](#taptopaysettings)
       - [Method details](#method-details-2)
         - [showMockReaderUI](#showmockreaderui)
@@ -33,12 +44,15 @@ In this reference, you'll find detailed information about the data types and met
         - [showSettings](#showsettings)
         - [getEnvironment](#getenvironment)
         - [getSDKVersion](#getsdkversion)
+        - [getSdkSettings](#getsdksettings)
   - [Objects](#objects)
     - [Location](#location)
     - [Money](#money)
     - [Payment](#payment-1)
     - [PaymentParameters](#paymentparameters)
     - [PromptParameters](#promptparameters)
+    - [IdempotencyKeyData](#idempotencykeydata)
+    - [SdkSettings](#sdksettings)
   - [Enums](#enums)
     - [AuthorizationState](#authorizationstate)
     - [CurrencyCode](#currencycode)
@@ -48,6 +62,8 @@ In this reference, you'll find detailed information about the data types and met
     - [ProcessingMode](#processingmode)
     - [AdditionalPaymentMethodType](#additionalpaymentmethodtype)
     - [PromptMode](#promptmode)
+    - [CancelResult](#cancelresult)
+    - [RetryConnectionResult](#retryconnectionresult)
   - [Errors](#errors)
 
 ## Methods
@@ -63,6 +79,7 @@ Method                                                    | Returns             
 [deauthorize](#deauthorize) | String | Deauthorizes the SDK
 [getAuthorizedLocation](#getauthorizedlocation) | [Location](#location) | Gets the currently authorized location.
 [getAuthorizationState](#getauthorizationstate) | [AuthorizationState](#authorizationstate) | Returns the current authorization state AuthorizationState.
+[setAuthorizationStateChangedCallback](#setauthorizationstatechangedcallback) | CallbackReference | Registers a callback that is invoked whenever the authorization state changes.
 
 #### Method details
 ##### authorize
@@ -104,6 +121,16 @@ Returns the current authorization state. This can be used, for instance, to deci
 * **On success**: returns a [AuthorizationState](#authorizationstate) object which represents the current authorization state.
 * **On failure**: throws an error.
 
+##### setAuthorizationStateChangedCallback
+
+Registers a callback that is invoked with the new [AuthorizationState](#authorizationstate) whenever the authorization state changes. Call `clear()` on the returned reference to stop receiving updates.
+
+Parameter | Type   | Description
+--------- | ------ | -----------
+callback | Function | Invoked with the new [AuthorizationState](#authorizationstate).
+
+* **On success**: returns a `CallbackReference`.
+
 ### Payment
 
 The Payment methods handles the payment flow for your application, which allows to start a payment, or to cancel an ongoing one.
@@ -111,6 +138,12 @@ The Payment methods handles the payment flow for your application, which allows 
 Method                                                    | Returns                       | Description
 --------------------------------------------------------- | --------------------------------- | ---
 [startPayment](#startpayment) | [Payment](#payment-1) | Starts a payment taking payment and prompt parameters, and returns a Payment object, or an error including a PaymentError.
+[cancelPayment](#cancelpayment) | [CancelResult](#cancelresult) | Cancels the payment in progress and returns the outcome.
+[completePayment](#completepayment) | [Payment](#payment-1) | Android only. Completes a payment started with `autocomplete` set to `false`.
+[getIdempotencyKey](#getidempotencykey) | String | Returns the idempotency key the SDK generated for a payment attempt.
+[getAllIdempotencyKeys](#getallidempotencykeys) | [List\<IdempotencyKeyData\>](#idempotencykeydata) | Android only. Returns the idempotency keys the SDK has stored.
+[getAvailableCardEntryMethods](#getavailablecardentrymethods) | List\<CardInputMethod\> | Returns the card entry methods currently available.
+[setAvailableCardEntryMethodChangedCallback](#setavailablecardentrymethodchangedcallback) | CallbackReference | Registers a callback that is invoked whenever the available card entry methods change.
 
 #### Method details
 ##### startPayment
@@ -127,6 +160,57 @@ promptParameters | [PromptParameters](#promptparameters) | Parameters to configu
 * **On success**: returns a [Payment](#payment-1) object, which will include all the information Square captured about the payment.
 * **On failure**: throws an error which includes the resulting PaymentError.
 
+##### cancelPayment
+
+Cancels the payment in progress. When the payment is canceled, the pending `startPayment` call fails with a PaymentError whose code is `canceled`.
+
+* **On success**: returns a [CancelResult](#cancelresult) describing the outcome.
+
+##### completePayment
+
+Android only. Completes a payment that was started with `autocomplete` set to `false`. On iOS it fails with an `UnsupportedError`.
+
+Parameter | Type   | Description
+--------- | ------ | -----------
+paymentId | String | The `id` of the [Payment](#payment-1) to complete.
+
+* **On success**: returns the completed [Payment](#payment-1).
+* **On failure**: throws an error which includes the resulting PaymentError.
+
+##### getIdempotencyKey
+
+Returns the idempotency key the SDK generated for a payment attempt.
+
+Parameter | Type   | Description
+--------- | ------ | -----------
+paymentAttemptId | String | The `paymentAttemptId` used in the [PaymentParameters](#paymentparameters) of the payment.
+
+* **On success**: returns the idempotency key, or `null` if there is none.
+* **On failure**: throws an error which includes the resulting PaymentError.
+
+##### getAllIdempotencyKeys
+
+Android only. Returns the idempotency keys the SDK has stored for payment attempts. On iOS it fails with an `UnsupportedError`.
+
+* **On success**: returns a list of [IdempotencyKeyData](#idempotencykeydata).
+* **On failure**: throws an error which includes the resulting PaymentError.
+
+##### getAvailableCardEntryMethods
+
+Returns the card entry methods currently available on the connected readers.
+
+* **On success**: returns a `List<CardInputMethod>`.
+
+##### setAvailableCardEntryMethodChangedCallback
+
+Registers a callback that is invoked with the available card entry methods whenever they change. Call `clear()` on the returned reference to stop receiving updates.
+
+Parameter | Type   | Description
+--------- | ------ | -----------
+callback | Function | Invoked with the new `List<CardInputMethod>`.
+
+* **On success**: returns a `CallbackReference`.
+
 ### Reader
 
 The Reader methods allows you to toggle mock readers, which simulate taking payments while in Sandbox mode.
@@ -135,6 +219,46 @@ Method                                                    | Returns             
 --------------------------------------------------------- | --------------------------------- | ---
 [showMockReaderUI](#showmockreaderui) | void | Shows the mock reader UI, which allows to connect mock readers and simulate card interactions.
 [hideMockReaderUI](#hidemockreaderui) | void | Hides the mock reader UI.
+[retryConnection](#retryconnection) | [RetryConnectionResult](#retryconnectionresult) | Retries the connection of a reader.
+[setPreferredFirmwareUpdateTime](#setpreferredfirmwareupdatetime) | void | Sets the preferred time of day for reader firmware updates.
+[setReducedChargingModeEnabled](#setreducedchargingmodeenabled) | void | Enables or disables reduced charging mode on connected readers.
+[rebootReader](#rebootreader) | void | iOS only. Reboots a reader.
+
+##### retryConnection
+
+Retries connecting the reader with the given id. If no reader has that id, it returns `readerNotFound`.
+
+Parameter | Type   | Description
+--------- | ------ | -----------
+id | String | The `id` of the reader to reconnect.
+
+* **On success**: returns a [RetryConnectionResult](#retryconnectionresult).
+
+##### setPreferredFirmwareUpdateTime
+
+Sets the preferred time of day for reader firmware updates. Pass `null` to clear the preference and use the default time.
+
+Parameter | Type   | Description
+--------- | ------ | -----------
+time | TimeOfDay | The preferred time, or `null`.
+
+* **On failure**: throws an error with the code `invalidTimeOfDay` when the SDK rejects the time.
+
+##### setReducedChargingModeEnabled
+
+Enables or disables reduced charging mode on connected readers.
+
+Parameter | Type   | Description
+--------- | ------ | -----------
+enabled | Boolean | Whether reduced charging mode is enabled.
+
+##### rebootReader
+
+iOS only. Reboots the reader with the given id; check its `isRebootable` first. If no reader has that id, the call does nothing. On Android it fails with an `UnsupportedError`.
+
+Parameter | Type   | Description
+--------- | ------ | -----------
+id | String | The `id` of the reader to reboot.
 
 
 ### TapToPaySettings
@@ -214,6 +338,7 @@ Method                                                    | Returns             
 [showSettings](#showsettings) | void | Shows the reader settings screen, which shows available readers, and SDK information.
 [getEnvironment](#getenvironment) | [Environment](#environment) | Returns the current environment the SDK was initialized on.
 [getSDKVersion](#getsdkversion) | String | Returns the current Mobile Payments SDK version.
+[getSdkSettings](#getsdksettings) | [SdkSettings](#sdksettings) | Returns the SDK version, environment and security compliance version.
 
 
 #### Method details
@@ -241,6 +366,15 @@ Returns the current environment `Environment` the SDK has been initialized on, w
 Returns the current Mobile Payments SDK version running. Note this is the version of the SDK (which can be different in iOS or Android), and not the version of the Flutter plug-in.
 
 * **On success**: returns a String with the current Mobile Payments SDK version.
+* **On failure**: Not applicable.
+
+---
+
+##### getSdkSettings
+
+Returns the SDK settings: the Mobile Payments SDK version, the environment it was initialized on and its security compliance version.
+
+* **On success**: returns a [SdkSettings](#sdksettings) object.
 * **On failure**: Not applicable.
 
 ## Objects
@@ -322,6 +456,30 @@ Field             | Type                    | Description
 ----------------- | ----------------------- | --------------------
 additionalPaymentMethods | [List\<AdditionalPaymentMethodType\>](#additionalpaymentmethodtype) | Additional payment methods to be allowed for the payment.
 mode | [PromptMode](#promptmode) | The PromptMode to use for the payment. Use `DEFAULT` to use the Square provided one.
+
+---
+
+### IdempotencyKeyData
+
+Android only. An idempotency key the SDK generated for a payment attempt.
+
+Field             | Type                    | Description
+----------------- | ----------------------- | --------------------
+paymentAttemptId | String | The `paymentAttemptId` of the payment.
+idempotencyKey | String | The idempotency key generated for that payment attempt.
+updatedAt | DateTime | When the key was last updated.
+
+---
+
+### SdkSettings
+
+The settings of the Mobile Payments SDK.
+
+Field             | Type                    | Description
+----------------- | ----------------------- | --------------------
+version | String | The Mobile Payments SDK version.
+environment | [Environment](#environment) | The environment the SDK was initialized on.
+securityComplianceVersion | String | The security compliance version of the SDK.
 
 ## Enums
 
@@ -405,6 +563,27 @@ The additional payment methods to allow, in addition to the card payment flow. O
 Mode to describe which kind of payment prompt will be used for the payment.
 
 * `defaultMode` - Use the Square-provided payment prompt UI flow.
+
+---
+
+### CancelResult
+
+The outcome of [cancelPayment](#cancelpayment).
+
+* `canceled` - The payment in progress was canceled.
+* `notCancelable` - The SDK did not allow the payment in progress to be canceled.
+* `noPaymentInProgress` - There was no payment to cancel.
+
+---
+
+### RetryConnectionResult
+
+The outcome of [retryConnection](#retryconnection).
+
+* `startingReconnection` - The SDK started reconnecting the reader.
+* `readerAlreadyConnectingToSquare` - The reader is already connecting to Square.
+* `unableToRetry` - The reader's connection cannot be retried.
+* `readerNotFound` - No reader matches the given id.
 
 ## Errors
 

@@ -34,7 +34,7 @@ extension CardInputMethods {
     func toName() -> String {
         return switch self {
         case .chip:
-            "chip"
+            "emv"
         case .contactless:
             "contactless"
         case .swipe:
@@ -244,6 +244,21 @@ extension TimeOfDay {
       "minute" : minute,
     ]
   }
+}
+
+extension RetryConnectionResult {
+    func toName() -> String {
+        return switch self {
+        case .startingReconnection:
+            "startingReconnection"
+        case .readerAlreadyConnectingToSquare:
+            "readerAlreadyConnectingToSquare"
+        case .unableToRetry:
+            "unableToRetry"
+        case .readerNotFound:
+            "readerNotFound"
+        }
+    }
 }
 
 extension ReaderPairingError {

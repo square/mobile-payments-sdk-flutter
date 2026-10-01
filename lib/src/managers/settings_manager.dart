@@ -19,6 +19,10 @@ class SettingsManager {
     return SquareMobilePaymentsSdkPlatform.instance.getEnvironment();
   }
 
+  Future<SdkSettings> getSdkSettings() {
+    return SquareMobilePaymentsSdkPlatform.instance.getSdkSettings();
+  }
+
   Future<void> showSettings() async {
     return SquareMobilePaymentsSdkPlatform.instance.showSettings();
   }

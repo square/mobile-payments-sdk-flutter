@@ -5272,6 +5272,287 @@ $MoneyCopyWith<$Res> get amountMoney {
 
 
 /// @nodoc
+mixin _$IdempotencyKeyData implements DiagnosticableTreeMixin {
+
+ String get paymentAttemptId; String get idempotencyKey; DateTime get updatedAt;
+/// Create a copy of IdempotencyKeyData
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$IdempotencyKeyDataCopyWith<IdempotencyKeyData> get copyWith => _$IdempotencyKeyDataCopyWithImpl<IdempotencyKeyData>(this as IdempotencyKeyData, _$identity);
+
+  /// Serializes this IdempotencyKeyData to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'IdempotencyKeyData'))
+    ..add(DiagnosticsProperty('paymentAttemptId', paymentAttemptId))..add(DiagnosticsProperty('idempotencyKey', idempotencyKey))..add(DiagnosticsProperty('updatedAt', updatedAt));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IdempotencyKeyData&&(identical(other.paymentAttemptId, paymentAttemptId) || other.paymentAttemptId == paymentAttemptId)&&(identical(other.idempotencyKey, idempotencyKey) || other.idempotencyKey == idempotencyKey)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,paymentAttemptId,idempotencyKey,updatedAt);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'IdempotencyKeyData(paymentAttemptId: $paymentAttemptId, idempotencyKey: $idempotencyKey, updatedAt: $updatedAt)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $IdempotencyKeyDataCopyWith<$Res>  {
+  factory $IdempotencyKeyDataCopyWith(IdempotencyKeyData value, $Res Function(IdempotencyKeyData) _then) = _$IdempotencyKeyDataCopyWithImpl;
+@useResult
+$Res call({
+ String paymentAttemptId, String idempotencyKey, DateTime updatedAt
+});
+
+
+
+
+}
+/// @nodoc
+class _$IdempotencyKeyDataCopyWithImpl<$Res>
+    implements $IdempotencyKeyDataCopyWith<$Res> {
+  _$IdempotencyKeyDataCopyWithImpl(this._self, this._then);
+
+  final IdempotencyKeyData _self;
+  final $Res Function(IdempotencyKeyData) _then;
+
+/// Create a copy of IdempotencyKeyData
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? paymentAttemptId = null,Object? idempotencyKey = null,Object? updatedAt = null,}) {
+  return _then(_self.copyWith(
+paymentAttemptId: null == paymentAttemptId ? _self.paymentAttemptId : paymentAttemptId // ignore: cast_nullable_to_non_nullable
+as String,idempotencyKey: null == idempotencyKey ? _self.idempotencyKey : idempotencyKey // ignore: cast_nullable_to_non_nullable
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [IdempotencyKeyData].
+extension IdempotencyKeyDataPatterns on IdempotencyKeyData {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _IdempotencyKeyData value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _IdempotencyKeyData() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _IdempotencyKeyData value)  $default,){
+final _that = this;
+switch (_that) {
+case _IdempotencyKeyData():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _IdempotencyKeyData value)?  $default,){
+final _that = this;
+switch (_that) {
+case _IdempotencyKeyData() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String paymentAttemptId,  String idempotencyKey,  DateTime updatedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _IdempotencyKeyData() when $default != null:
+return $default(_that.paymentAttemptId,_that.idempotencyKey,_that.updatedAt);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String paymentAttemptId,  String idempotencyKey,  DateTime updatedAt)  $default,) {final _that = this;
+switch (_that) {
+case _IdempotencyKeyData():
+return $default(_that.paymentAttemptId,_that.idempotencyKey,_that.updatedAt);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String paymentAttemptId,  String idempotencyKey,  DateTime updatedAt)?  $default,) {final _that = this;
+switch (_that) {
+case _IdempotencyKeyData() when $default != null:
+return $default(_that.paymentAttemptId,_that.idempotencyKey,_that.updatedAt);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _IdempotencyKeyData with DiagnosticableTreeMixin implements IdempotencyKeyData {
+  const _IdempotencyKeyData({required this.paymentAttemptId, required this.idempotencyKey, required this.updatedAt});
+  factory _IdempotencyKeyData.fromJson(Map<String, dynamic> json) => _$IdempotencyKeyDataFromJson(json);
+
+@override final  String paymentAttemptId;
+@override final  String idempotencyKey;
+@override final  DateTime updatedAt;
+
+/// Create a copy of IdempotencyKeyData
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$IdempotencyKeyDataCopyWith<_IdempotencyKeyData> get copyWith => __$IdempotencyKeyDataCopyWithImpl<_IdempotencyKeyData>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$IdempotencyKeyDataToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'IdempotencyKeyData'))
+    ..add(DiagnosticsProperty('paymentAttemptId', paymentAttemptId))..add(DiagnosticsProperty('idempotencyKey', idempotencyKey))..add(DiagnosticsProperty('updatedAt', updatedAt));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdempotencyKeyData&&(identical(other.paymentAttemptId, paymentAttemptId) || other.paymentAttemptId == paymentAttemptId)&&(identical(other.idempotencyKey, idempotencyKey) || other.idempotencyKey == idempotencyKey)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,paymentAttemptId,idempotencyKey,updatedAt);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'IdempotencyKeyData(paymentAttemptId: $paymentAttemptId, idempotencyKey: $idempotencyKey, updatedAt: $updatedAt)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$IdempotencyKeyDataCopyWith<$Res> implements $IdempotencyKeyDataCopyWith<$Res> {
+  factory _$IdempotencyKeyDataCopyWith(_IdempotencyKeyData value, $Res Function(_IdempotencyKeyData) _then) = __$IdempotencyKeyDataCopyWithImpl;
+@override @useResult
+$Res call({
+ String paymentAttemptId, String idempotencyKey, DateTime updatedAt
+});
+
+
+
+
+}
+/// @nodoc
+class __$IdempotencyKeyDataCopyWithImpl<$Res>
+    implements _$IdempotencyKeyDataCopyWith<$Res> {
+  __$IdempotencyKeyDataCopyWithImpl(this._self, this._then);
+
+  final _IdempotencyKeyData _self;
+  final $Res Function(_IdempotencyKeyData) _then;
+
+/// Create a copy of IdempotencyKeyData
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? paymentAttemptId = null,Object? idempotencyKey = null,Object? updatedAt = null,}) {
+  return _then(_IdempotencyKeyData(
+paymentAttemptId: null == paymentAttemptId ? _self.paymentAttemptId : paymentAttemptId // ignore: cast_nullable_to_non_nullable
+as String,idempotencyKey: null == idempotencyKey ? _self.idempotencyKey : idempotencyKey // ignore: cast_nullable_to_non_nullable
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
 mixin _$PaymentParameters implements DiagnosticableTreeMixin {
 
  bool? get acceptPartialAuthorization; bool get allowCardSurcharge; Money get amountMoney; Money? get appFeeMoney; bool? get autocomplete; String? get customerId; DelayAction? get delayAction; num? get delayDuration; ProcessingMode get processingMode; String get paymentAttemptId; String? get locationId; String? get note; String? get orderId; String? get referenceId; String? get statementDescription; String? get teamMemberId; Money? get tipMoney;
@@ -6841,6 +7122,287 @@ $TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime {
     return _then(_self.copyWith(preferredFirmwareUpdateTime: value));
   });
 }
+}
+
+
+/// @nodoc
+mixin _$SdkSettings implements DiagnosticableTreeMixin {
+
+ String get version; Environment get environment; String get securityComplianceVersion;
+/// Create a copy of SdkSettings
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SdkSettingsCopyWith<SdkSettings> get copyWith => _$SdkSettingsCopyWithImpl<SdkSettings>(this as SdkSettings, _$identity);
+
+  /// Serializes this SdkSettings to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'SdkSettings'))
+    ..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('environment', environment))..add(DiagnosticsProperty('securityComplianceVersion', securityComplianceVersion));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkSettings&&(identical(other.version, version) || other.version == version)&&(identical(other.environment, environment) || other.environment == environment)&&(identical(other.securityComplianceVersion, securityComplianceVersion) || other.securityComplianceVersion == securityComplianceVersion));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,version,environment,securityComplianceVersion);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'SdkSettings(version: $version, environment: $environment, securityComplianceVersion: $securityComplianceVersion)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SdkSettingsCopyWith<$Res>  {
+  factory $SdkSettingsCopyWith(SdkSettings value, $Res Function(SdkSettings) _then) = _$SdkSettingsCopyWithImpl;
+@useResult
+$Res call({
+ String version, Environment environment, String securityComplianceVersion
+});
+
+
+
+
+}
+/// @nodoc
+class _$SdkSettingsCopyWithImpl<$Res>
+    implements $SdkSettingsCopyWith<$Res> {
+  _$SdkSettingsCopyWithImpl(this._self, this._then);
+
+  final SdkSettings _self;
+  final $Res Function(SdkSettings) _then;
+
+/// Create a copy of SdkSettings
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? version = null,Object? environment = null,Object? securityComplianceVersion = null,}) {
+  return _then(_self.copyWith(
+version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as String,environment: null == environment ? _self.environment : environment // ignore: cast_nullable_to_non_nullable
+as Environment,securityComplianceVersion: null == securityComplianceVersion ? _self.securityComplianceVersion : securityComplianceVersion // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [SdkSettings].
+extension SdkSettingsPatterns on SdkSettings {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SdkSettings value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SdkSettings() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SdkSettings value)  $default,){
+final _that = this;
+switch (_that) {
+case _SdkSettings():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SdkSettings value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SdkSettings() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String version,  Environment environment,  String securityComplianceVersion)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SdkSettings() when $default != null:
+return $default(_that.version,_that.environment,_that.securityComplianceVersion);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String version,  Environment environment,  String securityComplianceVersion)  $default,) {final _that = this;
+switch (_that) {
+case _SdkSettings():
+return $default(_that.version,_that.environment,_that.securityComplianceVersion);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String version,  Environment environment,  String securityComplianceVersion)?  $default,) {final _that = this;
+switch (_that) {
+case _SdkSettings() when $default != null:
+return $default(_that.version,_that.environment,_that.securityComplianceVersion);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _SdkSettings with DiagnosticableTreeMixin implements SdkSettings {
+  const _SdkSettings({required this.version, required this.environment, required this.securityComplianceVersion});
+  factory _SdkSettings.fromJson(Map<String, dynamic> json) => _$SdkSettingsFromJson(json);
+
+@override final  String version;
+@override final  Environment environment;
+@override final  String securityComplianceVersion;
+
+/// Create a copy of SdkSettings
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SdkSettingsCopyWith<_SdkSettings> get copyWith => __$SdkSettingsCopyWithImpl<_SdkSettings>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$SdkSettingsToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'SdkSettings'))
+    ..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('environment', environment))..add(DiagnosticsProperty('securityComplianceVersion', securityComplianceVersion));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SdkSettings&&(identical(other.version, version) || other.version == version)&&(identical(other.environment, environment) || other.environment == environment)&&(identical(other.securityComplianceVersion, securityComplianceVersion) || other.securityComplianceVersion == securityComplianceVersion));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,version,environment,securityComplianceVersion);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'SdkSettings(version: $version, environment: $environment, securityComplianceVersion: $securityComplianceVersion)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SdkSettingsCopyWith<$Res> implements $SdkSettingsCopyWith<$Res> {
+  factory _$SdkSettingsCopyWith(_SdkSettings value, $Res Function(_SdkSettings) _then) = __$SdkSettingsCopyWithImpl;
+@override @useResult
+$Res call({
+ String version, Environment environment, String securityComplianceVersion
+});
+
+
+
+
+}
+/// @nodoc
+class __$SdkSettingsCopyWithImpl<$Res>
+    implements _$SdkSettingsCopyWith<$Res> {
+  __$SdkSettingsCopyWithImpl(this._self, this._then);
+
+  final _SdkSettings _self;
+  final $Res Function(_SdkSettings) _then;
+
+/// Create a copy of SdkSettings
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? version = null,Object? environment = null,Object? securityComplianceVersion = null,}) {
+  return _then(_SdkSettings(
+version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as String,environment: null == environment ? _self.environment : environment // ignore: cast_nullable_to_non_nullable
+as Environment,securityComplianceVersion: null == securityComplianceVersion ? _self.securityComplianceVersion : securityComplianceVersion // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
 }
 
 // dart format on

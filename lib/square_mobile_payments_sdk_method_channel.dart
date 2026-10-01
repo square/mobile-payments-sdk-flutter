@@ -17,6 +17,10 @@ class MethodChannelSquareMobilePaymentsSdk
   static StreamSubscription? _eventChannelSubscription;
   final Map<String, FutureOr<void> Function(ReaderChangedEvent event)>
       _readerCallbacks = {};
+  final Map<String, FutureOr<void> Function(AuthorizationState state)>
+      _authorizationStateCallbacks = {};
+  final Map<String, FutureOr<void> Function(List<CardInputMethod> methods)>
+      _availableCardEntryMethodCallbacks = {};
 
   MethodChannelSquareMobilePaymentsSdk() {
     if (_eventChannelSubscription != null) return;
@@ -30,6 +34,17 @@ class MethodChannelSquareMobilePaymentsSdk
             if (payload == null) continue;
             final changeEvent = ReaderChangedEvent.fromJson(castToMap(payload));
             callback(changeEvent);
+          }
+        case "authorizationStateChange":
+          final state =
+              assertEnumValue(AuthorizationState.values, event["payload"]);
+          for (var callback in _authorizationStateCallbacks.values) {
+            callback(state);
+          }
+        case "availableCardEntryMethodsChange":
+          final methods = _toCardInputMethods(event["payload"]);
+          for (var callback in _availableCardEntryMethodCallbacks.values) {
+            callback(methods);
           }
         default:
           return;
@@ -65,6 +80,15 @@ class MethodChannelSquareMobilePaymentsSdk
     }
     final environment = assertEnumValue(Environment.values, envName);
     return environment;
+  }
+
+  @override
+  Future<SdkSettings> getSdkSettings() async {
+    final result = await methodChannel.invokeMethod<Map>('getSdkSettings');
+    if (result == null) {
+      throw getChannelStateError("getSdkSettings()", "returned null");
+    }
+    return SdkSettings.fromJson(castToMap(result));
   }
 
   @override
@@ -105,6 +129,25 @@ class MethodChannelSquareMobilePaymentsSdk
   @override
   Future<void> deauthorize() async {
     await methodChannel.invokeMethod('deauthorize');
+  }
+
+  @override
+  CallbackReference setAuthorizationStateChangedCallback(
+      FutureOr<void> Function(AuthorizationState state) callback) {
+    final refId = _generateUniqueId();
+    if (_authorizationStateCallbacks.isEmpty) {
+      methodChannel.invokeMethod('setAuthorizationStateChangedCallback');
+    }
+    _authorizationStateCallbacks.putIfAbsent(refId, () => callback);
+    return CallbackReference(
+        refId, () => _removeAuthorizationStateChangedCallback(refId));
+  }
+
+  void _removeAuthorizationStateChangedCallback(String refId) {
+    _authorizationStateCallbacks.remove(refId);
+    if (_authorizationStateCallbacks.isEmpty) {
+      methodChannel.invokeMethod('removeAuthorizationStateChangedCallback');
+    }
   }
 
   @override
@@ -177,6 +220,93 @@ class MethodChannelSquareMobilePaymentsSdk
     } on PlatformException catch (e) {
       throw PaymentError(e.code, e.message, e.details);
     }
+  }
+
+  @override
+  Future<CancelResult> cancelPayment() async {
+    final resultName =
+        await methodChannel.invokeMethod<String>('cancelPayment');
+    if (resultName == null) {
+      throw getChannelStateError("cancelPayment()", "returned null");
+    }
+    return assertEnumValue(CancelResult.values, resultName);
+  }
+
+  @override
+  Future<Payment> completePayment(String paymentId) async {
+    try {
+      final response = await methodChannel
+          .invokeMethod<Map>('completePayment', {'paymentId': paymentId});
+      if (response == null) {
+        throw getChannelStateError("completePayment()", "returned null");
+      }
+      return Payment.fromJson(castToMap(response));
+    } on PlatformException catch (e) {
+      throw PaymentError(e.code, e.message, e.details);
+    }
+  }
+
+  @override
+  Future<String?> getIdempotencyKey(String paymentAttemptId) async {
+    try {
+      return await methodChannel.invokeMethod<String>(
+          'getIdempotencyKey', {'paymentAttemptId': paymentAttemptId});
+    } on PlatformException catch (e) {
+      throw PaymentError(e.code, e.message, e.details);
+    }
+  }
+
+  @override
+  Future<List<IdempotencyKeyData>> getAllIdempotencyKeys() async {
+    try {
+      final result =
+          await methodChannel.invokeMethod<List>('getAllIdempotencyKeys');
+      if (result == null) {
+        throw getChannelStateError("getAllIdempotencyKeys()", "returned null");
+      }
+      return result
+          .map((e) => IdempotencyKeyData.fromJson(castToMap(e)))
+          .toList();
+    } on PlatformException catch (e) {
+      throw PaymentError(e.code, e.message, e.details);
+    }
+  }
+
+  @override
+  Future<List<CardInputMethod>> getAvailableCardEntryMethods() async {
+    final result = await methodChannel
+        .invokeMethod<List>('getAvailableCardEntryMethods');
+    if (result == null) {
+      throw getChannelStateError(
+          "getAvailableCardEntryMethods()", "returned null");
+    }
+    return _toCardInputMethods(result);
+  }
+
+  @override
+  CallbackReference setAvailableCardEntryMethodChangedCallback(
+      FutureOr<void> Function(List<CardInputMethod> methods) callback) {
+    final refId = _generateUniqueId();
+    if (_availableCardEntryMethodCallbacks.isEmpty) {
+      methodChannel.invokeMethod('setAvailableCardEntryMethodChangedCallback');
+    }
+    _availableCardEntryMethodCallbacks.putIfAbsent(refId, () => callback);
+    return CallbackReference(
+        refId, () => _removeAvailableCardEntryMethodChangedCallback(refId));
+  }
+
+  void _removeAvailableCardEntryMethodChangedCallback(String refId) {
+    _availableCardEntryMethodCallbacks.remove(refId);
+    if (_availableCardEntryMethodCallbacks.isEmpty) {
+      methodChannel
+          .invokeMethod('removeAvailableCardEntryMethodChangedCallback');
+    }
+  }
+
+  List<CardInputMethod> _toCardInputMethods(Object? names) {
+    return (names as List)
+        .map((name) => assertEnumValue(CardInputMethod.values, name as String))
+        .toList();
   }
 
   /// **New Methods for Tap to Pay Support**
@@ -301,6 +431,33 @@ class MethodChannelSquareMobilePaymentsSdk
   @override
   Future<void> blink(String id) async {
     await methodChannel.invokeMethod('blink', {"id": id});
+  }
+
+  @override
+  Future<RetryConnectionResult> retryConnection(String id) async {
+    final resultName = await methodChannel
+        .invokeMethod<String>('retryConnection', {"id": id});
+    if (resultName == null) {
+      throw getChannelStateError("retryConnection()", "returned null");
+    }
+    return assertEnumValue(RetryConnectionResult.values, resultName);
+  }
+
+  @override
+  Future<void> setPreferredFirmwareUpdateTime(TimeOfDay? time) async {
+    await methodChannel.invokeMethod(
+        'setPreferredFirmwareUpdateTime', {"time": time?.toJson()});
+  }
+
+  @override
+  Future<void> setReducedChargingModeEnabled(bool enabled) async {
+    await methodChannel
+        .invokeMethod('setReducedChargingModeEnabled', {"enabled": enabled});
+  }
+
+  @override
+  Future<void> rebootReader(String id) async {
+    await methodChannel.invokeMethod('rebootReader', {"id": id});
   }
 
   @override

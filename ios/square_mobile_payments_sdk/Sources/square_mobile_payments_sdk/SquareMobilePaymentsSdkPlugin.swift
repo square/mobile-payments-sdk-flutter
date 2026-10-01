@@ -41,6 +41,10 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin, FlutterStre
       }
     case "deauthorize":
       AuthModule.deauthorize(result: result)
+    case "setAuthorizationStateChangedCallback":
+      AuthModule.setAuthorizationStateChangedCallback(result: result, sink: eventSink)
+    case "removeAuthorizationStateChangedCallback":
+      AuthModule.removeAuthorizationStateChangedCallback(result: result)
     case "getAuthorizationState":
       AuthModule.getAuthorizationState(result: result)
     case "getAuthorizedLocation":
@@ -71,6 +75,17 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin, FlutterStre
             message: "paymentParameters or promptParameters must not be null",
             details: nil))
       }
+    case "cancelPayment":
+      PaymentModule.cancelPayment(result: result)
+    case "getIdempotencyKey":
+      let paymentAttemptId = (call.arguments as? [String: Any])?["paymentAttemptId"] as? String ?? ""
+      PaymentModule.getIdempotencyKey(result: result, paymentAttemptId: paymentAttemptId)
+    case "getAvailableCardEntryMethods":
+      PaymentModule.getAvailableCardEntryMethods(result: result)
+    case "setAvailableCardEntryMethodChangedCallback":
+      PaymentModule.setAvailableCardEntryMethodChangedCallback(result: result, sink: eventSink)
+    case "removeAvailableCardEntryMethodChangedCallback":
+      PaymentModule.removeAvailableCardEntryMethodChangedCallback(result: result)
     case "showSettings":
       SettingsModule.showSettings(result: result)
 
@@ -79,6 +94,8 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin, FlutterStre
 
     case "getEnvironment":
       SettingsModule.getEnvironment(result: result)
+    case "getSdkSettings":
+      SettingsModule.getSdkSettings(result: result)
     case "isOfflineProcessingAllowed":
       SettingsModule.isOfflineProcessingAllowed(result: result)
     case "getOfflineTotalStoredAmountLimit":
@@ -120,6 +137,18 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin, FlutterStre
           let id = arguments["id"] as? String {
         ReaderModule.blink(result: result, id: id)
       }
+    case "retryConnection":
+      let id = (call.arguments as? [String: Any])?["id"] as? String ?? ""
+      ReaderModule.retryConnection(result: result, id: id)
+    case "setPreferredFirmwareUpdateTime":
+      let time = (call.arguments as? [String: Any])?["time"] as? [String: Any]
+      ReaderModule.setPreferredFirmwareUpdateTime(result: result, time: time)
+    case "setReducedChargingModeEnabled":
+      let enabled = (call.arguments as? [String: Any])?["enabled"] as? Bool ?? false
+      ReaderModule.setReducedChargingModeEnabled(result: result, enabled: enabled)
+    case "rebootReader":
+      let id = (call.arguments as? [String: Any])?["id"] as? String ?? ""
+      ReaderModule.rebootReader(result: result, id: id)
     case "isPairingInProgress":
       ReaderModule.isPairingInProgress(result: result)
     case  "setReaderChangedCallback":

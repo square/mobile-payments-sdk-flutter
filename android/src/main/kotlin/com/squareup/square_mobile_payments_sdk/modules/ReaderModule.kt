@@ -4,12 +4,15 @@ import io.flutter.plugin.common.EventChannel.EventSink
 import io.flutter.plugin.common.MethodChannel
 import com.squareup.sdk.mobilepayments.core.Result as SdkResult
 import com.squareup.sdk.mobilepayments.core.CallbackReference
+import com.squareup.sdk.mobilepayments.core.TimeOfDay
 import com.squareup.sdk.mobilepayments.cardreader.PairingHandle
 import com.squareup.sdk.mobilepayments.cardreader.PairingHandle.StopResult
+import com.squareup.sdk.mobilepayments.cardreader.RetryConnectionResult
 import com.squareup.square_mobile_payments_sdk.extensions.toReaderInfoMap
 import com.squareup.square_mobile_payments_sdk.extensions.toReaderSettingsMap
 import com.squareup.square_mobile_payments_sdk.extensions.toChangedEventMap
 import com.squareup.square_mobile_payments_sdk.extensions.toStopResultName
+import com.squareup.square_mobile_payments_sdk.extensions.toRetryConnectionResultName
 import com.squareup.square_mobile_payments_sdk.extensions.toPairingErrorCodeName
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
 import com.squareup.sdk.mobilepayments.mockreader.ui.MockReaderUI
@@ -98,6 +101,34 @@ class ReaderModule {
             if(reader != null) {
                 readerManager.blink(reader)
             }
+            result.success(null)
+        }
+
+        @JvmStatic
+        fun retryConnection(result: MethodChannel.Result, id: String) {
+            val reader = readerManager.getReader(id)
+            if (reader == null) {
+                result.success(RetryConnectionResult.READER_NOT_FOUND.toRetryConnectionResultName())
+                return
+            }
+            result.success(readerManager.retryConnection(reader).toRetryConnectionResultName())
+        }
+
+        @JvmStatic
+        fun setPreferredFirmwareUpdateTime(result: MethodChannel.Result, time: Map<String, Any?>?) {
+            try {
+                readerManager.readerSettings.preferredFirmwareUpdateTime = time?.let {
+                    TimeOfDay((it["hour"] as Number).toInt(), (it["minute"] as Number).toInt())
+                }
+                result.success(null)
+            } catch (e: IllegalArgumentException) {
+                result.error("invalidTimeOfDay", e.message, null)
+            }
+        }
+
+        @JvmStatic
+        fun setReducedChargingModeEnabled(result: MethodChannel.Result, enabled: Boolean) {
+            readerManager.readerSettings.isReducedChargingModeEnabled = enabled
             result.success(null)
         }
 

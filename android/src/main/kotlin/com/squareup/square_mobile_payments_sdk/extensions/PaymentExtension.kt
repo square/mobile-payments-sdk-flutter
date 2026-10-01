@@ -6,6 +6,7 @@ import com.squareup.sdk.mobilepayments.payment.Card
 import com.squareup.sdk.mobilepayments.payment.CardPaymentDetails
 import com.squareup.sdk.mobilepayments.payment.PaymentProcessingFee
 import com.squareup.sdk.mobilepayments.payment.CashPaymentDetails
+import com.squareup.sdk.mobilepayments.payment.PaymentManager
 
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -242,4 +243,12 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
     val isoFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ROOT)
     isoFormat.timeZone = TimeZone.getTimeZone("UTC")
     return isoFormat.format(this)
+  }
+
+  fun PaymentManager.IdempotencyKeyData.toIdempotencyKeyDataMap(): Map<String, Any?> {
+    return mapOf(
+      "paymentAttemptId" to paymentAttemptId,
+      "idempotencyKey" to idempotencyKey,
+      "updatedAt" to updatedAt.toISO8601String()
+    )
   }

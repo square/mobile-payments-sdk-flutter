@@ -5,6 +5,7 @@ import com.squareup.sdk.mobilepayments.cardreader.PairingHandle.StopResult
 import com.squareup.sdk.mobilepayments.cardreader.ReaderChangedEvent
 import com.squareup.sdk.mobilepayments.cardreader.ReaderInfo
 import com.squareup.sdk.mobilepayments.cardreader.ReaderSettings
+import com.squareup.sdk.mobilepayments.cardreader.RetryConnectionResult
 import com.squareup.sdk.mobilepayments.core.TimeOfDay
 
 fun ReaderInfo.toReaderInfoMap(): Map<String, Any?> {
@@ -158,6 +159,15 @@ fun StopResult.toStopResultName(): String {
   return when(this) {
     StopResult.ALREADY_COMPLETE -> "alreadyComplete"
     StopResult.STOPPED -> "stopped"
+  }
+}
+
+fun RetryConnectionResult.toRetryConnectionResultName(): String {
+  return when(this) {
+    RetryConnectionResult.STARTING_RECONNECTION -> "startingReconnection"
+    RetryConnectionResult.READER_ALREADY_CONNECTING_TO_SQUARE -> "readerAlreadyConnectingToSquare"
+    RetryConnectionResult.UNABLE_TO_RETRY -> "unableToRetry"
+    RetryConnectionResult.READER_NOT_FOUND -> "readerNotFound"
   }
 }
 

@@ -228,6 +228,42 @@ public class ReaderModule {
         result(NSNull())
     }
 
+    public static func retryConnection(result: @escaping FlutterResult, id: String) {
+        guard let readerId = UInt(id), let reader = findReader(readerId: readerId) else {
+            result(RetryConnectionResult.readerNotFound.toName())
+            return
+        }
+        result(MobilePaymentsSDK.shared.readerManager.retryConnection(reader).toName())
+    }
+
+    public static func setPreferredFirmwareUpdateTime(result: @escaping FlutterResult, time: [String: Any]?) {
+        guard let time else {
+            MobilePaymentsSDK.shared.readerManager.readerSettings.preferredFirmwareUpdateTime = nil
+            result(NSNull())
+            return
+        }
+        guard let hour = time["hour"] as? Int,
+              let minute = time["minute"] as? Int,
+              let timeOfDay = TimeOfDay(hour: hour, minute: minute) else {
+            result(FlutterError(code: "invalidTimeOfDay", message: "Invalid time of day: \(time)", details: nil))
+            return
+        }
+        MobilePaymentsSDK.shared.readerManager.readerSettings.preferredFirmwareUpdateTime = timeOfDay
+        result(NSNull())
+    }
+
+    public static func setReducedChargingModeEnabled(result: @escaping FlutterResult, enabled: Bool) {
+        MobilePaymentsSDK.shared.readerManager.readerSettings.reducedChargingModeEnabled = enabled
+        result(NSNull())
+    }
+
+    public static func rebootReader(result: @escaping FlutterResult, id: String) {
+        if let readerId = UInt(id), let reader = findReader(readerId: readerId) {
+            MobilePaymentsSDK.shared.readerManager.rebootReader(reader)
+        }
+        result(NSNull())
+    }
+
     public static func isPairingInProgress(result: @escaping FlutterResult) {
         result(MobilePaymentsSDK.shared.readerManager.isPairingInProgress)
     }

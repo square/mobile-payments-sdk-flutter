@@ -43,6 +43,9 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
       "getEnvironment" ->
         SettingsModule.getEnvironment(result)
 
+      "getSdkSettings" ->
+        SettingsModule.getSdkSettings(result)
+
       "getAuthorizationState" ->
         AuthModule.getAuthorizationState(result)
 
@@ -55,6 +58,8 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
         AuthModule.authorize(result, accessToken, locationId)
       }
       "deauthorize" -> AuthModule.deAuthorize(result)
+      "setAuthorizationStateChangedCallback" -> AuthModule.setAuthorizationStateChangedCallback(result, eventSink)
+      "removeAuthorizationStateChangedCallback" -> AuthModule.removeAuthorizationStateChangedCallback(result)
       "showMockReaderUI" -> ReaderModule.showMockReaderUI(result)
       "hideMockReaderUI" -> ReaderModule.hideMockReaderUI(result)
       "showSettings" -> SettingsModule.showSettings(result)
@@ -63,6 +68,19 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
         val promptParameters = call.argument<HashMap<String, Any>>("promptParameters")
         PaymentModule.startPayment(result, paymentParameters, promptParameters)
       }
+      "cancelPayment" -> PaymentModule.cancelPayment(result)
+      "completePayment" -> {
+        val paymentId = call.argument<String>("paymentId") ?: ""
+        PaymentModule.completePayment(result, paymentId)
+      }
+      "getIdempotencyKey" -> {
+        val paymentAttemptId = call.argument<String>("paymentAttemptId") ?: ""
+        PaymentModule.getIdempotencyKey(result, paymentAttemptId)
+      }
+      "getAllIdempotencyKeys" -> PaymentModule.getAllIdempotencyKeys(result)
+      "getAvailableCardEntryMethods" -> PaymentModule.getAvailableCardEntryMethods(result)
+      "setAvailableCardEntryMethodChangedCallback" -> PaymentModule.setAvailableCardEntryMethodChangedCallback(result, eventSink)
+      "removeAvailableCardEntryMethodChangedCallback" -> PaymentModule.removeAvailableCardEntryMethodChangedCallback(result)
       "isOfflineProcessingAllowed" -> SettingsModule.isOfflineProcessingAllowed(result)
       "getOfflineTotalStoredAmountLimit" -> SettingsModule.getOfflineTotalStoredAmountLimit(result)
       "getOfflineTransactionAmountLimit" -> SettingsModule.getOfflineTransactionAmountLimit(result)
@@ -93,6 +111,18 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
       "blink" -> {
         val id = call.argument<String>("id") as? String ?: ""
         ReaderModule.blink(result, id)
+      }
+      "retryConnection" -> {
+        val id = call.argument<String>("id") ?: ""
+        ReaderModule.retryConnection(result, id)
+      }
+      "setPreferredFirmwareUpdateTime" -> {
+        val time = call.argument<Map<String, Any?>>("time")
+        ReaderModule.setPreferredFirmwareUpdateTime(result, time)
+      }
+      "setReducedChargingModeEnabled" -> {
+        val enabled = call.argument<Boolean>("enabled") ?: false
+        ReaderModule.setReducedChargingModeEnabled(result, enabled)
       }
       "isPairingInProgress" -> ReaderModule.isPairingInProgress(result)
       "setReaderChangedCallback" -> ReaderModule.setReaderChangedCallback(result, eventSink)
