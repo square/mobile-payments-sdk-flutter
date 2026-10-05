@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk_platform_interface.dart';
+import 'package:square_mobile_payments_sdk/src/errors/errors.dart';
 import 'package:square_mobile_payments_sdk/src/models/models.dart';
 
 class PaymentManager {
@@ -13,14 +14,38 @@ class PaymentManager {
     return UnsupportedError('This feature is only available on Android.');
   }
 
-  Future<Payment> startPayment(PaymentParameters paymentParameters,
-      PromptParameters promptParameters) async {
-    return SquareMobilePaymentsSdkPlatform.instance
-        .startPayment(paymentParameters, promptParameters);
+  PaymentHandle startPayment(
+      PaymentParameters paymentParameters,
+      PromptParameters promptParameters,
+      void Function(Payment? payment, PaymentError? error) onResult) {
+    SquareMobilePaymentsSdkPlatform.instance
+        .startPayment(paymentParameters, promptParameters)
+        .then<void>((payment) => onResult(payment, null),
+            onError: (Object error, StackTrace stackTrace) {
+      if (error is! PaymentError) {
+        Error.throwWithStackTrace(error, stackTrace);
+      }
+      onResult(null, error);
+    });
+    return PaymentHandle._();
+  }
+
+  PaymentHandle getCurrentPaymentHandle() {
+    return PaymentHandle._();
   }
 
   Future<CancelResult> cancelPayment() async {
     return SquareMobilePaymentsSdkPlatform.instance.cancelPayment();
+  }
+
+  Future<PaymentHandleParams?> getPaymentHandleParams() async {
+    return SquareMobilePaymentsSdkPlatform.instance.getPaymentHandleParams();
+  }
+
+  Future<bool> triggerAdditionalPaymentMethod(
+      AdditionalPaymentMethodType type) async {
+    return SquareMobilePaymentsSdkPlatform.instance
+        .triggerAdditionalPaymentMethod(type);
   }
 
   Future<Payment> completePayment(String paymentId) {
@@ -55,6 +80,24 @@ class PaymentManager {
   }
 
   final OfflinePaymentQueue offlinePaymentQueue = _OfflinePaymentQueue();
+}
+
+class PaymentHandle {
+  PaymentHandle._();
+
+  Future<CancelResult> cancelPayment() async {
+    return SquareMobilePaymentsSdkPlatform.instance.cancelPayment();
+  }
+
+  Future<PaymentHandleParams?> getParams() async {
+    return SquareMobilePaymentsSdkPlatform.instance.getPaymentHandleParams();
+  }
+
+  Future<bool> triggerAdditionalPaymentMethod(
+      AdditionalPaymentMethodType type) async {
+    return SquareMobilePaymentsSdkPlatform.instance
+        .triggerAdditionalPaymentMethod(type);
+  }
 }
 
 abstract class OfflinePaymentQueue {

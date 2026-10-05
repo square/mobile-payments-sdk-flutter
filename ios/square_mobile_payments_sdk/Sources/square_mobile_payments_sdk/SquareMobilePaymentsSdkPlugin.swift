@@ -77,6 +77,11 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin, FlutterStre
       }
     case "cancelPayment":
       PaymentModule.cancelPayment(result: result)
+    case "getPaymentHandleParams":
+      PaymentModule.getPaymentHandleParams(result: result)
+    case "triggerAdditionalPaymentMethod":
+      let type = (call.arguments as? [String: Any])?["type"] as? String ?? ""
+      PaymentModule.triggerAdditionalPaymentMethod(result: result, type: type)
     case "getIdempotencyKey":
       let paymentAttemptId = (call.arguments as? [String: Any])?["paymentAttemptId"] as? String ?? ""
       PaymentModule.getIdempotencyKey(result: result, paymentAttemptId: paymentAttemptId)

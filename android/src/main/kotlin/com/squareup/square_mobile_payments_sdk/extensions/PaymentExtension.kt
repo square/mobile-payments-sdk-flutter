@@ -7,6 +7,8 @@ import com.squareup.sdk.mobilepayments.payment.CardPaymentDetails
 import com.squareup.sdk.mobilepayments.payment.PaymentProcessingFee
 import com.squareup.sdk.mobilepayments.payment.CashPaymentDetails
 import com.squareup.sdk.mobilepayments.payment.PaymentManager
+import com.squareup.sdk.mobilepayments.payment.PaymentHandle
+import com.squareup.sdk.mobilepayments.payment.AdditionalPaymentMethod
 
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -251,4 +253,18 @@ fun Payment.OfflinePayment.toOfflineMap(): Map<String, Any?> {
       "idempotencyKey" to idempotencyKey,
       "updatedAt" to updatedAt.toISO8601String()
     )
+  }
+
+  fun PaymentHandle.toPaymentHandleMap(): Map<String, Any?> {
+    return mapOf(
+      "totalMoneyWithProposedCardSurcharge" to totalMoneyWithProposedCardSurcharge?.toMoneyMap(),
+      "additionalPaymentMethods" to additionalPaymentMethods.map { it.type.toAdditionalPaymentMethodTypeName() }
+    )
+  }
+
+  fun AdditionalPaymentMethod.Type.toAdditionalPaymentMethodTypeName(): String {
+    return when (this) {
+      AdditionalPaymentMethod.Type.KEYED -> "keyed"
+      AdditionalPaymentMethod.Type.CASH -> "cash"
+    }
   }

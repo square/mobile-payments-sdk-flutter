@@ -178,20 +178,22 @@ To take a payment, you must pass it a `PaymentParameters` object, which includes
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk.dart';
 //...
 final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
-try {
-    String paymentAttemptId = uuid.v4();
-    Payment payment = await _squareMobilePaymentsSdkPlugin.paymentManager.startPayment(
-        PaymentParameters(
-            amountMoney: Money(amount: 100, currencyCode: CurrencyCode.eur),
-            paymentAttemptId: paymentAttemptId,
-            processingMode: ProcessingMode.autoDetect,
-            allowCardSurcharge: true,
-        ),
-        PromptParameters(additionalPaymentMethods: List.empty(), mode: PromptMode.defaultMode));
-    print('Payment successful:: $payment');
-} catch (e) {
-    print('Payment error: $e');
-}
+String paymentAttemptId = uuid.v4();
+PaymentHandle handle = _squareMobilePaymentsSdkPlugin.paymentManager.startPayment(
+    PaymentParameters(
+        amountMoney: Money(amount: 100, currencyCode: CurrencyCode.eur),
+        paymentAttemptId: paymentAttemptId,
+        processingMode: ProcessingMode.autoDetect,
+        allowCardSurcharge: true,
+    ),
+    PromptParameters(additionalPaymentMethods: List.empty(), mode: PromptMode.defaultMode),
+    (payment, error) {
+        if (payment != null) {
+            print('Payment successful:: $payment');
+        } else {
+            print('Payment error: $error');
+        }
+    });
 ```
 
 Payment parameters supports a number of additional attributes, which can be seen in the [PaymentParameters definition](REFERENCE.md#paymentparameters). For error descriptions, visit the respective pages for [iOS](https://developer.squareup.com/docs/mobile-payments-sdk/ios/handling-errors), and [Android](https://developer.squareup.com/docs/mobile-payments-sdk/android/handling-errors).

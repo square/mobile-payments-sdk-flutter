@@ -19,7 +19,10 @@ In this reference, you'll find detailed information about the data types and met
     - [Payment](#payment)
       - [Method details](#method-details-1)
         - [startPayment](#startpayment)
+        - [getCurrentPaymentHandle](#getcurrentpaymenthandle)
         - [cancelPayment](#cancelpayment)
+        - [getPaymentHandleParams](#getpaymenthandleparams)
+        - [triggerAdditionalPaymentMethod](#triggeradditionalpaymentmethod)
         - [completePayment](#completepayment)
         - [getIdempotencyKey](#getidempotencykey)
         - [getAllIdempotencyKeys](#getallidempotencykeys)
@@ -53,6 +56,8 @@ In this reference, you'll find detailed information about the data types and met
     - [PromptParameters](#promptparameters)
     - [IdempotencyKeyData](#idempotencykeydata)
     - [SdkSettings](#sdksettings)
+    - [PaymentHandle](#paymenthandle)
+    - [PaymentHandleParams](#paymenthandleparams)
   - [Enums](#enums)
     - [AuthorizationState](#authorizationstate)
     - [CurrencyCode](#currencycode)
@@ -137,8 +142,11 @@ The Payment methods handles the payment flow for your application, which allows 
 
 Method                                                    | Returns                       | Description
 --------------------------------------------------------- | --------------------------------- | ---
-[startPayment](#startpayment) | [Payment](#payment-1) | Starts a payment taking payment and prompt parameters, and returns a Payment object, or an error including a PaymentError.
+[startPayment](#startpayment) | [PaymentHandle](#paymenthandle) | Starts a payment taking payment and prompt parameters, and returns its PaymentHandle right away. The resulting Payment, or the PaymentError, is delivered to a callback.
+[getCurrentPaymentHandle](#getcurrentpaymenthandle) | [PaymentHandle](#paymenthandle) | Returns a PaymentHandle to act on the payment in progress.
 [cancelPayment](#cancelpayment) | [CancelResult](#cancelresult) | Cancels the payment in progress and returns the outcome.
+[getPaymentHandleParams](#getpaymenthandleparams) | [PaymentHandleParams](#paymenthandleparams) | Returns the current values of the payment in progress.
+[triggerAdditionalPaymentMethod](#triggeradditionalpaymentmethod) | Boolean | Starts an additional payment method offered by the payment in progress.
 [completePayment](#completepayment) | [Payment](#payment-1) | Android only. Completes a payment started with `autocomplete` set to `false`.
 [getIdempotencyKey](#getidempotencykey) | String | Returns the idempotency key the SDK generated for a payment attempt.
 [getAllIdempotencyKeys](#getallidempotencykeys) | [List\<IdempotencyKeyData\>](#idempotencykeydata) | Android only. Returns the idempotency keys the SDK has stored.
@@ -148,7 +156,7 @@ Method                                                    | Returns             
 #### Method details
 ##### startPayment
 
-Starts a payment taking payment and prompt parameters, and returns a Payment object, or an error including a PaymentError. The payment parameters will include things like the amount, application fees; prompt parameters will include the accepted payment methods, and the mode (which, for now, only covers the default mode). Default prompt mode takes over the entire screen, and handles all the payment interactions.
+Starts a payment taking payment and prompt parameters, and returns a [PaymentHandle](#paymenthandle) right away. The resulting Payment, or the PaymentError, is delivered to `onResult`. The payment parameters will include things like the amount, application fees; prompt parameters will include the accepted payment methods, and the mode (which, for now, only covers the default mode). Default prompt mode takes over the entire screen, and handles all the payment interactions.
 
 For details on the parameters, visit the respective PaymentParameters and PromptParameters sections.
 
@@ -156,15 +164,38 @@ Parameter | Type   | Description
 --------- | ------ | -----------
 paymentParameters | [PaymentParameters](#paymentparameters) | Parameters to configure the payment.
 promptParameters | [PromptParameters](#promptparameters) | Parameters to configure the prompt.
+onResult | Function | Invoked once with the resulting [Payment](#payment-1), which will include all the information Square captured about the payment, and a `null` error; or with a `null` payment and the resulting PaymentError.
 
-* **On success**: returns a [Payment](#payment-1) object, which will include all the information Square captured about the payment.
-* **On failure**: throws an error which includes the resulting PaymentError.
+* **Returns**: a [PaymentHandle](#paymenthandle) to act on the payment in progress.
+
+##### getCurrentPaymentHandle
+
+Returns a [PaymentHandle](#paymenthandle) to act on the payment in progress, for code that does not have the one returned by [startPayment](#startpayment).
+
+* **Returns**: a [PaymentHandle](#paymenthandle).
 
 ##### cancelPayment
 
-Cancels the payment in progress. When the payment is canceled, the pending `startPayment` call fails with a PaymentError whose code is `canceled`.
+Cancels the payment in progress. When the payment is canceled, the `startPayment` callback receives a PaymentError whose code is `canceled`.
 
 * **On success**: returns a [CancelResult](#cancelresult) describing the outcome.
+
+##### getPaymentHandleParams
+
+Returns the current values of the payment in progress, such as the additional payment methods it offers.
+
+* **On success**: returns a [PaymentHandleParams](#paymenthandleparams), or `null` if no payment is in progress.
+
+##### triggerAdditionalPaymentMethod
+
+Starts one of the additional payment methods offered by the payment in progress. `keyed` and `cash` are available on both platforms and `tapToPay` on iOS only; [getPaymentHandleParams](#getpaymenthandleparams) tells which ones the current payment offers. The payment result is delivered as usual.
+
+Parameter | Type   | Description
+--------- | ------ | -----------
+type | [AdditionalPaymentMethodType](#additionalpaymentmethodtype) | The additional payment method to start.
+
+* **On success**: returns `true` if the method was started, or `false` if no payment is in progress or the payment does not offer that method.
+* **On failure**: throws an error which includes the resulting PaymentError.
 
 ##### completePayment
 
@@ -480,6 +511,30 @@ Field             | Type                    | Description
 version | String | The Mobile Payments SDK version.
 environment | [Environment](#environment) | The environment the SDK was initialized on.
 securityComplianceVersion | String | The security compliance version of the SDK.
+
+---
+
+### PaymentHandle
+
+Returned by [startPayment](#startpayment) and [getCurrentPaymentHandle](#getcurrentpaymenthandle) to act on the payment in progress. Each method has an equivalent in the Payment methods, so the handle does not need to be kept to use them.
+
+Method            | Returns                 | Description
+----------------- | ----------------------- | --------------------
+cancelPayment | [CancelResult](#cancelresult) | Same as [cancelPayment](#cancelpayment).
+getParams | [PaymentHandleParams](#paymenthandleparams) | Same as [getPaymentHandleParams](#getpaymenthandleparams).
+triggerAdditionalPaymentMethod | Boolean | Same as [triggerAdditionalPaymentMethod](#triggeradditionalpaymentmethod).
+
+---
+
+### PaymentHandleParams
+
+The current values of the payment in progress.
+
+Field             | Type                    | Description
+----------------- | ----------------------- | --------------------
+totalMoneyWithProposedCardSurcharge | [Money](#money) | The total including tip and a proposed card surcharge, or `null` when no surcharge applies.
+additionalPaymentMethods | [List\<AdditionalPaymentMethodType\>](#additionalpaymentmethodtype) | The additional payment methods offered for this payment.
+isPaymentCancelable | Boolean | iOS only. Whether the payment can currently be canceled. Always `null` on Android, where the SDK does not expose it, and `null` does not tell whether the payment can be canceled. On Android the only way to find out is the [CancelResult](#cancelresult) of [cancelPayment](#cancelpayment), which is not recommended as a check because it cancels the payment when it is cancelable.
 
 ## Enums
 

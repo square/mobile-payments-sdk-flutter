@@ -1,3 +1,13 @@
+## Unreleased
+
+- Add `PaymentHandle`, returned by `PaymentManager.startPayment()` and the new `PaymentManager.getCurrentPaymentHandle()`, to act on the payment in progress.
+- Add `PaymentHandle.getParams()` and `PaymentManager.getPaymentHandleParams()`, which return the new `PaymentHandleParams` of the payment in progress.
+- Add `PaymentHandle.triggerAdditionalPaymentMethod(type)` and `PaymentManager.triggerAdditionalPaymentMethod(type)` to start keyed entry, cash or Tap to Pay (iOS) for the payment in progress.
+
+### Breaking changes
+
+- `PaymentManager.startPayment()` now returns a `PaymentHandle` right away instead of a `Future<Payment>`. The resulting `Payment` or `PaymentError` is delivered to a new `onResult` callback.
+
 ## 2026.10.1
 
 - Add `PaymentManager.cancelPayment()`, which cancels the payment in progress and returns a `CancelResult`.

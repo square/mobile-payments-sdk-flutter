@@ -175,7 +175,7 @@ try {
 ## Taking a payment
 
 ```dart
-final payment = await sdk.paymentManager.startPayment(
+final handle = sdk.paymentManager.startPayment(
   PaymentParameters(
     amountMoney: Money(amount: 100, currencyCode: CurrencyCode.usd),
     paymentAttemptId: orderDerivedId,
@@ -186,8 +186,15 @@ final payment = await sdk.paymentManager.startPayment(
     additionalPaymentMethods: List.empty(),
     mode: PromptMode.defaultMode,
   ),
+  (payment, error) {
+    if (error != null) {
+      print('Payment error: ${error.code} ${error.message}');
+    }
+  },
 );
 ```
+
+`startPayment` returns a `PaymentHandle` right away (`cancelPayment()`, `getParams()`, `triggerAdditionalPaymentMethod()`); the result arrives in the callback.
 
 `paymentAttemptId` must be derived from an order/sale identifier in a real integration, not a fresh UUID per tap — that is what protects against duplicate payments on retry.
 
@@ -214,7 +221,7 @@ These throw outside Sandbox — wrap them in `try`/`catch`.
 
 > tap the floater → add a magstripe or contactless & chip reader → start the payment → tap the floater → tap/insert/swipe a card
 
-So an agent **cannot** drive an end-to-end Sandbox payment on its own. If a task requires one, say so and ask the user to perform the taps — do not sit waiting on a `startPayment` future that will never complete.
+So an agent **cannot** drive an end-to-end Sandbox payment on its own. If a task requires one, say so and ask the user to perform the taps — do not sit waiting on a `startPayment` callback that will never fire.
 
 Also: after testing an inserted card, remove it through the mock reader UI before starting the next payment.
 
