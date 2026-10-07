@@ -49,6 +49,41 @@ public class PaymentModule: PaymentManagerDelegate {
         result(handle.cancelPayment() ? "canceled" : "notCancelable")
     }
 
+    public static func getPaymentHandleParams(result: @escaping FlutterResult) {
+        guard let handle = paymentManager.currentPaymentHandle else {
+            result(NSNull())
+            return
+        }
+        result(handle.toMap())
+    }
+
+    public static func triggerAdditionalPaymentMethod(result: @escaping FlutterResult, type: String) {
+        guard let handle = paymentManager.currentPaymentHandle,
+              let method = handle.additionalPaymentMethods.first(where: { $0.type.toName() == type }),
+              let source = PaymentMapper.getPaymentSource(for: method.type) else {
+            result(false)
+            return
+        }
+        do {
+            try method.triggerPayment(with: source)
+            result(true)
+        } catch {
+            let e = error as NSError
+            if e.domain == SQMPPaymentErrorDomain,
+               let paymentError = PaymentError(rawValue: e.code) {
+                result(FlutterError(
+                    code: paymentError.getName(),
+                    message: e.localizedDescription,
+                    details: e.localizedFailureReason))
+            } else {
+                result(FlutterError(
+                    code: PaymentError.unexpected.getName(),
+                    message: e.localizedDescription,
+                    details: e.localizedFailureReason))
+            }
+        }
+    }
+
     public static func getIdempotencyKey(result: @escaping FlutterResult, paymentAttemptId: String) {
         result(paymentManager.getIdempotencyKey(withPaymentAttemptId: paymentAttemptId))
     }

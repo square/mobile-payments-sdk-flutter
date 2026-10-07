@@ -312,6 +312,18 @@ abstract class IdempotencyKeyData with _$IdempotencyKeyData {
 }
 
 @freezed
+abstract class PaymentHandleParams with _$PaymentHandleParams {
+  const factory PaymentHandleParams({
+    Money? totalMoneyWithProposedCardSurcharge,
+    required List<AdditionalPaymentMethodType> additionalPaymentMethods,
+    bool? isPaymentCancelable,
+  }) = _PaymentHandleParams;
+
+  factory PaymentHandleParams.fromJson(Map<String, Object?> json) =>
+      _$PaymentHandleParamsFromJson(json);
+}
+
+@freezed
 abstract class PaymentParameters with _$PaymentParameters {
   const factory PaymentParameters({
     bool? acceptPartialAuthorization,

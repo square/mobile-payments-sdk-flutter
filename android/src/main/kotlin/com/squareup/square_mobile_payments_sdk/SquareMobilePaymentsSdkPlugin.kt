@@ -69,6 +69,11 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
         PaymentModule.startPayment(result, paymentParameters, promptParameters)
       }
       "cancelPayment" -> PaymentModule.cancelPayment(result)
+      "getPaymentHandleParams" -> PaymentModule.getPaymentHandleParams(result)
+      "triggerAdditionalPaymentMethod" -> {
+        val type = call.argument<String>("type")
+        PaymentModule.triggerAdditionalPaymentMethod(result, type)
+      }
       "completePayment" -> {
         val paymentId = call.argument<String>("paymentId") ?: ""
         PaymentModule.completePayment(result, paymentId)

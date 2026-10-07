@@ -233,6 +233,32 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
+  Future<PaymentHandleParams?> getPaymentHandleParams() async {
+    final result =
+        await methodChannel.invokeMethod<Map>('getPaymentHandleParams');
+    if (result == null) {
+      return null;
+    }
+    return PaymentHandleParams.fromJson(castToMap(result));
+  }
+
+  @override
+  Future<bool> triggerAdditionalPaymentMethod(
+      AdditionalPaymentMethodType type) async {
+    try {
+      final result = await methodChannel.invokeMethod<bool>(
+          'triggerAdditionalPaymentMethod', {'type': type.name});
+      if (result == null) {
+        throw getChannelStateError(
+            "triggerAdditionalPaymentMethod()", "returned null");
+      }
+      return result;
+    } on PlatformException catch (e) {
+      throw PaymentError(e.code, e.message, e.details);
+    }
+  }
+
+  @override
   Future<Payment> completePayment(String paymentId) async {
     try {
       final response = await methodChannel

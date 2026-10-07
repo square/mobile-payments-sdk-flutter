@@ -5553,6 +5553,317 @@ as DateTime,
 
 
 /// @nodoc
+mixin _$PaymentHandleParams implements DiagnosticableTreeMixin {
+
+ Money? get totalMoneyWithProposedCardSurcharge; List<AdditionalPaymentMethodType> get additionalPaymentMethods; bool? get isPaymentCancelable;
+/// Create a copy of PaymentHandleParams
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PaymentHandleParamsCopyWith<PaymentHandleParams> get copyWith => _$PaymentHandleParamsCopyWithImpl<PaymentHandleParams>(this as PaymentHandleParams, _$identity);
+
+  /// Serializes this PaymentHandleParams to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'PaymentHandleParams'))
+    ..add(DiagnosticsProperty('totalMoneyWithProposedCardSurcharge', totalMoneyWithProposedCardSurcharge))..add(DiagnosticsProperty('additionalPaymentMethods', additionalPaymentMethods))..add(DiagnosticsProperty('isPaymentCancelable', isPaymentCancelable));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentHandleParams&&(identical(other.totalMoneyWithProposedCardSurcharge, totalMoneyWithProposedCardSurcharge) || other.totalMoneyWithProposedCardSurcharge == totalMoneyWithProposedCardSurcharge)&&const DeepCollectionEquality().equals(other.additionalPaymentMethods, additionalPaymentMethods)&&(identical(other.isPaymentCancelable, isPaymentCancelable) || other.isPaymentCancelable == isPaymentCancelable));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,totalMoneyWithProposedCardSurcharge,const DeepCollectionEquality().hash(additionalPaymentMethods),isPaymentCancelable);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'PaymentHandleParams(totalMoneyWithProposedCardSurcharge: $totalMoneyWithProposedCardSurcharge, additionalPaymentMethods: $additionalPaymentMethods, isPaymentCancelable: $isPaymentCancelable)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PaymentHandleParamsCopyWith<$Res>  {
+  factory $PaymentHandleParamsCopyWith(PaymentHandleParams value, $Res Function(PaymentHandleParams) _then) = _$PaymentHandleParamsCopyWithImpl;
+@useResult
+$Res call({
+ Money? totalMoneyWithProposedCardSurcharge, List<AdditionalPaymentMethodType> additionalPaymentMethods, bool? isPaymentCancelable
+});
+
+
+$MoneyCopyWith<$Res>? get totalMoneyWithProposedCardSurcharge;
+
+}
+/// @nodoc
+class _$PaymentHandleParamsCopyWithImpl<$Res>
+    implements $PaymentHandleParamsCopyWith<$Res> {
+  _$PaymentHandleParamsCopyWithImpl(this._self, this._then);
+
+  final PaymentHandleParams _self;
+  final $Res Function(PaymentHandleParams) _then;
+
+/// Create a copy of PaymentHandleParams
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? totalMoneyWithProposedCardSurcharge = freezed,Object? additionalPaymentMethods = null,Object? isPaymentCancelable = freezed,}) {
+  return _then(_self.copyWith(
+totalMoneyWithProposedCardSurcharge: freezed == totalMoneyWithProposedCardSurcharge ? _self.totalMoneyWithProposedCardSurcharge : totalMoneyWithProposedCardSurcharge // ignore: cast_nullable_to_non_nullable
+as Money?,additionalPaymentMethods: null == additionalPaymentMethods ? _self.additionalPaymentMethods : additionalPaymentMethods // ignore: cast_nullable_to_non_nullable
+as List<AdditionalPaymentMethodType>,isPaymentCancelable: freezed == isPaymentCancelable ? _self.isPaymentCancelable : isPaymentCancelable // ignore: cast_nullable_to_non_nullable
+as bool?,
+  ));
+}
+/// Create a copy of PaymentHandleParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get totalMoneyWithProposedCardSurcharge {
+    if (_self.totalMoneyWithProposedCardSurcharge == null) {
+    return null;
+  }
+
+  return $MoneyCopyWith<$Res>(_self.totalMoneyWithProposedCardSurcharge!, (value) {
+    return _then(_self.copyWith(totalMoneyWithProposedCardSurcharge: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [PaymentHandleParams].
+extension PaymentHandleParamsPatterns on PaymentHandleParams {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PaymentHandleParams value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _PaymentHandleParams() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PaymentHandleParams value)  $default,){
+final _that = this;
+switch (_that) {
+case _PaymentHandleParams():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PaymentHandleParams value)?  $default,){
+final _that = this;
+switch (_that) {
+case _PaymentHandleParams() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Money? totalMoneyWithProposedCardSurcharge,  List<AdditionalPaymentMethodType> additionalPaymentMethods,  bool? isPaymentCancelable)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _PaymentHandleParams() when $default != null:
+return $default(_that.totalMoneyWithProposedCardSurcharge,_that.additionalPaymentMethods,_that.isPaymentCancelable);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Money? totalMoneyWithProposedCardSurcharge,  List<AdditionalPaymentMethodType> additionalPaymentMethods,  bool? isPaymentCancelable)  $default,) {final _that = this;
+switch (_that) {
+case _PaymentHandleParams():
+return $default(_that.totalMoneyWithProposedCardSurcharge,_that.additionalPaymentMethods,_that.isPaymentCancelable);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Money? totalMoneyWithProposedCardSurcharge,  List<AdditionalPaymentMethodType> additionalPaymentMethods,  bool? isPaymentCancelable)?  $default,) {final _that = this;
+switch (_that) {
+case _PaymentHandleParams() when $default != null:
+return $default(_that.totalMoneyWithProposedCardSurcharge,_that.additionalPaymentMethods,_that.isPaymentCancelable);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _PaymentHandleParams with DiagnosticableTreeMixin implements PaymentHandleParams {
+  const _PaymentHandleParams({this.totalMoneyWithProposedCardSurcharge, required final  List<AdditionalPaymentMethodType> additionalPaymentMethods, this.isPaymentCancelable}): _additionalPaymentMethods = additionalPaymentMethods;
+  factory _PaymentHandleParams.fromJson(Map<String, dynamic> json) => _$PaymentHandleParamsFromJson(json);
+
+@override final  Money? totalMoneyWithProposedCardSurcharge;
+ final  List<AdditionalPaymentMethodType> _additionalPaymentMethods;
+@override List<AdditionalPaymentMethodType> get additionalPaymentMethods {
+  if (_additionalPaymentMethods is EqualUnmodifiableListView) return _additionalPaymentMethods;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_additionalPaymentMethods);
+}
+
+@override final  bool? isPaymentCancelable;
+
+/// Create a copy of PaymentHandleParams
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PaymentHandleParamsCopyWith<_PaymentHandleParams> get copyWith => __$PaymentHandleParamsCopyWithImpl<_PaymentHandleParams>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$PaymentHandleParamsToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'PaymentHandleParams'))
+    ..add(DiagnosticsProperty('totalMoneyWithProposedCardSurcharge', totalMoneyWithProposedCardSurcharge))..add(DiagnosticsProperty('additionalPaymentMethods', additionalPaymentMethods))..add(DiagnosticsProperty('isPaymentCancelable', isPaymentCancelable));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentHandleParams&&(identical(other.totalMoneyWithProposedCardSurcharge, totalMoneyWithProposedCardSurcharge) || other.totalMoneyWithProposedCardSurcharge == totalMoneyWithProposedCardSurcharge)&&const DeepCollectionEquality().equals(other._additionalPaymentMethods, _additionalPaymentMethods)&&(identical(other.isPaymentCancelable, isPaymentCancelable) || other.isPaymentCancelable == isPaymentCancelable));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,totalMoneyWithProposedCardSurcharge,const DeepCollectionEquality().hash(_additionalPaymentMethods),isPaymentCancelable);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'PaymentHandleParams(totalMoneyWithProposedCardSurcharge: $totalMoneyWithProposedCardSurcharge, additionalPaymentMethods: $additionalPaymentMethods, isPaymentCancelable: $isPaymentCancelable)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PaymentHandleParamsCopyWith<$Res> implements $PaymentHandleParamsCopyWith<$Res> {
+  factory _$PaymentHandleParamsCopyWith(_PaymentHandleParams value, $Res Function(_PaymentHandleParams) _then) = __$PaymentHandleParamsCopyWithImpl;
+@override @useResult
+$Res call({
+ Money? totalMoneyWithProposedCardSurcharge, List<AdditionalPaymentMethodType> additionalPaymentMethods, bool? isPaymentCancelable
+});
+
+
+@override $MoneyCopyWith<$Res>? get totalMoneyWithProposedCardSurcharge;
+
+}
+/// @nodoc
+class __$PaymentHandleParamsCopyWithImpl<$Res>
+    implements _$PaymentHandleParamsCopyWith<$Res> {
+  __$PaymentHandleParamsCopyWithImpl(this._self, this._then);
+
+  final _PaymentHandleParams _self;
+  final $Res Function(_PaymentHandleParams) _then;
+
+/// Create a copy of PaymentHandleParams
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? totalMoneyWithProposedCardSurcharge = freezed,Object? additionalPaymentMethods = null,Object? isPaymentCancelable = freezed,}) {
+  return _then(_PaymentHandleParams(
+totalMoneyWithProposedCardSurcharge: freezed == totalMoneyWithProposedCardSurcharge ? _self.totalMoneyWithProposedCardSurcharge : totalMoneyWithProposedCardSurcharge // ignore: cast_nullable_to_non_nullable
+as Money?,additionalPaymentMethods: null == additionalPaymentMethods ? _self._additionalPaymentMethods : additionalPaymentMethods // ignore: cast_nullable_to_non_nullable
+as List<AdditionalPaymentMethodType>,isPaymentCancelable: freezed == isPaymentCancelable ? _self.isPaymentCancelable : isPaymentCancelable // ignore: cast_nullable_to_non_nullable
+as bool?,
+  ));
+}
+
+/// Create a copy of PaymentHandleParams
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoneyCopyWith<$Res>? get totalMoneyWithProposedCardSurcharge {
+    if (_self.totalMoneyWithProposedCardSurcharge == null) {
+    return null;
+  }
+
+  return $MoneyCopyWith<$Res>(_self.totalMoneyWithProposedCardSurcharge!, (value) {
+    return _then(_self.copyWith(totalMoneyWithProposedCardSurcharge: value));
+  });
+}
+}
+
+
+/// @nodoc
 mixin _$PaymentParameters implements DiagnosticableTreeMixin {
 
  bool? get acceptPartialAuthorization; bool get allowCardSurcharge; Money get amountMoney; Money? get appFeeMoney; bool? get autocomplete; String? get customerId; DelayAction? get delayAction; num? get delayDuration; ProcessingMode get processingMode; String get paymentAttemptId; String? get locationId; String? get note; String? get orderId; String? get referenceId; String? get statementDescription; String? get teamMemberId; Money? get tipMoney;

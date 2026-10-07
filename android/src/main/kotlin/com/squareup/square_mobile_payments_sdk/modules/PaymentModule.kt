@@ -8,6 +8,7 @@ import com.squareup.sdk.mobilepayments.core.CallbackReference
 import com.squareup.sdk.mobilepayments.core.Result as SdkResult
 import com.squareup.sdk.mobilepayments.payment.Payment
 import com.squareup.sdk.mobilepayments.payment.PaymentHandle
+import com.squareup.sdk.mobilepayments.payment.AdditionalPaymentMethod
 
 import com.squareup.square_mobile_payments_sdk.mappers.PaymentMapper
 import com.squareup.square_mobile_payments_sdk.extensions.toOfflineMap
@@ -18,6 +19,7 @@ import com.squareup.square_mobile_payments_sdk.extensions.toPaymentErrorCodeName
 import com.squareup.square_mobile_payments_sdk.extensions.toErrorDetailsMap
 import com.squareup.square_mobile_payments_sdk.extensions.toIdempotencyKeyDataMap
 import com.squareup.square_mobile_payments_sdk.extensions.toEntryMethodName
+import com.squareup.square_mobile_payments_sdk.extensions.toPaymentHandleMap
 
 class PaymentModule {
     companion object {
@@ -74,6 +76,31 @@ class PaymentModule {
                 PaymentHandle.CancelResult.NO_PAYMENT_IN_PROGRESS, null -> "noPaymentInProgress"
             }
             result.success(cancelResult)
+        }
+
+        @JvmStatic
+        fun getPaymentHandleParams(result: MethodChannel.Result) {
+            val handle = paymentManager.currentPaymentHandle
+            if (handle == null) {
+                result.success(null)
+                return
+            }
+            result.success(handle.toPaymentHandleMap())
+        }
+
+        @JvmStatic
+        fun triggerAdditionalPaymentMethod(result: MethodChannel.Result, type: String?) {
+            val methodType = PaymentMapper.getAdditionalPaymentMethodType(type)
+            val method = methodType?.let { paymentManager.currentPaymentHandle?.findMethod(it) }
+            when (method) {
+                is AdditionalPaymentMethod.KeyedMethod -> method.trigger()
+                is AdditionalPaymentMethod.CashMethod -> method.trigger()
+                else -> {
+                    result.success(false)
+                    return
+                }
+            }
+            result.success(true)
         }
 
         @JvmStatic

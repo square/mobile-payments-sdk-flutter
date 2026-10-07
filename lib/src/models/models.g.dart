@@ -725,6 +725,32 @@ Map<String, dynamic> _$IdempotencyKeyDataToJson(_IdempotencyKeyData instance) =>
       'updatedAt': instance.updatedAt.toIso8601String(),
     };
 
+_PaymentHandleParams _$PaymentHandleParamsFromJson(
+  Map<String, dynamic> json,
+) => _PaymentHandleParams(
+  totalMoneyWithProposedCardSurcharge:
+      json['totalMoneyWithProposedCardSurcharge'] == null
+      ? null
+      : Money.fromJson(
+          json['totalMoneyWithProposedCardSurcharge'] as Map<String, dynamic>,
+        ),
+  additionalPaymentMethods: (json['additionalPaymentMethods'] as List<dynamic>)
+      .map((e) => $enumDecode(_$AdditionalPaymentMethodTypeEnumMap, e))
+      .toList(),
+  isPaymentCancelable: json['isPaymentCancelable'] as bool?,
+);
+
+Map<String, dynamic> _$PaymentHandleParamsToJson(
+  _PaymentHandleParams instance,
+) => <String, dynamic>{
+  'totalMoneyWithProposedCardSurcharge':
+      instance.totalMoneyWithProposedCardSurcharge,
+  'additionalPaymentMethods': instance.additionalPaymentMethods
+      .map((e) => _$AdditionalPaymentMethodTypeEnumMap[e]!)
+      .toList(),
+  'isPaymentCancelable': instance.isPaymentCancelable,
+};
+
 _PaymentParameters _$PaymentParametersFromJson(
   Map<String, dynamic> json,
 ) => _PaymentParameters(
