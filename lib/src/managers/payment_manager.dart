@@ -21,11 +21,12 @@ class PaymentManager {
     SquareMobilePaymentsSdkPlatform.instance
         .startPayment(paymentParameters, promptParameters)
         .then<void>((payment) => onResult(payment, null),
-            onError: (Object error, StackTrace stackTrace) {
-      if (error is! PaymentError) {
-        Error.throwWithStackTrace(error, stackTrace);
-      }
-      onResult(null, error);
+            onError: (Object error) {
+      onResult(
+          null,
+          error is PaymentError
+              ? error
+              : PaymentError('unexpected', error.toString()));
     });
     return PaymentHandle._();
   }

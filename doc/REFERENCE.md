@@ -156,7 +156,7 @@ Method                                                    | Returns             
 #### Method details
 ##### startPayment
 
-Starts a payment taking payment and prompt parameters, and returns a [PaymentHandle](#paymenthandle) right away. The resulting Payment, or the PaymentError, is delivered to `onResult`. The payment parameters will include things like the amount, application fees; prompt parameters will include the accepted payment methods, and the mode (which, for now, only covers the default mode). Default prompt mode takes over the entire screen, and handles all the payment interactions.
+Starts a payment taking payment and prompt parameters, and returns a [PaymentHandle](#paymenthandle) right away. The resulting Payment, or the PaymentError, is delivered to `onResult`. The payment parameters will include things like the amount, application fees; prompt parameters will include the accepted payment methods, and the mode. Default prompt mode takes over the entire screen, and handles all the payment interactions. Custom prompt mode does not show Square's payment screen, so the app can build its own prompt with the returned [PaymentHandle](#paymenthandle).
 
 For details on the parameters, visit the respective PaymentParameters and PromptParameters sections.
 
@@ -164,7 +164,7 @@ Parameter | Type   | Description
 --------- | ------ | -----------
 paymentParameters | [PaymentParameters](#paymentparameters) | Parameters to configure the payment.
 promptParameters | [PromptParameters](#promptparameters) | Parameters to configure the prompt.
-onResult | Function | Invoked once with the resulting [Payment](#payment-1), which will include all the information Square captured about the payment, and a `null` error; or with a `null` payment and the resulting PaymentError.
+onResult | Function | Invoked once with the resulting [Payment](#payment-1), which will include all the information Square captured about the payment, and a `null` error; or with a `null` payment and the resulting PaymentError. Errors that do not come from the SDK are delivered as a PaymentError whose code is `unexpected`.
 
 * **Returns**: a [PaymentHandle](#paymenthandle) to act on the payment in progress.
 
