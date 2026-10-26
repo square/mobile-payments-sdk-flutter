@@ -3,7 +3,7 @@
 Guidance for coding agents **integrating the Mobile Payments SDK into a Flutter app**.
 This repo is the `square_mobile_payments_sdk` plugin plus the Donut Counter sample in `example/`.
 
-Current package version: **2026.8.4**, wrapping native SDK **iOS 2.6.0** / **Android 2.6.1**.
+Current package version: **2026.10.2**, wrapping native SDK **iOS 2.7.0** / **Android 2.6.1**.
 
 ## Install
 
@@ -63,7 +63,7 @@ android.enableJetifier=true
 
 ### iOS
 
-Minimum deployment target **iOS 16.0**. Projects created by `flutter create` default lower and **fail to resolve the SDK** — raise it in Xcode before anything else.
+Minimum deployment target **iOS 17.1**. Projects created by `flutter create` default lower and **fail to resolve the SDK** — raise it in Xcode before anything else.
 
 Dependencies resolve through Swift Package Manager, which Flutter enables by default. There is no `pod install` step and no `Podfile`. To fall back to CocoaPods, opt out in your app's `pubspec.yaml`:
 
@@ -208,7 +208,7 @@ await sdk.readerManager.hideMockReaderUI();
 
 These throw outside Sandbox — wrap them in `try`/`catch`.
 
-**iOS + Swift Package Manager: `MockReaderUI` is not bundled by default.** SPM has no Debug-only dependencies, and `MockReaderUI.framework` is packaged as an application (`CFBundlePackageType = APPL`), so shipping it in a Release archive gets the upload rejected by App Store validation. The plugin therefore guards all its mock-reader code with `#if canImport(MockReaderUI)` and returns an `"unavailable"` error when the module is absent. To enable it, add the `MockReaderUI` product to **your Runner target** with dependency rule **Up to Next Minor Version from `2.6.0`** — the version must match the plugin's pin or SPM fails to resolve. Then strip it before archiving. Full detail and the alternatives: **[doc/MOCK_READER_UI_SPM.md](doc/MOCK_READER_UI_SPM.md)**.
+**iOS + Swift Package Manager: `MockReaderUI` is not bundled by default.** SPM has no Debug-only dependencies, and `MockReaderUI.framework` is packaged as an application (`CFBundlePackageType = APPL`), so shipping it in a Release archive gets the upload rejected by App Store validation. The plugin therefore guards all its mock-reader code with `#if canImport(MockReaderUI)` and returns an `"unavailable"` error when the module is absent. To enable it, add the `MockReaderUI` product to **your Runner target** with dependency rule **Up to Next Minor Version from `2.7.0`** — the version must match the plugin's pin or SPM fails to resolve. Then strip it before archiving. Full detail and the alternatives: **[doc/MOCK_READER_UI_SPM.md](doc/MOCK_READER_UI_SPM.md)**.
 
 **Known limitation — read this before planning an automated test.** The plugin exposes only `showMockReaderUI()` and `hideMockReaderUI()`, because that is all the underlying native frameworks expose. There is no API to add a mock reader, select a card brand, or simulate a tap/insert/swipe. Those steps happen only through the floating button the SDK draws over your app, and require a human:
 
@@ -245,7 +245,7 @@ lib/
   src/models/                       enums, objects (freezed/json_serializable generated)
   src/errors/
 android/build.gradle.kts            native SDK pin, minSdk 28 / compileSdk 36, Java 17
-ios/square_mobile_payments_sdk/Package.swift   SPM pin, iOS 16.0
+ios/square_mobile_payments_sdk/Package.swift   SPM pin, iOS 17.1
 doc/                                setup guide, API reference, MockReaderUI over SPM
 example/                            Donut Counter sample (SPM on iOS, Gradle KTS on Android)
 ```

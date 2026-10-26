@@ -257,6 +257,15 @@ public class ReaderModule {
         result(NSNull())
     }
 
+    public static func setUsbPowerMode(result: @escaping FlutterResult, mode: String) {
+        guard let powerMode = PowerMode.from(name: mode) else {
+            result(FlutterError(code: "invalidPowerMode", message: "Invalid power mode: \(mode)", details: nil))
+            return
+        }
+        MobilePaymentsSDK.shared.readerManager.readerSettings.usbPowerMode = powerMode
+        result(NSNull())
+    }
+
     public static func rebootReader(result: @escaping FlutterResult, id: String) {
         if let readerId = UInt(id), let reader = findReader(readerId: readerId) {
             MobilePaymentsSDK.shared.readerManager.rebootReader(reader)

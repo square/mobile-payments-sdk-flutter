@@ -423,6 +423,9 @@ _ReaderInfo _$ReaderInfoFromJson(Map<String, dynamic> json) => _ReaderInfo(
   supportedInputMethods: (json['supportedInputMethods'] as List<dynamic>)
       .map((e) => $enumDecode(_$CardInputMethodEnumMap, e))
       .toList(),
+  warnings: (json['warnings'] as List<dynamic>?)
+      ?.map((e) => $enumDecode(_$ReaderWarningEnumMap, e))
+      .toList(),
 );
 
 Map<String, dynamic> _$ReaderInfoToJson(_ReaderInfo instance) =>
@@ -443,6 +446,9 @@ Map<String, dynamic> _$ReaderInfoToJson(_ReaderInfo instance) =>
       'statusInfo': instance.statusInfo,
       'supportedInputMethods': instance.supportedInputMethods
           .map((e) => _$CardInputMethodEnumMap[e]!)
+          .toList(),
+      'warnings': instance.warnings
+          ?.map((e) => _$ReaderWarningEnumMap[e]!)
           .toList(),
     };
 
@@ -473,6 +479,12 @@ const _$CardInputMethodEnumMap = {
   CardInputMethod.emv: 'emv',
   CardInputMethod.contactless: 'contactless',
   CardInputMethod.chip: 'chip',
+};
+
+const _$ReaderWarningEnumMap = {
+  ReaderWarning.usbThermalFault: 'usbThermalFault',
+  ReaderWarning.thermalFaultDisconnectUsb: 'thermalFaultDisconnectUsb',
+  ReaderWarning.thermalFaultPowerOff: 'thermalFaultPowerOff',
 };
 
 _PromptParameters _$PromptParametersFromJson(Map<String, dynamic> json) =>
@@ -830,6 +842,7 @@ const _$ReaderChangeEnumMap = {
   ReaderChange.firmwareUpdateStatusDidChange: 'firmwareUpdateStatusDidChange',
   ReaderChange.firmwareUpdateTimeDidChange: 'firmwareUpdateTimeDidChange',
   ReaderChange.readerStatusDidChange: 'readerStatusDidChange',
+  ReaderChange.warningRaised: 'warningRaised',
   ReaderChange.changedState: 'changedState',
   ReaderChange.added: 'added',
   ReaderChange.removed: 'removed',
@@ -846,26 +859,35 @@ _TimeOfDay _$TimeOfDayFromJson(Map<String, dynamic> json) => _TimeOfDay(
 Map<String, dynamic> _$TimeOfDayToJson(_TimeOfDay instance) =>
     <String, dynamic>{'hour': instance.hour, 'minute': instance.minute};
 
-_ReaderSettings _$ReaderSettingsFromJson(Map<String, dynamic> json) =>
-    _ReaderSettings(
-      isReducedChargingModeEnabled:
-          json['isReducedChargingModeEnabled'] as bool,
-      preferredFirmwareUpdateTime: json['preferredFirmwareUpdateTime'] == null
-          ? null
-          : TimeOfDay.fromJson(
-              json['preferredFirmwareUpdateTime'] as Map<String, dynamic>,
-            ),
-    );
+_ReaderSettings _$ReaderSettingsFromJson(
+  Map<String, dynamic> json,
+) => _ReaderSettings(
+  isReducedChargingModeEnabled: json['isReducedChargingModeEnabled'] as bool,
+  preferredFirmwareUpdateTime: json['preferredFirmwareUpdateTime'] == null
+      ? null
+      : TimeOfDay.fromJson(
+          json['preferredFirmwareUpdateTime'] as Map<String, dynamic>,
+        ),
+  usbPowerMode: $enumDecodeNullable(_$PowerModeEnumMap, json['usbPowerMode']),
+);
 
 Map<String, dynamic> _$ReaderSettingsToJson(_ReaderSettings instance) =>
     <String, dynamic>{
       'isReducedChargingModeEnabled': instance.isReducedChargingModeEnabled,
       'preferredFirmwareUpdateTime': instance.preferredFirmwareUpdateTime,
+      'usbPowerMode': _$PowerModeEnumMap[instance.usbPowerMode],
     };
+
+const _$PowerModeEnumMap = {
+  PowerMode.defaultMode: 'defaultMode',
+  PowerMode.powerOnlyMode: 'powerOnlyMode',
+  PowerMode.fullMode: 'fullMode',
+};
 
 _SdkSettings _$SdkSettingsFromJson(Map<String, dynamic> json) => _SdkSettings(
   version: json['version'] as String,
   environment: $enumDecode(_$EnvironmentEnumMap, json['environment']),
+  mpocVersion: json['mpocVersion'] as String?,
   securityComplianceVersion: json['securityComplianceVersion'] as String,
 );
 
@@ -873,6 +895,7 @@ Map<String, dynamic> _$SdkSettingsToJson(_SdkSettings instance) =>
     <String, dynamic>{
       'version': instance.version,
       'environment': _$EnvironmentEnumMap[instance.environment]!,
+      'mpocVersion': instance.mpocVersion,
       'securityComplianceVersion': instance.securityComplianceVersion,
     };
 

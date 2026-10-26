@@ -1,3 +1,13 @@
+## 2026.10.2
+
+- Upgrade iOS native SDK to `2.7.0`. See the native changelog: [https://developer.squareup.com/docs/changelog/mobile-logs/2026-10-23](https://developer.squareup.com/docs/changelog/mobile-logs/2026-10-23)
+- **Breaking (iOS):** The minimum supported iOS version is now `17.1` (was `16.0`). Apps that still support iOS 16 should stay on `2026.10.1`
+- **(iOS)** Add `ReaderInfo.warnings` and the `ReaderWarning` enum (`usbThermalFault`, `thermalFaultDisconnectUsb`, `thermalFaultPowerOff`), the advisory thermal warnings the reader has reported during the current connection. Warnings don't change the reader's status and clear when it disconnects or reconnects
+- **(iOS)** Add `warningRaised` to `ReaderChange`, emitted when a reader reports a new warning
+- **(iOS)** Add `ReaderSettings.usbPowerMode`, the `PowerMode` enum (`defaultMode`, `powerOnlyMode`, `fullMode`) and `ReaderManager.setUsbPowerMode(mode)`. With `powerOnlyMode`, supported readers treat the USB cable as power-only
+- **(iOS)** Add `SdkSettings.mpocVersion`, the SDK's MPoC (Mobile Payments on COTS) version
+- **(iOS)** CocoaPods trunk becomes read-only on December 2, 2026, so native `2.7.0` is expected to be the last Mobile Payments SDK release published to CocoaPods. Swift Package Manager is the recommended integration
+
 ## 2026.10.1
 
 - Add `PaymentManager.cancelPayment()`, which cancels the payment in progress and returns a `CancelResult`.

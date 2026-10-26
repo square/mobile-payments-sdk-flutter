@@ -146,6 +146,9 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin, FlutterStre
     case "setReducedChargingModeEnabled":
       let enabled = (call.arguments as? [String: Any])?["enabled"] as? Bool ?? false
       ReaderModule.setReducedChargingModeEnabled(result: result, enabled: enabled)
+    case "setUsbPowerMode":
+      let mode = (call.arguments as? [String: Any])?["mode"] as? String ?? ""
+      ReaderModule.setUsbPowerMode(result: result, mode: mode)
     case "rebootReader":
       let id = (call.arguments as? [String: Any])?["id"] as? String ?? ""
       ReaderModule.rebootReader(result: result, id: id)

@@ -185,6 +185,7 @@ abstract class ReaderInfo with _$ReaderInfo {
     String? serialNumber,
     required ReaderStatusInfo statusInfo,
     required List<CardInputMethod> supportedInputMethods,
+    List<ReaderWarning>? warnings, // iOS only
   }) = _ReaderInfo;
 
   factory ReaderInfo.fromJson(Map<String, Object?> json) =>
@@ -399,6 +400,7 @@ abstract class ReaderSettings with _$ReaderSettings {
   const factory ReaderSettings({
     required bool isReducedChargingModeEnabled,
     TimeOfDay? preferredFirmwareUpdateTime,
+    PowerMode? usbPowerMode, // iOS only
   }) = _ReaderSettings;
   factory ReaderSettings.fromJson(Map<String, Object?> json) =>
       _$ReaderSettingsFromJson(json);
@@ -409,6 +411,7 @@ abstract class SdkSettings with _$SdkSettings {
   const factory SdkSettings({
     required String version,
     required Environment environment,
+    String? mpocVersion, // iOS only
     required String securityComplianceVersion,
   }) = _SdkSettings;
 

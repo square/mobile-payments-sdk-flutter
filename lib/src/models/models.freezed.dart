@@ -3346,7 +3346,7 @@ mixin _$ReaderInfo implements DiagnosticableTreeMixin {
  ReaderBatteryStatus? get batteryStatus; CardInsertionStatus? get cardInsertionStatus;// iOS only
 @JsonKey(unknownEnumValue: ReaderConnectionType.unknown) ReaderConnectionType get connectionType; ReaderFirmwareInfo? get firmwareInfo; String get id; bool get isBlinkable; bool? get isConnectionRetryable;// iOS only
  bool get isForgettable; bool? get isRebootable;// iOS only
- ReaderModel get model; String get name; String? get serialNumber; ReaderStatusInfo get statusInfo; List<CardInputMethod> get supportedInputMethods;
+ ReaderModel get model; String get name; String? get serialNumber; ReaderStatusInfo get statusInfo; List<CardInputMethod> get supportedInputMethods; List<ReaderWarning>? get warnings;
 /// Create a copy of ReaderInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3360,21 +3360,21 @@ $ReaderInfoCopyWith<ReaderInfo> get copyWith => _$ReaderInfoCopyWithImpl<ReaderI
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ReaderInfo'))
-    ..add(DiagnosticsProperty('batteryStatus', batteryStatus))..add(DiagnosticsProperty('cardInsertionStatus', cardInsertionStatus))..add(DiagnosticsProperty('connectionType', connectionType))..add(DiagnosticsProperty('firmwareInfo', firmwareInfo))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('isBlinkable', isBlinkable))..add(DiagnosticsProperty('isConnectionRetryable', isConnectionRetryable))..add(DiagnosticsProperty('isForgettable', isForgettable))..add(DiagnosticsProperty('isRebootable', isRebootable))..add(DiagnosticsProperty('model', model))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('serialNumber', serialNumber))..add(DiagnosticsProperty('statusInfo', statusInfo))..add(DiagnosticsProperty('supportedInputMethods', supportedInputMethods));
+    ..add(DiagnosticsProperty('batteryStatus', batteryStatus))..add(DiagnosticsProperty('cardInsertionStatus', cardInsertionStatus))..add(DiagnosticsProperty('connectionType', connectionType))..add(DiagnosticsProperty('firmwareInfo', firmwareInfo))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('isBlinkable', isBlinkable))..add(DiagnosticsProperty('isConnectionRetryable', isConnectionRetryable))..add(DiagnosticsProperty('isForgettable', isForgettable))..add(DiagnosticsProperty('isRebootable', isRebootable))..add(DiagnosticsProperty('model', model))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('serialNumber', serialNumber))..add(DiagnosticsProperty('statusInfo', statusInfo))..add(DiagnosticsProperty('supportedInputMethods', supportedInputMethods))..add(DiagnosticsProperty('warnings', warnings));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderInfo&&(identical(other.batteryStatus, batteryStatus) || other.batteryStatus == batteryStatus)&&(identical(other.cardInsertionStatus, cardInsertionStatus) || other.cardInsertionStatus == cardInsertionStatus)&&(identical(other.connectionType, connectionType) || other.connectionType == connectionType)&&(identical(other.firmwareInfo, firmwareInfo) || other.firmwareInfo == firmwareInfo)&&(identical(other.id, id) || other.id == id)&&(identical(other.isBlinkable, isBlinkable) || other.isBlinkable == isBlinkable)&&(identical(other.isConnectionRetryable, isConnectionRetryable) || other.isConnectionRetryable == isConnectionRetryable)&&(identical(other.isForgettable, isForgettable) || other.isForgettable == isForgettable)&&(identical(other.isRebootable, isRebootable) || other.isRebootable == isRebootable)&&(identical(other.model, model) || other.model == model)&&(identical(other.name, name) || other.name == name)&&(identical(other.serialNumber, serialNumber) || other.serialNumber == serialNumber)&&(identical(other.statusInfo, statusInfo) || other.statusInfo == statusInfo)&&const DeepCollectionEquality().equals(other.supportedInputMethods, supportedInputMethods));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderInfo&&(identical(other.batteryStatus, batteryStatus) || other.batteryStatus == batteryStatus)&&(identical(other.cardInsertionStatus, cardInsertionStatus) || other.cardInsertionStatus == cardInsertionStatus)&&(identical(other.connectionType, connectionType) || other.connectionType == connectionType)&&(identical(other.firmwareInfo, firmwareInfo) || other.firmwareInfo == firmwareInfo)&&(identical(other.id, id) || other.id == id)&&(identical(other.isBlinkable, isBlinkable) || other.isBlinkable == isBlinkable)&&(identical(other.isConnectionRetryable, isConnectionRetryable) || other.isConnectionRetryable == isConnectionRetryable)&&(identical(other.isForgettable, isForgettable) || other.isForgettable == isForgettable)&&(identical(other.isRebootable, isRebootable) || other.isRebootable == isRebootable)&&(identical(other.model, model) || other.model == model)&&(identical(other.name, name) || other.name == name)&&(identical(other.serialNumber, serialNumber) || other.serialNumber == serialNumber)&&(identical(other.statusInfo, statusInfo) || other.statusInfo == statusInfo)&&const DeepCollectionEquality().equals(other.supportedInputMethods, supportedInputMethods)&&const DeepCollectionEquality().equals(other.warnings, warnings));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,batteryStatus,cardInsertionStatus,connectionType,firmwareInfo,id,isBlinkable,isConnectionRetryable,isForgettable,isRebootable,model,name,serialNumber,statusInfo,const DeepCollectionEquality().hash(supportedInputMethods));
+int get hashCode => Object.hash(runtimeType,batteryStatus,cardInsertionStatus,connectionType,firmwareInfo,id,isBlinkable,isConnectionRetryable,isForgettable,isRebootable,model,name,serialNumber,statusInfo,const DeepCollectionEquality().hash(supportedInputMethods),const DeepCollectionEquality().hash(warnings));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, connectionType: $connectionType, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, isRebootable: $isRebootable, model: $model, name: $name, serialNumber: $serialNumber, statusInfo: $statusInfo, supportedInputMethods: $supportedInputMethods)';
+  return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, connectionType: $connectionType, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, isRebootable: $isRebootable, model: $model, name: $name, serialNumber: $serialNumber, statusInfo: $statusInfo, supportedInputMethods: $supportedInputMethods, warnings: $warnings)';
 }
 
 
@@ -3385,7 +3385,7 @@ abstract mixin class $ReaderInfoCopyWith<$Res>  {
   factory $ReaderInfoCopyWith(ReaderInfo value, $Res Function(ReaderInfo) _then) = _$ReaderInfoCopyWithImpl;
 @useResult
 $Res call({
- ReaderBatteryStatus? batteryStatus, CardInsertionStatus? cardInsertionStatus,@JsonKey(unknownEnumValue: ReaderConnectionType.unknown) ReaderConnectionType connectionType, ReaderFirmwareInfo? firmwareInfo, String id, bool isBlinkable, bool? isConnectionRetryable, bool isForgettable, bool? isRebootable, ReaderModel model, String name, String? serialNumber, ReaderStatusInfo statusInfo, List<CardInputMethod> supportedInputMethods
+ ReaderBatteryStatus? batteryStatus, CardInsertionStatus? cardInsertionStatus,@JsonKey(unknownEnumValue: ReaderConnectionType.unknown) ReaderConnectionType connectionType, ReaderFirmwareInfo? firmwareInfo, String id, bool isBlinkable, bool? isConnectionRetryable, bool isForgettable, bool? isRebootable, ReaderModel model, String name, String? serialNumber, ReaderStatusInfo statusInfo, List<CardInputMethod> supportedInputMethods, List<ReaderWarning>? warnings
 });
 
 
@@ -3402,7 +3402,7 @@ class _$ReaderInfoCopyWithImpl<$Res>
 
 /// Create a copy of ReaderInfo
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? batteryStatus = freezed,Object? cardInsertionStatus = freezed,Object? connectionType = null,Object? firmwareInfo = freezed,Object? id = null,Object? isBlinkable = null,Object? isConnectionRetryable = freezed,Object? isForgettable = null,Object? isRebootable = freezed,Object? model = null,Object? name = null,Object? serialNumber = freezed,Object? statusInfo = null,Object? supportedInputMethods = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? batteryStatus = freezed,Object? cardInsertionStatus = freezed,Object? connectionType = null,Object? firmwareInfo = freezed,Object? id = null,Object? isBlinkable = null,Object? isConnectionRetryable = freezed,Object? isForgettable = null,Object? isRebootable = freezed,Object? model = null,Object? name = null,Object? serialNumber = freezed,Object? statusInfo = null,Object? supportedInputMethods = null,Object? warnings = freezed,}) {
   return _then(_self.copyWith(
 batteryStatus: freezed == batteryStatus ? _self.batteryStatus : batteryStatus // ignore: cast_nullable_to_non_nullable
 as ReaderBatteryStatus?,cardInsertionStatus: freezed == cardInsertionStatus ? _self.cardInsertionStatus : cardInsertionStatus // ignore: cast_nullable_to_non_nullable
@@ -3418,7 +3418,8 @@ as ReaderModel,name: null == name ? _self.name : name // ignore: cast_nullable_t
 as String,serialNumber: freezed == serialNumber ? _self.serialNumber : serialNumber // ignore: cast_nullable_to_non_nullable
 as String?,statusInfo: null == statusInfo ? _self.statusInfo : statusInfo // ignore: cast_nullable_to_non_nullable
 as ReaderStatusInfo,supportedInputMethods: null == supportedInputMethods ? _self.supportedInputMethods : supportedInputMethods // ignore: cast_nullable_to_non_nullable
-as List<CardInputMethod>,
+as List<CardInputMethod>,warnings: freezed == warnings ? _self.warnings : warnings // ignore: cast_nullable_to_non_nullable
+as List<ReaderWarning>?,
   ));
 }
 /// Create a copy of ReaderInfo
@@ -3536,10 +3537,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ReaderBatteryStatus? batteryStatus,  CardInsertionStatus? cardInsertionStatus, @JsonKey(unknownEnumValue: ReaderConnectionType.unknown)  ReaderConnectionType connectionType,  ReaderFirmwareInfo? firmwareInfo,  String id,  bool isBlinkable,  bool? isConnectionRetryable,  bool isForgettable,  bool? isRebootable,  ReaderModel model,  String name,  String? serialNumber,  ReaderStatusInfo statusInfo,  List<CardInputMethod> supportedInputMethods)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ReaderBatteryStatus? batteryStatus,  CardInsertionStatus? cardInsertionStatus, @JsonKey(unknownEnumValue: ReaderConnectionType.unknown)  ReaderConnectionType connectionType,  ReaderFirmwareInfo? firmwareInfo,  String id,  bool isBlinkable,  bool? isConnectionRetryable,  bool isForgettable,  bool? isRebootable,  ReaderModel model,  String name,  String? serialNumber,  ReaderStatusInfo statusInfo,  List<CardInputMethod> supportedInputMethods,  List<ReaderWarning>? warnings)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ReaderInfo() when $default != null:
-return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.connectionType,_that.firmwareInfo,_that.id,_that.isBlinkable,_that.isConnectionRetryable,_that.isForgettable,_that.isRebootable,_that.model,_that.name,_that.serialNumber,_that.statusInfo,_that.supportedInputMethods);case _:
+return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.connectionType,_that.firmwareInfo,_that.id,_that.isBlinkable,_that.isConnectionRetryable,_that.isForgettable,_that.isRebootable,_that.model,_that.name,_that.serialNumber,_that.statusInfo,_that.supportedInputMethods,_that.warnings);case _:
   return orElse();
 
 }
@@ -3557,10 +3558,10 @@ return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.connectionTy
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ReaderBatteryStatus? batteryStatus,  CardInsertionStatus? cardInsertionStatus, @JsonKey(unknownEnumValue: ReaderConnectionType.unknown)  ReaderConnectionType connectionType,  ReaderFirmwareInfo? firmwareInfo,  String id,  bool isBlinkable,  bool? isConnectionRetryable,  bool isForgettable,  bool? isRebootable,  ReaderModel model,  String name,  String? serialNumber,  ReaderStatusInfo statusInfo,  List<CardInputMethod> supportedInputMethods)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ReaderBatteryStatus? batteryStatus,  CardInsertionStatus? cardInsertionStatus, @JsonKey(unknownEnumValue: ReaderConnectionType.unknown)  ReaderConnectionType connectionType,  ReaderFirmwareInfo? firmwareInfo,  String id,  bool isBlinkable,  bool? isConnectionRetryable,  bool isForgettable,  bool? isRebootable,  ReaderModel model,  String name,  String? serialNumber,  ReaderStatusInfo statusInfo,  List<CardInputMethod> supportedInputMethods,  List<ReaderWarning>? warnings)  $default,) {final _that = this;
 switch (_that) {
 case _ReaderInfo():
-return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.connectionType,_that.firmwareInfo,_that.id,_that.isBlinkable,_that.isConnectionRetryable,_that.isForgettable,_that.isRebootable,_that.model,_that.name,_that.serialNumber,_that.statusInfo,_that.supportedInputMethods);case _:
+return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.connectionType,_that.firmwareInfo,_that.id,_that.isBlinkable,_that.isConnectionRetryable,_that.isForgettable,_that.isRebootable,_that.model,_that.name,_that.serialNumber,_that.statusInfo,_that.supportedInputMethods,_that.warnings);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -3577,10 +3578,10 @@ return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.connectionTy
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ReaderBatteryStatus? batteryStatus,  CardInsertionStatus? cardInsertionStatus, @JsonKey(unknownEnumValue: ReaderConnectionType.unknown)  ReaderConnectionType connectionType,  ReaderFirmwareInfo? firmwareInfo,  String id,  bool isBlinkable,  bool? isConnectionRetryable,  bool isForgettable,  bool? isRebootable,  ReaderModel model,  String name,  String? serialNumber,  ReaderStatusInfo statusInfo,  List<CardInputMethod> supportedInputMethods)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ReaderBatteryStatus? batteryStatus,  CardInsertionStatus? cardInsertionStatus, @JsonKey(unknownEnumValue: ReaderConnectionType.unknown)  ReaderConnectionType connectionType,  ReaderFirmwareInfo? firmwareInfo,  String id,  bool isBlinkable,  bool? isConnectionRetryable,  bool isForgettable,  bool? isRebootable,  ReaderModel model,  String name,  String? serialNumber,  ReaderStatusInfo statusInfo,  List<CardInputMethod> supportedInputMethods,  List<ReaderWarning>? warnings)?  $default,) {final _that = this;
 switch (_that) {
 case _ReaderInfo() when $default != null:
-return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.connectionType,_that.firmwareInfo,_that.id,_that.isBlinkable,_that.isConnectionRetryable,_that.isForgettable,_that.isRebootable,_that.model,_that.name,_that.serialNumber,_that.statusInfo,_that.supportedInputMethods);case _:
+return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.connectionType,_that.firmwareInfo,_that.id,_that.isBlinkable,_that.isConnectionRetryable,_that.isForgettable,_that.isRebootable,_that.model,_that.name,_that.serialNumber,_that.statusInfo,_that.supportedInputMethods,_that.warnings);case _:
   return null;
 
 }
@@ -3592,7 +3593,7 @@ return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.connectionTy
 @JsonSerializable()
 
 class _ReaderInfo with DiagnosticableTreeMixin implements ReaderInfo {
-  const _ReaderInfo({this.batteryStatus, this.cardInsertionStatus, @JsonKey(unknownEnumValue: ReaderConnectionType.unknown) required this.connectionType, this.firmwareInfo, required this.id, required this.isBlinkable, this.isConnectionRetryable, required this.isForgettable, this.isRebootable, required this.model, required this.name, this.serialNumber, required this.statusInfo, required final  List<CardInputMethod> supportedInputMethods}): _supportedInputMethods = supportedInputMethods;
+  const _ReaderInfo({this.batteryStatus, this.cardInsertionStatus, @JsonKey(unknownEnumValue: ReaderConnectionType.unknown) required this.connectionType, this.firmwareInfo, required this.id, required this.isBlinkable, this.isConnectionRetryable, required this.isForgettable, this.isRebootable, required this.model, required this.name, this.serialNumber, required this.statusInfo, required final  List<CardInputMethod> supportedInputMethods, final  List<ReaderWarning>? warnings}): _supportedInputMethods = supportedInputMethods,_warnings = warnings;
   factory _ReaderInfo.fromJson(Map<String, dynamic> json) => _$ReaderInfoFromJson(json);
 
 @override final  ReaderBatteryStatus? batteryStatus;
@@ -3618,6 +3619,15 @@ class _ReaderInfo with DiagnosticableTreeMixin implements ReaderInfo {
   return EqualUnmodifiableListView(_supportedInputMethods);
 }
 
+ final  List<ReaderWarning>? _warnings;
+@override List<ReaderWarning>? get warnings {
+  final value = _warnings;
+  if (value == null) return null;
+  if (_warnings is EqualUnmodifiableListView) return _warnings;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
 
 /// Create a copy of ReaderInfo
 /// with the given fields replaced by the non-null parameter values.
@@ -3633,21 +3643,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ReaderInfo'))
-    ..add(DiagnosticsProperty('batteryStatus', batteryStatus))..add(DiagnosticsProperty('cardInsertionStatus', cardInsertionStatus))..add(DiagnosticsProperty('connectionType', connectionType))..add(DiagnosticsProperty('firmwareInfo', firmwareInfo))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('isBlinkable', isBlinkable))..add(DiagnosticsProperty('isConnectionRetryable', isConnectionRetryable))..add(DiagnosticsProperty('isForgettable', isForgettable))..add(DiagnosticsProperty('isRebootable', isRebootable))..add(DiagnosticsProperty('model', model))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('serialNumber', serialNumber))..add(DiagnosticsProperty('statusInfo', statusInfo))..add(DiagnosticsProperty('supportedInputMethods', supportedInputMethods));
+    ..add(DiagnosticsProperty('batteryStatus', batteryStatus))..add(DiagnosticsProperty('cardInsertionStatus', cardInsertionStatus))..add(DiagnosticsProperty('connectionType', connectionType))..add(DiagnosticsProperty('firmwareInfo', firmwareInfo))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('isBlinkable', isBlinkable))..add(DiagnosticsProperty('isConnectionRetryable', isConnectionRetryable))..add(DiagnosticsProperty('isForgettable', isForgettable))..add(DiagnosticsProperty('isRebootable', isRebootable))..add(DiagnosticsProperty('model', model))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('serialNumber', serialNumber))..add(DiagnosticsProperty('statusInfo', statusInfo))..add(DiagnosticsProperty('supportedInputMethods', supportedInputMethods))..add(DiagnosticsProperty('warnings', warnings));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderInfo&&(identical(other.batteryStatus, batteryStatus) || other.batteryStatus == batteryStatus)&&(identical(other.cardInsertionStatus, cardInsertionStatus) || other.cardInsertionStatus == cardInsertionStatus)&&(identical(other.connectionType, connectionType) || other.connectionType == connectionType)&&(identical(other.firmwareInfo, firmwareInfo) || other.firmwareInfo == firmwareInfo)&&(identical(other.id, id) || other.id == id)&&(identical(other.isBlinkable, isBlinkable) || other.isBlinkable == isBlinkable)&&(identical(other.isConnectionRetryable, isConnectionRetryable) || other.isConnectionRetryable == isConnectionRetryable)&&(identical(other.isForgettable, isForgettable) || other.isForgettable == isForgettable)&&(identical(other.isRebootable, isRebootable) || other.isRebootable == isRebootable)&&(identical(other.model, model) || other.model == model)&&(identical(other.name, name) || other.name == name)&&(identical(other.serialNumber, serialNumber) || other.serialNumber == serialNumber)&&(identical(other.statusInfo, statusInfo) || other.statusInfo == statusInfo)&&const DeepCollectionEquality().equals(other._supportedInputMethods, _supportedInputMethods));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderInfo&&(identical(other.batteryStatus, batteryStatus) || other.batteryStatus == batteryStatus)&&(identical(other.cardInsertionStatus, cardInsertionStatus) || other.cardInsertionStatus == cardInsertionStatus)&&(identical(other.connectionType, connectionType) || other.connectionType == connectionType)&&(identical(other.firmwareInfo, firmwareInfo) || other.firmwareInfo == firmwareInfo)&&(identical(other.id, id) || other.id == id)&&(identical(other.isBlinkable, isBlinkable) || other.isBlinkable == isBlinkable)&&(identical(other.isConnectionRetryable, isConnectionRetryable) || other.isConnectionRetryable == isConnectionRetryable)&&(identical(other.isForgettable, isForgettable) || other.isForgettable == isForgettable)&&(identical(other.isRebootable, isRebootable) || other.isRebootable == isRebootable)&&(identical(other.model, model) || other.model == model)&&(identical(other.name, name) || other.name == name)&&(identical(other.serialNumber, serialNumber) || other.serialNumber == serialNumber)&&(identical(other.statusInfo, statusInfo) || other.statusInfo == statusInfo)&&const DeepCollectionEquality().equals(other._supportedInputMethods, _supportedInputMethods)&&const DeepCollectionEquality().equals(other._warnings, _warnings));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,batteryStatus,cardInsertionStatus,connectionType,firmwareInfo,id,isBlinkable,isConnectionRetryable,isForgettable,isRebootable,model,name,serialNumber,statusInfo,const DeepCollectionEquality().hash(_supportedInputMethods));
+int get hashCode => Object.hash(runtimeType,batteryStatus,cardInsertionStatus,connectionType,firmwareInfo,id,isBlinkable,isConnectionRetryable,isForgettable,isRebootable,model,name,serialNumber,statusInfo,const DeepCollectionEquality().hash(_supportedInputMethods),const DeepCollectionEquality().hash(_warnings));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, connectionType: $connectionType, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, isRebootable: $isRebootable, model: $model, name: $name, serialNumber: $serialNumber, statusInfo: $statusInfo, supportedInputMethods: $supportedInputMethods)';
+  return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, connectionType: $connectionType, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, isRebootable: $isRebootable, model: $model, name: $name, serialNumber: $serialNumber, statusInfo: $statusInfo, supportedInputMethods: $supportedInputMethods, warnings: $warnings)';
 }
 
 
@@ -3658,7 +3668,7 @@ abstract mixin class _$ReaderInfoCopyWith<$Res> implements $ReaderInfoCopyWith<$
   factory _$ReaderInfoCopyWith(_ReaderInfo value, $Res Function(_ReaderInfo) _then) = __$ReaderInfoCopyWithImpl;
 @override @useResult
 $Res call({
- ReaderBatteryStatus? batteryStatus, CardInsertionStatus? cardInsertionStatus,@JsonKey(unknownEnumValue: ReaderConnectionType.unknown) ReaderConnectionType connectionType, ReaderFirmwareInfo? firmwareInfo, String id, bool isBlinkable, bool? isConnectionRetryable, bool isForgettable, bool? isRebootable, ReaderModel model, String name, String? serialNumber, ReaderStatusInfo statusInfo, List<CardInputMethod> supportedInputMethods
+ ReaderBatteryStatus? batteryStatus, CardInsertionStatus? cardInsertionStatus,@JsonKey(unknownEnumValue: ReaderConnectionType.unknown) ReaderConnectionType connectionType, ReaderFirmwareInfo? firmwareInfo, String id, bool isBlinkable, bool? isConnectionRetryable, bool isForgettable, bool? isRebootable, ReaderModel model, String name, String? serialNumber, ReaderStatusInfo statusInfo, List<CardInputMethod> supportedInputMethods, List<ReaderWarning>? warnings
 });
 
 
@@ -3675,7 +3685,7 @@ class __$ReaderInfoCopyWithImpl<$Res>
 
 /// Create a copy of ReaderInfo
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? batteryStatus = freezed,Object? cardInsertionStatus = freezed,Object? connectionType = null,Object? firmwareInfo = freezed,Object? id = null,Object? isBlinkable = null,Object? isConnectionRetryable = freezed,Object? isForgettable = null,Object? isRebootable = freezed,Object? model = null,Object? name = null,Object? serialNumber = freezed,Object? statusInfo = null,Object? supportedInputMethods = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? batteryStatus = freezed,Object? cardInsertionStatus = freezed,Object? connectionType = null,Object? firmwareInfo = freezed,Object? id = null,Object? isBlinkable = null,Object? isConnectionRetryable = freezed,Object? isForgettable = null,Object? isRebootable = freezed,Object? model = null,Object? name = null,Object? serialNumber = freezed,Object? statusInfo = null,Object? supportedInputMethods = null,Object? warnings = freezed,}) {
   return _then(_ReaderInfo(
 batteryStatus: freezed == batteryStatus ? _self.batteryStatus : batteryStatus // ignore: cast_nullable_to_non_nullable
 as ReaderBatteryStatus?,cardInsertionStatus: freezed == cardInsertionStatus ? _self.cardInsertionStatus : cardInsertionStatus // ignore: cast_nullable_to_non_nullable
@@ -3691,7 +3701,8 @@ as ReaderModel,name: null == name ? _self.name : name // ignore: cast_nullable_t
 as String,serialNumber: freezed == serialNumber ? _self.serialNumber : serialNumber // ignore: cast_nullable_to_non_nullable
 as String?,statusInfo: null == statusInfo ? _self.statusInfo : statusInfo // ignore: cast_nullable_to_non_nullable
 as ReaderStatusInfo,supportedInputMethods: null == supportedInputMethods ? _self._supportedInputMethods : supportedInputMethods // ignore: cast_nullable_to_non_nullable
-as List<CardInputMethod>,
+as List<CardInputMethod>,warnings: freezed == warnings ? _self._warnings : warnings // ignore: cast_nullable_to_non_nullable
+as List<ReaderWarning>?,
   ));
 }
 
@@ -6826,7 +6837,7 @@ as int,
 /// @nodoc
 mixin _$ReaderSettings implements DiagnosticableTreeMixin {
 
- bool get isReducedChargingModeEnabled; TimeOfDay? get preferredFirmwareUpdateTime;
+ bool get isReducedChargingModeEnabled; TimeOfDay? get preferredFirmwareUpdateTime; PowerMode? get usbPowerMode;
 /// Create a copy of ReaderSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -6840,21 +6851,21 @@ $ReaderSettingsCopyWith<ReaderSettings> get copyWith => _$ReaderSettingsCopyWith
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ReaderSettings'))
-    ..add(DiagnosticsProperty('isReducedChargingModeEnabled', isReducedChargingModeEnabled))..add(DiagnosticsProperty('preferredFirmwareUpdateTime', preferredFirmwareUpdateTime));
+    ..add(DiagnosticsProperty('isReducedChargingModeEnabled', isReducedChargingModeEnabled))..add(DiagnosticsProperty('preferredFirmwareUpdateTime', preferredFirmwareUpdateTime))..add(DiagnosticsProperty('usbPowerMode', usbPowerMode));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderSettings&&(identical(other.isReducedChargingModeEnabled, isReducedChargingModeEnabled) || other.isReducedChargingModeEnabled == isReducedChargingModeEnabled)&&(identical(other.preferredFirmwareUpdateTime, preferredFirmwareUpdateTime) || other.preferredFirmwareUpdateTime == preferredFirmwareUpdateTime));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderSettings&&(identical(other.isReducedChargingModeEnabled, isReducedChargingModeEnabled) || other.isReducedChargingModeEnabled == isReducedChargingModeEnabled)&&(identical(other.preferredFirmwareUpdateTime, preferredFirmwareUpdateTime) || other.preferredFirmwareUpdateTime == preferredFirmwareUpdateTime)&&(identical(other.usbPowerMode, usbPowerMode) || other.usbPowerMode == usbPowerMode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,isReducedChargingModeEnabled,preferredFirmwareUpdateTime);
+int get hashCode => Object.hash(runtimeType,isReducedChargingModeEnabled,preferredFirmwareUpdateTime,usbPowerMode);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderSettings(isReducedChargingModeEnabled: $isReducedChargingModeEnabled, preferredFirmwareUpdateTime: $preferredFirmwareUpdateTime)';
+  return 'ReaderSettings(isReducedChargingModeEnabled: $isReducedChargingModeEnabled, preferredFirmwareUpdateTime: $preferredFirmwareUpdateTime, usbPowerMode: $usbPowerMode)';
 }
 
 
@@ -6865,7 +6876,7 @@ abstract mixin class $ReaderSettingsCopyWith<$Res>  {
   factory $ReaderSettingsCopyWith(ReaderSettings value, $Res Function(ReaderSettings) _then) = _$ReaderSettingsCopyWithImpl;
 @useResult
 $Res call({
- bool isReducedChargingModeEnabled, TimeOfDay? preferredFirmwareUpdateTime
+ bool isReducedChargingModeEnabled, TimeOfDay? preferredFirmwareUpdateTime, PowerMode? usbPowerMode
 });
 
 
@@ -6882,11 +6893,12 @@ class _$ReaderSettingsCopyWithImpl<$Res>
 
 /// Create a copy of ReaderSettings
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isReducedChargingModeEnabled = null,Object? preferredFirmwareUpdateTime = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isReducedChargingModeEnabled = null,Object? preferredFirmwareUpdateTime = freezed,Object? usbPowerMode = freezed,}) {
   return _then(_self.copyWith(
 isReducedChargingModeEnabled: null == isReducedChargingModeEnabled ? _self.isReducedChargingModeEnabled : isReducedChargingModeEnabled // ignore: cast_nullable_to_non_nullable
 as bool,preferredFirmwareUpdateTime: freezed == preferredFirmwareUpdateTime ? _self.preferredFirmwareUpdateTime : preferredFirmwareUpdateTime // ignore: cast_nullable_to_non_nullable
-as TimeOfDay?,
+as TimeOfDay?,usbPowerMode: freezed == usbPowerMode ? _self.usbPowerMode : usbPowerMode // ignore: cast_nullable_to_non_nullable
+as PowerMode?,
   ));
 }
 /// Create a copy of ReaderSettings
@@ -6983,10 +6995,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isReducedChargingModeEnabled,  TimeOfDay? preferredFirmwareUpdateTime)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isReducedChargingModeEnabled,  TimeOfDay? preferredFirmwareUpdateTime,  PowerMode? usbPowerMode)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ReaderSettings() when $default != null:
-return $default(_that.isReducedChargingModeEnabled,_that.preferredFirmwareUpdateTime);case _:
+return $default(_that.isReducedChargingModeEnabled,_that.preferredFirmwareUpdateTime,_that.usbPowerMode);case _:
   return orElse();
 
 }
@@ -7004,10 +7016,10 @@ return $default(_that.isReducedChargingModeEnabled,_that.preferredFirmwareUpdate
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isReducedChargingModeEnabled,  TimeOfDay? preferredFirmwareUpdateTime)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isReducedChargingModeEnabled,  TimeOfDay? preferredFirmwareUpdateTime,  PowerMode? usbPowerMode)  $default,) {final _that = this;
 switch (_that) {
 case _ReaderSettings():
-return $default(_that.isReducedChargingModeEnabled,_that.preferredFirmwareUpdateTime);case _:
+return $default(_that.isReducedChargingModeEnabled,_that.preferredFirmwareUpdateTime,_that.usbPowerMode);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -7024,10 +7036,10 @@ return $default(_that.isReducedChargingModeEnabled,_that.preferredFirmwareUpdate
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isReducedChargingModeEnabled,  TimeOfDay? preferredFirmwareUpdateTime)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isReducedChargingModeEnabled,  TimeOfDay? preferredFirmwareUpdateTime,  PowerMode? usbPowerMode)?  $default,) {final _that = this;
 switch (_that) {
 case _ReaderSettings() when $default != null:
-return $default(_that.isReducedChargingModeEnabled,_that.preferredFirmwareUpdateTime);case _:
+return $default(_that.isReducedChargingModeEnabled,_that.preferredFirmwareUpdateTime,_that.usbPowerMode);case _:
   return null;
 
 }
@@ -7039,11 +7051,12 @@ return $default(_that.isReducedChargingModeEnabled,_that.preferredFirmwareUpdate
 @JsonSerializable()
 
 class _ReaderSettings with DiagnosticableTreeMixin implements ReaderSettings {
-  const _ReaderSettings({required this.isReducedChargingModeEnabled, this.preferredFirmwareUpdateTime});
+  const _ReaderSettings({required this.isReducedChargingModeEnabled, this.preferredFirmwareUpdateTime, this.usbPowerMode});
   factory _ReaderSettings.fromJson(Map<String, dynamic> json) => _$ReaderSettingsFromJson(json);
 
 @override final  bool isReducedChargingModeEnabled;
 @override final  TimeOfDay? preferredFirmwareUpdateTime;
+@override final  PowerMode? usbPowerMode;
 
 /// Create a copy of ReaderSettings
 /// with the given fields replaced by the non-null parameter values.
@@ -7059,21 +7072,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ReaderSettings'))
-    ..add(DiagnosticsProperty('isReducedChargingModeEnabled', isReducedChargingModeEnabled))..add(DiagnosticsProperty('preferredFirmwareUpdateTime', preferredFirmwareUpdateTime));
+    ..add(DiagnosticsProperty('isReducedChargingModeEnabled', isReducedChargingModeEnabled))..add(DiagnosticsProperty('preferredFirmwareUpdateTime', preferredFirmwareUpdateTime))..add(DiagnosticsProperty('usbPowerMode', usbPowerMode));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderSettings&&(identical(other.isReducedChargingModeEnabled, isReducedChargingModeEnabled) || other.isReducedChargingModeEnabled == isReducedChargingModeEnabled)&&(identical(other.preferredFirmwareUpdateTime, preferredFirmwareUpdateTime) || other.preferredFirmwareUpdateTime == preferredFirmwareUpdateTime));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderSettings&&(identical(other.isReducedChargingModeEnabled, isReducedChargingModeEnabled) || other.isReducedChargingModeEnabled == isReducedChargingModeEnabled)&&(identical(other.preferredFirmwareUpdateTime, preferredFirmwareUpdateTime) || other.preferredFirmwareUpdateTime == preferredFirmwareUpdateTime)&&(identical(other.usbPowerMode, usbPowerMode) || other.usbPowerMode == usbPowerMode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,isReducedChargingModeEnabled,preferredFirmwareUpdateTime);
+int get hashCode => Object.hash(runtimeType,isReducedChargingModeEnabled,preferredFirmwareUpdateTime,usbPowerMode);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderSettings(isReducedChargingModeEnabled: $isReducedChargingModeEnabled, preferredFirmwareUpdateTime: $preferredFirmwareUpdateTime)';
+  return 'ReaderSettings(isReducedChargingModeEnabled: $isReducedChargingModeEnabled, preferredFirmwareUpdateTime: $preferredFirmwareUpdateTime, usbPowerMode: $usbPowerMode)';
 }
 
 
@@ -7084,7 +7097,7 @@ abstract mixin class _$ReaderSettingsCopyWith<$Res> implements $ReaderSettingsCo
   factory _$ReaderSettingsCopyWith(_ReaderSettings value, $Res Function(_ReaderSettings) _then) = __$ReaderSettingsCopyWithImpl;
 @override @useResult
 $Res call({
- bool isReducedChargingModeEnabled, TimeOfDay? preferredFirmwareUpdateTime
+ bool isReducedChargingModeEnabled, TimeOfDay? preferredFirmwareUpdateTime, PowerMode? usbPowerMode
 });
 
 
@@ -7101,11 +7114,12 @@ class __$ReaderSettingsCopyWithImpl<$Res>
 
 /// Create a copy of ReaderSettings
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isReducedChargingModeEnabled = null,Object? preferredFirmwareUpdateTime = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isReducedChargingModeEnabled = null,Object? preferredFirmwareUpdateTime = freezed,Object? usbPowerMode = freezed,}) {
   return _then(_ReaderSettings(
 isReducedChargingModeEnabled: null == isReducedChargingModeEnabled ? _self.isReducedChargingModeEnabled : isReducedChargingModeEnabled // ignore: cast_nullable_to_non_nullable
 as bool,preferredFirmwareUpdateTime: freezed == preferredFirmwareUpdateTime ? _self.preferredFirmwareUpdateTime : preferredFirmwareUpdateTime // ignore: cast_nullable_to_non_nullable
-as TimeOfDay?,
+as TimeOfDay?,usbPowerMode: freezed == usbPowerMode ? _self.usbPowerMode : usbPowerMode // ignore: cast_nullable_to_non_nullable
+as PowerMode?,
   ));
 }
 
@@ -7128,7 +7142,8 @@ $TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime {
 /// @nodoc
 mixin _$SdkSettings implements DiagnosticableTreeMixin {
 
- String get version; Environment get environment; String get securityComplianceVersion;
+ String get version; Environment get environment; String? get mpocVersion;// iOS only
+ String get securityComplianceVersion;
 /// Create a copy of SdkSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -7142,21 +7157,21 @@ $SdkSettingsCopyWith<SdkSettings> get copyWith => _$SdkSettingsCopyWithImpl<SdkS
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'SdkSettings'))
-    ..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('environment', environment))..add(DiagnosticsProperty('securityComplianceVersion', securityComplianceVersion));
+    ..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('environment', environment))..add(DiagnosticsProperty('mpocVersion', mpocVersion))..add(DiagnosticsProperty('securityComplianceVersion', securityComplianceVersion));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkSettings&&(identical(other.version, version) || other.version == version)&&(identical(other.environment, environment) || other.environment == environment)&&(identical(other.securityComplianceVersion, securityComplianceVersion) || other.securityComplianceVersion == securityComplianceVersion));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkSettings&&(identical(other.version, version) || other.version == version)&&(identical(other.environment, environment) || other.environment == environment)&&(identical(other.mpocVersion, mpocVersion) || other.mpocVersion == mpocVersion)&&(identical(other.securityComplianceVersion, securityComplianceVersion) || other.securityComplianceVersion == securityComplianceVersion));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,version,environment,securityComplianceVersion);
+int get hashCode => Object.hash(runtimeType,version,environment,mpocVersion,securityComplianceVersion);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SdkSettings(version: $version, environment: $environment, securityComplianceVersion: $securityComplianceVersion)';
+  return 'SdkSettings(version: $version, environment: $environment, mpocVersion: $mpocVersion, securityComplianceVersion: $securityComplianceVersion)';
 }
 
 
@@ -7167,7 +7182,7 @@ abstract mixin class $SdkSettingsCopyWith<$Res>  {
   factory $SdkSettingsCopyWith(SdkSettings value, $Res Function(SdkSettings) _then) = _$SdkSettingsCopyWithImpl;
 @useResult
 $Res call({
- String version, Environment environment, String securityComplianceVersion
+ String version, Environment environment, String? mpocVersion, String securityComplianceVersion
 });
 
 
@@ -7184,11 +7199,12 @@ class _$SdkSettingsCopyWithImpl<$Res>
 
 /// Create a copy of SdkSettings
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? version = null,Object? environment = null,Object? securityComplianceVersion = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? version = null,Object? environment = null,Object? mpocVersion = freezed,Object? securityComplianceVersion = null,}) {
   return _then(_self.copyWith(
 version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,environment: null == environment ? _self.environment : environment // ignore: cast_nullable_to_non_nullable
-as Environment,securityComplianceVersion: null == securityComplianceVersion ? _self.securityComplianceVersion : securityComplianceVersion // ignore: cast_nullable_to_non_nullable
+as Environment,mpocVersion: freezed == mpocVersion ? _self.mpocVersion : mpocVersion // ignore: cast_nullable_to_non_nullable
+as String?,securityComplianceVersion: null == securityComplianceVersion ? _self.securityComplianceVersion : securityComplianceVersion // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -7274,10 +7290,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String version,  Environment environment,  String securityComplianceVersion)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String version,  Environment environment,  String? mpocVersion,  String securityComplianceVersion)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SdkSettings() when $default != null:
-return $default(_that.version,_that.environment,_that.securityComplianceVersion);case _:
+return $default(_that.version,_that.environment,_that.mpocVersion,_that.securityComplianceVersion);case _:
   return orElse();
 
 }
@@ -7295,10 +7311,10 @@ return $default(_that.version,_that.environment,_that.securityComplianceVersion)
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String version,  Environment environment,  String securityComplianceVersion)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String version,  Environment environment,  String? mpocVersion,  String securityComplianceVersion)  $default,) {final _that = this;
 switch (_that) {
 case _SdkSettings():
-return $default(_that.version,_that.environment,_that.securityComplianceVersion);case _:
+return $default(_that.version,_that.environment,_that.mpocVersion,_that.securityComplianceVersion);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -7315,10 +7331,10 @@ return $default(_that.version,_that.environment,_that.securityComplianceVersion)
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String version,  Environment environment,  String securityComplianceVersion)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String version,  Environment environment,  String? mpocVersion,  String securityComplianceVersion)?  $default,) {final _that = this;
 switch (_that) {
 case _SdkSettings() when $default != null:
-return $default(_that.version,_that.environment,_that.securityComplianceVersion);case _:
+return $default(_that.version,_that.environment,_that.mpocVersion,_that.securityComplianceVersion);case _:
   return null;
 
 }
@@ -7330,11 +7346,13 @@ return $default(_that.version,_that.environment,_that.securityComplianceVersion)
 @JsonSerializable()
 
 class _SdkSettings with DiagnosticableTreeMixin implements SdkSettings {
-  const _SdkSettings({required this.version, required this.environment, required this.securityComplianceVersion});
+  const _SdkSettings({required this.version, required this.environment, this.mpocVersion, required this.securityComplianceVersion});
   factory _SdkSettings.fromJson(Map<String, dynamic> json) => _$SdkSettingsFromJson(json);
 
 @override final  String version;
 @override final  Environment environment;
+@override final  String? mpocVersion;
+// iOS only
 @override final  String securityComplianceVersion;
 
 /// Create a copy of SdkSettings
@@ -7351,21 +7369,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'SdkSettings'))
-    ..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('environment', environment))..add(DiagnosticsProperty('securityComplianceVersion', securityComplianceVersion));
+    ..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('environment', environment))..add(DiagnosticsProperty('mpocVersion', mpocVersion))..add(DiagnosticsProperty('securityComplianceVersion', securityComplianceVersion));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SdkSettings&&(identical(other.version, version) || other.version == version)&&(identical(other.environment, environment) || other.environment == environment)&&(identical(other.securityComplianceVersion, securityComplianceVersion) || other.securityComplianceVersion == securityComplianceVersion));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SdkSettings&&(identical(other.version, version) || other.version == version)&&(identical(other.environment, environment) || other.environment == environment)&&(identical(other.mpocVersion, mpocVersion) || other.mpocVersion == mpocVersion)&&(identical(other.securityComplianceVersion, securityComplianceVersion) || other.securityComplianceVersion == securityComplianceVersion));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,version,environment,securityComplianceVersion);
+int get hashCode => Object.hash(runtimeType,version,environment,mpocVersion,securityComplianceVersion);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SdkSettings(version: $version, environment: $environment, securityComplianceVersion: $securityComplianceVersion)';
+  return 'SdkSettings(version: $version, environment: $environment, mpocVersion: $mpocVersion, securityComplianceVersion: $securityComplianceVersion)';
 }
 
 
@@ -7376,7 +7394,7 @@ abstract mixin class _$SdkSettingsCopyWith<$Res> implements $SdkSettingsCopyWith
   factory _$SdkSettingsCopyWith(_SdkSettings value, $Res Function(_SdkSettings) _then) = __$SdkSettingsCopyWithImpl;
 @override @useResult
 $Res call({
- String version, Environment environment, String securityComplianceVersion
+ String version, Environment environment, String? mpocVersion, String securityComplianceVersion
 });
 
 
@@ -7393,11 +7411,12 @@ class __$SdkSettingsCopyWithImpl<$Res>
 
 /// Create a copy of SdkSettings
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? version = null,Object? environment = null,Object? securityComplianceVersion = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? version = null,Object? environment = null,Object? mpocVersion = freezed,Object? securityComplianceVersion = null,}) {
   return _then(_SdkSettings(
 version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,environment: null == environment ? _self.environment : environment // ignore: cast_nullable_to_non_nullable
-as Environment,securityComplianceVersion: null == securityComplianceVersion ? _self.securityComplianceVersion : securityComplianceVersion // ignore: cast_nullable_to_non_nullable
+as Environment,mpocVersion: freezed == mpocVersion ? _self.mpocVersion : mpocVersion // ignore: cast_nullable_to_non_nullable
+as String?,securityComplianceVersion: null == securityComplianceVersion ? _self.securityComplianceVersion : securityComplianceVersion // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

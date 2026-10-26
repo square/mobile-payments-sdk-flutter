@@ -43,7 +43,7 @@ Add `MockReaderUI` to your **app's** Runner target — not to the plugin:
    ```
    https://github.com/square/mobile-payments-sdk-ios
    ```
-4. Set **Dependency Rule** to **Up to Next Minor Version**, starting at **`2.6.0`**
+4. Set **Dependency Rule** to **Up to Next Minor Version**, starting at **`2.7.0`**
    (see the version note below — this must match the plugin).
 5. Add the **`MockReaderUI`** product to the **Runner** target.
 
@@ -65,11 +65,11 @@ declare the dependency can still use it once the host app provides it.
 
 ## ⚠️ Keep the version in sync with the plugin
 
-The version rule above (**Up to Next Minor Version, `2.6.0`**) is **not arbitrary** — it must
+The version rule above (**Up to Next Minor Version, `2.7.0`**) is **not arbitrary** — it must
 match the native SDK pin the plugin uses:
 
-- `ios/square_mobile_payments_sdk/Package.swift` → `.upToNextMinor(from: "2.6.0")`
-- `ios/square_mobile_payments_sdk.podspec` → `~> 2.6.0`
+- `ios/square_mobile_payments_sdk/Package.swift` → `.upToNextMinor(from: "2.7.0")`
+- `ios/square_mobile_payments_sdk.podspec` → `~> 2.7.0`
 
 If your app's rule resolves to a different `mobile-payments-sdk-ios` version than the plugin,
 SPM will fail with a resolution conflict.

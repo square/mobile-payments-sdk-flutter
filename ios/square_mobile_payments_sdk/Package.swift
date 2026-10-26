@@ -6,14 +6,14 @@ import PackageDescription
 let package = Package(
     name: "square_mobile_payments_sdk",
     platforms: [
-        .iOS("16.0")
+        .iOS("17.1")
     ],
     products: [
         .library(name: "square-mobile-payments-sdk", targets: ["square_mobile_payments_sdk"])
     ],
     dependencies: [
         .package(name: "FlutterFramework", path: "../FlutterFramework"),
-        .package(url: "https://github.com/square/mobile-payments-sdk-ios", .upToNextMinor(from: "2.6.0"))
+        .package(url: "https://github.com/square/mobile-payments-sdk-ios", .upToNextMinor(from: "2.7.0"))
     ],
     targets: [
         .target(
