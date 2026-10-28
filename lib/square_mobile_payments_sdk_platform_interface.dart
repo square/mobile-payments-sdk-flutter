@@ -190,6 +190,10 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
         'setReducedChargingModeEnabled() has not been implemented.');
   }
 
+  Future<void> setUsbPowerMode(PowerMode mode) async {
+    throw UnimplementedError('setUsbPowerMode() has not been implemented.');
+  }
+
   Future<void> rebootReader(String id) async {
     throw UnimplementedError('rebootReader() has not been implemented.');
   }

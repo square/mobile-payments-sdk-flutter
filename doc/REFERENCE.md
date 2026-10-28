@@ -29,6 +29,7 @@ In this reference, you'll find detailed information about the data types and met
       - [retryConnection](#retryconnection)
       - [setPreferredFirmwareUpdateTime](#setpreferredfirmwareupdatetime)
       - [setReducedChargingModeEnabled](#setreducedchargingmodeenabled)
+      - [setUsbPowerMode](#setusbpowermode)
       - [rebootReader](#rebootreader)
     - [TapToPaySettings](#taptopaysettings)
       - [Method details](#method-details-2)
@@ -222,6 +223,7 @@ Method                                                    | Returns             
 [retryConnection](#retryconnection) | [RetryConnectionResult](#retryconnectionresult) | Retries the connection of a reader.
 [setPreferredFirmwareUpdateTime](#setpreferredfirmwareupdatetime) | void | Sets the preferred time of day for reader firmware updates.
 [setReducedChargingModeEnabled](#setreducedchargingmodeenabled) | void | Enables or disables reduced charging mode on connected readers.
+[setUsbPowerMode](#setusbpowermode) | void | iOS only. Sets the USB power mode applied to connected readers.
 [rebootReader](#rebootreader) | void | iOS only. Reboots a reader.
 
 ##### retryConnection
@@ -251,6 +253,14 @@ Enables or disables reduced charging mode on connected readers.
 Parameter | Type   | Description
 --------- | ------ | -----------
 enabled | Boolean | Whether reduced charging mode is enabled.
+
+##### setUsbPowerMode
+
+iOS only. Sets the USB power mode applied to connected readers. With `powerOnlyMode`, supported readers treat the USB cable as power-only and stop checking for a USB data connection. The mode is applied when a reader connects and whenever the value changes. On Android it fails with an `UnsupportedError`.
+
+Parameter | Type   | Description
+--------- | ------ | -----------
+mode | [PowerMode](#powermode) | The USB power mode to apply.
 
 ##### rebootReader
 
@@ -338,7 +348,7 @@ Method                                                    | Returns             
 [showSettings](#showsettings) | void | Shows the reader settings screen, which shows available readers, and SDK information.
 [getEnvironment](#getenvironment) | [Environment](#environment) | Returns the current environment the SDK was initialized on.
 [getSDKVersion](#getsdkversion) | String | Returns the current Mobile Payments SDK version.
-[getSdkSettings](#getsdksettings) | [SdkSettings](#sdksettings) | Returns the SDK version, environment and security compliance version.
+[getSdkSettings](#getsdksettings) | [SdkSettings](#sdksettings) | Returns the SDK version, environment, MPoC version and security compliance version.
 
 
 #### Method details
@@ -372,7 +382,7 @@ Returns the current Mobile Payments SDK version running. Note this is the versio
 
 ##### getSdkSettings
 
-Returns the SDK settings: the Mobile Payments SDK version, the environment it was initialized on and its security compliance version.
+Returns the SDK settings: the Mobile Payments SDK version, the environment it was initialized on, its MPoC version (iOS only) and its security compliance version.
 
 * **On success**: returns a [SdkSettings](#sdksettings) object.
 * **On failure**: Not applicable.
@@ -479,6 +489,7 @@ Field             | Type                    | Description
 ----------------- | ----------------------- | --------------------
 version | String | The Mobile Payments SDK version.
 environment | [Environment](#environment) | The environment the SDK was initialized on.
+mpocVersion | String | iOS only. The MPoC (Mobile Payments on COTS) version of the SDK. `null` on Android.
 securityComplianceVersion | String | The security compliance version of the SDK.
 
 ## Enums
@@ -545,6 +556,16 @@ Determines whether the payment needs to be processed online or offline.
 * `autoDetect` - Let the SDK choose online or offline processing.
 * `offlineOnly` - Process the payment offline only.
 * `onlineOnly` - Process the payment online only.
+
+---
+
+### PowerMode
+
+iOS only. The USB power mode applied to connected readers.
+
+* `defaultMode` - Clears any override and uses the reader's own default behavior.
+* `powerOnlyMode` - Supported readers treat the USB cable as power-only and disable USB data communications.
+* `fullMode` - All USB functionality is allowed.
 
 ---
 

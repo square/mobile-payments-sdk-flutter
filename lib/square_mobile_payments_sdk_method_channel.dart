@@ -456,6 +456,11 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
+  Future<void> setUsbPowerMode(PowerMode mode) async {
+    await methodChannel.invokeMethod('setUsbPowerMode', {"mode": mode.name});
+  }
+
+  @override
   Future<void> rebootReader(String id) async {
     await methodChannel.invokeMethod('rebootReader', {"id": id});
   }

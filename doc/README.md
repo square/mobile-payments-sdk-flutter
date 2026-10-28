@@ -17,7 +17,7 @@ flutter pub add square_mobile_payments_sdk
 
 For iOS:
 1. Open your iOS project `Runner.xcodeproj` with **Xcode**.
-2. Set the `iOS Deployment Target` to 16.0 or above. Projects created with `flutter create` default to a lower target and fail to resolve the SDK.
+2. Set the `iOS Deployment Target` to 17.1 or above. Projects created with `flutter create` default to a lower target and fail to resolve the SDK.
 3. Add a Mobile Payments SDK build phase:
     1. In the **Build Phases** tab for your application target, click the **+**
         button at the top of the pane.

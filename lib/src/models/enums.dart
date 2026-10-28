@@ -154,6 +154,7 @@ enum ReaderChange {
   firmwareUpdateStatusDidChange,
   firmwareUpdateTimeDidChange,
   readerStatusDidChange,
+  warningRaised,
   //android
   changedState,
   added,
@@ -255,6 +256,19 @@ enum RetryConnectionResult {
   readerAlreadyConnectingToSquare,
   unableToRetry,
   readerNotFound,
+}
+
+enum ReaderWarning {
+  usbThermalFault,
+  thermalFaultDisconnectUsb,
+  thermalFaultPowerOff,
+}
+
+// Note: in native SDKs the enums don't have the Mode suffix. In Dart, default is a reserved keyword
+enum PowerMode {
+  defaultMode,
+  powerOnlyMode,
+  fullMode,
 }
 
 enum TrackingConsentState {

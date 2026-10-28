@@ -52,6 +52,13 @@ class ReaderManager {
         .setReducedChargingModeEnabled(enabled);
   }
 
+  Future<void> setUsbPowerMode(PowerMode mode) {
+    if (Platform.isIOS) {
+      return SquareMobilePaymentsSdkPlatform.instance.setUsbPowerMode(mode);
+    }
+    return Future.error(_iosOnlyError());
+  }
+
   Future<void> rebootReader(String id) {
     if (Platform.isIOS) {
       return SquareMobilePaymentsSdkPlatform.instance.rebootReader(id);

@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/square/mobile-payments-sdk-ios",
       "state" : {
-        "revision" : "134f9c16951958dcea190aea1d7b890fa9c5b8f1",
-        "version" : "2.6.0"
+        "revision" : "3826289088888f392550c89a6f6adc19c61cc9cc",
+        "version" : "2.7.0"
       }
     }
   ],

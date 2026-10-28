@@ -36,6 +36,7 @@ public class SettingsModule {
         result([
             "version": sdkSettings.version,
             "environment": sdkSettings.environment.getName(),
+            "mpocVersion": sdkSettings.mpocVersion,
             "securityComplianceVersion": sdkSettings.securityComplianceVersion
         ])
     }

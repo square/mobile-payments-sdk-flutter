@@ -17,8 +17,23 @@ extension ReaderInfo {
             "name" : name,
             "serialNumber" : serialNumber ?? NSNull(),
             "statusInfo": statusInfo.toMap(),
-            "supportedInputMethods" : supportedInputMethods.toList()
+            "supportedInputMethods" : supportedInputMethods.toList(),
+            "warnings" : warnings.toList()
         ]
+    }
+}
+
+extension ReaderWarnings {
+    func toList() -> NSArray {
+        let allWarnings: [(ReaderWarnings, String)] = [
+            (.usbThermalFault, "usbThermalFault"),
+            (.thermalFaultDisconnectUsb, "thermalFaultDisconnectUsb"),
+            (.thermalFaultPowerOff, "thermalFaultPowerOff"),
+        ]
+        let result = allWarnings
+            .filter { self.contains($0.0) }
+            .map { $0.1 }
+        return result as NSArray
     }
 }
 
@@ -224,6 +239,8 @@ extension ReaderChange {
             "firmwareUpdateTimeDidChange"
         case .readerStatusDidChange:
             "readerStatusDidChange"
+        case .warningRaised:
+            "warningRaised"
         }
     }
 }
@@ -233,8 +250,34 @@ extension ReaderSettings {
     return [
       "isReducedChargingModeEnabled" : reducedChargingModeEnabled,
       "preferredFirmwareUpdateTime" : preferredFirmwareUpdateTime?.toMap() ?? NSNull(),
+      "usbPowerMode" : usbPowerMode.toName(),
     ]
   }
+}
+
+extension PowerMode {
+    // In Dart, default is a reserved keyword, so the values carry a Mode suffix
+    static func from(name: String) -> PowerMode? {
+        return switch name {
+        case "defaultMode": .default
+        case "powerOnlyMode": .powerOnly
+        case "fullMode": .full
+        default: nil
+        }
+    }
+
+    func toName() -> String {
+        return switch self {
+        case .default:
+            "defaultMode"
+        case .powerOnly:
+            "powerOnlyMode"
+        case .full:
+            "fullMode"
+        @unknown default:
+            "defaultMode"
+        }
+    }
 }
 
 extension TimeOfDay {
