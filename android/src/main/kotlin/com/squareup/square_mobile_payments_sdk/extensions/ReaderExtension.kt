@@ -10,6 +10,7 @@ import com.squareup.sdk.mobilepayments.core.TimeOfDay
 
 fun ReaderInfo.toReaderInfoMap(): Map<String, Any?> {
     return mapOf(
+        "warnings" to warnings.map { it.toWarningName() },
         "id" to id,
         "model" to model.toModelName(),
         "serialNumber" to serialNumber,
@@ -82,6 +83,7 @@ fun  ReaderInfo.Status.getUnavailableReasonNameOrNull(): String? {
 
 fun ReaderInfo.Status.ReaderUnavailable.toUnavailableReasonName(): String {
     return when (this.reason) {
+        ReaderInfo.Status.ReaderUnavailable.ReaderUnavailableReason.MICROPHONE_PERMISSION_REQUIRED -> "microphonePermissionRequired"
         ReaderInfo.Status.ReaderUnavailable.ReaderUnavailableReason.INTERNAL_ERROR -> "internalError"
         ReaderInfo.Status.ReaderUnavailable.ReaderUnavailableReason.BLUETOOTH_DISABLED -> "bluetoothDisabled"
         ReaderInfo.Status.ReaderUnavailable.ReaderUnavailableReason.BLUETOOTH_FAILURE -> "bluetoothFailure"
@@ -146,6 +148,7 @@ fun ReaderChangedEvent.toChangedEventMap(): Map<String, Any> {
 
 fun ReaderChangedEvent.Change.toChangeName(): String {
   return when(this) {
+    ReaderChangedEvent.Change.WARNING_RAISED -> "warningRaised"
     ReaderChangedEvent.Change.ADDED -> "added"
     ReaderChangedEvent.Change.CHANGED_STATE -> "changedState"
     ReaderChangedEvent.Change.BATTERY_THRESHOLD -> "batteryThreshold"
@@ -183,4 +186,10 @@ fun TimeOfDay.toTimeOfDayMap(): Map<String, Int> {
     "hour" to hour,
     "minute" to minute
   )
+}
+
+fun ReaderInfo.ReaderWarning.toWarningName(): String = when (this) {
+    ReaderInfo.ReaderWarning.USB_THERMAL_FAULT -> "usbThermalFault"
+    ReaderInfo.ReaderWarning.THERMAL_FAULT_DISCONNECT_USB -> "thermalFaultDisconnectUsb"
+    ReaderInfo.ReaderWarning.THERMAL_FAULT_POWER_OFF -> "thermalFaultPowerOff"
 }

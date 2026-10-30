@@ -357,6 +357,8 @@ const _$ReaderStatusInfoUnavailableReasonEnumMap = {
   ReaderStatusInfoUnavailableReason.deviceDeveloperMode: 'deviceDeveloperMode',
   ReaderStatusInfoUnavailableReason.disabled: 'disabled',
   ReaderStatusInfoUnavailableReason.hostIdMismatch: 'hostIdMismatch',
+  ReaderStatusInfoUnavailableReason.microphonePermissionRequired:
+      'microphonePermissionRequired',
 };
 
 _ReaderFirmwareInfo _$ReaderFirmwareInfoFromJson(Map<String, dynamic> json) =>

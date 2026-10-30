@@ -2,5 +2,9 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   errors:
     invalid_annotation_target: ignore
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

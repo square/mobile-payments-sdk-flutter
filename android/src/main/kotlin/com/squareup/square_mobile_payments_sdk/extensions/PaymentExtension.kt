@@ -25,6 +25,7 @@ fun Payment.Status.toStatusName(): String {
 
 fun Payment.SourceType.toName(): String {
   return when (this) {
+    Payment.SourceType.UNKNOWN -> "unknown"
     Payment.SourceType.CARD -> "card"
     Payment.SourceType.CASH -> "cash"
     Payment.SourceType.EXTERNAL -> "externalSource"

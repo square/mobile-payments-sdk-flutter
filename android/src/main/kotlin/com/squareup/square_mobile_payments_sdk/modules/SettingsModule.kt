@@ -32,6 +32,7 @@ class SettingsModule {
           result.success(
             mapOf(
               "version" to sdkSettings.sdkVersion,
+              "mpocVersion" to sdkSettings.mpocVersion,
               "environment" to sdkSettings.sdkEnvironment.toEnvironmentName(),
               "securityComplianceVersion" to sdkSettings.securityComplianceVersion
             )

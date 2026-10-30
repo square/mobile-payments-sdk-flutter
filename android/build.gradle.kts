@@ -3,22 +3,23 @@ plugins {
 }
 
 buildscript {
-    val kotlinVersion = "2.2.21"
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:8.12.1")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("com.android.tools.build:gradle:9.1.0")
+        // Override AGP's Kotlin 2.2.10 dependency to meet Flutter 3.47's minimum.
+        // AGP still supplies Kotlin support; do not apply kotlin-android.
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.21")
     }
 }
 
 group = "com.squareup.square_mobile_payments_sdk"
 version = "1.0-SNAPSHOT"
 
-val squareSdkVersion = "2.6.1"
+val squareSdkVersion = "2.7.0"
 
 allprojects {
     repositories {
@@ -33,7 +34,7 @@ allprojects {
 android {
     namespace = "com.squareup.square_mobile_payments_sdk"
 
-    compileSdk = 36
+    compileSdk = 37
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
