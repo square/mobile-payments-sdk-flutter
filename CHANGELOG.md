@@ -1,3 +1,11 @@
+## 2026.10.3
+
+- Upgrade Android Mobile Payments SDK to 2.7.0.
+- Require Flutter 3.47+ for AGP built-in Kotlin support.
+- **Breaking Android build requirements:** AGP 9.1.0+, Gradle 9.3.1+, and compileSdk 37. Remove the Kotlin Android plugin and use AGP built-in Kotlin. minSdk 28 and targetSdk 36 are unchanged.
+- Expose Android MPoC version and reader thermal warnings; handle warning-raised events, microphone permission requirements, and unknown payment sources.
+- Currency inputs remain limited to AUD, CAD, EUR, GBP, JPY, and USD.
+
 ## 2026.10.2
 
 - Upgrade iOS native SDK to `2.7.0`. See the native changelog: [https://developer.squareup.com/docs/changelog/mobile-logs/2026-10-23](https://developer.squareup.com/docs/changelog/mobile-logs/2026-10-23)

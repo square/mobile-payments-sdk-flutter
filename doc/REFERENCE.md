@@ -489,7 +489,7 @@ Field             | Type                    | Description
 ----------------- | ----------------------- | --------------------
 version | String | The Mobile Payments SDK version.
 environment | [Environment](#environment) | The environment the SDK was initialized on.
-mpocVersion | String | iOS only. The MPoC (Mobile Payments on COTS) version of the SDK. `null` on Android.
+mpocVersion | String | The MPoC (Mobile Payments on COTS) version of the SDK.
 securityComplianceVersion | String | The security compliance version of the SDK.
 
 ## Enums

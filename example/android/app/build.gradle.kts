@@ -4,11 +4,11 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-val squareSdkVersion = "2.6.1"
+val squareSdkVersion = "2.7.0"
 
 android {
     namespace = "com.squareup.square_mobile_payments_sdk_example"
-    compileSdk = 36
+    compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
     packaging {

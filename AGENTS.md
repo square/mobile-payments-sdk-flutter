@@ -3,7 +3,7 @@
 Guidance for coding agents **integrating the Mobile Payments SDK into a Flutter app**.
 This repo is the `square_mobile_payments_sdk` plugin plus the Donut Counter sample in `example/`.
 
-Current package version: **2026.10.2**, wrapping native SDK **iOS 2.7.0** / **Android 2.6.1**.
+Current package version: **2026.10.2**, wrapping native SDK **iOS 2.7.0** / **Android 2.7.0**.
 
 ## Install
 
@@ -11,7 +11,7 @@ Current package version: **2026.10.2**, wrapping native SDK **iOS 2.7.0** / **An
 flutter pub add square_mobile_payments_sdk
 ```
 
-**Flutter 3.44.0 or later is required** (Dart SDK `^3.12.0`). The iOS plugin ships a `Package.swift` and the sample adopts the `UIScene` lifecycle; neither works on earlier Flutter versions.
+**Flutter 3.47.0 or later is required** (Dart SDK `^3.12.0`). The iOS plugin ships a `Package.swift` and the sample adopts the `UIScene` lifecycle; neither works on earlier Flutter versions.
 
 ## Build constraints
 
@@ -22,15 +22,17 @@ These silently break integrations. Check them before writing any code.
 | Constraint | Value |
 | :--- | :--- |
 | `minSdk` | 28 |
-| `compileSdk` | 36 |
-| Android Gradle Plugin | 8.9.1 or later (sample uses 8.12.1) |
-| Gradle | 8.13 or later (sample uses 8.14) |
+| `compileSdk` | 37 |
+| Android Gradle Plugin | 9.1.0 or later |
+| Gradle | 9.3.1 or later |
 | Java / JVM target | 17 |
+
+Use Kotlin 2.2.21 or later: AGP 9.1.0 defaults to 2.2.10, below Flutter's minimum. Declare `id("org.jetbrains.kotlin.android") version "2.2.21" apply false` in the host settings plugins block to select the dependency, but do not apply it in app or library modules.
 
 In `android/app/build.gradle.kts`, add Square's Maven repo (it is not on Maven Central) and the dependency:
 
 ```kotlin
-val squareSdkVersion = "2.6.1"
+val squareSdkVersion = "2.7.0"
 
 repositories {
     maven { url = uri("https://sdk.squareup.com/public/android/") }
@@ -244,7 +246,7 @@ lib/
   src/managers/                     auth, payment, reader, settings, tapToPaySettings
   src/models/                       enums, objects (freezed/json_serializable generated)
   src/errors/
-android/build.gradle.kts            native SDK pin, minSdk 28 / compileSdk 36, Java 17
+android/build.gradle.kts            native SDK pin, minSdk 28 / compileSdk 37, Java 17
 ios/square_mobile_payments_sdk/Package.swift   SPM pin, iOS 17.1
 doc/                                setup guide, API reference, MockReaderUI over SPM
 example/                            Donut Counter sample (SPM on iOS, Gradle KTS on Android)

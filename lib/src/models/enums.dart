@@ -222,6 +222,7 @@ enum ReaderStatusInfoUnavailableReason {
   deviceDeveloperMode,
   disabled,
   hostIdMismatch,
+  microphonePermissionRequired,
 }
 
 enum ReaderModel {
