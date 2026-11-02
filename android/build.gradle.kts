@@ -3,6 +3,8 @@ plugins {
 }
 
 buildscript {
+    val kotlinVersion = "2.2.21"
+
     repositories {
         google()
         mavenCentral()
@@ -12,7 +14,7 @@ buildscript {
         classpath("com.android.tools.build:gradle:9.1.0")
         // Override AGP's Kotlin 2.2.10 dependency to meet Flutter 3.47's minimum.
         // AGP still supplies Kotlin support; do not apply kotlin-android.
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.21")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
 }
 
