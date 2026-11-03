@@ -6,7 +6,7 @@ This guide walks you through the process of setting up a new Flutter project wit
 
 * You will need a Square account enabled for payment processing. If you have not enabled payment processing on your account (or you are not sure), visit [squareup.com/activate](https://squareup.com/activate).
 * Set-up your Flutter environment by following the [official guide](https://docs.flutter.dev/get-started/install).
-* Use Flutter 3.44 or later. The iOS plugin is distributed as a Swift package and the sample app adopts the `UIScene` lifecycle, both of which require this version.
+* Use Flutter 3.47 or later. The iOS plugin is distributed as a Swift package and the sample app adopts the `UIScene` lifecycle, both of which require this version.
 
 ## Step 1: Install Flutter plugin for Mobile Payments SDK
 
@@ -40,7 +40,7 @@ This setting is scoped to the project, so it does not change your global Flutter
 
 For Android:
 1. Modify your `/android/app/build.gradle.kts`
-   - Add `val squareSdkVersion = "2.6.1"` at the top of the file
+   - Add `val squareSdkVersion = "2.7.0"` at the top of the file
    - Add `maven { url = uri("https://sdk.squareup.com/public/android/") }` inside the module's `repositories {...}` block
    - Add `implementation("com.squareup.sdk:mobile-payments-sdk:$squareSdkVersion")` inside the `dependencies {...}` block
 2. Disable Proguard by adding the following to your `/android/app/build.gradle.kts`. The Mobile Payments SDK does not support code shrinking, which may strip bytecode the SDK needs at runtime:
@@ -60,7 +60,7 @@ android.useAndroidX=true
 android.enableJetifier=true
 ```
 
-The plugin targets Java 17 and requires Android Gradle Plugin 8.9.1 or later. The sample app is built with Android Gradle Plugin 8.12.1 and Gradle 8.14.
+The plugin targets Java 17 and requires Flutter 3.47+, Android Gradle Plugin 9.1.0+, Gradle 9.3.1+, and compileSdk 37.
 
 You can also refer to [MPSDK Android Quickstart](https://developer.squareup.com/docs/mobile-payments-sdk/android#1-install-the-sdk-and-dependencies)'s SDK installation section.
 
@@ -334,3 +334,26 @@ If you try to process an offline payment for a seller who hasn’t been onboarde
 
 For more details, refer to:
 [Square Android Offline Payments Docs](https://developer.squareup.com/docs/mobile-payments-sdk/android/offline-payments#seller-onboarding)
+
+### Android SDK 2.7.0 migration
+
+Use Flutter 3.47+, Android Gradle Plugin 9.1.0+, Gradle 9.3.1+, and compileSdk 37.
+Keep minSdk 28 and targetSdk 36. Remove `org.jetbrains.kotlin.android` (or
+`kotlin-android`) and use AGP's built-in Kotlin support. Install Android SDK
+Platform 37 before building. Android now exposes MPoC version and reader thermal
+warnings through the existing settings and reader APIs.
+
+Flutter 3.47 requires Kotlin 2.2.20 or later. AGP 9.1.0 defaults to 2.2.10,
+so the host app must select a newer Kotlin dependency in
+`android/settings.gradle.kts` before AGP is loaded:
+
+```kotlin
+plugins {
+    id("com.android.application") version "9.1.0" apply false
+    id("org.jetbrains.kotlin.android") version "2.2.21" apply false
+}
+```
+
+The `apply false` declaration selects the Kotlin version only. Do not apply
+`org.jetbrains.kotlin.android` in the app or plugin modules; AGP provides
+built-in Kotlin support.

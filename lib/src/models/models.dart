@@ -185,7 +185,7 @@ abstract class ReaderInfo with _$ReaderInfo {
     String? serialNumber,
     required ReaderStatusInfo statusInfo,
     required List<CardInputMethod> supportedInputMethods,
-    List<ReaderWarning>? warnings, // iOS only
+    List<ReaderWarning>? warnings,
   }) = _ReaderInfo;
 
   factory ReaderInfo.fromJson(Map<String, Object?> json) =>
@@ -411,7 +411,7 @@ abstract class SdkSettings with _$SdkSettings {
   const factory SdkSettings({
     required String version,
     required Environment environment,
-    String? mpocVersion, // iOS only
+    String? mpocVersion,
     required String securityComplianceVersion,
   }) = _SdkSettings;
 
