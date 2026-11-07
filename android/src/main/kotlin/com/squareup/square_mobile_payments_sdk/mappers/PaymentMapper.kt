@@ -51,7 +51,10 @@ class PaymentMapper {
                 }
 
                 if(paymentParameters.get("delayDuration") != null) {
-                    builder.delayDuration(paymentParameters.get("delayDuration") as? Long)
+                    // Flutter sends small ints as Integer, so read any Number. The Flutter API takes
+                    // seconds (as on iOS), but the Android SDK expects milliseconds.
+                    val delayDurationSeconds = paymentParameters.get("delayDuration") as Number
+                    builder.delayDuration((delayDurationSeconds.toDouble() * 1000).toLong())
                 }
 
                 if(paymentParameters.get("delayAction") != null) {

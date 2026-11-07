@@ -84,6 +84,8 @@ dependencies {
     implementation("com.squareup.sdk:mobile-payments-sdk:$squareSdkVersion")
     // MockReader UI dependency
     implementation("com.squareup.sdk:mockreader-ui:$squareSdkVersion")
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    // AGP's built-in Kotlin doesn't pick a JUnit variant of kotlin-test, so name it explicitly.
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:2.2.21")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("org.mockito:mockito-core:5.0.0")
 }
