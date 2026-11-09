@@ -22,6 +22,6 @@ internal class SquareMobilePaymentsSdkPluginTest {
     val mockResult: MethodChannel.Result = Mockito.mock(MethodChannel.Result::class.java)
     plugin.onMethodCall(call, mockResult)
 
-    Mockito.verify(mockResult).success("Android " + android.os.Build.VERSION.RELEASE)
+    Mockito.verify(mockResult).success("Android Testing " + android.os.Build.VERSION.RELEASE)
   }
 }
