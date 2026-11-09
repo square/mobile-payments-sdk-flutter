@@ -1,6 +1,6 @@
 package com.squareup.square_mobile_payments_sdk.modules
 
-import io.flutter.plugin.common.EventChannel.EventSink
+import com.squareup.square_mobile_payments_sdk.SquareMobilePaymentsSdkPlugin
 import io.flutter.plugin.common.MethodChannel
 
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
@@ -38,7 +38,15 @@ class PaymentModule {
                 )
                 return
             }
-            val nativePaymentParameters = PaymentMapper.getPaymentParameters(paymentParameters)
+            // The mapper throws on bad input (unknown currency, unknown processingMode, a mistyped
+            // field). Report that as a proper PaymentErrorCode instead of letting Flutter wrap it as
+            // code "error", which Dart's PaymentError cannot parse and so loses the real message.
+            val nativePaymentParameters = try {
+                PaymentMapper.getPaymentParameters(paymentParameters)
+            } catch (e: RuntimeException) {
+                result.error("invalidPaymentParameters", e.message ?: "Invalid payment parameters", null)
+                return
+            }
             val nativePromptParameters = PaymentMapper.getPromptParameters(promptParameters)
 
             paymentManager.startPaymentActivity(nativePaymentParameters, nativePromptParameters) { sdkResult ->
@@ -129,10 +137,10 @@ class PaymentModule {
         }
 
         @JvmStatic
-        fun setAvailableCardEntryMethodChangedCallback(result: MethodChannel.Result, sink: EventSink?) {
+        fun setAvailableCardEntryMethodChangedCallback(result: MethodChannel.Result) {
             if (availableCardEntryMethodCallbackReference == null) {
                 availableCardEntryMethodCallbackReference = paymentManager.setAvailableCardEntryMethodChangedCallback { methods ->
-                    sink?.success(
+                    SquareMobilePaymentsSdkPlugin.eventSink?.success(
                         mapOf(
                             "type" to "availableCardEntryMethodsChange",
                             "payload" to methods.map { it.toEntryMethodName() }

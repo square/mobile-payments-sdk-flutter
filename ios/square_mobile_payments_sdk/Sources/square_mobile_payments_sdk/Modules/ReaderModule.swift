@@ -296,15 +296,35 @@ public class ReaderModule {
         result(NSNull())
     }
 
+    // The native ReaderManager holds its pairing delegate weakly, so the plugin must own it for the
+    // whole pairing. Without this the delegate is freed when `pairReader` returns and the Dart
+    // callback never fires, even on success.
+    private static var pairingDelegate: ReaderPairingDelegateImpl?
+
     public static func pairReader(result: @escaping FlutterResult) {
-        let delegate = ReaderPairingDelegateImpl(result: result)
+        if pairingDelegate != nil {
+            result(FlutterError(
+                code: ReaderPairingError.readerAlreadyPairing.toName(),
+                message: "A reader pairing is already in progress",
+                details: nil))
+            return
+        }
+        let delegate = ReaderPairingDelegateImpl(result: result) {
+            pairingDelegate = nil
+            globalPairingHandle = nil
+        }
+        pairingDelegate = delegate
         globalPairingHandle = MobilePaymentsSDK.shared.readerManager.startPairing(with: delegate)
     }
 
     public static func stopPairing(result: @escaping FlutterResult) {
         if let handle = globalPairingHandle {
             let stopResult = handle.stop()
+            // Stopping does not call the delegate back, so settle the pending Dart callback here or
+            // it hangs forever. `false` with no error means "pairing did not complete".
+            pairingDelegate?.settle(with: false)
             globalPairingHandle = nil
+            pairingDelegate = nil
             if stopResult {
                 result("stopped")
             } else {
@@ -323,9 +343,19 @@ public class ReaderModule {
 
 class ReaderPairingDelegateImpl: ReaderPairingDelegate {
     private var result: FlutterResult?
+    private let onFinish: () -> Void
 
-    init(result: @escaping FlutterResult) {
+    init(result: @escaping FlutterResult, onFinish: @escaping () -> Void) {
         self.result = result
+        self.onFinish = onFinish
+    }
+
+    /// Delivers `value` to Dart exactly once and releases the pending callback.
+    func settle(with value: Any) {
+        guard let pending = result else { return }
+        result = nil
+        pending(value)
+        onFinish()
     }
 
     func readerPairingDidBegin() {}
@@ -333,7 +363,7 @@ class ReaderPairingDelegateImpl: ReaderPairingDelegate {
     func readerPairingDidFail(with error: Error) {
         let e = error as NSError
         if let pairingError = ReaderPairingError(rawValue: e.code) {
-            result?(
+            settle(with:
                 FlutterError(
                     code: pairingError.toName(),
                     message: e.localizedDescription,
@@ -341,7 +371,7 @@ class ReaderPairingDelegateImpl: ReaderPairingDelegate {
                 )
             )
         } else {
-            result?(
+            settle(with:
                 FlutterError(
                     code: "unknown",
                     message: e.localizedDescription,
@@ -349,12 +379,10 @@ class ReaderPairingDelegateImpl: ReaderPairingDelegate {
                 )
             )
         }
-        result = nil
     }
 
     func readerPairingDidSucceed() {
-        result?(true)
-        result = nil
+        settle(with: true)
     }
 }
 

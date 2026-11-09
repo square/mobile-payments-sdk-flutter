@@ -7,7 +7,7 @@ import com.squareup.square_mobile_payments_sdk.extensions.toAuthorizationStateNa
 import com.squareup.square_mobile_payments_sdk.extensions.toAuthorizeErrorCodeName
 import com.squareup.square_mobile_payments_sdk.extensions.toAuthorizedLocationMap
 import com.squareup.square_mobile_payments_sdk.extensions.toErrorDetailsMap
-import io.flutter.plugin.common.EventChannel.EventSink
+import com.squareup.square_mobile_payments_sdk.SquareMobilePaymentsSdkPlugin
 import io.flutter.plugin.common.MethodChannel
 
 class AuthModule {
@@ -65,10 +65,10 @@ class AuthModule {
     }
 
     @JvmStatic
-    fun setAuthorizationStateChangedCallback(result: MethodChannel.Result, sink: EventSink?) {
+    fun setAuthorizationStateChangedCallback(result: MethodChannel.Result) {
       if (authorizationStateCallbackReference == null) {
         authorizationStateCallbackReference = authManager.setAuthorizationStateChangedCallback { state ->
-          sink?.success(
+          SquareMobilePaymentsSdkPlugin.eventSink?.success(
             mapOf(
               "type" to "authorizationStateChange",
               "payload" to state.toAuthorizationStateName()

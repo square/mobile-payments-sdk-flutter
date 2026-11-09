@@ -1,8 +1,10 @@
 package com.squareup.square_mobile_payments_sdk.mappers
 
 import com.squareup.sdk.mobilepayments.payment.DelayAction
+import com.squareup.sdk.mobilepayments.payment.ProcessingMode
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertNull
 
 internal class PaymentMapperTest {
@@ -52,5 +54,19 @@ internal class PaymentMapperTest {
     val result = PaymentMapper.getPaymentParameters(paymentParameters())
 
     assertNull(result.delayDuration)
+  }
+
+  @Test
+  fun convertToProcessingMode_mapsKnownNames() {
+    assertEquals(ProcessingMode.ONLINE_ONLY, PaymentMapper.convertToProcessingMode("onlineOnly"))
+    assertEquals(ProcessingMode.OFFLINE_ONLY, PaymentMapper.convertToProcessingMode("offlineOnly"))
+    assertEquals(ProcessingMode.AUTO_DETECT, PaymentMapper.convertToProcessingMode("autoDetect"))
+  }
+
+  @Test
+  fun convertToProcessingMode_rejectsUnknownInsteadOfDefaultingToAutoDetect() {
+    // AUTO_DETECT can store a payment offline, so a typo must never silently select it.
+    assertFailsWith<IllegalArgumentException> { PaymentMapper.convertToProcessingMode("auto") }
+    assertFailsWith<IllegalArgumentException> { PaymentMapper.convertToProcessingMode(null) }
   }
 }
