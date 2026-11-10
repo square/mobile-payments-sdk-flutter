@@ -1,9 +1,8 @@
 package com.squareup.square_mobile_payments_sdk.modules
 
-import com.squareup.square_mobile_payments_sdk.SquareMobilePaymentsSdkPlugin
+import com.squareup.square_mobile_payments_sdk.EngineEventStream
 import io.flutter.plugin.common.MethodChannel
 import com.squareup.sdk.mobilepayments.core.Result as SdkResult
-import com.squareup.sdk.mobilepayments.core.CallbackReference
 import com.squareup.sdk.mobilepayments.core.TimeOfDay
 import com.squareup.sdk.mobilepayments.cardreader.PairingHandle
 import com.squareup.sdk.mobilepayments.cardreader.PairingHandle.StopResult
@@ -22,11 +21,19 @@ import com.squareup.square_mobile_payments_sdk.extensions.toErrorDetailsMap
 class ReaderModule {
     companion object {
         private val readerManager = MobilePaymentsSdk.readerManager()
-        private var globalReaderCallbackReference: CallbackReference? = null
         private var globalPairingHandle: PairingHandle? = null
         // The Dart callback for the pairing in flight. Kept so `stopPairing` can settle it: the
         // native SDK does not call back when a pairing is stopped.
         private var pendingPairingResult: MethodChannel.Result? = null
+
+        internal val readerEvents = EngineEventStream { emit ->
+            readerManager.setReaderChangedCallback { changedEvent ->
+                emit(mapOf(
+                    "type" to "readerChange",
+                    "payload" to changedEvent.toChangedEventMap()
+                ))
+            }
+        }
 
         @JvmStatic
         fun showMockReaderUI(result: MethodChannel.Result) {
@@ -138,28 +145,6 @@ class ReaderModule {
         @JvmStatic
         fun isPairingInProgress(result: MethodChannel.Result) {
             result.success(readerManager.isPairingInProgress)
-        }
-
-        @JvmStatic
-        fun setReaderChangedCallback(result: MethodChannel.Result) {
-            if (globalReaderCallbackReference == null) {
-                globalReaderCallbackReference = readerManager.setReaderChangedCallback {
-                    changedEvent ->
-                        SquareMobilePaymentsSdkPlugin.eventSink?.success(mapOf(
-                            "type" to "readerChange",
-                            "payload" to changedEvent.toChangedEventMap()
-                        ))
-                }
-                
-            }
-            result.success(null)
-        }
-
-        @JvmStatic
-        fun removeReaderChangedCallback(result: MethodChannel.Result) {
-            globalReaderCallbackReference?.clear()
-            globalReaderCallbackReference = null
-            result.success(null)
         }
 
         @JvmStatic

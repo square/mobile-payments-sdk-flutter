@@ -22,37 +22,19 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
   /// when the Flutter Engine is detached from the Activity
   private lateinit var channel: MethodChannel
   private lateinit var eventChannel: EventChannel
-  companion object {
-    /**
-     * The sink of the engine currently listening to the event channel.
-     *
-     * The native SDK callbacks are registered once per process (the modules are companion
-     * objects), so they must look the sink up at emit time rather than capture it. Capturing it
-     * bound every callback to the first engine's sink; after the engine was recreated in the same
-     * process the callbacks kept writing to a dead sink and Dart never heard from them again.
-     */
-    @Volatile
-    var eventSink: EventSink? = null
-      private set
+  private var eventSink: EventSink? = null
+  private val eventStreams = mutableSetOf<EngineEventStream>()
+  private val sendEvent: (Map<String, Any>) -> Unit = { event -> eventSink?.success(event) }
 
-    // The plugin instance whose engine owns `eventSink`. A background engine (push handlers, work
-    // schedulers) registers its own plugin instance in the same process; when it detaches it must
-    // not clear the foreground engine's sink.
-    private var sinkOwner: SquareMobilePaymentsSdkPlugin? = null
+  private fun subscribe(stream: EngineEventStream, result: Result) {
+    stream.subscribe(sendEvent)
+    eventStreams.add(stream)
+    result.success(null)
+  }
 
-    @Synchronized
-    private fun setSink(owner: SquareMobilePaymentsSdkPlugin, sink: EventSink?) {
-      sinkOwner = owner
-      eventSink = sink
-    }
-
-    @Synchronized
-    private fun clearSink(owner: SquareMobilePaymentsSdkPlugin) {
-      if (sinkOwner === owner) {
-        sinkOwner = null
-        eventSink = null
-      }
-    }
+  private fun unsubscribe(stream: EngineEventStream, result: Result) {
+    if (eventStreams.remove(stream)) stream.unsubscribe(sendEvent)
+    result.success(null)
   }
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
@@ -89,8 +71,8 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
         AuthModule.authorize(result, accessToken, locationId)
       }
       "deauthorize" -> AuthModule.deAuthorize(result)
-      "setAuthorizationStateChangedCallback" -> AuthModule.setAuthorizationStateChangedCallback(result)
-      "removeAuthorizationStateChangedCallback" -> AuthModule.removeAuthorizationStateChangedCallback(result)
+      "setAuthorizationStateChangedCallback" -> subscribe(AuthModule.authorizationStateEvents, result)
+      "removeAuthorizationStateChangedCallback" -> unsubscribe(AuthModule.authorizationStateEvents, result)
       "showMockReaderUI" -> ReaderModule.showMockReaderUI(result)
       "hideMockReaderUI" -> ReaderModule.hideMockReaderUI(result)
       "showSettings" -> SettingsModule.showSettings(result)
@@ -110,8 +92,8 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
       }
       "getAllIdempotencyKeys" -> PaymentModule.getAllIdempotencyKeys(result)
       "getAvailableCardEntryMethods" -> PaymentModule.getAvailableCardEntryMethods(result)
-      "setAvailableCardEntryMethodChangedCallback" -> PaymentModule.setAvailableCardEntryMethodChangedCallback(result)
-      "removeAvailableCardEntryMethodChangedCallback" -> PaymentModule.removeAvailableCardEntryMethodChangedCallback(result)
+      "setAvailableCardEntryMethodChangedCallback" -> subscribe(PaymentModule.availableCardEntryMethodEvents, result)
+      "removeAvailableCardEntryMethodChangedCallback" -> unsubscribe(PaymentModule.availableCardEntryMethodEvents, result)
       "isOfflineProcessingAllowed" -> SettingsModule.isOfflineProcessingAllowed(result)
       "getOfflineTotalStoredAmountLimit" -> SettingsModule.getOfflineTotalStoredAmountLimit(result)
       "getOfflineTransactionAmountLimit" -> SettingsModule.getOfflineTransactionAmountLimit(result)
@@ -156,8 +138,8 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
         ReaderModule.setReducedChargingModeEnabled(result, enabled)
       }
       "isPairingInProgress" -> ReaderModule.isPairingInProgress(result)
-      "setReaderChangedCallback" -> ReaderModule.setReaderChangedCallback(result)
-      "removeReaderChangedCallback" -> ReaderModule.removeReaderChangedCallback(result)
+      "setReaderChangedCallback" -> subscribe(ReaderModule.readerEvents, result)
+      "removeReaderChangedCallback" -> unsubscribe(ReaderModule.readerEvents, result)
       "pairReader" -> ReaderModule.pairReader(result)
       "stopPairing" -> ReaderModule.stopPairing(result)
       "readerSettings" -> ReaderModule.readerSettings(result)
@@ -169,18 +151,18 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
 
   // EventChannel handlers
   override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
-    setSink(this, events)
+    eventSink = events
   }
 
   override fun onCancel(arguments: Any?) {
-    clearSink(this)
+    eventSink = null
+    eventStreams.forEach { it.unsubscribe(sendEvent) }
+    eventStreams.clear()
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
     eventChannel.setStreamHandler(null)
-    // This engine's sink is dead. Flutter normally calls onCancel first, but don't rely on it:
-    // a stale sink here is exactly the bug this guards against. Only clears if we own it.
-    clearSink(this)
+    onCancel(null)
   }
 }

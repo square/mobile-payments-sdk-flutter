@@ -1,10 +1,9 @@
 package com.squareup.square_mobile_payments_sdk.modules
 
-import com.squareup.square_mobile_payments_sdk.SquareMobilePaymentsSdkPlugin
+import com.squareup.square_mobile_payments_sdk.EngineEventStream
 import io.flutter.plugin.common.MethodChannel
 
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
-import com.squareup.sdk.mobilepayments.core.CallbackReference
 import com.squareup.sdk.mobilepayments.core.Result as SdkResult
 import com.squareup.sdk.mobilepayments.payment.Payment
 import com.squareup.sdk.mobilepayments.payment.PaymentHandle
@@ -22,7 +21,15 @@ import com.squareup.square_mobile_payments_sdk.extensions.toEntryMethodName
 class PaymentModule {
     companion object {
         private val paymentManager = MobilePaymentsSdk.paymentManager()
-        private var availableCardEntryMethodCallbackReference: CallbackReference? = null
+
+        internal val availableCardEntryMethodEvents = EngineEventStream { emit ->
+            paymentManager.setAvailableCardEntryMethodChangedCallback { methods ->
+                emit(mapOf(
+                    "type" to "availableCardEntryMethodsChange",
+                    "payload" to methods.map { it.toEntryMethodName() }
+                ))
+            }
+        }
 
         @JvmStatic
         fun startPayment(
@@ -134,28 +141,6 @@ class PaymentModule {
         @JvmStatic
         fun getAvailableCardEntryMethods(result: MethodChannel.Result) {
             result.success(paymentManager.getAvailableCardEntryMethods().map { it.toEntryMethodName() })
-        }
-
-        @JvmStatic
-        fun setAvailableCardEntryMethodChangedCallback(result: MethodChannel.Result) {
-            if (availableCardEntryMethodCallbackReference == null) {
-                availableCardEntryMethodCallbackReference = paymentManager.setAvailableCardEntryMethodChangedCallback { methods ->
-                    SquareMobilePaymentsSdkPlugin.eventSink?.success(
-                        mapOf(
-                            "type" to "availableCardEntryMethodsChange",
-                            "payload" to methods.map { it.toEntryMethodName() }
-                        )
-                    )
-                }
-            }
-            result.success(null)
-        }
-
-        @JvmStatic
-        fun removeAvailableCardEntryMethodChangedCallback(result: MethodChannel.Result) {
-            availableCardEntryMethodCallbackReference?.clear()
-            availableCardEntryMethodCallbackReference = null
-            result.success(null)
         }
 
         @JvmStatic
