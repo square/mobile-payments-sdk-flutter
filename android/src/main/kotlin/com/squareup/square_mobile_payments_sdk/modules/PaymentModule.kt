@@ -1,10 +1,9 @@
 package com.squareup.square_mobile_payments_sdk.modules
 
-import io.flutter.plugin.common.EventChannel.EventSink
+import com.squareup.square_mobile_payments_sdk.EngineEventStream
 import io.flutter.plugin.common.MethodChannel
 
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
-import com.squareup.sdk.mobilepayments.core.CallbackReference
 import com.squareup.sdk.mobilepayments.core.Result as SdkResult
 import com.squareup.sdk.mobilepayments.payment.Payment
 import com.squareup.sdk.mobilepayments.payment.PaymentHandle
@@ -22,7 +21,15 @@ import com.squareup.square_mobile_payments_sdk.extensions.toEntryMethodName
 class PaymentModule {
     companion object {
         private val paymentManager = MobilePaymentsSdk.paymentManager()
-        private var availableCardEntryMethodCallbackReference: CallbackReference? = null
+
+        internal val availableCardEntryMethodEvents = EngineEventStream { emit ->
+            paymentManager.setAvailableCardEntryMethodChangedCallback { methods ->
+                emit(mapOf(
+                    "type" to "availableCardEntryMethodsChange",
+                    "payload" to methods.map { it.toEntryMethodName() }
+                ))
+            }
+        }
 
         @JvmStatic
         fun startPayment(
@@ -38,7 +45,15 @@ class PaymentModule {
                 )
                 return
             }
-            val nativePaymentParameters = PaymentMapper.getPaymentParameters(paymentParameters)
+            // The mapper throws on bad input (unknown currency, unknown processingMode, a mistyped
+            // field). Report that as a proper PaymentErrorCode instead of letting Flutter wrap it as
+            // code "error", which Dart's PaymentError cannot parse and so loses the real message.
+            val nativePaymentParameters = try {
+                PaymentMapper.getPaymentParameters(paymentParameters)
+            } catch (e: RuntimeException) {
+                result.error("invalidPaymentParameters", e.message ?: "Invalid payment parameters", null)
+                return
+            }
             val nativePromptParameters = PaymentMapper.getPromptParameters(promptParameters)
 
             paymentManager.startPaymentActivity(nativePaymentParameters, nativePromptParameters) { sdkResult ->
@@ -126,28 +141,6 @@ class PaymentModule {
         @JvmStatic
         fun getAvailableCardEntryMethods(result: MethodChannel.Result) {
             result.success(paymentManager.getAvailableCardEntryMethods().map { it.toEntryMethodName() })
-        }
-
-        @JvmStatic
-        fun setAvailableCardEntryMethodChangedCallback(result: MethodChannel.Result, sink: EventSink?) {
-            if (availableCardEntryMethodCallbackReference == null) {
-                availableCardEntryMethodCallbackReference = paymentManager.setAvailableCardEntryMethodChangedCallback { methods ->
-                    sink?.success(
-                        mapOf(
-                            "type" to "availableCardEntryMethodsChange",
-                            "payload" to methods.map { it.toEntryMethodName() }
-                        )
-                    )
-                }
-            }
-            result.success(null)
-        }
-
-        @JvmStatic
-        fun removeAvailableCardEntryMethodChangedCallback(result: MethodChannel.Result) {
-            availableCardEntryMethodCallbackReference?.clear()
-            availableCardEntryMethodCallbackReference = null
-            result.success(null)
         }
 
         @JvmStatic

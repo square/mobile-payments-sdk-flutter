@@ -107,7 +107,10 @@ class PaymentMapper {
         fun convertToProcessingMode(value: String?) = when (value) {
             "offlineOnly" -> ProcessingMode.OFFLINE_ONLY
             "onlineOnly" -> ProcessingMode.ONLINE_ONLY
-            else -> ProcessingMode.AUTO_DETECT
+            "autoDetect" -> ProcessingMode.AUTO_DETECT
+            // Never fall back to AUTO_DETECT: that can store a payment offline without the caller
+            // opting in. `startPayment` turns this into an invalidPaymentParameters error.
+            else -> throw IllegalArgumentException("Unknown processingMode '$value'")
         }
 
         fun getPromptMode(mode: String?) = when (mode) {

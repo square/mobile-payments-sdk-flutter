@@ -1,9 +1,21 @@
 import Foundation
 import SquareMobilePaymentsSDK
 
+/// A payment parameter sent from Dart that the native SDK cannot accept. Surfaced to Dart as
+/// `PaymentErrorCode.invalidPaymentParameters` instead of aborting the process.
+enum PaymentMapperError: LocalizedError {
+    case invalid(String)
+
+    var errorDescription: String? {
+        switch self {
+        case .invalid(let message): return message
+        }
+    }
+}
+
 public class PaymentMapper {
 
-    static func getCurrency(from currency: String) -> Currency {
+    static func getCurrency(from currency: String) throws -> Currency {
         switch currency.uppercased() {
             case "AUD": return .AUD
             case "CAD": return .CAD
@@ -11,8 +23,24 @@ public class PaymentMapper {
             case "GBP": return .GBP
             case "JPY": return .JPY
             case "USD": return .USD
-            default: return .unknown
+            default: throw PaymentMapperError.invalid("Unknown currencyCode '\(currency)'")
         }
+    }
+
+    /// Reads a `Money` map. Amounts arrive from Dart as `int`, which bridges as `Int`, so a negative
+    /// value fails `as? UInt`. That used to hit `fatalError` for the amount and was silently dropped
+    /// for tip and app fee; both are caller bugs that must come back as an error.
+    static func getMoney(_ money: [String: Any]?, field: String) throws -> Money {
+        guard let money else {
+            throw PaymentMapperError.invalid("\(field) is required")
+        }
+        guard let amount = money["amount"] as? UInt else {
+            throw PaymentMapperError.invalid("\(field).amount must be a non-negative integer")
+        }
+        guard let currencyCode = money["currencyCode"] as? String else {
+            throw PaymentMapperError.invalid("\(field).currencyCode is required")
+        }
+        return Money(amount: amount, currency: try getCurrency(from: currencyCode))
     }
 
     static func getDelayAction(from delayAction: String) -> DelayAction {
@@ -23,51 +51,35 @@ public class PaymentMapper {
         }
     }
 
-    static func getPaymentParameters(paymentParameters: [String: Any]) -> PaymentParameters {
+    static func getPaymentParameters(paymentParameters: [String: Any]) throws -> PaymentParameters {
         // Required fields
-        guard
-            let amountMoney = paymentParameters["amountMoney"] as? [String: Any],
-            let amount = amountMoney["amount"] as? UInt,
-            let currencyCode = amountMoney["currencyCode"] as? String,
-            let processingMode = paymentParameters["processingMode"] as? String,
-            let allowCardSurcharge = paymentParameters["allowCardSurcharge"] as? Bool,
-            let paymentAttemptID = paymentParameters["paymentAttemptId"] as? String
-        else {
-            fatalError("Error: Missing or invalid required payment parameters")
+        let money = try getMoney(paymentParameters["amountMoney"] as? [String: Any], field: "amountMoney")
+        guard let processingMode = paymentParameters["processingMode"] as? String else {
+            throw PaymentMapperError.invalid("processingMode is required")
         }
-        
-        // Convert the currency string to the appropriate type
-        let currency = getCurrency(from: currencyCode)
-        
-        // Create the amountMoney object
-        let money = Money(amount: amount, currency: currency)
-        
+        guard let allowCardSurcharge = paymentParameters["allowCardSurcharge"] as? Bool else {
+            throw PaymentMapperError.invalid("allowCardSurcharge is required")
+        }
+        guard let paymentAttemptID = paymentParameters["paymentAttemptId"] as? String else {
+            throw PaymentMapperError.invalid("paymentAttemptId is required")
+        }
+
         let paymentParams = PaymentParameters(
             paymentAttemptID: paymentAttemptID,
             amountMoney: money,
-            processingMode: Self.convertToProcessingMode(processingMode)
+            processingMode: try Self.convertToProcessingMode(processingMode)
         )
 
         paymentParams.allowCardSurcharge = allowCardSurcharge
 
-        // Optional: appFeeMoney
-        if let appFeeMoney = paymentParameters["appFeeMoney"] as? [String: Any],
-           let appFeeAmount = appFeeMoney["amount"] as? UInt,
-           let appFeeCurrencyCode = appFeeMoney["currencyCode"] as? String {
-            
-            let appFeeCurrency = getCurrency(from: appFeeCurrencyCode)
-            let appFee = Money(amount: appFeeAmount, currency: appFeeCurrency)
-            paymentParams.appFeeMoney = appFee
+        // Optional: appFeeMoney. Present but invalid is an error, not something to drop on the floor.
+        if paymentParameters["appFeeMoney"] != nil, !(paymentParameters["appFeeMoney"] is NSNull) {
+            paymentParams.appFeeMoney = try getMoney(paymentParameters["appFeeMoney"] as? [String: Any], field: "appFeeMoney")
         }
-        
+
         // Optional: tipMoney
-        if let tipMoney = paymentParameters["tipMoney"] as? [String: Any],
-           let tipAmount = tipMoney["amount"] as? UInt,
-           let tipCurrencyCode = tipMoney["currencyCode"] as? String {
-            
-            let tipCurrency = getCurrency(from: tipCurrencyCode)
-            let tip = Money(amount: tipAmount, currency: tipCurrency)
-            paymentParams.tipMoney = tip
+        if paymentParameters["tipMoney"] != nil, !(paymentParameters["tipMoney"] is NSNull) {
+            paymentParams.tipMoney = try getMoney(paymentParameters["tipMoney"] as? [String: Any], field: "tipMoney")
         }
         
         // Optional: referenceId
@@ -129,11 +141,13 @@ public class PaymentMapper {
     }
 
 
-    static func convertToProcessingMode(_ value: String) -> ProcessingMode {
+    static func convertToProcessingMode(_ value: String) throws -> ProcessingMode {
         switch value {
         case "offlineOnly": return .offlineOnly
         case "onlineOnly": return .onlineOnly
-        default: return .autoDetect
+        case "autoDetect": return .autoDetect
+        // Never fall back to autoDetect: that can store a payment offline without the caller opting in.
+        default: throw PaymentMapperError.invalid("Unknown processingMode '\(value)'")
         }
     }
 

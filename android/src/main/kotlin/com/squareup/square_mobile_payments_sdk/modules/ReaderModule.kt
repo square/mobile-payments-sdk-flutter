@@ -1,9 +1,8 @@
 package com.squareup.square_mobile_payments_sdk.modules
 
-import io.flutter.plugin.common.EventChannel.EventSink
+import com.squareup.square_mobile_payments_sdk.EngineEventStream
 import io.flutter.plugin.common.MethodChannel
 import com.squareup.sdk.mobilepayments.core.Result as SdkResult
-import com.squareup.sdk.mobilepayments.core.CallbackReference
 import com.squareup.sdk.mobilepayments.core.TimeOfDay
 import com.squareup.sdk.mobilepayments.cardreader.PairingHandle
 import com.squareup.sdk.mobilepayments.cardreader.PairingHandle.StopResult
@@ -22,8 +21,19 @@ import com.squareup.square_mobile_payments_sdk.extensions.toErrorDetailsMap
 class ReaderModule {
     companion object {
         private val readerManager = MobilePaymentsSdk.readerManager()
-        private var globalReaderCallbackReference: CallbackReference? = null
         private var globalPairingHandle: PairingHandle? = null
+        // The Dart callback for the pairing in flight. Kept so `stopPairing` can settle it: the
+        // native SDK does not call back when a pairing is stopped.
+        private var pendingPairingResult: MethodChannel.Result? = null
+
+        internal val readerEvents = EngineEventStream { emit ->
+            readerManager.setReaderChangedCallback { changedEvent ->
+                emit(mapOf(
+                    "type" to "readerChange",
+                    "payload" to changedEvent.toChangedEventMap()
+                ))
+            }
+        }
 
         @JvmStatic
         fun showMockReaderUI(result: MethodChannel.Result) {
@@ -138,37 +148,24 @@ class ReaderModule {
         }
 
         @JvmStatic
-        fun setReaderChangedCallback(result: MethodChannel.Result, sink: EventSink?) {
-            if (globalReaderCallbackReference == null) {
-                globalReaderCallbackReference = readerManager.setReaderChangedCallback {
-                    changedEvent ->
-                        sink?.success(mapOf(
-                            "type" to "readerChange",
-                            "payload" to changedEvent.toChangedEventMap()
-                        ))
-                }
-                
-            }
-            result.success(null)
-        }
-
-        @JvmStatic
-        fun removeReaderChangedCallback(result: MethodChannel.Result) {
-            globalReaderCallbackReference?.clear()
-            globalReaderCallbackReference = null
-            result.success(null)
-        }
-
-        @JvmStatic
         fun pairReader(result: MethodChannel.Result) {
+            if (globalPairingHandle != null) {
+                // Starting a second pairing would hand us the SDK's failed handle and overwrite the
+                // real one, so `stopPairing` could no longer stop the pairing that is running.
+                result.error("readerAlreadyPairing", "A reader pairing is already in progress", null)
+                return
+            }
+            pendingPairingResult = result
             globalPairingHandle = readerManager.pairReader {
                 pairingResult ->
+                    val pending = takePendingPairingResult() ?: return@pairReader
+                    globalPairingHandle = null
                     when(pairingResult) {
                         is SdkResult.Success -> {
-                            result.success(pairingResult.value)
+                            pending.success(pairingResult.value)
                         }
                         is SdkResult.Failure -> {
-                            result.error(
+                            pending.error(
                                 pairingResult.errorCode.toPairingErrorCodeName(),
                                 pairingResult.errorMessage,
                                 pairingResult.details.map { d -> d.toErrorDetailsMap() }
@@ -180,13 +177,24 @@ class ReaderModule {
 
         @JvmStatic
         fun stopPairing(result: MethodChannel.Result) {
-            if (globalPairingHandle != null) {
-                val stopResult = globalPairingHandle?.stop()
+            val handle = globalPairingHandle
+            if (handle != null) {
+                val stopResult = handle.stop()
                 globalPairingHandle = null
-                result.success(stopResult?.toStopResultName())
+                // `false` with no error tells Dart the pairing ended without completing.
+                takePendingPairingResult()?.success(false)
+                result.success(stopResult.toStopResultName())
             } else {
                 result.success(StopResult.ALREADY_COMPLETE.toStopResultName())
             }
+        }
+
+        /** Returns the pending pairing callback at most once, so it is never settled twice. */
+        @Synchronized
+        private fun takePendingPairingResult(): MethodChannel.Result? {
+            val pending = pendingPairingResult
+            pendingPairingResult = null
+            return pending
         }
 
         @JvmStatic

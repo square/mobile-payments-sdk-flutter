@@ -1,19 +1,17 @@
 package com.squareup.square_mobile_payments_sdk.modules
 
 import com.squareup.sdk.mobilepayments.MobilePaymentsSdk
-import com.squareup.sdk.mobilepayments.core.CallbackReference
 import com.squareup.sdk.mobilepayments.core.Result as SdkResult
 import com.squareup.square_mobile_payments_sdk.extensions.toAuthorizationStateName
 import com.squareup.square_mobile_payments_sdk.extensions.toAuthorizeErrorCodeName
 import com.squareup.square_mobile_payments_sdk.extensions.toAuthorizedLocationMap
 import com.squareup.square_mobile_payments_sdk.extensions.toErrorDetailsMap
-import io.flutter.plugin.common.EventChannel.EventSink
+import com.squareup.square_mobile_payments_sdk.EngineEventStream
 import io.flutter.plugin.common.MethodChannel
 
 class AuthModule {
   companion object {
     private val authManager = MobilePaymentsSdk.authorizationManager()
-    private var authorizationStateCallbackReference: CallbackReference? = null
 
     @JvmStatic
     fun getAuthorizationState(result: MethodChannel.Result) {
@@ -64,26 +62,13 @@ class AuthModule {
       result.success(null)
     }
 
-    @JvmStatic
-    fun setAuthorizationStateChangedCallback(result: MethodChannel.Result, sink: EventSink?) {
-      if (authorizationStateCallbackReference == null) {
-        authorizationStateCallbackReference = authManager.setAuthorizationStateChangedCallback { state ->
-          sink?.success(
-            mapOf(
-              "type" to "authorizationStateChange",
-              "payload" to state.toAuthorizationStateName()
-            )
-          )
-        }
+    internal val authorizationStateEvents = EngineEventStream { emit ->
+      authManager.setAuthorizationStateChangedCallback { state ->
+        emit(mapOf(
+          "type" to "authorizationStateChange",
+          "payload" to state.toAuthorizationStateName()
+        ))
       }
-      result.success(null)
-    }
-
-    @JvmStatic
-    fun removeAuthorizationStateChangedCallback(result: MethodChannel.Result) {
-      authorizationStateCallbackReference?.clear()
-      authorizationStateCallbackReference = null
-      result.success(null)
     }
   }
 }

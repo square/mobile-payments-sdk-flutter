@@ -13,7 +13,16 @@ public class PaymentModule: PaymentManagerDelegate {
         paymentParameters: [String: Any],
         promptParameters: [String: Any]
         ) {
-        let nativePaymentParameters = PaymentMapper.getPaymentParameters(paymentParameters:paymentParameters)
+        let nativePaymentParameters: PaymentParameters
+        do {
+            nativePaymentParameters = try PaymentMapper.getPaymentParameters(paymentParameters:paymentParameters)
+        } catch {
+            result(FlutterError(
+                code: PaymentError.invalidPaymentParameters.getName(),
+                message: error.localizedDescription,
+                details: nil))
+            return
+        }
         let nativePromptParameters = PaymentMapper.getPromptParameters(promptParameters:promptParameters)
 
         guard let topController = UIApplication.shared.rootViewController else {

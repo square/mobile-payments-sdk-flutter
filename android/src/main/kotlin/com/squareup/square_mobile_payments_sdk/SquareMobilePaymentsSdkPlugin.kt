@@ -23,6 +23,19 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
   private lateinit var channel: MethodChannel
   private lateinit var eventChannel: EventChannel
   private var eventSink: EventSink? = null
+  private val eventStreams = mutableSetOf<EngineEventStream>()
+  private val sendEvent: (Map<String, Any>) -> Unit = { event -> eventSink?.success(event) }
+
+  private fun subscribe(stream: EngineEventStream, result: Result) {
+    stream.subscribe(sendEvent)
+    eventStreams.add(stream)
+    result.success(null)
+  }
+
+  private fun unsubscribe(stream: EngineEventStream, result: Result) {
+    if (eventStreams.remove(stream)) stream.unsubscribe(sendEvent)
+    result.success(null)
+  }
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "square_mobile_payments_sdk")
@@ -58,8 +71,8 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
         AuthModule.authorize(result, accessToken, locationId)
       }
       "deauthorize" -> AuthModule.deAuthorize(result)
-      "setAuthorizationStateChangedCallback" -> AuthModule.setAuthorizationStateChangedCallback(result, eventSink)
-      "removeAuthorizationStateChangedCallback" -> AuthModule.removeAuthorizationStateChangedCallback(result)
+      "setAuthorizationStateChangedCallback" -> subscribe(AuthModule.authorizationStateEvents, result)
+      "removeAuthorizationStateChangedCallback" -> unsubscribe(AuthModule.authorizationStateEvents, result)
       "showMockReaderUI" -> ReaderModule.showMockReaderUI(result)
       "hideMockReaderUI" -> ReaderModule.hideMockReaderUI(result)
       "showSettings" -> SettingsModule.showSettings(result)
@@ -79,8 +92,8 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
       }
       "getAllIdempotencyKeys" -> PaymentModule.getAllIdempotencyKeys(result)
       "getAvailableCardEntryMethods" -> PaymentModule.getAvailableCardEntryMethods(result)
-      "setAvailableCardEntryMethodChangedCallback" -> PaymentModule.setAvailableCardEntryMethodChangedCallback(result, eventSink)
-      "removeAvailableCardEntryMethodChangedCallback" -> PaymentModule.removeAvailableCardEntryMethodChangedCallback(result)
+      "setAvailableCardEntryMethodChangedCallback" -> subscribe(PaymentModule.availableCardEntryMethodEvents, result)
+      "removeAvailableCardEntryMethodChangedCallback" -> unsubscribe(PaymentModule.availableCardEntryMethodEvents, result)
       "isOfflineProcessingAllowed" -> SettingsModule.isOfflineProcessingAllowed(result)
       "getOfflineTotalStoredAmountLimit" -> SettingsModule.getOfflineTotalStoredAmountLimit(result)
       "getOfflineTransactionAmountLimit" -> SettingsModule.getOfflineTransactionAmountLimit(result)
@@ -125,8 +138,8 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
         ReaderModule.setReducedChargingModeEnabled(result, enabled)
       }
       "isPairingInProgress" -> ReaderModule.isPairingInProgress(result)
-      "setReaderChangedCallback" -> ReaderModule.setReaderChangedCallback(result, eventSink)
-      "removeReaderChangedCallback" -> ReaderModule.removeReaderChangedCallback(result)
+      "setReaderChangedCallback" -> subscribe(ReaderModule.readerEvents, result)
+      "removeReaderChangedCallback" -> unsubscribe(ReaderModule.readerEvents, result)
       "pairReader" -> ReaderModule.pairReader(result)
       "stopPairing" -> ReaderModule.stopPairing(result)
       "readerSettings" -> ReaderModule.readerSettings(result)
@@ -143,10 +156,13 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
 
   override fun onCancel(arguments: Any?) {
     eventSink = null
+    eventStreams.forEach { it.unsubscribe(sendEvent) }
+    eventStreams.clear()
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
     eventChannel.setStreamHandler(null)
+    onCancel(null)
   }
 }
