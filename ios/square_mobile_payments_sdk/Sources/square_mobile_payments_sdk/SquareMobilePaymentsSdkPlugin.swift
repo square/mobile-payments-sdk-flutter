@@ -68,15 +68,26 @@ public class SquareMobilePaymentsSdkPlugin: NSObject, FlutterPlugin, FlutterStre
           PaymentModule.startPayment(
             result: result,
             paymentParameters: paymentParameters,
-            promptParameters: promptParameters)
+            promptParameters: promptParameters,
+            handleId: arguments["handleId"] as? String)
       } else {
         result(FlutterError(
             code: "missingParameters",
             message: "paymentParameters or promptParameters must not be null",
             details: nil))
       }
+    case "getCurrentPaymentHandleId":
+      PaymentModule.getCurrentPaymentHandleId(result: result)
     case "cancelPayment":
-      PaymentModule.cancelPayment(result: result)
+      PaymentModule.cancelPayment(
+        result: result, handleId: (call.arguments as? [String: Any])?["handleId"] as? String)
+    case "getPaymentHandleParams":
+      PaymentModule.getPaymentHandleParams(
+        result: result, handleId: (call.arguments as? [String: Any])?["handleId"] as? String)
+    case "triggerAdditionalPaymentMethod":
+      let type = (call.arguments as? [String: Any])?["type"] as? String ?? ""
+      PaymentModule.triggerAdditionalPaymentMethod(
+        result: result, type: type, handleId: (call.arguments as? [String: Any])?["handleId"] as? String)
     case "getIdempotencyKey":
       let paymentAttemptId = (call.arguments as? [String: Any])?["paymentAttemptId"] as? String ?? ""
       PaymentModule.getIdempotencyKey(result: result, paymentAttemptId: paymentAttemptId)

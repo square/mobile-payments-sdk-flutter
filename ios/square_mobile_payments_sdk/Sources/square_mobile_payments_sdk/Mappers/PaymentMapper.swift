@@ -168,6 +168,16 @@ public class PaymentMapper {
         }
     }
 
+    static func getPaymentSource(for type: AdditionalPaymentMethodType) -> PaymentSource? {
+        switch type {
+        case .keyed: return KeyedCardPaymentSource()
+        case .cash: return CashPaymentSource()
+        case .tapToPay: return TapToPayPaymentSource()
+        case .cardOnFile, .houseAccount: return nil
+        @unknown default: return nil
+        }
+    }
+
     static func getPromptParameters(promptParameters: [String: Any]) -> PromptParameters {
         let mode = getPromptMode(from: promptParameters["mode"] as? String ?? "defaultMode")
 
