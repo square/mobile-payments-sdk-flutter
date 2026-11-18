@@ -88,6 +88,17 @@ abstract class SquareMobilePaymentsSdkPlatform extends PlatformInterface {
     throw UnimplementedError('cancelPayment() has not been implemented.');
   }
 
+  Future<PaymentHandleParams?> getPaymentHandleParams() async {
+    throw UnimplementedError(
+        'getPaymentHandleParams() has not been implemented.');
+  }
+
+  Future<bool> triggerAdditionalPaymentMethod(
+      AdditionalPaymentMethodType type) async {
+    throw UnimplementedError(
+        'triggerAdditionalPaymentMethod() has not been implemented.');
+  }
+
   Future<Payment> completePayment(String paymentId) async {
     throw UnimplementedError('completePayment() has not been implemented.');
   }

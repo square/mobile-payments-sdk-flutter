@@ -289,3 +289,30 @@ extension OfflinePaymentQueueError {
         }
     }
 }
+
+extension PaymentHandle {
+    func toMap() -> [String: Any?] {
+        return [
+            "totalMoneyWithProposedCardSurcharge": totalMoneyWithProposedCardSurcharge?.toMap(),
+            "additionalPaymentMethods": additionalPaymentMethods.compactMap { $0.type.toName() },
+            "isPaymentCancelable": isPaymentCancelable
+        ]
+    }
+}
+
+extension AdditionalPaymentMethodType {
+    func toName() -> String? {
+        return switch self {
+        case .keyed:
+            "keyed"
+        case .cardOnFile:
+            nil
+        case .cash:
+            "cash"
+        case .houseAccount:
+            nil
+        case .tapToPay:
+            "tapToPay"
+        }
+    }
+}

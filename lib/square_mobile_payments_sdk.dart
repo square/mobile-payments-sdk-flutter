@@ -6,6 +6,8 @@ import 'package:square_mobile_payments_sdk/src/managers/tap_to_pay_settings.dart
 
 export 'package:square_mobile_payments_sdk/src/models/models.dart';
 export 'package:square_mobile_payments_sdk/src/errors/errors.dart';
+export 'package:square_mobile_payments_sdk/src/managers/payment_manager.dart'
+    show PaymentHandle;
 
 class SquareMobilePaymentsSdk {
   final TapToPaySettings tapToPaySettings = TapToPaySettings();
