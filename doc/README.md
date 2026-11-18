@@ -183,7 +183,7 @@ PaymentHandle handle = _squareMobilePaymentsSdkPlugin.paymentManager.startPaymen
     PaymentParameters(
         amountMoney: Money(amount: 100, currencyCode: CurrencyCode.eur),
         paymentAttemptId: paymentAttemptId,
-        processingMode: ProcessingMode.autoDetect,
+        processingMode: ProcessingMode.onlineOnly,
         allowCardSurcharge: true,
     ),
     PromptParameters(additionalPaymentMethods: List.empty(), mode: PromptMode.defaultMode),
@@ -195,6 +195,8 @@ PaymentHandle handle = _squareMobilePaymentsSdkPlugin.paymentManager.startPaymen
         }
     });
 ```
+
+Use `ProcessingMode.onlineOnly` for Sandbox payments. For an eligible production seller, `ProcessingMode.autoDetect` lets the SDK choose online or offline processing, and `ProcessingMode.offlineOnly` queues payments on the device even when it has connectivity. Offline processing requires seller opt-in.
 
 Payment parameters supports a number of additional attributes, which can be seen in the [PaymentParameters definition](REFERENCE.md#paymentparameters). For error descriptions, visit the respective pages for [iOS](https://developer.squareup.com/docs/mobile-payments-sdk/ios/handling-errors), and [Android](https://developer.squareup.com/docs/mobile-payments-sdk/android/handling-errors).
 
