@@ -178,40 +178,46 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<Payment> startPayment(PaymentParameters paymentParameters,
-      PromptParameters promptParameters) async {
+  Future<Payment> startPayment(
+    PaymentParameters paymentParameters,
+    PromptParameters promptParameters, {
+    String? handleId,
+  }) async {
     var amountMoney = {
       "amount": paymentParameters.amountMoney.amount,
-      "currencyCode": paymentParameters.amountMoney.currencyCode.name
+      "currencyCode": paymentParameters.amountMoney.currencyCode.name,
     };
 
     var appFeeMoney = paymentParameters.appFeeMoney != null
         ? {
             "amount": paymentParameters.appFeeMoney!.amount,
-            "currencyCode": paymentParameters.appFeeMoney!.currencyCode.name
+            "currencyCode": paymentParameters.appFeeMoney!.currencyCode.name,
           }
         : null;
 
     var tipMoney = paymentParameters.tipMoney != null
         ? {
             "amount": paymentParameters.tipMoney!.amount,
-            "currencyCode": paymentParameters.tipMoney!.currencyCode.name
+            "currencyCode": paymentParameters.tipMoney!.currencyCode.name,
           }
         : null;
 
     var params = <String, dynamic>{
+      if (handleId != null) 'handleId': handleId,
       'paymentParameters': {
         ...paymentParameters.toJson(),
         "amountMoney": amountMoney,
         "appFeeMoney": appFeeMoney,
-        "tipMoney": tipMoney
+        "tipMoney": tipMoney,
       },
       'promptParameters': promptParameters.toJson(),
     };
 
     try {
-      final response =
-          await methodChannel.invokeMethod<Map>('startPayment', params);
+      final response = await methodChannel.invokeMethod<Map>(
+        'startPayment',
+        params,
+      );
       if (response == null) {
         throw getChannelStateError("startPayment()", "returned null");
       }
@@ -223,9 +229,15 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<CancelResult> cancelPayment() async {
-    final resultName =
-        await methodChannel.invokeMethod<String>('cancelPayment');
+  Future<String?> getCurrentPaymentHandleId() =>
+      methodChannel.invokeMethod<String>('getCurrentPaymentHandleId');
+
+  @override
+  Future<CancelResult> cancelPayment({String? handleId}) async {
+    final resultName = await methodChannel.invokeMethod<String>(
+      'cancelPayment',
+      handleId == null ? null : {'handleId': handleId},
+    );
     if (resultName == null) {
       throw getChannelStateError("cancelPayment()", "returned null");
     }
@@ -233,9 +245,13 @@ class MethodChannelSquareMobilePaymentsSdk
   }
 
   @override
-  Future<PaymentHandleParams?> getPaymentHandleParams() async {
-    final result =
-        await methodChannel.invokeMethod<Map>('getPaymentHandleParams');
+  Future<PaymentHandleParams?> getPaymentHandleParams({
+    String? handleId,
+  }) async {
+    final result = await methodChannel.invokeMethod<Map>(
+      'getPaymentHandleParams',
+      handleId == null ? null : {'handleId': handleId},
+    );
     if (result == null) {
       return null;
     }
@@ -244,13 +260,19 @@ class MethodChannelSquareMobilePaymentsSdk
 
   @override
   Future<bool> triggerAdditionalPaymentMethod(
-      AdditionalPaymentMethodType type) async {
+    AdditionalPaymentMethodType type, {
+    String? handleId,
+  }) async {
     try {
       final result = await methodChannel.invokeMethod<bool>(
-          'triggerAdditionalPaymentMethod', {'type': type.name});
+        'triggerAdditionalPaymentMethod',
+        {'type': type.name, if (handleId != null) 'handleId': handleId},
+      );
       if (result == null) {
         throw getChannelStateError(
-            "triggerAdditionalPaymentMethod()", "returned null");
+          "triggerAdditionalPaymentMethod()",
+          "returned null",
+        );
       }
       return result;
     } on PlatformException catch (e) {

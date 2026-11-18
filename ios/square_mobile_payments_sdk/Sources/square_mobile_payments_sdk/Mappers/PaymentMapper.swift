@@ -174,6 +174,7 @@ public class PaymentMapper {
         case .cash: return CashPaymentSource()
         case .tapToPay: return TapToPayPaymentSource()
         case .cardOnFile, .houseAccount: return nil
+        @unknown default: return nil
         }
     }
 

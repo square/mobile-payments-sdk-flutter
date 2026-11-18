@@ -7,11 +7,39 @@ public class PaymentModule: PaymentManagerDelegate {
     private static let paymentDelegate = PaymentModule()
     private static var availableCardInputMethodsObserver: AvailableCardInputMethodsObserverCallback?
     private var delegateResult: FlutterResult?
+    private var handleId: String?
+    private var handle: PaymentHandle?
+
+    private static func resolveHandle(_ id: String?) -> PaymentHandle? {
+        let current = paymentManager.currentPaymentHandle
+        guard let id else { return current }
+        guard let handle = paymentDelegate.handle,
+              paymentDelegate.handleId == id,
+              handle === current else { return nil }
+        return handle
+    }
+
+    public static func getCurrentPaymentHandleId(result: FlutterResult) {
+        guard let id = paymentDelegate.handleId, resolveHandle(id) != nil else {
+            result(nil)
+            return
+        }
+        result(id)
+    }
+
+    private func finishPayment(_ value: Any?) {
+        let result = delegateResult
+        delegateResult = nil
+        handle = nil
+        handleId = nil
+        result?(value)
+    }
 
     public static func startPayment(
         result: @escaping FlutterResult,
         paymentParameters: [String: Any],
-        promptParameters: [String: Any]
+        promptParameters: [String: Any],
+        handleId: String?
         ) {
         let nativePaymentParameters: PaymentParameters
         do {
@@ -41,33 +69,38 @@ public class PaymentModule: PaymentManagerDelegate {
             return
         }
 
+        let id = handleId ?? UUID().uuidString
         paymentDelegate.delegateResult = result
-        paymentManager.startPayment(
+        paymentDelegate.handleId = id
+        let handle = paymentManager.startPayment(
             nativePaymentParameters,
             promptParameters: nativePromptParameters,
             from: topController,
             delegate: paymentDelegate
         )
+        if paymentDelegate.handleId == id {
+            paymentDelegate.handle = handle
+        }
     }
 
-    public static func cancelPayment(result: @escaping FlutterResult) {
-        guard let handle = paymentManager.currentPaymentHandle else {
+    public static func cancelPayment(result: @escaping FlutterResult, handleId: String?) {
+        guard let handle = resolveHandle(handleId) else {
             result("noPaymentInProgress")
             return
         }
         result(handle.cancelPayment() ? "canceled" : "notCancelable")
     }
 
-    public static func getPaymentHandleParams(result: @escaping FlutterResult) {
-        guard let handle = paymentManager.currentPaymentHandle else {
+    public static func getPaymentHandleParams(result: @escaping FlutterResult, handleId: String?) {
+        guard let handle = resolveHandle(handleId) else {
             result(NSNull())
             return
         }
         result(handle.toMap())
     }
 
-    public static func triggerAdditionalPaymentMethod(result: @escaping FlutterResult, type: String) {
-        guard let handle = paymentManager.currentPaymentHandle,
+    public static func triggerAdditionalPaymentMethod(result: @escaping FlutterResult, type: String, handleId: String?) {
+        guard let handle = resolveHandle(handleId),
               let method = handle.additionalPaymentMethods.first(where: { $0.type.toName() == type }),
               let source = PaymentMapper.getPaymentSource(for: method.type) else {
             result(false)
@@ -171,40 +204,37 @@ public class PaymentModule: PaymentManagerDelegate {
 
     public func paymentManager(_ paymentManager: PaymentManager, didFinish payment: Payment) {
         if let onlinePayment = payment as? OnlinePayment {
-            delegateResult?(onlinePayment.toMap())
+            finishPayment(onlinePayment.toMap())
         } else if let offlinePayment = payment as? OfflinePayment {
-            delegateResult?(offlinePayment.toMap())
+            finishPayment(offlinePayment.toMap())
         } else {
-            delegateResult?(nil)
+            finishPayment(nil)
         }
-        delegateResult = nil
     }
 
     public func paymentManager(_ paymentManager: PaymentManager, didFail payment: Payment, withError error: Error) {
         let e = error as NSError
         if let paymentError = PaymentError(rawValue: e.code) {
-            delegateResult?(FlutterError(
+            finishPayment(FlutterError(
                 code: paymentError.getName(),
                 message: e.localizedDescription,
                 details: e.localizedFailureReason
             ))
         } else {
-            delegateResult?(FlutterError(
+            finishPayment(FlutterError(
                 code: PaymentError.unexpected.getName(),
                 message: e.localizedDescription,
                 details: e.localizedFailureReason
             ))
         }
-        delegateResult = nil
     }
 
     public func paymentManager(_ paymentManager: PaymentManager, didCancel payment: Payment) {
-        delegateResult?(FlutterError(
+        finishPayment(FlutterError(
             code: "canceled",
             message: "The payment was cancelled",
             details: nil
         ))
-        delegateResult = nil
     }
 
     // Optional

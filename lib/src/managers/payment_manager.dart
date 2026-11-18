@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:square_mobile_payments_sdk/square_mobile_payments_sdk_platform_interface.dart';
 import 'package:square_mobile_payments_sdk/src/errors/errors.dart';
@@ -10,29 +11,47 @@ class PaymentManager {
   static final PaymentManager _instance = PaymentManager._privateConstructor();
   factory PaymentManager() => _instance;
 
+  static final _handleNamespace = Random.secure().nextInt(1 << 32);
+  static int _nextHandleId = 0;
+
   static UnsupportedError _androidOnlyError() {
     return UnsupportedError('This feature is only available on Android.');
   }
 
   PaymentHandle startPayment(
-      PaymentParameters paymentParameters,
-      PromptParameters promptParameters,
-      void Function(Payment? payment, PaymentError? error) onResult) {
-    SquareMobilePaymentsSdkPlatform.instance
-        .startPayment(paymentParameters, promptParameters)
-        .then<void>((payment) => onResult(payment, null),
-            onError: (Object error) {
-      onResult(
+    PaymentParameters paymentParameters,
+    PromptParameters promptParameters,
+    void Function(Payment? payment, PaymentError? error) onResult,
+  ) {
+    final platform = SquareMobilePaymentsSdkPlatform.instance;
+    final id = '$_handleNamespace:${_nextHandleId++}';
+    Future.sync(
+      () => platform.startPayment(
+        paymentParameters,
+        promptParameters,
+        handleId: id,
+      ),
+    ).then<void>(
+      (payment) => onResult(payment, null),
+      onError: (Object error, StackTrace stackTrace) {
+        onResult(
           null,
           error is PaymentError
               ? error
-              : PaymentError('unexpected', error.toString()));
-    });
-    return PaymentHandle._();
+              : PaymentError('unexpected', error.toString(), (
+                  error: error,
+                  stackTrace: stackTrace,
+                )),
+        );
+      },
+    );
+    return PaymentHandle._(platform, id);
   }
 
-  PaymentHandle getCurrentPaymentHandle() {
-    return PaymentHandle._();
+  Future<PaymentHandle?> getCurrentPaymentHandle() async {
+    final platform = SquareMobilePaymentsSdkPlatform.instance;
+    final id = await platform.getCurrentPaymentHandleId();
+    return id == null ? null : PaymentHandle._(platform, id);
   }
 
   Future<CancelResult> cancelPayment() async {
@@ -84,20 +103,23 @@ class PaymentManager {
 }
 
 class PaymentHandle {
-  PaymentHandle._();
+  PaymentHandle._(this._platform, this._id);
+
+  final SquareMobilePaymentsSdkPlatform _platform;
+  final String _id;
 
   Future<CancelResult> cancelPayment() async {
-    return SquareMobilePaymentsSdkPlatform.instance.cancelPayment();
+    return _platform.cancelPayment(handleId: _id);
   }
 
   Future<PaymentHandleParams?> getParams() async {
-    return SquareMobilePaymentsSdkPlatform.instance.getPaymentHandleParams();
+    return _platform.getPaymentHandleParams(handleId: _id);
   }
 
   Future<bool> triggerAdditionalPaymentMethod(
-      AdditionalPaymentMethodType type) async {
-    return SquareMobilePaymentsSdkPlatform.instance
-        .triggerAdditionalPaymentMethod(type);
+    AdditionalPaymentMethodType type,
+  ) async {
+    return _platform.triggerAdditionalPaymentMethod(type, handleId: _id);
   }
 }
 

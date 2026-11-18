@@ -144,7 +144,7 @@ The Payment methods handles the payment flow for your application, which allows 
 Method                                                    | Returns                       | Description
 --------------------------------------------------------- | --------------------------------- | ---
 [startPayment](#startpayment) | [PaymentHandle](#paymenthandle) | Starts a payment taking payment and prompt parameters, and returns its PaymentHandle right away. The resulting Payment, or the PaymentError, is delivered to a callback.
-[getCurrentPaymentHandle](#getcurrentpaymenthandle) | [PaymentHandle](#paymenthandle) | Returns a PaymentHandle to act on the payment in progress.
+[getCurrentPaymentHandle](#getcurrentpaymenthandle) | Future<PaymentHandle?> | Returns a PaymentHandle to act on the payment in progress.
 [cancelPayment](#cancelpayment) | [CancelResult](#cancelresult) | Cancels the payment in progress and returns the outcome.
 [getPaymentHandleParams](#getpaymenthandleparams) | [PaymentHandleParams](#paymenthandleparams) | Returns the current values of the payment in progress.
 [triggerAdditionalPaymentMethod](#triggeradditionalpaymentmethod) | Boolean | Starts an additional payment method offered by the payment in progress.
@@ -165,15 +165,15 @@ Parameter | Type   | Description
 --------- | ------ | -----------
 paymentParameters | [PaymentParameters](#paymentparameters) | Parameters to configure the payment.
 promptParameters | [PromptParameters](#promptparameters) | Parameters to configure the prompt.
-onResult | Function | Invoked once with the resulting [Payment](#payment-1), which will include all the information Square captured about the payment, and a `null` error; or with a `null` payment and the resulting PaymentError. Errors that do not come from the SDK are delivered as a PaymentError whose code is `unexpected`.
+onResult | Function | Invoked once with the resulting [Payment](#payment-1), which will include all the information Square captured about the payment, and a `null` error; or with a `null` payment and the resulting PaymentError. Unexpected bridge errors are delivered with code `unexpected` and the original exception and stack trace in `details`. Exceptions thrown by `onResult` surface as uncaught asynchronous errors.
 
-* **Returns**: a [PaymentHandle](#paymenthandle) to act on the payment in progress.
+* **Returns**: a [PaymentHandle](#paymenthandle) bound to this payment attempt. You can call its methods immediately after starting the payment.
 
 ##### getCurrentPaymentHandle
 
 Returns a [PaymentHandle](#paymenthandle) to act on the payment in progress, for code that does not have the one returned by [startPayment](#startpayment).
 
-* **Returns**: a [PaymentHandle](#paymenthandle).
+* **Returns**: a `Future<PaymentHandle?>` that resolves to a handle bound to the active payment, or `null` if no payment is active.
 
 ##### cancelPayment
 
@@ -183,19 +183,19 @@ Cancels the payment in progress. When the payment is canceled, the `startPayment
 
 ##### getPaymentHandleParams
 
-Returns the current values of the payment in progress, such as the additional payment methods it offers.
+Returns the current values of the payment in progress. Additional methods must be requested in `PromptParameters.additionalPaymentMethods`. On iOS the list is determined when the payment starts. On Android the list reflects the current step and is empty while the payment prompt is out of view.
 
 * **On success**: returns a [PaymentHandleParams](#paymenthandleparams), or `null` if no payment is in progress.
 
 ##### triggerAdditionalPaymentMethod
 
-Starts one of the additional payment methods offered by the payment in progress. `keyed` and `cash` are available on both platforms and `tapToPay` on iOS only; [getPaymentHandleParams](#getpaymenthandleparams) tells which ones the current payment offers. The payment result is delivered as usual.
+Starts one of the additional payment methods offered by the payment in progress. `keyed` and `cash` are available on both platforms and `tapToPay` on iOS only; [getPaymentHandleParams](#getpaymenthandleparams) tells which ones the current payment offers. On Android, programmatic triggering requires custom prompt mode and the payment must be on the prompt step. Request the method in `PromptParameters.additionalPaymentMethods` on both platforms. The payment result is delivered as usual.
 
 Parameter | Type   | Description
 --------- | ------ | -----------
 type | [AdditionalPaymentMethodType](#additionalpaymentmethodtype) | The additional payment method to start.
 
-* **On success**: returns `true` if the method was started, or `false` if no payment is in progress or the payment does not offer that method.
+* **On success**: returns `true` if the method was started, or `false` if no payment is in progress or the payment does not offer that method, or Android is using default prompt mode.
 * **On failure**: throws an error which includes the resulting PaymentError.
 
 ##### completePayment
@@ -527,7 +527,7 @@ securityComplianceVersion | String | The security compliance version of the SDK.
 
 ### PaymentHandle
 
-Returned by [startPayment](#startpayment) and [getCurrentPaymentHandle](#getcurrentpaymenthandle) to act on the payment in progress. Each method has an equivalent in the Payment methods, so the handle does not need to be kept to use them.
+A handle acts on the payment it was bound to. After that payment ends or its start is rejected, cancellation returns `noPaymentInProgress`, `getParams()` returns `null`, and `triggerAdditionalPaymentMethod()` returns `false`. The equivalent manager methods target the payment currently in progress.
 
 Method            | Returns                 | Description
 ----------------- | ----------------------- | --------------------
@@ -544,7 +544,7 @@ The current values of the payment in progress.
 Field             | Type                    | Description
 ----------------- | ----------------------- | --------------------
 totalMoneyWithProposedCardSurcharge | [Money](#money) | The total including tip and a proposed card surcharge, or `null` when no surcharge applies.
-additionalPaymentMethods | [List\<AdditionalPaymentMethodType\>](#additionalpaymentmethodtype) | The additional payment methods offered for this payment.
+additionalPaymentMethods | [List\<AdditionalPaymentMethodType\>](#additionalpaymentmethodtype) | The requested methods offered for this payment. On Android availability changes with the current payment step.
 isPaymentCancelable | Boolean | iOS only. Whether the payment can currently be canceled. Always `null` on Android, where the SDK does not expose it, and `null` does not tell whether the payment can be canceled. On Android the only way to find out is the [CancelResult](#cancelresult) of [cancelPayment](#cancelpayment), which is not recommended as a check because it cancels the payment when it is cancelable.
 
 ## Enums

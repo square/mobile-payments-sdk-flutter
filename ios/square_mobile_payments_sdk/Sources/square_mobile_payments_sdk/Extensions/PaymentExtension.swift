@@ -313,6 +313,8 @@ extension AdditionalPaymentMethodType {
             nil
         case .tapToPay:
             "tapToPay"
+        @unknown default:
+            nil
         }
     }
 }
