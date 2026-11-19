@@ -1,3 +1,7 @@
+## 2026.11.1
+
+- Upgrade the Freezed code generator to `^4.0.0` and regenerate the Dart models for Dart 3.13 and later ([#106](https://github.com/square/mobile-payments-sdk-flutter/issues/106)).
+
 ## 2026.10.3
 
 - Upgrade Android Mobile Payments SDK to 2.7.0.

@@ -3,7 +3,7 @@
 Guidance for coding agents **integrating the Mobile Payments SDK into a Flutter app**.
 This repo is the `square_mobile_payments_sdk` plugin plus the Donut Counter sample in `example/`.
 
-Current package version: **2026.10.2**, wrapping native SDK **iOS 2.7.0** / **Android 2.7.0**.
+Current package version: **2026.11.1**, wrapping native SDK **iOS 2.7.0** / **Android 2.7.0**.
 
 ## Install
 
