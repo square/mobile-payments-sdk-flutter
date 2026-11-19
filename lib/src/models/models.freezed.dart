@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'models.dart';
@@ -9,6 +9,7 @@ part of 'models.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -27,23 +28,29 @@ $LocationCopyWith<Location> get copyWith => _$LocationCopyWithImpl<Location>(thi
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as Location;
   properties
     ..add(DiagnosticsProperty('type', 'Location'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('currencyCode', currencyCode))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('merchantId', merchantId))..add(DiagnosticsProperty('businessName', businessName))..add(DiagnosticsProperty('cardProcessingActivated', cardProcessingActivated))..add(DiagnosticsProperty('mcc', mcc));
+    ..add(DiagnosticsProperty('id', _this.id))..add(DiagnosticsProperty('currencyCode', _this.currencyCode))..add(DiagnosticsProperty('name', _this.name))..add(DiagnosticsProperty('merchantId', _this.merchantId))..add(DiagnosticsProperty('businessName', _this.businessName))..add(DiagnosticsProperty('cardProcessingActivated', _this.cardProcessingActivated))..add(DiagnosticsProperty('mcc', _this.mcc));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Location&&(identical(other.id, id) || other.id == id)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.name, name) || other.name == name)&&(identical(other.merchantId, merchantId) || other.merchantId == merchantId)&&(identical(other.businessName, businessName) || other.businessName == businessName)&&(identical(other.cardProcessingActivated, cardProcessingActivated) || other.cardProcessingActivated == cardProcessingActivated)&&(identical(other.mcc, mcc) || other.mcc == mcc));
+  final _this = this as Location;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Location&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.currencyCode, _this.currencyCode) || other.currencyCode == _this.currencyCode)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.merchantId, _this.merchantId) || other.merchantId == _this.merchantId)&&(identical(other.businessName, _this.businessName) || other.businessName == _this.businessName)&&(identical(other.cardProcessingActivated, _this.cardProcessingActivated) || other.cardProcessingActivated == _this.cardProcessingActivated)&&(identical(other.mcc, _this.mcc) || other.mcc == _this.mcc));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,currencyCode,name,merchantId,businessName,cardProcessingActivated,mcc);
+int get hashCode {
+  final _this = this as Location;
+  return Object.hash(runtimeType,_this.id,_this.currencyCode,_this.name,_this.merchantId,_this.businessName,_this.cardProcessingActivated,_this.mcc);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'Location(id: $id, currencyCode: $currencyCode, name: $name, merchantId: $merchantId, businessName: $businessName, cardProcessingActivated: $cardProcessingActivated, mcc: $mcc)';
+  final _this = this as Location;
+  return 'Location(id: ${_this.id}, currencyCode: ${_this.currencyCode}, name: ${_this.name}, merchantId: ${_this.merchantId}, businessName: ${_this.businessName}, cardProcessingActivated: ${_this.cardProcessingActivated}, mcc: ${_this.mcc})';
 }
 
 
@@ -72,7 +79,7 @@ class _$LocationCopyWithImpl<$Res>
 /// Create a copy of Location
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? currencyCode = null,Object? name = null,Object? merchantId = freezed,Object? businessName = freezed,Object? cardProcessingActivated = freezed,Object? mcc = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(Location(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
 as CurrencyCode,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -244,23 +251,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'Location'))
     ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('currencyCode', currencyCode))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('merchantId', merchantId))..add(DiagnosticsProperty('businessName', businessName))..add(DiagnosticsProperty('cardProcessingActivated', cardProcessingActivated))..add(DiagnosticsProperty('mcc', mcc));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Location&&(identical(other.id, id) || other.id == id)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.name, name) || other.name == name)&&(identical(other.merchantId, merchantId) || other.merchantId == merchantId)&&(identical(other.businessName, businessName) || other.businessName == businessName)&&(identical(other.cardProcessingActivated, cardProcessingActivated) || other.cardProcessingActivated == cardProcessingActivated)&&(identical(other.mcc, mcc) || other.mcc == mcc));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Location&&(identical(other.id, id) || other.id == id)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.name, name) || other.name == name)&&(identical(other.merchantId, merchantId) || other.merchantId == merchantId)&&(identical(other.businessName, businessName) || other.businessName == businessName)&&(identical(other.cardProcessingActivated, cardProcessingActivated) || other.cardProcessingActivated == cardProcessingActivated)&&(identical(other.mcc, mcc) || other.mcc == mcc));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,currencyCode,name,merchantId,businessName,cardProcessingActivated,mcc);
+int get hashCode {
+    return Object.hash(runtimeType,id,currencyCode,name,merchantId,businessName,cardProcessingActivated,mcc);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'Location(id: $id, currencyCode: $currencyCode, name: $name, merchantId: $merchantId, businessName: $businessName, cardProcessingActivated: $cardProcessingActivated, mcc: $mcc)';
+    return 'Location(id: $id, currencyCode: $currencyCode, name: $name, merchantId: $merchantId, businessName: $businessName, cardProcessingActivated: $cardProcessingActivated, mcc: $mcc)';
 }
 
 
@@ -320,23 +329,29 @@ $MoneyCopyWith<Money> get copyWith => _$MoneyCopyWithImpl<Money>(this as Money, 
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as Money;
   properties
     ..add(DiagnosticsProperty('type', 'Money'))
-    ..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('currencyCode', currencyCode));
+    ..add(DiagnosticsProperty('amount', _this.amount))..add(DiagnosticsProperty('currencyCode', _this.currencyCode));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Money&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode));
+  final _this = this as Money;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Money&&(identical(other.amount, _this.amount) || other.amount == _this.amount)&&(identical(other.currencyCode, _this.currencyCode) || other.currencyCode == _this.currencyCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,amount,currencyCode);
+int get hashCode {
+  final _this = this as Money;
+  return Object.hash(runtimeType,_this.amount,_this.currencyCode);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'Money(amount: $amount, currencyCode: $currencyCode)';
+  final _this = this as Money;
+  return 'Money(amount: ${_this.amount}, currencyCode: ${_this.currencyCode})';
 }
 
 
@@ -365,7 +380,7 @@ class _$MoneyCopyWithImpl<$Res>
 /// Create a copy of Money
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? amount = null,Object? currencyCode = null,}) {
-  return _then(_self.copyWith(
+  return _then(Money(
 amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as int,currencyCode: null == currencyCode ? _self.currencyCode : currencyCode // ignore: cast_nullable_to_non_nullable
 as CurrencyCode,
@@ -527,23 +542,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'Money'))
     ..add(DiagnosticsProperty('amount', amount))..add(DiagnosticsProperty('currencyCode', currencyCode));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Money&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Money&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,amount,currencyCode);
+int get hashCode {
+    return Object.hash(runtimeType,amount,currencyCode);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'Money(amount: $amount, currencyCode: $currencyCode)';
+    return 'Money(amount: $amount, currencyCode: $currencyCode)';
 }
 
 
@@ -598,23 +615,29 @@ $CardCopyWith<Card> get copyWith => _$CardCopyWithImpl<Card>(this as Card, _$ide
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as Card;
   properties
     ..add(DiagnosticsProperty('type', 'Card'))
-    ..add(DiagnosticsProperty('brand', brand))..add(DiagnosticsProperty('cardholderName', cardholderName))..add(DiagnosticsProperty('coBrand', coBrand))..add(DiagnosticsProperty('expirationMonth', expirationMonth))..add(DiagnosticsProperty('expirationYear', expirationYear))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('lastFourDigits', lastFourDigits))..add(DiagnosticsProperty('bin', bin));
+    ..add(DiagnosticsProperty('brand', _this.brand))..add(DiagnosticsProperty('cardholderName', _this.cardholderName))..add(DiagnosticsProperty('coBrand', _this.coBrand))..add(DiagnosticsProperty('expirationMonth', _this.expirationMonth))..add(DiagnosticsProperty('expirationYear', _this.expirationYear))..add(DiagnosticsProperty('id', _this.id))..add(DiagnosticsProperty('lastFourDigits', _this.lastFourDigits))..add(DiagnosticsProperty('bin', _this.bin));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Card&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.cardholderName, cardholderName) || other.cardholderName == cardholderName)&&(identical(other.coBrand, coBrand) || other.coBrand == coBrand)&&(identical(other.expirationMonth, expirationMonth) || other.expirationMonth == expirationMonth)&&(identical(other.expirationYear, expirationYear) || other.expirationYear == expirationYear)&&(identical(other.id, id) || other.id == id)&&(identical(other.lastFourDigits, lastFourDigits) || other.lastFourDigits == lastFourDigits)&&(identical(other.bin, bin) || other.bin == bin));
+  final _this = this as Card;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Card&&(identical(other.brand, _this.brand) || other.brand == _this.brand)&&(identical(other.cardholderName, _this.cardholderName) || other.cardholderName == _this.cardholderName)&&(identical(other.coBrand, _this.coBrand) || other.coBrand == _this.coBrand)&&(identical(other.expirationMonth, _this.expirationMonth) || other.expirationMonth == _this.expirationMonth)&&(identical(other.expirationYear, _this.expirationYear) || other.expirationYear == _this.expirationYear)&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.lastFourDigits, _this.lastFourDigits) || other.lastFourDigits == _this.lastFourDigits)&&(identical(other.bin, _this.bin) || other.bin == _this.bin));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,brand,cardholderName,coBrand,expirationMonth,expirationYear,id,lastFourDigits,bin);
+int get hashCode {
+  final _this = this as Card;
+  return Object.hash(runtimeType,_this.brand,_this.cardholderName,_this.coBrand,_this.expirationMonth,_this.expirationYear,_this.id,_this.lastFourDigits,_this.bin);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'Card(brand: $brand, cardholderName: $cardholderName, coBrand: $coBrand, expirationMonth: $expirationMonth, expirationYear: $expirationYear, id: $id, lastFourDigits: $lastFourDigits, bin: $bin)';
+  final _this = this as Card;
+  return 'Card(brand: ${_this.brand}, cardholderName: ${_this.cardholderName}, coBrand: ${_this.coBrand}, expirationMonth: ${_this.expirationMonth}, expirationYear: ${_this.expirationYear}, id: ${_this.id}, lastFourDigits: ${_this.lastFourDigits}, bin: ${_this.bin})';
 }
 
 
@@ -643,7 +666,7 @@ class _$CardCopyWithImpl<$Res>
 /// Create a copy of Card
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? brand = null,Object? cardholderName = freezed,Object? coBrand = freezed,Object? expirationMonth = null,Object? expirationYear = null,Object? id = freezed,Object? lastFourDigits = freezed,Object? bin = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(Card(
 brand: null == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
 as CardBrand,cardholderName: freezed == cardholderName ? _self.cardholderName : cardholderName // ignore: cast_nullable_to_non_nullable
 as String?,coBrand: freezed == coBrand ? _self.coBrand : coBrand // ignore: cast_nullable_to_non_nullable
@@ -817,23 +840,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'Card'))
     ..add(DiagnosticsProperty('brand', brand))..add(DiagnosticsProperty('cardholderName', cardholderName))..add(DiagnosticsProperty('coBrand', coBrand))..add(DiagnosticsProperty('expirationMonth', expirationMonth))..add(DiagnosticsProperty('expirationYear', expirationYear))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('lastFourDigits', lastFourDigits))..add(DiagnosticsProperty('bin', bin));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Card&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.cardholderName, cardholderName) || other.cardholderName == cardholderName)&&(identical(other.coBrand, coBrand) || other.coBrand == coBrand)&&(identical(other.expirationMonth, expirationMonth) || other.expirationMonth == expirationMonth)&&(identical(other.expirationYear, expirationYear) || other.expirationYear == expirationYear)&&(identical(other.id, id) || other.id == id)&&(identical(other.lastFourDigits, lastFourDigits) || other.lastFourDigits == lastFourDigits)&&(identical(other.bin, bin) || other.bin == bin));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Card&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.cardholderName, cardholderName) || other.cardholderName == cardholderName)&&(identical(other.coBrand, coBrand) || other.coBrand == coBrand)&&(identical(other.expirationMonth, expirationMonth) || other.expirationMonth == expirationMonth)&&(identical(other.expirationYear, expirationYear) || other.expirationYear == expirationYear)&&(identical(other.id, id) || other.id == id)&&(identical(other.lastFourDigits, lastFourDigits) || other.lastFourDigits == lastFourDigits)&&(identical(other.bin, bin) || other.bin == bin));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,brand,cardholderName,coBrand,expirationMonth,expirationYear,id,lastFourDigits,bin);
+int get hashCode {
+    return Object.hash(runtimeType,brand,cardholderName,coBrand,expirationMonth,expirationYear,id,lastFourDigits,bin);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'Card(brand: $brand, cardholderName: $cardholderName, coBrand: $coBrand, expirationMonth: $expirationMonth, expirationYear: $expirationYear, id: $id, lastFourDigits: $lastFourDigits, bin: $bin)';
+    return 'Card(brand: $brand, cardholderName: $cardholderName, coBrand: $coBrand, expirationMonth: $expirationMonth, expirationYear: $expirationYear, id: $id, lastFourDigits: $lastFourDigits, bin: $bin)';
 }
 
 
@@ -882,10 +907,7 @@ as String?,
 /// @nodoc
 mixin _$OfflineCard implements DiagnosticableTreeMixin {
 
-@JsonKey(unknownEnumValue: CardBrand.unknown) CardBrand get brand; String? get cardholderName; String? get id; String? get lastFourDigits;@JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand? get coBrand;// Android only
- num? get expirationMonth;// Android only
- num? get expirationYear;// Android only
- String? get bin;
+@JsonKey(unknownEnumValue: CardBrand.unknown) CardBrand get brand; String? get cardholderName; String? get id; String? get lastFourDigits;@JsonKey(unknownEnumValue: CardCoBrand.unknown) CardCoBrand? get coBrand; num? get expirationMonth; num? get expirationYear; String? get bin;
 /// Create a copy of OfflineCard
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -897,23 +919,29 @@ $OfflineCardCopyWith<OfflineCard> get copyWith => _$OfflineCardCopyWithImpl<Offl
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as OfflineCard;
   properties
     ..add(DiagnosticsProperty('type', 'OfflineCard'))
-    ..add(DiagnosticsProperty('brand', brand))..add(DiagnosticsProperty('cardholderName', cardholderName))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('lastFourDigits', lastFourDigits))..add(DiagnosticsProperty('coBrand', coBrand))..add(DiagnosticsProperty('expirationMonth', expirationMonth))..add(DiagnosticsProperty('expirationYear', expirationYear))..add(DiagnosticsProperty('bin', bin));
+    ..add(DiagnosticsProperty('brand', _this.brand))..add(DiagnosticsProperty('cardholderName', _this.cardholderName))..add(DiagnosticsProperty('id', _this.id))..add(DiagnosticsProperty('lastFourDigits', _this.lastFourDigits))..add(DiagnosticsProperty('coBrand', _this.coBrand))..add(DiagnosticsProperty('expirationMonth', _this.expirationMonth))..add(DiagnosticsProperty('expirationYear', _this.expirationYear))..add(DiagnosticsProperty('bin', _this.bin));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OfflineCard&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.cardholderName, cardholderName) || other.cardholderName == cardholderName)&&(identical(other.id, id) || other.id == id)&&(identical(other.lastFourDigits, lastFourDigits) || other.lastFourDigits == lastFourDigits)&&(identical(other.coBrand, coBrand) || other.coBrand == coBrand)&&(identical(other.expirationMonth, expirationMonth) || other.expirationMonth == expirationMonth)&&(identical(other.expirationYear, expirationYear) || other.expirationYear == expirationYear)&&(identical(other.bin, bin) || other.bin == bin));
+  final _this = this as OfflineCard;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OfflineCard&&(identical(other.brand, _this.brand) || other.brand == _this.brand)&&(identical(other.cardholderName, _this.cardholderName) || other.cardholderName == _this.cardholderName)&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.lastFourDigits, _this.lastFourDigits) || other.lastFourDigits == _this.lastFourDigits)&&(identical(other.coBrand, _this.coBrand) || other.coBrand == _this.coBrand)&&(identical(other.expirationMonth, _this.expirationMonth) || other.expirationMonth == _this.expirationMonth)&&(identical(other.expirationYear, _this.expirationYear) || other.expirationYear == _this.expirationYear)&&(identical(other.bin, _this.bin) || other.bin == _this.bin));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,brand,cardholderName,id,lastFourDigits,coBrand,expirationMonth,expirationYear,bin);
+int get hashCode {
+  final _this = this as OfflineCard;
+  return Object.hash(runtimeType,_this.brand,_this.cardholderName,_this.id,_this.lastFourDigits,_this.coBrand,_this.expirationMonth,_this.expirationYear,_this.bin);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'OfflineCard(brand: $brand, cardholderName: $cardholderName, id: $id, lastFourDigits: $lastFourDigits, coBrand: $coBrand, expirationMonth: $expirationMonth, expirationYear: $expirationYear, bin: $bin)';
+  final _this = this as OfflineCard;
+  return 'OfflineCard(brand: ${_this.brand}, cardholderName: ${_this.cardholderName}, id: ${_this.id}, lastFourDigits: ${_this.lastFourDigits}, coBrand: ${_this.coBrand}, expirationMonth: ${_this.expirationMonth}, expirationYear: ${_this.expirationYear}, bin: ${_this.bin})';
 }
 
 
@@ -942,7 +970,7 @@ class _$OfflineCardCopyWithImpl<$Res>
 /// Create a copy of OfflineCard
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? brand = null,Object? cardholderName = freezed,Object? id = freezed,Object? lastFourDigits = freezed,Object? coBrand = freezed,Object? expirationMonth = freezed,Object? expirationYear = freezed,Object? bin = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(OfflineCard(
 brand: null == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
 as CardBrand,cardholderName: freezed == cardholderName ? _self.cardholderName : cardholderName // ignore: cast_nullable_to_non_nullable
 as String?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
@@ -1100,11 +1128,8 @@ class _OfflineCard with DiagnosticableTreeMixin implements OfflineCard {
 @override final  String? id;
 @override final  String? lastFourDigits;
 @override@JsonKey(unknownEnumValue: CardCoBrand.unknown) final  CardCoBrand? coBrand;
-// Android only
 @override final  num? expirationMonth;
-// Android only
 @override final  num? expirationYear;
-// Android only
 @override final  String? bin;
 
 /// Create a copy of OfflineCard
@@ -1119,23 +1144,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'OfflineCard'))
     ..add(DiagnosticsProperty('brand', brand))..add(DiagnosticsProperty('cardholderName', cardholderName))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('lastFourDigits', lastFourDigits))..add(DiagnosticsProperty('coBrand', coBrand))..add(DiagnosticsProperty('expirationMonth', expirationMonth))..add(DiagnosticsProperty('expirationYear', expirationYear))..add(DiagnosticsProperty('bin', bin));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OfflineCard&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.cardholderName, cardholderName) || other.cardholderName == cardholderName)&&(identical(other.id, id) || other.id == id)&&(identical(other.lastFourDigits, lastFourDigits) || other.lastFourDigits == lastFourDigits)&&(identical(other.coBrand, coBrand) || other.coBrand == coBrand)&&(identical(other.expirationMonth, expirationMonth) || other.expirationMonth == expirationMonth)&&(identical(other.expirationYear, expirationYear) || other.expirationYear == expirationYear)&&(identical(other.bin, bin) || other.bin == bin));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OfflineCard&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.cardholderName, cardholderName) || other.cardholderName == cardholderName)&&(identical(other.id, id) || other.id == id)&&(identical(other.lastFourDigits, lastFourDigits) || other.lastFourDigits == lastFourDigits)&&(identical(other.coBrand, coBrand) || other.coBrand == coBrand)&&(identical(other.expirationMonth, expirationMonth) || other.expirationMonth == expirationMonth)&&(identical(other.expirationYear, expirationYear) || other.expirationYear == expirationYear)&&(identical(other.bin, bin) || other.bin == bin));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,brand,cardholderName,id,lastFourDigits,coBrand,expirationMonth,expirationYear,bin);
+int get hashCode {
+    return Object.hash(runtimeType,brand,cardholderName,id,lastFourDigits,coBrand,expirationMonth,expirationYear,bin);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'OfflineCard(brand: $brand, cardholderName: $cardholderName, id: $id, lastFourDigits: $lastFourDigits, coBrand: $coBrand, expirationMonth: $expirationMonth, expirationYear: $expirationYear, bin: $bin)';
+    return 'OfflineCard(brand: $brand, cardholderName: $cardholderName, id: $id, lastFourDigits: $lastFourDigits, coBrand: $coBrand, expirationMonth: $expirationMonth, expirationYear: $expirationYear, bin: $bin)';
 }
 
 
@@ -1184,8 +1211,7 @@ as String?,
 /// @nodoc
 mixin _$CardPaymentDetails implements DiagnosticableTreeMixin {
 
- String? get applicationIdentifier; String? get applicationName; String? get authorizationCode; Card? get card;@JsonKey(unknownEnumValue: EntryMethod.unknown) EntryMethod get entryMethod;@JsonKey(unknownEnumValue: CardPaymentStatus.unknown) CardPaymentStatus get status; CardSurchargeDetails? get appliedCardSurchargeDetails; VerificationMethod? get verificationMethod;// Android only
- VerificationResult? get verificationResults;
+ String? get applicationIdentifier; String? get applicationName; String? get authorizationCode; Card? get card;@JsonKey(unknownEnumValue: EntryMethod.unknown) EntryMethod get entryMethod;@JsonKey(unknownEnumValue: CardPaymentStatus.unknown) CardPaymentStatus get status; CardSurchargeDetails? get appliedCardSurchargeDetails; VerificationMethod? get verificationMethod; VerificationResult? get verificationResults;
 /// Create a copy of CardPaymentDetails
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1197,23 +1223,29 @@ $CardPaymentDetailsCopyWith<CardPaymentDetails> get copyWith => _$CardPaymentDet
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as CardPaymentDetails;
   properties
     ..add(DiagnosticsProperty('type', 'CardPaymentDetails'))
-    ..add(DiagnosticsProperty('applicationIdentifier', applicationIdentifier))..add(DiagnosticsProperty('applicationName', applicationName))..add(DiagnosticsProperty('authorizationCode', authorizationCode))..add(DiagnosticsProperty('card', card))..add(DiagnosticsProperty('entryMethod', entryMethod))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('appliedCardSurchargeDetails', appliedCardSurchargeDetails))..add(DiagnosticsProperty('verificationMethod', verificationMethod))..add(DiagnosticsProperty('verificationResults', verificationResults));
+    ..add(DiagnosticsProperty('applicationIdentifier', _this.applicationIdentifier))..add(DiagnosticsProperty('applicationName', _this.applicationName))..add(DiagnosticsProperty('authorizationCode', _this.authorizationCode))..add(DiagnosticsProperty('card', _this.card))..add(DiagnosticsProperty('entryMethod', _this.entryMethod))..add(DiagnosticsProperty('status', _this.status))..add(DiagnosticsProperty('appliedCardSurchargeDetails', _this.appliedCardSurchargeDetails))..add(DiagnosticsProperty('verificationMethod', _this.verificationMethod))..add(DiagnosticsProperty('verificationResults', _this.verificationResults));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardPaymentDetails&&(identical(other.applicationIdentifier, applicationIdentifier) || other.applicationIdentifier == applicationIdentifier)&&(identical(other.applicationName, applicationName) || other.applicationName == applicationName)&&(identical(other.authorizationCode, authorizationCode) || other.authorizationCode == authorizationCode)&&(identical(other.card, card) || other.card == card)&&(identical(other.entryMethod, entryMethod) || other.entryMethod == entryMethod)&&(identical(other.status, status) || other.status == status)&&(identical(other.appliedCardSurchargeDetails, appliedCardSurchargeDetails) || other.appliedCardSurchargeDetails == appliedCardSurchargeDetails)&&(identical(other.verificationMethod, verificationMethod) || other.verificationMethod == verificationMethod)&&(identical(other.verificationResults, verificationResults) || other.verificationResults == verificationResults));
+  final _this = this as CardPaymentDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardPaymentDetails&&(identical(other.applicationIdentifier, _this.applicationIdentifier) || other.applicationIdentifier == _this.applicationIdentifier)&&(identical(other.applicationName, _this.applicationName) || other.applicationName == _this.applicationName)&&(identical(other.authorizationCode, _this.authorizationCode) || other.authorizationCode == _this.authorizationCode)&&(identical(other.card, _this.card) || other.card == _this.card)&&(identical(other.entryMethod, _this.entryMethod) || other.entryMethod == _this.entryMethod)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.appliedCardSurchargeDetails, _this.appliedCardSurchargeDetails) || other.appliedCardSurchargeDetails == _this.appliedCardSurchargeDetails)&&(identical(other.verificationMethod, _this.verificationMethod) || other.verificationMethod == _this.verificationMethod)&&(identical(other.verificationResults, _this.verificationResults) || other.verificationResults == _this.verificationResults));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,applicationIdentifier,applicationName,authorizationCode,card,entryMethod,status,appliedCardSurchargeDetails,verificationMethod,verificationResults);
+int get hashCode {
+  final _this = this as CardPaymentDetails;
+  return Object.hash(runtimeType,_this.applicationIdentifier,_this.applicationName,_this.authorizationCode,_this.card,_this.entryMethod,_this.status,_this.appliedCardSurchargeDetails,_this.verificationMethod,_this.verificationResults);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'CardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, authorizationCode: $authorizationCode, card: $card, entryMethod: $entryMethod, status: $status, appliedCardSurchargeDetails: $appliedCardSurchargeDetails, verificationMethod: $verificationMethod, verificationResults: $verificationResults)';
+  final _this = this as CardPaymentDetails;
+  return 'CardPaymentDetails(applicationIdentifier: ${_this.applicationIdentifier}, applicationName: ${_this.applicationName}, authorizationCode: ${_this.authorizationCode}, card: ${_this.card}, entryMethod: ${_this.entryMethod}, status: ${_this.status}, appliedCardSurchargeDetails: ${_this.appliedCardSurchargeDetails}, verificationMethod: ${_this.verificationMethod}, verificationResults: ${_this.verificationResults})';
 }
 
 
@@ -1242,7 +1274,7 @@ class _$CardPaymentDetailsCopyWithImpl<$Res>
 /// Create a copy of CardPaymentDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? applicationIdentifier = freezed,Object? applicationName = freezed,Object? authorizationCode = freezed,Object? card = freezed,Object? entryMethod = null,Object? status = null,Object? appliedCardSurchargeDetails = freezed,Object? verificationMethod = freezed,Object? verificationResults = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardPaymentDetails(
 applicationIdentifier: freezed == applicationIdentifier ? _self.applicationIdentifier : applicationIdentifier // ignore: cast_nullable_to_non_nullable
 as String?,applicationName: freezed == applicationName ? _self.applicationName : applicationName // ignore: cast_nullable_to_non_nullable
 as String?,authorizationCode: freezed == authorizationCode ? _self.authorizationCode : authorizationCode // ignore: cast_nullable_to_non_nullable
@@ -1428,7 +1460,6 @@ class _CardPaymentDetails with DiagnosticableTreeMixin implements CardPaymentDet
 @override@JsonKey(unknownEnumValue: CardPaymentStatus.unknown) final  CardPaymentStatus status;
 @override final  CardSurchargeDetails? appliedCardSurchargeDetails;
 @override final  VerificationMethod? verificationMethod;
-// Android only
 @override final  VerificationResult? verificationResults;
 
 /// Create a copy of CardPaymentDetails
@@ -1443,23 +1474,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'CardPaymentDetails'))
     ..add(DiagnosticsProperty('applicationIdentifier', applicationIdentifier))..add(DiagnosticsProperty('applicationName', applicationName))..add(DiagnosticsProperty('authorizationCode', authorizationCode))..add(DiagnosticsProperty('card', card))..add(DiagnosticsProperty('entryMethod', entryMethod))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('appliedCardSurchargeDetails', appliedCardSurchargeDetails))..add(DiagnosticsProperty('verificationMethod', verificationMethod))..add(DiagnosticsProperty('verificationResults', verificationResults));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardPaymentDetails&&(identical(other.applicationIdentifier, applicationIdentifier) || other.applicationIdentifier == applicationIdentifier)&&(identical(other.applicationName, applicationName) || other.applicationName == applicationName)&&(identical(other.authorizationCode, authorizationCode) || other.authorizationCode == authorizationCode)&&(identical(other.card, card) || other.card == card)&&(identical(other.entryMethod, entryMethod) || other.entryMethod == entryMethod)&&(identical(other.status, status) || other.status == status)&&(identical(other.appliedCardSurchargeDetails, appliedCardSurchargeDetails) || other.appliedCardSurchargeDetails == appliedCardSurchargeDetails)&&(identical(other.verificationMethod, verificationMethod) || other.verificationMethod == verificationMethod)&&(identical(other.verificationResults, verificationResults) || other.verificationResults == verificationResults));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardPaymentDetails&&(identical(other.applicationIdentifier, applicationIdentifier) || other.applicationIdentifier == applicationIdentifier)&&(identical(other.applicationName, applicationName) || other.applicationName == applicationName)&&(identical(other.authorizationCode, authorizationCode) || other.authorizationCode == authorizationCode)&&(identical(other.card, card) || other.card == card)&&(identical(other.entryMethod, entryMethod) || other.entryMethod == entryMethod)&&(identical(other.status, status) || other.status == status)&&(identical(other.appliedCardSurchargeDetails, appliedCardSurchargeDetails) || other.appliedCardSurchargeDetails == appliedCardSurchargeDetails)&&(identical(other.verificationMethod, verificationMethod) || other.verificationMethod == verificationMethod)&&(identical(other.verificationResults, verificationResults) || other.verificationResults == verificationResults));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,applicationIdentifier,applicationName,authorizationCode,card,entryMethod,status,appliedCardSurchargeDetails,verificationMethod,verificationResults);
+int get hashCode {
+    return Object.hash(runtimeType,applicationIdentifier,applicationName,authorizationCode,card,entryMethod,status,appliedCardSurchargeDetails,verificationMethod,verificationResults);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'CardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, authorizationCode: $authorizationCode, card: $card, entryMethod: $entryMethod, status: $status, appliedCardSurchargeDetails: $appliedCardSurchargeDetails, verificationMethod: $verificationMethod, verificationResults: $verificationResults)';
+    return 'CardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, authorizationCode: $authorizationCode, card: $card, entryMethod: $entryMethod, status: $status, appliedCardSurchargeDetails: $appliedCardSurchargeDetails, verificationMethod: $verificationMethod, verificationResults: $verificationResults)';
 }
 
 
@@ -1545,23 +1578,29 @@ $CardSurchargeDetailsCopyWith<CardSurchargeDetails> get copyWith => _$CardSurcha
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as CardSurchargeDetails;
   properties
     ..add(DiagnosticsProperty('type', 'CardSurchargeDetails'))
-    ..add(DiagnosticsProperty('cardSurchargeMoney', cardSurchargeMoney))..add(DiagnosticsProperty('taxOnCardSurchargeMoney', taxOnCardSurchargeMoney))..add(DiagnosticsProperty('totalSurchargeMoney', totalSurchargeMoney));
+    ..add(DiagnosticsProperty('cardSurchargeMoney', _this.cardSurchargeMoney))..add(DiagnosticsProperty('taxOnCardSurchargeMoney', _this.taxOnCardSurchargeMoney))..add(DiagnosticsProperty('totalSurchargeMoney', _this.totalSurchargeMoney));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardSurchargeDetails&&(identical(other.cardSurchargeMoney, cardSurchargeMoney) || other.cardSurchargeMoney == cardSurchargeMoney)&&(identical(other.taxOnCardSurchargeMoney, taxOnCardSurchargeMoney) || other.taxOnCardSurchargeMoney == taxOnCardSurchargeMoney)&&(identical(other.totalSurchargeMoney, totalSurchargeMoney) || other.totalSurchargeMoney == totalSurchargeMoney));
+  final _this = this as CardSurchargeDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardSurchargeDetails&&(identical(other.cardSurchargeMoney, _this.cardSurchargeMoney) || other.cardSurchargeMoney == _this.cardSurchargeMoney)&&(identical(other.taxOnCardSurchargeMoney, _this.taxOnCardSurchargeMoney) || other.taxOnCardSurchargeMoney == _this.taxOnCardSurchargeMoney)&&(identical(other.totalSurchargeMoney, _this.totalSurchargeMoney) || other.totalSurchargeMoney == _this.totalSurchargeMoney));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,cardSurchargeMoney,taxOnCardSurchargeMoney,totalSurchargeMoney);
+int get hashCode {
+  final _this = this as CardSurchargeDetails;
+  return Object.hash(runtimeType,_this.cardSurchargeMoney,_this.taxOnCardSurchargeMoney,_this.totalSurchargeMoney);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'CardSurchargeDetails(cardSurchargeMoney: $cardSurchargeMoney, taxOnCardSurchargeMoney: $taxOnCardSurchargeMoney, totalSurchargeMoney: $totalSurchargeMoney)';
+  final _this = this as CardSurchargeDetails;
+  return 'CardSurchargeDetails(cardSurchargeMoney: ${_this.cardSurchargeMoney}, taxOnCardSurchargeMoney: ${_this.taxOnCardSurchargeMoney}, totalSurchargeMoney: ${_this.totalSurchargeMoney})';
 }
 
 
@@ -1590,7 +1629,7 @@ class _$CardSurchargeDetailsCopyWithImpl<$Res>
 /// Create a copy of CardSurchargeDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? cardSurchargeMoney = null,Object? taxOnCardSurchargeMoney = freezed,Object? totalSurchargeMoney = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CardSurchargeDetails(
 cardSurchargeMoney: null == cardSurchargeMoney ? _self.cardSurchargeMoney : cardSurchargeMoney // ignore: cast_nullable_to_non_nullable
 as Money,taxOnCardSurchargeMoney: freezed == taxOnCardSurchargeMoney ? _self.taxOnCardSurchargeMoney : taxOnCardSurchargeMoney // ignore: cast_nullable_to_non_nullable
 as Money?,totalSurchargeMoney: freezed == totalSurchargeMoney ? _self.totalSurchargeMoney : totalSurchargeMoney // ignore: cast_nullable_to_non_nullable
@@ -1787,23 +1826,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'CardSurchargeDetails'))
     ..add(DiagnosticsProperty('cardSurchargeMoney', cardSurchargeMoney))..add(DiagnosticsProperty('taxOnCardSurchargeMoney', taxOnCardSurchargeMoney))..add(DiagnosticsProperty('totalSurchargeMoney', totalSurchargeMoney));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardSurchargeDetails&&(identical(other.cardSurchargeMoney, cardSurchargeMoney) || other.cardSurchargeMoney == cardSurchargeMoney)&&(identical(other.taxOnCardSurchargeMoney, taxOnCardSurchargeMoney) || other.taxOnCardSurchargeMoney == taxOnCardSurchargeMoney)&&(identical(other.totalSurchargeMoney, totalSurchargeMoney) || other.totalSurchargeMoney == totalSurchargeMoney));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardSurchargeDetails&&(identical(other.cardSurchargeMoney, cardSurchargeMoney) || other.cardSurchargeMoney == cardSurchargeMoney)&&(identical(other.taxOnCardSurchargeMoney, taxOnCardSurchargeMoney) || other.taxOnCardSurchargeMoney == taxOnCardSurchargeMoney)&&(identical(other.totalSurchargeMoney, totalSurchargeMoney) || other.totalSurchargeMoney == totalSurchargeMoney));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,cardSurchargeMoney,taxOnCardSurchargeMoney,totalSurchargeMoney);
+int get hashCode {
+    return Object.hash(runtimeType,cardSurchargeMoney,taxOnCardSurchargeMoney,totalSurchargeMoney);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'CardSurchargeDetails(cardSurchargeMoney: $cardSurchargeMoney, taxOnCardSurchargeMoney: $taxOnCardSurchargeMoney, totalSurchargeMoney: $totalSurchargeMoney)';
+    return 'CardSurchargeDetails(cardSurchargeMoney: $cardSurchargeMoney, taxOnCardSurchargeMoney: $taxOnCardSurchargeMoney, totalSurchargeMoney: $totalSurchargeMoney)';
 }
 
 
@@ -1892,23 +1933,29 @@ $CashPaymentDetailsCopyWith<CashPaymentDetails> get copyWith => _$CashPaymentDet
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as CashPaymentDetails;
   properties
     ..add(DiagnosticsProperty('type', 'CashPaymentDetails'))
-    ..add(DiagnosticsProperty('buyerSuppliedMoney', buyerSuppliedMoney))..add(DiagnosticsProperty('changeBackMoney', changeBackMoney));
+    ..add(DiagnosticsProperty('buyerSuppliedMoney', _this.buyerSuppliedMoney))..add(DiagnosticsProperty('changeBackMoney', _this.changeBackMoney));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CashPaymentDetails&&(identical(other.buyerSuppliedMoney, buyerSuppliedMoney) || other.buyerSuppliedMoney == buyerSuppliedMoney)&&(identical(other.changeBackMoney, changeBackMoney) || other.changeBackMoney == changeBackMoney));
+  final _this = this as CashPaymentDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CashPaymentDetails&&(identical(other.buyerSuppliedMoney, _this.buyerSuppliedMoney) || other.buyerSuppliedMoney == _this.buyerSuppliedMoney)&&(identical(other.changeBackMoney, _this.changeBackMoney) || other.changeBackMoney == _this.changeBackMoney));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,buyerSuppliedMoney,changeBackMoney);
+int get hashCode {
+  final _this = this as CashPaymentDetails;
+  return Object.hash(runtimeType,_this.buyerSuppliedMoney,_this.changeBackMoney);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'CashPaymentDetails(buyerSuppliedMoney: $buyerSuppliedMoney, changeBackMoney: $changeBackMoney)';
+  final _this = this as CashPaymentDetails;
+  return 'CashPaymentDetails(buyerSuppliedMoney: ${_this.buyerSuppliedMoney}, changeBackMoney: ${_this.changeBackMoney})';
 }
 
 
@@ -1937,7 +1984,7 @@ class _$CashPaymentDetailsCopyWithImpl<$Res>
 /// Create a copy of CashPaymentDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? buyerSuppliedMoney = freezed,Object? changeBackMoney = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CashPaymentDetails(
 buyerSuppliedMoney: freezed == buyerSuppliedMoney ? _self.buyerSuppliedMoney : buyerSuppliedMoney // ignore: cast_nullable_to_non_nullable
 as Money?,changeBackMoney: freezed == changeBackMoney ? _self.changeBackMoney : changeBackMoney // ignore: cast_nullable_to_non_nullable
 as Money?,
@@ -2123,23 +2170,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'CashPaymentDetails'))
     ..add(DiagnosticsProperty('buyerSuppliedMoney', buyerSuppliedMoney))..add(DiagnosticsProperty('changeBackMoney', changeBackMoney));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CashPaymentDetails&&(identical(other.buyerSuppliedMoney, buyerSuppliedMoney) || other.buyerSuppliedMoney == buyerSuppliedMoney)&&(identical(other.changeBackMoney, changeBackMoney) || other.changeBackMoney == changeBackMoney));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CashPaymentDetails&&(identical(other.buyerSuppliedMoney, buyerSuppliedMoney) || other.buyerSuppliedMoney == buyerSuppliedMoney)&&(identical(other.changeBackMoney, changeBackMoney) || other.changeBackMoney == changeBackMoney));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,buyerSuppliedMoney,changeBackMoney);
+int get hashCode {
+    return Object.hash(runtimeType,buyerSuppliedMoney,changeBackMoney);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'CashPaymentDetails(buyerSuppliedMoney: $buyerSuppliedMoney, changeBackMoney: $changeBackMoney)';
+    return 'CashPaymentDetails(buyerSuppliedMoney: $buyerSuppliedMoney, changeBackMoney: $changeBackMoney)';
 }
 
 
@@ -2218,23 +2267,29 @@ $CardInputMethodsCopyWith<CardInputMethods> get copyWith => _$CardInputMethodsCo
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as CardInputMethods;
   properties
     ..add(DiagnosticsProperty('type', 'CardInputMethods'))
-    ..add(DiagnosticsProperty('chip', chip))..add(DiagnosticsProperty('contactless', contactless))..add(DiagnosticsProperty('swipe', swipe));
+    ..add(DiagnosticsProperty('chip', _this.chip))..add(DiagnosticsProperty('contactless', _this.contactless))..add(DiagnosticsProperty('swipe', _this.swipe));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardInputMethods&&(identical(other.chip, chip) || other.chip == chip)&&(identical(other.contactless, contactless) || other.contactless == contactless)&&(identical(other.swipe, swipe) || other.swipe == swipe));
+  final _this = this as CardInputMethods;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CardInputMethods&&(identical(other.chip, _this.chip) || other.chip == _this.chip)&&(identical(other.contactless, _this.contactless) || other.contactless == _this.contactless)&&(identical(other.swipe, _this.swipe) || other.swipe == _this.swipe));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,chip,contactless,swipe);
+int get hashCode {
+  final _this = this as CardInputMethods;
+  return Object.hash(runtimeType,_this.chip,_this.contactless,_this.swipe);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'CardInputMethods(chip: $chip, contactless: $contactless, swipe: $swipe)';
+  final _this = this as CardInputMethods;
+  return 'CardInputMethods(chip: ${_this.chip}, contactless: ${_this.contactless}, swipe: ${_this.swipe})';
 }
 
 
@@ -2263,7 +2318,7 @@ class _$CardInputMethodsCopyWithImpl<$Res>
 /// Create a copy of CardInputMethods
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? chip = null,Object? contactless = null,Object? swipe = null,}) {
-  return _then(_self.copyWith(
+  return _then(CardInputMethods(
 chip: null == chip ? _self.chip : chip // ignore: cast_nullable_to_non_nullable
 as int,contactless: null == contactless ? _self.contactless : contactless // ignore: cast_nullable_to_non_nullable
 as int,swipe: null == swipe ? _self.swipe : swipe // ignore: cast_nullable_to_non_nullable
@@ -2427,23 +2482,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'CardInputMethods'))
     ..add(DiagnosticsProperty('chip', chip))..add(DiagnosticsProperty('contactless', contactless))..add(DiagnosticsProperty('swipe', swipe));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardInputMethods&&(identical(other.chip, chip) || other.chip == chip)&&(identical(other.contactless, contactless) || other.contactless == contactless)&&(identical(other.swipe, swipe) || other.swipe == swipe));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardInputMethods&&(identical(other.chip, chip) || other.chip == chip)&&(identical(other.contactless, contactless) || other.contactless == contactless)&&(identical(other.swipe, swipe) || other.swipe == swipe));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,chip,contactless,swipe);
+int get hashCode {
+    return Object.hash(runtimeType,chip,contactless,swipe);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'CardInputMethods(chip: $chip, contactless: $contactless, swipe: $swipe)';
+    return 'CardInputMethods(chip: $chip, contactless: $contactless, swipe: $swipe)';
 }
 
 
@@ -2499,23 +2556,29 @@ $ReaderBatteryStatusCopyWith<ReaderBatteryStatus> get copyWith => _$ReaderBatter
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as ReaderBatteryStatus;
   properties
     ..add(DiagnosticsProperty('type', 'ReaderBatteryStatus'))
-    ..add(DiagnosticsProperty('isCharging', isCharging))..add(DiagnosticsProperty('level', level))..add(DiagnosticsProperty('percentage', percentage));
+    ..add(DiagnosticsProperty('isCharging', _this.isCharging))..add(DiagnosticsProperty('level', _this.level))..add(DiagnosticsProperty('percentage', _this.percentage));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderBatteryStatus&&(identical(other.isCharging, isCharging) || other.isCharging == isCharging)&&(identical(other.level, level) || other.level == level)&&(identical(other.percentage, percentage) || other.percentage == percentage));
+  final _this = this as ReaderBatteryStatus;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderBatteryStatus&&(identical(other.isCharging, _this.isCharging) || other.isCharging == _this.isCharging)&&(identical(other.level, _this.level) || other.level == _this.level)&&(identical(other.percentage, _this.percentage) || other.percentage == _this.percentage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,isCharging,level,percentage);
+int get hashCode {
+  final _this = this as ReaderBatteryStatus;
+  return Object.hash(runtimeType,_this.isCharging,_this.level,_this.percentage);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderBatteryStatus(isCharging: $isCharging, level: $level, percentage: $percentage)';
+  final _this = this as ReaderBatteryStatus;
+  return 'ReaderBatteryStatus(isCharging: ${_this.isCharging}, level: ${_this.level}, percentage: ${_this.percentage})';
 }
 
 
@@ -2544,7 +2607,7 @@ class _$ReaderBatteryStatusCopyWithImpl<$Res>
 /// Create a copy of ReaderBatteryStatus
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? isCharging = null,Object? level = freezed,Object? percentage = null,}) {
-  return _then(_self.copyWith(
+  return _then(ReaderBatteryStatus(
 isCharging: null == isCharging ? _self.isCharging : isCharging // ignore: cast_nullable_to_non_nullable
 as bool,level: freezed == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
 as ReaderBatteryLevel?,percentage: null == percentage ? _self.percentage : percentage // ignore: cast_nullable_to_non_nullable
@@ -2708,23 +2771,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'ReaderBatteryStatus'))
     ..add(DiagnosticsProperty('isCharging', isCharging))..add(DiagnosticsProperty('level', level))..add(DiagnosticsProperty('percentage', percentage));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderBatteryStatus&&(identical(other.isCharging, isCharging) || other.isCharging == isCharging)&&(identical(other.level, level) || other.level == level)&&(identical(other.percentage, percentage) || other.percentage == percentage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderBatteryStatus&&(identical(other.isCharging, isCharging) || other.isCharging == isCharging)&&(identical(other.level, level) || other.level == level)&&(identical(other.percentage, percentage) || other.percentage == percentage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,isCharging,level,percentage);
+int get hashCode {
+    return Object.hash(runtimeType,isCharging,level,percentage);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderBatteryStatus(isCharging: $isCharging, level: $level, percentage: $percentage)';
+    return 'ReaderBatteryStatus(isCharging: $isCharging, level: $level, percentage: $percentage)';
 }
 
 
@@ -2768,8 +2833,7 @@ as int,
 /// @nodoc
 mixin _$ReaderStatusInfo implements DiagnosticableTreeMixin {
 
- ReaderStatusInfoStatus get status; ReaderStatusInfoUnavailableReason? get unavailableReason; String? get unavailableReasonTitle;// iOS only
- String? get unavailableReasonDetail;
+ ReaderStatusInfoStatus get status; ReaderStatusInfoUnavailableReason? get unavailableReason; String? get unavailableReasonTitle; String? get unavailableReasonDetail;
 /// Create a copy of ReaderStatusInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2781,23 +2845,29 @@ $ReaderStatusInfoCopyWith<ReaderStatusInfo> get copyWith => _$ReaderStatusInfoCo
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as ReaderStatusInfo;
   properties
     ..add(DiagnosticsProperty('type', 'ReaderStatusInfo'))
-    ..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('unavailableReason', unavailableReason))..add(DiagnosticsProperty('unavailableReasonTitle', unavailableReasonTitle))..add(DiagnosticsProperty('unavailableReasonDetail', unavailableReasonDetail));
+    ..add(DiagnosticsProperty('status', _this.status))..add(DiagnosticsProperty('unavailableReason', _this.unavailableReason))..add(DiagnosticsProperty('unavailableReasonTitle', _this.unavailableReasonTitle))..add(DiagnosticsProperty('unavailableReasonDetail', _this.unavailableReasonDetail));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderStatusInfo&&(identical(other.status, status) || other.status == status)&&(identical(other.unavailableReason, unavailableReason) || other.unavailableReason == unavailableReason)&&(identical(other.unavailableReasonTitle, unavailableReasonTitle) || other.unavailableReasonTitle == unavailableReasonTitle)&&(identical(other.unavailableReasonDetail, unavailableReasonDetail) || other.unavailableReasonDetail == unavailableReasonDetail));
+  final _this = this as ReaderStatusInfo;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderStatusInfo&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.unavailableReason, _this.unavailableReason) || other.unavailableReason == _this.unavailableReason)&&(identical(other.unavailableReasonTitle, _this.unavailableReasonTitle) || other.unavailableReasonTitle == _this.unavailableReasonTitle)&&(identical(other.unavailableReasonDetail, _this.unavailableReasonDetail) || other.unavailableReasonDetail == _this.unavailableReasonDetail));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,status,unavailableReason,unavailableReasonTitle,unavailableReasonDetail);
+int get hashCode {
+  final _this = this as ReaderStatusInfo;
+  return Object.hash(runtimeType,_this.status,_this.unavailableReason,_this.unavailableReasonTitle,_this.unavailableReasonDetail);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderStatusInfo(status: $status, unavailableReason: $unavailableReason, unavailableReasonTitle: $unavailableReasonTitle, unavailableReasonDetail: $unavailableReasonDetail)';
+  final _this = this as ReaderStatusInfo;
+  return 'ReaderStatusInfo(status: ${_this.status}, unavailableReason: ${_this.unavailableReason}, unavailableReasonTitle: ${_this.unavailableReasonTitle}, unavailableReasonDetail: ${_this.unavailableReasonDetail})';
 }
 
 
@@ -2826,7 +2896,7 @@ class _$ReaderStatusInfoCopyWithImpl<$Res>
 /// Create a copy of ReaderStatusInfo
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? unavailableReason = freezed,Object? unavailableReasonTitle = freezed,Object? unavailableReasonDetail = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ReaderStatusInfo(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as ReaderStatusInfoStatus,unavailableReason: freezed == unavailableReason ? _self.unavailableReason : unavailableReason // ignore: cast_nullable_to_non_nullable
 as ReaderStatusInfoUnavailableReason?,unavailableReasonTitle: freezed == unavailableReasonTitle ? _self.unavailableReasonTitle : unavailableReasonTitle // ignore: cast_nullable_to_non_nullable
@@ -2978,7 +3048,6 @@ class _ReaderStatusInfo with DiagnosticableTreeMixin implements ReaderStatusInfo
 @override final  ReaderStatusInfoStatus status;
 @override final  ReaderStatusInfoUnavailableReason? unavailableReason;
 @override final  String? unavailableReasonTitle;
-// iOS only
 @override final  String? unavailableReasonDetail;
 
 /// Create a copy of ReaderStatusInfo
@@ -2993,23 +3062,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'ReaderStatusInfo'))
     ..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('unavailableReason', unavailableReason))..add(DiagnosticsProperty('unavailableReasonTitle', unavailableReasonTitle))..add(DiagnosticsProperty('unavailableReasonDetail', unavailableReasonDetail));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderStatusInfo&&(identical(other.status, status) || other.status == status)&&(identical(other.unavailableReason, unavailableReason) || other.unavailableReason == unavailableReason)&&(identical(other.unavailableReasonTitle, unavailableReasonTitle) || other.unavailableReasonTitle == unavailableReasonTitle)&&(identical(other.unavailableReasonDetail, unavailableReasonDetail) || other.unavailableReasonDetail == unavailableReasonDetail));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderStatusInfo&&(identical(other.status, status) || other.status == status)&&(identical(other.unavailableReason, unavailableReason) || other.unavailableReason == unavailableReason)&&(identical(other.unavailableReasonTitle, unavailableReasonTitle) || other.unavailableReasonTitle == unavailableReasonTitle)&&(identical(other.unavailableReasonDetail, unavailableReasonDetail) || other.unavailableReasonDetail == unavailableReasonDetail));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,status,unavailableReason,unavailableReasonTitle,unavailableReasonDetail);
+int get hashCode {
+    return Object.hash(runtimeType,status,unavailableReason,unavailableReasonTitle,unavailableReasonDetail);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderStatusInfo(status: $status, unavailableReason: $unavailableReason, unavailableReasonTitle: $unavailableReasonTitle, unavailableReasonDetail: $unavailableReasonDetail)';
+    return 'ReaderStatusInfo(status: $status, unavailableReason: $unavailableReason, unavailableReasonTitle: $unavailableReasonTitle, unavailableReasonDetail: $unavailableReasonDetail)';
 }
 
 
@@ -3054,8 +3125,7 @@ as String?,
 /// @nodoc
 mixin _$ReaderFirmwareInfo implements DiagnosticableTreeMixin {
 
- String? get failureReason;// iOS only
- FirmwareUpdateStatus get updateStatus; int? get updatePercentage; DateTime? get updateTime; String? get version;
+ String? get failureReason; FirmwareUpdateStatus get updateStatus; int? get updatePercentage; DateTime? get updateTime; String? get version;
 /// Create a copy of ReaderFirmwareInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3067,23 +3137,29 @@ $ReaderFirmwareInfoCopyWith<ReaderFirmwareInfo> get copyWith => _$ReaderFirmware
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as ReaderFirmwareInfo;
   properties
     ..add(DiagnosticsProperty('type', 'ReaderFirmwareInfo'))
-    ..add(DiagnosticsProperty('failureReason', failureReason))..add(DiagnosticsProperty('updateStatus', updateStatus))..add(DiagnosticsProperty('updatePercentage', updatePercentage))..add(DiagnosticsProperty('updateTime', updateTime))..add(DiagnosticsProperty('version', version));
+    ..add(DiagnosticsProperty('failureReason', _this.failureReason))..add(DiagnosticsProperty('updateStatus', _this.updateStatus))..add(DiagnosticsProperty('updatePercentage', _this.updatePercentage))..add(DiagnosticsProperty('updateTime', _this.updateTime))..add(DiagnosticsProperty('version', _this.version));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderFirmwareInfo&&(identical(other.failureReason, failureReason) || other.failureReason == failureReason)&&(identical(other.updateStatus, updateStatus) || other.updateStatus == updateStatus)&&(identical(other.updatePercentage, updatePercentage) || other.updatePercentage == updatePercentage)&&(identical(other.updateTime, updateTime) || other.updateTime == updateTime)&&(identical(other.version, version) || other.version == version));
+  final _this = this as ReaderFirmwareInfo;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderFirmwareInfo&&(identical(other.failureReason, _this.failureReason) || other.failureReason == _this.failureReason)&&(identical(other.updateStatus, _this.updateStatus) || other.updateStatus == _this.updateStatus)&&(identical(other.updatePercentage, _this.updatePercentage) || other.updatePercentage == _this.updatePercentage)&&(identical(other.updateTime, _this.updateTime) || other.updateTime == _this.updateTime)&&(identical(other.version, _this.version) || other.version == _this.version));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,failureReason,updateStatus,updatePercentage,updateTime,version);
+int get hashCode {
+  final _this = this as ReaderFirmwareInfo;
+  return Object.hash(runtimeType,_this.failureReason,_this.updateStatus,_this.updatePercentage,_this.updateTime,_this.version);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderFirmwareInfo(failureReason: $failureReason, updateStatus: $updateStatus, updatePercentage: $updatePercentage, updateTime: $updateTime, version: $version)';
+  final _this = this as ReaderFirmwareInfo;
+  return 'ReaderFirmwareInfo(failureReason: ${_this.failureReason}, updateStatus: ${_this.updateStatus}, updatePercentage: ${_this.updatePercentage}, updateTime: ${_this.updateTime}, version: ${_this.version})';
 }
 
 
@@ -3112,7 +3188,7 @@ class _$ReaderFirmwareInfoCopyWithImpl<$Res>
 /// Create a copy of ReaderFirmwareInfo
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? failureReason = freezed,Object? updateStatus = null,Object? updatePercentage = freezed,Object? updateTime = freezed,Object? version = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ReaderFirmwareInfo(
 failureReason: freezed == failureReason ? _self.failureReason : failureReason // ignore: cast_nullable_to_non_nullable
 as String?,updateStatus: null == updateStatus ? _self.updateStatus : updateStatus // ignore: cast_nullable_to_non_nullable
 as FirmwareUpdateStatus,updatePercentage: freezed == updatePercentage ? _self.updatePercentage : updatePercentage // ignore: cast_nullable_to_non_nullable
@@ -3263,7 +3339,6 @@ class _ReaderFirmwareInfo with DiagnosticableTreeMixin implements ReaderFirmware
   factory _ReaderFirmwareInfo.fromJson(Map<String, dynamic> json) => _$ReaderFirmwareInfoFromJson(json);
 
 @override final  String? failureReason;
-// iOS only
 @override final  FirmwareUpdateStatus updateStatus;
 @override final  int? updatePercentage;
 @override final  DateTime? updateTime;
@@ -3281,23 +3356,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'ReaderFirmwareInfo'))
     ..add(DiagnosticsProperty('failureReason', failureReason))..add(DiagnosticsProperty('updateStatus', updateStatus))..add(DiagnosticsProperty('updatePercentage', updatePercentage))..add(DiagnosticsProperty('updateTime', updateTime))..add(DiagnosticsProperty('version', version));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderFirmwareInfo&&(identical(other.failureReason, failureReason) || other.failureReason == failureReason)&&(identical(other.updateStatus, updateStatus) || other.updateStatus == updateStatus)&&(identical(other.updatePercentage, updatePercentage) || other.updatePercentage == updatePercentage)&&(identical(other.updateTime, updateTime) || other.updateTime == updateTime)&&(identical(other.version, version) || other.version == version));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderFirmwareInfo&&(identical(other.failureReason, failureReason) || other.failureReason == failureReason)&&(identical(other.updateStatus, updateStatus) || other.updateStatus == updateStatus)&&(identical(other.updatePercentage, updatePercentage) || other.updatePercentage == updatePercentage)&&(identical(other.updateTime, updateTime) || other.updateTime == updateTime)&&(identical(other.version, version) || other.version == version));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,failureReason,updateStatus,updatePercentage,updateTime,version);
+int get hashCode {
+    return Object.hash(runtimeType,failureReason,updateStatus,updatePercentage,updateTime,version);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderFirmwareInfo(failureReason: $failureReason, updateStatus: $updateStatus, updatePercentage: $updatePercentage, updateTime: $updateTime, version: $version)';
+    return 'ReaderFirmwareInfo(failureReason: $failureReason, updateStatus: $updateStatus, updatePercentage: $updatePercentage, updateTime: $updateTime, version: $version)';
 }
 
 
@@ -3343,10 +3420,7 @@ as String?,
 /// @nodoc
 mixin _$ReaderInfo implements DiagnosticableTreeMixin {
 
- ReaderBatteryStatus? get batteryStatus; CardInsertionStatus? get cardInsertionStatus;// iOS only
-@JsonKey(unknownEnumValue: ReaderConnectionType.unknown) ReaderConnectionType get connectionType; ReaderFirmwareInfo? get firmwareInfo; String get id; bool get isBlinkable; bool? get isConnectionRetryable;// iOS only
- bool get isForgettable; bool? get isRebootable;// iOS only
- ReaderModel get model; String get name; String? get serialNumber; ReaderStatusInfo get statusInfo; List<CardInputMethod> get supportedInputMethods; List<ReaderWarning>? get warnings;
+ ReaderBatteryStatus? get batteryStatus; CardInsertionStatus? get cardInsertionStatus;@JsonKey(unknownEnumValue: ReaderConnectionType.unknown) ReaderConnectionType get connectionType; ReaderFirmwareInfo? get firmwareInfo; String get id; bool get isBlinkable; bool? get isConnectionRetryable; bool get isForgettable; bool? get isRebootable; ReaderModel get model; String get name; String? get serialNumber; ReaderStatusInfo get statusInfo; List<CardInputMethod> get supportedInputMethods; List<ReaderWarning>? get warnings;
 /// Create a copy of ReaderInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3358,23 +3432,29 @@ $ReaderInfoCopyWith<ReaderInfo> get copyWith => _$ReaderInfoCopyWithImpl<ReaderI
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as ReaderInfo;
   properties
     ..add(DiagnosticsProperty('type', 'ReaderInfo'))
-    ..add(DiagnosticsProperty('batteryStatus', batteryStatus))..add(DiagnosticsProperty('cardInsertionStatus', cardInsertionStatus))..add(DiagnosticsProperty('connectionType', connectionType))..add(DiagnosticsProperty('firmwareInfo', firmwareInfo))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('isBlinkable', isBlinkable))..add(DiagnosticsProperty('isConnectionRetryable', isConnectionRetryable))..add(DiagnosticsProperty('isForgettable', isForgettable))..add(DiagnosticsProperty('isRebootable', isRebootable))..add(DiagnosticsProperty('model', model))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('serialNumber', serialNumber))..add(DiagnosticsProperty('statusInfo', statusInfo))..add(DiagnosticsProperty('supportedInputMethods', supportedInputMethods))..add(DiagnosticsProperty('warnings', warnings));
+    ..add(DiagnosticsProperty('batteryStatus', _this.batteryStatus))..add(DiagnosticsProperty('cardInsertionStatus', _this.cardInsertionStatus))..add(DiagnosticsProperty('connectionType', _this.connectionType))..add(DiagnosticsProperty('firmwareInfo', _this.firmwareInfo))..add(DiagnosticsProperty('id', _this.id))..add(DiagnosticsProperty('isBlinkable', _this.isBlinkable))..add(DiagnosticsProperty('isConnectionRetryable', _this.isConnectionRetryable))..add(DiagnosticsProperty('isForgettable', _this.isForgettable))..add(DiagnosticsProperty('isRebootable', _this.isRebootable))..add(DiagnosticsProperty('model', _this.model))..add(DiagnosticsProperty('name', _this.name))..add(DiagnosticsProperty('serialNumber', _this.serialNumber))..add(DiagnosticsProperty('statusInfo', _this.statusInfo))..add(DiagnosticsProperty('supportedInputMethods', _this.supportedInputMethods))..add(DiagnosticsProperty('warnings', _this.warnings));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderInfo&&(identical(other.batteryStatus, batteryStatus) || other.batteryStatus == batteryStatus)&&(identical(other.cardInsertionStatus, cardInsertionStatus) || other.cardInsertionStatus == cardInsertionStatus)&&(identical(other.connectionType, connectionType) || other.connectionType == connectionType)&&(identical(other.firmwareInfo, firmwareInfo) || other.firmwareInfo == firmwareInfo)&&(identical(other.id, id) || other.id == id)&&(identical(other.isBlinkable, isBlinkable) || other.isBlinkable == isBlinkable)&&(identical(other.isConnectionRetryable, isConnectionRetryable) || other.isConnectionRetryable == isConnectionRetryable)&&(identical(other.isForgettable, isForgettable) || other.isForgettable == isForgettable)&&(identical(other.isRebootable, isRebootable) || other.isRebootable == isRebootable)&&(identical(other.model, model) || other.model == model)&&(identical(other.name, name) || other.name == name)&&(identical(other.serialNumber, serialNumber) || other.serialNumber == serialNumber)&&(identical(other.statusInfo, statusInfo) || other.statusInfo == statusInfo)&&const DeepCollectionEquality().equals(other.supportedInputMethods, supportedInputMethods)&&const DeepCollectionEquality().equals(other.warnings, warnings));
+  final _this = this as ReaderInfo;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderInfo&&(identical(other.batteryStatus, _this.batteryStatus) || other.batteryStatus == _this.batteryStatus)&&(identical(other.cardInsertionStatus, _this.cardInsertionStatus) || other.cardInsertionStatus == _this.cardInsertionStatus)&&(identical(other.connectionType, _this.connectionType) || other.connectionType == _this.connectionType)&&(identical(other.firmwareInfo, _this.firmwareInfo) || other.firmwareInfo == _this.firmwareInfo)&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.isBlinkable, _this.isBlinkable) || other.isBlinkable == _this.isBlinkable)&&(identical(other.isConnectionRetryable, _this.isConnectionRetryable) || other.isConnectionRetryable == _this.isConnectionRetryable)&&(identical(other.isForgettable, _this.isForgettable) || other.isForgettable == _this.isForgettable)&&(identical(other.isRebootable, _this.isRebootable) || other.isRebootable == _this.isRebootable)&&(identical(other.model, _this.model) || other.model == _this.model)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.serialNumber, _this.serialNumber) || other.serialNumber == _this.serialNumber)&&(identical(other.statusInfo, _this.statusInfo) || other.statusInfo == _this.statusInfo)&&const DeepCollectionEquality().equals(other.supportedInputMethods, _this.supportedInputMethods)&&const DeepCollectionEquality().equals(other.warnings, _this.warnings));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,batteryStatus,cardInsertionStatus,connectionType,firmwareInfo,id,isBlinkable,isConnectionRetryable,isForgettable,isRebootable,model,name,serialNumber,statusInfo,const DeepCollectionEquality().hash(supportedInputMethods),const DeepCollectionEquality().hash(warnings));
+int get hashCode {
+  final _this = this as ReaderInfo;
+  return Object.hash(runtimeType,_this.batteryStatus,_this.cardInsertionStatus,_this.connectionType,_this.firmwareInfo,_this.id,_this.isBlinkable,_this.isConnectionRetryable,_this.isForgettable,_this.isRebootable,_this.model,_this.name,_this.serialNumber,_this.statusInfo,const DeepCollectionEquality().hash(_this.supportedInputMethods),const DeepCollectionEquality().hash(_this.warnings));
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, connectionType: $connectionType, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, isRebootable: $isRebootable, model: $model, name: $name, serialNumber: $serialNumber, statusInfo: $statusInfo, supportedInputMethods: $supportedInputMethods, warnings: $warnings)';
+  final _this = this as ReaderInfo;
+  return 'ReaderInfo(batteryStatus: ${_this.batteryStatus}, cardInsertionStatus: ${_this.cardInsertionStatus}, connectionType: ${_this.connectionType}, firmwareInfo: ${_this.firmwareInfo}, id: ${_this.id}, isBlinkable: ${_this.isBlinkable}, isConnectionRetryable: ${_this.isConnectionRetryable}, isForgettable: ${_this.isForgettable}, isRebootable: ${_this.isRebootable}, model: ${_this.model}, name: ${_this.name}, serialNumber: ${_this.serialNumber}, statusInfo: ${_this.statusInfo}, supportedInputMethods: ${_this.supportedInputMethods}, warnings: ${_this.warnings})';
 }
 
 
@@ -3403,7 +3483,7 @@ class _$ReaderInfoCopyWithImpl<$Res>
 /// Create a copy of ReaderInfo
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? batteryStatus = freezed,Object? cardInsertionStatus = freezed,Object? connectionType = null,Object? firmwareInfo = freezed,Object? id = null,Object? isBlinkable = null,Object? isConnectionRetryable = freezed,Object? isForgettable = null,Object? isRebootable = freezed,Object? model = null,Object? name = null,Object? serialNumber = freezed,Object? statusInfo = null,Object? supportedInputMethods = null,Object? warnings = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ReaderInfo(
 batteryStatus: freezed == batteryStatus ? _self.batteryStatus : batteryStatus // ignore: cast_nullable_to_non_nullable
 as ReaderBatteryStatus?,cardInsertionStatus: freezed == cardInsertionStatus ? _self.cardInsertionStatus : cardInsertionStatus // ignore: cast_nullable_to_non_nullable
 as CardInsertionStatus?,connectionType: null == connectionType ? _self.connectionType : connectionType // ignore: cast_nullable_to_non_nullable
@@ -3593,21 +3673,18 @@ return $default(_that.batteryStatus,_that.cardInsertionStatus,_that.connectionTy
 @JsonSerializable()
 
 class _ReaderInfo with DiagnosticableTreeMixin implements ReaderInfo {
-  const _ReaderInfo({this.batteryStatus, this.cardInsertionStatus, @JsonKey(unknownEnumValue: ReaderConnectionType.unknown) required this.connectionType, this.firmwareInfo, required this.id, required this.isBlinkable, this.isConnectionRetryable, required this.isForgettable, this.isRebootable, required this.model, required this.name, this.serialNumber, required this.statusInfo, required final  List<CardInputMethod> supportedInputMethods, final  List<ReaderWarning>? warnings}): _supportedInputMethods = supportedInputMethods,_warnings = warnings;
+  const _ReaderInfo({this.batteryStatus, this.cardInsertionStatus, @JsonKey(unknownEnumValue: ReaderConnectionType.unknown) required this.connectionType, this.firmwareInfo, required this.id, required this.isBlinkable, this.isConnectionRetryable, required this.isForgettable, this.isRebootable, required this.model, required this.name, this.serialNumber, required this.statusInfo, required  List<CardInputMethod> supportedInputMethods,  List<ReaderWarning>? warnings}): _supportedInputMethods = supportedInputMethods,_warnings = warnings;
   factory _ReaderInfo.fromJson(Map<String, dynamic> json) => _$ReaderInfoFromJson(json);
 
 @override final  ReaderBatteryStatus? batteryStatus;
 @override final  CardInsertionStatus? cardInsertionStatus;
-// iOS only
 @override@JsonKey(unknownEnumValue: ReaderConnectionType.unknown) final  ReaderConnectionType connectionType;
 @override final  ReaderFirmwareInfo? firmwareInfo;
 @override final  String id;
 @override final  bool isBlinkable;
 @override final  bool? isConnectionRetryable;
-// iOS only
 @override final  bool isForgettable;
 @override final  bool? isRebootable;
-// iOS only
 @override final  ReaderModel model;
 @override final  String name;
 @override final  String? serialNumber;
@@ -3641,23 +3718,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'ReaderInfo'))
     ..add(DiagnosticsProperty('batteryStatus', batteryStatus))..add(DiagnosticsProperty('cardInsertionStatus', cardInsertionStatus))..add(DiagnosticsProperty('connectionType', connectionType))..add(DiagnosticsProperty('firmwareInfo', firmwareInfo))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('isBlinkable', isBlinkable))..add(DiagnosticsProperty('isConnectionRetryable', isConnectionRetryable))..add(DiagnosticsProperty('isForgettable', isForgettable))..add(DiagnosticsProperty('isRebootable', isRebootable))..add(DiagnosticsProperty('model', model))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('serialNumber', serialNumber))..add(DiagnosticsProperty('statusInfo', statusInfo))..add(DiagnosticsProperty('supportedInputMethods', supportedInputMethods))..add(DiagnosticsProperty('warnings', warnings));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderInfo&&(identical(other.batteryStatus, batteryStatus) || other.batteryStatus == batteryStatus)&&(identical(other.cardInsertionStatus, cardInsertionStatus) || other.cardInsertionStatus == cardInsertionStatus)&&(identical(other.connectionType, connectionType) || other.connectionType == connectionType)&&(identical(other.firmwareInfo, firmwareInfo) || other.firmwareInfo == firmwareInfo)&&(identical(other.id, id) || other.id == id)&&(identical(other.isBlinkable, isBlinkable) || other.isBlinkable == isBlinkable)&&(identical(other.isConnectionRetryable, isConnectionRetryable) || other.isConnectionRetryable == isConnectionRetryable)&&(identical(other.isForgettable, isForgettable) || other.isForgettable == isForgettable)&&(identical(other.isRebootable, isRebootable) || other.isRebootable == isRebootable)&&(identical(other.model, model) || other.model == model)&&(identical(other.name, name) || other.name == name)&&(identical(other.serialNumber, serialNumber) || other.serialNumber == serialNumber)&&(identical(other.statusInfo, statusInfo) || other.statusInfo == statusInfo)&&const DeepCollectionEquality().equals(other._supportedInputMethods, _supportedInputMethods)&&const DeepCollectionEquality().equals(other._warnings, _warnings));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderInfo&&(identical(other.batteryStatus, batteryStatus) || other.batteryStatus == batteryStatus)&&(identical(other.cardInsertionStatus, cardInsertionStatus) || other.cardInsertionStatus == cardInsertionStatus)&&(identical(other.connectionType, connectionType) || other.connectionType == connectionType)&&(identical(other.firmwareInfo, firmwareInfo) || other.firmwareInfo == firmwareInfo)&&(identical(other.id, id) || other.id == id)&&(identical(other.isBlinkable, isBlinkable) || other.isBlinkable == isBlinkable)&&(identical(other.isConnectionRetryable, isConnectionRetryable) || other.isConnectionRetryable == isConnectionRetryable)&&(identical(other.isForgettable, isForgettable) || other.isForgettable == isForgettable)&&(identical(other.isRebootable, isRebootable) || other.isRebootable == isRebootable)&&(identical(other.model, model) || other.model == model)&&(identical(other.name, name) || other.name == name)&&(identical(other.serialNumber, serialNumber) || other.serialNumber == serialNumber)&&(identical(other.statusInfo, statusInfo) || other.statusInfo == statusInfo)&&const DeepCollectionEquality().equals(other.supportedInputMethods, _supportedInputMethods)&&const DeepCollectionEquality().equals(other.warnings, _warnings));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,batteryStatus,cardInsertionStatus,connectionType,firmwareInfo,id,isBlinkable,isConnectionRetryable,isForgettable,isRebootable,model,name,serialNumber,statusInfo,const DeepCollectionEquality().hash(_supportedInputMethods),const DeepCollectionEquality().hash(_warnings));
+int get hashCode {
+    return Object.hash(runtimeType,batteryStatus,cardInsertionStatus,connectionType,firmwareInfo,id,isBlinkable,isConnectionRetryable,isForgettable,isRebootable,model,name,serialNumber,statusInfo,const DeepCollectionEquality().hash(_supportedInputMethods),const DeepCollectionEquality().hash(_warnings));
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, connectionType: $connectionType, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, isRebootable: $isRebootable, model: $model, name: $name, serialNumber: $serialNumber, statusInfo: $statusInfo, supportedInputMethods: $supportedInputMethods, warnings: $warnings)';
+    return 'ReaderInfo(batteryStatus: $batteryStatus, cardInsertionStatus: $cardInsertionStatus, connectionType: $connectionType, firmwareInfo: $firmwareInfo, id: $id, isBlinkable: $isBlinkable, isConnectionRetryable: $isConnectionRetryable, isForgettable: $isForgettable, isRebootable: $isRebootable, model: $model, name: $name, serialNumber: $serialNumber, statusInfo: $statusInfo, supportedInputMethods: $supportedInputMethods, warnings: $warnings)';
 }
 
 
@@ -3758,23 +3837,29 @@ $PromptParametersCopyWith<PromptParameters> get copyWith => _$PromptParametersCo
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as PromptParameters;
   properties
     ..add(DiagnosticsProperty('type', 'PromptParameters'))
-    ..add(DiagnosticsProperty('additionalPaymentMethods', additionalPaymentMethods))..add(DiagnosticsProperty('mode', mode));
+    ..add(DiagnosticsProperty('additionalPaymentMethods', _this.additionalPaymentMethods))..add(DiagnosticsProperty('mode', _this.mode));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PromptParameters&&const DeepCollectionEquality().equals(other.additionalPaymentMethods, additionalPaymentMethods)&&(identical(other.mode, mode) || other.mode == mode));
+  final _this = this as PromptParameters;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PromptParameters&&const DeepCollectionEquality().equals(other.additionalPaymentMethods, _this.additionalPaymentMethods)&&(identical(other.mode, _this.mode) || other.mode == _this.mode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(additionalPaymentMethods),mode);
+int get hashCode {
+  final _this = this as PromptParameters;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.additionalPaymentMethods),_this.mode);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PromptParameters(additionalPaymentMethods: $additionalPaymentMethods, mode: $mode)';
+  final _this = this as PromptParameters;
+  return 'PromptParameters(additionalPaymentMethods: ${_this.additionalPaymentMethods}, mode: ${_this.mode})';
 }
 
 
@@ -3803,7 +3888,7 @@ class _$PromptParametersCopyWithImpl<$Res>
 /// Create a copy of PromptParameters
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? additionalPaymentMethods = null,Object? mode = null,}) {
-  return _then(_self.copyWith(
+  return _then(PromptParameters(
 additionalPaymentMethods: null == additionalPaymentMethods ? _self.additionalPaymentMethods : additionalPaymentMethods // ignore: cast_nullable_to_non_nullable
 as List<AdditionalPaymentMethodType>,mode: null == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
 as PromptMode,
@@ -3947,7 +4032,7 @@ return $default(_that.additionalPaymentMethods,_that.mode);case _:
 @JsonSerializable()
 
 class _PromptParameters with DiagnosticableTreeMixin implements PromptParameters {
-  const _PromptParameters({required final  List<AdditionalPaymentMethodType> additionalPaymentMethods, required this.mode}): _additionalPaymentMethods = additionalPaymentMethods;
+  const _PromptParameters({required  List<AdditionalPaymentMethodType> additionalPaymentMethods, required this.mode}): _additionalPaymentMethods = additionalPaymentMethods;
   factory _PromptParameters.fromJson(Map<String, dynamic> json) => _$PromptParametersFromJson(json);
 
  final  List<AdditionalPaymentMethodType> _additionalPaymentMethods;
@@ -3971,23 +4056,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'PromptParameters'))
     ..add(DiagnosticsProperty('additionalPaymentMethods', additionalPaymentMethods))..add(DiagnosticsProperty('mode', mode));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PromptParameters&&const DeepCollectionEquality().equals(other._additionalPaymentMethods, _additionalPaymentMethods)&&(identical(other.mode, mode) || other.mode == mode));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PromptParameters&&const DeepCollectionEquality().equals(other.additionalPaymentMethods, _additionalPaymentMethods)&&(identical(other.mode, mode) || other.mode == mode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_additionalPaymentMethods),mode);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_additionalPaymentMethods),mode);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PromptParameters(additionalPaymentMethods: $additionalPaymentMethods, mode: $mode)';
+    return 'PromptParameters(additionalPaymentMethods: $additionalPaymentMethods, mode: $mode)';
 }
 
 
@@ -4065,23 +4152,29 @@ $PaymentCopyWith<Payment> get copyWith => _$PaymentCopyWithImpl<Payment>(this as
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as Payment;
   properties
     ..add(DiagnosticsProperty('type', 'Payment'))
-    ..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('cashDetails', cashDetails))..add(DiagnosticsProperty('createdAt', createdAt))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('sourceType', sourceType))..add(DiagnosticsProperty('tipMoney', tipMoney))..add(DiagnosticsProperty('totalMoney', totalMoney))..add(DiagnosticsProperty('updatedAt', updatedAt))..add(DiagnosticsProperty('cardDetails', cardDetails))..add(DiagnosticsProperty('status', status));
+    ..add(DiagnosticsProperty('amountMoney', _this.amountMoney))..add(DiagnosticsProperty('appFeeMoney', _this.appFeeMoney))..add(DiagnosticsProperty('cashDetails', _this.cashDetails))..add(DiagnosticsProperty('createdAt', _this.createdAt))..add(DiagnosticsProperty('id', _this.id))..add(DiagnosticsProperty('locationId', _this.locationId))..add(DiagnosticsProperty('orderId', _this.orderId))..add(DiagnosticsProperty('referenceId', _this.referenceId))..add(DiagnosticsProperty('sourceType', _this.sourceType))..add(DiagnosticsProperty('tipMoney', _this.tipMoney))..add(DiagnosticsProperty('totalMoney', _this.totalMoney))..add(DiagnosticsProperty('updatedAt', _this.updatedAt))..add(DiagnosticsProperty('cardDetails', _this.cardDetails))..add(DiagnosticsProperty('status', _this.status));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Payment&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.cashDetails, cashDetails) || other.cashDetails == cashDetails)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.id, id) || other.id == id)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.sourceType, sourceType) || other.sourceType == sourceType)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney)&&(identical(other.totalMoney, totalMoney) || other.totalMoney == totalMoney)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&const DeepCollectionEquality().equals(other.cardDetails, cardDetails)&&(identical(other.status, status) || other.status == status));
+  final _this = this as Payment;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Payment&&(identical(other.amountMoney, _this.amountMoney) || other.amountMoney == _this.amountMoney)&&(identical(other.appFeeMoney, _this.appFeeMoney) || other.appFeeMoney == _this.appFeeMoney)&&(identical(other.cashDetails, _this.cashDetails) || other.cashDetails == _this.cashDetails)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.locationId, _this.locationId) || other.locationId == _this.locationId)&&(identical(other.orderId, _this.orderId) || other.orderId == _this.orderId)&&(identical(other.referenceId, _this.referenceId) || other.referenceId == _this.referenceId)&&(identical(other.sourceType, _this.sourceType) || other.sourceType == _this.sourceType)&&(identical(other.tipMoney, _this.tipMoney) || other.tipMoney == _this.tipMoney)&&(identical(other.totalMoney, _this.totalMoney) || other.totalMoney == _this.totalMoney)&&(identical(other.updatedAt, _this.updatedAt) || other.updatedAt == _this.updatedAt)&&const DeepCollectionEquality().equals(other.cardDetails, _this.cardDetails)&&(identical(other.status, _this.status) || other.status == _this.status));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,amountMoney,appFeeMoney,cashDetails,createdAt,id,locationId,orderId,referenceId,sourceType,tipMoney,totalMoney,updatedAt,const DeepCollectionEquality().hash(cardDetails),status);
+int get hashCode {
+  final _this = this as Payment;
+  return Object.hash(runtimeType,_this.amountMoney,_this.appFeeMoney,_this.cashDetails,_this.createdAt,_this.id,_this.locationId,_this.orderId,_this.referenceId,_this.sourceType,_this.tipMoney,_this.totalMoney,_this.updatedAt,const DeepCollectionEquality().hash(_this.cardDetails),_this.status);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'Payment(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cashDetails: $cashDetails, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, sourceType: $sourceType, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt, cardDetails: $cardDetails, status: $status)';
+  final _this = this as Payment;
+  return 'Payment(amountMoney: ${_this.amountMoney}, appFeeMoney: ${_this.appFeeMoney}, cashDetails: ${_this.cashDetails}, createdAt: ${_this.createdAt}, id: ${_this.id}, locationId: ${_this.locationId}, orderId: ${_this.orderId}, referenceId: ${_this.referenceId}, sourceType: ${_this.sourceType}, tipMoney: ${_this.tipMoney}, totalMoney: ${_this.totalMoney}, updatedAt: ${_this.updatedAt}, cardDetails: ${_this.cardDetails}, status: ${_this.status})';
 }
 
 
@@ -4318,7 +4411,7 @@ return offline(_that.amountMoney,_that.appFeeMoney,_that.cashDetails,_that.creat
 @JsonSerializable()
 
 class OnlinePayment with DiagnosticableTreeMixin implements Payment {
-  const OnlinePayment({required this.amountMoney, this.appFeeMoney, this.cashDetails, required this.createdAt, this.id, this.locationId, this.orderId, this.referenceId, @JsonKey(unknownEnumValue: SourceType.unknown) required this.sourceType, this.tipMoney, required this.totalMoney, required this.updatedAt, this.cardDetails, this.customerId, this.note, @JsonKey(unknownEnumValue: PaymentStatus.unknown) required this.status, this.teamMemberId, this.capabilities, final  List<PaymentProcessingFee>? processingFee, this.receiptNumber, this.receiptUrl, this.statementDescription, final  String? $type}): _processingFee = processingFee,$type = $type ?? 'online';
+  const OnlinePayment({required this.amountMoney, this.appFeeMoney, this.cashDetails, required this.createdAt, this.id, this.locationId, this.orderId, this.referenceId, @JsonKey(unknownEnumValue: SourceType.unknown) required this.sourceType, this.tipMoney, required this.totalMoney, required this.updatedAt, this.cardDetails, this.customerId, this.note, @JsonKey(unknownEnumValue: PaymentStatus.unknown) required this.status, this.teamMemberId, this.capabilities,  List<PaymentProcessingFee>? processingFee, this.receiptNumber, this.receiptUrl, this.statementDescription,  String? $type}): _processingFee = processingFee,$type = $type ?? 'online';
   factory OnlinePayment.fromJson(Map<String, dynamic> json) => _$OnlinePaymentFromJson(json);
 
 @override final  Money amountMoney;
@@ -4339,9 +4432,7 @@ class OnlinePayment with DiagnosticableTreeMixin implements Payment {
 @override@JsonKey(unknownEnumValue: PaymentStatus.unknown) final  PaymentStatus status;
  final  String? teamMemberId;
  final  PaymentCapabilities? capabilities;
-// Android only
  final  List<PaymentProcessingFee>? _processingFee;
-// Android only
  List<PaymentProcessingFee>? get processingFee {
   final value = _processingFee;
   if (value == null) return null;
@@ -4350,11 +4441,8 @@ class OnlinePayment with DiagnosticableTreeMixin implements Payment {
   return EqualUnmodifiableListView(value);
 }
 
-// Android only
  final  String? receiptNumber;
-// Android only
  final  String? receiptUrl;
-// Android only
  final  String? statementDescription;
 
 @JsonKey(name: 'type')
@@ -4373,23 +4461,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'Payment.online'))
     ..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('cashDetails', cashDetails))..add(DiagnosticsProperty('createdAt', createdAt))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('sourceType', sourceType))..add(DiagnosticsProperty('tipMoney', tipMoney))..add(DiagnosticsProperty('totalMoney', totalMoney))..add(DiagnosticsProperty('updatedAt', updatedAt))..add(DiagnosticsProperty('cardDetails', cardDetails))..add(DiagnosticsProperty('customerId', customerId))..add(DiagnosticsProperty('note', note))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('teamMemberId', teamMemberId))..add(DiagnosticsProperty('capabilities', capabilities))..add(DiagnosticsProperty('processingFee', processingFee))..add(DiagnosticsProperty('receiptNumber', receiptNumber))..add(DiagnosticsProperty('receiptUrl', receiptUrl))..add(DiagnosticsProperty('statementDescription', statementDescription));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnlinePayment&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.cashDetails, cashDetails) || other.cashDetails == cashDetails)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.id, id) || other.id == id)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.sourceType, sourceType) || other.sourceType == sourceType)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney)&&(identical(other.totalMoney, totalMoney) || other.totalMoney == totalMoney)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.cardDetails, cardDetails) || other.cardDetails == cardDetails)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.note, note) || other.note == note)&&(identical(other.status, status) || other.status == status)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.capabilities, capabilities) || other.capabilities == capabilities)&&const DeepCollectionEquality().equals(other._processingFee, _processingFee)&&(identical(other.receiptNumber, receiptNumber) || other.receiptNumber == receiptNumber)&&(identical(other.receiptUrl, receiptUrl) || other.receiptUrl == receiptUrl)&&(identical(other.statementDescription, statementDescription) || other.statementDescription == statementDescription));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is OnlinePayment&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.cashDetails, cashDetails) || other.cashDetails == cashDetails)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.id, id) || other.id == id)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.sourceType, sourceType) || other.sourceType == sourceType)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney)&&(identical(other.totalMoney, totalMoney) || other.totalMoney == totalMoney)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.cardDetails, cardDetails) || other.cardDetails == cardDetails)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.note, note) || other.note == note)&&(identical(other.status, status) || other.status == status)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.capabilities, capabilities) || other.capabilities == capabilities)&&const DeepCollectionEquality().equals(other.processingFee, _processingFee)&&(identical(other.receiptNumber, receiptNumber) || other.receiptNumber == receiptNumber)&&(identical(other.receiptUrl, receiptUrl) || other.receiptUrl == receiptUrl)&&(identical(other.statementDescription, statementDescription) || other.statementDescription == statementDescription));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,amountMoney,appFeeMoney,cashDetails,createdAt,id,locationId,orderId,referenceId,sourceType,tipMoney,totalMoney,updatedAt,cardDetails,customerId,note,status,teamMemberId,capabilities,const DeepCollectionEquality().hash(_processingFee),receiptNumber,receiptUrl,statementDescription]);
+int get hashCode {
+    return Object.hashAll([runtimeType,amountMoney,appFeeMoney,cashDetails,createdAt,id,locationId,orderId,referenceId,sourceType,tipMoney,totalMoney,updatedAt,cardDetails,customerId,note,status,teamMemberId,capabilities,const DeepCollectionEquality().hash(_processingFee),receiptNumber,receiptUrl,statementDescription]);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'Payment.online(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cashDetails: $cashDetails, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, sourceType: $sourceType, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt, cardDetails: $cardDetails, customerId: $customerId, note: $note, status: $status, teamMemberId: $teamMemberId, capabilities: $capabilities, processingFee: $processingFee, receiptNumber: $receiptNumber, receiptUrl: $receiptUrl, statementDescription: $statementDescription)';
+    return 'Payment.online(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cashDetails: $cashDetails, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, sourceType: $sourceType, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt, cardDetails: $cardDetails, customerId: $customerId, note: $note, status: $status, teamMemberId: $teamMemberId, capabilities: $capabilities, processingFee: $processingFee, receiptNumber: $receiptNumber, receiptUrl: $receiptUrl, statementDescription: $statementDescription)';
 }
 
 
@@ -4530,7 +4620,7 @@ $PaymentCapabilitiesCopyWith<$Res>? get capabilities {
 @JsonSerializable()
 
 class OfflinePayment with DiagnosticableTreeMixin implements Payment {
-  const OfflinePayment({required this.amountMoney, this.appFeeMoney, this.cashDetails, required this.createdAt, this.id, this.locationId, this.orderId, this.referenceId, @JsonKey(unknownEnumValue: SourceType.unknown) required this.sourceType, this.tipMoney, required this.totalMoney, required this.updatedAt, this.cardDetails, required this.localId, @JsonKey(unknownEnumValue: OfflineStatus.unknown) required this.status, this.uploadedAt, final  String? $type}): $type = $type ?? 'offline';
+  const OfflinePayment({required this.amountMoney, this.appFeeMoney, this.cashDetails, required this.createdAt, this.id, this.locationId, this.orderId, this.referenceId, @JsonKey(unknownEnumValue: SourceType.unknown) required this.sourceType, this.tipMoney, required this.totalMoney, required this.updatedAt, this.cardDetails, required this.localId, @JsonKey(unknownEnumValue: OfflineStatus.unknown) required this.status, this.uploadedAt,  String? $type}): $type = $type ?? 'offline';
   factory OfflinePayment.fromJson(Map<String, dynamic> json) => _$OfflinePaymentFromJson(json);
 
 @override final  Money amountMoney;
@@ -4566,23 +4656,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'Payment.offline'))
     ..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('cashDetails', cashDetails))..add(DiagnosticsProperty('createdAt', createdAt))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('sourceType', sourceType))..add(DiagnosticsProperty('tipMoney', tipMoney))..add(DiagnosticsProperty('totalMoney', totalMoney))..add(DiagnosticsProperty('updatedAt', updatedAt))..add(DiagnosticsProperty('cardDetails', cardDetails))..add(DiagnosticsProperty('localId', localId))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('uploadedAt', uploadedAt));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OfflinePayment&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.cashDetails, cashDetails) || other.cashDetails == cashDetails)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.id, id) || other.id == id)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.sourceType, sourceType) || other.sourceType == sourceType)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney)&&(identical(other.totalMoney, totalMoney) || other.totalMoney == totalMoney)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.cardDetails, cardDetails) || other.cardDetails == cardDetails)&&(identical(other.localId, localId) || other.localId == localId)&&(identical(other.status, status) || other.status == status)&&(identical(other.uploadedAt, uploadedAt) || other.uploadedAt == uploadedAt));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is OfflinePayment&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.cashDetails, cashDetails) || other.cashDetails == cashDetails)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.id, id) || other.id == id)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.sourceType, sourceType) || other.sourceType == sourceType)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney)&&(identical(other.totalMoney, totalMoney) || other.totalMoney == totalMoney)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.cardDetails, cardDetails) || other.cardDetails == cardDetails)&&(identical(other.localId, localId) || other.localId == localId)&&(identical(other.status, status) || other.status == status)&&(identical(other.uploadedAt, uploadedAt) || other.uploadedAt == uploadedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,amountMoney,appFeeMoney,cashDetails,createdAt,id,locationId,orderId,referenceId,sourceType,tipMoney,totalMoney,updatedAt,cardDetails,localId,status,uploadedAt);
+int get hashCode {
+    return Object.hash(runtimeType,amountMoney,appFeeMoney,cashDetails,createdAt,id,locationId,orderId,referenceId,sourceType,tipMoney,totalMoney,updatedAt,cardDetails,localId,status,uploadedAt);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'Payment.offline(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cashDetails: $cashDetails, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, sourceType: $sourceType, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt, cardDetails: $cardDetails, localId: $localId, status: $status, uploadedAt: $uploadedAt)';
+    return 'Payment.offline(amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, cashDetails: $cashDetails, createdAt: $createdAt, id: $id, locationId: $locationId, orderId: $orderId, referenceId: $referenceId, sourceType: $sourceType, tipMoney: $tipMoney, totalMoney: $totalMoney, updatedAt: $updatedAt, cardDetails: $cardDetails, localId: $localId, status: $status, uploadedAt: $uploadedAt)';
 }
 
 
@@ -4717,23 +4809,29 @@ $PaymentCapabilitiesCopyWith<PaymentCapabilities> get copyWith => _$PaymentCapab
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as PaymentCapabilities;
   properties
     ..add(DiagnosticsProperty('type', 'PaymentCapabilities'))
-    ..add(DiagnosticsProperty('allCapabilities', allCapabilities));
+    ..add(DiagnosticsProperty('allCapabilities', _this.allCapabilities));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentCapabilities&&const DeepCollectionEquality().equals(other.allCapabilities, allCapabilities));
+  final _this = this as PaymentCapabilities;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentCapabilities&&const DeepCollectionEquality().equals(other.allCapabilities, _this.allCapabilities));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(allCapabilities));
+int get hashCode {
+  final _this = this as PaymentCapabilities;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.allCapabilities));
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PaymentCapabilities(allCapabilities: $allCapabilities)';
+  final _this = this as PaymentCapabilities;
+  return 'PaymentCapabilities(allCapabilities: ${_this.allCapabilities})';
 }
 
 
@@ -4762,7 +4860,7 @@ class _$PaymentCapabilitiesCopyWithImpl<$Res>
 /// Create a copy of PaymentCapabilities
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? allCapabilities = null,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentCapabilities(
 allCapabilities: null == allCapabilities ? _self.allCapabilities : allCapabilities // ignore: cast_nullable_to_non_nullable
 as List<String>,
   ));
@@ -4905,7 +5003,7 @@ return $default(_that.allCapabilities);case _:
 @JsonSerializable()
 
 class _PaymentCapabilities extends PaymentCapabilities with DiagnosticableTreeMixin {
-  const _PaymentCapabilities({final  List<String> allCapabilities = const <String>[]}): _allCapabilities = allCapabilities,super._();
+  const _PaymentCapabilities({ List<String> allCapabilities = const <String>[]}): _allCapabilities = allCapabilities,super._();
   factory _PaymentCapabilities.fromJson(Map<String, dynamic> json) => _$PaymentCapabilitiesFromJson(json);
 
  final  List<String> _allCapabilities;
@@ -4928,23 +5026,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'PaymentCapabilities'))
     ..add(DiagnosticsProperty('allCapabilities', allCapabilities));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentCapabilities&&const DeepCollectionEquality().equals(other._allCapabilities, _allCapabilities));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentCapabilities&&const DeepCollectionEquality().equals(other.allCapabilities, _allCapabilities));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_allCapabilities));
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_allCapabilities));
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PaymentCapabilities(allCapabilities: $allCapabilities)';
+    return 'PaymentCapabilities(allCapabilities: $allCapabilities)';
 }
 
 
@@ -4998,23 +5098,29 @@ $PaymentProcessingFeeCopyWith<PaymentProcessingFee> get copyWith => _$PaymentPro
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as PaymentProcessingFee;
   properties
     ..add(DiagnosticsProperty('type', 'PaymentProcessingFee'))
-    ..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('effectiveAt', effectiveAt))..add(DiagnosticsProperty('type', type));
+    ..add(DiagnosticsProperty('amountMoney', _this.amountMoney))..add(DiagnosticsProperty('effectiveAt', _this.effectiveAt))..add(DiagnosticsProperty('type', _this.type));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentProcessingFee&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.effectiveAt, effectiveAt) || other.effectiveAt == effectiveAt)&&(identical(other.type, type) || other.type == type));
+  final _this = this as PaymentProcessingFee;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentProcessingFee&&(identical(other.amountMoney, _this.amountMoney) || other.amountMoney == _this.amountMoney)&&(identical(other.effectiveAt, _this.effectiveAt) || other.effectiveAt == _this.effectiveAt)&&(identical(other.type, _this.type) || other.type == _this.type));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,amountMoney,effectiveAt,type);
+int get hashCode {
+  final _this = this as PaymentProcessingFee;
+  return Object.hash(runtimeType,_this.amountMoney,_this.effectiveAt,_this.type);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PaymentProcessingFee(amountMoney: $amountMoney, effectiveAt: $effectiveAt, type: $type)';
+  final _this = this as PaymentProcessingFee;
+  return 'PaymentProcessingFee(amountMoney: ${_this.amountMoney}, effectiveAt: ${_this.effectiveAt}, type: ${_this.type})';
 }
 
 
@@ -5043,7 +5149,7 @@ class _$PaymentProcessingFeeCopyWithImpl<$Res>
 /// Create a copy of PaymentProcessingFee
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? amountMoney = null,Object? effectiveAt = null,Object? type = null,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentProcessingFee(
 amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
 as Money,effectiveAt: null == effectiveAt ? _self.effectiveAt : effectiveAt // ignore: cast_nullable_to_non_nullable
 as DateTime,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
@@ -5216,23 +5322,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'PaymentProcessingFee'))
     ..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('effectiveAt', effectiveAt))..add(DiagnosticsProperty('type', type));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentProcessingFee&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.effectiveAt, effectiveAt) || other.effectiveAt == effectiveAt)&&(identical(other.type, type) || other.type == type));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentProcessingFee&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.effectiveAt, effectiveAt) || other.effectiveAt == effectiveAt)&&(identical(other.type, type) || other.type == type));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,amountMoney,effectiveAt,type);
+int get hashCode {
+    return Object.hash(runtimeType,amountMoney,effectiveAt,type);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PaymentProcessingFee(amountMoney: $amountMoney, effectiveAt: $effectiveAt, type: $type)';
+    return 'PaymentProcessingFee(amountMoney: $amountMoney, effectiveAt: $effectiveAt, type: $type)';
 }
 
 
@@ -5297,23 +5405,29 @@ $IdempotencyKeyDataCopyWith<IdempotencyKeyData> get copyWith => _$IdempotencyKey
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as IdempotencyKeyData;
   properties
     ..add(DiagnosticsProperty('type', 'IdempotencyKeyData'))
-    ..add(DiagnosticsProperty('paymentAttemptId', paymentAttemptId))..add(DiagnosticsProperty('idempotencyKey', idempotencyKey))..add(DiagnosticsProperty('updatedAt', updatedAt));
+    ..add(DiagnosticsProperty('paymentAttemptId', _this.paymentAttemptId))..add(DiagnosticsProperty('idempotencyKey', _this.idempotencyKey))..add(DiagnosticsProperty('updatedAt', _this.updatedAt));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IdempotencyKeyData&&(identical(other.paymentAttemptId, paymentAttemptId) || other.paymentAttemptId == paymentAttemptId)&&(identical(other.idempotencyKey, idempotencyKey) || other.idempotencyKey == idempotencyKey)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+  final _this = this as IdempotencyKeyData;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IdempotencyKeyData&&(identical(other.paymentAttemptId, _this.paymentAttemptId) || other.paymentAttemptId == _this.paymentAttemptId)&&(identical(other.idempotencyKey, _this.idempotencyKey) || other.idempotencyKey == _this.idempotencyKey)&&(identical(other.updatedAt, _this.updatedAt) || other.updatedAt == _this.updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentAttemptId,idempotencyKey,updatedAt);
+int get hashCode {
+  final _this = this as IdempotencyKeyData;
+  return Object.hash(runtimeType,_this.paymentAttemptId,_this.idempotencyKey,_this.updatedAt);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'IdempotencyKeyData(paymentAttemptId: $paymentAttemptId, idempotencyKey: $idempotencyKey, updatedAt: $updatedAt)';
+  final _this = this as IdempotencyKeyData;
+  return 'IdempotencyKeyData(paymentAttemptId: ${_this.paymentAttemptId}, idempotencyKey: ${_this.idempotencyKey}, updatedAt: ${_this.updatedAt})';
 }
 
 
@@ -5342,7 +5456,7 @@ class _$IdempotencyKeyDataCopyWithImpl<$Res>
 /// Create a copy of IdempotencyKeyData
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? paymentAttemptId = null,Object? idempotencyKey = null,Object? updatedAt = null,}) {
-  return _then(_self.copyWith(
+  return _then(IdempotencyKeyData(
 paymentAttemptId: null == paymentAttemptId ? _self.paymentAttemptId : paymentAttemptId // ignore: cast_nullable_to_non_nullable
 as String,idempotencyKey: null == idempotencyKey ? _self.idempotencyKey : idempotencyKey // ignore: cast_nullable_to_non_nullable
 as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -5506,23 +5620,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'IdempotencyKeyData'))
     ..add(DiagnosticsProperty('paymentAttemptId', paymentAttemptId))..add(DiagnosticsProperty('idempotencyKey', idempotencyKey))..add(DiagnosticsProperty('updatedAt', updatedAt));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdempotencyKeyData&&(identical(other.paymentAttemptId, paymentAttemptId) || other.paymentAttemptId == paymentAttemptId)&&(identical(other.idempotencyKey, idempotencyKey) || other.idempotencyKey == idempotencyKey)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IdempotencyKeyData&&(identical(other.paymentAttemptId, paymentAttemptId) || other.paymentAttemptId == paymentAttemptId)&&(identical(other.idempotencyKey, idempotencyKey) || other.idempotencyKey == idempotencyKey)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,paymentAttemptId,idempotencyKey,updatedAt);
+int get hashCode {
+    return Object.hash(runtimeType,paymentAttemptId,idempotencyKey,updatedAt);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'IdempotencyKeyData(paymentAttemptId: $paymentAttemptId, idempotencyKey: $idempotencyKey, updatedAt: $updatedAt)';
+    return 'IdempotencyKeyData(paymentAttemptId: $paymentAttemptId, idempotencyKey: $idempotencyKey, updatedAt: $updatedAt)';
 }
 
 
@@ -5578,23 +5694,29 @@ $PaymentParametersCopyWith<PaymentParameters> get copyWith => _$PaymentParameter
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as PaymentParameters;
   properties
     ..add(DiagnosticsProperty('type', 'PaymentParameters'))
-    ..add(DiagnosticsProperty('acceptPartialAuthorization', acceptPartialAuthorization))..add(DiagnosticsProperty('allowCardSurcharge', allowCardSurcharge))..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('autocomplete', autocomplete))..add(DiagnosticsProperty('customerId', customerId))..add(DiagnosticsProperty('delayAction', delayAction))..add(DiagnosticsProperty('delayDuration', delayDuration))..add(DiagnosticsProperty('processingMode', processingMode))..add(DiagnosticsProperty('paymentAttemptId', paymentAttemptId))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('note', note))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('statementDescription', statementDescription))..add(DiagnosticsProperty('teamMemberId', teamMemberId))..add(DiagnosticsProperty('tipMoney', tipMoney));
+    ..add(DiagnosticsProperty('acceptPartialAuthorization', _this.acceptPartialAuthorization))..add(DiagnosticsProperty('allowCardSurcharge', _this.allowCardSurcharge))..add(DiagnosticsProperty('amountMoney', _this.amountMoney))..add(DiagnosticsProperty('appFeeMoney', _this.appFeeMoney))..add(DiagnosticsProperty('autocomplete', _this.autocomplete))..add(DiagnosticsProperty('customerId', _this.customerId))..add(DiagnosticsProperty('delayAction', _this.delayAction))..add(DiagnosticsProperty('delayDuration', _this.delayDuration))..add(DiagnosticsProperty('processingMode', _this.processingMode))..add(DiagnosticsProperty('paymentAttemptId', _this.paymentAttemptId))..add(DiagnosticsProperty('locationId', _this.locationId))..add(DiagnosticsProperty('note', _this.note))..add(DiagnosticsProperty('orderId', _this.orderId))..add(DiagnosticsProperty('referenceId', _this.referenceId))..add(DiagnosticsProperty('statementDescription', _this.statementDescription))..add(DiagnosticsProperty('teamMemberId', _this.teamMemberId))..add(DiagnosticsProperty('tipMoney', _this.tipMoney));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentParameters&&(identical(other.acceptPartialAuthorization, acceptPartialAuthorization) || other.acceptPartialAuthorization == acceptPartialAuthorization)&&(identical(other.allowCardSurcharge, allowCardSurcharge) || other.allowCardSurcharge == allowCardSurcharge)&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.autocomplete, autocomplete) || other.autocomplete == autocomplete)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.delayAction, delayAction) || other.delayAction == delayAction)&&(identical(other.delayDuration, delayDuration) || other.delayDuration == delayDuration)&&(identical(other.processingMode, processingMode) || other.processingMode == processingMode)&&(identical(other.paymentAttemptId, paymentAttemptId) || other.paymentAttemptId == paymentAttemptId)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.statementDescription, statementDescription) || other.statementDescription == statementDescription)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney));
+  final _this = this as PaymentParameters;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentParameters&&(identical(other.acceptPartialAuthorization, _this.acceptPartialAuthorization) || other.acceptPartialAuthorization == _this.acceptPartialAuthorization)&&(identical(other.allowCardSurcharge, _this.allowCardSurcharge) || other.allowCardSurcharge == _this.allowCardSurcharge)&&(identical(other.amountMoney, _this.amountMoney) || other.amountMoney == _this.amountMoney)&&(identical(other.appFeeMoney, _this.appFeeMoney) || other.appFeeMoney == _this.appFeeMoney)&&(identical(other.autocomplete, _this.autocomplete) || other.autocomplete == _this.autocomplete)&&(identical(other.customerId, _this.customerId) || other.customerId == _this.customerId)&&(identical(other.delayAction, _this.delayAction) || other.delayAction == _this.delayAction)&&(identical(other.delayDuration, _this.delayDuration) || other.delayDuration == _this.delayDuration)&&(identical(other.processingMode, _this.processingMode) || other.processingMode == _this.processingMode)&&(identical(other.paymentAttemptId, _this.paymentAttemptId) || other.paymentAttemptId == _this.paymentAttemptId)&&(identical(other.locationId, _this.locationId) || other.locationId == _this.locationId)&&(identical(other.note, _this.note) || other.note == _this.note)&&(identical(other.orderId, _this.orderId) || other.orderId == _this.orderId)&&(identical(other.referenceId, _this.referenceId) || other.referenceId == _this.referenceId)&&(identical(other.statementDescription, _this.statementDescription) || other.statementDescription == _this.statementDescription)&&(identical(other.teamMemberId, _this.teamMemberId) || other.teamMemberId == _this.teamMemberId)&&(identical(other.tipMoney, _this.tipMoney) || other.tipMoney == _this.tipMoney));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,acceptPartialAuthorization,allowCardSurcharge,amountMoney,appFeeMoney,autocomplete,customerId,delayAction,delayDuration,processingMode,paymentAttemptId,locationId,note,orderId,referenceId,statementDescription,teamMemberId,tipMoney);
+int get hashCode {
+  final _this = this as PaymentParameters;
+  return Object.hash(runtimeType,_this.acceptPartialAuthorization,_this.allowCardSurcharge,_this.amountMoney,_this.appFeeMoney,_this.autocomplete,_this.customerId,_this.delayAction,_this.delayDuration,_this.processingMode,_this.paymentAttemptId,_this.locationId,_this.note,_this.orderId,_this.referenceId,_this.statementDescription,_this.teamMemberId,_this.tipMoney);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PaymentParameters(acceptPartialAuthorization: $acceptPartialAuthorization, allowCardSurcharge: $allowCardSurcharge, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, paymentAttemptId: $paymentAttemptId, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, statementDescription: $statementDescription, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
+  final _this = this as PaymentParameters;
+  return 'PaymentParameters(acceptPartialAuthorization: ${_this.acceptPartialAuthorization}, allowCardSurcharge: ${_this.allowCardSurcharge}, amountMoney: ${_this.amountMoney}, appFeeMoney: ${_this.appFeeMoney}, autocomplete: ${_this.autocomplete}, customerId: ${_this.customerId}, delayAction: ${_this.delayAction}, delayDuration: ${_this.delayDuration}, processingMode: ${_this.processingMode}, paymentAttemptId: ${_this.paymentAttemptId}, locationId: ${_this.locationId}, note: ${_this.note}, orderId: ${_this.orderId}, referenceId: ${_this.referenceId}, statementDescription: ${_this.statementDescription}, teamMemberId: ${_this.teamMemberId}, tipMoney: ${_this.tipMoney})';
 }
 
 
@@ -5623,7 +5745,7 @@ class _$PaymentParametersCopyWithImpl<$Res>
 /// Create a copy of PaymentParameters
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? acceptPartialAuthorization = freezed,Object? allowCardSurcharge = null,Object? amountMoney = null,Object? appFeeMoney = freezed,Object? autocomplete = freezed,Object? customerId = freezed,Object? delayAction = freezed,Object? delayDuration = freezed,Object? processingMode = null,Object? paymentAttemptId = null,Object? locationId = freezed,Object? note = freezed,Object? orderId = freezed,Object? referenceId = freezed,Object? statementDescription = freezed,Object? teamMemberId = freezed,Object? tipMoney = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(PaymentParameters(
 acceptPartialAuthorization: freezed == acceptPartialAuthorization ? _self.acceptPartialAuthorization : acceptPartialAuthorization // ignore: cast_nullable_to_non_nullable
 as bool?,allowCardSurcharge: null == allowCardSurcharge ? _self.allowCardSurcharge : allowCardSurcharge // ignore: cast_nullable_to_non_nullable
 as bool,amountMoney: null == amountMoney ? _self.amountMoney : amountMoney // ignore: cast_nullable_to_non_nullable
@@ -5848,23 +5970,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'PaymentParameters'))
     ..add(DiagnosticsProperty('acceptPartialAuthorization', acceptPartialAuthorization))..add(DiagnosticsProperty('allowCardSurcharge', allowCardSurcharge))..add(DiagnosticsProperty('amountMoney', amountMoney))..add(DiagnosticsProperty('appFeeMoney', appFeeMoney))..add(DiagnosticsProperty('autocomplete', autocomplete))..add(DiagnosticsProperty('customerId', customerId))..add(DiagnosticsProperty('delayAction', delayAction))..add(DiagnosticsProperty('delayDuration', delayDuration))..add(DiagnosticsProperty('processingMode', processingMode))..add(DiagnosticsProperty('paymentAttemptId', paymentAttemptId))..add(DiagnosticsProperty('locationId', locationId))..add(DiagnosticsProperty('note', note))..add(DiagnosticsProperty('orderId', orderId))..add(DiagnosticsProperty('referenceId', referenceId))..add(DiagnosticsProperty('statementDescription', statementDescription))..add(DiagnosticsProperty('teamMemberId', teamMemberId))..add(DiagnosticsProperty('tipMoney', tipMoney));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentParameters&&(identical(other.acceptPartialAuthorization, acceptPartialAuthorization) || other.acceptPartialAuthorization == acceptPartialAuthorization)&&(identical(other.allowCardSurcharge, allowCardSurcharge) || other.allowCardSurcharge == allowCardSurcharge)&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.autocomplete, autocomplete) || other.autocomplete == autocomplete)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.delayAction, delayAction) || other.delayAction == delayAction)&&(identical(other.delayDuration, delayDuration) || other.delayDuration == delayDuration)&&(identical(other.processingMode, processingMode) || other.processingMode == processingMode)&&(identical(other.paymentAttemptId, paymentAttemptId) || other.paymentAttemptId == paymentAttemptId)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.statementDescription, statementDescription) || other.statementDescription == statementDescription)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentParameters&&(identical(other.acceptPartialAuthorization, acceptPartialAuthorization) || other.acceptPartialAuthorization == acceptPartialAuthorization)&&(identical(other.allowCardSurcharge, allowCardSurcharge) || other.allowCardSurcharge == allowCardSurcharge)&&(identical(other.amountMoney, amountMoney) || other.amountMoney == amountMoney)&&(identical(other.appFeeMoney, appFeeMoney) || other.appFeeMoney == appFeeMoney)&&(identical(other.autocomplete, autocomplete) || other.autocomplete == autocomplete)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.delayAction, delayAction) || other.delayAction == delayAction)&&(identical(other.delayDuration, delayDuration) || other.delayDuration == delayDuration)&&(identical(other.processingMode, processingMode) || other.processingMode == processingMode)&&(identical(other.paymentAttemptId, paymentAttemptId) || other.paymentAttemptId == paymentAttemptId)&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.note, note) || other.note == note)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.statementDescription, statementDescription) || other.statementDescription == statementDescription)&&(identical(other.teamMemberId, teamMemberId) || other.teamMemberId == teamMemberId)&&(identical(other.tipMoney, tipMoney) || other.tipMoney == tipMoney));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,acceptPartialAuthorization,allowCardSurcharge,amountMoney,appFeeMoney,autocomplete,customerId,delayAction,delayDuration,processingMode,paymentAttemptId,locationId,note,orderId,referenceId,statementDescription,teamMemberId,tipMoney);
+int get hashCode {
+    return Object.hash(runtimeType,acceptPartialAuthorization,allowCardSurcharge,amountMoney,appFeeMoney,autocomplete,customerId,delayAction,delayDuration,processingMode,paymentAttemptId,locationId,note,orderId,referenceId,statementDescription,teamMemberId,tipMoney);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PaymentParameters(acceptPartialAuthorization: $acceptPartialAuthorization, allowCardSurcharge: $allowCardSurcharge, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, paymentAttemptId: $paymentAttemptId, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, statementDescription: $statementDescription, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
+    return 'PaymentParameters(acceptPartialAuthorization: $acceptPartialAuthorization, allowCardSurcharge: $allowCardSurcharge, amountMoney: $amountMoney, appFeeMoney: $appFeeMoney, autocomplete: $autocomplete, customerId: $customerId, delayAction: $delayAction, delayDuration: $delayDuration, processingMode: $processingMode, paymentAttemptId: $paymentAttemptId, locationId: $locationId, note: $note, orderId: $orderId, referenceId: $referenceId, statementDescription: $statementDescription, teamMemberId: $teamMemberId, tipMoney: $tipMoney)';
 }
 
 
@@ -5967,23 +6091,29 @@ $OfflineCardPaymentDetailsCopyWith<OfflineCardPaymentDetails> get copyWith => _$
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as OfflineCardPaymentDetails;
   properties
     ..add(DiagnosticsProperty('type', 'OfflineCardPaymentDetails'))
-    ..add(DiagnosticsProperty('applicationIdentifier', applicationIdentifier))..add(DiagnosticsProperty('applicationName', applicationName))..add(DiagnosticsProperty('card', card))..add(DiagnosticsProperty('entryMethod', entryMethod));
+    ..add(DiagnosticsProperty('applicationIdentifier', _this.applicationIdentifier))..add(DiagnosticsProperty('applicationName', _this.applicationName))..add(DiagnosticsProperty('card', _this.card))..add(DiagnosticsProperty('entryMethod', _this.entryMethod));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OfflineCardPaymentDetails&&(identical(other.applicationIdentifier, applicationIdentifier) || other.applicationIdentifier == applicationIdentifier)&&(identical(other.applicationName, applicationName) || other.applicationName == applicationName)&&(identical(other.card, card) || other.card == card)&&(identical(other.entryMethod, entryMethod) || other.entryMethod == entryMethod));
+  final _this = this as OfflineCardPaymentDetails;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OfflineCardPaymentDetails&&(identical(other.applicationIdentifier, _this.applicationIdentifier) || other.applicationIdentifier == _this.applicationIdentifier)&&(identical(other.applicationName, _this.applicationName) || other.applicationName == _this.applicationName)&&(identical(other.card, _this.card) || other.card == _this.card)&&(identical(other.entryMethod, _this.entryMethod) || other.entryMethod == _this.entryMethod));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,applicationIdentifier,applicationName,card,entryMethod);
+int get hashCode {
+  final _this = this as OfflineCardPaymentDetails;
+  return Object.hash(runtimeType,_this.applicationIdentifier,_this.applicationName,_this.card,_this.entryMethod);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'OfflineCardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, card: $card, entryMethod: $entryMethod)';
+  final _this = this as OfflineCardPaymentDetails;
+  return 'OfflineCardPaymentDetails(applicationIdentifier: ${_this.applicationIdentifier}, applicationName: ${_this.applicationName}, card: ${_this.card}, entryMethod: ${_this.entryMethod})';
 }
 
 
@@ -6012,7 +6142,7 @@ class _$OfflineCardPaymentDetailsCopyWithImpl<$Res>
 /// Create a copy of OfflineCardPaymentDetails
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? applicationIdentifier = freezed,Object? applicationName = freezed,Object? card = freezed,Object? entryMethod = null,}) {
-  return _then(_self.copyWith(
+  return _then(OfflineCardPaymentDetails(
 applicationIdentifier: freezed == applicationIdentifier ? _self.applicationIdentifier : applicationIdentifier // ignore: cast_nullable_to_non_nullable
 as String?,applicationName: freezed == applicationName ? _self.applicationName : applicationName // ignore: cast_nullable_to_non_nullable
 as String?,card: freezed == card ? _self.card : card // ignore: cast_nullable_to_non_nullable
@@ -6190,23 +6320,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'OfflineCardPaymentDetails'))
     ..add(DiagnosticsProperty('applicationIdentifier', applicationIdentifier))..add(DiagnosticsProperty('applicationName', applicationName))..add(DiagnosticsProperty('card', card))..add(DiagnosticsProperty('entryMethod', entryMethod));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OfflineCardPaymentDetails&&(identical(other.applicationIdentifier, applicationIdentifier) || other.applicationIdentifier == applicationIdentifier)&&(identical(other.applicationName, applicationName) || other.applicationName == applicationName)&&(identical(other.card, card) || other.card == card)&&(identical(other.entryMethod, entryMethod) || other.entryMethod == entryMethod));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OfflineCardPaymentDetails&&(identical(other.applicationIdentifier, applicationIdentifier) || other.applicationIdentifier == applicationIdentifier)&&(identical(other.applicationName, applicationName) || other.applicationName == applicationName)&&(identical(other.card, card) || other.card == card)&&(identical(other.entryMethod, entryMethod) || other.entryMethod == entryMethod));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,applicationIdentifier,applicationName,card,entryMethod);
+int get hashCode {
+    return Object.hash(runtimeType,applicationIdentifier,applicationName,card,entryMethod);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'OfflineCardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, card: $card, entryMethod: $entryMethod)';
+    return 'OfflineCardPaymentDetails(applicationIdentifier: $applicationIdentifier, applicationName: $applicationName, card: $card, entryMethod: $entryMethod)';
 }
 
 
@@ -6275,23 +6407,29 @@ $ReaderChangedEventCopyWith<ReaderChangedEvent> get copyWith => _$ReaderChangedE
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as ReaderChangedEvent;
   properties
     ..add(DiagnosticsProperty('type', 'ReaderChangedEvent'))
-    ..add(DiagnosticsProperty('reader', reader))..add(DiagnosticsProperty('change', change));
+    ..add(DiagnosticsProperty('reader', _this.reader))..add(DiagnosticsProperty('change', _this.change));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderChangedEvent&&(identical(other.reader, reader) || other.reader == reader)&&(identical(other.change, change) || other.change == change));
+  final _this = this as ReaderChangedEvent;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderChangedEvent&&(identical(other.reader, _this.reader) || other.reader == _this.reader)&&(identical(other.change, _this.change) || other.change == _this.change));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,reader,change);
+int get hashCode {
+  final _this = this as ReaderChangedEvent;
+  return Object.hash(runtimeType,_this.reader,_this.change);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderChangedEvent(reader: $reader, change: $change)';
+  final _this = this as ReaderChangedEvent;
+  return 'ReaderChangedEvent(reader: ${_this.reader}, change: ${_this.change})';
 }
 
 
@@ -6320,7 +6458,7 @@ class _$ReaderChangedEventCopyWithImpl<$Res>
 /// Create a copy of ReaderChangedEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? reader = null,Object? change = null,}) {
-  return _then(_self.copyWith(
+  return _then(ReaderChangedEvent(
 reader: null == reader ? _self.reader : reader // ignore: cast_nullable_to_non_nullable
 as ReaderInfo,change: null == change ? _self.change : change // ignore: cast_nullable_to_non_nullable
 as ReaderChange,
@@ -6491,23 +6629,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'ReaderChangedEvent'))
     ..add(DiagnosticsProperty('reader', reader))..add(DiagnosticsProperty('change', change));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderChangedEvent&&(identical(other.reader, reader) || other.reader == reader)&&(identical(other.change, change) || other.change == change));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderChangedEvent&&(identical(other.reader, reader) || other.reader == reader)&&(identical(other.change, change) || other.change == change));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,reader,change);
+int get hashCode {
+    return Object.hash(runtimeType,reader,change);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderChangedEvent(reader: $reader, change: $change)';
+    return 'ReaderChangedEvent(reader: $reader, change: $change)';
 }
 
 
@@ -6571,23 +6711,29 @@ $TimeOfDayCopyWith<TimeOfDay> get copyWith => _$TimeOfDayCopyWithImpl<TimeOfDay>
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as TimeOfDay;
   properties
     ..add(DiagnosticsProperty('type', 'TimeOfDay'))
-    ..add(DiagnosticsProperty('hour', hour))..add(DiagnosticsProperty('minute', minute));
+    ..add(DiagnosticsProperty('hour', _this.hour))..add(DiagnosticsProperty('minute', _this.minute));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TimeOfDay&&(identical(other.hour, hour) || other.hour == hour)&&(identical(other.minute, minute) || other.minute == minute));
+  final _this = this as TimeOfDay;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TimeOfDay&&(identical(other.hour, _this.hour) || other.hour == _this.hour)&&(identical(other.minute, _this.minute) || other.minute == _this.minute));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,hour,minute);
+int get hashCode {
+  final _this = this as TimeOfDay;
+  return Object.hash(runtimeType,_this.hour,_this.minute);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'TimeOfDay(hour: $hour, minute: $minute)';
+  final _this = this as TimeOfDay;
+  return 'TimeOfDay(hour: ${_this.hour}, minute: ${_this.minute})';
 }
 
 
@@ -6616,7 +6762,7 @@ class _$TimeOfDayCopyWithImpl<$Res>
 /// Create a copy of TimeOfDay
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? hour = null,Object? minute = null,}) {
-  return _then(_self.copyWith(
+  return _then(TimeOfDay(
 hour: null == hour ? _self.hour : hour // ignore: cast_nullable_to_non_nullable
 as int,minute: null == minute ? _self.minute : minute // ignore: cast_nullable_to_non_nullable
 as int,
@@ -6778,23 +6924,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'TimeOfDay'))
     ..add(DiagnosticsProperty('hour', hour))..add(DiagnosticsProperty('minute', minute));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TimeOfDay&&(identical(other.hour, hour) || other.hour == hour)&&(identical(other.minute, minute) || other.minute == minute));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _TimeOfDay&&(identical(other.hour, hour) || other.hour == hour)&&(identical(other.minute, minute) || other.minute == minute));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,hour,minute);
+int get hashCode {
+    return Object.hash(runtimeType,hour,minute);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'TimeOfDay(hour: $hour, minute: $minute)';
+    return 'TimeOfDay(hour: $hour, minute: $minute)';
 }
 
 
@@ -6849,23 +6997,29 @@ $ReaderSettingsCopyWith<ReaderSettings> get copyWith => _$ReaderSettingsCopyWith
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as ReaderSettings;
   properties
     ..add(DiagnosticsProperty('type', 'ReaderSettings'))
-    ..add(DiagnosticsProperty('isReducedChargingModeEnabled', isReducedChargingModeEnabled))..add(DiagnosticsProperty('preferredFirmwareUpdateTime', preferredFirmwareUpdateTime))..add(DiagnosticsProperty('usbPowerMode', usbPowerMode));
+    ..add(DiagnosticsProperty('isReducedChargingModeEnabled', _this.isReducedChargingModeEnabled))..add(DiagnosticsProperty('preferredFirmwareUpdateTime', _this.preferredFirmwareUpdateTime))..add(DiagnosticsProperty('usbPowerMode', _this.usbPowerMode));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderSettings&&(identical(other.isReducedChargingModeEnabled, isReducedChargingModeEnabled) || other.isReducedChargingModeEnabled == isReducedChargingModeEnabled)&&(identical(other.preferredFirmwareUpdateTime, preferredFirmwareUpdateTime) || other.preferredFirmwareUpdateTime == preferredFirmwareUpdateTime)&&(identical(other.usbPowerMode, usbPowerMode) || other.usbPowerMode == usbPowerMode));
+  final _this = this as ReaderSettings;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReaderSettings&&(identical(other.isReducedChargingModeEnabled, _this.isReducedChargingModeEnabled) || other.isReducedChargingModeEnabled == _this.isReducedChargingModeEnabled)&&(identical(other.preferredFirmwareUpdateTime, _this.preferredFirmwareUpdateTime) || other.preferredFirmwareUpdateTime == _this.preferredFirmwareUpdateTime)&&(identical(other.usbPowerMode, _this.usbPowerMode) || other.usbPowerMode == _this.usbPowerMode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,isReducedChargingModeEnabled,preferredFirmwareUpdateTime,usbPowerMode);
+int get hashCode {
+  final _this = this as ReaderSettings;
+  return Object.hash(runtimeType,_this.isReducedChargingModeEnabled,_this.preferredFirmwareUpdateTime,_this.usbPowerMode);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderSettings(isReducedChargingModeEnabled: $isReducedChargingModeEnabled, preferredFirmwareUpdateTime: $preferredFirmwareUpdateTime, usbPowerMode: $usbPowerMode)';
+  final _this = this as ReaderSettings;
+  return 'ReaderSettings(isReducedChargingModeEnabled: ${_this.isReducedChargingModeEnabled}, preferredFirmwareUpdateTime: ${_this.preferredFirmwareUpdateTime}, usbPowerMode: ${_this.usbPowerMode})';
 }
 
 
@@ -6894,7 +7048,7 @@ class _$ReaderSettingsCopyWithImpl<$Res>
 /// Create a copy of ReaderSettings
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? isReducedChargingModeEnabled = null,Object? preferredFirmwareUpdateTime = freezed,Object? usbPowerMode = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ReaderSettings(
 isReducedChargingModeEnabled: null == isReducedChargingModeEnabled ? _self.isReducedChargingModeEnabled : isReducedChargingModeEnabled // ignore: cast_nullable_to_non_nullable
 as bool,preferredFirmwareUpdateTime: freezed == preferredFirmwareUpdateTime ? _self.preferredFirmwareUpdateTime : preferredFirmwareUpdateTime // ignore: cast_nullable_to_non_nullable
 as TimeOfDay?,usbPowerMode: freezed == usbPowerMode ? _self.usbPowerMode : usbPowerMode // ignore: cast_nullable_to_non_nullable
@@ -7070,23 +7224,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'ReaderSettings'))
     ..add(DiagnosticsProperty('isReducedChargingModeEnabled', isReducedChargingModeEnabled))..add(DiagnosticsProperty('preferredFirmwareUpdateTime', preferredFirmwareUpdateTime))..add(DiagnosticsProperty('usbPowerMode', usbPowerMode));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderSettings&&(identical(other.isReducedChargingModeEnabled, isReducedChargingModeEnabled) || other.isReducedChargingModeEnabled == isReducedChargingModeEnabled)&&(identical(other.preferredFirmwareUpdateTime, preferredFirmwareUpdateTime) || other.preferredFirmwareUpdateTime == preferredFirmwareUpdateTime)&&(identical(other.usbPowerMode, usbPowerMode) || other.usbPowerMode == usbPowerMode));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReaderSettings&&(identical(other.isReducedChargingModeEnabled, isReducedChargingModeEnabled) || other.isReducedChargingModeEnabled == isReducedChargingModeEnabled)&&(identical(other.preferredFirmwareUpdateTime, preferredFirmwareUpdateTime) || other.preferredFirmwareUpdateTime == preferredFirmwareUpdateTime)&&(identical(other.usbPowerMode, usbPowerMode) || other.usbPowerMode == usbPowerMode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,isReducedChargingModeEnabled,preferredFirmwareUpdateTime,usbPowerMode);
+int get hashCode {
+    return Object.hash(runtimeType,isReducedChargingModeEnabled,preferredFirmwareUpdateTime,usbPowerMode);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ReaderSettings(isReducedChargingModeEnabled: $isReducedChargingModeEnabled, preferredFirmwareUpdateTime: $preferredFirmwareUpdateTime, usbPowerMode: $usbPowerMode)';
+    return 'ReaderSettings(isReducedChargingModeEnabled: $isReducedChargingModeEnabled, preferredFirmwareUpdateTime: $preferredFirmwareUpdateTime, usbPowerMode: $usbPowerMode)';
 }
 
 
@@ -7142,8 +7298,7 @@ $TimeOfDayCopyWith<$Res>? get preferredFirmwareUpdateTime {
 /// @nodoc
 mixin _$SdkSettings implements DiagnosticableTreeMixin {
 
- String get version; Environment get environment; String? get mpocVersion;// iOS only
- String get securityComplianceVersion;
+ String get version; Environment get environment; String? get mpocVersion; String get securityComplianceVersion;
 /// Create a copy of SdkSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -7155,23 +7310,29 @@ $SdkSettingsCopyWith<SdkSettings> get copyWith => _$SdkSettingsCopyWithImpl<SdkS
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  final _this = this as SdkSettings;
   properties
     ..add(DiagnosticsProperty('type', 'SdkSettings'))
-    ..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('environment', environment))..add(DiagnosticsProperty('mpocVersion', mpocVersion))..add(DiagnosticsProperty('securityComplianceVersion', securityComplianceVersion));
+    ..add(DiagnosticsProperty('version', _this.version))..add(DiagnosticsProperty('environment', _this.environment))..add(DiagnosticsProperty('mpocVersion', _this.mpocVersion))..add(DiagnosticsProperty('securityComplianceVersion', _this.securityComplianceVersion));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkSettings&&(identical(other.version, version) || other.version == version)&&(identical(other.environment, environment) || other.environment == environment)&&(identical(other.mpocVersion, mpocVersion) || other.mpocVersion == mpocVersion)&&(identical(other.securityComplianceVersion, securityComplianceVersion) || other.securityComplianceVersion == securityComplianceVersion));
+  final _this = this as SdkSettings;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkSettings&&(identical(other.version, _this.version) || other.version == _this.version)&&(identical(other.environment, _this.environment) || other.environment == _this.environment)&&(identical(other.mpocVersion, _this.mpocVersion) || other.mpocVersion == _this.mpocVersion)&&(identical(other.securityComplianceVersion, _this.securityComplianceVersion) || other.securityComplianceVersion == _this.securityComplianceVersion));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,version,environment,mpocVersion,securityComplianceVersion);
+int get hashCode {
+  final _this = this as SdkSettings;
+  return Object.hash(runtimeType,_this.version,_this.environment,_this.mpocVersion,_this.securityComplianceVersion);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SdkSettings(version: $version, environment: $environment, mpocVersion: $mpocVersion, securityComplianceVersion: $securityComplianceVersion)';
+  final _this = this as SdkSettings;
+  return 'SdkSettings(version: ${_this.version}, environment: ${_this.environment}, mpocVersion: ${_this.mpocVersion}, securityComplianceVersion: ${_this.securityComplianceVersion})';
 }
 
 
@@ -7200,7 +7361,7 @@ class _$SdkSettingsCopyWithImpl<$Res>
 /// Create a copy of SdkSettings
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? version = null,Object? environment = null,Object? mpocVersion = freezed,Object? securityComplianceVersion = null,}) {
-  return _then(_self.copyWith(
+  return _then(SdkSettings(
 version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,environment: null == environment ? _self.environment : environment // ignore: cast_nullable_to_non_nullable
 as Environment,mpocVersion: freezed == mpocVersion ? _self.mpocVersion : mpocVersion // ignore: cast_nullable_to_non_nullable
@@ -7352,7 +7513,6 @@ class _SdkSettings with DiagnosticableTreeMixin implements SdkSettings {
 @override final  String version;
 @override final  Environment environment;
 @override final  String? mpocVersion;
-// iOS only
 @override final  String securityComplianceVersion;
 
 /// Create a copy of SdkSettings
@@ -7367,23 +7527,25 @@ Map<String, dynamic> toJson() {
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
+    properties
     ..add(DiagnosticsProperty('type', 'SdkSettings'))
     ..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('environment', environment))..add(DiagnosticsProperty('mpocVersion', mpocVersion))..add(DiagnosticsProperty('securityComplianceVersion', securityComplianceVersion));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SdkSettings&&(identical(other.version, version) || other.version == version)&&(identical(other.environment, environment) || other.environment == environment)&&(identical(other.mpocVersion, mpocVersion) || other.mpocVersion == mpocVersion)&&(identical(other.securityComplianceVersion, securityComplianceVersion) || other.securityComplianceVersion == securityComplianceVersion));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SdkSettings&&(identical(other.version, version) || other.version == version)&&(identical(other.environment, environment) || other.environment == environment)&&(identical(other.mpocVersion, mpocVersion) || other.mpocVersion == mpocVersion)&&(identical(other.securityComplianceVersion, securityComplianceVersion) || other.securityComplianceVersion == securityComplianceVersion));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,version,environment,mpocVersion,securityComplianceVersion);
+int get hashCode {
+    return Object.hash(runtimeType,version,environment,mpocVersion,securityComplianceVersion);
+}
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SdkSettings(version: $version, environment: $environment, mpocVersion: $mpocVersion, securityComplianceVersion: $securityComplianceVersion)';
+    return 'SdkSettings(version: $version, environment: $environment, mpocVersion: $mpocVersion, securityComplianceVersion: $securityComplianceVersion)';
 }
 
 
