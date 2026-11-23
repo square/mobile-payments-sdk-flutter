@@ -18,11 +18,10 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
   final _squareMobilePaymentsSdkPlugin = SquareMobilePaymentsSdk();
   var amount = 1;
 
-  Future<void> _onBuy(BuildContext context, int amount) async {
-    try {
-      String paymentAttemptId = uuid.v4();
+  void _onBuy(BuildContext context, int amount) {
+    String paymentAttemptId = uuid.v4();
 
-      Payment payment = await _squareMobilePaymentsSdkPlugin.paymentManager
+    _squareMobilePaymentsSdkPlugin.paymentManager
           .startPayment(
               PaymentParameters(
                   autocomplete: false,
@@ -37,19 +36,14 @@ class _DonutCounterScreenState extends State<DonutCounterScreen> {
                   paymentAttemptId: paymentAttemptId),
               PromptParameters(
                   additionalPaymentMethods: List.empty(),
-                  mode: PromptMode.defaultMode));
-      if (context.mounted) {
+                  mode: PromptMode.defaultMode), (payment, error) {
+      if (!context.mounted) return;
+      if (payment != null) {
         showPaymentDialog(context, payment);
+      } else if (error != null) {
+        showCanceledDialog(context, "${error.code} ====> ${error.message}");
       }
-    } on PaymentError catch (e) {
-      if (context.mounted) {
-        showCanceledDialog(context, "${e.code} ====> ${e.message}");
-      }
-    } catch (e) {
-      debugPrint("---------------------------------------");
-      debugPrint("Unexpected error $e");
-      debugPrint("---------------------------------------");
-    }
+    });
   }
 
   void showPaymentDialog(BuildContext context, Payment payment) {

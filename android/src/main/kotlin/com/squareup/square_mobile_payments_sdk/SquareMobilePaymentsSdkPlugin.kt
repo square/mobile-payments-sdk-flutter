@@ -79,9 +79,15 @@ class SquareMobilePaymentsSdkPlugin : FlutterPlugin, MethodCallHandler, StreamHa
       "startPayment" -> {
         val paymentParameters = call.argument<HashMap<String, Any>>("paymentParameters")
         val promptParameters = call.argument<HashMap<String, Any>>("promptParameters")
-        PaymentModule.startPayment(result, paymentParameters, promptParameters)
+        PaymentModule.startPayment(result, paymentParameters, promptParameters, call.argument<String>("handleId"))
       }
-      "cancelPayment" -> PaymentModule.cancelPayment(result)
+      "getCurrentPaymentHandleId" -> PaymentModule.getCurrentPaymentHandleId(result)
+      "cancelPayment" -> PaymentModule.cancelPayment(result, call.argument<String>("handleId"))
+      "getPaymentHandleParams" -> PaymentModule.getPaymentHandleParams(result, call.argument<String>("handleId"))
+      "triggerAdditionalPaymentMethod" -> {
+        val type = call.argument<String>("type")
+        PaymentModule.triggerAdditionalPaymentMethod(result, type, call.argument<String>("handleId"))
+      }
       "completePayment" -> {
         val paymentId = call.argument<String>("paymentId") ?: ""
         PaymentModule.completePayment(result, paymentId)
